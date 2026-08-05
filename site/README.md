@@ -50,6 +50,21 @@ przeszukaj i podmień w całym katalogu `site/`:
 > Uwaga: numeru telefonu, dokładnego e-maila i roku założenia **nie znałem z danych** —
 > dlatego są to jawne placeholdery, a nie zmyślone wartości. Podmień je przed startem.
 
+## Indeksacja (Google nie indeksuje strony)
+
+Osobny dokument: **`INDEXING.md`** — diagnoza (najpewniej „Discovered/Crawled – currently not
+indexed", czyli problem strukturalny, nie blokada) + checklista naprawcza w Google Search Console
+i lista twardych blokad do wykluczenia (robots, noindex, canonical, WAF/403).
+
+## Realizacje i zdjęcia (Image SEO)
+
+- `/realizacje/` — hub portfolio + dwie gotowe realizacje (`mycie-elewacji-gdansk-wrzeszcz`,
+  `inspekcja-offshore-baltyk`) jako szablony. Kopiujesz katalog, podmieniasz treść i zdjęcia.
+- Zdjęcia: patrz **`assets/img/README.md`** (nazwy plików = słowa kluczowe, `alt`, rozmiary).
+  Do czasu wgrania prawdziwych JPG widać placeholder (`onerror` → `placeholder.svg`) —
+  **HTML-a nie trzeba ruszać**, wystarczy wgrać pliki pod właściwe nazwy.
+- `sitemap.xml` zawiera wpisy `<image:image>` dla realizacji (indeksacja w Grafice Google).
+
 ## Do zrobienia poza kodem (z analizy, nie wchodzi do repo)
 - Uzupełnić **Profil Firmy w Google** (zdjęcia, kategorie, opis, systematyczne opinie) — wniosek #3.
 - Sprawdzić licencję zdjęcia oznaczonego „Editorial Use Only" — wniosek #7 (ryzyko prawne).

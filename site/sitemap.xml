@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://rope-ag.pl/</loc>
     <xhtml:link rel="alternate" hreflang="pl" href="https://rope-ag.pl/"/>
@@ -24,6 +25,34 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://rope-ag.pl/en/"/>
     <xhtml:link rel="alternate" hreflang="pl" href="https://rope-ag.pl/"/>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://rope-ag.pl/realizacje/</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rope-ag.pl/realizacje/mycie-elewacji-gdansk-wrzeszcz/</loc>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://rope-ag.pl/assets/img/realizacje/mycie-elewacji-gdansk-wrzeszcz-01.jpg</image:loc>
+      <image:caption>Mycie elewacji budynku wielorodzinnego metodą alpinistyczną, Gdańsk Wrzeszcz</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://rope-ag.pl/assets/img/realizacje/mycie-elewacji-gdansk-wrzeszcz-przed.jpg</image:loc>
+      <image:caption>Elewacja przed myciem, Gdańsk Wrzeszcz</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://rope-ag.pl/assets/img/realizacje/mycie-elewacji-gdansk-wrzeszcz-po.jpg</image:loc>
+      <image:caption>Elewacja po myciu i impregnacji, Gdańsk Wrzeszcz</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://rope-ag.pl/realizacje/inspekcja-offshore-baltyk/</loc>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://rope-ag.pl/assets/img/realizacje/inspekcja-offshore-baltyk-01.jpg</image:loc>
+      <image:caption>Inspekcja konstrukcji offshore w dostępie linowym IRATA, Bałtyk</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://rope-ag.pl/zespol/</loc>
