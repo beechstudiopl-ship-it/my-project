@@ -74,7 +74,7 @@ class CSA_Settings {
 			'enable_faq'     => empty( $in['enable_faq'] ) ? 0 : 1,
 			'org_type'       => $this->pick(
 				isset( $in['org_type'] ) ? $in['org_type'] : '',
-				array( 'Organization', 'EducationalOrganization', 'LocalBusiness' ),
+				array( 'Organization', 'EducationalOrganization', 'LocalBusiness', 'LodgingBusiness', 'Hotel', 'Resort' ),
 				'Organization'
 			),
 			'name'           => sanitize_text_field( $in['name'] ?? '' ),
@@ -188,6 +188,9 @@ class CSA_Settings {
 							'Organization'            => 'Organization (ogolna)',
 							'EducationalOrganization' => 'EducationalOrganization (szkolenia)',
 							'LocalBusiness'           => 'LocalBusiness (firma lokalna)',
+							'LodgingBusiness'         => 'LodgingBusiness (obiekt noclegowy)',
+							'Hotel'                   => 'Hotel',
+							'Resort'                  => 'Resort (osrodek wypoczynkowy)',
 						),
 						$s['org_type']
 					);
