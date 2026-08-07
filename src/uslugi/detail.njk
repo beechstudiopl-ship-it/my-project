@@ -1,0 +1,67 @@
+---
+layout: base.njk
+pagination:
+  data: services
+  size: 1
+  alias: service
+  addAllPagesToCollections: true
+permalink: "/uslugi/{{ service.slug }}/"
+eleventyComputed:
+  title: "{{ service.title }}"
+  metaDescription: "{{ service.metaDescription }}"
+---
+{% set serviceSchema = { name: service.name, description: service.metaDescription, areaServed: site.region } %}
+{% include "schema/service.njk" %}
+{% set breadcrumbs = [ { name: "Start", url: "/" }, { name: "Usługi", url: "/uslugi/" }, { name: service.name, url: "/uslugi/" + service.slug + "/" } ] %}
+{% include "schema/breadcrumb.njk" %}
+
+<nav class="crumbs container" aria-label="Ścieżka">
+  <a href="/">Start</a> <span>/</span> <a href="/uslugi/">Usługi</a> <span>/</span> <span>{{ service.name }}</span>
+</nav>
+
+<section class="section">
+  <div class="container">
+    <p class="eyebrow">{{ site.region }} · standard IRATA</p>
+    <h1>{{ service.h1 }}</h1>
+    <p class="hero-lead">{{ service.lead }}</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="{{ site.phone | telHref }}">📞 {{ site.phone }}</a>
+      <a class="btn btn-outline" href="https://wa.me/{{ site.whatsapp | waNumber }}" rel="noopener">💬 WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <h2>Co obejmuje ta usługa</h2>
+    <ul class="ticks">
+      {%- for p in service.points %}
+      <li>{{ p }}</li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>Gdzie realizujemy</h2>
+    <p>Usługę wykonujemy na terenie całego Pomorza. Sprawdź strony miejskie:</p>
+    <ul class="chips">
+      {%- for c in cities %}
+      <li><a href="/prace-wysokosciowe-{{ c.slug }}/">{{ c.name }}</a></li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container">
+    <h2>Zapytaj o „{{ service.name | lower }}"</h2>
+    <p>Opisz zakres i dołącz zdjęcia — wycena najczęściej tego samego dnia.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="{{ site.phone | telHref }}">📞 {{ site.phone }}</a>
+      <a class="btn btn-outline" href="https://wa.me/{{ site.whatsapp | waNumber }}" rel="noopener">💬 WhatsApp</a>
+      <a class="btn btn-ghost" href="/kontakt/">Formularz kontaktu</a>
+    </div>
+  </div>
+</section>

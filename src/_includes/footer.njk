@@ -1,0 +1,24 @@
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <p class="footer-brand">{{ site.name }}</p>
+      <p>{{ site.tagline }}</p>
+      <p>Obszar działania: {{ site.region }} — Trójmiasto i okolice.</p>
+    </div>
+    <div>
+      <p class="footer-head">Kontakt</p>
+      <p><a href="{{ site.phone | telHref }}">{{ site.phone }}</a></p>
+      <p><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+      <p><a href="{{ site.googleReviewsUrl }}" rel="noopener">Wystaw opinię w Google</a></p>
+    </div>
+    <div>
+      <p class="footer-head">Usługi</p>
+      {%- for s in services %}
+      <p><a href="/uslugi/{{ s.slug }}/">{{ s.name }}</a></p>
+      {%- endfor %}
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>© {% year %} {{ site.name }}. Standard IRATA. Wszelkie prawa zastrzeżone.</p>
+  </div>
+</footer>

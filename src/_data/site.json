@@ -1,0 +1,44 @@
+{
+  "name": "ROPE Access Group",
+  "shortName": "RAG",
+  "legalName": "ROPE Access Group",
+  "url": "https://rope-ag.pl",
+  "lang": "pl-PL",
+  "region": "Pomorskie",
+  "regionCode": "PL-22",
+  "foundingYear": 2001,
+  "tagline": "Alpinizm przemysłowy i prace na wysokościach w standardzie IRATA",
+  "description": "Firma alpinizmu przemysłowego z Pomorza. Prace i usługi wysokościowe metodą dostępu linowego (rope access) w standardzie IRATA: przeglądy, montaże, prace remontowe i konserwacja na wysokości.",
+
+  "phone": "+48 000 000 000",
+  "_phone_todo": "PODMIEŃ na prawdziwy numer. Format dowolny do wyświetlenia — filtr telHref sam zrobi poprawny tel:.",
+  "email": "biuro@rope-ag.pl",
+  "_email_todo": "PODMIEŃ na prawdziwy adres e-mail.",
+  "whatsapp": "+48 000 000 000",
+  "_whatsapp_todo": "PODMIEŃ na numer WhatsApp (może być ten sam co telefon).",
+
+  "address": {
+    "street": "ul. Przykładowa 1",
+    "postalCode": "80-000",
+    "city": "Gdańsk",
+    "region": "Pomorskie",
+    "country": "PL"
+  },
+  "_address_todo": "PODMIEŃ na prawdziwy adres siedziby.",
+
+  "irata": {
+    "memberNumber": "TODO",
+    "topLevel": "IRATA Level 3",
+    "note": "PODMIEŃ nr członkostwa IRATA i najwyższy poziom w zespole — to dane prekwalifikacyjne dla klientów B2B/offshore."
+  },
+  "certifications": ["IRATA", "GWO", "OC (ubezpieczenie odpowiedzialności cywilnej)"],
+
+  "sameAs": [
+    "https://www.google.com/maps/place/?q=ROPE+Access+Group"
+  ],
+  "_sameAs_todo": "PODMIEŃ/DODAJ prawdziwe URL: wizytówka Google Maps, Facebook, LinkedIn, Instagram.",
+  "googleReviewsUrl": "https://search.google.com/local/writereview?placeid=TODO",
+  "_reviews_todo": "PODMIEŃ placeid wizytówki Google Business Profile.",
+
+  "org_type": "LocalBusiness"
+}

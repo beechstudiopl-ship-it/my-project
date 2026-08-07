@@ -1,0 +1,24 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": {{ site.org_type | dump | safe }},
+  "name": {{ site.name | dump | safe }},
+  "url": {{ site.url | dump | safe }},
+  "description": {{ site.description | dump | safe }},
+  "telephone": {{ site.phone | dump | safe }},
+  "email": {{ site.email | dump | safe }},
+  "areaServed": [
+    {{ site.region | dump | safe }}{% for c in cities %},
+    {{ c.name | dump | safe }}{% endfor %}
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": {{ site.address.street | dump | safe }},
+    "postalCode": {{ site.address.postalCode | dump | safe }},
+    "addressLocality": {{ site.address.city | dump | safe }},
+    "addressRegion": {{ site.address.region | dump | safe }},
+    "addressCountry": {{ site.address.country | dump | safe }}
+  },
+  "sameAs": {{ site.sameAs | dump | safe }}
+}
+</script>

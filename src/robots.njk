@@ -1,0 +1,17 @@
+---
+permalink: /robots.txt
+eleventyExcludeFromCollections: true
+---
+{%- set aiBots = ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-Web", "anthropic-ai", "PerplexityBot", "Perplexity-User", "Google-Extended", "Applebot-Extended", "Amazonbot", "Bytespider", "CCBot", "meta-externalagent"] -%}
+User-agent: *
+Allow: /
+
+# --- Boty AI (dostęp do treningu i cytowania) — port z wtyczki claude-seo-ai ---
+{% for bot in aiBots -%}
+User-agent: {{ bot }}
+Allow: /
+
+{% endfor -%}
+# --- koniec sekcji botów AI ---
+
+Sitemap: {{ site.url }}/sitemap.xml

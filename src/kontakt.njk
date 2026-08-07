@@ -1,0 +1,55 @@
+---
+layout: base.njk
+title: "Kontakt — wycena prac wysokościowych | ROPE Access Group"
+metaDescription: "Skontaktuj się z ROPE Access Group. Telefon, WhatsApp i e-mail. Wycena prac wysokościowych najczęściej tego samego dnia. Pomorskie, Trójmiasto."
+permalink: "/kontakt/"
+---
+{% set breadcrumbs = [ { name: "Start", url: "/" }, { name: "Kontakt", url: "/kontakt/" } ] %}
+{% include "schema/breadcrumb.njk" %}
+
+<nav class="crumbs container" aria-label="Ścieżka">
+  <a href="/">Start</a> <span>/</span> <span>Kontakt</span>
+</nav>
+
+<section class="section">
+  <div class="container contact-grid">
+    <div>
+      <h1>Kontakt</h1>
+      <p class="hero-lead">
+        Najszybciej: zadzwoń lub napisz na WhatsApp. Opisz zakres prac i dołącz zdjęcia —
+        orientacyjną wycenę podajemy najczęściej tego samego dnia.
+      </p>
+      <ul class="contact-list">
+        <li><span>Telefon</span> <a href="{{ site.phone | telHref }}">{{ site.phone }}</a></li>
+        <li><span>WhatsApp</span> <a href="https://wa.me/{{ site.whatsapp | waNumber }}" rel="noopener">Napisz na WhatsApp</a></li>
+        <li><span>E-mail</span> <a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+        <li><span>Adres</span> {{ site.address.street }}, {{ site.address.postalCode }} {{ site.address.city }}</li>
+        <li><span>Obszar</span> {{ site.region }} — Trójmiasto i okolice</li>
+      </ul>
+    </div>
+
+    <div>
+      <h2>Formularz</h2>
+      {# TODO: podmień action na endpoint formularza wybranego hostingu
+         (np. Web3Forms — wstaw access_key, albo Netlify Forms / Cloudflare). #}
+      <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="TODO-WEB3FORMS-ACCESS-KEY">
+        <input type="hidden" name="subject" value="Zapytanie ze strony rope-ag.pl">
+        <label>Imię i nazwisko
+          <input type="text" name="name" required autocomplete="name">
+        </label>
+        <label>Telefon
+          <input type="tel" name="phone" autocomplete="tel">
+        </label>
+        <label>E-mail
+          <input type="email" name="email" autocomplete="email">
+        </label>
+        <label>Opis prac
+          <textarea name="message" rows="5" required></textarea>
+        </label>
+        <button class="btn btn-primary" type="submit">Wyślij zapytanie</button>
+        <p class="form-note">Wolisz szybciej? Zadzwoń: <a href="{{ site.phone | telHref }}">{{ site.phone }}</a></p>
+      </form>
+    </div>
+  </div>
+</section>

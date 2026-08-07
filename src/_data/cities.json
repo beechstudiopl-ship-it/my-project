@@ -1,0 +1,26 @@
+[
+  {
+    "slug": "gdansk",
+    "name": "Gdańsk",
+    "locative": "Gdańsku",
+    "title": "Usługi wysokościowe Gdańsk — prace wysokościowe i alpinizm przemysłowy | ROPE Access Group",
+    "metaDescription": "Prace i usługi wysokościowe w Gdańsku metodą dostępu linowego (rope access), standard IRATA. Przeglądy, montaże, mycie i naprawy na wysokości. Wycena tego samego dnia.",
+    "h1": "Prace i usługi wysokościowe — Gdańsk",
+    "lead": "Alpinizm przemysłowy w Gdańsku — dostęp linowy IRATA tam, gdzie rusztowanie i podnośnik są zbyt drogie lub niemożliwe. Działamy na terenie całego Gdańska i Trójmiasta.",
+    "keywords": ["prace wysokościowe Gdańsk", "usługi wysokościowe Gdańsk", "usługi alpinistyczne Gdańsk", "alpinizm przemysłowy Gdańsk"],
+    "districts": ["Śródmieście", "Wrzeszcz", "Oliwa", "Przymorze", "Zaspa", "Główne Miasto", "Port"],
+    "localNote": "Obsługujemy zarówno zabytkową zabudowę Śródmieścia i Głównego Miasta, jak i wysokie budynki Przymorza i Zaspy oraz obiekty przemysłowe i portowe."
+  },
+  {
+    "slug": "gdynia",
+    "name": "Gdynia",
+    "locative": "Gdyni",
+    "title": "Usługi wysokościowe Gdynia — prace wysokościowe i alpinizm przemysłowy | ROPE Access Group",
+    "metaDescription": "Prace i usługi wysokościowe w Gdyni metodą dostępu linowego (rope access), standard IRATA. Przeglądy, montaże, mycie i naprawy na wysokości. Szybka wycena.",
+    "h1": "Prace i usługi wysokościowe — Gdynia",
+    "lead": "Alpinizm przemysłowy w Gdyni — bezpieczny dostęp linowy IRATA do elewacji, dachów i konstrukcji. Działamy na terenie całej Gdyni i Trójmiasta.",
+    "keywords": ["prace wysokościowe Gdynia", "usługi wysokościowe Gdynia", "usługi alpinistyczne Gdynia", "alpinizm przemysłowy Gdynia"],
+    "districts": ["Śródmieście", "Wzgórze Św. Maksymiliana", "Redłowo", "Orłowo", "Witomino", "Oksywie", "Port"],
+    "localNote": "Realizujemy prace na wysokiej zabudowie Śródmieścia i Redłowa, na obiektach nadmorskich Orłowa oraz w rejonie portu i stoczni."
+  }
+]

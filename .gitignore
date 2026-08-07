@@ -1,2 +1,8 @@
 claude-seo-ai.zip
 *.zip
+
+# Node / Eleventy
+node_modules/
+_site/
+.cache/
+npm-debug.log*

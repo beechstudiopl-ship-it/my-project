@@ -1,0 +1,47 @@
+[
+  {
+    "slug": "przeglady-i-inspekcje",
+    "name": "Przeglądy i inspekcje wysokościowe",
+    "short": "Przeglądy techniczne i inspekcje trudno dostępnych elementów budynków i konstrukcji.",
+    "title": "Przeglądy i inspekcje wysokościowe (rope access, IRATA) | ROPE Access Group",
+    "metaDescription": "Przeglądy techniczne i inspekcje elewacji, dachów i konstrukcji metodą dostępu linowego. Dokumentacja fotograficzna, standard IRATA.",
+    "h1": "Przeglądy i inspekcje wysokościowe",
+    "lead": "Ocena stanu technicznego elewacji, dachów, kominów i konstrukcji bez rusztowania — z pełną dokumentacją fotograficzną.",
+    "points": [
+      "przeglądy elewacji i wykrywanie odspojeń",
+      "inspekcje dachów, attyk i obróbek blacharskich",
+      "dokumentacja fotograficzna z opisem usterek",
+      "inwentaryzacja przed remontem"
+    ]
+  },
+  {
+    "slug": "mycie-i-czyszczenie",
+    "name": "Mycie i czyszczenie na wysokości",
+    "short": "Mycie elewacji, przeszkleń i konstrukcji metodą dostępu linowego.",
+    "title": "Mycie elewacji i przeszkleń na wysokości (rope access) | ROPE Access Group",
+    "metaDescription": "Mycie elewacji, szklanych fasad, okien i konstrukcji na wysokości metodą alpinistyczną. Bez rusztowania, standard IRATA.",
+    "h1": "Mycie i czyszczenie na wysokości",
+    "lead": "Mycie szklanych fasad, elewacji i konstrukcji tam, gdzie nie dojedzie podnośnik — szybko i bez kosztownego rusztowania.",
+    "points": [
+      "mycie przeszkleń i fasad aluminiowo-szklanych",
+      "czyszczenie elewacji z zabrudzeń i glonów",
+      "usuwanie graffiti",
+      "czyszczenie konstrukcji przemysłowych"
+    ]
+  },
+  {
+    "slug": "montaze-i-prace-remontowe",
+    "name": "Montaże i prace remontowe na wysokości",
+    "short": "Montaże, drobne naprawy i prace remontowe w miejscach trudno dostępnych.",
+    "title": "Montaże i prace remontowe na wysokości (rope access) | ROPE Access Group",
+    "metaDescription": "Montaże, naprawy elewacji, uszczelnienia i prace remontowe na wysokości metodą dostępu linowego. Standard IRATA, Pomorskie.",
+    "h1": "Montaże i prace remontowe na wysokości",
+    "lead": "Punktowe naprawy i montaże bez stawiania rusztowania na całym obiekcie — od uszczelnień po mocowanie elementów.",
+    "points": [
+      "naprawy i uzupełnienia elewacji",
+      "uszczelnianie połączeń i dylatacji",
+      "montaż elementów, reklam, siatek i systemów przeciw ptakom",
+      "zabezpieczanie luźnych fragmentów"
+    ]
+  }
+]

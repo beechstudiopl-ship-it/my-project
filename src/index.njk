@@ -1,0 +1,103 @@
+---
+layout: base.njk
+title: "ROPE Access Group — alpinizm przemysłowy i prace wysokościowe | Pomorskie, IRATA"
+metaDescription: "Prace i usługi wysokościowe metodą dostępu linowego (rope access) w standardzie IRATA. Przeglądy, mycie, montaże i naprawy na wysokości na terenie Pomorza. Szybka wycena."
+serviceSchema:
+  name: "Prace i usługi wysokościowe (dostęp linowy / rope access)"
+  description: "Alpinizm przemysłowy w standardzie IRATA: przeglądy, mycie, montaże i prace remontowe na wysokości na terenie województwa pomorskiego."
+  areaServed: "Pomorskie"
+faq:
+  - q: "Czym jest dostęp linowy (rope access)?"
+    a: "To metoda pracy na wysokości z użyciem lin i sprzętu alpinistycznego w standardzie IRATA. Pozwala dotrzeć w miejsca trudno dostępne bez rusztowania i podnośnika — szybciej i taniej, przy zachowaniu pełnego bezpieczeństwa."
+  - q: "Czy pracujecie w standardzie IRATA?"
+    a: "Tak. Wszystkie prace wykonujemy zgodnie z międzynarodowym standardem IRATA, z odpowiednim poziomem techników i pełną dokumentacją."
+  - q: "Na jakim obszarze działacie?"
+    a: "Działamy na terenie całego województwa pomorskiego — przede wszystkim w Trójmieście (Gdańsk, Gdynia, Sopot) i okolicach. Wyjazdy do innych lokalizacji ustalamy indywidualnie."
+  - q: "Jak szybko można otrzymać wycenę?"
+    a: "Najczęściej tego samego dnia. Wystarczy telefon, WhatsApp lub e-mail z krótkim opisem i zdjęciami — odpowiadamy z orientacyjną wyceną i terminem."
+---
+<section class="hero">
+  <div class="container">
+    <p class="eyebrow">Pomorskie · standard IRATA · od {{ site.foundingYear }} r.</p>
+    <h1>Alpinizm przemysłowy i prace wysokościowe na Pomorzu</h1>
+    <p class="hero-lead">
+      Dostęp linowy tam, gdzie rusztowanie i podnośnik są zbyt drogie lub niemożliwe.
+      Prace i <strong>usługi wysokościowe</strong> oraz <strong>usługi alpinistyczne</strong>
+      w standardzie IRATA — przeglądy, mycie, montaże i naprawy na wysokości.
+    </p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="{{ site.phone | telHref }}">📞 {{ site.phone }}</a>
+      <a class="btn btn-outline" href="https://wa.me/{{ site.whatsapp | waNumber }}" rel="noopener">💬 WhatsApp</a>
+      <a class="btn btn-ghost" href="/kontakt/">Zapytaj o wycenę</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>Zakres usług</h2>
+    <div class="cards">
+      {%- for s in services %}
+      <a class="card" href="/uslugi/{{ s.slug }}/">
+        <h3>{{ s.name }}</h3>
+        <p>{{ s.short }}</p>
+        <span class="card-more">Zobacz →</span>
+      </a>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <h2>Gdzie pracujemy</h2>
+    <p>Bazujemy na Pomorzu i obsługujemy całe Trójmiasto. Wybierz swoje miasto:</p>
+    <div class="cards">
+      {%- for c in cities %}
+      <a class="card" href="/prace-wysokosciowe-{{ c.slug }}/">
+        <h3>{{ c.name }}</h3>
+        <p>Prace i usługi wysokościowe w {{ c.locative }}.</p>
+        <span class="card-more">Zobacz →</span>
+      </a>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>Dlaczego my</h2>
+    <ul class="ticks">
+      <li>Standard <strong>IRATA</strong> — międzynarodowy system pracy na linach.</li>
+      <li>Ponad {{ 2026 - site.foundingYear }} lat doświadczenia w alpinizmie przemysłowym.</li>
+      <li>Dane prekwalifikacyjne dla klientów B2B: IRATA, GWO, ubezpieczenie OC.</li>
+      <li>Bez rusztowania — krócej, taniej i z mniejszą ingerencją w obiekt.</li>
+      <li>Dokumentacja fotograficzna każdej realizacji.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <h2>Najczęstsze pytania</h2>
+    <div class="faq">
+      {%- for item in faq %}
+      <details>
+        <summary>{{ item.q }}</summary>
+        <p>{{ item.a }}</p>
+      </details>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container">
+    <h2>Potrzebujesz dostępu linowego?</h2>
+    <p>Zadzwoń lub napisz — orientacyjną wycenę podajemy najczęściej tego samego dnia.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="{{ site.phone | telHref }}">📞 {{ site.phone }}</a>
+      <a class="btn btn-outline" href="https://wa.me/{{ site.whatsapp | waNumber }}" rel="noopener">💬 WhatsApp</a>
+    </div>
+  </div>
+</section>

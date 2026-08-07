@@ -1,0 +1,16 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": {{ serviceSchema.name | dump | safe }},
+  "serviceType": {{ serviceSchema.name | dump | safe }},
+  "description": {{ serviceSchema.description | dump | safe }},
+  "areaServed": {{ (serviceSchema.areaServed if serviceSchema.areaServed else site.region) | dump | safe }},
+  "provider": {
+    "@type": {{ site.org_type | dump | safe }},
+    "name": {{ site.name | dump | safe }},
+    "url": {{ site.url | dump | safe }},
+    "telephone": {{ site.phone | dump | safe }}
+  }
+}
+</script>

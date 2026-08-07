@@ -1,0 +1,14 @@
+{
+  "name": "rope-ag-site",
+  "version": "0.1.0",
+  "description": "Statyczna strona ROPE Access Group — alpinizm przemysłowy / prace wysokościowe (Eleventy, czysty HTML)",
+  "private": true,
+  "scripts": {
+    "build": "eleventy",
+    "start": "eleventy --serve",
+    "clean": "rm -rf _site"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}

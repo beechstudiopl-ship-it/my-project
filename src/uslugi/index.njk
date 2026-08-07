@@ -1,0 +1,38 @@
+---
+layout: base.njk
+title: "Usługi wysokościowe i alpinizm przemysłowy — zakres prac | ROPE Access Group"
+metaDescription: "Zakres usług wysokościowych metodą dostępu linowego: przeglądy i inspekcje, mycie elewacji, montaże i prace remontowe na wysokości. Standard IRATA, Pomorskie."
+---
+<nav class="crumbs container" aria-label="Ścieżka">
+  <a href="/">Start</a> <span>/</span> <span>Usługi</span>
+</nav>
+
+<section class="section">
+  <div class="container">
+    <h1>Usługi wysokościowe — zakres prac</h1>
+    <p class="hero-lead">
+      Alpinizm przemysłowy w standardzie IRATA na terenie Pomorza. Wybierz usługę, aby
+      poznać szczegóły.
+    </p>
+    <div class="cards">
+      {%- for s in services %}
+      <a class="card" href="/uslugi/{{ s.slug }}/">
+        <h3>{{ s.name }}</h3>
+        <p>{{ s.short }}</p>
+        <span class="card-more">Zobacz →</span>
+      </a>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container">
+    <h2>Nie wiesz, która usługa pasuje?</h2>
+    <p>Opisz problem — doradzimy i wycenimy.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="{{ site.phone | telHref }}">📞 {{ site.phone }}</a>
+      <a class="btn btn-outline" href="https://wa.me/{{ site.whatsapp | waNumber }}" rel="noopener">💬 WhatsApp</a>
+    </div>
+  </div>
+</section>
