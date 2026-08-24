@@ -47,6 +47,8 @@ nav{position:sticky;top:0;z-index:100;background:#fff;}
 .vid{background:#111;width:100%;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;cursor:pointer;}
 .vplay{width:64px;height:64px;border:1px solid rgba(255,255,255,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;}
 .vplay::after{content:"";border-top:12px solid transparent;border-bottom:12px solid transparent;border-left:20px solid rgba(255,255,255,.6);margin-left:5px;}
+.exrow{display:grid;grid-template-columns:140px 1.5fr 1fr;gap:20px;padding:14px 0;border-bottom:1px solid #1a1a1a;font-size:15px;font-weight:300;}
+.exrow .ex-place{display:flex;justify-content:space-between;align-items:baseline;gap:20px;}
 @media(max-width:768px){
   :root{--pad:20px;}
   *{max-width:100%;}
@@ -79,6 +81,10 @@ nav{position:sticky;top:0;z-index:100;background:#fff;}
 
   /* exhibitions grid */
   .ex-grid{gap:24px!important;padding:0 var(--pad) 40px!important;}
+
+  /* exhibition rows stack cleanly on mobile (no per-letter wrapping) */
+  .exrow{grid-template-columns:1fr!important;gap:2px!important;}
+  .exrow .ex-place{justify-content:flex-start!important;flex-wrap:wrap;gap:6px 16px;}
 
   /* generic vertical rhythm - reduce big paddings site-wide */
   [style*="padding:64px var(--pad) 64px"],
@@ -163,7 +169,7 @@ p, h1, h2, span, a, button{overflow-wrap:break-word;word-break:break-word;}
 <div style="max-width:1440px;margin:0 auto;padding:80px var(--pad) 56px;">
 <p style="font-size:14px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:#2121D9;margin-bottom:28px;">Sculptor of Words</p>
 <h1 style="font-size:64px;font-weight:300;line-height:1.12;letter-spacing:-.02em;margin-bottom:36px;">Philippe Tougard-Maucotel<br><em>Gallery</em></h1>
-<p class="intro-p" style="font-size:18px;font-weight:300;line-height:1.65;max-width:50%;">art/mauco is dedicated to the work of Philippe Tougard-Maucotel, a French sculptor and poet of language who transformed words into physical forms. He lived and worked between 1940 and 2020.</p>
+<p class="intro-p" style="font-size:18px;font-weight:300;line-height:1.65;max-width:50%;">art/mauco is dedicated to the work of Philippe Tougard-Maucotel, an American sculptor of French origin and poet of language who transformed words into physical forms. He lived and worked between 1940 and 2020.</p>
 </div>
 <div style="max-width:1440px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:48px var(--pad) 20px;">
 <h2 style="font-size:28px;font-weight:400;margin:0;">Selected Works</h2><button class="lnk" onclick="gotoPage('works')">All works</button>
@@ -175,7 +181,7 @@ p, h1, h2, span, a, button{overflow-wrap:break-word;word-break:break-word;}
 <div style="max-width:1440px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;padding:72px var(--pad);gap:80px;align-items:center;" class="grid2">
 <div>
 <h2 style="font-size:54px;font-weight:300;line-height:.95;letter-spacing:-.025em;margin-bottom:32px;">Philippe<br><em>Tougard-Maucotel</em></h2>
-<p style="font-size:17px;font-weight:300;line-height:1.8;margin-bottom:20px;">Philippe Tougard-Maucotel (1940&ndash;2020) was a French sculptor and poet of language whose work transformed words into physical forms.</p>
+<p style="font-size:17px;font-weight:300;line-height:1.8;margin-bottom:20px;">Philippe Tougard-Maucotel (1940&ndash;2020) was an American sculptor of French origin and poet of language whose work transformed words into physical forms.</p>
 <p style="font-size:17px;font-weight:300;line-height:1.8;margin-bottom:20px;">Through humor, metaphor, and imagination, he created a unique artistic universe where language became sculpture and sculpture became a way of thinking.</p>
 <p style="font-size:17px;font-weight:300;line-height:1.8;margin-bottom:36px;">His works invite us to look beyond the visible &mdash; to discover unexpected connections between words, objects, and ideas.</p>
 <button class="lnk" onclick="gotoPage('artists')">Full biography</button>
@@ -207,7 +213,7 @@ p, h1, h2, span, a, button{overflow-wrap:break-word;word-break:break-word;}
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:56px;padding-bottom:40px;margin-bottom:40px;border-bottom:1px solid rgba(255,255,255,.2);" class="ftgrid">
       <div><p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px;">Gallery</p><p style="font-size:18px;font-weight:300;font-style:italic;color:rgba(255,255,255,.8);line-height:1.6;">&ldquo;Stone remembers everything the hand forgets.&rdquo;</p></div>
       <div><p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px;">Contact</p><p style="font-size:15px;color:rgba(255,255,255,.7);line-height:2;font-weight:300;">Art Mauco INC.<br>310 Duck Pond Road<br>Cutchogue, NY 11935<br>(646) 750-0805</p></div>
-      <div><p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px;">Online</p><p style="font-size:15px;color:rgba(255,255,255,.7);line-height:2;font-weight:300;">office@artmauco.com<br>artmauco.com</p></div>
+      <div><p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px;">Online</p><p style="font-size:15px;color:rgba(255,255,255,.7);line-height:2;font-weight:300;">office@artmauco.com<br>artmauco.com<br><a href="https://instagram.com/art_mauco" target="_blank" rel="noopener" style="color:rgba(255,255,255,.7);text-decoration:none;">@art_mauco</a></p></div>
     </div>
     <div style="display:flex;justify-content:space-between;"><span style="font-size:11px;color:rgba(255,255,255,.4);">&copy; 2026 Art Mauco INC.</span><a href="https://www.bukowski.co/" target="_blank" style="font-size:11px;color:rgba(255,255,255,.4);text-decoration:none;">design by bukowski.co</a></div>
   </div>
@@ -285,11 +291,6 @@ p, h1, h2, span, a, button{overflow-wrap:break-word;word-break:break-word;}
 <div style="display:flex;gap:20px;padding:6px 0;border-bottom:1px solid #1a1a1a;"><span style="flex-shrink:0;width:48px;">1962</span><span>Licence, Lettres Modernes, Sorbonne, Paris</span></div>
 <div style="display:flex;gap:20px;padding:6px 0;"><span style="flex-shrink:0;width:48px;">1963</span><span>Dipl&ocirc;me d&rsquo;&Eacute;tudes Sup&eacute;rieures, Sorbonne, Paris</span></div>
 </div></div>
-<div><h2 style="font-size:20px;font-weight:400;margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid #1a1a1a;">Publications &amp; Press</h2>
-<div style="font-size:15px;font-weight:300;line-height:2;">
-<div style="display:flex;gap:20px;padding:6px 0;border-bottom:1px solid #1a1a1a;"><span style="flex-shrink:0;width:48px;">2026</span><span>S&#322;owo jako forma &mdash; Ita Har&#281;za</span></div>
-<div style="display:flex;gap:20px;padding:6px 0;"><span style="flex-shrink:0;width:48px;">2024</span><span>Passages for Words &mdash; Bianka Rolando</span></div>
-</div></div>
 <div><h2 style="font-size:20px;font-weight:400;margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid #1a1a1a;">Teaching Experience</h2>
 <div style="font-size:15px;font-weight:300;line-height:2;">
 <div style="display:flex;gap:20px;padding:6px 0;border-bottom:1px solid #1a1a1a;"><span style="flex-shrink:0;width:88px;">1961&ndash;1962</span><span>Lyc&eacute;e Lavoisier, Paris, France</span></div>
@@ -330,7 +331,7 @@ p, h1, h2, span, a, button{overflow-wrap:break-word;word-break:break-word;}
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:56px;padding-bottom:40px;margin-bottom:40px;border-bottom:1px solid rgba(255,255,255,.2);" class="ftgrid">
       <div><p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px;">Gallery</p><p style="font-size:18px;font-weight:300;font-style:italic;color:rgba(255,255,255,.8);line-height:1.6;">&ldquo;Stone remembers everything the hand forgets.&rdquo;</p></div>
       <div><p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px;">Contact</p><p style="font-size:15px;color:rgba(255,255,255,.7);line-height:2;font-weight:300;">Art Mauco INC.<br>310 Duck Pond Road<br>Cutchogue, NY 11935<br>(646) 750-0805</p></div>
-      <div><p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px;">Online</p><p style="font-size:15px;color:rgba(255,255,255,.7);line-height:2;font-weight:300;">office@artmauco.com<br>artmauco.com</p></div>
+      <div><p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px;">Online</p><p style="font-size:15px;color:rgba(255,255,255,.7);line-height:2;font-weight:300;">office@artmauco.com<br>artmauco.com<br><a href="https://instagram.com/art_mauco" target="_blank" rel="noopener" style="color:rgba(255,255,255,.7);text-decoration:none;">@art_mauco</a></p></div>
     </div>
     <div style="display:flex;justify-content:space-between;"><span style="font-size:11px;color:rgba(255,255,255,.4);">&copy; 2026 Art Mauco INC.</span><a href="https://www.bukowski.co/" target="_blank" style="font-size:11px;color:rgba(255,255,255,.4);text-decoration:none;">design by bukowski.co</a></div>
   </div>
@@ -358,7 +359,7 @@ p, h1, h2, span, a, button{overflow-wrap:break-word;word-break:break-word;}
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:56px;padding-bottom:40px;margin-bottom:40px;border-bottom:1px solid rgba(255,255,255,.2);" class="ftgrid">
       <div><p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px;">Gallery</p><p style="font-size:18px;font-weight:300;font-style:italic;color:rgba(255,255,255,.8);line-height:1.6;">&ldquo;Stone remembers everything the hand forgets.&rdquo;</p></div>
       <div><p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px;">Contact</p><p style="font-size:15px;color:rgba(255,255,255,.7);line-height:2;font-weight:300;">Art Mauco INC.<br>310 Duck Pond Road<br>Cutchogue, NY 11935<br>(646) 750-0805</p></div>
-      <div><p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px;">Online</p><p style="font-size:15px;color:rgba(255,255,255,.7);line-height:2;font-weight:300;">office@artmauco.com<br>artmauco.com</p></div>
+      <div><p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px;">Online</p><p style="font-size:15px;color:rgba(255,255,255,.7);line-height:2;font-weight:300;">office@artmauco.com<br>artmauco.com<br><a href="https://instagram.com/art_mauco" target="_blank" rel="noopener" style="color:rgba(255,255,255,.7);text-decoration:none;">@art_mauco</a></p></div>
     </div>
     <div style="display:flex;justify-content:space-between;"><span style="font-size:11px;color:rgba(255,255,255,.4);">&copy; 2026 Art Mauco INC.</span><a href="https://www.bukowski.co/" target="_blank" style="font-size:11px;color:rgba(255,255,255,.4);text-decoration:none;">design by bukowski.co</a></div>
   </div>
@@ -382,7 +383,7 @@ p, h1, h2, span, a, button{overflow-wrap:break-word;word-break:break-word;}
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:56px;padding-bottom:40px;margin-bottom:40px;border-bottom:1px solid rgba(255,255,255,.2);" class="ftgrid">
       <div><p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px;">Gallery</p><p style="font-size:18px;font-weight:300;font-style:italic;color:rgba(255,255,255,.8);line-height:1.6;">&ldquo;Stone remembers everything the hand forgets.&rdquo;</p></div>
       <div><p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px;">Contact</p><p style="font-size:15px;color:rgba(255,255,255,.7);line-height:2;font-weight:300;">Art Mauco INC.<br>310 Duck Pond Road<br>Cutchogue, NY 11935<br>(646) 750-0805</p></div>
-      <div><p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px;">Online</p><p style="font-size:15px;color:rgba(255,255,255,.7);line-height:2;font-weight:300;">office@artmauco.com<br>artmauco.com</p></div>
+      <div><p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px;">Online</p><p style="font-size:15px;color:rgba(255,255,255,.7);line-height:2;font-weight:300;">office@artmauco.com<br>artmauco.com<br><a href="https://instagram.com/art_mauco" target="_blank" rel="noopener" style="color:rgba(255,255,255,.7);text-decoration:none;">@art_mauco</a></p></div>
     </div>
     <div style="display:flex;justify-content:space-between;"><span style="font-size:11px;color:rgba(255,255,255,.4);">&copy; 2026 Art Mauco INC.</span><a href="https://www.bukowski.co/" target="_blank" style="font-size:11px;color:rgba(255,255,255,.4);text-decoration:none;">design by bukowski.co</a></div>
   </div>
@@ -471,6 +472,24 @@ p, h1, h2, span, a, button{overflow-wrap:break-word;word-break:break-word;}
 </div>
 </div>
 <div id="hs-visiting" class="hpanel"><div style="max-width:1440px;margin:0 auto;padding:48px var(--pad) 80px;">
+<p style="font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:#2121D9;margin-bottom:12px;">May 24, 2026 &middot; Cutchogue, New York</p>
+<h2 style="font-size:30px;font-weight:400;line-height:1.15;margin-bottom:24px;">Philippe Tougard-Maucotel Gallery Opening</h2>
+<div style="max-width:760px;">
+<p style="font-size:18px;font-weight:300;line-height:1.75;margin-bottom:18px;">On May 24, 2026, Art Mauco opened a new exhibition space dedicated to the work of Philippe Tougard-Maucotel. Located within the lower level of the artist&rsquo;s house and studio in Cutchogue, the gallery provides a new setting for presenting his work and making a larger part of the collection accessible to visitors.</p>
+<p style="font-size:17px;font-weight:300;line-height:1.85;margin-bottom:8px;">The opening was attended by friends of Art Mauco and those connected with Philippe&rsquo;s work. It was a warm and memorable day, bringing together people who share an interest in his art and in preserving his artistic legacy.</p>
+</div>
+<div class="masonry" style="margin-top:36px;">
+<div style="break-inside:avoid;margin-bottom:20px;"><img src="assets/0e451600830c.jpg" onclick="lbOpen(this)" data-gallery="visiting" loading="lazy" style="width:100%;display:block;cursor:zoom-in;" alt="Gallery opening &mdash; Rien-Nothing solo show poster"></div>
+<div style="break-inside:avoid;margin-bottom:20px;"><img src="assets/6a2813f9e627.jpg" onclick="lbOpen(this)" data-gallery="visiting" loading="lazy" style="width:100%;display:block;cursor:zoom-in;" alt="Gallery opening, Cutchogue"></div>
+<div style="break-inside:avoid;margin-bottom:20px;"><img src="assets/262b4e9bed00.jpg" onclick="lbOpen(this)" data-gallery="visiting" loading="lazy" style="width:100%;display:block;cursor:zoom-in;" alt="Gallery opening, Cutchogue"></div>
+<div style="break-inside:avoid;margin-bottom:20px;"><img src="assets/46d7fcc6121a.jpg" onclick="lbOpen(this)" data-gallery="visiting" loading="lazy" style="width:100%;display:block;cursor:zoom-in;" alt="Gallery opening, Cutchogue"></div>
+<div style="break-inside:avoid;margin-bottom:20px;"><img src="assets/a3cdae376c8b.jpg" onclick="lbOpen(this)" data-gallery="visiting" loading="lazy" style="width:100%;display:block;cursor:zoom-in;" alt="Gallery opening, Cutchogue"></div>
+<div style="break-inside:avoid;margin-bottom:20px;"><img src="assets/0a4fd7f1de3e.jpg" onclick="lbOpen(this)" data-gallery="visiting" loading="lazy" style="width:100%;display:block;cursor:zoom-in;" alt="Gallery opening, Cutchogue"></div>
+<div style="break-inside:avoid;margin-bottom:20px;"><img src="assets/8e503b01971a.jpg" onclick="lbOpen(this)" data-gallery="visiting" loading="lazy" style="width:100%;display:block;cursor:zoom-in;" alt="Sculptures on view, gallery opening"></div>
+<div style="break-inside:avoid;margin-bottom:20px;"><img src="assets/67153dff5974.jpg" onclick="lbOpen(this)" data-gallery="visiting" loading="lazy" style="width:100%;display:block;cursor:zoom-in;" alt="Sculpture on view, gallery opening"></div>
+</div>
+<p style="font-size:11px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:#1a1a1a;margin-top:4px;">Photographs by Joanna Trojanowska</p>
+<div style="height:56px;border-bottom:1px solid #1a1a1a;margin-bottom:56px;"></div>
 <p style="font-size:20px;font-weight:300;line-height:1.75;margin-bottom:20px;">The Art Mauco Gallery and Studio is open to visitors by appointment.</p>
 <p style="font-size:17px;font-weight:300;line-height:1.85;margin-bottom:18px;">Guests are invited to experience the place where Philippe Tougard-Maucotel lived and worked, explore the permanent collection of more than 200 sculptures, and discover the sculpture landscape surrounding the studio.</p>
 <p style="font-size:17px;font-weight:300;line-height:1.85;">To arrange a visit, please <button class="lnk" onclick="gotoPage('contact')">contact Bo&#380;ena Skuriat-Kr&oacute;lik</button> through Art Mauco.</p>
@@ -480,7 +499,7 @@ p, h1, h2, span, a, button{overflow-wrap:break-word;word-break:break-word;}
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:56px;padding-bottom:40px;margin-bottom:40px;border-bottom:1px solid rgba(255,255,255,.2);" class="ftgrid">
       <div><p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px;">Gallery</p><p style="font-size:18px;font-weight:300;font-style:italic;color:rgba(255,255,255,.8);line-height:1.6;">&ldquo;Stone remembers everything the hand forgets.&rdquo;</p></div>
       <div><p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px;">Contact</p><p style="font-size:15px;color:rgba(255,255,255,.7);line-height:2;font-weight:300;">Art Mauco INC.<br>310 Duck Pond Road<br>Cutchogue, NY 11935<br>(646) 750-0805</p></div>
-      <div><p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px;">Online</p><p style="font-size:15px;color:rgba(255,255,255,.7);line-height:2;font-weight:300;">office@artmauco.com<br>artmauco.com</p></div>
+      <div><p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px;">Online</p><p style="font-size:15px;color:rgba(255,255,255,.7);line-height:2;font-weight:300;">office@artmauco.com<br>artmauco.com<br><a href="https://instagram.com/art_mauco" target="_blank" rel="noopener" style="color:rgba(255,255,255,.7);text-decoration:none;">@art_mauco</a></p></div>
     </div>
     <div style="display:flex;justify-content:space-between;"><span style="font-size:11px;color:rgba(255,255,255,.4);">&copy; 2026 Art Mauco INC.</span><a href="https://www.bukowski.co/" target="_blank" style="font-size:11px;color:rgba(255,255,255,.4);text-decoration:none;">design by bukowski.co</a></div>
   </div>
@@ -505,48 +524,48 @@ p, h1, h2, span, a, button{overflow-wrap:break-word;word-break:break-word;}
 <div id="ex-archive" class="hpanel on">
 <div style="max-width:1440px;margin:0 auto;padding:40px var(--pad) 80px;">
 <h2 style="font-size:20px;font-weight:400;margin-bottom:6px;padding-bottom:10px;border-bottom:1px solid #1a1a1a;">Solo Exhibitions</h2>
-<div style="display:grid;grid-template-columns:140px 1.5fr 1fr;gap:20px;padding:14px 0;border-bottom:1px solid #1a1a1a;font-size:15px;font-weight:300;"><span>2013</span><span><em>G&eacute;rard Deschamps &amp; Philippe Maucotel</em></span><span>Montlu&ccedil;on, France</span></div>
-<div style="display:grid;grid-template-columns:140px 1.5fr 1fr;gap:20px;padding:14px 0;border-bottom:1px solid #1a1a1a;font-size:15px;font-weight:300;"><span>2000</span><span><em>In Name Only</em></span><span style="display:flex;justify-content:space-between;align-items:baseline;gap:20px;"><span>Broadway, NY, USA</span><a class="lnk" href="exhibitions/2000-in-name-only-vernissage.pdf" target="_blank" rel="noopener" style="white-space:nowrap;">View PDF</a></span></div>
-<div style="display:grid;grid-template-columns:140px 1.5fr 1fr;gap:20px;padding:14px 0;border-bottom:1px solid #1a1a1a;font-size:15px;font-weight:300;"><span>1999</span><span>Galerie W</span><span style="display:flex;justify-content:space-between;align-items:baseline;gap:20px;"><span>Paris, France</span><a class="lnk" href="exhibitions/1999-vernissage-language-paris.pdf" target="_blank" rel="noopener" style="white-space:nowrap;">View PDF</a></span></div>
-<div style="display:grid;grid-template-columns:140px 1.5fr 1fr;gap:20px;padding:14px 0;border-bottom:1px solid #1a1a1a;font-size:15px;font-weight:300;"><span>1999</span><span>Alliance Fran&ccedil;aise</span><span>Greenwich, CT, USA</span></div>
-<div style="display:grid;grid-template-columns:140px 1.5fr 1fr;gap:20px;padding:14px 0;border-bottom:1px solid #1a1a1a;font-size:15px;font-weight:300;"><span>1989, 1991, 1993</span><span>Open Studio Tour</span><span>Cutchogue, NY, USA</span></div>
-<div style="display:grid;grid-template-columns:140px 1.5fr 1fr;gap:20px;padding:14px 0;border-bottom:1px solid #1a1a1a;font-size:15px;font-weight:300;"><span>1983</span><span>Galerie Massimo Collections</span><span>Zurich, Switzerland</span></div>
-<div style="display:grid;grid-template-columns:140px 1.5fr 1fr;gap:20px;padding:14px 0;border-bottom:1px solid #1a1a1a;font-size:15px;font-weight:300;"><span>1983</span><span>Galerie Marches</span><span>Ch&acirc;teauroux, France</span></div>
+<div class="exrow"><span>2013</span><span><em>G&#233;rard Deschamps &amp; Philippe Maucotel</em></span><span class="ex-place"><span>Montlu&#231;on, France</span><a class="lnk" href="exhibitions/2013-montlucon.pdf" target="_blank" rel="noopener" style="white-space:nowrap;">View PDF</a></span></div>
+<div class="exrow"><span>2000</span><span><em>In Name Only</em></span><span class="ex-place"><span>Broadway, NY, USA</span><a class="lnk" href="exhibitions/2000-in-name-only-vernissage.pdf" target="_blank" rel="noopener" style="white-space:nowrap;">View PDF</a></span></div>
+<div class="exrow"><span>1999</span><span></span><span class="ex-place"><span>Galerie W, Paris, France</span><a class="lnk" href="exhibitions/1999-vernissage-language-paris.pdf" target="_blank" rel="noopener" style="white-space:nowrap;">View PDF</a></span></div>
+<div class="exrow"><span>1999</span><span></span><span class="ex-place"><span>Alliance Fran&#231;aise, Greenwich, CT, USA</span></span></div>
+<div class="exrow"><span>1989, 1991, 1993</span><span></span><span class="ex-place"><span>Open Studio Tour, Cutchogue, NY, USA</span></span></div>
+<div class="exrow"><span>1983</span><span></span><span class="ex-place"><span>Galerie Massimo Collections, Zurich, Switzerland</span></span></div>
+<div class="exrow"><span>1983</span><span></span><span class="ex-place"><span>Galerie Marches, Ch&#226;teauroux, France</span></span></div>
 <div style="height:40px;"></div>
 <h2 style="font-size:20px;font-weight:400;margin-bottom:6px;padding-bottom:10px;border-bottom:1px solid #1a1a1a;">Selected Projects</h2>
-<div style="display:grid;grid-template-columns:140px 1.5fr 1fr;gap:20px;padding:14px 0;border-bottom:1px solid #1a1a1a;font-size:15px;font-weight:300;"><span>1991</span><span><em>Gab age</em></span><span>Hunts Point Food Market, Bronx, NY, USA</span></div>
-<div style="display:grid;grid-template-columns:140px 1.5fr 1fr;gap:20px;padding:14px 0;border-bottom:1px solid #1a1a1a;font-size:15px;font-weight:300;"><span>1991</span><span><em>Bicentenaire de l&rsquo;ex&eacute;cution de Louis XVI</em></span><span>Paris, France</span></div>
-<div style="display:grid;grid-template-columns:140px 1.5fr 1fr;gap:20px;padding:14px 0;border-bottom:1px solid #1a1a1a;font-size:15px;font-weight:300;"><span>1990</span><span><em>Pont suspendu</em></span><span>Vall&eacute;e de la Seine, Rouen, France</span></div>
-<div style="display:grid;grid-template-columns:140px 1.5fr 1fr;gap:20px;padding:14px 0;border-bottom:1px solid #1a1a1a;font-size:15px;font-weight:300;"><span>1989</span><span><em>Tendre S (#3) pour les Abbesses</em></span><span>Paris, France</span></div>
-<div style="display:grid;grid-template-columns:140px 1.5fr 1fr;gap:20px;padding:14px 0;border-bottom:1px solid #1a1a1a;font-size:15px;font-weight:300;"><span>1989</span><span><em>Le Temps fuit</em></span><span>Fountain for the city of Creil, France</span></div>
-<div style="display:grid;grid-template-columns:140px 1.5fr 1fr;gap:20px;padding:14px 0;border-bottom:1px solid #1a1a1a;font-size:15px;font-weight:300;"><span>1988</span><span><em>Arsonist</em></span><span>Villa Arson, Nice, France</span></div>
-<div style="display:grid;grid-template-columns:140px 1.5fr 1fr;gap:20px;padding:14px 0;border-bottom:1px solid #1a1a1a;font-size:15px;font-weight:300;"><span>1983</span><span><em>B pour prairies et bergeries</em></span><span>Limoges, France</span></div>
-<div style="display:grid;grid-template-columns:140px 1.5fr 1fr;gap:20px;padding:14px 0;border-bottom:1px solid #1a1a1a;font-size:15px;font-weight:300;"><span>1980</span><span><em>Cascade pour Carcassonne</em></span><span>Carcassonne, France</span></div>
-<div style="display:grid;grid-template-columns:140px 1.5fr 1fr;gap:20px;padding:14px 0;border-bottom:1px solid #1a1a1a;font-size:15px;font-weight:300;"><span>&mdash;</span><span><em>Monument comm&eacute;morant le pass&eacute; industriel du bassin creillois</em></span><span>Creil, France</span></div>
+<div class="exrow"><span>1991</span><span><em>Monument comm&#233;morant le pass&#233; industriel du bassin creillois</em></span><span class="ex-place"><span>Creil, France</span></span></div>
+<div class="exrow"><span>1991</span><span><em>Gab age</em></span><span class="ex-place"><span>Hunts Point Food Market, Bronx, NY, USA</span></span></div>
+<div class="exrow"><span>1991</span><span><em>Bicentenaire de l&#8217;ex&#233;cution de Louis XVI</em></span><span class="ex-place"><span>Paris, France</span></span></div>
+<div class="exrow"><span>1990</span><span><em>Pont suspendu</em></span><span class="ex-place"><span>Vall&#233;e de la Seine, Rouen, France</span></span></div>
+<div class="exrow"><span>1989</span><span><em>Tendre S (#3) pour les Abbesses</em></span><span class="ex-place"><span>Paris, France</span></span></div>
+<div class="exrow"><span>1989</span><span><em>Le Temps fuit</em></span><span class="ex-place"><span>Fountain for the city of Creil, France</span></span></div>
+<div class="exrow"><span>1988</span><span><em>Arsonist</em></span><span class="ex-place"><span>Villa Arson, Nice, France</span></span></div>
+<div class="exrow"><span>1983</span><span><em>B pour prairies et bergeries</em></span><span class="ex-place"><span>Limoges, France</span></span></div>
+<div class="exrow"><span>1980</span><span><em>Cascade pour Carcassonne</em></span><span class="ex-place"><span>Carcassonne, France</span></span></div>
 <div style="height:40px;"></div>
 <h2 style="font-size:20px;font-weight:400;margin-bottom:6px;padding-bottom:10px;border-bottom:1px solid #1a1a1a;">Group Exhibitions</h2>
-<div style="display:grid;grid-template-columns:140px 1.5fr 1fr;gap:20px;padding:14px 0;border-bottom:1px solid #1a1a1a;font-size:15px;font-weight:300;"><span>2008</span><span>Centre Artistique Verderonne</span><span style="display:flex;justify-content:space-between;align-items:baseline;gap:20px;"><span>France</span><a class="lnk" href="exhibitions/2008-verderonne.pdf" target="_blank" rel="noopener" style="white-space:nowrap;">View PDF</a></span></div>
-<div style="display:grid;grid-template-columns:140px 1.5fr 1fr;gap:20px;padding:14px 0;border-bottom:1px solid #1a1a1a;font-size:15px;font-weight:300;"><span>2006</span><span><em>WORD</em></span><span style="display:flex;justify-content:space-between;align-items:baseline;gap:20px;"><span>Deborah Colton Gallery, Houston, TX, USA</span><a class="lnk" href="exhibitions/2006-word-deborah-colton.pdf" target="_blank" rel="noopener" style="white-space:nowrap;">View PDF</a></span></div>
-<div style="display:grid;grid-template-columns:140px 1.5fr 1fr;gap:20px;padding:14px 0;border-bottom:1px solid #1a1a1a;font-size:15px;font-weight:300;"><span>2002</span><span><em>I Can&rsquo;t Stand It Any More</em></span><span style="display:flex;justify-content:space-between;align-items:baseline;gap:20px;"><span>Kurier Plus Gallery, Brooklyn, NY, USA</span><a class="lnk" href="exhibitions/2002-i-cant-stand-it-any-more.pdf" target="_blank" rel="noopener" style="white-space:nowrap;">View PDF</a></span></div>
-<div style="display:grid;grid-template-columns:140px 1.5fr 1fr;gap:20px;padding:14px 0;border-bottom:1px solid #1a1a1a;font-size:15px;font-weight:300;"><span>2002</span><span>Pratt Institute Sculpture Park</span><span style="display:flex;justify-content:space-between;align-items:baseline;gap:20px;"><span>Brooklyn, NY, USA</span><a class="lnk" href="exhibitions/2002-pratt-institute.pdf" target="_blank" rel="noopener" style="white-space:nowrap;">View PDF</a></span></div>
-<div style="display:grid;grid-template-columns:140px 1.5fr 1fr;gap:20px;padding:14px 0;border-bottom:1px solid #1a1a1a;font-size:15px;font-weight:300;"><span>2000</span><span>Centre Artistique Verderonne</span><span style="display:flex;justify-content:space-between;align-items:baseline;gap:20px;"><span>France</span><a class="lnk" href="exhibitions/2000-verderonne.pdf" target="_blank" rel="noopener" style="white-space:nowrap;">View PDF</a></span></div>
-<div style="display:grid;grid-template-columns:140px 1.5fr 1fr;gap:20px;padding:14px 0;border-bottom:1px solid #1a1a1a;font-size:15px;font-weight:300;"><span>1999</span><span>Espace Legendre</span><span>Compi&egrave;gne, France</span></div>
-<div style="display:grid;grid-template-columns:140px 1.5fr 1fr;gap:20px;padding:14px 0;border-bottom:1px solid #1a1a1a;font-size:15px;font-weight:300;"><span>1999</span><span><em>Hains Radis Made</em></span><span>Galerie Templon, Paris, France</span></div>
-<div style="display:grid;grid-template-columns:140px 1.5fr 1fr;gap:20px;padding:14px 0;border-bottom:1px solid #1a1a1a;font-size:15px;font-weight:300;"><span>1998</span><span><em>Footfalls</em></span><span>Greenport, NY, USA</span></div>
-<div style="display:grid;grid-template-columns:140px 1.5fr 1fr;gap:20px;padding:14px 0;border-bottom:1px solid #1a1a1a;font-size:15px;font-weight:300;"><span>1997</span><span><em>Hains Parrot</em></span><span>Documenta X, Kassel, Germany</span></div>
-<div style="display:grid;grid-template-columns:140px 1.5fr 1fr;gap:20px;padding:14px 0;border-bottom:1px solid #1a1a1a;font-size:15px;font-weight:300;"><span>1996</span><span>Mus&eacute;e des Beaux-Arts</span><span>La Chaux-de-Fonds, Switzerland</span></div>
-<div style="display:grid;grid-template-columns:140px 1.5fr 1fr;gap:20px;padding:14px 0;border-bottom:1px solid #1a1a1a;font-size:15px;font-weight:300;"><span>1995</span><span>Galerie Gilbert Brownstone</span><span>Paris, France</span></div>
-<div style="display:grid;grid-template-columns:140px 1.5fr 1fr;gap:20px;padding:14px 0;border-bottom:1px solid #1a1a1a;font-size:15px;font-weight:300;"><span>1994</span><span>Galerie Satellite</span><span>Paris, France</span></div>
-<div style="display:grid;grid-template-columns:140px 1.5fr 1fr;gap:20px;padding:14px 0;border-bottom:1px solid #1a1a1a;font-size:15px;font-weight:300;"><span>1993</span><span>North Fork Reform Synagogue</span><span>Southold, NY, USA</span></div>
-<div style="display:grid;grid-template-columns:140px 1.5fr 1fr;gap:20px;padding:14px 0;border-bottom:1px solid #1a1a1a;font-size:15px;font-weight:300;"><span>1989&ndash;1995, 1999</span><span>Mather Hospital</span><span>Port Jefferson, NY, USA</span></div>
-<div style="display:grid;grid-template-columns:140px 1.5fr 1fr;gap:20px;padding:14px 0;border-bottom:1px solid #1a1a1a;font-size:15px;font-weight:300;"><span>1986, 1987</span><span>Palm Gallery</span><span>New York, NY, USA</span></div>
-<div style="display:grid;grid-template-columns:140px 1.5fr 1fr;gap:20px;padding:14px 0;border-bottom:1px solid #1a1a1a;font-size:15px;font-weight:300;"><span>1985</span><span>C.R.A.C.</span><span>Ch&acirc;teauroux, France</span></div>
-<div style="display:grid;grid-template-columns:140px 1.5fr 1fr;gap:20px;padding:14px 0;border-bottom:1px solid #1a1a1a;font-size:15px;font-weight:300;"><span>1985, 1989&ndash;1991</span><span>Elaine Benson Gallery</span><span style="display:flex;justify-content:space-between;align-items:baseline;gap:20px;"><span>Bridgehampton, NY, USA</span><a class="lnk" href="exhibitions/1985-elaine-benson-gallery.pdf" target="_blank" rel="noopener" style="white-space:nowrap;">View PDF</a></span></div>
-<div style="display:grid;grid-template-columns:140px 1.5fr 1fr;gap:20px;padding:14px 0;border-bottom:1px solid #1a1a1a;font-size:15px;font-weight:300;"><span>1984</span><span>M 13 Gallery</span><span>New York, NY, USA</span></div>
-<div style="display:grid;grid-template-columns:140px 1.5fr 1fr;gap:20px;padding:14px 0;border-bottom:1px solid #1a1a1a;font-size:15px;font-weight:300;"><span>1982</span><span>Marianne Deson Gallery</span><span>Chicago, IL, USA</span></div>
-<div style="display:grid;grid-template-columns:140px 1.5fr 1fr;gap:20px;padding:14px 0;border-bottom:1px solid #1a1a1a;font-size:15px;font-weight:300;"><span>1981</span><span>Barbara Gillman Gallery</span><span>Miami, FL, USA</span></div>
-<div style="display:grid;grid-template-columns:140px 1.5fr 1fr;gap:20px;padding:14px 0;border-bottom:1px solid #1a1a1a;font-size:15px;font-weight:300;"><span>1980</span><span>14 Sculptors Gallery</span><span>New York, NY, USA</span></div>
-<div style="display:grid;grid-template-columns:140px 1.5fr 1fr;gap:20px;padding:14px 0;border-bottom:1px solid #1a1a1a;font-size:15px;font-weight:300;"><span>1963</span><span>3rd Biennale de Paris</span><span>France</span></div>
+<div class="exrow"><span>2008</span><span></span><span class="ex-place"><span>Centre Artistique Verderonne, France</span><a class="lnk" href="exhibitions/2008-verderonne.pdf" target="_blank" rel="noopener" style="white-space:nowrap;">View PDF</a></span></div>
+<div class="exrow"><span>2006</span><span><em>WORD</em></span><span class="ex-place"><span>Deborah Colton Gallery, Houston, TX, USA</span><a class="lnk" href="exhibitions/2006-word-deborah-colton.pdf" target="_blank" rel="noopener" style="white-space:nowrap;">View PDF</a></span></div>
+<div class="exrow"><span>2002</span><span><em>I Can&#8217;t Stand It Any More</em></span><span class="ex-place"><span>Kurier Plus Gallery, Brooklyn, NY, USA</span><a class="lnk" href="exhibitions/2002-i-cant-stand-it-any-more.pdf" target="_blank" rel="noopener" style="white-space:nowrap;">View PDF</a></span></div>
+<div class="exrow"><span>2002</span><span></span><span class="ex-place"><span>Pratt Institute Sculpture Park, Brooklyn, NY, USA</span><a class="lnk" href="exhibitions/2002-pratt-institute.pdf" target="_blank" rel="noopener" style="white-space:nowrap;">View PDF</a></span></div>
+<div class="exrow"><span>2000</span><span></span><span class="ex-place"><span>Centre Artistique Verderonne, France</span><a class="lnk" href="exhibitions/2000-verderonne.pdf" target="_blank" rel="noopener" style="white-space:nowrap;">View PDF</a></span></div>
+<div class="exrow"><span>1999</span><span></span><span class="ex-place"><span>Espace Legendre, Compi&#232;gne, France</span></span></div>
+<div class="exrow"><span>1999</span><span><em>Hains Radis Made</em></span><span class="ex-place"><span>Galerie Templon, Paris, France</span></span></div>
+<div class="exrow"><span>1998</span><span><em>Footfalls</em></span><span class="ex-place"><span>Greenport, NY, USA</span></span></div>
+<div class="exrow"><span>1997</span><span><em>Hains Parrot</em></span><span class="ex-place"><span>Documenta X, Kassel, Germany</span></span></div>
+<div class="exrow"><span>1996</span><span></span><span class="ex-place"><span>Mus&#233;e des Beaux-Arts, La Chaux-de-Fonds, Switzerland</span></span></div>
+<div class="exrow"><span>1995</span><span></span><span class="ex-place"><span>Galerie Gilbert Brownstone, Paris, France</span></span></div>
+<div class="exrow"><span>1994</span><span></span><span class="ex-place"><span>Galerie Satellite, Paris, France</span></span></div>
+<div class="exrow"><span>1993</span><span></span><span class="ex-place"><span>North Fork Reform Synagogue, Southold, NY, USA</span></span></div>
+<div class="exrow"><span>1989&#8211;1995, 1999</span><span></span><span class="ex-place"><span>Mather Hospital, Port Jefferson, NY, USA</span></span></div>
+<div class="exrow"><span>1986, 1987</span><span></span><span class="ex-place"><span>Palm Gallery, New York, NY, USA</span></span></div>
+<div class="exrow"><span>1985</span><span></span><span class="ex-place"><span>C.R.A.C., Ch&#226;teauroux, France</span></span></div>
+<div class="exrow"><span>1985, 1989&#8211;1991</span><span></span><span class="ex-place"><span>Elaine Benson Gallery, Bridgehampton, NY, USA</span><a class="lnk" href="exhibitions/1985-elaine-benson-gallery.pdf" target="_blank" rel="noopener" style="white-space:nowrap;">View PDF</a></span></div>
+<div class="exrow"><span>1984</span><span></span><span class="ex-place"><span>M 13 Gallery, New York, NY, USA</span></span></div>
+<div class="exrow"><span>1982</span><span></span><span class="ex-place"><span>Marianne Deson Gallery, Chicago, IL, USA</span></span></div>
+<div class="exrow"><span>1981</span><span></span><span class="ex-place"><span>Barbara Gillman Gallery, Miami, FL, USA</span></span></div>
+<div class="exrow"><span>1980</span><span></span><span class="ex-place"><span>14 Sculptors Gallery, New York, NY, USA</span></span></div>
+<div class="exrow"><span>1963</span><span></span><span class="ex-place"><span>3rd Biennale de Paris, France</span></span></div>
 </div>
 </div>
 <div style="background:#2121D9;">
@@ -554,7 +573,7 @@ p, h1, h2, span, a, button{overflow-wrap:break-word;word-break:break-word;}
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:56px;padding-bottom:40px;margin-bottom:40px;border-bottom:1px solid rgba(255,255,255,.2);" class="ftgrid">
       <div><p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px;">Gallery</p><p style="font-size:18px;font-weight:300;font-style:italic;color:rgba(255,255,255,.8);line-height:1.6;">&ldquo;Stone remembers everything the hand forgets.&rdquo;</p></div>
       <div><p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px;">Contact</p><p style="font-size:15px;color:rgba(255,255,255,.7);line-height:2;font-weight:300;">Art Mauco INC.<br>310 Duck Pond Road<br>Cutchogue, NY 11935<br>(646) 750-0805</p></div>
-      <div><p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px;">Online</p><p style="font-size:15px;color:rgba(255,255,255,.7);line-height:2;font-weight:300;">office@artmauco.com<br>artmauco.com</p></div>
+      <div><p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px;">Online</p><p style="font-size:15px;color:rgba(255,255,255,.7);line-height:2;font-weight:300;">office@artmauco.com<br>artmauco.com<br><a href="https://instagram.com/art_mauco" target="_blank" rel="noopener" style="color:rgba(255,255,255,.7);text-decoration:none;">@art_mauco</a></p></div>
     </div>
     <div style="display:flex;justify-content:space-between;"><span style="font-size:11px;color:rgba(255,255,255,.4);">&copy; 2026 Art Mauco INC.</span><a href="https://www.bukowski.co/" target="_blank" style="font-size:11px;color:rgba(255,255,255,.4);text-decoration:none;">design by bukowski.co</a></div>
   </div>
@@ -592,7 +611,7 @@ p, h1, h2, span, a, button{overflow-wrap:break-word;word-break:break-word;}
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:56px;padding-bottom:40px;margin-bottom:40px;border-bottom:1px solid rgba(255,255,255,.2);" class="ftgrid">
       <div><p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px;">Gallery</p><p style="font-size:18px;font-weight:300;font-style:italic;color:rgba(255,255,255,.8);line-height:1.6;">&ldquo;Stone remembers everything the hand forgets.&rdquo;</p></div>
       <div><p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px;">Contact</p><p style="font-size:15px;color:rgba(255,255,255,.7);line-height:2;font-weight:300;">Art Mauco INC.<br>310 Duck Pond Road<br>Cutchogue, NY 11935<br>(646) 750-0805</p></div>
-      <div><p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px;">Online</p><p style="font-size:15px;color:rgba(255,255,255,.7);line-height:2;font-weight:300;">office@artmauco.com<br>artmauco.com</p></div>
+      <div><p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px;">Online</p><p style="font-size:15px;color:rgba(255,255,255,.7);line-height:2;font-weight:300;">office@artmauco.com<br>artmauco.com<br><a href="https://instagram.com/art_mauco" target="_blank" rel="noopener" style="color:rgba(255,255,255,.7);text-decoration:none;">@art_mauco</a></p></div>
     </div>
     <div style="display:flex;justify-content:space-between;"><span style="font-size:11px;color:rgba(255,255,255,.4);">&copy; 2026 Art Mauco INC.</span><a href="https://www.bukowski.co/" target="_blank" style="font-size:11px;color:rgba(255,255,255,.4);text-decoration:none;">design by bukowski.co</a></div>
   </div>
@@ -627,12 +646,16 @@ p, h1, h2, span, a, button{overflow-wrap:break-word;word-break:break-word;}
 ════════════════════════════════════════════════════════════════ -->
 
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;padding:48px 0;border-bottom:1px solid #1a1a1a;" class="grid2">
-<div style="aspect-ratio:4/3;overflow:hidden;"><img src="assets/335fac263659.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt=""></div>
-<div><p style="font-size:13px;font-weight:300;margin-bottom:10px;">July 2026</p><h2 style="font-size:26px;font-weight:400;margin-bottom:10px;line-height:1.2;">Stone &amp; Bronze opens at the Whitechapel Gallery</h2><p style="font-size:15px;font-weight:300;line-height:1.8;">The retrospective exhibition opens in London in October 2026.</p></div>
+<div style="aspect-ratio:4/3;overflow:hidden;"><img src="assets/a3cdae376c8b.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Philippe Tougard-Maucotel Gallery opening, Cutchogue"></div>
+<div><p style="font-size:13px;font-weight:300;margin-bottom:10px;">May 24, 2026 &middot; Cutchogue, New York</p><h2 style="font-size:26px;font-weight:400;margin-bottom:10px;line-height:1.2;">Philippe Tougard-Maucotel Gallery Opening</h2><p style="font-size:15px;font-weight:300;line-height:1.8;">Art Mauco has opened a new exhibition space dedicated to the work of Philippe Tougard-Maucotel.</p><button class="lnk" onclick="gotoPage('hstudio');showPanel('hs-visiting',document.querySelectorAll('#pg-hstudio .htab')[3]);" style="margin-top:16px;display:inline-block;">Read more &rarr;</button></div>
 </div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;padding:48px 0;border-bottom:1px solid #1a1a1a;" class="grid2">
-<div style="aspect-ratio:4/3;overflow:hidden;"><img src="assets/56974fc91258.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt=""></div>
-<div><p style="font-size:13px;font-weight:300;margin-bottom:10px;">June 2026</p><h2 style="font-size:26px;font-weight:400;margin-bottom:10px;line-height:1.2;">Forms in Dialogue opens at Galerie Templon, Paris</h2><p style="font-size:15px;font-weight:300;line-height:1.8;">Twelve sculptures from 2018&ndash;2026. On view through September 2026.</p></div>
+<div style="aspect-ratio:4/3;overflow:hidden;"><img src="assets/2dfadd40b614.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Word sculpture by Philippe Tougard-Maucotel"></div>
+<div><p style="font-size:13px;font-weight:300;margin-bottom:10px;">August 2026</p><h2 style="font-size:26px;font-weight:400;margin-bottom:10px;line-height:1.2;">A new essay on the work of Philippe Tougard-Maucotel</h2><p style="font-size:15px;font-weight:300;line-height:1.8;">A new essay offering a comprehensive perspective on the work of Philippe Tougard-Maucotel is now available in Critical Perspective.</p><button class="lnk" onclick="gotoPage('critical')" style="margin-top:16px;display:inline-block;">Read in Critical Perspective &rarr;</button></div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;padding:48px 0;border-bottom:1px solid #1a1a1a;" class="grid2">
+<div style="aspect-ratio:4/3;overflow:hidden;"><img src="assets/f190de6a31cf.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Word sculpture by Philippe Tougard-Maucotel"></div>
+<div><p style="font-size:13px;font-weight:300;margin-bottom:10px;">August 2026</p><h2 style="font-size:26px;font-weight:400;margin-bottom:10px;line-height:1.2;">A new critical essay by Bianka Rolando</h2><p style="font-size:15px;font-weight:300;line-height:1.8;">A new critical essay on the sculptural work of Philippe Tougard-Maucotel, by poet and writer Bianka Rolando, is now available in Critical Perspective.</p><button class="lnk" onclick="gotoPage('critical')" style="margin-top:16px;display:inline-block;">Read in Critical Perspective &rarr;</button></div>
 </div>
 </div>
 <div style="background:#2121D9;">
@@ -640,7 +663,7 @@ p, h1, h2, span, a, button{overflow-wrap:break-word;word-break:break-word;}
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:56px;padding-bottom:40px;margin-bottom:40px;border-bottom:1px solid rgba(255,255,255,.2);" class="ftgrid">
       <div><p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px;">Gallery</p><p style="font-size:18px;font-weight:300;font-style:italic;color:rgba(255,255,255,.8);line-height:1.6;">&ldquo;Stone remembers everything the hand forgets.&rdquo;</p></div>
       <div><p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px;">Contact</p><p style="font-size:15px;color:rgba(255,255,255,.7);line-height:2;font-weight:300;">Art Mauco INC.<br>310 Duck Pond Road<br>Cutchogue, NY 11935<br>(646) 750-0805</p></div>
-      <div><p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px;">Online</p><p style="font-size:15px;color:rgba(255,255,255,.7);line-height:2;font-weight:300;">office@artmauco.com<br>artmauco.com</p></div>
+      <div><p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px;">Online</p><p style="font-size:15px;color:rgba(255,255,255,.7);line-height:2;font-weight:300;">office@artmauco.com<br>artmauco.com<br><a href="https://instagram.com/art_mauco" target="_blank" rel="noopener" style="color:rgba(255,255,255,.7);text-decoration:none;">@art_mauco</a></p></div>
     </div>
     <div style="display:flex;justify-content:space-between;"><span style="font-size:11px;color:rgba(255,255,255,.4);">&copy; 2026 Art Mauco INC.</span><a href="https://www.bukowski.co/" target="_blank" style="font-size:11px;color:rgba(255,255,255,.4);text-decoration:none;">design by bukowski.co</a></div>
   </div>
@@ -659,7 +682,7 @@ p, h1, h2, span, a, button{overflow-wrap:break-word;word-break:break-word;}
 <div class="ph"><h1>Contact</h1></div>
 <div style="max-width:1440px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;padding:48px var(--pad) 64px;gap:64px;" class="grid2">
 <div>
-<p style="font-size:18px;font-weight:300;line-height:2.2;">Art Mauco INC.<br>310 Duck Pond Road<br>Cutchogue, NY 11935<br>P.O. Box 455<br><a href="tel:+16467500805" style="color:#1a1a1a;text-decoration:none;">(646) 750-0805</a><br><a href="mailto:office@artmauco.com" style="color:#1a1a1a;text-decoration:none;">office@artmauco.com</a><br><a href="https://artmauco.com" style="color:#1a1a1a;text-decoration:none;">artmauco.com</a></p>
+<p style="font-size:18px;font-weight:300;line-height:2.2;">Art Mauco INC.<br>310 Duck Pond Road<br>Cutchogue, NY 11935<br>P.O. Box 455<br><a href="tel:+16467500805" style="color:#1a1a1a;text-decoration:none;">(646) 750-0805</a><br><a href="mailto:office@artmauco.com" style="color:#1a1a1a;text-decoration:none;">office@artmauco.com</a><br><a href="https://artmauco.com" style="color:#1a1a1a;text-decoration:none;">artmauco.com</a><br><a href="https://instagram.com/art_mauco" target="_blank" rel="noopener" style="color:#1a1a1a;text-decoration:none;">Instagram &mdash; @art_mauco</a></p>
 </div>
 <div>
 <div style="display:flex;flex-direction:column;gap:0;">
@@ -677,7 +700,7 @@ p, h1, h2, span, a, button{overflow-wrap:break-word;word-break:break-word;}
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:56px;padding-bottom:40px;margin-bottom:40px;border-bottom:1px solid rgba(255,255,255,.2);" class="ftgrid">
       <div><p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px;">Gallery</p><p style="font-size:18px;font-weight:300;font-style:italic;color:rgba(255,255,255,.8);line-height:1.6;">&ldquo;Stone remembers everything the hand forgets.&rdquo;</p></div>
       <div><p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px;">Contact</p><p style="font-size:15px;color:rgba(255,255,255,.7);line-height:2;font-weight:300;">Art Mauco INC.<br>310 Duck Pond Road<br>Cutchogue, NY 11935<br>(646) 750-0805</p></div>
-      <div><p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px;">Online</p><p style="font-size:15px;color:rgba(255,255,255,.7);line-height:2;font-weight:300;">office@artmauco.com<br>artmauco.com</p></div>
+      <div><p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px;">Online</p><p style="font-size:15px;color:rgba(255,255,255,.7);line-height:2;font-weight:300;">office@artmauco.com<br>artmauco.com<br><a href="https://instagram.com/art_mauco" target="_blank" rel="noopener" style="color:rgba(255,255,255,.7);text-decoration:none;">@art_mauco</a></p></div>
     </div>
     <div style="display:flex;justify-content:space-between;"><span style="font-size:11px;color:rgba(255,255,255,.4);">&copy; 2026 Art Mauco INC.</span><a href="https://www.bukowski.co/" target="_blank" style="font-size:11px;color:rgba(255,255,255,.4);text-decoration:none;">design by bukowski.co</a></div>
   </div>
