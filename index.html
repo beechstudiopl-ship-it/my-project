@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="pl-PL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eye Zone — strona w przebudowie</title>
+<meta name="description" content="Salon optyczny Eye Zone w Warszawie chwilowo aktualizuje stronę. Nadal umawiamy wizyty i obsługujemy Klientów — zapraszamy do kontaktu.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0c0c0d;
+    --bg-raised:#151516;
+    --line:#26262a;
+    --text:#f6f4ef;
+    --text-dim:#a9a7a2;
+    --accent:#d8b26b;
+    --accent-dim:#8c744a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Manrope',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:78px; /* space for mobile sticky bar */
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+
+  /* Wordmark */
+  .logo{
+    display:inline-flex;align-items:center;gap:.02em;
+    font-weight:800;font-size:1.3rem;letter-spacing:-0.01em;
+    text-transform:lowercase;
+  }
+  .logo .o{
+    position:relative;
+    display:inline-block;
+    width:.72em;height:.72em;
+    margin:0 .01em;
+    border-radius:50%;
+    background:var(--text);
+    vertical-align:-0.07em;
+  }
+  .logo .o::after{
+    content:"";
+    position:absolute;
+    top:22%;left:22%;
+    width:34%;height:34%;
+    border-radius:50%;
+    background:var(--bg);
+  }
+
+  /* Header */
+  header{
+    position:sticky;top:0;z-index:20;
+    background:rgba(12,12,13,.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  header .wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    padding-top:18px;padding-bottom:18px;
+  }
+  .header-phone{
+    font-size:.92rem;color:var(--text-dim);
+    display:flex;align-items:center;gap:8px;
+  }
+  .header-phone svg{width:16px;height:16px;stroke:var(--accent);flex:none;}
+  @media (max-width:640px){ .header-phone{display:none;} }
+
+  /* Hero */
+  .hero{
+    position:relative;
+    overflow:hidden;
+    padding:88px 0 72px;
+    text-align:center;
+    isolation:isolate;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    top:50%;left:50%;
+    width:640px;height:640px;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    border:1px solid var(--line);
+    z-index:-1;
+  }
+  .hero::after{
+    content:"";
+    position:absolute;
+    top:50%;left:50%;
+    width:420px;height:420px;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    border:1px solid var(--line);
+    z-index:-1;
+  }
+  .eyebrow{
+    font-size:.78rem;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--accent);
+    font-weight:700;
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(2.1rem,6vw,3.4rem);
+    font-weight:800;
+    letter-spacing:-0.02em;
+    margin-bottom:20px;
+  }
+  .hero p{
+    max-width:520px;
+    margin:0 auto 34px;
+    color:var(--text-dim);
+    font-size:1.05rem;
+  }
+  .cta-row{
+    display:flex;gap:14px;justify-content:center;flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:14px 26px;
+    border-radius:999px;
+    font-weight:700;
+    font-size:.95rem;
+    border:1px solid transparent;
+    transition:transform .15s ease, opacity .15s ease;
+  }
+  .btn:active{transform:scale(.97);}
+  .btn-primary{background:var(--accent);color:#1a1408;}
+  .btn-primary:hover{opacity:.9;}
+  .btn-ghost{border-color:var(--line);color:var(--text);}
+  .btn-ghost:hover{border-color:var(--accent-dim);}
+  .btn svg{width:16px;height:16px;flex:none;}
+
+  /* Photo */
+  .photo-section{padding:0 0 88px;}
+  .photo-frame{
+    max-width:1080px;margin:0 auto;padding:0 24px;
+  }
+  .photo-frame .inner{
+    border-radius:18px;
+    overflow:hidden;
+    border:1px solid var(--line);
+    background:var(--bg-raised);
+    aspect-ratio:16/9;
+  }
+  .photo-frame img{width:100%;height:100%;object-fit:cover;}
+
+  /* Section heading helper */
+  .section-head{text-align:center;max-width:520px;margin:0 auto 44px;}
+  .section-head .eyebrow{margin-bottom:12px;}
+  .section-head h2{font-size:clamp(1.5rem,3.6vw,2rem);font-weight:800;letter-spacing:-0.01em;}
+
+  /* Offer */
+  .offer{padding:0 0 96px;}
+  .offer-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+  }
+  @media (max-width:800px){ .offer-grid{grid-template-columns:1fr;} }
+  .offer-card{
+    background:var(--bg-raised);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:28px 24px;
+  }
+  .offer-card .icon{
+    width:40px;height:40px;
+    border-radius:50%;
+    background:rgba(216,178,107,.12);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:16px;
+  }
+  .offer-card .icon svg{width:19px;height:19px;stroke:var(--accent);}
+  .offer-card h3{font-size:1.02rem;font-weight:700;margin-bottom:8px;}
+  .offer-card p{color:var(--text-dim);font-size:.92rem;}
+
+  /* Contact + map */
+  .contact{padding:0 0 96px;}
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1.3fr;
+    gap:36px;
+    align-items:stretch;
+  }
+  @media (max-width:800px){ .contact-grid{grid-template-columns:1fr;} }
+  .contact-card{
+    background:var(--bg-raised);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:34px 30px;
+  }
+  .contact-card h2{font-size:1.3rem;font-weight:800;margin-bottom:22px;letter-spacing:-0.01em;}
+  .contact-list{list-style:none;display:flex;flex-direction:column;gap:16px;}
+  .contact-list li a, .contact-list li span{
+    display:flex;align-items:center;gap:12px;
+    font-size:.98rem;
+  }
+  .contact-list svg{width:18px;height:18px;stroke:var(--accent);flex:none;}
+  .contact-list a:hover{color:var(--accent);}
+  .socials{margin-top:26px;display:flex;gap:12px;}
+  .social-btn{
+    width:38px;height:38px;border-radius:50%;
+    border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .social-btn svg{width:17px;height:17px;stroke:var(--text-dim);}
+  .social-btn:hover{border-color:var(--accent-dim);}
+  .social-btn:hover svg{stroke:var(--accent);}
+
+  .map-frame{
+    border-radius:18px;overflow:hidden;border:1px solid var(--line);
+    position:relative;width:100%;aspect-ratio:4/3;background:var(--bg-raised);
+  }
+  .map-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+
+  /* Footer */
+  footer{
+    border-top:1px solid var(--line);
+    padding:28px 0;
+    text-align:center;
+    color:var(--text-dim);
+    font-size:.85rem;
+  }
+
+  /* Sticky mobile action bar */
+  .mobile-bar{
+    position:fixed;left:0;right:0;bottom:0;z-index:30;
+    display:none;
+    gap:10px;
+    padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+    background:rgba(12,12,13,.92);
+    backdrop-filter:blur(12px);
+    border-top:1px solid var(--line);
+  }
+  .mobile-bar a{
+    flex:1;
+    display:flex;align-items:center;justify-content:center;gap:7px;
+    padding:13px 10px;
+    border-radius:12px;
+    font-weight:700;
+    font-size:.88rem;
+    text-align:center;
+  }
+  .mobile-bar a svg{width:16px;height:16px;flex:none;}
+  .mobile-bar .m-primary{background:var(--accent);color:#1a1408;}
+  .mobile-bar .m-ghost{border:1px solid var(--line);color:var(--text);}
+  @media (max-width:640px){
+    .mobile-bar{display:flex;}
+  }
+  @media (min-width:641px){
+    body{padding-bottom:0;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <span class="logo">eye&nbsp;z<span class="o"></span>ne</span>
+    <a class="header-phone" href="tel:+48667701307">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      +48 667 701 307
+    </a>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Działamy, zmieniamy się</p>
+      <h1>Nasza strona jest<br>w&nbsp;trakcie przebudowy</h1>
+      <p>Salon Eye Zone działa bez zmian — nadal umawiamy wizyty i&nbsp;obsługujemy Klientów. To tylko strona internetowa chwilowo odpoczywa i&nbsp;wkrótce wróci w&nbsp;nowej odsłonie.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://www.znanylekarz.pl/sylwia-ostrowicka/optometrysta/warszawa?utm_source=widget-doctor-353539&utm_medium=link" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          Umów wizytę
+        </a>
+        <a class="btn btn-ghost" href="tel:+48667701307">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Zadzwoń
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="photo-section">
+    <div class="photo-frame">
+      <div class="inner">
+        <img src="https://eyezone.pl/wp-content/uploads/2021/07/Eye-zone-salon-optyczny-Warszawa-16-1024x682.jpg" alt="Wnętrze salonu optycznego Eye Zone w Warszawie" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section class="offer">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Krótko o ofercie</p>
+        <h2>To, po co warto do nas wrócić</h2>
+      </div>
+      <div class="offer-grid">
+        <div class="offer-card">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/></svg>
+          </div>
+          <h3>Kilkaset oprawek od ręki</h3>
+          <p>Szeroki wybór oprawek renomowanych marek — z pewnością znajdziesz coś dla siebie.</p>
+        </div>
+        <div class="offer-card">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Zespół profesjonalistów</h3>
+          <p>Wykształcenie kierunkowe i&nbsp;stałe podnoszenie kwalifikacji dla najwyższej jakości usług.</p>
+        </div>
+        <div class="offer-card">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </div>
+          <h3>Badania na miejscu</h3>
+          <p>Obsługa od A do Z — badanie optometryczne i&nbsp;dobór okularów w&nbsp;jednym miejscu.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="kontakt">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h2>Skontaktuj się z nami</h2>
+          <ul class="contact-list">
+            <li>
+              <a href="tel:+48667701307">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                +48 667 701 307
+              </a>
+            </li>
+            <li>
+              <a href="mailto:kontakt@eyezone.pl">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6l-10 7L2 6"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+                kontakt@eyezone.pl
+              </a>
+            </li>
+            <li>
+              <span>
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                ul. Kłobucka 6A/U2, 02-699 Warszawa
+              </span>
+            </li>
+          </ul>
+          <div class="socials">
+            <a class="social-btn" href="https://www.facebook.com/Eye-Zone-Salon-Optyczny-110957174363167" target="_blank" rel="noopener" aria-label="Eye Zone na Facebooku">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="map-frame">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4235.460500346428!2d20.990145977638466!3d52.16014956280823!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4719336b37884ae3%3A0x16725a1be51ce3a1!2sEye%20Zone%20Salon%20Optyczny%20%7C%20Optyk%20%7C%20Badanie%20wzroku%20%7C%20Optometrysta!5e1!3m2!1spl!2spl!4v1787897925537!5m2!1spl!2spl" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="Mapa dojazdu do salonu Eye Zone"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © 2026 eye zone — salon optyczny
+</footer>
+
+<nav class="mobile-bar" aria-label="Szybkie akcje">
+  <a class="m-ghost" href="https://www.google.com/maps/dir/?api=1&destination=Eye+Zone+Salon+Optyczny+Kl%C5%82obucka+6A+Warszawa" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Dojazd
+  </a>
+  <a class="m-primary" href="https://www.znanylekarz.pl/sylwia-ostrowicka/optometrysta/warszawa?utm_source=widget-doctor-353539&utm_medium=link" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+    Umów się
+  </a>
+</nav>
+
+</body>
+</html>
