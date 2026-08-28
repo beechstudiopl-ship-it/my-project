@@ -51,8 +51,8 @@
   .logo .o::after{
     content:"";
     position:absolute;
-    top:24%;left:24%;
-    width:32%;height:32%;
+    top:16%;left:12%;
+    width:44%;height:44%;
     border-radius:50%;
     background:var(--bg);
   }
@@ -101,10 +101,11 @@
 
   /* Hero */
   .hero{padding:72px 0 96px;}
+  @media (max-width:640px){ .hero{padding:44px 0 52px;} }
   .hero-grid{
     display:grid;
     grid-template-columns:1fr;
-    gap:44px;
+    gap:36px;
     align-items:center;
     text-align:center;
   }
@@ -120,21 +121,21 @@
     margin-bottom:18px;
   }
   .hero h1{
-    font-size:clamp(2.1rem,4.6vw,3.1rem);
+    font-size:clamp(2rem,4.6vw,3.1rem);
     font-weight:800;
     letter-spacing:-0.02em;
-    margin-bottom:20px;
+    margin-bottom:16px;
   }
   .hero-copy p{
     max-width:480px;
-    margin:0 auto 34px;
+    margin:0 auto 28px;
     color:var(--text-dim);
     font-size:1.05rem;
   }
   @media (min-width:901px){ .hero-copy p{margin-left:0;margin-right:0;} }
   .cta-row{
     display:flex;gap:14px;justify-content:center;flex-wrap:wrap;
-    margin-bottom:26px;
+    margin-bottom:22px;
   }
   @media (min-width:901px){ .cta-row{justify-content:flex-start;} }
 
@@ -153,17 +154,22 @@
     overflow:hidden;
     border:1px solid var(--line);
     background:var(--bg-raised);
-    aspect-ratio:4/3;
+    aspect-ratio:3/4;
+    max-width:420px;
+    margin:0 auto;
   }
-  .hero-photo img{width:100%;height:100%;object-fit:cover;}
+  @media (min-width:901px){ .hero-photo{margin:0;max-width:none;} }
+  .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center 20%;}
 
   /* Section heading helper */
   .section-head{text-align:center;max-width:520px;margin:0 auto 44px;}
+  @media (max-width:640px){ .section-head{margin-bottom:28px;} }
   .section-head .eyebrow{margin-bottom:12px;}
   .section-head h2{font-size:clamp(1.5rem,3.6vw,2rem);font-weight:800;letter-spacing:-0.01em;}
 
   /* Contact + map */
   .contact{padding:0 0 96px;}
+  @media (max-width:640px){ .contact{padding:0 0 60px;} }
   .contact-grid{
     display:grid;
     grid-template-columns:1fr 1.3fr;
@@ -171,12 +177,14 @@
     align-items:stretch;
   }
   @media (max-width:800px){ .contact-grid{grid-template-columns:1fr;} }
+  @media (max-width:640px){ .contact-grid{gap:16px;} }
   .contact-card{
     background:var(--bg-raised);
     border:1px solid var(--line);
     border-radius:18px;
     padding:34px 30px;
   }
+  @media (max-width:640px){ .contact-card{padding:26px 22px;} }
   .contact-card h2{font-size:1.3rem;font-weight:800;margin-bottom:22px;letter-spacing:-0.01em;}
   .contact-list{list-style:none;display:flex;flex-direction:column;gap:16px;}
   .contact-list li a, .contact-list li span{
@@ -204,6 +212,7 @@
 
   /* Offer */
   .offer{padding:0 0 96px;}
+  @media (max-width:640px){ .offer{padding:0 0 60px;} }
   .offer-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
@@ -291,7 +300,6 @@
     <div class="wrap">
       <div class="hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow">Działamy, zmieniamy się</p>
           <h1>Nasza strona jest<br>w&nbsp;trakcie przebudowy</h1>
           <p>Salon Eye Zone działa bez zmian — nadal umawiamy wizyty i&nbsp;obsługujemy Klientów. To tylko strona internetowa chwilowo odpoczywa i&nbsp;wkrótce wróci w&nbsp;nowej odsłonie.</p>
           <div class="cta-row">
@@ -306,7 +314,7 @@
           </a>
         </div>
         <div class="hero-photo">
-          <img src="https://eyezone.pl/wp-content/uploads/2021/07/Eye-zone-salon-optyczny-Warszawa-16-1024x682.jpg" alt="Wnętrze salonu optycznego Eye Zone w Warszawie" loading="lazy">
+          <img src="https://eyezone.pl/wp-content/uploads/2021/07/sylwia-ostrowicka-optyk.jpg" alt="Sylwia Ostrowicka — optometrystka Eye Zone" loading="lazy">
         </div>
       </div>
     </div>
