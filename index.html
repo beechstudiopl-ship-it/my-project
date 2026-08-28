@@ -109,9 +109,6 @@
     align-items:center;
     text-align:center;
   }
-  @media (min-width:901px){
-    .hero-grid{grid-template-columns:1.05fr 1fr;text-align:left;}
-  }
   .eyebrow{
     font-size:.78rem;
     letter-spacing:.18em;
@@ -128,23 +125,10 @@
   }
   .hero-copy p{
     max-width:480px;
-    margin:0 auto 28px;
+    margin:0 auto;
     color:var(--text-dim);
     font-size:1.05rem;
   }
-  @media (min-width:901px){ .hero-copy p{margin-left:0;margin-right:0;} }
-
-  .hero-photo{
-    border-radius:18px;
-    overflow:hidden;
-    border:1px solid var(--line);
-    background:var(--bg-raised);
-    aspect-ratio:3/4;
-    max-width:320px;
-    margin:0 auto;
-  }
-  @media (min-width:901px){ .hero-photo{margin:0;max-width:260px;} }
-  .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center 20%;}
 
   /* Section heading helper */
   .section-head{text-align:center;max-width:520px;margin:0 auto 44px;}
@@ -286,9 +270,6 @@
         <div class="hero-copy">
           <h1>Nasza strona jest<br>w&nbsp;trakcie przebudowy</h1>
           <p>Salon Eye Zone działa bez zmian — nadal umawiamy wizyty i&nbsp;obsługujemy Klientów. To tylko strona internetowa chwilowo odpoczywa i&nbsp;wkrótce wróci w&nbsp;nowej odsłonie.</p>
-        </div>
-        <div class="hero-photo">
-          <img src="https://eyezone.pl/wp-content/uploads/2021/07/sylwia-ostrowicka-optyk.jpg" alt="Sylwia Ostrowicka — optometrystka Eye Zone" loading="lazy">
         </div>
       </div>
     </div>
