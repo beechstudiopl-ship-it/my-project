@@ -69,9 +69,10 @@ class CSA_Settings {
 
 		$in  = wp_unslash( $_POST );
 		$out = array(
-			'enable_ai_bots' => empty( $in['enable_ai_bots'] ) ? 0 : 1,
-			'enable_org'     => empty( $in['enable_org'] ) ? 0 : 1,
-			'enable_faq'     => empty( $in['enable_faq'] ) ? 0 : 1,
+			'enable_ai_bots'     => empty( $in['enable_ai_bots'] ) ? 0 : 1,
+			'enable_org'         => empty( $in['enable_org'] ) ? 0 : 1,
+			'enable_faq'         => empty( $in['enable_faq'] ) ? 0 : 1,
+			'enable_breadcrumbs' => empty( $in['enable_breadcrumbs'] ) ? 0 : 1,
 			'org_type'       => $this->pick(
 				isset( $in['org_type'] ) ? $in['org_type'] : '',
 				array( 'Organization', 'EducationalOrganization', 'LocalBusiness' ),
@@ -168,13 +169,19 @@ class CSA_Settings {
 						<td>
 							<label><input type="checkbox" name="enable_faq" value="1" <?php checked( $s['enable_faq'] ); ?> /> <?php esc_html_e( 'Buduj schema FAQPage z wpisow FAQ', 'claude-seo-ai' ); ?></label>
 							<p class="description">
-								<?php esc_html_e( 'Pytania dodajesz w menu "FAQ (AI SEO)". Zasieg:', 'claude-seo-ai' ); ?>
+								<?php esc_html_e( 'Pytania dodajesz w menu "FAQ (AI SEO)". Zasieg globalny:', 'claude-seo-ai' ); ?>
 								<select name="faq_scope">
 									<option value="front" <?php selected( $s['faq_scope'], 'front' ); ?>><?php esc_html_e( 'tylko strona glowna', 'claude-seo-ai' ); ?></option>
 									<option value="all" <?php selected( $s['faq_scope'], 'all' ); ?>><?php esc_html_e( 'cala witryna', 'claude-seo-ai' ); ?></option>
 								</select>
+								<br />
+								<?php esc_html_e( 'Niezaleznie od zasiegu, w edycji pojedynczego pytania mozesz dodac je do konkretnych stron (pole "Pokaz tez na stronach").', 'claude-seo-ai' ); ?>
 							</p>
 						</td>
+					</tr>
+					<tr>
+						<th scope="row"><?php esc_html_e( 'Okruszki (BreadcrumbList)', 'claude-seo-ai' ); ?></th>
+						<td><label><input type="checkbox" name="enable_breadcrumbs" value="1" <?php checked( $s['enable_breadcrumbs'] ); ?> /> <?php esc_html_e( 'Wstrzykuj schema BreadcrumbList na podstronach', 'claude-seo-ai' ); ?></label></td>
 					</tr>
 				</table>
 

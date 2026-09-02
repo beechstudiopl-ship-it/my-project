@@ -99,7 +99,53 @@ class CSA_Schema {
 			$data['sameAs'] = $same_as;
 		}
 
+		$catalog = $this->build_offer_catalog();
+		if ( ! empty( $catalog ) ) {
+			$data['hasOfferCatalog'] = $catalog;
+		}
+
 		self::print_jsonld( $data );
+	}
+
+	/**
+	 * Buduje OfferCatalog ze wszystkich stron/wpisow oznaczonych jako kurs
+	 * (metabox "Ta strona opisuje kurs" w CSA_Course), zeby Google i boty AI
+	 * widzialy pelna oferte szkolen w jednym miejscu.
+	 *
+	 * @return array
+	 */
+	private function build_offer_catalog() {
+		$query = new WP_Query(
+			array(
+				'post_type'      => array( 'page', 'post' ),
+				'post_status'    => 'publish',
+				'posts_per_page' => 100,
+				'no_found_rows'  => true,
+				'orderby'        => 'title',
+				'order'          => 'ASC',
+				'meta_key'       => CSA_Course::META_ENABLED, // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
+				'meta_value'     => '1', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
+			)
+		);
+
+		if ( empty( $query->posts ) ) {
+			return array();
+		}
+
+		$list = array();
+		foreach ( $query->posts as $post ) {
+			$list[] = array(
+				'@type' => 'Course',
+				'name'  => wp_strip_all_tags( get_the_title( $post ) ),
+				'url'   => get_permalink( $post ),
+			);
+		}
+
+		return array(
+			'@type'           => 'OfferCatalog',
+			'name'            => __( 'Szkolenia i kursy', 'claude-seo-ai' ),
+			'itemListElement' => $list,
+		);
 	}
 
 	/**
@@ -112,12 +158,22 @@ class CSA_Schema {
 			return;
 		}
 
-		// Zasieg: tylko strona glowna albo cala witryna.
-		if ( 'front' === $s['faq_scope'] && ! is_front_page() ) {
-			return;
+		$global_scope_matches = ( 'all' === $s['faq_scope'] ) || ( 'front' === $s['faq_scope'] && is_front_page() );
+
+		$items = $global_scope_matches ? CSA_Faq::get_items() : array();
+
+		// Niezaleznie od zasiegu globalnego: pytania przypisane wprost do biezacej strony.
+		if ( is_singular() ) {
+			$current_path = wp_parse_url( get_permalink(), PHP_URL_PATH );
+			$page_items   = $current_path ? CSA_Faq::get_items( $current_path ) : array();
+			$known        = wp_list_pluck( $items, 'question' );
+			foreach ( $page_items as $page_item ) {
+				if ( ! in_array( $page_item['question'], $known, true ) ) {
+					$items[] = $page_item;
+				}
+			}
 		}
 
-		$items = CSA_Faq::get_items();
 		if ( empty( $items ) ) {
 			return;
 		}

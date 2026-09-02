@@ -4,7 +4,7 @@ Tags: seo, ai, aeo, schema, json-ld, robots, gpt, claude, perplexity
 Requires at least: 5.6
 Tested up to: 6.5
 Requires PHP: 7.2
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,6 +41,12 @@ Pamietaj tez, ze blokada botow (np. bledy 403) czesto pochodzi z firewalla / WAF
 (Cloudflare, Wordfence) — to trzeba odblokowac poza WordPressem.
 
 == Changelog ==
+
+= 1.1.0 =
+* FAQ: mozliwosc przypisania pytania do konkretnych stron (obok zasiegu front/cala witryna) — pozwala dodac FAQPage rowniez na stronach kursow/kategorii.
+* Course: opcjonalna cena (Offer), najblizszy termin (CourseInstance), zdjecie wyroznione i inLanguage w schema kursu.
+* Organization: automatyczny hasOfferCatalog zbudowany ze wszystkich oznaczonych stron-kursow.
+* Nowy modul: schema BreadcrumbList na podstronach (wlacz/wylacz w ustawieniach).
 
 = 1.0.0 =
 * Pierwsza wersja: robots.txt (boty AI), schema firmy, FAQPage (CPT), Course (metabox).

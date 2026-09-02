@@ -14,9 +14,12 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class CSA_Course {
 
-	const META_ENABLED = '_csa_course_enabled';
-	const NONCE_ACTION = 'csa_course_save';
-	const NONCE_NAME   = 'csa_course_nonce';
+	const META_ENABLED   = '_csa_course_enabled';
+	const META_PRICE     = '_csa_course_price';
+	const META_CURRENCY  = '_csa_course_currency';
+	const META_NEXT_DATE = '_csa_course_next_date';
+	const NONCE_ACTION   = 'csa_course_save';
+	const NONCE_NAME     = 'csa_course_nonce';
 
 	/**
 	 * Konstruktor: podpina metabox, zapis i wypis schema.
@@ -50,7 +53,10 @@ class CSA_Course {
 	 */
 	public function render_metabox( $post ) {
 		wp_nonce_field( self::NONCE_ACTION, self::NONCE_NAME );
-		$enabled = (bool) get_post_meta( $post->ID, self::META_ENABLED, true );
+		$enabled  = (bool) get_post_meta( $post->ID, self::META_ENABLED, true );
+		$price    = get_post_meta( $post->ID, self::META_PRICE, true );
+		$currency = get_post_meta( $post->ID, self::META_CURRENCY, true );
+		$next     = get_post_meta( $post->ID, self::META_NEXT_DATE, true );
 		?>
 		<label>
 			<input type="checkbox" name="csa_course_enabled" value="1" <?php checked( $enabled ); ?> />
@@ -58,6 +64,18 @@ class CSA_Course {
 		</label>
 		<p class="description">
 			<?php esc_html_e( 'Tytul i opis kursu pobierzemy automatycznie z tej strony. Dostawca = dane firmy z ustawien wtyczki.', 'claude-seo-ai' ); ?>
+		</p>
+		<p>
+			<label for="csa_course_price"><?php esc_html_e( 'Cena (opcjonalnie)', 'claude-seo-ai' ); ?></label><br />
+			<input type="text" id="csa_course_price" name="csa_course_price" class="widefat" value="<?php echo esc_attr( $price ); ?>" placeholder="np. 1200" />
+		</p>
+		<p>
+			<label for="csa_course_currency"><?php esc_html_e( 'Waluta', 'claude-seo-ai' ); ?></label><br />
+			<input type="text" id="csa_course_currency" name="csa_course_currency" class="widefat" value="<?php echo esc_attr( $currency ? $currency : 'PLN' ); ?>" placeholder="PLN" />
+		</p>
+		<p>
+			<label for="csa_course_next_date"><?php esc_html_e( 'Najbliższy termin (opcjonalnie)', 'claude-seo-ai' ); ?></label><br />
+			<input type="text" id="csa_course_next_date" name="csa_course_next_date" class="widefat" value="<?php echo esc_attr( $next ); ?>" placeholder="np. 2026-10-06" />
 		</p>
 		<?php
 	}
@@ -87,6 +105,27 @@ class CSA_Course {
 		} else {
 			delete_post_meta( $post_id, self::META_ENABLED );
 		}
+
+		$price = isset( $_POST['csa_course_price'] ) ? sanitize_text_field( wp_unslash( $_POST['csa_course_price'] ) ) : '';
+		if ( '' !== $price ) {
+			update_post_meta( $post_id, self::META_PRICE, $price );
+		} else {
+			delete_post_meta( $post_id, self::META_PRICE );
+		}
+
+		$currency = isset( $_POST['csa_course_currency'] ) ? sanitize_text_field( wp_unslash( $_POST['csa_course_currency'] ) ) : '';
+		if ( '' !== $currency ) {
+			update_post_meta( $post_id, self::META_CURRENCY, $currency );
+		} else {
+			delete_post_meta( $post_id, self::META_CURRENCY );
+		}
+
+		$next_date = isset( $_POST['csa_course_next_date'] ) ? sanitize_text_field( wp_unslash( $_POST['csa_course_next_date'] ) ) : '';
+		if ( '' !== $next_date ) {
+			update_post_meta( $post_id, self::META_NEXT_DATE, $next_date );
+		} else {
+			delete_post_meta( $post_id, self::META_NEXT_DATE );
+		}
 	}
 
 	/**
@@ -114,12 +153,42 @@ class CSA_Course {
 			'name'        => wp_strip_all_tags( get_the_title( $post_id ) ),
 			'description' => trim( preg_replace( '/\s+/', ' ', $excerpt ) ),
 			'url'         => get_permalink( $post_id ),
+			'inLanguage'  => 'pl-PL',
 			'provider'    => array(
 				'@type' => $s['org_type'] ? $s['org_type'] : 'Organization',
 				'name'  => $s['name'],
 				'url'   => home_url( '/' ),
 			),
 		);
+
+		if ( has_post_thumbnail( $post_id ) ) {
+			$data['image'] = get_the_post_thumbnail_url( $post_id, 'full' );
+		}
+
+		$price    = get_post_meta( $post_id, self::META_PRICE, true );
+		$currency = get_post_meta( $post_id, self::META_CURRENCY, true );
+		if ( '' !== $price ) {
+			$data['offers'] = array(
+				'@type'         => 'Offer',
+				'price'         => $price,
+				'priceCurrency' => $currency ? $currency : 'PLN',
+				'availability'  => 'https://schema.org/InStock',
+				'url'           => get_permalink( $post_id ),
+			);
+		}
+
+		$next_date = get_post_meta( $post_id, self::META_NEXT_DATE, true );
+		if ( '' !== $next_date ) {
+			$data['hasCourseInstance'] = array(
+				'@type'      => 'CourseInstance',
+				'courseMode' => 'Onsite',
+				'startDate'  => $next_date,
+				'location'   => array(
+					'@type' => 'Place',
+					'name'  => $s['name'],
+				),
+			);
+		}
 
 		CSA_Schema::print_jsonld( $data );
 	}

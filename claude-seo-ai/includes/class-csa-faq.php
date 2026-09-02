@@ -14,13 +14,97 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class CSA_Faq {
 
-	const POST_TYPE = 'csa_faq';
+	const POST_TYPE   = 'csa_faq';
+	const META_PAGES  = '_csa_faq_pages';
+	const NONCE_ACTION = 'csa_faq_pages_save';
+	const NONCE_NAME   = 'csa_faq_pages_nonce';
 
 	/**
-	 * Konstruktor: rejestruje CPT.
+	 * Konstruktor: rejestruje CPT i metabox przypisania do stron.
 	 */
 	public function __construct() {
 		add_action( 'init', array( __CLASS__, 'register_post_type' ) );
+		add_action( 'add_meta_boxes', array( $this, 'add_metabox' ) );
+		add_action( 'save_post_' . self::POST_TYPE, array( $this, 'save_metabox' ) );
+	}
+
+	/**
+	 * Dodaje metabox przypisania pytania do konkretnych stron/wpisow.
+	 */
+	public function add_metabox() {
+		add_meta_box(
+			'csa_faq_pages',
+			__( 'Claude SEO: pokaż też na stronach', 'claude-seo-ai' ),
+			array( $this, 'render_metabox' ),
+			self::POST_TYPE,
+			'side',
+			'default'
+		);
+	}
+
+	/**
+	 * Renderuje pole metaboksu.
+	 *
+	 * @param WP_Post $post Aktualny wpis FAQ.
+	 */
+	public function render_metabox( $post ) {
+		wp_nonce_field( self::NONCE_ACTION, self::NONCE_NAME );
+		$value = get_post_meta( $post->ID, self::META_PAGES, true );
+		?>
+		<textarea name="csa_faq_pages" class="widefat" rows="3" placeholder="np. /szkolenia-gwo/, /o-nas/"><?php echo esc_textarea( $value ); ?></textarea>
+		<p class="description">
+			<?php esc_html_e( 'Adresy URL stron (po przecinku lub w osobnych liniach), na których to pytanie ma się dodatkowo pojawić w schema FAQPage — niezależnie od zasięgu globalnego (strona główna/cała witryna).', 'claude-seo-ai' ); ?>
+		</p>
+		<?php
+	}
+
+	/**
+	 * Zapisuje przypisanie do stron.
+	 *
+	 * @param int $post_id ID wpisu FAQ.
+	 */
+	public function save_metabox( $post_id ) {
+		if ( ! isset( $_POST[ self::NONCE_NAME ] ) ) {
+			return;
+		}
+		$nonce = sanitize_text_field( wp_unslash( $_POST[ self::NONCE_NAME ] ) );
+		if ( ! wp_verify_nonce( $nonce, self::NONCE_ACTION ) ) {
+			return;
+		}
+		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+			return;
+		}
+		if ( ! current_user_can( 'edit_post', $post_id ) ) {
+			return;
+		}
+
+		$value = isset( $_POST['csa_faq_pages'] ) ? sanitize_textarea_field( wp_unslash( $_POST['csa_faq_pages'] ) ) : '';
+		update_post_meta( $post_id, self::META_PAGES, $value );
+	}
+
+	/**
+	 * Rozbija zapisaną listę URL-i na tablicę znormalizowanych ścieżek.
+	 *
+	 * @param string $raw Surowy tekst z metaboksu.
+	 * @return array
+	 */
+	private static function parse_pages( $raw ) {
+		if ( empty( $raw ) ) {
+			return array();
+		}
+		$parts = preg_split( '/[\r\n,]+/', $raw );
+		$paths = array();
+		foreach ( $parts as $part ) {
+			$part = trim( $part );
+			if ( '' === $part ) {
+				continue;
+			}
+			$path    = wp_parse_url( $part, PHP_URL_PATH );
+			$path    = $path ? $path : $part;
+			$paths[] = untrailingslashit( $path );
+		}
+
+		return $paths;
 	}
 
 	/**
@@ -61,9 +145,10 @@ class CSA_Faq {
 	/**
 	 * Pobiera opublikowane wpisy FAQ jako pary pytanie/odpowiedz.
 	 *
+	 * @param string $target_path Sciezka biezacej strony (np. z wp_parse_url), lub '' aby pobrac wszystkie.
 	 * @return array
 	 */
-	public static function get_items() {
+	public static function get_items( $target_path = '' ) {
 		$query = new WP_Query(
 			array(
 				'post_type'      => self::POST_TYPE,
@@ -75,8 +160,17 @@ class CSA_Faq {
 			)
 		);
 
+		$target_path = $target_path ? untrailingslashit( $target_path ) : '';
+
 		$items = array();
 		foreach ( $query->posts as $post ) {
+			if ( '' !== $target_path ) {
+				$assigned = self::parse_pages( get_post_meta( $post->ID, self::META_PAGES, true ) );
+				if ( ! in_array( $target_path, $assigned, true ) ) {
+					continue;
+				}
+			}
+
 			$question = wp_strip_all_tags( get_the_title( $post ) );
 			$answer   = wp_strip_all_tags( wp_trim_words( $post->post_content, 120, '' ) );
 			$answer   = trim( preg_replace( '/\s+/', ' ', $answer ) );
