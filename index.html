@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DARGACZ — Nieruchomości Premium</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="menu-top">
+    <div class="menu-top-logo">D A R G A C Z</div>
+    <button class="menu-close" onclick="closeMenu()">✕</button>
+  </div>
+  <div class="menu-links">
+    <div class="menu-sub-eye">Nawigacja</div>
+    <a href="index.html" onclick="closeMenu()">Strona główna <i class="ti ti-arrow-right"></i></a>
+    <a href="index.html#o-mnie" onclick="closeMenu()">O mnie <i class="ti ti-arrow-right"></i></a>
+    <a href="index.html#oferta" onclick="closeMenu()">Oferta <i class="ti ti-arrow-right"></i></a>
+    <a href="nieruchomosci.html" onclick="closeMenu()">Nieruchomości <i class="ti ti-arrow-right"></i></a>
+    <a href="kontakt.html" onclick="closeMenu()">Kontakt <i class="ti ti-arrow-right"></i></a>
+  </div>
+  <div class="menu-contacts">
+    <a href="tel:+48000000000" class="menu-contact-row"><i class="ti ti-phone"></i><span>+48 000 000 000</span></a>
+    <a href="mailto:kontakt@dargacz.pl" class="menu-contact-row"><i class="ti ti-mail"></i><span>kontakt@dargacz.pl</span></a>
+  </div>
+  <div class="menu-footer">
+    <div class="menu-footer-loc">Sopot · Gdańsk<br>Gdynia · Pomorskie</div>
+    <div class="menu-footer-handle">@dargacz_nieruchomosci<br>_premium</div>
+  </div>
+</div>
+
+<nav class="nav">
+  <a href="index.html" style="text-decoration:none"><div><div class="logo-main">D A R G A C Z</div><div class="logo-sub">NIERUCHOMOŚCI PREMIUM</div></div></a>
+  <button class="burger" onclick="openMenu()"><span></span><span></span><span></span></button>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div><div class="hero-ov"></div>
+  <div class="hero-c">
+    <div class="hero-eye">Finest Real Estate · Trójmiasto · Pomorskie</div>
+    <div class="hero-title">Nieruchomości<br>najwyższej<br>klasy.</div>
+    <div class="hero-tagline">Dyskretnie. Skutecznie. Premium.</div>
+    <div class="hero-arrow"><i class="ti ti-chevron-down"></i></div>
+  </div>
+</section>
+
+<section class="about" id="o-mnie">
+  <div class="about-ph"><span>Twoje zdjęcie — zastąp div tagiem img</span></div>
+  <div class="about-txt">
+    <div class="sec-eye">O mnie</div><div class="sec-ln"></div>
+    <div class="sec-t">Agentka, której<br>możesz zaufać.</div>
+    <div class="body-t">Specjalizuję się w nieruchomościach premium na terenie Trójmiasta i Pomorskiego. Każdą transakcję traktuję indywidualnie.</div>
+    <div class="body-t">Łączę wiedzę rynkową z dyskrecją i autentyczną troską o interes klienta.</div>
+    <div class="stats">
+      <div class="stat"><div class="stat-n">19,6k</div><div class="stat-l">Obserwujących</div></div>
+      <div class="stat"><div class="stat-n">428</div><div class="stat-l">Transakcji</div></div>
+      <div class="stat"><div class="stat-n">4</div><div class="stat-l">Rynki</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="oferta">
+  <div class="sec-eye">Oferta</div><div class="sec-ln"></div>
+  <div class="sec-t">Czym się zajmuję.</div>
+  <div class="svc-grid">
+    <div class="svc-c"><div class="svc-ln"></div><div class="svc-title">Sprzedaż</div><div class="svc-text">Wycena, marketing, finalizacja.</div></div>
+    <div class="svc-c"><div class="svc-ln"></div><div class="svc-title">Wynajem</div><div class="svc-text">Weryfikacja, umowa, obsługa.</div></div>
+    <div class="svc-c"><div class="svc-ln"></div><div class="svc-title">Doradztwo</div><div class="svc-text">Analiza rynku, inwestycje.</div></div>
+    <div class="svc-c"><div class="svc-ln"></div><div class="svc-title">Dyskrecja</div><div class="svc-text">Pełna poufność transakcji.</div></div>
+  </div>
+</section>
+
+<section class="portale">
+  <div class="portale-left"><div class="portale-eye">Aktualne oferty</div><div class="portale-ln"></div>
+  <div class="portale-t">Wille, domy<br>i apartamenty.</div>
+  <div class="portale-sub">Aktualne oferty sprzedaży nieruchomości premium w Trójmieście. Pełna lista z cenami, zdjęciami i szczegółami.</div></div>
+  <div class="portale-right"><div class="portale-types">
+    <div class="p-type"><i class="ti ti-building-estate"></i><div><div class="p-type-name">Wille</div><div class="p-type-loc">Sopot · Gdańsk</div></div></div>
+    <div class="p-type"><i class="ti ti-home"></i><div><div class="p-type-name">Domy</div><div class="p-type-loc">Pomorskie</div></div></div>
+    <div class="p-type"><i class="ti ti-building"></i><div><div class="p-type-name">Apartamenty</div><div class="p-type-loc">Trójmiasto</div></div></div>
+    <div class="p-type"><i class="ti ti-map-pin"></i><div><div class="p-type-name">Działki</div><div class="p-type-loc">Pomorskie</div></div></div>
+  </div>
+  <a href="nieruchomosci.html" class="btn-outline-w"><i class="ti ti-arrow-right"></i>Zobacz aktualne oferty</a>
+  </div></div>
+</section>
+
+<section class="opinie">
+  <div class="sec-eye">Opinie klientów</div><div class="sec-ln"></div>
+  <div class="sec-t">Co mówią<br>o współpracy.</div>
+  <div class="opinion-grid">
+    <div class="ocard">
+      <div class="ocard-stars"><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i></div>
+      <div class="ocard-text">"Profesjonalna obsługa na najwyższym poziomie. Znalazła dla nas apartament w Sopocie dokładnie taki, o jakim marzyliśmy. Pełna dyskrecja i zaangażowanie."</div>
+      <div class="ocard-author"><div class="ocard-av">MK</div><div><div class="ocard-name">Małgorzata K.</div><div class="ocard-loc">Sopot · Zakup apartamentu</div></div></div>
+    </div>
+    <div class="ocard">
+      <div class="ocard-stars"><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i></div>
+      <div class="ocard-text">"Sprzedaż willi w Gdańsku przebiegła sprawnie i po naszej cenie. Polecam każdemu, kto szuka agenta znającego rynek premium Trójmiasta."</div>
+      <div class="ocard-author"><div class="ocard-av">TW</div><div><div class="ocard-name">Tomasz W.</div><div class="ocard-loc">Gdańsk · Sprzedaż willi</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="sec-eye">FAQ</div><div class="sec-ln"></div>
+  <div class="sec-t">Najczęstsze<br>pytania.</div>
+  <div class="faq-inner"><div style="margin-top:22px">
+    <div class="faq-item open">
+      <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">Ile kosztuje współpraca z agentem?</span><i class="ti ti-chevron-down faq-icon"></i></div>
+      <div class="faq-a">Wynagrodzenie jest ustalane indywidualnie. Prowizja pobierana jest po finalizacji umowy — nie płacisz z góry.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">Jak długo trwa sprzedaż nieruchomości premium?</span><i class="ti ti-chevron-down faq-icon"></i></div>
+      <div class="faq-a">Nieruchomości premium w Trójmieście sprzedają się średnio w ciągu 2–6 miesięcy. Właściwe przygotowanie oferty znacząco skraca ten czas.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">Czy pomagasz przy zakupie na kredyt?</span><i class="ti ti-chevron-down faq-icon"></i></div>
+      <div class="faq-a">Tak — współpracuję z doradcami finansowymi, którzy mogą wesprzeć proces kredytowy. Obsługuję też transakcje gotówkowe.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">Czy są oferty poza portalami?</span><i class="ti ti-chevron-down faq-icon"></i></div>
+      <div class="faq-a">Tak — część ofert premium dostępna jest wyłącznie w obiegu prywatnym. Skontaktuj się bezpośrednio, aby dowiedzieć się więcej.</div>
+    </div>
+  </div></div>
+</section>
+
+<section class="atmo">
+  <div class="atmo-bg"></div>
+  <div class="atmo-ov"><div><div class="atmo-q">"Dyskretnie.<br>Skutecznie. Premium."</div><div class="atmo-s">D A R G A C Z · Nieruchomości Premium</div></div></div>
+</section>
+
+<section class="contact">
+  <div class="ct-eye">Kontakt</div><div class="ct-ln"></div>
+  <div class="ct-t">Porozmawiajmy<br>o Twojej<br>nieruchomości.</div>
+  <div class="ct-d"><div class="ct-lbl">Telefon</div><div class="ct-val">+48 000 000 000</div></div>
+  <div class="ct-d"><div class="ct-lbl">Instagram</div><div class="ct-val">@dargacz_nieruchomosci_premium</div></div>
+  <div class="ct-d"><div class="ct-lbl">Obszar działania</div><div class="ct-val">Sopot · Gdańsk · Gdynia · Pomorskie</div></div>
+  <div class="form-sep">
+    <a href="kontakt.html" class="btn-white"><i class="ti ti-send"></i>Przejdź do formularza kontaktowego</a>
+  </div>
+</section>
+
+<section class="closing-photo">
+  <!-- Podmień na swoje zdjęcie: <img src="agentka-portret.jpg" alt="Roksana Dargacz"> -->
+  <div class="closing-photo-ph">
+    <span>Twoje zdjęcie — pionowe<br>Agentka · pełna sylwetka lub półportret<br>Rozmiar: 800 × 1120 px</span>
+  </div>
+  <div class="closing-overlay">
+    <div class="closing-motto">„Nieruchomości to<br>nie tylko ściany —<br>to Twoje życie."</div>
+    <div class="closing-name">Roksana Dargacz · Nieruchomości Premium</div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft">© 2025 Dargacz Nieruchomości Premium</div>
+  <div class="ft">@dargacz_nieruchomosci_premium</div>
+</footer>
+
+<div class="bbar">
+  <a href="tel:+48000000000" class="bb"><i class="ti ti-phone"></i>Zadzwoń</a>
+  <a href="https://wa.me/48000000000" class="bb" target="_blank"><i class="ti ti-brand-whatsapp"></i>WhatsApp</a>
+  <a href="https://instagram.com/dargacz_nieruchomosci_premium" class="bb" target="_blank"><i class="ti ti-brand-instagram"></i>Instagram</a>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

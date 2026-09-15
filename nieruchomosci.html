@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nieruchomości na sprzedaż — DARGACZ Nieruchomości Premium</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="menu-top">
+    <div class="menu-top-logo">D A R G A C Z</div>
+    <button class="menu-close" onclick="closeMenu()">✕</button>
+  </div>
+  <div class="menu-links">
+    <div class="menu-sub-eye">Nawigacja</div>
+    <a href="index.html" onclick="closeMenu()">Strona główna <i class="ti ti-arrow-right"></i></a>
+    <a href="index.html#o-mnie" onclick="closeMenu()">O mnie <i class="ti ti-arrow-right"></i></a>
+    <a href="index.html#oferta" onclick="closeMenu()">Oferta <i class="ti ti-arrow-right"></i></a>
+    <a href="nieruchomosci.html" onclick="closeMenu()">Nieruchomości <i class="ti ti-arrow-right"></i></a>
+    <a href="kontakt.html" onclick="closeMenu()">Kontakt <i class="ti ti-arrow-right"></i></a>
+  </div>
+  <div class="menu-contacts">
+    <a href="tel:+48000000000" class="menu-contact-row"><i class="ti ti-phone"></i><span>+48 000 000 000</span></a>
+    <a href="mailto:kontakt@dargacz.pl" class="menu-contact-row"><i class="ti ti-mail"></i><span>kontakt@dargacz.pl</span></a>
+  </div>
+  <div class="menu-footer">
+    <div class="menu-footer-loc">Sopot · Gdańsk<br>Gdynia · Pomorskie</div>
+    <div class="menu-footer-handle">@dargacz_nieruchomosci<br>_premium</div>
+  </div>
+</div>
+
+<nav class="nav">
+  <a href="index.html" style="text-decoration:none"><div><div class="logo-main">D A R G A C Z</div><div class="logo-sub">NIERUCHOMOŚCI PREMIUM</div></div></a>
+  <button class="burger" onclick="openMenu()"><span></span><span></span><span></span></button>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-eye">Nieruchomości</div>
+  <div class="page-hero-title">Aktualne oferty<br>sprzedaży.</div>
+  <div class="page-hero-sub">Wille, apartamenty i domy premium w Trójmieście i na Pomorzu. Kliknij ofertę, aby zobaczyć pełne zdjęcia i szczegóły.</div>
+</section>
+
+<section class="listings">
+  <div class="listings-grid">
+
+    <!-- OFERTA 1 — realna, ze zdjęciami -->
+    <div class="lcard" onclick="openListing(1)">
+      <div class="lcard-img"><img src="images/oferta-kamienica-gdansk/09-ogrod-zimowy.jpg" alt="Apartament w kamienicy — ogród zimowy"></div>
+      <div class="lcard-body">
+        <span class="lcard-status">Na sprzedaż</span>
+        <div class="lcard-title">Apartament w Kamienicy z Ogrodem Zimowym</div>
+        <div class="lcard-loc">Gdańsk · Śródmieście</div>
+        <div class="lcard-specs">
+          <div class="lcard-spec"><i class="ti ti-ruler-2"></i>118 m²</div>
+          <div class="lcard-spec"><i class="ti ti-door"></i>4 pokoje</div>
+          <div class="lcard-spec"><i class="ti ti-building"></i>II piętro</div>
+        </div>
+        <div class="lcard-price">2 450 000 zł</div>
+        <div class="lcard-cta">Zobacz szczegóły <i class="ti ti-arrow-right"></i></div>
+      </div>
+    </div>
+
+    <!-- OFERTA 2 — placeholder -->
+    <div class="lcard" onclick="openListing(2)">
+      <div class="lcard-img"><span>Zdjęcie oferty — zastąp div tagiem img</span></div>
+      <div class="lcard-body">
+        <span class="lcard-status">Na sprzedaż</span>
+        <div class="lcard-title">Willa z widokiem na morze</div>
+        <div class="lcard-loc">Sopot · Górny Sopot</div>
+        <div class="lcard-specs">
+          <div class="lcard-spec"><i class="ti ti-ruler-2"></i>340 m²</div>
+          <div class="lcard-spec"><i class="ti ti-door"></i>6 pokoi</div>
+          <div class="lcard-spec"><i class="ti ti-parking"></i>2 garaże</div>
+        </div>
+        <div class="lcard-price">6 900 000 zł</div>
+        <div class="lcard-cta">Zobacz szczegóły <i class="ti ti-arrow-right"></i></div>
+      </div>
+    </div>
+
+    <!-- OFERTA 3 — placeholder -->
+    <div class="lcard" onclick="openListing(3)">
+      <div class="lcard-img"><span>Zdjęcie oferty — zastąp div tagiem img</span></div>
+      <div class="lcard-body">
+        <span class="lcard-status">Na sprzedaż</span>
+        <div class="lcard-title">Apartament z tarasem</div>
+        <div class="lcard-loc">Gdynia · Kamienna Góra</div>
+        <div class="lcard-specs">
+          <div class="lcard-spec"><i class="ti ti-ruler-2"></i>96 m²</div>
+          <div class="lcard-spec"><i class="ti ti-door"></i>3 pokoje</div>
+          <div class="lcard-spec"><i class="ti ti-building"></i>IV piętro</div>
+        </div>
+        <div class="lcard-price">1 850 000 zł</div>
+        <div class="lcard-cta">Zobacz szczegóły <i class="ti ti-arrow-right"></i></div>
+      </div>
+    </div>
+
+    <!-- OFERTA 4 — placeholder -->
+    <div class="lcard" onclick="openListing(4)">
+      <div class="lcard-img"><span>Zdjęcie oferty — zastąp div tagiem img</span></div>
+      <div class="lcard-body">
+        <span class="lcard-status">Na sprzedaż</span>
+        <div class="lcard-title">Dom jednorodzinny w zieleni</div>
+        <div class="lcard-loc">Pomorskie · okolice Trójmiasta</div>
+        <div class="lcard-specs">
+          <div class="lcard-spec"><i class="ti ti-ruler-2"></i>210 m²</div>
+          <div class="lcard-spec"><i class="ti ti-door"></i>5 pokoi</div>
+          <div class="lcard-spec"><i class="ti ti-trees"></i>1200 m² działki</div>
+        </div>
+        <div class="lcard-price">2 100 000 zł</div>
+        <div class="lcard-cta">Zobacz szczegóły <i class="ti ti-arrow-right"></i></div>
+      </div>
+    </div>
+
+    <!-- OFERTA 5 — placeholder -->
+    <div class="lcard" onclick="openListing(5)">
+      <div class="lcard-img"><span>Zdjęcie oferty — zastąp div tagiem img</span></div>
+      <div class="lcard-body">
+        <span class="lcard-status">Na sprzedaż</span>
+        <div class="lcard-title">Penthouse z widokiem na zatokę</div>
+        <div class="lcard-loc">Gdańsk · Przymorze</div>
+        <div class="lcard-specs">
+          <div class="lcard-spec"><i class="ti ti-ruler-2"></i>145 m²</div>
+          <div class="lcard-spec"><i class="ti ti-door"></i>4 pokoje</div>
+          <div class="lcard-spec"><i class="ti ti-building"></i>Ostatnie piętro</div>
+        </div>
+        <div class="lcard-price">3 400 000 zł</div>
+        <div class="lcard-cta">Zobacz szczegóły <i class="ti ti-arrow-right"></i></div>
+      </div>
+    </div>
+
+    <!-- OFERTA 6 — placeholder -->
+    <div class="lcard" onclick="openListing(6)">
+      <div class="lcard-img"><span>Zdjęcie oferty — zastąp div tagiem img</span></div>
+      <div class="lcard-body">
+        <span class="lcard-status">Na sprzedaż</span>
+        <div class="lcard-title">Kamienica pod inwestycję</div>
+        <div class="lcard-loc">Gdańsk · Wrzeszcz</div>
+        <div class="lcard-specs">
+          <div class="lcard-spec"><i class="ti ti-ruler-2"></i>520 m²</div>
+          <div class="lcard-spec"><i class="ti ti-door"></i>8 lokali</div>
+          <div class="lcard-spec"><i class="ti ti-building"></i>3 piętra</div>
+        </div>
+        <div class="lcard-price">4 750 000 zł</div>
+        <div class="lcard-cta">Zobacz szczegóły <i class="ti ti-arrow-right"></i></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="ft">© 2025 Dargacz Nieruchomości Premium</div>
+  <div class="ft">@dargacz_nieruchomosci_premium</div>
+</footer>
+
+<div class="bbar">
+  <a href="tel:+48000000000" class="bb"><i class="ti ti-phone"></i>Zadzwoń</a>
+  <a href="https://wa.me/48000000000" class="bb" target="_blank"><i class="ti ti-brand-whatsapp"></i>WhatsApp</a>
+  <a href="https://instagram.com/dargacz_nieruchomosci_premium" class="bb" target="_blank"><i class="ti ti-brand-instagram"></i>Instagram</a>
+</div>
+
+<!-- MODAL 1 — realna oferta -->
+<div class="modal-overlay" id="modal-1">
+  <div class="modal-box">
+    <div class="modal-top"><button class="modal-close" onclick="closeListing()">✕</button></div>
+    <div class="modal-img"><img src="images/oferta-kamienica-gdansk/09-ogrod-zimowy.jpg" alt="Apartament w kamienicy — ogród zimowy"></div>
+    <div class="modal-content">
+      <span class="modal-status">Na sprzedaż</span>
+      <div class="modal-title">Apartament w Kamienicy z Ogrodem Zimowym</div>
+      <div class="modal-loc">Gdańsk · Śródmieście</div>
+      <div class="modal-price">2 450 000 zł</div>
+      <div class="modal-specs">
+        <div><div class="modal-spec-lbl">Powierzchnia</div><div class="modal-spec-val">118 m²</div></div>
+        <div><div class="modal-spec-lbl">Pokoje</div><div class="modal-spec-val">4</div></div>
+        <div><div class="modal-spec-lbl">Piętro</div><div class="modal-spec-val">II / IV</div></div>
+        <div><div class="modal-spec-lbl">Rok budowy</div><div class="modal-spec-val">ok. 1900, po rewitalizacji</div></div>
+      </div>
+      <div class="modal-desc">
+        Elegancki apartament w pełni odrestaurowanej przedwojennej kamienicy w sercu Śródmieścia. Wysokie sztukaterie, oryginalne zdobienia i dębowa podłoga w jodełkę harmonijnie łączą się z nowoczesnym, stonowanym wykończeniem. Przestronny hol prowadzi do salonu, dwóch sypialni oraz unikatowego ogrodu zimowego z oknami od podłogi do sufitu i widokiem na zielone, kameralne podwórze. Idealna propozycja dla osób szukających klimatu i charakteru w centrum miasta.
+      </div>
+      <div class="modal-gallery-lbl">Galeria zdjęć</div>
+      <div class="modal-gallery">
+        <img src="images/oferta-kamienica-gdansk/01-hol.jpg" alt="Hol wejściowy">
+        <img src="images/oferta-kamienica-gdansk/02-salon.jpg" alt="Salon">
+        <img src="images/oferta-kamienica-gdansk/03-sypialnia.jpg" alt="Sypialnia">
+        <img src="images/oferta-kamienica-gdansk/04-sypialnia-2.jpg" alt="Druga sypialnia">
+        <img src="images/oferta-kamienica-gdansk/05-hol-2.jpg" alt="Hol">
+        <img src="images/oferta-kamienica-gdansk/06-drzwi.jpg" alt="Drzwi przeszklone">
+        <img src="images/oferta-kamienica-gdansk/07-taras-wejscie.jpg" alt="Wyjście na taras">
+        <img src="images/oferta-kamienica-gdansk/08-ogrod-zimowy-widok.jpg" alt="Widok na ogród zimowy">
+        <img src="images/oferta-kamienica-gdansk/10-ogrod-zimowy-2.jpg" alt="Ogród zimowy">
+      </div>
+      <a href="kontakt.html" class="btn-white" style="margin-top:20px"><i class="ti ti-send"></i>Zapytaj o tę nieruchomość</a>
+    </div>
+  </div>
+</div>
+
+<!-- MODALE 2–6 — placeholdery -->
+<div class="modal-overlay" id="modal-2">
+  <div class="modal-box">
+    <div class="modal-top"><button class="modal-close" onclick="closeListing()">✕</button></div>
+    <div class="modal-img"><span>Zdjęcie oferty — zastąp div tagiem img</span></div>
+    <div class="modal-content">
+      <span class="modal-status">Na sprzedaż</span>
+      <div class="modal-title">Willa z widokiem na morze</div>
+      <div class="modal-loc">Sopot · Górny Sopot</div>
+      <div class="modal-price">6 900 000 zł</div>
+      <div class="modal-specs">
+        <div><div class="modal-spec-lbl">Powierzchnia</div><div class="modal-spec-val">340 m²</div></div>
+        <div><div class="modal-spec-lbl">Pokoje</div><div class="modal-spec-val">6</div></div>
+        <div><div class="modal-spec-lbl">Działka</div><div class="modal-spec-val">850 m²</div></div>
+        <div><div class="modal-spec-lbl">Garaż</div><div class="modal-spec-val">2 stanowiska</div></div>
+      </div>
+      <div class="modal-desc">Opis oferty — uzupełnij szczegółowym opisem nieruchomości, atutami lokalizacji i standardem wykończenia.</div>
+      <a href="kontakt.html" class="btn-white" style="margin-top:20px"><i class="ti ti-send"></i>Zapytaj o tę nieruchomość</a>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-3">
+  <div class="modal-box">
+    <div class="modal-top"><button class="modal-close" onclick="closeListing()">✕</button></div>
+    <div class="modal-img"><span>Zdjęcie oferty — zastąp div tagiem img</span></div>
+    <div class="modal-content">
+      <span class="modal-status">Na sprzedaż</span>
+      <div class="modal-title">Apartament z tarasem</div>
+      <div class="modal-loc">Gdynia · Kamienna Góra</div>
+      <div class="modal-price">1 850 000 zł</div>
+      <div class="modal-specs">
+        <div><div class="modal-spec-lbl">Powierzchnia</div><div class="modal-spec-val">96 m²</div></div>
+        <div><div class="modal-spec-lbl">Pokoje</div><div class="modal-spec-val">3</div></div>
+        <div><div class="modal-spec-lbl">Piętro</div><div class="modal-spec-val">IV / IV</div></div>
+        <div><div class="modal-spec-lbl">Taras</div><div class="modal-spec-val">28 m²</div></div>
+      </div>
+      <div class="modal-desc">Opis oferty — uzupełnij szczegółowym opisem nieruchomości, atutami lokalizacji i standardem wykończenia.</div>
+      <a href="kontakt.html" class="btn-white" style="margin-top:20px"><i class="ti ti-send"></i>Zapytaj o tę nieruchomość</a>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-4">
+  <div class="modal-box">
+    <div class="modal-top"><button class="modal-close" onclick="closeListing()">✕</button></div>
+    <div class="modal-img"><span>Zdjęcie oferty — zastąp div tagiem img</span></div>
+    <div class="modal-content">
+      <span class="modal-status">Na sprzedaż</span>
+      <div class="modal-title">Dom jednorodzinny w zieleni</div>
+      <div class="modal-loc">Pomorskie · okolice Trójmiasta</div>
+      <div class="modal-price">2 100 000 zł</div>
+      <div class="modal-specs">
+        <div><div class="modal-spec-lbl">Powierzchnia</div><div class="modal-spec-val">210 m²</div></div>
+        <div><div class="modal-spec-lbl">Pokoje</div><div class="modal-spec-val">5</div></div>
+        <div><div class="modal-spec-lbl">Działka</div><div class="modal-spec-val">1200 m²</div></div>
+        <div><div class="modal-spec-lbl">Garaż</div><div class="modal-spec-val">1 stanowisko</div></div>
+      </div>
+      <div class="modal-desc">Opis oferty — uzupełnij szczegółowym opisem nieruchomości, atutami lokalizacji i standardem wykończenia.</div>
+      <a href="kontakt.html" class="btn-white" style="margin-top:20px"><i class="ti ti-send"></i>Zapytaj o tę nieruchomość</a>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-5">
+  <div class="modal-box">
+    <div class="modal-top"><button class="modal-close" onclick="closeListing()">✕</button></div>
+    <div class="modal-img"><span>Zdjęcie oferty — zastąp div tagiem img</span></div>
+    <div class="modal-content">
+      <span class="modal-status">Na sprzedaż</span>
+      <div class="modal-title">Penthouse z widokiem na zatokę</div>
+      <div class="modal-loc">Gdańsk · Przymorze</div>
+      <div class="modal-price">3 400 000 zł</div>
+      <div class="modal-specs">
+        <div><div class="modal-spec-lbl">Powierzchnia</div><div class="modal-spec-val">145 m²</div></div>
+        <div><div class="modal-spec-lbl">Pokoje</div><div class="modal-spec-val">4</div></div>
+        <div><div class="modal-spec-lbl">Piętro</div><div class="modal-spec-val">Ostatnie</div></div>
+        <div><div class="modal-spec-lbl">Taras</div><div class="modal-spec-val">40 m²</div></div>
+      </div>
+      <div class="modal-desc">Opis oferty — uzupełnij szczegółowym opisem nieruchomości, atutami lokalizacji i standardem wykończenia.</div>
+      <a href="kontakt.html" class="btn-white" style="margin-top:20px"><i class="ti ti-send"></i>Zapytaj o tę nieruchomość</a>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-6">
+  <div class="modal-box">
+    <div class="modal-top"><button class="modal-close" onclick="closeListing()">✕</button></div>
+    <div class="modal-img"><span>Zdjęcie oferty — zastąp div tagiem img</span></div>
+    <div class="modal-content">
+      <span class="modal-status">Na sprzedaż</span>
+      <div class="modal-title">Kamienica pod inwestycję</div>
+      <div class="modal-loc">Gdańsk · Wrzeszcz</div>
+      <div class="modal-price">4 750 000 zł</div>
+      <div class="modal-specs">
+        <div><div class="modal-spec-lbl">Powierzchnia</div><div class="modal-spec-val">520 m²</div></div>
+        <div><div class="modal-spec-lbl">Lokale</div><div class="modal-spec-val">8</div></div>
+        <div><div class="modal-spec-lbl">Piętra</div><div class="modal-spec-val">3</div></div>
+        <div><div class="modal-spec-lbl">Stan</div><div class="modal-spec-val">Do remontu</div></div>
+      </div>
+      <div class="modal-desc">Opis oferty — uzupełnij szczegółowym opisem nieruchomości, atutami lokalizacji i standardem wykończenia.</div>
+      <a href="kontakt.html" class="btn-white" style="margin-top:20px"><i class="ti ti-send"></i>Zapytaj o tę nieruchomość</a>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
