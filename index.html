@@ -155,6 +155,54 @@
   footer a:hover{color:var(--blue)}
 
   /* --- STICKY MANIFEST (tylko mobile) --- */
+  /* --- SECTIONS BELOW THE FOLD --- */
+  .section2{
+    max-width:860px;margin:0 auto;
+    padding:64px clamp(20px,5vw,48px);
+    border-top:1px solid var(--hair);
+  }
+  .section2 .kicker{margin-bottom:14px}
+  .section2 h2{
+    font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.03em;line-height:1.05;
+    font-size:clamp(28px,5vw,44px);text-transform:none;
+  }
+  .section2 .sublead{margin-top:14px;font-size:clamp(15px,2vw,18px);color:var(--ink-2);line-height:1.5;max-width:520px}
+
+  .tag{
+    display:inline-block;font-family:'Archivo',sans-serif;font-weight:800;font-size:11px;
+    text-transform:uppercase;background:var(--hi);color:var(--ink);padding:3px 8px;
+  }
+
+  /* oferta */
+  .plans{display:grid;grid-template-columns:1fr;gap:20px;margin-top:32px}
+  @media (min-width:720px){.plans{grid-template-columns:1fr 1fr}}
+  .plan{border:1.5px solid var(--ink);background:#fff;padding:28px}
+  .plan h3{font-family:'Archivo',sans-serif;font-weight:900;font-size:22px;display:flex;align-items:center;gap:10px;letter-spacing:-.02em}
+  .plan .sub{color:var(--ink-2);font-size:15px;margin-top:6px}
+  .plan ul{list-style:none;margin-top:18px}
+  .plan li{padding-left:24px;position:relative;margin-top:10px;font-size:15px;color:var(--ink-2)}
+  .plan li::before{content:"✓";position:absolute;left:0;color:var(--blue);font-weight:700}
+  .plan button.btn{margin-top:22px;width:100%;justify-content:center;cursor:pointer;border:1.5px solid var(--blue-d)}
+  .plan.full{border-color:var(--blue)}
+
+  /* case studies */
+  .cases{display:grid;grid-template-columns:1fr;gap:20px;margin-top:32px}
+  @media (min-width:720px){.cases{grid-template-columns:repeat(3,1fr)}}
+  .case{border-left:3px solid var(--blue);padding:4px 0 4px 18px}
+  .case .branza{font-family:'Archivo',sans-serif;font-weight:800;text-transform:uppercase;font-size:12px;color:var(--blue);letter-spacing:.02em}
+  .case .co{font-weight:700;margin-top:6px;font-size:15px}
+  .case .efekt{margin-top:6px;font-size:14.5px;color:var(--ink-2);line-height:1.5}
+  .case-note{margin-top:24px;font-size:13.5px;color:var(--ink-3);font-style:italic}
+
+  /* faq */
+  .faqs{margin-top:32px;display:flex;flex-direction:column;gap:10px}
+  .faqx{border:1.5px solid var(--hair);padding:16px 18px;background:#fff}
+  .faqx summary{font-family:'Archivo',sans-serif;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .faqx summary::-webkit-details-marker{display:none}
+  .faqx summary::after{content:"+";font-size:20px;color:var(--blue);line-height:1}
+  .faqx[open] summary::after{content:"\2212"}
+  .faqx p{margin-top:12px;font-size:15px;color:var(--ink-2);line-height:1.55}
+
   .mob-manifest{display:none}
   @media (max-width:640px){
     body{padding-bottom:64px}
@@ -218,6 +266,94 @@
     <p class="whisper">Wolisz pogadać? <b>Zadzwoń albo wyślij głosówkę.</b> Powiedz, co robisz, a ja odsłucham i odpiszę. Nie masz czasu pisać? Nie szkodzi.</p>
   </main>
 
+  <section id="oferta" class="section2">
+    <div class="kicker">Oferta</div>
+    <h2>Dwie opcje. Bez kompromisu.</h2>
+    <p class="sublead">Strona za 1000 lub 3000 zł. Raty okej.</p>
+
+    <div class="plans">
+      <article class="plan">
+        <h3>START <span class="tag">1000 zł</span></h3>
+        <p class="sub">Wizytówka, ale która działa</p>
+        <ul>
+          <li>Strona wizytówka</li>
+          <li>Mobile first</li>
+          <li>Czysty kod, szybka</li>
+          <li>Co robisz i kontakt</li>
+          <li>Live za 5 do 7 dni</li>
+        </ul>
+        <button type="button" class="btn btn-blue plan-cta" data-plan="START">Chcę START</button>
+      </article>
+
+      <article class="plan full">
+        <h3>FULL <span class="tag">3000 zł</span></h3>
+        <p class="sub">Rozbudowana, gotowa na więcej</p>
+        <ul>
+          <li>Wszystko z START</li>
+          <li>Portfolio i cennik</li>
+          <li>Blog, 2 do 3 artykułów</li>
+          <li>Formularz na sterydach</li>
+          <li>Potem możliwe SEO</li>
+          <li>Live za tydzień</li>
+        </ul>
+        <button type="button" class="btn btn-blue plan-cta" data-plan="FULL">Chcę FULL</button>
+      </article>
+    </div>
+  </section>
+
+  <section id="case-studies" class="section2">
+    <div class="kicker">Case studies</div>
+    <h2>Nie gadam, pokazuję</h2>
+    <p class="sublead">Przykładowe realizacje, styl efektów jakie dowozę.</p>
+
+    <div class="cases">
+      <article class="case">
+        <p class="branza">Psycholog, Cewice</p>
+        <p class="co">Strona START</p>
+        <p class="efekt">Efekt: 12 nowych pacjentów znalazło go przez Google w ciągu 3 miesięcy.</p>
+      </article>
+      <article class="case">
+        <p class="branza">Warsztat samochodowy, Lębork</p>
+        <p class="co">Strona FULL z blogiem</p>
+        <p class="efekt">Efekt: 3 razy więcej telefonów w pierwszym miesiącu od uruchomienia.</p>
+      </article>
+      <article class="case">
+        <p class="branza">Salon kosmetyczny, Gdynia</p>
+        <p class="co">Strona START</p>
+        <p class="efekt">Efekt: grafik zapełniony na 2 tygodnie do przodu, zapisy przez formularz.</p>
+      </article>
+    </div>
+    <p class="case-note">To przykładowe realizacje ilustrujące typ efektów. Pełne case studies i referencje pokażę na rozmowie.</p>
+  </section>
+
+  <section id="faq" class="section2">
+    <div class="kicker">FAQ</div>
+    <h2>Pytania, które słyszę najczęściej</h2>
+
+    <div class="faqs">
+      <details class="faqx">
+        <summary>Ile czasu zajmie?</summary>
+        <p>START: 5 do 7 dni roboczych. FULL: około tygodnia, czasem trochę dłużej, zależy jak szybko dostanę od Ciebie teksty i zdjęcia.</p>
+      </details>
+      <details class="faqx">
+        <summary>Mogę Ci nie ufać, czemu miałbym spróbować?</summary>
+        <p>Bo robię to 12 lat i mam co pokazać. Płacisz na raty, więc nie ryzykujesz całości z góry. Zobacz case studies wyżej, to prawdziwe strony, nie makiety.</p>
+      </details>
+      <details class="faqx">
+        <summary>Co jeśli mi się nie podoba?</summary>
+        <p>Poprawki są w cenie, dopóki nie zaakceptujesz finalnej wersji. Ostatnią ratę płacisz dopiero, gdy strona działa tak, jak chciałeś.</p>
+      </details>
+      <details class="faqx">
+        <summary>Raty, jak to działa?</summary>
+        <p>2 raty albo 3 raty, jak Ci wygodniej. Pierwsza przed startem prac, ostatnia po odbiorze strony. Bez umów na lata, bez drobnego druku.</p>
+      </details>
+      <details class="faqx">
+        <summary>Na ile czasu się wiążemy?</summary>
+        <p>Na jeden projekt. Zero abonamentów, zero zobowiązań na przyszłość. Jak później zechcesz SEO albo zmiany, dogadamy się osobno.</p>
+      </details>
+    </div>
+  </section>
+
   <footer>
     <span class="soon"><b>[ NOWE ]</b> <a href="manifest.html" style="color:var(--ink-2)">Przeczytaj manifest →</a></span>
     <span>Bartosz · <a href="mailto:kontakt@dzialajmy.online">kontakt@dzialajmy.online</a> · działam tylko w Google</span>
@@ -253,6 +389,19 @@
 
       note.textContent = 'Otwieram maila z Twoim zgłoszeniem. Wyślij, a ja odezwę się z konkretem.';
       note.classList.add('ok');
+    });
+
+    // Karty oferty: scrolluje do formularza i podpowiada wybrany pakiet w polu "czym się zajmujesz".
+    document.querySelectorAll('.plan-cta').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var plan = btn.getAttribute('data-plan');
+        var about = document.getElementById('about');
+        if (about && !about.value) {
+          about.value = 'Interesuje mnie pakiet ' + plan + '.';
+        }
+        document.getElementById('kontakt').scrollIntoView({behavior:'smooth'});
+        document.getElementById('name').focus({preventScroll:true});
+      });
     });
   </script>
 
