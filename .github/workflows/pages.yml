@@ -2,7 +2,7 @@ name: Deploy działajmy.online to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [claude/install-claude-seo-plugin-jnn8w7] # repo's default branch — there is no "main" here
   workflow_dispatch:
 
 permissions:
