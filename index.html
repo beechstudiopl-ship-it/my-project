@@ -69,7 +69,7 @@
   /* --- CENTER --- */
   main{
     flex:1;display:flex;flex-direction:column;justify-content:center;
-    padding:32px clamp(20px,5vw,48px);max-width:860px;width:100%;margin:0 auto;
+    padding:32px clamp(20px,5vw,48px);max-width:960px;width:100%;margin:0 auto;
   }
   .kicker{
     font-family:'Archivo',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;
@@ -125,16 +125,49 @@
   }
   .field input::placeholder{color:var(--ink-3)}
   .field input:focus{outline:0;box-shadow:0 0 0 3px var(--hi)}
+  .field textarea{
+    width:100%;font-family:'Source Sans 3',sans-serif;font-size:16px;color:var(--ink);
+    background:#fff;border:1.5px solid var(--ink);padding:13px 14px;resize:vertical;
+  }
+  .field textarea::placeholder{color:var(--ink-3)}
+  .field textarea:focus{outline:0;box-shadow:0 0 0 3px var(--hi)}
   .hp-field{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
-  .lead-form button{
+  .hint{margin-top:8px;font-size:13px;color:var(--ink-3)}
+
+  .example-banner{
+    background:var(--hi);padding:10px 14px;font-size:13.5px;font-weight:600;
+    display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;
+    margin-bottom:10px;
+  }
+  .example-actions{display:flex;gap:12px}
+  .link-btn{background:none;border:none;padding:0;font:inherit;font-weight:700;text-decoration:underline;color:var(--ink);cursor:pointer}
+  .example-fill{
+    display:block;margin-top:8px;background:none;border:none;padding:0;
+    font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;color:var(--blue);cursor:pointer;
+  }
+
+  .file-previews{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+  .file-previews img{width:56px;height:56px;object-fit:cover;border:1.5px solid var(--ink)}
+
+  .pick-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:10px}
+  @media (min-width:560px){.pick-grid{grid-template-columns:1fr 1fr}}
+  .pick-card{
+    position:relative;display:flex;flex-direction:column;gap:4px;
+    border:1.5px solid var(--ink);background:#fff;padding:16px 18px;cursor:pointer;
+  }
+  .pick-card input{position:absolute;opacity:0;pointer-events:none}
+  .pick-title{font-family:'Archivo',sans-serif;font-weight:800;display:flex;align-items:center;gap:8px}
+  .pick-sub{font-size:13.5px;color:var(--ink-2)}
+  .pick-card.is-selected{border-color:var(--blue);box-shadow:3px 3px 0 var(--blue)}
+  .lead-form > button{
     width:100%;margin-top:18px;cursor:pointer;
     display:flex;align-items:center;justify-content:center;gap:12px;
     background:var(--blue);color:#fff;border:1.5px solid var(--blue-d);
     font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.02em;
     font-size:clamp(16px,2.2vw,18px);padding:16px 24px;transition:opacity .12s ease;
   }
-  .lead-form button:hover{opacity:.9}
-  .lead-form button .arw{font-size:20px}
+  .lead-form > button:hover{opacity:.9}
+  .lead-form > button .arw{font-size:20px}
   .form-note{margin-top:12px;font-size:13.5px;color:var(--ink-3);text-align:center;line-height:1.45}
   .form-note.ok{color:var(--blue);font-weight:700}
 
@@ -157,7 +190,7 @@
   /* --- STICKY MANIFEST (tylko mobile) --- */
   /* --- SECTIONS BELOW THE FOLD --- */
   .section2{
-    max-width:860px;margin:0 auto;
+    max-width:960px;margin:0 auto;
     padding:64px clamp(20px,5vw,48px);
     border-top:1px solid var(--hair);
   }
@@ -185,15 +218,6 @@
   .plan button.btn{margin-top:22px;width:100%;justify-content:center;cursor:pointer;border:1.5px solid var(--blue-d)}
   .plan.full{border-color:var(--blue)}
 
-  /* case studies */
-  .cases{display:grid;grid-template-columns:1fr;gap:20px;margin-top:32px}
-  @media (min-width:720px){.cases{grid-template-columns:repeat(3,1fr)}}
-  .case{border-left:3px solid var(--blue);padding:4px 0 4px 18px}
-  .case .branza{font-family:'Archivo',sans-serif;font-weight:800;text-transform:uppercase;font-size:12px;color:var(--blue);letter-spacing:.02em}
-  .case .co{font-weight:700;margin-top:6px;font-size:15px}
-  .case .efekt{margin-top:6px;font-size:14.5px;color:var(--ink-2);line-height:1.5}
-  .case-note{margin-top:24px;font-size:13.5px;color:var(--ink-3);font-style:italic}
-
   /* faq */
   .faqs{margin-top:32px;display:flex;flex-direction:column;gap:10px}
   .faqx{border:1.5px solid var(--hair);padding:16px 18px;background:#fff}
@@ -202,6 +226,41 @@
   .faqx summary::after{content:"+";font-size:20px;color:var(--blue);line-height:1}
   .faqx[open] summary::after{content:"\2212"}
   .faqx p{margin-top:12px;font-size:15px;color:var(--ink-2);line-height:1.55}
+
+  /* znasz to uczucie (dark, under hero) */
+  .section-dark{background:var(--ink);border-top:1px solid var(--hair)}
+  .sd-inner{max-width:960px;margin:0 auto;padding:64px clamp(20px,5vw,48px)}
+  .sd-inner h2{color:var(--paper)}
+  .sd-inner .sublead{color:#C6CCD4}
+
+  .problems{display:grid;grid-template-columns:1fr;gap:20px;margin-top:32px}
+  @media (min-width:720px){.problems{grid-template-columns:repeat(3,1fr)}}
+  .problem{border:1px solid rgba(244,242,236,.18);padding:24px}
+  .pnum{font-family:'Archivo',sans-serif;font-weight:900;font-size:28px;color:var(--blue);margin-bottom:6px}
+  .problem h3{font-family:'Archivo',sans-serif;font-weight:800;text-transform:uppercase;font-size:16px;letter-spacing:.02em;color:var(--paper);margin:0 0 10px}
+  .problem p{font-size:14.5px;color:#C6CCD4;line-height:1.5;margin:0}
+  .problem .punch{margin-top:14px;color:var(--paper);font-weight:700}
+  .problem .punch::before{content:"> ";color:var(--blue);font-weight:900}
+
+  /* jak to działa (steps) */
+  .steps{display:grid;grid-template-columns:1fr;gap:20px;margin-top:32px}
+  @media (min-width:720px){.steps{grid-template-columns:repeat(3,1fr)}}
+  .step{position:relative;border:1.5px solid var(--ink);background:#fff;padding:26px}
+  .step-n{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--ink);color:var(--paper);font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;margin-bottom:14px}
+  .step h3{font-family:'Archivo',sans-serif;font-weight:800;text-transform:uppercase;font-size:16px;letter-spacing:.02em;margin:0 0 10px}
+  .step p{font-size:14.5px;color:var(--ink-2);line-height:1.5;margin:0}
+  .step.done{background:var(--ink);border-color:var(--ink)}
+  .step.done h3{color:var(--paper)}
+  .step.done p{color:#C6CCD4}
+  .step.done .step-n{background:var(--blue)}
+  @media (min-width:720px){
+    .step:not(:last-child)::after{
+      content:"\2192";position:absolute;top:50%;right:-22px;transform:translateY(-50%);
+      font-size:20px;color:var(--ink-3);z-index:1;
+    }
+  }
+  .steps-cta{margin-top:32px}
+  .steps-cta .form-note{text-align:left}
 
   .mob-manifest{display:none}
   @media (max-width:640px){
@@ -246,6 +305,63 @@
     </div>
   </main>
 
+  <section id="znasz-to-uczucie" class="section-dark">
+    <div class="sd-inner">
+      <div class="kicker">Zanim zaczniesz</div>
+      <h2>Znasz to uczucie?</h2>
+      <p class="sublead">Chcesz stronę, która działa. Rzeczywistość zwykle wygląda tak.</p>
+
+      <div class="problems">
+        <article class="problem">
+          <p class="pnum">01.</p>
+          <h3>Za drogo</h3>
+          <p>Agencja: często kilka tysięcy złotych i miesiąc czekania. Freelancer: taniej, ale rzadko poniżej paru tysięcy.</p>
+          <p class="punch">Ty chcesz zacząć teraz, bez przepłacania za wizytówkę.</p>
+        </article>
+        <article class="problem">
+          <p class="pnum">02.</p>
+          <h3>Za długo</h3>
+          <p>Zlecasz i czekasz. Tydzień, dwa. Poprawki się ciągną, terminy się przesuwają.</p>
+          <p class="punch">A potrzebujesz strony teraz, nie za miesiąc.</p>
+        </article>
+        <article class="problem">
+          <p class="pnum">03.</p>
+          <h3>Za trudno</h3>
+          <p>Generator: wybierasz szablon, wpisujesz dane i utykasz na drugiej karcie. To „dokończę jutro” zwykle nie przychodzi.</p>
+          <p class="punch">Prowadzisz biznes, nie masz czasu na kreator.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="jak-to-dziala" class="section2">
+    <div class="kicker">Proces</div>
+    <h2>Jak to działa: 3 kroki</h2>
+
+    <div class="steps">
+      <article class="step">
+        <span class="step-n">1</span>
+        <h3>Opisz</h3>
+        <p>Wpisz czym się zajmujesz. Jedno zdanie wystarczy, resztę ogarniam ja.</p>
+      </article>
+      <article class="step">
+        <span class="step-n">2</span>
+        <h3>Ja dobieram styl</h3>
+        <p>Research, styl, typografia, kolory, układ. Dopasowuję je do Twojej branży, Ty nie musisz zgadywać.</p>
+      </article>
+      <article class="step done">
+        <span class="step-n">✓</span>
+        <h3>Gotowe</h3>
+        <p>Dostajesz link do podglądu na maila. 2 do 3 serii poprawek i strona jest live.</p>
+      </article>
+    </div>
+
+    <div class="steps-cta">
+      <a href="#kontakt" class="btn btn-blue">Opisz swój biznes<span class="arw">→</span></a>
+      <p class="form-note">Bez zobowiązań na etapie researchu. Ostatnią ratę płacisz, gdy strona działa tak, jak chciałeś.</p>
+    </div>
+  </section>
+
   <section id="oferta" class="section2">
     <div class="kicker">Oferta</div>
     <h2>Dwie opcje. Bez kompromisu.</h2>
@@ -281,31 +397,6 @@
     </div>
   </section>
 
-  <section id="case-studies" class="section2">
-    <div class="kicker">Case studies</div>
-    <h2>Nie gadam, pokazuję</h2>
-    <p class="sublead">Przykładowe realizacje, styl efektów jakie dowozę.</p>
-
-    <div class="cases">
-      <article class="case">
-        <p class="branza">Psycholog, Cewice</p>
-        <p class="co">Strona START</p>
-        <p class="efekt">Efekt: 12 nowych pacjentów znalazło go przez Google w ciągu 3 miesięcy.</p>
-      </article>
-      <article class="case">
-        <p class="branza">Warsztat samochodowy, Lębork</p>
-        <p class="co">Strona FULL z blogiem</p>
-        <p class="efekt">Efekt: 3 razy więcej telefonów w pierwszym miesiącu od uruchomienia.</p>
-      </article>
-      <article class="case">
-        <p class="branza">Salon kosmetyczny, Gdynia</p>
-        <p class="co">Strona START</p>
-        <p class="efekt">Efekt: grafik zapełniony na 2 tygodnie do przodu, zapisy przez formularz.</p>
-      </article>
-    </div>
-    <p class="case-note">To przykładowe realizacje ilustrujące typ efektów. Pełne case studies i referencje pokażę na rozmowie.</p>
-  </section>
-
   <section id="faq" class="section2">
     <div class="kicker">FAQ</div>
     <h2>Pytania, które słyszę najczęściej</h2>
@@ -317,7 +408,7 @@
       </details>
       <details class="faqx">
         <summary>Mogę Ci nie ufać, czemu miałbym spróbować?</summary>
-        <p>Bo robię to 12 lat i mam co pokazać. Płacisz na raty, więc nie ryzykujesz całości z góry. Zobacz case studies wyżej, to prawdziwe strony, nie makiety.</p>
+        <p>Bo robię to 12 lat i mam co pokazać. Płacisz na raty, więc nie ryzykujesz całości z góry.</p>
       </details>
       <details class="faqx">
         <summary>Co jeśli mi się nie podoba?</summary>
@@ -336,10 +427,46 @@
 
   <section id="kontakt" class="section2">
     <div class="kicker">Kontakt</div>
-    <h2>Napisz, działamy.</h2>
-    <p class="sublead">Zostaw namiary, odezwę się z konkretem.</p>
+    <h2>Opisz swój biznes</h2>
+    <p class="sublead">Opowiedz mi czym się zajmujesz, wybierz pakiet, resztę ogarniam.</p>
 
     <form class="lead-form" id="lead-form">
+      <div class="field">
+        <label for="about">Czym zajmuje się Twój biznes?</label>
+        <div class="example-banner" id="example-banner" hidden>
+          To tylko przykład, wstaw swoje dane.
+          <span class="example-actions">
+            <button type="button" class="link-btn" id="example-inny">Inny</button>
+            <button type="button" class="link-btn" id="example-wyczysc">Wyczyść</button>
+          </span>
+        </div>
+        <textarea id="about" name="czym" rows="4" placeholder="Np. Jestem trenerem personalnym w Krakowie. Pomagam wrócić do formy bez katowania się na siłowni..."></textarea>
+        <button type="button" class="example-fill" id="example-fill">+ Przykładowy opis</button>
+      </div>
+
+      <div class="field">
+        <label for="zdjecia">Zdjęcia albo logo, jeśli masz</label>
+        <input type="file" id="zdjecia" name="zdjecia" accept="image/*" multiple>
+        <p class="hint">To tylko podgląd dla Ciebie. Pliki dośle sam w odpowiedzi na maila z potwierdzeniem.</p>
+        <div class="file-previews" id="file-previews"></div>
+      </div>
+
+      <div class="field">
+        <label>Wybierz pakiet</label>
+        <div class="pick-grid">
+          <label class="pick-card" data-pick="START">
+            <input type="radio" name="pakiet" value="START">
+            <span class="pick-title">START <span class="tag">1000 zł</span></span>
+            <span class="pick-sub">Wizytówka, ale która działa</span>
+          </label>
+          <label class="pick-card" data-pick="FULL">
+            <input type="radio" name="pakiet" value="FULL">
+            <span class="pick-title">FULL <span class="tag">3000 zł</span></span>
+            <span class="pick-sub">Rozbudowana, gotowa na więcej</span>
+          </label>
+        </div>
+      </div>
+
       <div class="row2">
         <div class="field">
           <label for="name">Imię</label>
@@ -350,14 +477,12 @@
           <input id="contact" name="kontakt" type="text" placeholder="Gdzie mam się odezwać?" required>
         </div>
       </div>
-      <div class="field">
-        <label for="about">Czym się zajmujesz?</label>
-        <input id="about" name="czym" type="text" placeholder="Dwa słowa wystarczą, np. hydraulik, kwiaciarnia, kancelaria">
-      </div>
+
       <div class="field hp-field" aria-hidden="true">
         <label for="firma">Firma</label>
         <input id="firma" name="firma" type="text" tabindex="-1" autocomplete="off">
       </div>
+
       <button type="submit"><span>Działajmy, Panie Bartoszu!</span><span class="arw">→</span></button>
       <p class="form-note" id="fnote">Odezwę się z konkretem. Zero ściemy, zero sprzedaży na siłę.</p>
     </form>
@@ -376,9 +501,64 @@
   </a>
 
   <script>
-    // Wysyłka przez mailto: prosto na skrzynkę, bez rejestracji w zewnętrznym serwisie.
     // PODMIEŃ LEAD_EMAIL na swój realny adres, jeśli inny niż kontakt@dzialajmy.online.
     var LEAD_EMAIL = 'kontakt@dzialajmy.online';
+
+    var EXAMPLES = [
+      'Jestem trenerem personalnym w Krakowie. Pomagam zabieganym 30- i 40-latkom wrócić do formy bez katowania się na siłowni. Trening 1:1, pakiet 10 wejść, plan dietetyczny. Stacjonarnie i online.',
+      'Prowadzę mały warsztat samochodowy w Lęborku. Naprawy bieżące, wymiana opon, diagnostyka komputerowa. Pracuję sam, klienci głównie z polecenia.',
+      'Mam salon kosmetyczny w Gdyni, manicure, pedicure, zabiegi na twarz. Teraz zapisy tylko przez telefon i Instagram, gubię się w wiadomościach.'
+    ];
+    var exampleIndex = 0;
+    var aboutEl = document.getElementById('about');
+    var exampleBanner = document.getElementById('example-banner');
+
+    function fillExample(){
+      if (!aboutEl) return;
+      aboutEl.value = EXAMPLES[exampleIndex % EXAMPLES.length];
+      exampleIndex++;
+      if (exampleBanner) exampleBanner.hidden = false;
+    }
+    var exampleFillBtn = document.getElementById('example-fill');
+    var exampleInnyBtn = document.getElementById('example-inny');
+    var exampleWyczyscBtn = document.getElementById('example-wyczysc');
+    if (exampleFillBtn) exampleFillBtn.addEventListener('click', fillExample);
+    if (exampleInnyBtn) exampleInnyBtn.addEventListener('click', fillExample);
+    if (exampleWyczyscBtn) exampleWyczyscBtn.addEventListener('click', function(){
+      if (aboutEl) aboutEl.value = '';
+      if (exampleBanner) exampleBanner.hidden = true;
+    });
+    if (aboutEl) aboutEl.addEventListener('input', function(){
+      if (exampleBanner && !exampleBanner.hidden) exampleBanner.hidden = true;
+    });
+
+    // Podgląd zdjęć/logo, wyłącznie po stronie przeglądarki, pliki nie są nigdzie wysyłane tędy.
+    var zdjeciaInput = document.getElementById('zdjecia');
+    var filePreviews = document.getElementById('file-previews');
+    if (zdjeciaInput && filePreviews) {
+      zdjeciaInput.addEventListener('change', function(){
+        filePreviews.innerHTML = '';
+        Array.prototype.forEach.call(zdjeciaInput.files, function(file){
+          var img = document.createElement('img');
+          img.src = URL.createObjectURL(file);
+          img.alt = file.name;
+          filePreviews.appendChild(img);
+        });
+      });
+    }
+
+    // Karty pakietu: podświetlenie wybranej.
+    var pickCards = document.querySelectorAll('.pick-card');
+    function refreshPickCards(){
+      pickCards.forEach(function(card){
+        var input = card.querySelector('input[type="radio"]');
+        card.classList.toggle('is-selected', input.checked);
+      });
+    }
+    pickCards.forEach(function(card){
+      card.querySelector('input[type="radio"]').addEventListener('change', refreshPickCards);
+    });
+
     var form = document.getElementById('lead-form');
     var note = document.getElementById('fnote');
     form.addEventListener('submit', function(e){
@@ -391,9 +571,15 @@
         return;
       }
 
+      var pakietEl = form.querySelector('input[name="pakiet"]:checked');
+      var pakiet = pakietEl ? pakietEl.value : 'nie wybrano';
+      var pliki = zdjeciaInput ? Array.prototype.map.call(zdjeciaInput.files, function(f){ return f.name; }).join(', ') : '';
+
       var tresc = 'Imię: ' + form.imie.value + '\n' +
         'Kontakt: ' + form.kontakt.value + '\n' +
-        'Czym się zajmuje: ' + (form.czym.value || 'nie podano') + '\n';
+        'Czym się zajmuje: ' + (form.czym.value || 'nie podano') + '\n' +
+        'Pakiet: ' + pakiet + '\n' +
+        (pliki ? 'Zdjęcia, dośle w odpowiedzi: ' + pliki + '\n' : '');
       var subject = 'Zgłoszenie z działajmy.online od ' + form.imie.value;
 
       window.location.href = 'mailto:' + LEAD_EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(tresc);
@@ -402,13 +588,14 @@
       note.classList.add('ok');
     });
 
-    // Karty oferty: scrolluje do formularza i podpowiada wybrany pakiet w polu "czym się zajmujesz".
+    // Karty oferty: zaznacza pakiet w formularzu i scrolluje do niego.
     document.querySelectorAll('.plan-cta').forEach(function(btn){
       btn.addEventListener('click', function(){
         var plan = btn.getAttribute('data-plan');
-        var about = document.getElementById('about');
-        if (about && !about.value) {
-          about.value = 'Interesuje mnie pakiet ' + plan + '.';
+        var radio = document.querySelector('input[name="pakiet"][value="' + plan + '"]');
+        if (radio) {
+          radio.checked = true;
+          refreshPickCards();
         }
         document.getElementById('kontakt').scrollIntoView({behavior:'smooth'});
         document.getElementById('name').focus({preventScroll:true});
