@@ -3,167 +3,195 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Manifest · działajmy.online</title>
-<meta name="description" content="Czemu działajmy.online. Co widzę na rynku stron www, skąd to wiem i jak podchodzę do roboty.">
+<title>Ładna, martwa strona · manifest · działajmy.online</title>
+<meta name="description" content="Mam dość patrzenia, jak małe firmy przepłacają za ładne strony, których nikt nie znajduje. Manifest działajmy.online: po co to robię i co dostajesz.">
+<meta property="og:title" content="Ładna, martwa strona · manifest">
+<meta property="og:description" content="Dlaczego robię działajmy.online. Bez ściemy, bez korpo-żargonu.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="pl_PL">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#F4F2EC;
-    --ink:#14171B;
-    --ink-2:#4A525C;
-    --ink-3:#8B939C;
-    --hair:rgba(20,23,27,.14);
-    --blue:#1B4BFF;
-    --blue-d:#0C2B9E;
-    --hi:#F5E33D;
-    --hi-2:#FFF08A;
+    --paper:#F4F2EC;--paper-2:#E8E5DB;--ink:#14171B;--ink-2:#4A525C;--ink-3:#8B939C;
+    --hair:rgba(20,23,27,.14);--blue:#1B4BFF;--blue-d:#0C2B9E;--hi:#F5E33D;--hi-2:#FFF08A;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-  html,body{height:100%}
+  html{scroll-behavior:smooth}
   body{
     background:var(--paper);color:var(--ink);
-    font-family:'Source Sans 3',system-ui,sans-serif;
+    font-family:'Source Sans 3',system-ui,sans-serif;font-size:19px;line-height:1.6;
     -webkit-font-smoothing:antialiased;
-    min-height:100dvh;
-    background-image:
-      linear-gradient(rgba(20,23,27,.028) 1px,transparent 1px),
-      linear-gradient(90deg,rgba(20,23,27,.028) 1px,transparent 1px);
-    background-size:34px 34px;
   }
+  .wrap{max-width:720px;margin:0 auto;padding:0 clamp(20px,5vw,40px)}
+  .mk{display:inline;padding:0 .14em;
+    background-image:linear-gradient(105deg,rgba(245,227,61,0) 0%,var(--hi) 1.5%,var(--hi-2) 45%,var(--hi) 92%,rgba(245,227,61,0) 100%);
+    background-size:100% .68em;background-position:0 .5em;background-repeat:no-repeat;
+    box-decoration-break:clone;-webkit-box-decoration-break:clone}
 
-  /* --- TOP --- */
-  .top{
-    display:flex;align-items:center;justify-content:space-between;
-    padding:22px clamp(20px,5vw,48px);
-  }
-  .logo{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(19px,4.5vw,23px);
-    letter-spacing:-.04em;color:var(--ink);text-decoration:none}
+  /* HEADER */
+  header{border-bottom:1px solid var(--line,#14171B);background:var(--paper);
+    position:sticky;top:0;z-index:20;
+    border-bottom:1px solid var(--ink)}
+  .hd{display:flex;align-items:center;justify-content:space-between;height:62px;
+    max-width:720px;margin:0 auto;padding:0 clamp(20px,5vw,40px)}
+  .logo{font-family:'Archivo',sans-serif;font-weight:900;font-size:20px;letter-spacing:-.04em;
+    text-decoration:none;color:var(--ink)}
   .logo .d{color:var(--blue)}
   .logo .c{display:inline-block;color:var(--blue);transform:translateY(-2px);margin-left:1px;
     animation:bl 1.2s steps(1) infinite}
   @keyframes bl{0%,55%{opacity:1}56%,100%{opacity:.12}}
-  .status{
-    display:flex;align-items:center;gap:8px;
-    font-family:'Archivo',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;
-    color:var(--ink-2);
-  }
-  .status i{width:7px;height:7px;border-radius:50%;background:var(--blue);
-    box-shadow:0 0 0 0 rgba(27,75,255,.5);animation:pulse 2s infinite}
-  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(27,75,255,.45)}70%{box-shadow:0 0 0 7px rgba(27,75,255,0)}100%{box-shadow:0 0 0 0 rgba(27,75,255,0)}}
+  .back{font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;color:var(--ink-2);
+    text-decoration:none;text-transform:uppercase}
+  .back:hover{color:var(--blue)}
 
-  /* --- BUTTONS --- */
-  .btn{
-    display:inline-flex;align-items:center;gap:12px;text-decoration:none;
-    font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.02em;
-    font-size:clamp(16px,2.2vw,18px);padding:16px 24px;border:1.5px solid var(--blue-d);
-    transition:opacity .12s ease;
-  }
-  .btn:hover{opacity:.9}
-  .btn-blue{background:var(--blue);color:#fff}
-  .btn-hi{background:var(--hi);color:var(--ink)}
-  .btn .arw{font-size:20px}
+  /* ARTICLE */
+  article{padding:64px 0 40px}
+  .meta{font-family:'Archivo',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;
+    color:var(--ink-3);display:flex;align-items:center;gap:10px;margin-bottom:22px}
+  .meta .tag{background:var(--hi);color:var(--ink);padding:4px 9px}
+  h1{font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.04em;line-height:1.02;
+    font-size:clamp(38px,7vw,60px);text-transform:uppercase}
+  .dek{font-size:clamp(20px,3vw,24px);color:var(--ink-2);line-height:1.4;margin-top:24px;
+    font-weight:600}
 
-  /* --- PROSE --- */
-  main.prose{max-width:720px;margin:0 auto;padding:56px clamp(20px,5vw,48px) 80px}
-  .prose h1{
-    font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.03em;line-height:1.05;
-    font-size:clamp(32px,6vw,52px);margin-bottom:8px;
-  }
-  .prose section{margin-top:40px}
-  .prose h2{
-    font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:-.02em;
-    font-size:clamp(20px,3vw,26px);margin-bottom:12px;
-  }
-  .prose p{font-size:16px;color:var(--ink-2);line-height:1.6}
-  .prose > a.btn{margin-top:48px}
+  article h2{font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.035em;
+    font-size:clamp(26px,4.5vw,34px);line-height:1.1;margin:56px 0 4px}
+  article p{margin-top:20px;color:var(--ink-2)}
+  article p.big{font-size:22px;color:var(--ink);font-weight:600;line-height:1.45}
+  article strong{color:var(--ink);font-weight:700}
+  article em{font-style:italic}
 
-  /* --- FOOT --- */
-  footer{
-    padding:20px clamp(20px,5vw,48px);border-top:1px solid var(--hair);
-    display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;justify-content:space-between;
+  .rule{border:0;border-top:1px solid var(--hair);margin:52px 0}
+
+  .pull{
+    border-left:4px solid var(--blue);padding:6px 0 6px 24px;margin:40px 0;
+    font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.03em;
+    font-size:clamp(24px,4vw,32px);line-height:1.15;color:var(--ink);
+  }
+  .pull-hi{
+    display:inline;padding:0 .12em;color:var(--ink);
+    background-image:linear-gradient(105deg,rgba(245,227,61,0) 0%,var(--hi) 1.5%,var(--hi-2) 45%,var(--hi) 92%,rgba(245,227,61,0) 100%);
+    background-size:100% .9em;background-position:0 .12em;background-repeat:no-repeat;
+    box-decoration-break:clone;-webkit-box-decoration-break:clone;
+  }
+
+  .creed{list-style:none;margin:28px 0;border-top:1px solid var(--ink)}
+  .creed li{display:flex;gap:16px;padding:20px 0;border-bottom:1px solid var(--hair);
+    font-size:18px;line-height:1.45}
+  .creed li b{font-family:'Archivo',sans-serif;font-weight:800}
+  .creed .no{color:var(--ink-3);text-decoration:line-through;
+    text-decoration-color:var(--ink-3);flex:none;width:118px;
+    font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;text-transform:uppercase;
+    padding-top:2px}
+  .creed .yes{color:var(--ink)}
+
+  /* CTA BOX */
+  .cta-box{background:var(--ink);color:var(--paper);padding:40px clamp(24px,5vw,44px);
+    margin-top:64px}
+  .cta-box h2{color:#fff;margin-top:0}
+  .cta-box p{color:#9AA3AD;margin-top:16px}
+  .cta-box .mk{color:var(--ink)}
+  .cta-btn{display:inline-flex;align-items:center;gap:12px;margin-top:28px;text-decoration:none;
+    background:var(--hi);color:var(--ink);border:1.5px solid var(--hi);
+    font-family:'Archivo',sans-serif;font-weight:900;font-size:18px;letter-spacing:-.02em;
+    padding:16px 24px;transition:opacity .12s ease}
+  .cta-btn:hover{opacity:.9}
+
+  .sign{margin-top:44px;font-family:'Archivo',sans-serif;font-weight:800;font-size:16px;
+    color:var(--ink-2)}
+  .sign b{color:var(--ink)}
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--ink);margin-top:64px;padding:28px 0}
+  .ft{max-width:720px;margin:0 auto;padding:0 clamp(20px,5vw,40px);
+    display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between;
     font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:600;text-transform:uppercase;
-    color:var(--ink-3);
-  }
-  footer .soon b{color:var(--ink-2)}
-  footer a{color:var(--ink-2);text-decoration:none}
-  footer a:hover{color:var(--blue)}
-
-  /* --- STICKY BACK TO HOME (tylko mobile) --- */
-  .mob-manifest{display:none}
-  @media (max-width:640px){
-    body{padding-bottom:64px}
-    .mob-manifest{
-      position:fixed;left:0;right:0;bottom:0;z-index:40;
-      display:flex;align-items:center;justify-content:space-between;gap:12px;
-      background:var(--ink);color:var(--paper);text-decoration:none;
-      padding:14px 20px calc(14px + env(safe-area-inset-bottom));
-      border-top:2px solid var(--hi);
-    }
-    .mm-l{display:flex;align-items:center;gap:10px;
-      font-family:'Source Sans 3',sans-serif;font-size:14px;color:#C6CCD4;line-height:1.2}
-    .mm-tag{font-family:'Archivo',sans-serif;font-weight:800;font-size:11px;text-transform:uppercase;
-      background:var(--hi);color:var(--ink);padding:3px 8px;flex:none}
-    .mm-arw{font-family:'Archivo',sans-serif;font-weight:900;font-size:20px;color:var(--hi);flex:none}
-    footer .soon{display:none}
-  }
+    color:var(--ink-3)}
+  .ft a{color:var(--ink-2);text-decoration:none}
+  .ft a:hover{color:var(--blue)}
 </style>
 </head>
 <body>
 
-  <div class="top">
+<header>
+  <div class="hd">
     <a href="index.html" class="logo">działajmy<span class="d">.</span>online<span class="c">^</span></a>
-    <div class="status"><a href="index.html" style="color:var(--ink-2);text-decoration:none;border-bottom:2px solid var(--hi);padding-bottom:1px">Strona główna</a><span style="margin:0 12px;color:var(--hair)">·</span><i></i>Przyjmuję zlecenia</div>
+    <a href="index.html" class="back">← wróć</a>
   </div>
+</header>
 
-  <main class="prose">
-    <h1>Czemu działajmy.online</h1>
+<article>
+  <div class="wrap">
+    <div class="meta"><span class="tag">Manifest</span><span>Wiedza z zaplecza · wpis 001</span></div>
+    <h1>Ładna, martwa strona</h1>
+    <p class="dek">Mam dość patrzenia, jak małe firmy płacą krocie za serwis, który wygląda jak z galerii, a nie przyprowadza ani jednego klienta. To dlatego powstało działajmy.online.</p>
 
-    <section>
-      <h2>Co widzę</h2>
-      <p>Małe firmy i freelancerzy płacą agencjom kokosy za strony, które i tak nie działają. Czekają miesiącami. Dostają PDF-y z "propozycją strategii cyfrowej transformacji" zamiast działającej strony. Albo próbują sami w kreatorze i poddają się po dwóch godzinach.</p>
-    </section>
+    <hr class="rule">
 
-    <section>
-      <h2>Skąd to wiem</h2>
-      <p>Bo robię strony od 12 lat. Widziałem obie strony: agencje, które sprzedają ściemę, i klientów, którzy w końcu dostają to, czego chcieli, dopiero za trzecim podejściem. Nie muszę Ci nic udowadniać frazesami, mam portfolio, które możesz zobaczyć.</p>
-    </section>
+    <p class="big">Widziałem to dziesiątki razy. Ktoś odkłada, oszczędza, w końcu wydaje 8, 15, 20 tysięcy na stronę. Agencja dowozi coś pięknego: animacje, gradient, logo pod lupą przez trzy tygodnie. Klient jest dumny.</p>
 
-    <section>
-      <h2>Moje podejście</h2>
-      <p>Robię to dobrze, albo nie robię. Bez pośredników, bez "zespołu kreatywnego". Piszesz do mnie, ja odpisuję. Cena z góry: 1000 zł za wizytówkę, 3000 zł za coś więcej. Raty, jeśli tak wygodniej. Żadnych ukrytych kosztów po drodze.</p>
-    </section>
+    <p>A potem cisza. Telefon nie dzwoni. W Google strona jest na trzeciej, czwartej, dziesiątej stronie wyników, czyli nie istnieje. Zapłacił za wizytówkę, którą ogląda tylko on sam i jego rodzina.</p>
 
-    <section>
-      <h2>A może zrobię to sam, w generatorze?</h2>
-      <p>Jasne, są generatory. Gotowe kreatory, serwisy, gdzie podobno zrobisz stronę w 5 minut. Problem w tym, że w większości przypadków zaangażowanie kończy się na drugiej karcie uzupełniania serwisu: wybierasz szablon, wpisujesz dane i mówisz sobie "dokończę jutro". To jutro zwykle nie przychodzi.</p>
-      <p style="margin-top:16px">Dlatego proponuję siebie, UI/UX designera, nie kolejny formularz. Piszesz mi, co robisz. Ja to biorę na warsztat: sprawdzam, robię research, dopasowuję styl i przesyłam gotowy link, najbliższy temu, czego szukasz. Potem 2 do 3 serii poprawek i strona jest gotowa. Nikt nic nie odkłada, bo terminu pilnuję ja, nie Ty.</p>
-    </section>
+    <p><strong>To jest właśnie ładna, martwa strona.</strong> Technicznie bez zarzutu. Biznesowo trup.</p>
 
-    <section>
-      <h2>Czemu ty</h2>
-      <p>Bo prowadzisz firmę, a nie masz strony, albo masz taką, która nic nie robi. Nie potrzebujesz agencji z prezentacją na 40 slajdów. Potrzebujesz strony, która działa, ładuje się szybko i pokazuje, co robisz. Tyle.</p>
-    </section>
+    <div class="pull">Piękno, którego nikt nie widzi, nie jest przewagą. Jest kosztem.</div>
 
-    <section>
-      <h2>działajmy.online</h2>
-      <p>Nie czekaj na idealny moment. Napisz, pogadamy 15 minut, i zabieram się do roboty. Prosto, szybko, bez owijania.</p>
-    </section>
+    <h2>Skąd ja to wiem</h2>
+    <p>Robiłem strony za 4 tysiące i za 40 tysięcy. Byłem po obu stronach: budowałem te tanie, które dowoziły klientów, i te drogie, które robiły wrażenie na wszystkich oprócz Google. Nauczyłem się jednej rzeczy, której nikt nie mówi na głos:</p>
 
-    <a href="kontakt.html" class="btn btn-blue">Działajmy, napisz do mnie<span class="arw">→</span></a>
-  </main>
+    <p class="big">Robota Google nie ogląda Twojej strony. Ona ją <em>czyta</em>. I ma gdzieś Twój gradient.</p>
 
-  <footer>
-    <span class="soon"><b>[ INFO ]</b> <a href="polityka-prywatnosci.html">Polityka prywatności</a></span>
-    <span>Bartosz · <a href="mailto:kontakt@dzialajmy.online">kontakt@dzialajmy.online</a> · działam tylko w Google</span>
-  </footer>
+    <p>Czyta strukturę. Sprawdza, czy jasno widać, co robisz i dla kogo. Patrzy, czy da się Cię znaleźć, gdy ktoś wpisuje „hydraulik w okolicy” albo „ile kosztuje wymiana pieca”. Design przekonuje człowieka, który już wszedł. Ale to nie design go tam przyprowadził.</p>
 
-  <a href="index.html" class="mob-manifest">
-    <span class="mm-l"><span class="mm-tag">Start</span>Wróć na stronę główną</span>
-    <span class="mm-arw">→</span>
-  </a>
+    <h2>Co to jest działajmy.online</h2>
+    <p>Odwrócenie kolejności. <strong>Najpierw ruch, potem uroda.</strong> Stawiam prostą, uczciwą stronę zbudowaną tak, żeby Google i modele AI od razu ją rozumiały. Bez trzytygodniowej narady nad odcieniem niebieskiego. Wchodzisz za 3 000 zł, przez 90 dni rozkręcamy ją razem, a decyzję o dalszym pozycjonowaniu podejmujesz dopiero wtedy, gdy widzisz efekty.</p>
+
+    <p>Design dopracujemy z zysków. Kiedy strona zacznie zarabiać, dołożymy jej urody, ile chcesz. Ale w tej kolejności, nie odwrotnie.</p>
+
+    <div class="pull">Ode mnie dostajesz piękną stronę i jasny ruch. To jest <span class="pull-hi">SEO.90</span>.</div>
+
+    <h2>„Przecież mam AI”</h2>
+    <p>Słyszę to coraz częściej. I to prawda. Dziś każdy ma pod ręką narzędzie, które w minutę wypluje kod strony. Tylko że kod to nie jest problem. Kod nigdy nie był problemem.</p>
+
+    <p class="big">AI postawi Ci stronę. Nie postawi Ci klientów.</p>
+
+    <p>Bo nawet z najlepszym AI <strong>i tak wielu rzeczy sam nie zrobisz</strong>. Nie dlatego, że nie umiesz, tylko dlatego, że to nie jest zadanie na jeden prompt. AI nie zbada, czego naprawdę szukają Twoi klienci w Google. Nie zdecyduje, które usługi wypchnąć na pierwszy plan. Nie sprawdzi po miesiącu, co zadziałało, i nie poprawi tego, co nie. Nie zadzwoni do Ciebie z pytaniem, którego sam sobie nie zadałeś.</p>
+
+    <p>Wygeneruje Ci ładny szkielet i zostawi Cię z nim samego. A potem ten szkielet leży w Google na dziesiątej stronie, tyle że tym razem za darmo. Zamiast drogiego trupa masz darmowego. Zmarnowany został tylko Twój czas, nie budżet, ale zmarnowany.</p>
+
+    <p><strong>Ja nie jestem od klikania w AI za Ciebie.</strong> Jestem od tej całej reszty, której żaden prompt nie ogarnie: strategii, decyzji, mierzenia, poprawiania. Narzędzia mam te same co wszyscy. Robotę robię inaczej.</p>
+
+    <ul class="creed">
+      <li><span class="no">Nie robię</span><span class="yes"><b>Ładnych trupów.</b> Stron, które zachwycają na prezentacji i milczą przez rok.</span></li>
+      <li><span class="no">Nie robię</span><span class="yes"><b>Korpo-ściemy.</b> Raportów, których nie rozumiesz, i słów, za którymi nic nie stoi.</span></li>
+      <li><span class="no">Nie robię</span><span class="yes"><b>Sprzedaży na siłę.</b> Jak SEO Ci się nie opłaca, powiem to wprost.</span></li>
+      <li><span class="no">Nie robię</span><span class="yes"><b>Wszystkiego.</b> Tylko Google. Social media zostawiam ludziom, którzy się na tym znają.</span></li>
+    </ul>
+
+    <h2>Co to będzie</h2>
+    <p>Na razie jest splash i ten wpis. Docelowo pełna strona z ofertą i blog „Wiedza z zaplecza”: konkretne historie z moich projektów. Ile kosztowała strona, co zrobiłem, ile zapytań przyszło po 90 dniach. Liczby, nie teoria. Bo najlepszy dowód, że coś działa, to pokazać, że zadziałało u kogoś takiego jak Ty.</p>
+
+    <p>Ten manifest to punkt zero. Jeśli dobrniesz do tego miejsca i kiwasz głową, prawdopodobnie się dogadamy.</p>
+
+    <div class="cta-box">
+      <h2>Masz dość <span class="mk">martwej strony?</span></h2>
+      <p>Napisz w dwóch zdaniach, czym się zajmujesz. Odpowiem szczerze, czy mogę Ci pomóc, albo czy w Twoim przypadku nie warto.</p>
+      <a href="kontakt.html" class="cta-btn"><span>Działajmy, Panie Bartoszu!</span><span>→</span></a>
+    </div>
+
+    <p class="sign"><b>Bartosz</b>, działajmy.online</p>
+  </div>
+</article>
+
+<footer>
+  <div class="ft">
+    <span><b style="color:var(--ink-2)">[ WKRÓTCE ]</b> pełna strona + kolejne wpisy</span>
+    <span>Bartosz · <a href="mailto:kontakt@dzialajmy.online">kontakt@dzialajmy.online</a> · tylko Google</span>
+  </div>
+</footer>
 
 </body>
 </html>
