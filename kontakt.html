@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Opisz swój biznes · działajmy.online</title>
+<meta name="description" content="Opowiedz czym się zajmujesz, wybierz pakiet, resztę ogarniam. Formularz zgłoszeniowy działajmy.online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4F2EC;
+    --ink:#14171B;
+    --ink-2:#4A525C;
+    --ink-3:#8B939C;
+    --hair:rgba(20,23,27,.14);
+    --blue:#1B4BFF;
+    --blue-d:#0C2B9E;
+    --hi:#F5E33D;
+    --hi-2:#FFF08A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+  html,body{height:100%}
+  body{
+    background:var(--paper);color:var(--ink);
+    font-family:'Source Sans 3',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    min-height:100dvh;
+    background-image:
+      linear-gradient(rgba(20,23,27,.028) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(20,23,27,.028) 1px,transparent 1px);
+    background-size:34px 34px;
+  }
+
+  /* --- TOP --- */
+  .top{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px clamp(20px,5vw,48px);
+  }
+  .logo{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(19px,4.5vw,23px);
+    letter-spacing:-.04em;color:var(--ink);text-decoration:none}
+  .logo .d{color:var(--blue)}
+  .logo .c{display:inline-block;color:var(--blue);transform:translateY(-2px);margin-left:1px;
+    animation:bl 1.2s steps(1) infinite}
+  @keyframes bl{0%,55%{opacity:1}56%,100%{opacity:.12}}
+  .status{
+    display:flex;align-items:center;gap:8px;
+    font-family:'Archivo',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;
+    color:var(--ink-2);
+  }
+  .status i{width:7px;height:7px;border-radius:50%;background:var(--blue);
+    box-shadow:0 0 0 0 rgba(27,75,255,.5);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(27,75,255,.45)}70%{box-shadow:0 0 0 7px rgba(27,75,255,0)}100%{box-shadow:0 0 0 0 rgba(27,75,255,0)}}
+
+  /* --- BUTTONS --- */
+  .btn{
+    display:inline-flex;align-items:center;gap:12px;text-decoration:none;
+    font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.02em;
+    font-size:clamp(16px,2.2vw,18px);padding:16px 24px;border:1.5px solid var(--blue-d);
+    transition:opacity .12s ease;
+  }
+  .btn:hover{opacity:.9}
+  .btn-blue{background:var(--blue);color:#fff}
+  .btn-hi{background:var(--hi);color:var(--ink)}
+  .btn .arw{font-size:20px}
+
+  /* --- FORM PAGE --- */
+  main.form-page{max-width:600px;margin:0 auto;padding:40px clamp(20px,5vw,40px) 80px;width:100%}
+  .form-page h1{
+    font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.03em;
+    font-size:clamp(28px,5vw,44px);line-height:1.05;
+  }
+  .form-page .sublead{margin-top:14px;font-size:16px;color:var(--ink-2)}
+
+  .lead-form{margin-top:32px}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .field{margin-top:14px}
+  .row2 .field{margin-top:0}
+  .field label{
+    display:block;font-family:'Archivo',sans-serif;font-size:11px;font-weight:700;
+    text-transform:uppercase;color:var(--ink-2);margin-bottom:6px;
+  }
+  .field input{
+    width:100%;font-family:'Source Sans 3',sans-serif;font-size:16px;color:var(--ink);
+    background:#fff;border:1.5px solid var(--ink);padding:13px 14px;
+  }
+  .field input::placeholder{color:var(--ink-3)}
+  .field input:focus{outline:0;box-shadow:0 0 0 3px var(--hi)}
+  .field textarea{
+    width:100%;font-family:'Source Sans 3',sans-serif;font-size:16px;color:var(--ink);
+    background:#fff;border:1.5px solid var(--ink);padding:13px 14px;resize:vertical;
+  }
+  .field textarea::placeholder{color:var(--ink-3)}
+  .field textarea:focus{outline:0;box-shadow:0 0 0 3px var(--hi)}
+  .hp-field{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+  .hint{margin-top:8px;font-size:13px;color:var(--ink-3)}
+
+  .example-banner{
+    background:var(--hi);padding:10px 14px;font-size:13.5px;font-weight:600;
+    display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;
+    margin-bottom:10px;
+  }
+  .example-actions{display:flex;gap:12px}
+  .link-btn{background:none;border:none;padding:0;font:inherit;font-weight:700;text-decoration:underline;color:var(--ink);cursor:pointer}
+  .example-fill{
+    display:block;margin-top:8px;background:none;border:none;padding:0;
+    font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;color:var(--blue);cursor:pointer;
+  }
+
+  .file-previews{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+  .file-previews img{width:56px;height:56px;object-fit:cover;border:1.5px solid var(--ink)}
+
+  .pick-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:10px}
+  @media (min-width:560px){.pick-grid{grid-template-columns:1fr 1fr}}
+  .pick-card{
+    position:relative;display:flex;flex-direction:column;gap:4px;
+    border:1.5px solid var(--ink);background:#fff;padding:16px 18px;cursor:pointer;
+  }
+  .pick-card input{position:absolute;opacity:0;pointer-events:none}
+  .pick-title{font-family:'Archivo',sans-serif;font-weight:800;display:flex;align-items:center;gap:8px}
+  .pick-sub{font-size:13.5px;color:var(--ink-2)}
+  .pick-card.is-selected{border-color:var(--blue);box-shadow:3px 3px 0 var(--blue)}
+  .tag{
+    display:inline-block;font-family:'Archivo',sans-serif;font-weight:800;font-size:11px;
+    text-transform:uppercase;background:var(--hi);color:var(--ink);padding:3px 8px;
+  }
+
+  .lead-form > button{
+    width:100%;margin-top:18px;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;gap:12px;
+    background:var(--blue);color:#fff;border:1.5px solid var(--blue-d);
+    font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.02em;
+    font-size:clamp(16px,2.2vw,18px);padding:16px 24px;transition:opacity .12s ease;
+  }
+  .lead-form > button:hover{opacity:.9}
+  .lead-form > button .arw{font-size:20px}
+  .form-note{margin-top:12px;font-size:13.5px;color:var(--ink-3);text-align:center;line-height:1.45}
+  .form-note.ok{color:var(--blue);font-weight:700}
+
+  .whisper{margin-top:26px;font-size:15px;color:var(--ink-3);line-height:1.5}
+  .whisper b{color:var(--ink-2);font-weight:700}
+
+  /* --- FOOT --- */
+  footer{
+    padding:20px clamp(20px,5vw,48px);border-top:1px solid var(--hair);
+    display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;justify-content:space-between;
+    font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:600;text-transform:uppercase;
+    color:var(--ink-3);
+  }
+  footer .soon b{color:var(--ink-2)}
+  footer a{color:var(--ink-2);text-decoration:none}
+  footer a:hover{color:var(--blue)}
+
+  /* --- STICKY BACK TO HOME (tylko mobile) --- */
+  .mob-manifest{display:none}
+  @media (max-width:640px){
+    body{padding-bottom:64px}
+    .mob-manifest{
+      position:fixed;left:0;right:0;bottom:0;z-index:40;
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      background:var(--ink);color:var(--paper);text-decoration:none;
+      padding:14px 20px calc(14px + env(safe-area-inset-bottom));
+      border-top:2px solid var(--hi);
+    }
+    .mm-l{display:flex;align-items:center;gap:10px;
+      font-family:'Source Sans 3',sans-serif;font-size:14px;color:#C6CCD4;line-height:1.2}
+    .mm-tag{font-family:'Archivo',sans-serif;font-weight:800;font-size:11px;text-transform:uppercase;
+      background:var(--hi);color:var(--ink);padding:3px 8px;flex:none}
+    .mm-arw{font-family:'Archivo',sans-serif;font-weight:900;font-size:20px;color:var(--hi);flex:none}
+    footer .soon{display:none}
+  }
+</style>
+</head>
+<body>
+
+  <div class="top">
+    <a href="index.html" class="logo">działajmy<span class="d">.</span>online<span class="c">^</span></a>
+    <div class="status"><a href="index.html" style="color:var(--ink-2);text-decoration:none;border-bottom:2px solid var(--hi);padding-bottom:1px">Strona główna</a><span style="margin:0 12px;color:var(--hair)">·</span><i></i>Przyjmuję zlecenia</div>
+  </div>
+
+  <main class="form-page">
+    <h1>Opisz swój biznes</h1>
+    <p class="sublead">Opowiedz mi czym się zajmujesz, wybierz pakiet, resztę ogarniam.</p>
+
+    <form class="lead-form" id="lead-form">
+      <div class="field">
+        <label for="about">Czym zajmuje się Twój biznes?</label>
+        <div class="example-banner" id="example-banner" hidden>
+          To tylko przykład, wstaw swoje dane.
+          <span class="example-actions">
+            <button type="button" class="link-btn" id="example-inny">Inny</button>
+            <button type="button" class="link-btn" id="example-wyczysc">Wyczyść</button>
+          </span>
+        </div>
+        <textarea id="about" name="czym" rows="4" placeholder="Np. Jestem trenerem personalnym w Krakowie. Pomagam wrócić do formy bez katowania się na siłowni..."></textarea>
+        <button type="button" class="example-fill" id="example-fill">+ Przykładowy opis</button>
+      </div>
+
+      <div class="field">
+        <label for="zdjecia">Zdjęcia albo logo, jeśli masz</label>
+        <input type="file" id="zdjecia" name="zdjecia" accept="image/*" multiple>
+        <p class="hint">To tylko podgląd dla Ciebie. Pliki dośle sam w odpowiedzi na maila z potwierdzeniem.</p>
+        <div class="file-previews" id="file-previews"></div>
+      </div>
+
+      <div class="field">
+        <label>Wybierz pakiet</label>
+        <div class="pick-grid">
+          <label class="pick-card" data-pick="START">
+            <input type="radio" name="pakiet" value="START">
+            <span class="pick-title">START <span class="tag">1000 zł</span></span>
+            <span class="pick-sub">Wizytówka, ale która działa</span>
+          </label>
+          <label class="pick-card" data-pick="FULL">
+            <input type="radio" name="pakiet" value="FULL">
+            <span class="pick-title">FULL <span class="tag">3000 zł</span></span>
+            <span class="pick-sub">Rozbudowana, gotowa na więcej</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="row2">
+        <div class="field">
+          <label for="name">Imię</label>
+          <input id="name" name="imie" type="text" placeholder="Jak masz na imię?" required>
+        </div>
+        <div class="field">
+          <label for="contact">Telefon lub e-mail</label>
+          <input id="contact" name="kontakt" type="text" placeholder="Gdzie mam się odezwać?" required>
+        </div>
+      </div>
+
+      <div class="field hp-field" aria-hidden="true">
+        <label for="firma">Firma</label>
+        <input id="firma" name="firma" type="text" tabindex="-1" autocomplete="off">
+      </div>
+
+      <button type="submit"><span>Działajmy, Panie Bartoszu!</span><span class="arw">→</span></button>
+      <p class="form-note" id="fnote">Odezwę się z konkretem. Zero ściemy, zero sprzedaży na siłę.</p>
+    </form>
+
+    <p class="whisper">Wolisz pogadać? <b>Zadzwoń albo wyślij głosówkę.</b> Powiedz, co robisz, a ja odsłucham i odpiszę. Nie masz czasu pisać? Nie szkodzi.</p>
+  </main>
+
+  <footer>
+    <span class="soon"><b>[ INFO ]</b> <a href="manifest.html">Manifest</a></span>
+    <span>Bartosz · <a href="mailto:kontakt@dzialajmy.online">kontakt@dzialajmy.online</a> · działam tylko w Google</span>
+  </footer>
+
+  <a href="index.html" class="mob-manifest">
+    <span class="mm-l"><span class="mm-tag">Start</span>Wróć na stronę główną</span>
+    <span class="mm-arw">→</span>
+  </a>
+
+  <script>
+    // PODMIEŃ LEAD_EMAIL na swój realny adres, jeśli inny niż kontakt@dzialajmy.online.
+    var LEAD_EMAIL = 'kontakt@dzialajmy.online';
+
+    var EXAMPLES = [
+      'Jestem trenerem personalnym w Krakowie. Pomagam zabieganym 30- i 40-latkom wrócić do formy bez katowania się na siłowni. Trening 1:1, pakiet 10 wejść, plan dietetyczny. Stacjonarnie i online.',
+      'Prowadzę mały warsztat samochodowy w Lęborku. Naprawy bieżące, wymiana opon, diagnostyka komputerowa. Pracuję sam, klienci głównie z polecenia.',
+      'Mam salon kosmetyczny w Gdyni, manicure, pedicure, zabiegi na twarz. Teraz zapisy tylko przez telefon i Instagram, gubię się w wiadomościach.'
+    ];
+    var exampleIndex = 0;
+    var aboutEl = document.getElementById('about');
+    var exampleBanner = document.getElementById('example-banner');
+
+    function fillExample(){
+      if (!aboutEl) return;
+      aboutEl.value = EXAMPLES[exampleIndex % EXAMPLES.length];
+      exampleIndex++;
+      if (exampleBanner) exampleBanner.hidden = false;
+    }
+    var exampleFillBtn = document.getElementById('example-fill');
+    var exampleInnyBtn = document.getElementById('example-inny');
+    var exampleWyczyscBtn = document.getElementById('example-wyczysc');
+    if (exampleFillBtn) exampleFillBtn.addEventListener('click', fillExample);
+    if (exampleInnyBtn) exampleInnyBtn.addEventListener('click', fillExample);
+    if (exampleWyczyscBtn) exampleWyczyscBtn.addEventListener('click', function(){
+      if (aboutEl) aboutEl.value = '';
+      if (exampleBanner) exampleBanner.hidden = true;
+    });
+    if (aboutEl) aboutEl.addEventListener('input', function(){
+      if (exampleBanner && !exampleBanner.hidden) exampleBanner.hidden = true;
+    });
+
+    // Podgląd zdjęć/logo, wyłącznie po stronie przeglądarki, pliki nie są nigdzie wysyłane tędy.
+    var zdjeciaInput = document.getElementById('zdjecia');
+    var filePreviews = document.getElementById('file-previews');
+    if (zdjeciaInput && filePreviews) {
+      zdjeciaInput.addEventListener('change', function(){
+        filePreviews.innerHTML = '';
+        Array.prototype.forEach.call(zdjeciaInput.files, function(file){
+          var img = document.createElement('img');
+          img.src = URL.createObjectURL(file);
+          img.alt = file.name;
+          filePreviews.appendChild(img);
+        });
+      });
+    }
+
+    // Karty pakietu: podświetlenie wybranej.
+    var pickCards = document.querySelectorAll('.pick-card');
+    function refreshPickCards(){
+      pickCards.forEach(function(card){
+        var input = card.querySelector('input[type="radio"]');
+        card.classList.toggle('is-selected', input.checked);
+      });
+    }
+    pickCards.forEach(function(card){
+      card.querySelector('input[type="radio"]').addEventListener('change', refreshPickCards);
+    });
+
+    // Preselekcja pakietu z linku, np. kontakt.html?pakiet=FULL
+    var params = new URLSearchParams(window.location.search);
+    var pakietParam = params.get('pakiet');
+    if (pakietParam) {
+      var pre = document.querySelector('input[name="pakiet"][value="' + pakietParam + '"]');
+      if (pre) {
+        pre.checked = true;
+        refreshPickCards();
+      }
+    }
+
+    var form = document.getElementById('lead-form');
+    var note = document.getElementById('fnote');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+
+      if (form.firma.value) return; // honeypot: niewidoczne pole, boty je wypełniają
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      var pakietEl = form.querySelector('input[name="pakiet"]:checked');
+      var pakiet = pakietEl ? pakietEl.value : 'nie wybrano';
+      var pliki = zdjeciaInput ? Array.prototype.map.call(zdjeciaInput.files, function(f){ return f.name; }).join(', ') : '';
+
+      var tresc = 'Imię: ' + form.imie.value + '\n' +
+        'Kontakt: ' + form.kontakt.value + '\n' +
+        'Czym się zajmuje: ' + (form.czym.value || 'nie podano') + '\n' +
+        'Pakiet: ' + pakiet + '\n' +
+        (pliki ? 'Zdjęcia, dośle w odpowiedzi: ' + pliki + '\n' : '');
+      var subject = 'Zgłoszenie z działajmy.online od ' + form.imie.value;
+
+      window.location.href = 'mailto:' + LEAD_EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(tresc);
+
+      note.textContent = 'Otwieram maila z Twoim zgłoszeniem. Wyślij, a ja odezwę się z konkretem.';
+      note.classList.add('ok');
+    });
+  </script>
+
+</body>
+</html>

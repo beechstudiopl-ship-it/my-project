@@ -105,71 +105,7 @@
   .or{font-family:'Archivo',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;
     color:var(--ink-3)}
 
-  /* --- FORM --- */
-  .lead-form{margin-top:34px;max-width:560px}
-  .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  .field{margin-top:14px}
-  .row2 .field{margin-top:0}
-  .field label{
-    display:block;font-family:'Archivo',sans-serif;font-size:11px;font-weight:700;
-    text-transform:uppercase;color:var(--ink-2);margin-bottom:6px;
-  }
-  .field input{
-    width:100%;font-family:'Source Sans 3',sans-serif;font-size:16px;color:var(--ink);
-    background:#fff;border:1.5px solid var(--ink);padding:13px 14px;
-  }
-  .field input::placeholder{color:var(--ink-3)}
-  .field input:focus{outline:0;box-shadow:0 0 0 3px var(--hi)}
-  .field textarea{
-    width:100%;font-family:'Source Sans 3',sans-serif;font-size:16px;color:var(--ink);
-    background:#fff;border:1.5px solid var(--ink);padding:13px 14px;resize:vertical;
-  }
-  .field textarea::placeholder{color:var(--ink-3)}
-  .field textarea:focus{outline:0;box-shadow:0 0 0 3px var(--hi)}
-  .hp-field{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
-  .hint{margin-top:8px;font-size:13px;color:var(--ink-3)}
-
-  .example-banner{
-    background:var(--hi);padding:10px 14px;font-size:13.5px;font-weight:600;
-    display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;
-    margin-bottom:10px;
-  }
-  .example-actions{display:flex;gap:12px}
-  .link-btn{background:none;border:none;padding:0;font:inherit;font-weight:700;text-decoration:underline;color:var(--ink);cursor:pointer}
-  .example-fill{
-    display:block;margin-top:8px;background:none;border:none;padding:0;
-    font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;color:var(--blue);cursor:pointer;
-  }
-
-  .file-previews{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
-  .file-previews img{width:56px;height:56px;object-fit:cover;border:1.5px solid var(--ink)}
-
-  .pick-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:10px}
-  @media (min-width:560px){.pick-grid{grid-template-columns:1fr 1fr}}
-  .pick-card{
-    position:relative;display:flex;flex-direction:column;gap:4px;
-    border:1.5px solid var(--ink);background:#fff;padding:16px 18px;cursor:pointer;
-  }
-  .pick-card input{position:absolute;opacity:0;pointer-events:none}
-  .pick-title{font-family:'Archivo',sans-serif;font-weight:800;display:flex;align-items:center;gap:8px}
-  .pick-sub{font-size:13.5px;color:var(--ink-2)}
-  .pick-card.is-selected{border-color:var(--blue);box-shadow:3px 3px 0 var(--blue)}
-  .lead-form > button{
-    width:100%;margin-top:18px;cursor:pointer;
-    display:flex;align-items:center;justify-content:center;gap:12px;
-    background:var(--blue);color:#fff;border:1.5px solid var(--blue-d);
-    font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.02em;
-    font-size:clamp(16px,2.2vw,18px);padding:16px 24px;transition:opacity .12s ease;
-  }
-  .lead-form > button:hover{opacity:.9}
-  .lead-form > button .arw{font-size:20px}
   .form-note{margin-top:12px;font-size:13.5px;color:var(--ink-3);text-align:center;line-height:1.45}
-  .form-note.ok{color:var(--blue);font-weight:700}
-
-  .whisper{
-    margin-top:26px;font-size:15px;color:var(--ink-3);line-height:1.5;
-  }
-  .whisper b{color:var(--ink-2);font-weight:700}
 
   /* --- FOOT --- */
   footer{
@@ -209,7 +145,7 @@
   .plan ul{list-style:none;margin-top:18px}
   .plan li{padding-left:24px;position:relative;margin-top:10px;font-size:15px;color:var(--ink-2)}
   .plan li::before{content:"✓";position:absolute;left:0;color:var(--blue);font-weight:700}
-  .plan button.btn{margin-top:22px;width:100%;justify-content:center;cursor:pointer;border:1.5px solid var(--blue-d)}
+  .plan .btn{margin-top:22px;width:100%;justify-content:center;cursor:pointer;border:1.5px solid var(--blue-d)}
   .plan.full{border-color:var(--blue)}
 
   /* faq */
@@ -255,29 +191,6 @@
   }
   .steps-cta{margin-top:32px}
   .steps-cta .form-note{text-align:left}
-
-  /* --- KONTAKT MODAL --- */
-  dialog#kontakt-modal{
-    margin:auto;border:1.5px solid var(--ink);background:var(--paper);color:var(--ink);
-    max-width:600px;width:92vw;max-height:88vh;overflow-y:auto;
-    padding:32px clamp(20px,5vw,40px);position:relative;
-  }
-  dialog#kontakt-modal::backdrop{background:rgba(20,23,27,.6)}
-  dialog#kontakt-modal h2{
-    font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.03em;
-    font-size:clamp(24px,4vw,34px);
-  }
-  dialog#kontakt-modal .sublead{margin-top:10px;font-size:15px;color:var(--ink-2)}
-  dialog#kontakt-modal .lead-form{margin-top:24px;max-width:none}
-  .modal-close{
-    position:absolute;top:16px;right:16px;width:34px;height:34px;
-    display:flex;align-items:center;justify-content:center;
-    background:var(--ink);color:var(--paper);border:none;font-size:20px;line-height:1;
-    cursor:pointer;
-  }
-  @media (max-width:640px){
-    dialog#kontakt-modal{width:100vw;max-width:100vw;height:100dvh;max-height:100dvh;margin:0}
-  }
 
   .mob-manifest{display:none}
   @media (max-width:640px){
@@ -371,7 +284,7 @@
     </div>
 
     <div class="steps-cta">
-      <button type="button" class="btn btn-blue" id="open-kontakt-steps">Opisz swój biznes<span class="arw">→</span></button>
+      <a href="kontakt.html" class="btn btn-blue">Opisz swój biznes<span class="arw">→</span></a>
       <p class="form-note">Bez zobowiązań na etapie researchu. Ostatnią ratę płacisz, gdy strona działa tak, jak chciałeś.</p>
     </div>
   </section>
@@ -391,7 +304,7 @@
           <li>Co robisz i kontakt</li>
           <li>Live za 5 do 7 dni</li>
         </ul>
-        <button type="button" class="btn btn-blue plan-cta" data-plan="START">Chcę START</button>
+        <a href="kontakt.html?pakiet=START" class="btn btn-blue">Chcę START</a>
       </article>
 
       <article class="plan full">
@@ -405,7 +318,7 @@
           <li>Potem możliwe SEO</li>
           <li>Live za tydzień</li>
         </ul>
-        <button type="button" class="btn btn-blue plan-cta" data-plan="FULL">Chcę FULL</button>
+        <a href="kontakt.html?pakiet=FULL" class="btn btn-blue">Chcę FULL</a>
       </article>
     </div>
   </section>
@@ -437,71 +350,6 @@
     </div>
   </section>
 
-  <dialog id="kontakt-modal">
-    <button type="button" class="modal-close" id="kontakt-close" aria-label="Zamknij">×</button>
-    <h2>Opisz swój biznes</h2>
-    <p class="sublead">Opowiedz mi czym się zajmujesz, wybierz pakiet, resztę ogarniam.</p>
-
-    <form class="lead-form" id="lead-form">
-      <div class="field">
-        <label for="about">Czym zajmuje się Twój biznes?</label>
-        <div class="example-banner" id="example-banner" hidden>
-          To tylko przykład, wstaw swoje dane.
-          <span class="example-actions">
-            <button type="button" class="link-btn" id="example-inny">Inny</button>
-            <button type="button" class="link-btn" id="example-wyczysc">Wyczyść</button>
-          </span>
-        </div>
-        <textarea id="about" name="czym" rows="4" placeholder="Np. Jestem trenerem personalnym w Krakowie. Pomagam wrócić do formy bez katowania się na siłowni..."></textarea>
-        <button type="button" class="example-fill" id="example-fill">+ Przykładowy opis</button>
-      </div>
-
-      <div class="field">
-        <label for="zdjecia">Zdjęcia albo logo, jeśli masz</label>
-        <input type="file" id="zdjecia" name="zdjecia" accept="image/*" multiple>
-        <p class="hint">To tylko podgląd dla Ciebie. Pliki dośle sam w odpowiedzi na maila z potwierdzeniem.</p>
-        <div class="file-previews" id="file-previews"></div>
-      </div>
-
-      <div class="field">
-        <label>Wybierz pakiet</label>
-        <div class="pick-grid">
-          <label class="pick-card" data-pick="START">
-            <input type="radio" name="pakiet" value="START">
-            <span class="pick-title">START <span class="tag">1000 zł</span></span>
-            <span class="pick-sub">Wizytówka, ale która działa</span>
-          </label>
-          <label class="pick-card" data-pick="FULL">
-            <input type="radio" name="pakiet" value="FULL">
-            <span class="pick-title">FULL <span class="tag">3000 zł</span></span>
-            <span class="pick-sub">Rozbudowana, gotowa na więcej</span>
-          </label>
-        </div>
-      </div>
-
-      <div class="row2">
-        <div class="field">
-          <label for="name">Imię</label>
-          <input id="name" name="imie" type="text" placeholder="Jak masz na imię?" required>
-        </div>
-        <div class="field">
-          <label for="contact">Telefon lub e-mail</label>
-          <input id="contact" name="kontakt" type="text" placeholder="Gdzie mam się odezwać?" required>
-        </div>
-      </div>
-
-      <div class="field hp-field" aria-hidden="true">
-        <label for="firma">Firma</label>
-        <input id="firma" name="firma" type="text" tabindex="-1" autocomplete="off">
-      </div>
-
-      <button type="submit"><span>Działajmy, Panie Bartoszu!</span><span class="arw">→</span></button>
-      <p class="form-note" id="fnote">Odezwę się z konkretem. Zero ściemy, zero sprzedaży na siłę.</p>
-    </form>
-
-    <p class="whisper">Wolisz pogadać? <b>Zadzwoń albo wyślij głosówkę.</b> Powiedz, co robisz, a ja odsłucham i odpiszę. Nie masz czasu pisać? Nie szkodzi.</p>
-  </dialog>
-
   <footer>
     <span class="soon"><b>[ NOWE ]</b> <a href="manifest.html" style="color:var(--ink-2)">Przeczytaj manifest →</a></span>
     <span>Bartosz · <a href="mailto:kontakt@dzialajmy.online">kontakt@dzialajmy.online</a> · działam tylko w Google</span>
@@ -512,135 +360,6 @@
     <span class="mm-arw">→</span>
   </a>
 
-  <script>
-    // PODMIEŃ LEAD_EMAIL na swój realny adres, jeśli inny niż kontakt@dzialajmy.online.
-    var LEAD_EMAIL = 'kontakt@dzialajmy.online';
-
-    var EXAMPLES = [
-      'Jestem trenerem personalnym w Krakowie. Pomagam zabieganym 30- i 40-latkom wrócić do formy bez katowania się na siłowni. Trening 1:1, pakiet 10 wejść, plan dietetyczny. Stacjonarnie i online.',
-      'Prowadzę mały warsztat samochodowy w Lęborku. Naprawy bieżące, wymiana opon, diagnostyka komputerowa. Pracuję sam, klienci głównie z polecenia.',
-      'Mam salon kosmetyczny w Gdyni, manicure, pedicure, zabiegi na twarz. Teraz zapisy tylko przez telefon i Instagram, gubię się w wiadomościach.'
-    ];
-    var exampleIndex = 0;
-    var aboutEl = document.getElementById('about');
-    var exampleBanner = document.getElementById('example-banner');
-
-    function fillExample(){
-      if (!aboutEl) return;
-      aboutEl.value = EXAMPLES[exampleIndex % EXAMPLES.length];
-      exampleIndex++;
-      if (exampleBanner) exampleBanner.hidden = false;
-    }
-    var exampleFillBtn = document.getElementById('example-fill');
-    var exampleInnyBtn = document.getElementById('example-inny');
-    var exampleWyczyscBtn = document.getElementById('example-wyczysc');
-    if (exampleFillBtn) exampleFillBtn.addEventListener('click', fillExample);
-    if (exampleInnyBtn) exampleInnyBtn.addEventListener('click', fillExample);
-    if (exampleWyczyscBtn) exampleWyczyscBtn.addEventListener('click', function(){
-      if (aboutEl) aboutEl.value = '';
-      if (exampleBanner) exampleBanner.hidden = true;
-    });
-    if (aboutEl) aboutEl.addEventListener('input', function(){
-      if (exampleBanner && !exampleBanner.hidden) exampleBanner.hidden = true;
-    });
-
-    // Podgląd zdjęć/logo, wyłącznie po stronie przeglądarki, pliki nie są nigdzie wysyłane tędy.
-    var zdjeciaInput = document.getElementById('zdjecia');
-    var filePreviews = document.getElementById('file-previews');
-    if (zdjeciaInput && filePreviews) {
-      zdjeciaInput.addEventListener('change', function(){
-        filePreviews.innerHTML = '';
-        Array.prototype.forEach.call(zdjeciaInput.files, function(file){
-          var img = document.createElement('img');
-          img.src = URL.createObjectURL(file);
-          img.alt = file.name;
-          filePreviews.appendChild(img);
-        });
-      });
-    }
-
-    // Karty pakietu: podświetlenie wybranej.
-    var pickCards = document.querySelectorAll('.pick-card');
-    function refreshPickCards(){
-      pickCards.forEach(function(card){
-        var input = card.querySelector('input[type="radio"]');
-        card.classList.toggle('is-selected', input.checked);
-      });
-    }
-    pickCards.forEach(function(card){
-      card.querySelector('input[type="radio"]').addEventListener('change', refreshPickCards);
-    });
-
-    var form = document.getElementById('lead-form');
-    var note = document.getElementById('fnote');
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-
-      if (form.firma.value) return; // honeypot: niewidoczne pole, boty je wypełniają
-
-      if (!form.checkValidity()) {
-        form.reportValidity();
-        return;
-      }
-
-      var pakietEl = form.querySelector('input[name="pakiet"]:checked');
-      var pakiet = pakietEl ? pakietEl.value : 'nie wybrano';
-      var pliki = zdjeciaInput ? Array.prototype.map.call(zdjeciaInput.files, function(f){ return f.name; }).join(', ') : '';
-
-      var tresc = 'Imię: ' + form.imie.value + '\n' +
-        'Kontakt: ' + form.kontakt.value + '\n' +
-        'Czym się zajmuje: ' + (form.czym.value || 'nie podano') + '\n' +
-        'Pakiet: ' + pakiet + '\n' +
-        (pliki ? 'Zdjęcia, dośle w odpowiedzi: ' + pliki + '\n' : '');
-      var subject = 'Zgłoszenie z działajmy.online od ' + form.imie.value;
-
-      window.location.href = 'mailto:' + LEAD_EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(tresc);
-
-      note.textContent = 'Otwieram maila z Twoim zgłoszeniem. Wyślij, a ja odezwę się z konkretem.';
-      note.classList.add('ok');
-    });
-
-    // Moduł zgłoszenia jako osobne okno (dialog), nie sekcja strony.
-    var kontaktModal = document.getElementById('kontakt-modal');
-
-    function openKontakt(plan){
-      if (plan) {
-        var radio = document.querySelector('input[name="pakiet"][value="' + plan + '"]');
-        if (radio) {
-          radio.checked = true;
-          refreshPickCards();
-        }
-      }
-      if (typeof kontaktModal.showModal === 'function') {
-        kontaktModal.showModal();
-      } else {
-        kontaktModal.setAttribute('open', ''); // starsze przeglądarki bez wsparcia dla <dialog>
-      }
-      document.getElementById('name').focus({preventScroll:true});
-    }
-
-    document.getElementById('kontakt-close').addEventListener('click', function(){
-      kontaktModal.close();
-    });
-    // Klik w tło (poza treścią okna) zamyka modal.
-    kontaktModal.addEventListener('click', function(e){
-      if (e.target === kontaktModal) kontaktModal.close();
-    });
-
-    // Karty oferty: zaznacza pakiet i otwiera okno zgłoszenia.
-    document.querySelectorAll('.plan-cta').forEach(function(btn){
-      btn.addEventListener('click', function(){
-        openKontakt(btn.getAttribute('data-plan'));
-      });
-    });
-
-    // "Opisz swój biznes" w sekcji "Jak to działa" też otwiera okno zgłoszenia.
-    var openKontaktSteps = document.getElementById('open-kontakt-steps');
-    if (openKontaktSteps) openKontaktSteps.addEventListener('click', function(){ openKontakt(); });
-
-    // Linki z innych stron (np. manifest.html#kontakt) też mają otwierać okno.
-    if (window.location.hash === '#kontakt') openKontakt();
-  </script>
 
 </body>
 </html>
