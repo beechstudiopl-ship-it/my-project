@@ -185,6 +185,118 @@ a {
   flex-wrap: wrap;
 }
 
+.promo-badge {
+  display: inline-block;
+  margin: var(--grid) 0 0;
+  background: var(--highlight);
+  border-radius: var(--radius);
+  padding: 12px 18px;
+  font-family: 'Archivo', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  max-width: 52ch;
+}
+
+/* znasz to uczucie (dark problem section) */
+
+.section-dark {
+  background: var(--ink);
+  color: var(--paper);
+  border-top: none;
+}
+
+.section-dark .section-lead {
+  color: rgba(244, 242, 236, 0.7);
+}
+
+.problem-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--grid);
+  margin-top: var(--grid);
+}
+
+.problem-card {
+  border: 1px solid rgba(244, 242, 236, 0.25);
+  border-radius: var(--radius);
+  padding: var(--grid);
+}
+
+.problem-number {
+  font-family: 'Archivo', system-ui, sans-serif;
+  font-weight: 900;
+  font-size: 1.8rem;
+  color: var(--blue);
+  margin-bottom: 6px;
+}
+
+.problem-card h3 {
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.problem-card p {
+  color: rgba(244, 242, 236, 0.8);
+}
+
+.problem-punchline {
+  color: var(--paper);
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+/* jak to działa (process steps) */
+
+.step-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--grid);
+  margin-top: var(--grid);
+}
+
+.step-card {
+  position: relative;
+  background: #fff;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  padding: var(--grid);
+}
+
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: 'Archivo', system-ui, sans-serif;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.step-card p:last-child {
+  margin-bottom: 0;
+}
+
+.step-card-featured {
+  border-color: var(--blue);
+  box-shadow: 6px 6px 0 var(--blue);
+}
+
+.step-card-featured .step-number {
+  background: var(--blue);
+}
+
+.step-cta {
+  margin-top: var(--grid);
+}
+
+.step-cta .field-hint {
+  margin-top: 10px;
+}
+
 /* oferta cards */
 
 .oferta-grid {
@@ -571,6 +683,22 @@ a {
   }
   .select-grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+  .problem-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .step-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .step-card:not(:last-child)::after {
+    content: "\2192";
+    position: absolute;
+    top: 50%;
+    right: -22px;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    color: var(--ink);
+    z-index: 1;
   }
 }
 
