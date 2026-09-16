@@ -1,307 +1,260 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>działajmy.online — strony www bez owijania</title>
-<meta name="description" content="Strony internetowe od Bartosza. 12 lat doświadczenia, ceny z góry, raty okej. Wizytówka za 1000 zł albo rozbudowana strona za 3000 zł.">
-<link rel="stylesheet" href="assets/css/style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>działajmy.online · na co czekasz?</title>
+<meta name="description" content="Prosta strona www dla firmy lokalnej i pozycjonowanie w Google. Bez ściemy. Napisz, działamy.">
+<meta property="og:title" content="działajmy.online">
+<meta property="og:description" content="Strona www i SEO dla firm lokalnych. Na co czekasz? Napisz, działamy.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pl_PL">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4F2EC;
+    --ink:#14171B;
+    --ink-2:#4A525C;
+    --ink-3:#8B939C;
+    --hair:rgba(20,23,27,.14);
+    --blue:#1B4BFF;
+    --blue-d:#0C2B9E;
+    --hi:#F5E33D;
+    --hi-2:#FFF08A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+  html,body{height:100%}
+  body{
+    background:var(--paper);color:var(--ink);
+    font-family:'Source Sans 3',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    min-height:100dvh;display:flex;flex-direction:column;
+    background-image:
+      linear-gradient(rgba(20,23,27,.028) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(20,23,27,.028) 1px,transparent 1px);
+    background-size:34px 34px;
+  }
+  .mk{
+    display:inline;padding:0 .16em;
+    background-image:linear-gradient(105deg,
+      rgba(245,227,61,0) 0%, var(--hi) 1.5%, var(--hi-2) 45%,
+      var(--hi) 92%, rgba(245,227,61,0) 100%);
+    background-size:100% .72em;background-position:0 .55em;background-repeat:no-repeat;
+    box-decoration-break:clone;-webkit-box-decoration-break:clone;
+  }
+
+  /* --- TOP --- */
+  .top{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px clamp(20px,5vw,48px);
+  }
+  .logo{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(19px,4.5vw,23px);
+    letter-spacing:-.04em}
+  .logo .d{color:var(--blue)}
+  .logo .c{display:inline-block;color:var(--blue);transform:translateY(-2px);margin-left:1px;
+    animation:bl 1.2s steps(1) infinite}
+  @keyframes bl{0%,55%{opacity:1}56%,100%{opacity:.12}}
+  .status{
+    display:flex;align-items:center;gap:8px;
+    font-family:'Archivo',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;
+    color:var(--ink-2);
+  }
+  .status i{width:7px;height:7px;border-radius:50%;background:var(--blue);
+    box-shadow:0 0 0 0 rgba(27,75,255,.5);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(27,75,255,.45)}70%{box-shadow:0 0 0 7px rgba(27,75,255,0)}100%{box-shadow:0 0 0 0 rgba(27,75,255,0)}}
+
+  /* --- CENTER --- */
+  main{
+    flex:1;display:flex;flex-direction:column;justify-content:center;
+    padding:32px clamp(20px,5vw,48px);max-width:860px;width:100%;margin:0 auto;
+  }
+  .kicker{
+    font-family:'Archivo',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;
+    color:var(--ink-3);margin-bottom:22px;display:flex;align-items:center;gap:10px;
+  }
+  .kicker::before{content:"";width:28px;height:2px;background:var(--blue)}
+  h1{
+    font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.04em;line-height:1;
+    font-size:clamp(52px,13vw,104px);text-transform:uppercase;
+  }
+  h1 .sub{
+    display:block;color:var(--ink-2);font-size:clamp(21px,5vw,34px);
+    letter-spacing:-.03em;margin-top:18px;line-height:1.1;text-transform:none;font-weight:800;
+  }
+  .desc{
+    margin-top:30px;font-size:clamp(17px,2.4vw,20px);color:var(--ink-2);line-height:1.55;
+    max-width:600px;
+  }
+  .desc b{color:var(--ink);font-weight:700}
+  .means{
+    margin-top:18px;font-size:clamp(15px,2vw,17px);color:var(--ink-2);line-height:1.5;
+    padding-left:16px;border-left:3px solid var(--hi);
+  }
+  .means b{color:var(--ink);font-weight:800;font-family:'Archivo',sans-serif;letter-spacing:-.02em}
+
+  /* --- CTA --- */
+  .actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:38px;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:12px;text-decoration:none;
+    font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.02em;
+    font-size:clamp(16px,2.2vw,18px);padding:16px 24px;border:1.5px solid var(--blue-d);
+    transition:opacity .12s ease;
+  }
+  .btn:hover{opacity:.9}
+  .btn-blue{background:var(--blue);color:#fff}
+  .btn-hi{background:var(--hi);color:var(--ink)}
+  .btn .arw{font-size:20px}
+  .or{font-family:'Archivo',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;
+    color:var(--ink-3)}
+
+  /* --- FORM --- */
+  .lead-form{margin-top:34px;max-width:560px}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .field{margin-top:14px}
+  .row2 .field{margin-top:0}
+  .field label{
+    display:block;font-family:'Archivo',sans-serif;font-size:11px;font-weight:700;
+    text-transform:uppercase;color:var(--ink-2);margin-bottom:6px;
+  }
+  .field input{
+    width:100%;font-family:'Source Sans 3',sans-serif;font-size:16px;color:var(--ink);
+    background:#fff;border:1.5px solid var(--ink);padding:13px 14px;
+  }
+  .field input::placeholder{color:var(--ink-3)}
+  .field input:focus{outline:0;box-shadow:0 0 0 3px var(--hi)}
+  .hp-field{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+  .lead-form button{
+    width:100%;margin-top:18px;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;gap:12px;
+    background:var(--blue);color:#fff;border:1.5px solid var(--blue-d);
+    font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.02em;
+    font-size:clamp(16px,2.2vw,18px);padding:16px 24px;transition:opacity .12s ease;
+  }
+  .lead-form button:hover{opacity:.9}
+  .lead-form button .arw{font-size:20px}
+  .form-note{margin-top:12px;font-size:13.5px;color:var(--ink-3);text-align:center;line-height:1.45}
+  .form-note.ok{color:var(--blue);font-weight:700}
+
+  .whisper{
+    margin-top:26px;font-size:15px;color:var(--ink-3);line-height:1.5;
+  }
+  .whisper b{color:var(--ink-2);font-weight:700}
+
+  /* --- FOOT --- */
+  footer{
+    padding:20px clamp(20px,5vw,48px);border-top:1px solid var(--hair);
+    display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;justify-content:space-between;
+    font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:600;text-transform:uppercase;
+    color:var(--ink-3);
+  }
+  footer .soon b{color:var(--ink-2)}
+  footer a{color:var(--ink-2);text-decoration:none}
+  footer a:hover{color:var(--blue)}
+
+  /* --- STICKY MANIFEST (tylko mobile) --- */
+  .mob-manifest{display:none}
+  @media (max-width:640px){
+    body{padding-bottom:64px}
+    .mob-manifest{
+      position:fixed;left:0;right:0;bottom:0;z-index:40;
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      background:var(--ink);color:var(--paper);text-decoration:none;
+      padding:14px 20px calc(14px + env(safe-area-inset-bottom));
+      border-top:2px solid var(--hi);
+    }
+    .mm-l{display:flex;align-items:center;gap:10px;
+      font-family:'Source Sans 3',sans-serif;font-size:14px;color:#C6CCD4;line-height:1.2}
+    .mm-tag{font-family:'Archivo',sans-serif;font-weight:800;font-size:11px;text-transform:uppercase;
+      background:var(--hi);color:var(--ink);padding:3px 8px;flex:none}
+    .mm-arw{font-family:'Archivo',sans-serif;font-weight:900;font-size:20px;color:var(--hi);flex:none}
+    footer .soon{display:none}
+  }
+</style>
 </head>
 <body>
 
-<header class="site-header">
-  <div class="container header-inner">
-    <a href="index.html" class="logo">działajmy<span class="highlight">.online</span></a>
-    <nav class="site-nav">
-      <a href="#oferta">Oferta</a>
-      <a href="#case-studies">Case studies</a>
-      <a href="#faq">FAQ</a>
-      <a href="manifest.html">Manifest</a>
-      <a href="#kontakt" class="btn btn-primary btn-small">Pogadajmy</a>
-    </nav>
+  <div class="top">
+    <div class="logo">działajmy<span class="d">.</span>online<span class="c">^</span></div>
+    <div class="status"><a href="manifest.html" style="color:var(--ink-2);text-decoration:none;border-bottom:2px solid var(--hi);padding-bottom:1px">Manifest</a><span style="margin:0 12px;color:var(--hair)">·</span><i></i>Przyjmuję zlecenia</div>
   </div>
-</header>
 
-<section id="hero" class="hero">
-  <div class="container hero-inner">
-    <p class="eyebrow">Bartosz — działajmy.online</p>
-    <h1>Nie czekaj. <span class="highlight">Działajmy</span> online.</h1>
-    <p class="lead">Robię strony od 12 lat. Jak dla znajomych, bez owijania. Wizytówka za 1000 zł albo rozbudowana strona za 3000 zł. Raty okej.</p>
-    <div class="hero-cta">
-      <a href="#oferta" class="btn btn-primary">Zobacz ofertę</a>
-      <a href="manifest.html" class="btn btn-outline">Przeczytaj manifest</a>
-    </div>
-    <p class="promo-badge">🔥 Pierwsze 3 strony w tym miesiącu — 20% taniej. Silny lokalnie: tanio, szybko, sprawnie — i rozwój, kiedy będziesz gotowy. Akcja trwa do końca miesiąca.</p>
-  </div>
-</section>
+  <main id="kontakt">
+    <div class="kicker">Strony www i SEO dla firm lokalnych</div>
+    <h1>
+      Na co<br>czekasz?
+      <span class="sub">Postaw stronę, którą <span class="mk">znajdą w Google.</span></span>
+    </h1>
 
-<section id="znasz-to-uczucie" class="section-dark section">
-  <div class="container">
-    <h2>Znasz to uczucie?</h2>
-    <p class="section-lead">Chcesz stronę, która działa. Rzeczywistość zwykle wygląda tak:</p>
+    <p class="desc">Bez wypasionego designu, bez drogiego logo. <b>Prosto, konkretnie i tak, żeby ściągało klientów.</b> Pełna strona powstaje. Na razie po prostu napisz.</p>
 
-    <div class="problem-grid">
-      <article class="problem-card">
-        <p class="problem-number">01.</p>
-        <h3>Za drogo</h3>
-        <p>Agencja: często kilka tysięcy złotych i miesiąc czekania. Freelancer: taniej, ale rzadko poniżej paru tysięcy.</p>
-        <p class="problem-punchline">› Ty chcesz zacząć teraz, bez przepłacania za wizytówkę.</p>
-      </article>
+    <p class="means"><b>Działamy</b>, czyli ruszamy. Nie gadamy w kółko, nie odkładamy „na kiedyś”. Zaczynamy robić.</p>
 
-      <article class="problem-card">
-        <p class="problem-number">02.</p>
-        <h3>Za długo</h3>
-        <p>Zlecasz — i czekasz. Tydzień, dwa. Poprawki się ciągną, terminy się przesuwają.</p>
-        <p class="problem-punchline">› A potrzebujesz strony teraz, nie za miesiąc.</p>
-      </article>
-
-      <article class="problem-card">
-        <p class="problem-number">03.</p>
-        <h3>Za trudno</h3>
-        <p>Generator: wybierasz szablon, wpisujesz dane — i utykasz na drugiej karcie. To "dokończę jutro" zwykle nie przychodzi.</p>
-        <p class="problem-punchline">› Prowadzisz biznes, nie masz czasu na kreator.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section id="jak-to-dziala" class="section">
-  <div class="container">
-    <h2>Jak to działa — 3 kroki</h2>
-
-    <div class="step-grid">
-      <article class="step-card">
-        <p class="step-number">1</p>
-        <h3>Opisz</h3>
-        <p>Wpisz czym się zajmujesz. Jedno zdanie wystarczy, resztę ogarniam ja.</p>
-      </article>
-
-      <article class="step-card">
-        <p class="step-number">2</p>
-        <h3>Ja dobieram styl</h3>
-        <p>Research, styl, typografia, kolory, układ — dopasowuję je do Twojej branży. Ty nie musisz zgadywać.</p>
-      </article>
-
-      <article class="step-card step-card-featured">
-        <p class="step-number">3</p>
-        <h3>Gotowe</h3>
-        <p>Dostajesz link do podglądu na maila. 2–3 serie poprawek i strona jest live.</p>
-      </article>
-    </div>
-
-    <div class="step-cta">
-      <a href="#kontakt" class="btn btn-primary">Opisz swój biznes →</a>
-      <p class="field-hint">Bez zobowiązań na etapie researchu. Ostatnią ratę płacisz, gdy strona działa tak, jak chciałeś.</p>
-    </div>
-  </div>
-</section>
-
-<section id="oferta" class="oferta section">
-  <div class="container">
-    <h2>Dwie opcje. Bez kompromisu.</h2>
-    <p class="section-lead">Strona za 1000 lub 3000 zł. Raty okej.</p>
-
-    <div class="oferta-grid">
-      <article class="card">
-        <h3>START <span class="price">1000 zł</span></h3>
-        <p class="card-subtitle">Wizytówka, ale która działa</p>
-        <ul class="check-list">
-          <li>Strona wizytówka</li>
-          <li>Mobile first</li>
-          <li>Czysty kod, szybka</li>
-          <li>Co robisz + kontakt</li>
-          <li>Live za 5–7 dni</li>
-        </ul>
-        <a href="#kontakt" class="btn btn-outline" data-oferta="START">Chcę START</a>
-      </article>
-
-      <article class="card card-featured">
-        <h3>FULL <span class="price">3000 zł</span></h3>
-        <p class="card-subtitle">Rozbudowana, gotowa na więcej</p>
-        <ul class="check-list">
-          <li>Wszystko z START</li>
-          <li>Portfolio/cennik</li>
-          <li>Blog (2-3 artykuły)</li>
-          <li>Formularz na sterydach</li>
-          <li>Potem możliwe SEO</li>
-          <li>Live za tydzień</li>
-        </ul>
-        <a href="#kontakt" class="btn btn-primary" data-oferta="FULL">Chcę FULL</a>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section id="case-studies" class="case-studies section">
-  <div class="container">
-    <h2>Nie gadam, pokazuję</h2>
-    <p class="section-lead">Przykładowe realizacje z ostatniego roku.</p>
-
-    <div class="case-grid">
-      <article class="case-card">
-        <p class="case-branza">Psycholog — Cewice</p>
-        <p class="case-co">Strona START</p>
-        <p class="case-efekt">Efekt: 12 nowych pacjentów znalazło go przez Google w ciągu 3 miesięcy.</p>
-      </article>
-
-      <article class="case-card">
-        <p class="case-branza">Warsztat samochodowy — Lębork</p>
-        <p class="case-co">Strona FULL z blogiem</p>
-        <p class="case-efekt">Efekt: 3 razy więcej telefonów w pierwszym miesiącu od uruchomienia.</p>
-      </article>
-
-      <article class="case-card">
-        <p class="case-branza">Salon kosmetyczny — Gdynia</p>
-        <p class="case-co">Strona START</p>
-        <p class="case-efekt">Efekt: grafik zapełniony na 2 tygodnie do przodu, zapisy przez formularz.</p>
-      </article>
-    </div>
-
-    <p class="case-note">To są przykładowe realizacje ilustrujące typ efektów — pełne case studies i referencje pokażę na rozmowie.</p>
-  </div>
-</section>
-
-<section id="faq" class="faq section">
-  <div class="container">
-    <h2>FAQ</h2>
-
-    <div class="faq-list">
-      <details class="faq-item">
-        <summary>Ile czasu zajmie?</summary>
-        <p>START: 5–7 dni roboczych. FULL: około tygodnia, czasem trochę dłużej — zależy, jak szybko dostanę od Ciebie teksty i zdjęcia.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Mogę Ci nie ufać — czemu miałbym spróbować?</summary>
-        <p>Bo robię to 12 lat i mam co pokazać. Płacisz na raty, więc nie ryzykujesz całości z góry. Zobacz case studies wyżej — to prawdziwe strony, nie makiety.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Co jeśli mi się nie podoba?</summary>
-        <p>Poprawki są w cenie, dopóki nie zaakceptujesz finalnej wersji. Ostatnią ratę płacisz dopiero, gdy strona działa tak, jak chciałeś.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Raty — jak to działa?</summary>
-        <p>2 raty albo 3 raty, jak Ci wygodniej. Pierwsza przed startem prac, ostatnia po odbiorze strony. Bez umów na lata, bez drobnego druku.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Na ile czasu się wiążemy?</summary>
-        <p>Na jeden projekt. Zero abonamentów, zero zobowiązań na przyszłość. Jak później zechcesz SEO albo zmiany — dogadamy się osobno.</p>
-      </details>
-    </div>
-  </div>
-</section>
-
-<section id="kontakt" class="kontakt section">
-  <div class="container">
-    <h2>Opisz swój biznes</h2>
-    <p class="section-lead">Opowiedz mi w dwóch zdaniach czym się zajmujesz, wybierz pakiet — resztę ogarniam.</p>
-
-    <form id="contact-form" class="contact-form" novalidate>
-
-      <div class="form-row">
-        <label for="opis">Czym się zajmujesz?</label>
-        <div class="example-banner" id="example-banner" hidden>
-          To tylko przykład — wstaw swoje dane.
-          <span class="example-banner-actions">
-            <button type="button" class="link-btn" id="example-inny">Inny</button>
-            <button type="button" class="link-btn" id="example-wyczysc">Wyczyść</button>
-          </span>
+    <form class="lead-form" id="lead-form">
+      <div class="row2">
+        <div class="field">
+          <label for="name">Imię</label>
+          <input id="name" name="imie" type="text" placeholder="Jak masz na imię?" required>
         </div>
-        <textarea id="opis" name="opis" rows="5" placeholder="Np. Jestem trenerem personalnym w Krakowie. Pomagam wrócić do formy bez katowania się na siłowni..." required></textarea>
-        <button type="button" class="btn btn-outline btn-small example-fill" id="example-fill">Przykładowy opis</button>
-      </div>
-
-      <div class="form-row">
-        <label for="zdjecia">Zdjęcia / logo (jeśli masz)</label>
-        <input type="file" id="zdjecia" name="zdjecia" accept="image/*" multiple>
-        <p class="field-hint">To tylko podgląd dla Ciebie — same pliki dośle w odpowiedzi na maila z potwierdzeniem, bo tędy ich jeszcze nie wysyłam.</p>
-        <div class="file-previews" id="file-previews"></div>
-      </div>
-
-      <fieldset class="form-row">
-        <legend>Wybierz pakiet</legend>
-        <div class="select-grid">
-          <label class="select-card" data-select-card="START">
-            <input type="radio" name="interesuje" value="START" required>
-            <span class="select-card-title">START <span class="price">1000 zł</span></span>
-            <span class="select-card-sub">Wizytówka, ale która działa</span>
-          </label>
-          <label class="select-card" data-select-card="FULL">
-            <input type="radio" name="interesuje" value="FULL">
-            <span class="select-card-title">FULL <span class="price">3000 zł</span></span>
-            <span class="select-card-sub">Rozbudowana, gotowa na więcej</span>
-          </label>
-          <label class="select-card" data-select-card="Pogadamy">
-            <input type="radio" name="interesuje" value="Pogadamy">
-            <span class="select-card-title">Pogadamy</span>
-            <span class="select-card-sub">Jeszcze nie wiem, co wybrać</span>
-          </label>
+        <div class="field">
+          <label for="contact">Telefon lub e-mail</label>
+          <input id="contact" name="kontakt" type="text" placeholder="Gdzie mam się odezwać?" required>
         </div>
-      </fieldset>
-
-      <div class="form-row" id="keywords-row" hidden>
-        <label for="frazy">Jakie frazy mogą wpisywać Twoi klienci w Google, żeby Cię znaleźć?</label>
-        <textarea id="frazy" name="frazy" rows="3" placeholder="Np. trener personalny Kraków, plan treningowy online..."></textarea>
-        <p class="field-hint">Przyda się, jak później zechcesz SEO — to część FULL.</p>
       </div>
-
-      <div class="form-row">
-        <p class="match-list-label">Dopasuję do Ciebie:</p>
-        <ul class="check-list match-list">
-          <li>Styl</li>
-          <li>Typografię</li>
-          <li>Kolory</li>
-          <li>UI/UX serwisu</li>
-          <li>Wersję mobile</li>
-        </ul>
+      <div class="field">
+        <label for="about">Czym się zajmujesz?</label>
+        <input id="about" name="czym" type="text" placeholder="Dwa słowa wystarczą, np. hydraulik, kwiaciarnia, kancelaria">
       </div>
-
-      <div class="form-row">
-        <label for="imie">Imię</label>
-        <input type="text" id="imie" name="imie" required>
-      </div>
-
-      <div class="form-row">
-        <label for="email">E-mail</label>
-        <input type="email" id="email" name="email" placeholder="żeby wysłać Ci link do podglądu" required>
-      </div>
-
-      <div class="form-row">
-        <label for="telefon">Telefon</label>
-        <input type="tel" id="telefon" name="telefon" required>
-      </div>
-
-      <fieldset class="form-row">
-        <legend>Raty okej?</legend>
-        <label class="radio"><input type="radio" name="raty" value="Tak 2x" required> Tak, 2x</label>
-        <label class="radio"><input type="radio" name="raty" value="Tak 3x"> Tak, 3x</label>
-        <label class="radio"><input type="radio" name="raty" value="Bez rat"> Bez rat</label>
-      </fieldset>
-
-      <div class="form-row honeypot-row" aria-hidden="true">
+      <div class="field hp-field" aria-hidden="true">
         <label for="firma">Firma</label>
-        <input type="text" id="firma" name="firma" tabindex="-1" autocomplete="off">
+        <input id="firma" name="firma" type="text" tabindex="-1" autocomplete="off">
       </div>
-
-      <button type="submit" class="btn btn-primary">Wyślij</button>
-
-      <div id="form-success-block" class="form-success-block" hidden>
-        <p id="form-success" class="form-success">Okej, czytam. Zadzwonię za godzinę. Zdjęcia/logo dośle jako odpowiedź na maila, który zaraz się otworzy.</p>
-        <button type="button" class="btn btn-outline btn-small" id="copy-submission">Skopiuj zgłoszenie</button>
-      </div>
+      <button type="submit"><span>Działajmy, Panie Bartoszu!</span><span class="arw">→</span></button>
+      <p class="form-note" id="fnote">Odezwę się z konkretem. Zero ściemy, zero sprzedaży na siłę.</p>
     </form>
-  </div>
-</section>
 
-<footer class="site-footer">
-  <div class="container">
-    <p style="margin:0;">działajmy.online — Bartosz. Strony www bez owijania. <a href="polityka-prywatnosci.html">Polityka prywatności</a></p>
-  </div>
-</footer>
+    <p class="whisper">Wolisz pogadać? <b>Zadzwoń albo wyślij głosówkę.</b> Powiedz, co robisz, a ja odsłucham i odpiszę. Nie masz czasu pisać? Nie szkodzi.</p>
+  </main>
 
-<script src="assets/js/main.js"></script>
+  <footer>
+    <span class="soon"><b>[ NOWE ]</b> <a href="manifest.html" style="color:var(--ink-2)">Przeczytaj manifest →</a></span>
+    <span>Bartosz · <a href="mailto:kontakt@dzialajmy.online">kontakt@dzialajmy.online</a> · działam tylko w Google</span>
+  </footer>
+
+  <a href="manifest.html" class="mob-manifest">
+    <span class="mm-l"><span class="mm-tag">Manifest</span>Dlaczego robię działajmy.online</span>
+    <span class="mm-arw">→</span>
+  </a>
+
+  <script>
+    // Wysyłka przez mailto: prosto na skrzynkę, bez rejestracji w zewnętrznym serwisie.
+    // PODMIEŃ LEAD_EMAIL na swój realny adres, jeśli inny niż kontakt@dzialajmy.online.
+    var LEAD_EMAIL = 'kontakt@dzialajmy.online';
+    var form = document.getElementById('lead-form');
+    var note = document.getElementById('fnote');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+
+      if (form.firma.value) return; // honeypot: niewidoczne pole, boty je wypełniają
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      var tresc = 'Imię: ' + form.imie.value + '\n' +
+        'Kontakt: ' + form.kontakt.value + '\n' +
+        'Czym się zajmuje: ' + (form.czym.value || 'nie podano') + '\n';
+      var subject = 'Zgłoszenie z działajmy.online od ' + form.imie.value;
+
+      window.location.href = 'mailto:' + LEAD_EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(tresc);
+
+      note.textContent = 'Otwieram maila z Twoim zgłoszeniem. Wyślij, a ja odezwę się z konkretem.';
+      note.classList.add('ok');
+    });
+  </script>
+
 </body>
 </html>
