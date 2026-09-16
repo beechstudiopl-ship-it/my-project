@@ -134,18 +134,77 @@
 
 <section id="kontakt" class="kontakt section">
   <div class="container">
-    <h2>Pogadajmy</h2>
-    <p class="section-lead">Wypełnij, zadzwonię w godzinę.</p>
+    <h2>Opisz swój biznes</h2>
+    <p class="section-lead">Opowiedz mi w dwóch zdaniach czym się zajmujesz, wybierz pakiet — resztę ogarniam.</p>
 
     <form id="contact-form" class="contact-form" novalidate>
+
+      <div class="form-row">
+        <label for="opis">Czym się zajmujesz?</label>
+        <div class="example-banner" id="example-banner" hidden>
+          To tylko przykład — wstaw swoje dane.
+          <span class="example-banner-actions">
+            <button type="button" class="link-btn" id="example-inny">Inny</button>
+            <button type="button" class="link-btn" id="example-wyczysc">Wyczyść</button>
+          </span>
+        </div>
+        <textarea id="opis" name="opis" rows="5" placeholder="Np. Jestem trenerem personalnym w Krakowie. Pomagam wrócić do formy bez katowania się na siłowni..." required></textarea>
+        <button type="button" class="btn btn-outline btn-small example-fill" id="example-fill">Przykładowy opis</button>
+      </div>
+
+      <div class="form-row">
+        <label for="zdjecia">Zdjęcia / logo (jeśli masz)</label>
+        <input type="file" id="zdjecia" name="zdjecia" accept="image/*" multiple>
+        <p class="field-hint">To tylko podgląd dla Ciebie — same pliki dośle w odpowiedzi na maila z potwierdzeniem, bo tędy ich jeszcze nie wysyłam.</p>
+        <div class="file-previews" id="file-previews"></div>
+      </div>
+
+      <fieldset class="form-row">
+        <legend>Wybierz pakiet</legend>
+        <div class="select-grid">
+          <label class="select-card" data-select-card="START">
+            <input type="radio" name="interesuje" value="START" required>
+            <span class="select-card-title">START <span class="price">1000 zł</span></span>
+            <span class="select-card-sub">Wizytówka, ale która działa</span>
+          </label>
+          <label class="select-card" data-select-card="FULL">
+            <input type="radio" name="interesuje" value="FULL">
+            <span class="select-card-title">FULL <span class="price">3000 zł</span></span>
+            <span class="select-card-sub">Rozbudowana, gotowa na więcej</span>
+          </label>
+          <label class="select-card" data-select-card="Pogadamy">
+            <input type="radio" name="interesuje" value="Pogadamy">
+            <span class="select-card-title">Pogadamy</span>
+            <span class="select-card-sub">Jeszcze nie wiem, co wybrać</span>
+          </label>
+        </div>
+      </fieldset>
+
+      <div class="form-row" id="keywords-row" hidden>
+        <label for="frazy">Jakie frazy mogą wpisywać Twoi klienci w Google, żeby Cię znaleźć?</label>
+        <textarea id="frazy" name="frazy" rows="3" placeholder="Np. trener personalny Kraków, plan treningowy online..."></textarea>
+        <p class="field-hint">Przyda się, jak później zechcesz SEO — to część FULL.</p>
+      </div>
+
+      <div class="form-row">
+        <p class="match-list-label">Dopasuję do Ciebie:</p>
+        <ul class="check-list match-list">
+          <li>Styl</li>
+          <li>Typografię</li>
+          <li>Kolory</li>
+          <li>UI/UX serwisu</li>
+          <li>Wersję mobile</li>
+        </ul>
+      </div>
+
       <div class="form-row">
         <label for="imie">Imię</label>
         <input type="text" id="imie" name="imie" required>
       </div>
 
       <div class="form-row">
-        <label for="branza">Czym się zajmujesz?</label>
-        <input type="text" id="branza" name="branza" placeholder="np. psycholog, warsztat, salon..." required>
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" placeholder="żeby wysłać Ci link do podglądu" required>
       </div>
 
       <div class="form-row">
@@ -154,21 +213,23 @@
       </div>
 
       <fieldset class="form-row">
-        <legend>Interesuje mnie:</legend>
-        <label class="radio"><input type="radio" name="interesuje" value="START" required> START</label>
-        <label class="radio"><input type="radio" name="interesuje" value="FULL"> FULL</label>
-        <label class="radio"><input type="radio" name="interesuje" value="Pogadamy"> Pogadamy</label>
-      </fieldset>
-
-      <fieldset class="form-row">
         <legend>Raty okej?</legend>
         <label class="radio"><input type="radio" name="raty" value="Tak 2x" required> Tak, 2x</label>
         <label class="radio"><input type="radio" name="raty" value="Tak 3x"> Tak, 3x</label>
         <label class="radio"><input type="radio" name="raty" value="Bez rat"> Bez rat</label>
       </fieldset>
 
+      <div class="form-row honeypot-row" aria-hidden="true">
+        <label for="firma">Firma</label>
+        <input type="text" id="firma" name="firma" tabindex="-1" autocomplete="off">
+      </div>
+
       <button type="submit" class="btn btn-primary">Wyślij</button>
-      <p id="form-success" class="form-success" hidden>Okej, czytam. Zadzwonię za godzinę.</p>
+
+      <div id="form-success-block" class="form-success-block" hidden>
+        <p id="form-success" class="form-success">Okej, czytam. Zadzwonię za godzinę. Zdjęcia/logo dośle jako odpowiedź na maila, który zaraz się otworzy.</p>
+        <button type="button" class="btn btn-outline btn-small" id="copy-submission">Skopiuj zgłoszenie</button>
+      </div>
     </form>
   </div>
 </section>
