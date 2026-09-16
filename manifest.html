@@ -1,67 +1,169 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Manifest · działajmy.online</title>
 <meta name="description" content="Czemu działajmy.online. Co widzę na rynku stron www, skąd to wiem i jak podchodzę do roboty.">
-<link rel="stylesheet" href="assets/css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4F2EC;
+    --ink:#14171B;
+    --ink-2:#4A525C;
+    --ink-3:#8B939C;
+    --hair:rgba(20,23,27,.14);
+    --blue:#1B4BFF;
+    --blue-d:#0C2B9E;
+    --hi:#F5E33D;
+    --hi-2:#FFF08A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+  html,body{height:100%}
+  body{
+    background:var(--paper);color:var(--ink);
+    font-family:'Source Sans 3',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    min-height:100dvh;
+    background-image:
+      linear-gradient(rgba(20,23,27,.028) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(20,23,27,.028) 1px,transparent 1px);
+    background-size:34px 34px;
+  }
+
+  /* --- TOP --- */
+  .top{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px clamp(20px,5vw,48px);
+  }
+  .logo{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(19px,4.5vw,23px);
+    letter-spacing:-.04em;color:var(--ink);text-decoration:none}
+  .logo .d{color:var(--blue)}
+  .logo .c{display:inline-block;color:var(--blue);transform:translateY(-2px);margin-left:1px;
+    animation:bl 1.2s steps(1) infinite}
+  @keyframes bl{0%,55%{opacity:1}56%,100%{opacity:.12}}
+  .status{
+    display:flex;align-items:center;gap:8px;
+    font-family:'Archivo',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;
+    color:var(--ink-2);
+  }
+  .status i{width:7px;height:7px;border-radius:50%;background:var(--blue);
+    box-shadow:0 0 0 0 rgba(27,75,255,.5);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(27,75,255,.45)}70%{box-shadow:0 0 0 7px rgba(27,75,255,0)}100%{box-shadow:0 0 0 0 rgba(27,75,255,0)}}
+
+  /* --- BUTTONS --- */
+  .btn{
+    display:inline-flex;align-items:center;gap:12px;text-decoration:none;
+    font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.02em;
+    font-size:clamp(16px,2.2vw,18px);padding:16px 24px;border:1.5px solid var(--blue-d);
+    transition:opacity .12s ease;
+  }
+  .btn:hover{opacity:.9}
+  .btn-blue{background:var(--blue);color:#fff}
+  .btn-hi{background:var(--hi);color:var(--ink)}
+  .btn .arw{font-size:20px}
+
+  /* --- PROSE --- */
+  main.prose{max-width:720px;margin:0 auto;padding:56px clamp(20px,5vw,48px) 80px}
+  .prose h1{
+    font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.03em;line-height:1.05;
+    font-size:clamp(32px,6vw,52px);margin-bottom:8px;
+  }
+  .prose section{margin-top:40px}
+  .prose h2{
+    font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:-.02em;
+    font-size:clamp(20px,3vw,26px);margin-bottom:12px;
+  }
+  .prose p{font-size:16px;color:var(--ink-2);line-height:1.6}
+  .prose > a.btn{margin-top:48px}
+
+  /* --- FOOT --- */
+  footer{
+    padding:20px clamp(20px,5vw,48px);border-top:1px solid var(--hair);
+    display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;justify-content:space-between;
+    font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:600;text-transform:uppercase;
+    color:var(--ink-3);
+  }
+  footer .soon b{color:var(--ink-2)}
+  footer a{color:var(--ink-2);text-decoration:none}
+  footer a:hover{color:var(--blue)}
+
+  /* --- STICKY BACK TO HOME (tylko mobile) --- */
+  .mob-manifest{display:none}
+  @media (max-width:640px){
+    body{padding-bottom:64px}
+    .mob-manifest{
+      position:fixed;left:0;right:0;bottom:0;z-index:40;
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      background:var(--ink);color:var(--paper);text-decoration:none;
+      padding:14px 20px calc(14px + env(safe-area-inset-bottom));
+      border-top:2px solid var(--hi);
+    }
+    .mm-l{display:flex;align-items:center;gap:10px;
+      font-family:'Source Sans 3',sans-serif;font-size:14px;color:#C6CCD4;line-height:1.2}
+    .mm-tag{font-family:'Archivo',sans-serif;font-weight:800;font-size:11px;text-transform:uppercase;
+      background:var(--hi);color:var(--ink);padding:3px 8px;flex:none}
+    .mm-arw{font-family:'Archivo',sans-serif;font-weight:900;font-size:20px;color:var(--hi);flex:none}
+    footer .soon{display:none}
+  }
+</style>
 </head>
 <body>
 
-<header class="site-header">
-  <div class="container header-inner">
-    <a href="index.html" class="logo">działajmy<span class="highlight">.online</span></a>
-    <nav class="site-nav">
-      <a href="index.html">Strona główna</a>
-      <a href="manifest.html">Manifest</a>
-      <a href="index.html#kontakt" class="btn btn-primary btn-small">Napisz</a>
-    </nav>
+  <div class="top">
+    <a href="index.html" class="logo">działajmy<span class="d">.</span>online<span class="c">^</span></a>
+    <div class="status"><a href="index.html" style="color:var(--ink-2);text-decoration:none;border-bottom:2px solid var(--hi);padding-bottom:1px">Strona główna</a><span style="margin:0 12px;color:var(--hair)">·</span><i></i>Przyjmuję zlecenia</div>
   </div>
-</header>
 
-<main class="manifest">
-  <h1>Czemu działajmy.online</h1>
+  <main class="prose">
+    <h1>Czemu działajmy.online</h1>
 
-  <section>
-    <h2>Co widzę</h2>
-    <p>Małe firmy i freelancerzy płacą agencjom kokosy za strony, które i tak nie działają. Czekają miesiącami. Dostają PDF-y z "propozycją strategii cyfrowej transformacji" zamiast działającej strony. Albo próbują sami w kreatorze i poddają się po dwóch godzinach.</p>
-  </section>
+    <section>
+      <h2>Co widzę</h2>
+      <p>Małe firmy i freelancerzy płacą agencjom kokosy za strony, które i tak nie działają. Czekają miesiącami. Dostają PDF-y z "propozycją strategii cyfrowej transformacji" zamiast działającej strony. Albo próbują sami w kreatorze i poddają się po dwóch godzinach.</p>
+    </section>
 
-  <section>
-    <h2>Skąd to wiem</h2>
-    <p>Bo robię strony od 12 lat. Widziałem obie strony: agencje, które sprzedają ściemę, i klientów, którzy w końcu dostają to, czego chcieli, dopiero za trzecim podejściem. Nie muszę Ci nic udowadniać frazesami, mam portfolio i case studies, które możesz zobaczyć.</p>
-  </section>
+    <section>
+      <h2>Skąd to wiem</h2>
+      <p>Bo robię strony od 12 lat. Widziałem obie strony: agencje, które sprzedają ściemę, i klientów, którzy w końcu dostają to, czego chcieli, dopiero za trzecim podejściem. Nie muszę Ci nic udowadniać frazesami, mam portfolio, które możesz zobaczyć.</p>
+    </section>
 
-  <section>
-    <h2>Moje podejście</h2>
-    <p>Robię to dobrze, albo nie robię. Bez pośredników, bez "zespołu kreatywnego". Piszesz do mnie, ja odpisuję. Cena z góry: 1000 zł za wizytówkę, 3000 zł za coś więcej. Raty, jeśli tak wygodniej. Żadnych ukrytych kosztów po drodze.</p>
-  </section>
+    <section>
+      <h2>Moje podejście</h2>
+      <p>Robię to dobrze, albo nie robię. Bez pośredników, bez "zespołu kreatywnego". Piszesz do mnie, ja odpisuję. Cena z góry: 1000 zł za wizytówkę, 3000 zł za coś więcej. Raty, jeśli tak wygodniej. Żadnych ukrytych kosztów po drodze.</p>
+    </section>
 
-  <section>
-    <h2>A może zrobię to sam, w generatorze?</h2>
-    <p>Jasne, są generatory. Gotowe kreatory, serwisy, gdzie podobno zrobisz stronę w 5 minut. Problem w tym, że w większości przypadków zaangażowanie kończy się na drugiej karcie uzupełniania serwisu: wybierasz szablon, wpisujesz dane i mówisz sobie "dokończę jutro". To jutro zwykle nie przychodzi.</p>
-    <p>Dlatego proponuję siebie, UI/UX designera, nie kolejny formularz. Piszesz mi, co robisz. Ja to biorę na warsztat: sprawdzam, robię research, dopasowuję styl i przesyłam gotowy link, najbliższy temu, czego szukasz. Potem 2 do 3 serii poprawek i strona jest gotowa. Nikt nic nie odkłada, bo terminu pilnuję ja, nie Ty.</p>
-  </section>
+    <section>
+      <h2>A może zrobię to sam, w generatorze?</h2>
+      <p>Jasne, są generatory. Gotowe kreatory, serwisy, gdzie podobno zrobisz stronę w 5 minut. Problem w tym, że w większości przypadków zaangażowanie kończy się na drugiej karcie uzupełniania serwisu: wybierasz szablon, wpisujesz dane i mówisz sobie "dokończę jutro". To jutro zwykle nie przychodzi.</p>
+      <p style="margin-top:16px">Dlatego proponuję siebie, UI/UX designera, nie kolejny formularz. Piszesz mi, co robisz. Ja to biorę na warsztat: sprawdzam, robię research, dopasowuję styl i przesyłam gotowy link, najbliższy temu, czego szukasz. Potem 2 do 3 serii poprawek i strona jest gotowa. Nikt nic nie odkłada, bo terminu pilnuję ja, nie Ty.</p>
+    </section>
 
-  <section>
-    <h2>Czemu ty</h2>
-    <p>Bo prowadzisz firmę, a nie masz strony, albo masz taką, która nic nie robi. Nie potrzebujesz agencji z prezentacją na 40 slajdów. Potrzebujesz strony, która działa, ładuje się szybko i pokazuje, co robisz. Tyle.</p>
-  </section>
+    <section>
+      <h2>Czemu ty</h2>
+      <p>Bo prowadzisz firmę, a nie masz strony, albo masz taką, która nic nie robi. Nie potrzebujesz agencji z prezentacją na 40 slajdów. Potrzebujesz strony, która działa, ładuje się szybko i pokazuje, co robisz. Tyle.</p>
+    </section>
 
-  <section>
-    <h2>działajmy.online</h2>
-    <p>Nie czekaj na idealny moment. Napisz, pogadamy 15 minut, i zabieram się do roboty. Prosto, szybko, bez owijania.</p>
-  </section>
+    <section>
+      <h2>działajmy.online</h2>
+      <p>Nie czekaj na idealny moment. Napisz, pogadamy 15 minut, i zabieram się do roboty. Prosto, szybko, bez owijania.</p>
+    </section>
 
-  <a href="index.html#kontakt" class="btn btn-primary">Działajmy, napisz do mnie</a>
-</main>
+    <a href="index.html#kontakt" class="btn btn-blue">Działajmy, napisz do mnie<span class="arw">→</span></a>
+  </main>
 
-<footer class="site-footer">
-  <div class="container">
-    <p style="margin:0;">działajmy.online · Bartosz. Strony www bez owijania. <a href="polityka-prywatnosci.html">Polityka prywatności</a></p>
-  </div>
-</footer>
+  <footer>
+    <span class="soon"><b>[ INFO ]</b> <a href="polityka-prywatnosci.html">Polityka prywatności</a></span>
+    <span>Bartosz · <a href="mailto:kontakt@dzialajmy.online">kontakt@dzialajmy.online</a> · działam tylko w Google</span>
+  </footer>
+
+  <a href="index.html" class="mob-manifest">
+    <span class="mm-l"><span class="mm-tag">Start</span>Wróć na stronę główną</span>
+    <span class="mm-arw">→</span>
+  </a>
 
 </body>
 </html>
