@@ -72,15 +72,27 @@
     text-transform:uppercase;background:var(--hi);color:var(--ink);padding:4px 9px;margin-bottom:16px;
   }
 
-  /* --- FORM PAGE --- */
-  main.form-page{max-width:560px;margin:0 auto;padding:40px clamp(20px,5vw,40px) 80px;width:100%}
-  .form-page h1{
-    font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.03em;
-    font-size:clamp(28px,5vw,40px);line-height:1.05;
-  }
-  .form-page .sublead{margin-top:14px;font-size:16px;color:var(--ink-2);line-height:1.5}
+  /* --- FORM PAGE (dwie kolumny: akapit + formularz) --- */
+  main.consult-page{max-width:1040px;margin:0 auto;padding:48px clamp(20px,5vw,40px) 80px;width:100%}
+  .consult-grid{display:grid;grid-template-columns:1fr;gap:36px}
+  @media (min-width:860px){.consult-grid{grid-template-columns:1fr 1fr;gap:48px;align-items:start}}
 
-  .lead-form{margin-top:32px}
+  .consult-left h1{
+    font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.03em;
+    font-size:clamp(28px,4.5vw,40px);line-height:1.05;
+  }
+  .consult-left .sublead{margin-top:14px;font-size:16px;color:var(--ink-2);line-height:1.55}
+  .consult-points{margin-top:26px;display:flex;flex-direction:column;gap:12px}
+  .consult-points li{padding-left:22px;position:relative;font-size:15px;color:var(--ink-2);line-height:1.5}
+  .consult-points li::before{content:"•";position:absolute;left:0;top:0;color:var(--blue);font-weight:900}
+
+  .consult-card{background:#fff;border:1.5px solid var(--ink);padding:clamp(22px,3.5vw,32px)}
+  .consult-card h2{
+    font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.02em;
+    font-size:clamp(19px,2.8vw,23px);
+  }
+
+  .lead-form{margin-top:22px}
   .field{margin-top:14px}
   .field label{
     display:block;font-family:'Archivo',sans-serif;font-size:11px;font-weight:700;
@@ -94,6 +106,17 @@
   .field input::placeholder,.field textarea::placeholder{color:var(--ink-3)}
   .field input:focus,.field textarea:focus{outline:0;box-shadow:0 0 0 3px var(--hi)}
   .hp-field{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+  .checkbox-field{margin-top:18px}
+  label.checkbox-label{
+    display:flex;align-items:flex-start;gap:10px;cursor:pointer;
+    text-transform:none;font-family:'Source Sans 3',sans-serif;font-weight:400;margin-bottom:0;
+  }
+  .checkbox-label input[type="checkbox"]{
+    width:18px;height:18px;flex:none;margin-top:2px;accent-color:var(--blue);cursor:pointer;
+  }
+  .checkbox-label span{font-size:13px;color:var(--ink-2);line-height:1.5}
+  .checkbox-label a{color:var(--ink);text-decoration:underline}
 
   .lead-form > button{
     width:100%;margin-top:20px;cursor:pointer;
@@ -160,33 +183,53 @@
     <div class="status"><span class="status-link"><a href="index.html" style="color:var(--ink-2);text-decoration:none;border-bottom:2px solid var(--hi);padding-bottom:1px">Strona główna</a><span class="status-sep">·</span></span><i></i>Przyjmuję zlecenia</div>
   </div>
 
-  <main class="form-page">
-    <span class="tag">Bezpłatna konsultacja</span>
-    <h1>Rozwiejmy wątpliwości</h1>
-    <p class="sublead">Zostaw kontakt, umówimy 20 minut. Powiesz mi co robisz, ja powiem Ci szczerze, czy mogę pomóc. Zero zobowiązań, zero sprzedaży na siłę.</p>
+  <main class="consult-page">
+    <div class="consult-grid">
+      <div class="consult-left">
+        <span class="tag">Bezpłatna konsultacja</span>
+        <h1>Rozwiejmy wątpliwości</h1>
+        <p class="sublead">Zostaw kontakt, umówimy 20 minut. Powiesz mi co robisz, ja powiem Ci szczerze, czy mogę pomóc. Zero zobowiązań, zero sprzedaży na siłę.</p>
 
-    <form class="lead-form" id="lead-form">
-      <div class="field">
-        <label for="name">Imię</label>
-        <input id="name" name="imie" type="text" placeholder="Jak masz na imię?" required>
-      </div>
-      <div class="field">
-        <label for="contact">Telefon lub e-mail</label>
-        <input id="contact" name="kontakt" type="text" placeholder="Gdzie mam się odezwać?" required>
-      </div>
-      <div class="field">
-        <label for="watpliwosci">Co Cię zastanawia? (opcjonalnie)</label>
-        <textarea id="watpliwosci" name="watpliwosci" rows="4" placeholder="Np. nie wiem, czy strona mi się w ogóle opłaci, albo mam już stronę i nie wiem, czy warto ją zmieniać..."></textarea>
+        <ul class="consult-points">
+          <li>Co robisz i z czym się teraz mierzysz</li>
+          <li>Czy masz już stronę, czy zaczynasz od zera</li>
+          <li>Na co realnie starczy Twój czas i budżet</li>
+        </ul>
       </div>
 
-      <div class="field hp-field" aria-hidden="true">
-        <label for="firma">Firma</label>
-        <input id="firma" name="firma" type="text" tabindex="-1" autocomplete="off">
-      </div>
+      <div class="consult-card">
+        <h2>Umów rozmowę</h2>
+        <form class="lead-form" id="lead-form">
+          <div class="field">
+            <label for="name">Imię</label>
+            <input id="name" name="imie" type="text" placeholder="Jak masz na imię?" required>
+          </div>
+          <div class="field">
+            <label for="contact">Telefon lub e-mail</label>
+            <input id="contact" name="kontakt" type="text" placeholder="Gdzie mam się odezwać?" required>
+          </div>
+          <div class="field">
+            <label for="watpliwosci">Co Cię zastanawia? (opcjonalnie)</label>
+            <textarea id="watpliwosci" name="watpliwosci" rows="4" placeholder="Np. nie wiem, czy strona mi się w ogóle opłaci, albo mam już stronę i nie wiem, czy warto ją zmieniać..."></textarea>
+          </div>
 
-      <button type="submit"><span>Umów rozmowę</span><span class="arw">→</span></button>
-      <p class="form-note" id="fnote">Odezwę się, żeby ustalić termin. Bez zobowiązań.</p>
-    </form>
+          <div class="field checkbox-field">
+            <label class="checkbox-label">
+              <input type="checkbox" id="zgoda" name="zgoda" required>
+              <span>Zgadzam się na kontakt w sprawie mojego zgłoszenia. Dane wykorzystam wyłącznie w tym celu, szczegóły w <a href="polityka-prywatnosci.html">polityce prywatności</a>.</span>
+            </label>
+          </div>
+
+          <div class="field hp-field" aria-hidden="true">
+            <label for="firma">Firma</label>
+            <input id="firma" name="firma" type="text" tabindex="-1" autocomplete="off">
+          </div>
+
+          <button type="submit"><span>Umów rozmowę</span><span class="arw">→</span></button>
+          <p class="form-note" id="fnote">Odezwę się, żeby ustalić termin. Bez zobowiązań.</p>
+        </form>
+      </div>
+    </div>
   </main>
 
   <section class="section-dark">
@@ -242,7 +285,8 @@
 
       var tresc = 'Imię: ' + form.imie.value + '\n' +
         'Kontakt: ' + form.kontakt.value + '\n' +
-        'Co go/ją zastanawia: ' + (form.watpliwosci.value || 'nie podano');
+        'Co go/ją zastanawia: ' + (form.watpliwosci.value || 'nie podano') + '\n' +
+        'Zgoda na kontakt: potwierdzona';
       var subject = 'Bezpłatna konsultacja, działajmy.online, od ' + form.imie.value;
 
       window.location.href = 'mailto:' + LEAD_EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(tresc);
