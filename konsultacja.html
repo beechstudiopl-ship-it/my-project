@@ -268,11 +268,25 @@
         'Kontakt: ' + form.kontakt.value + '\n' +
         'Zgoda na kontakt: potwierdzona';
       var subject = 'Bezpłatna konsultacja, działajmy.online, od ' + form.imie.value;
+      var mailtoUrl = 'mailto:' + LEAD_EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(tresc);
 
-      window.location.href = 'mailto:' + LEAD_EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(tresc);
-
-      note.textContent = 'Otwieram maila z Twoim zgłoszeniem. Wyślij, a ja odezwę się w sprawie terminu.';
-      note.classList.add('ok');
+      fetch('https://formsubmit.co/ajax/' + LEAD_EMAIL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          _subject: subject,
+          imie: form.imie.value,
+          kontakt: form.kontakt.value
+        })
+      }).then(function(res){
+        if (!res.ok) throw new Error('send failed');
+        note.textContent = 'Dzięki! Zgłoszenie poszło prosto na maila, odezwę się w sprawie terminu.';
+        note.classList.add('ok');
+      }).catch(function(){
+        window.location.href = mailtoUrl;
+        note.textContent = 'Nie udało się wysłać automatycznie, otwieram maila, wyślij, żebym to dostał.';
+        note.classList.add('ok');
+      });
     });
   </script>
 

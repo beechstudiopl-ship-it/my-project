@@ -508,9 +508,26 @@
         var body = vote === 'tak'
           ? 'Skorzystałby: tak\nE-mail: ' + value
           : 'Skorzystałby: nie\nPowód: ' + value + '\nE-mail: ' + feedbackEmail.value;
-        window.location.href = 'mailto:' + LEAD_EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-        feedbackNote.textContent = 'Dzięki! Otwieram maila, wyślij, żebym to dostał.';
-        feedbackNote.classList.add('ok');
+        var mailtoUrl = 'mailto:' + LEAD_EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+
+        fetch('https://formsubmit.co/ajax/' + LEAD_EMAIL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            _subject: subject,
+            skorzystalby: vote,
+            wiadomosc: value,
+            email: vote === 'nie' ? feedbackEmail.value : ''
+          })
+        }).then(function(res){
+          if (!res.ok) throw new Error('send failed');
+          feedbackNote.textContent = 'Dzięki! Wiadomość poszła prosto na maila.';
+          feedbackNote.classList.add('ok');
+        }).catch(function(){
+          window.location.href = mailtoUrl;
+          feedbackNote.textContent = 'Nie udało się wysłać automatycznie, otwieram maila, wyślij, żebym to dostał.';
+          feedbackNote.classList.add('ok');
+        });
       });
     }
   </script>
