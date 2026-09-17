@@ -127,6 +127,12 @@
   .form-note{margin-top:12px;font-size:13.5px;color:var(--ink-3);text-align:center;line-height:1.45}
   .form-note.ok{color:var(--blue);font-weight:700}
 
+  .thanks{text-align:center}
+  .thanks-title{font-family:'Archivo',sans-serif;font-weight:900;font-size:24px}
+  .thanks-note{margin-top:8px;font-size:15px;color:var(--ink-2)}
+  .thanks-link{display:inline-block;margin-top:18px;font-family:'Archivo',sans-serif;font-weight:800;
+    font-size:14px;color:var(--blue);text-decoration:underline}
+
   /* --- DLACZEGO WARTO POGADAĆ (dark) --- */
   .section-dark{background:var(--ink);border-top:1px solid var(--hair);margin-top:56px}
   .sd-inner{max-width:680px;margin:0 auto;padding:56px clamp(20px,5vw,40px)}
@@ -210,6 +216,12 @@
         <button type="submit"><span>Umów rozmowę</span><span class="arw">→</span></button>
         <p class="form-note" id="fnote">Odezwę się, żeby ustalić termin. Bez zobowiązań.</p>
       </form>
+
+      <div class="thanks" id="thanks" hidden>
+        <p class="thanks-title">Dzięki, mam to.</p>
+        <p class="thanks-note">Odezwę się, żeby ustalić termin. Bez zobowiązań.</p>
+        <a href="manifest.html" class="thanks-link">W międzyczasie przeczytaj, dlaczego w ogóle to robię: Manifest →</a>
+      </div>
     </div>
 
     <p class="alt-cta">Wolisz od razu przejść do rzeczy? <a href="kontakt.html">Opowiedz mi czym się zajmujesz →</a></p>
@@ -280,8 +292,8 @@
         })
       }).then(function(res){
         if (!res.ok) throw new Error('send failed');
-        note.textContent = 'Dzięki! Zgłoszenie poszło prosto na maila, odezwę się w sprawie terminu.';
-        note.classList.add('ok');
+        form.hidden = true;
+        document.getElementById('thanks').hidden = false;
       }).catch(function(){
         window.location.href = mailtoUrl;
         note.textContent = 'Nie udało się wysłać automatycznie, otwieram maila, wyślij, żebym to dostał.';
