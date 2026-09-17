@@ -252,8 +252,7 @@
   .mini-row button:hover{opacity:.9}
   .feedback-note{margin-top:14px;font-size:13.5px;color:#9AA3AD}
   .feedback-note.ok{color:var(--hi);font-weight:700}
-  #feedback-cta{margin-top:16px}
-  #feedback-cta[hidden]{display:none}
+  .feedback-note a{color:var(--hi);text-decoration:underline}
 
   .mob-manifest{display:none}
   @media (max-width:640px){
@@ -448,7 +447,6 @@
           <button type="submit"><span>Wyślij</span><span>→</span></button>
         </div>
         <p class="feedback-note" id="feedback-note" hidden>Daj mi rozwiać Twoje wątpliwości.</p>
-        <a href="kontakt.html" class="btn btn-hi" id="feedback-cta" hidden>Opisz swój projekt<span class="arw">→</span></a>
       </form>
     </div>
   </section>
@@ -471,7 +469,6 @@
     var feedbackInput = document.getElementById('feedback-input');
     var feedbackEmail = document.getElementById('feedback-email');
     var feedbackNote = document.getElementById('feedback-note');
-    var feedbackCta = document.getElementById('feedback-cta');
     document.querySelectorAll('.vote-btn').forEach(function(btn){
       btn.addEventListener('click', function(){
         document.querySelectorAll('.vote-btn').forEach(function(b){ b.classList.remove('picked'); });
@@ -486,15 +483,13 @@
           feedbackInput.placeholder = 'Twój e-mail';
           feedbackEmail.hidden = true;
           feedbackEmail.required = false;
-          feedbackNote.textContent = 'Super! Dam znać, jak będę gotowy do przyjmowania zamówień. Lub opisz swój projekt już teraz.';
-          feedbackCta.hidden = false;
+          feedbackNote.innerHTML = 'Super! Dam znać, jak będę gotowy do przyjmowania zamówień. <a href="kontakt.html">Lub opisz swój projekt już teraz.</a>';
         } else {
           feedbackInput.type = 'text';
           feedbackInput.placeholder = 'Napisz, czemu niekoniecznie...';
           feedbackEmail.hidden = false;
           feedbackEmail.required = true;
           feedbackNote.textContent = 'Daj mi rozwiać Twoje wątpliwości.';
-          feedbackCta.hidden = true;
         }
         feedbackInput.value = '';
         feedbackEmail.value = '';
