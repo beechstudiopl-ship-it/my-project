@@ -207,7 +207,7 @@
     font-size:clamp(28px,5vw,44px);color:#fff;
   }
   .cta-box p{color:#9AA3AD;margin-top:16px;font-size:16px;line-height:1.5;max-width:520px}
-  .cta-box .mk{color:var(--ink)}
+  .cta-box .accent{background:var(--hi);color:var(--ink);padding:2px 10px}
 
   .vote-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
   .vote-btn{
@@ -398,16 +398,16 @@
 
   <section class="cta-box">
     <div class="wrap">
-      <h2>Projekt jest na etapie <span class="mk">testowym</span></h2>
-      <p>Zanim ruszę na pełnych obrotach, chcę wiedzieć, czy w ogóle skorzystałbyś z takiej oferty. Kliknij, zostaw e-mail, dam Ci znać, jak wystartuję.</p>
+      <h2>Projekt jest na etapie <span class="accent">testowym</span></h2>
+      <p>Zanim ruszę na pełnych obrotach, chcę wiedzieć, czy w ogóle skorzystałbyś z takiej oferty. Kliknij tak i zostaw e-mail, albo kliknij nie i napisz dlaczego. Przeczytam każdą wiadomość.</p>
 
       <form id="feedback-form">
         <div class="vote-row">
           <button type="button" class="vote-btn" data-vote="tak">👍 Skorzystałbym</button>
           <button type="button" class="vote-btn" data-vote="nie">👎 Niekoniecznie</button>
         </div>
-        <div class="mini-row">
-          <input type="email" id="feedback-email" placeholder="Twój e-mail" required>
+        <div class="mini-row" id="mini-row" hidden>
+          <input type="text" id="feedback-input" placeholder="" required>
           <button type="submit"><span>Wyślij</span><span>→</span></button>
         </div>
         <p class="feedback-note" id="feedback-note">Zero spamu, jedna wiadomość, jak wystartuję.</p>
@@ -426,14 +426,27 @@
   </a>
 
   <script>
-    // Ankieta testowa: like/nie lajk + e-mail, wysyłka przez mailto:.
+    // Ankieta testowa: lajk prosi o e-mail, nie lajk prosi o powód, oba wysyłają przez mailto:.
     var LEAD_EMAIL = 'kontakt@dzialajmy.online';
     var vote = '';
+    var miniRow = document.getElementById('mini-row');
+    var feedbackInput = document.getElementById('feedback-input');
     document.querySelectorAll('.vote-btn').forEach(function(btn){
       btn.addEventListener('click', function(){
         document.querySelectorAll('.vote-btn').forEach(function(b){ b.classList.remove('picked'); });
         btn.classList.add('picked');
         vote = btn.getAttribute('data-vote');
+
+        miniRow.hidden = false;
+        if (vote === 'tak') {
+          feedbackInput.type = 'email';
+          feedbackInput.placeholder = 'Twój e-mail';
+        } else {
+          feedbackInput.type = 'text';
+          feedbackInput.placeholder = 'Napisz, czemu niekoniecznie...';
+        }
+        feedbackInput.value = '';
+        feedbackInput.focus();
       });
     });
 
@@ -442,11 +455,15 @@
     if (feedbackForm) {
       feedbackForm.addEventListener('submit', function(e){
         e.preventDefault();
-        var email = document.getElementById('feedback-email').value;
+        if (!vote) return;
+
+        var value = feedbackInput.value;
         var subject = 'Feedback testowy działajmy.online';
-        var body = 'Skorzystałby: ' + (vote || 'nie wybrano') + '\nE-mail: ' + email;
+        var body = vote === 'tak'
+          ? 'Skorzystałby: tak\nE-mail: ' + value
+          : 'Skorzystałby: nie\nPowód: ' + value;
         window.location.href = 'mailto:' + LEAD_EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-        feedbackNote.textContent = 'Dzięki! Otwieram maila, wyślij i dam Ci znać.';
+        feedbackNote.textContent = 'Dzięki! Otwieram maila, wyślij, żebym to dostał.';
         feedbackNote.classList.add('ok');
       });
     }
