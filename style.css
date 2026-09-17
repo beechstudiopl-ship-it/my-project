@@ -38,7 +38,7 @@ body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:var(--black);
 
 /* HERO */
 .hero{position:relative;height:100svh;min-height:600px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;padding-top:60px}
-.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80&fit=crop');background-size:cover;background-position:center 30%}
+.hero-bg{position:absolute;inset:0;background-image:url('images/oferta-kamienica-gdansk/01-hol.jpg');background-size:cover;background-position:center 30%}
 .hero-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(20,20,20,.88) 0%,rgba(20,20,20,.15) 60%,transparent 100%)}
 .hero-c{position:relative;padding-bottom:36px}
 .hero-eye{font-size:8px;letter-spacing:.3em;color:rgba(255,255,255,.4);text-transform:uppercase;margin-bottom:14px}
@@ -215,7 +215,6 @@ body.modal-lock{overflow:hidden}
 /* ── DESKTOP ── */
 @media (min-width:768px) {
   body { font-size:16px; }
-  .hero-c { max-width:720px; }
   .hero-title { font-size:56px; }
   .hero-tagline { font-size:14px; }
   .page-hero { padding:160px 0 56px; }
@@ -235,6 +234,7 @@ body.modal-lock{overflow:hidden}
   .portale { padding:56px 0; }
   .portale .wrap { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; }
   .portale-t { font-size:32px; }
+  .portale-right { max-width:420px; }
   .portale-types { grid-template-columns:1fr 1fr; }
 
   .opinie { padding:56px 0; }
@@ -250,13 +250,13 @@ body.modal-lock{overflow:hidden}
 
   .contact { padding:56px 0; }
   .contact .wrap { display:grid; grid-template-columns:1fr 1fr; gap:64px; }
-  .form-sep { margin-top:0; padding-top:0; border-top:none; }
+  .contact .wrap.contact-teaser { display:block; }
+  .form-sep { margin-top:0; padding-top:0; border-top:none; max-width:420px; }
+  .contact-teaser .form-sep { margin-top:32px; }
 
   footer { padding:24px 0; }
   .bbar { display:none; }
   body { padding-bottom:0; }
-
-  .btn-white, .btn-outline-w { max-width:360px; }
 
   .listings { padding:56px 0; }
   .listings-grid { grid-template-columns:1fr 1fr; gap:32px; }
