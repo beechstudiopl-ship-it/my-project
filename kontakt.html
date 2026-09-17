@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Opisz swój biznes · działajmy.online</title>
-<meta name="description" content="Opowiedz czym się zajmujesz, wybierz pakiet, resztę ogarniam. Formularz zgłoszeniowy działajmy.online.">
+<meta name="description" content="Opowiedz czym się zajmujesz, resztę ogarniam. Formularz zgłoszeniowy działajmy.online.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -82,10 +82,10 @@
     font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.03em;
     font-size:clamp(28px,5vw,44px);line-height:1.05;
   }
-  .form-page .sublead{margin-top:14px;font-size:16px;color:var(--ink-2)}
 
-  .lead-form{margin-top:32px}
-  .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .lead-form{margin-top:28px}
+  .row2{display:grid;grid-template-columns:1fr;gap:14px}
+  @media (min-width:480px){.row2{grid-template-columns:1fr 1fr}}
   .field{margin-top:14px}
   .row2 .field{margin-top:0}
   .field label{
@@ -105,52 +105,57 @@
   .field textarea::placeholder{color:var(--ink-3)}
   .field textarea:focus{outline:0;box-shadow:0 0 0 3px var(--hi)}
   .hp-field{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
-  .hint{margin-top:8px;font-size:13px;color:var(--ink-3)}
-  .field input[type="file"]{
-    padding:32px 16px;text-align:center;cursor:pointer;
-    border:1.5px dashed var(--ink);background:#fff;
+  .visually-hidden{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+  .btn-mini{
+    display:inline-flex;align-items:center;flex:none;cursor:pointer;text-decoration:none;
+    background:var(--blue);color:#fff;border:1.5px solid var(--blue-d);
+    font-family:'Archivo',sans-serif;font-weight:800;font-size:13px;
+    padding:8px 14px;transition:opacity .12s ease;
   }
-  .field input[type="file"]:focus{outline:0;box-shadow:0 0 0 3px var(--hi)}
+  .btn-mini:hover{opacity:.9}
 
   .example-banner{
-    background:var(--hi);padding:10px 14px;font-size:13.5px;font-weight:600;
-    display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;
+    background:rgba(27,75,255,.07);border:1.5px solid rgba(27,75,255,.25);
+    padding:10px 10px 10px 14px;font-size:13.5px;font-weight:600;color:var(--ink-2);
+    display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;
     margin-bottom:10px;
   }
-  .example-actions{display:flex;gap:12px}
-  .link-btn{background:none;border:none;padding:0;font:inherit;font-weight:700;text-decoration:underline;color:var(--ink);cursor:pointer}
-  .example-fill{
-    display:block;margin-top:8px;background:none;border:none;padding:0;
-    font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;color:var(--blue);cursor:pointer;
+
+  .photo-row{
+    border:1.5px solid var(--ink);background:#fff;padding:14px 16px;
+    display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;
   }
+  .photo-row-text{display:flex;flex-direction:column;gap:2px}
+  .photo-row-title{font-family:'Archivo',sans-serif;font-weight:700;font-size:14.5px}
+  .photo-row-hint{font-size:13px;color:var(--ink-3)}
 
   .file-previews{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
   .file-previews img{width:56px;height:56px;object-fit:cover;border:1.5px solid var(--ink)}
 
-  .pick-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:10px}
-  @media (min-width:560px){.pick-grid{grid-template-columns:1fr 1fr}}
-  .pick-card{
-    position:relative;display:flex;flex-direction:column;gap:4px;
-    border:1.5px solid var(--ink);background:#fff;padding:16px 18px;cursor:pointer;
-  }
-  .pick-card input{position:absolute;opacity:0;pointer-events:none}
-  .pick-title{font-family:'Archivo',sans-serif;font-weight:800;display:flex;align-items:center;gap:8px}
-  .pick-sub{font-size:13.5px;color:var(--ink-2)}
-  .pick-card.is-selected{border-color:var(--blue);box-shadow:3px 3px 0 var(--blue)}
-  .tag{
-    display:inline-block;font-family:'Archivo',sans-serif;font-weight:800;font-size:11px;
-    text-transform:uppercase;background:var(--hi);color:var(--ink);padding:3px 8px;
-  }
+  .reveal-fields{margin-top:0}
+  .reveal-fields .field:first-child{margin-top:14px}
 
-  .lead-form > button{
+  .checkbox-field{margin-top:18px}
+  label.checkbox-label{
+    display:flex;align-items:flex-start;gap:10px;cursor:pointer;
+    text-transform:none;font-family:'Source Sans 3',sans-serif;font-weight:400;margin-bottom:0;
+  }
+  .checkbox-label input[type="checkbox"]{
+    width:18px;height:18px;flex:none;margin-top:2px;accent-color:var(--blue);cursor:pointer;
+  }
+  .checkbox-label span{font-size:13px;color:var(--ink-2);line-height:1.5}
+  .checkbox-label a{color:var(--ink);text-decoration:underline}
+
+  .lead-form > button, .reveal-fields > button{
     width:100%;margin-top:18px;cursor:pointer;
     display:flex;align-items:center;justify-content:center;gap:12px;
     background:var(--blue);color:#fff;border:1.5px solid var(--blue-d);
     font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.02em;
     font-size:clamp(16px,2.2vw,18px);padding:16px 24px;transition:opacity .12s ease;
   }
-  .lead-form > button:hover{opacity:.9}
-  .lead-form > button .arw{font-size:20px}
+  .lead-form > button:hover, .reveal-fields > button:hover{opacity:.9}
+  .lead-form > button .arw, .reveal-fields > button .arw{font-size:20px}
   .form-note{margin-top:12px;font-size:13.5px;color:var(--ink-3);text-align:center;line-height:1.45}
   .form-note.ok{color:var(--blue);font-weight:700}
 
@@ -195,64 +200,63 @@
   </div>
 
   <main class="form-page">
-    <h1>Opisz swój biznes</h1>
-    <p class="sublead">Opowiedz mi czym się zajmujesz, wybierz pakiet, resztę ogarniam.</p>
+    <h1>Opowiedz mi czym się zajmujesz.</h1>
 
     <form class="lead-form" id="lead-form">
       <div class="field">
-        <label for="about">Czym zajmuje się Twój biznes?</label>
-        <div class="example-banner" id="example-banner" hidden>
-          To tylko przykład, wstaw swoje dane.
-          <span class="example-actions">
-            <button type="button" class="link-btn" id="example-inny">Inny</button>
-            <button type="button" class="link-btn" id="example-wyczysc">Wyczyść</button>
-          </span>
+        <div class="example-banner">
+          <span>Nie wiesz, od czego zacząć?</span>
+          <button type="button" class="btn-mini" id="example-fill">+ Przykładowy opis</button>
         </div>
-        <textarea id="about" name="czym" rows="4" placeholder="Np. Jestem trenerem personalnym w Krakowie. Pomagam wrócić do formy bez katowania się na siłowni..."></textarea>
-        <button type="button" class="example-fill" id="example-fill">+ Przykładowy opis</button>
+        <textarea id="about" name="czym" rows="4" aria-label="Czym zajmuje się Twój biznes" placeholder="Opisz w kilku zdaniach, czym się zajmujesz..."></textarea>
       </div>
 
       <div class="field">
-        <label for="zdjecia">Zdjęcia albo logo, jeśli masz</label>
-        <input type="file" id="zdjecia" name="zdjecia" accept="image/*" multiple>
-        <p class="hint">To tylko podgląd dla Ciebie. Pliki dośle sam w odpowiedzi na maila z potwierdzeniem.</p>
+        <div class="photo-row">
+          <div class="photo-row-text">
+            <span class="photo-row-title">Zdjęcia lub logo</span>
+            <span class="photo-row-hint">Opcjonalnie, to tylko podgląd dla Ciebie</span>
+          </div>
+          <label class="btn-mini" for="zdjecia">+ Dodaj zdjęcie</label>
+        </div>
+        <input type="file" id="zdjecia" name="zdjecia" accept="image/*" multiple class="visually-hidden">
         <div class="file-previews" id="file-previews"></div>
       </div>
 
-      <div class="field">
-        <label>Wybierz pakiet</label>
-        <div class="pick-grid">
-          <label class="pick-card" data-pick="START">
-            <input type="radio" name="pakiet" value="START">
-            <span class="pick-title">START <span class="tag">1000 zł</span></span>
-            <span class="pick-sub">Wizytówka, ale która działa</span>
-          </label>
-          <label class="pick-card" data-pick="FULL">
-            <input type="radio" name="pakiet" value="FULL">
-            <span class="pick-title">FULL <span class="tag">3000 zł</span></span>
-            <span class="pick-sub">Rozbudowana, gotowa na więcej</span>
-          </label>
-        </div>
-      </div>
+      <input type="hidden" id="pakiet-hidden" name="pakiet">
 
-      <div class="row2">
+      <div class="reveal-fields" id="reveal-fields" hidden>
+        <div class="row2">
+          <div class="field">
+            <label for="name">Imię i nazwisko</label>
+            <input id="name" name="imie" type="text" placeholder="Jak się nazywasz?" required>
+          </div>
+          <div class="field">
+            <label for="contact">Telefon lub e-mail</label>
+            <input id="contact" name="kontakt" type="text" placeholder="Gdzie mam się odezwać?" required>
+          </div>
+        </div>
+
         <div class="field">
-          <label for="name">Imię</label>
-          <input id="name" name="imie" type="text" placeholder="Jak masz na imię?" required>
+          <label for="domena">Domena, jeśli masz</label>
+          <input id="domena" name="domena" type="text" placeholder="np. twojafirma.pl">
         </div>
-        <div class="field">
-          <label for="contact">Telefon lub e-mail</label>
-          <input id="contact" name="kontakt" type="text" placeholder="Gdzie mam się odezwać?" required>
+
+        <div class="field checkbox-field">
+          <label class="checkbox-label">
+            <input type="checkbox" id="zgoda" name="zgoda" required>
+            <span>Zgadzam się na kontakt w sprawie mojego zgłoszenia. Dane wykorzystam wyłącznie w tym celu, szczegóły w <a href="polityka-prywatnosci.html">polityce prywatności</a>.</span>
+          </label>
         </div>
-      </div>
 
-      <div class="field hp-field" aria-hidden="true">
-        <label for="firma">Firma</label>
-        <input id="firma" name="firma" type="text" tabindex="-1" autocomplete="off">
-      </div>
+        <div class="field hp-field" aria-hidden="true">
+          <label for="firma">Firma</label>
+          <input id="firma" name="firma" type="text" tabindex="-1" autocomplete="off">
+        </div>
 
-      <button type="submit"><span>Działajmy, Panie Bartoszu!</span><span class="arw">→</span></button>
-      <p class="form-note" id="fnote">Odezwę się z konkretem. Zero ściemy, zero sprzedaży na siłę.</p>
+        <button type="submit"><span>Działajmy, Panie Bartoszu!</span><span class="arw">→</span></button>
+        <p class="form-note" id="fnote">Odezwę się z konkretem. Zero ściemy, zero sprzedaży na siłę.</p>
+      </div>
     </form>
   </main>
 
@@ -277,26 +281,23 @@
     ];
     var exampleIndex = 0;
     var aboutEl = document.getElementById('about');
-    var exampleBanner = document.getElementById('example-banner');
+    var revealFields = document.getElementById('reveal-fields');
+
+    function checkReveal(){
+      if (revealFields && revealFields.hidden && aboutEl.value.trim().length > 0) {
+        revealFields.hidden = false;
+      }
+    }
 
     function fillExample(){
       if (!aboutEl) return;
       aboutEl.value = EXAMPLES[exampleIndex % EXAMPLES.length];
       exampleIndex++;
-      if (exampleBanner) exampleBanner.hidden = false;
+      checkReveal();
     }
     var exampleFillBtn = document.getElementById('example-fill');
-    var exampleInnyBtn = document.getElementById('example-inny');
-    var exampleWyczyscBtn = document.getElementById('example-wyczysc');
     if (exampleFillBtn) exampleFillBtn.addEventListener('click', fillExample);
-    if (exampleInnyBtn) exampleInnyBtn.addEventListener('click', fillExample);
-    if (exampleWyczyscBtn) exampleWyczyscBtn.addEventListener('click', function(){
-      if (aboutEl) aboutEl.value = '';
-      if (exampleBanner) exampleBanner.hidden = true;
-    });
-    if (aboutEl) aboutEl.addEventListener('input', function(){
-      if (exampleBanner && !exampleBanner.hidden) exampleBanner.hidden = true;
-    });
+    if (aboutEl) aboutEl.addEventListener('input', checkReveal);
 
     // Podgląd zdjęć/logo, wyłącznie po stronie przeglądarki, pliki nie są nigdzie wysyłane tędy.
     var zdjeciaInput = document.getElementById('zdjecia');
@@ -313,28 +314,11 @@
       });
     }
 
-    // Karty pakietu: podświetlenie wybranej.
-    var pickCards = document.querySelectorAll('.pick-card');
-    function refreshPickCards(){
-      pickCards.forEach(function(card){
-        var input = card.querySelector('input[type="radio"]');
-        card.classList.toggle('is-selected', input.checked);
-      });
-    }
-    pickCards.forEach(function(card){
-      card.querySelector('input[type="radio"]').addEventListener('change', refreshPickCards);
-    });
-
-    // Preselekcja pakietu z linku, np. kontakt.html?pakiet=FULL
+    // Preselekcja pakietu z linku, np. kontakt.html?pakiet=FULL: zapamiętana cicho, bez wyboru w UI.
     var params = new URLSearchParams(window.location.search);
     var pakietParam = params.get('pakiet');
-    if (pakietParam) {
-      var pre = document.querySelector('input[name="pakiet"][value="' + pakietParam + '"]');
-      if (pre) {
-        pre.checked = true;
-        refreshPickCards();
-      }
-    }
+    var pakietHidden = document.getElementById('pakiet-hidden');
+    if (pakietParam && pakietHidden) pakietHidden.value = pakietParam;
 
     var form = document.getElementById('lead-form');
     var note = document.getElementById('fnote');
@@ -348,14 +332,13 @@
         return;
       }
 
-      var pakietEl = form.querySelector('input[name="pakiet"]:checked');
-      var pakiet = pakietEl ? pakietEl.value : 'nie wybrano';
       var pliki = zdjeciaInput ? Array.prototype.map.call(zdjeciaInput.files, function(f){ return f.name; }).join(', ') : '';
 
-      var tresc = 'Imię: ' + form.imie.value + '\n' +
+      var tresc = 'Imię i nazwisko: ' + form.imie.value + '\n' +
         'Kontakt: ' + form.kontakt.value + '\n' +
+        (form.domena.value ? 'Domena: ' + form.domena.value + '\n' : '') +
         'Czym się zajmuje: ' + (form.czym.value || 'nie podano') + '\n' +
-        'Pakiet: ' + pakiet + '\n' +
+        (form.pakiet.value ? 'Pakiet (z linku): ' + form.pakiet.value + '\n' : '') +
         (pliki ? 'Zdjęcia, dośle w odpowiedzi: ' + pliki + '\n' : '');
       var subject = 'Zgłoszenie z działajmy.online od ' + form.imie.value;
 
