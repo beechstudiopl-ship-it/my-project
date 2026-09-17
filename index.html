@@ -124,7 +124,7 @@
   /* --- STICKY MANIFEST (tylko mobile) --- */
   /* --- SECTIONS BELOW THE FOLD --- */
   .section2{
-    max-width:960px;margin:0 auto;
+    width:100%;max-width:960px;margin:0 auto;
     padding:64px clamp(20px,5vw,48px);
     border-top:1px solid var(--hair);
   }
@@ -160,7 +160,7 @@
 
   /* znasz to uczucie (dark, under hero) */
   .section-dark{background:var(--ink);border-top:1px solid var(--hair)}
-  .sd-inner{max-width:960px;margin:0 auto;padding:64px clamp(20px,5vw,48px)}
+  .sd-inner{width:100%;max-width:960px;margin:0 auto;padding:64px clamp(20px,5vw,48px)}
   .sd-inner h2{color:var(--paper)}
   .sd-inner .sublead{color:#C6CCD4}
 
@@ -194,8 +194,8 @@
   .steps-cta .form-note{text-align:left}
 
   /* --- DECISION BOX (bezpłatna konsultacja) --- */
-  .decision-box{background:var(--blue);padding:56px clamp(24px,5vw,48px)}
-  .decision-box .wrap{max-width:960px;margin:0 auto}
+  .decision-box{background:var(--blue)}
+  .decision-box .wrap{width:100%;max-width:960px;margin:0 auto;padding:56px clamp(24px,5vw,48px)}
   .decision-box h2{color:#fff;text-transform:uppercase}
   .d-quote{
     position:relative;background:#fff;color:var(--ink);border:1.5px solid var(--ink);
@@ -217,8 +217,8 @@
   .decision-box .btn{margin-top:24px}
 
   /* --- CTA BOX (test feedback) --- */
-  .cta-box{background:var(--ink);padding:56px clamp(24px,5vw,48px)}
-  .cta-box .wrap{max-width:960px;margin:0 auto}
+  .cta-box{background:var(--ink)}
+  .cta-box .wrap{width:100%;max-width:960px;margin:0 auto;padding:56px clamp(24px,5vw,48px)}
   .cta-box h2{color:#fff}
   .cta-box p{color:#9AA3AD;margin-top:16px;font-size:16px;line-height:1.5;max-width:520px}
   .cta-box .mk{
@@ -447,7 +447,7 @@
           <input type="email" id="feedback-email" placeholder="Twój e-mail" hidden>
           <button type="submit"><span>Wyślij</span><span>→</span></button>
         </div>
-        <p class="feedback-note" id="feedback-note">Daj mi rozwiać Twoje wątpliwości.</p>
+        <p class="feedback-note" id="feedback-note" hidden>Daj mi rozwiać Twoje wątpliwości.</p>
         <a href="kontakt.html" class="btn btn-hi" id="feedback-cta" hidden>Opisz swój projekt<span class="arw">→</span></a>
       </form>
     </div>
@@ -479,6 +479,7 @@
         vote = btn.getAttribute('data-vote');
 
         miniRow.hidden = false;
+        feedbackNote.hidden = false;
         feedbackNote.classList.remove('ok');
         if (vote === 'tak') {
           feedbackInput.type = 'email';
