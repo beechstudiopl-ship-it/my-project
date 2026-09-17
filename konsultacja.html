@@ -82,6 +82,8 @@
   .consult-page .sublead{margin-top:14px;font-size:16px;color:var(--ink-2);line-height:1.55}
 
   .consult-card{margin-top:36px;background:#fff;padding:clamp(22px,3.5vw,32px)}
+  .alt-cta{margin-top:20px;text-align:center;font-size:14px;color:var(--ink-3)}
+  .alt-cta a{color:var(--ink);font-weight:700;text-decoration:underline}
   .consult-card h2{
     font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.02em;
     font-size:clamp(19px,2.8vw,23px);
@@ -194,11 +196,6 @@
           <label for="contact">Telefon lub e-mail</label>
           <input id="contact" name="kontakt" type="text" placeholder="Gdzie mam się odezwać?" required>
         </div>
-        <div class="field">
-          <label for="watpliwosci">Co Cię zastanawia? (opcjonalnie)</label>
-          <textarea id="watpliwosci" name="watpliwosci" rows="4" placeholder="Np. nie wiem, czy strona mi się w ogóle opłaci, albo mam już stronę i nie wiem, czy warto ją zmieniać..."></textarea>
-        </div>
-
         <div class="field checkbox-field">
           <label class="checkbox-label">
             <input type="checkbox" id="zgoda" name="zgoda" required>
@@ -215,6 +212,8 @@
         <p class="form-note" id="fnote">Odezwę się, żeby ustalić termin. Bez zobowiązań.</p>
       </form>
     </div>
+
+    <p class="alt-cta">Wolisz od razu przejść do rzeczy? <a href="kontakt.html">Opowiedz mi czym się zajmujesz →</a></p>
   </main>
 
   <section class="section-dark">
@@ -270,7 +269,6 @@
 
       var tresc = 'Imię: ' + form.imie.value + '\n' +
         'Kontakt: ' + form.kontakt.value + '\n' +
-        'Co go/ją zastanawia: ' + (form.watpliwosci.value || 'nie podano') + '\n' +
         'Zgoda na kontakt: potwierdzona';
       var subject = 'Bezpłatna konsultacja, działajmy.online, od ' + form.imie.value;
 
