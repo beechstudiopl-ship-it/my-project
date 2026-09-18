@@ -49,36 +49,51 @@
 
 <section class="contact" id="kontakt">
   <div class="wrap">
-  <div>
-    <div class="ct-eye">Dane kontaktowe</div><div class="ct-ln"></div>
-    <div class="ct-d"><div class="ct-lbl">Telefon</div><div class="ct-val">+48 000 000 000</div></div>
-    <div class="ct-d"><div class="ct-lbl">E-mail</div><div class="ct-val">kontakt@dargacz.pl</div></div>
-    <div class="ct-d"><div class="ct-lbl">Instagram</div><div class="ct-val">@dargacz_nieruchomosci_premium</div></div>
-    <div class="ct-d"><div class="ct-lbl">Obszar działania</div><div class="ct-val">Sopot · Gdańsk · Gdynia · Pomorskie</div></div>
+
+  <div class="contact-tabs">
+    <button class="contact-tab active" id="tabInfo" onclick="showContactTab('info')">Dane kontaktowe</button>
+    <button class="contact-tab" id="tabForm" onclick="showContactTab('form')">Formularz kontaktowy</button>
   </div>
-  <div class="form-sep">
-    <div class="form-eye">Formularz kontaktowy</div>
-    <div class="field"><label>Imię i nazwisko</label><input type="text" placeholder="Jan Kowalski" /></div>
-    <div class="field"><label>Numer telefonu</label><input type="tel" placeholder="+48 000 000 000" /></div>
-    <div class="field">
-      <label>Czego szukam</label>
-      <div class="radio-grp">
-        <div class="r-opt"><div class="r-dot" style="border-color:#ddd"></div><span class="r-lbl" style="color:#fff">Zakup</span></div>
-        <div class="r-opt"><div class="r-dot"></div><span class="r-lbl">Sprzedaż</span></div>
-        <div class="r-opt"><div class="r-dot"></div><span class="r-lbl">Wynajem</span></div>
-        <div class="r-opt"><div class="r-dot"></div><span class="r-lbl">Doradztwo</span></div>
+
+  <div class="contact-panel" id="panelInfo">
+    <div class="contact-info-grid">
+      <div>
+        <div class="ct-eye">Dane kontaktowe</div><div class="ct-ln"></div>
+        <div class="ct-d"><div class="ct-lbl">Telefon</div><div class="ct-val">+48 000 000 000</div></div>
+        <div class="ct-d"><div class="ct-lbl">E-mail</div><div class="ct-val">kontakt@dargacz.pl</div></div>
+        <div class="ct-d"><div class="ct-lbl">Instagram</div><div class="ct-val">@dargacz_nieruchomosci_premium</div></div>
+        <div class="ct-d"><div class="ct-lbl">Obszar działania</div><div class="ct-val">Sopot · Gdańsk · Gdynia · Pomorskie</div></div>
       </div>
+      <div class="contact-photo"><img src="images/agentka/portret.jpg" alt="Roksana Dargacz"></div>
     </div>
-    <div class="field"><label>Lokalizacja</label>
-      <select><option value="">Wybierz obszar</option><option>Sopot</option><option>Gdańsk</option><option>Gdynia</option><option>Pomorskie</option></select>
-    </div>
-    <div class="field"><label>Wiadomość (opcjonalnie)</label><textarea placeholder="Opisz czego szukasz…"></textarea></div>
-    <div class="gdpr-wrap" onclick="toggleGdpr(this)">
-      <div class="gdpr-box" id="gdprBox"></div>
-      <div class="gdpr-text">Wyrażam zgodę na przetwarzanie moich danych osobowych w celu odpowiedzi na zapytanie, zgodnie z <a href="/polityka-prywatnosci" target="_blank" onclick="event.stopPropagation()">Polityką Prywatności</a>. Zgoda jest dobrowolna i może być cofnięta w każdym czasie.</div>
-    </div>
-    <button class="btn-white" id="submitBtn" style="margin-top:0;border:none;opacity:.4;cursor:not-allowed" disabled><i class="ti ti-send"></i>Wyślij zapytanie</button>
   </div>
+
+  <div class="contact-panel" id="panelForm" hidden>
+    <div class="form-sep">
+      <div class="form-eye">Formularz kontaktowy</div>
+      <div class="field"><label>Imię i nazwisko</label><input type="text" placeholder="Jan Kowalski" /></div>
+      <div class="field"><label>Numer telefonu</label><input type="tel" placeholder="+48 000 000 000" /></div>
+      <div class="field">
+        <label>Czego szukam</label>
+        <div class="radio-grp">
+          <div class="r-opt"><div class="r-dot" style="border-color:#ddd"></div><span class="r-lbl" style="color:#fff">Zakup</span></div>
+          <div class="r-opt"><div class="r-dot"></div><span class="r-lbl">Sprzedaż</span></div>
+          <div class="r-opt"><div class="r-dot"></div><span class="r-lbl">Wynajem</span></div>
+          <div class="r-opt"><div class="r-dot"></div><span class="r-lbl">Doradztwo</span></div>
+        </div>
+      </div>
+      <div class="field"><label>Lokalizacja</label>
+        <select><option value="">Wybierz obszar</option><option>Sopot</option><option>Gdańsk</option><option>Gdynia</option><option>Pomorskie</option></select>
+      </div>
+      <div class="field"><label>Wiadomość (opcjonalnie)</label><textarea placeholder="Opisz czego szukasz…"></textarea></div>
+      <div class="gdpr-wrap" onclick="toggleGdpr(this)">
+        <div class="gdpr-box" id="gdprBox"></div>
+        <div class="gdpr-text">Wyrażam zgodę na przetwarzanie moich danych osobowych w celu odpowiedzi na zapytanie, zgodnie z <a href="/polityka-prywatnosci" target="_blank" onclick="event.stopPropagation()">Polityką Prywatności</a>. Zgoda jest dobrowolna i może być cofnięta w każdym czasie.</div>
+      </div>
+      <button class="btn-white" id="submitBtn" style="margin-top:0;border:none;opacity:.4;cursor:not-allowed" disabled><i class="ti ti-send"></i>Wyślij zapytanie</button>
+    </div>
+  </div>
+
   </div>
 </section>
 

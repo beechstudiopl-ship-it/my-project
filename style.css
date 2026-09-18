@@ -138,6 +138,13 @@ body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:var(--black);
 .ct-val{font-size:15px;font-weight:300;color:#ddd}
 .form-sep{margin-top:28px;padding-top:28px;border-top:.5px solid #222}
 .form-eye{font-size:9px;letter-spacing:.22em;color:#888;text-transform:uppercase;margin-bottom:24px}
+
+/* KONTAKT — zakładki (dane / formularz) */
+.contact-tabs{display:flex;gap:24px;margin-bottom:32px;border-bottom:.5px solid #2a2a2a}
+.contact-tab{background:none;border:none;color:#666;font-family:inherit;font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:0 0 14px;cursor:pointer;border-bottom:2px solid transparent}
+.contact-tab.active{color:#fff;border-bottom-color:#fff}
+.contact-photo{display:none}
+.contact-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
 .field{margin-bottom:20px}
 .field label{font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#bbb;display:block;margin-bottom:10px}
 
@@ -193,7 +200,7 @@ footer .wrap{display:flex;justify-content:space-between}
 .modal-close{background:var(--black);border:none;color:#fff;width:36px;height:36px;font-size:16px;cursor:pointer}
 .modal-img{width:100%;height:260px;background:#e8e5e0;display:flex;align-items:center;justify-content:center;margin-top:-56px;overflow:hidden}
 .modal-img span{font-size:9px;letter-spacing:.18em;color:#b8b4ac;text-transform:uppercase;text-align:center}
-.modal-img img{width:100%;height:100%;object-fit:cover;display:block}
+.modal-img img{width:100%;height:100%;object-fit:cover;display:block;cursor:pointer}
 .modal-content{padding:28px 24px 40px}
 .modal-status{display:inline-block;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:#8a7454;background:#f2ead9;padding:5px 10px;margin-bottom:16px}
 .modal-title{font-size:26px;font-weight:200;color:var(--black);margin-bottom:8px}
@@ -205,11 +212,31 @@ footer .wrap{display:flex;justify-content:space-between}
 .modal-desc{font-size:15px;font-weight:400;line-height:1.75;color:#2a2a2a;margin-bottom:28px}
 .modal-gallery-lbl{font-size:9px;letter-spacing:.2em;color:#bbb;text-transform:uppercase;margin-bottom:14px}
 .modal-gallery{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
-.modal-gallery img{width:100%;height:150px;object-fit:cover;display:block;background:#e8e5e0}
+.modal-gallery img{width:100%;height:150px;object-fit:cover;display:block;background:#e8e5e0;cursor:pointer}
+.modal-contact-phone{margin-top:24px;padding-top:20px;border-top:.5px solid var(--border)}
+.modal-phone-link{display:inline-flex;align-items:center;gap:8px;font-size:20px;font-weight:300;color:var(--black);text-decoration:none;margin-top:4px}
+.modal-phone-link i{font-size:18px}
+.modal-phone-link:hover{text-decoration:underline}
+.modal-next-offer{display:block;margin-top:14px;font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#888;text-decoration:none;cursor:pointer}
+.modal-next-offer:hover{color:var(--black)}
 body.modal-lock{overflow:hidden}
 @media (min-width:768px){
   .modal-gallery{grid-template-columns:1fr 1fr 1fr}
   .modal-gallery img{height:170px}
+}
+
+/* LIGHTBOX */
+.lightbox{display:none;position:fixed;inset:0;background:rgba(5,5,5,.94);z-index:400;align-items:center;justify-content:center}
+.lightbox.open{display:flex}
+.lightbox img{max-width:90vw;max-height:80vh;object-fit:contain;display:block}
+.lightbox-close{position:absolute;top:16px;right:16px;background:rgba(255,255,255,.12);border:none;color:#fff;width:40px;height:40px;font-size:18px;cursor:pointer}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.12);border:none;color:#fff;width:44px;height:44px;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.lightbox-prev{left:12px}
+.lightbox-next{right:12px}
+.lightbox-count{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.55);font-size:11px;letter-spacing:.14em}
+@media (min-width:768px){
+  .lightbox-prev{left:24px}
+  .lightbox-next{right:24px}
 }
 
 /* ── DESKTOP ── */
@@ -249,8 +276,8 @@ body.modal-lock{overflow:hidden}
   .atmo-q { font-size:28px; }
 
   .contact { padding:56px 0; }
-  .contact .wrap { display:grid; grid-template-columns:1fr 1fr; gap:64px; }
-  .contact .wrap.contact-teaser { display:block; }
+  .contact-info-grid { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:stretch; }
+  .contact-photo { display:block; min-height:360px; }
   .form-sep { margin-top:0; padding-top:0; border-top:none; max-width:420px; }
   .contact-teaser .form-sep { margin-top:32px; }
 
@@ -284,11 +311,11 @@ body.modal-lock{overflow:hidden}
 .closing-photo img { width:100%; height:560px; object-fit:cover; object-position:center top; display:block; }
 .closing-photo-ph { width:100%; height:560px; background:#1e1e1e; display:flex; align-items:center; justify-content:center; }
 .closing-photo-ph span { font-size:9px; letter-spacing:.2em; color:#333; text-transform:uppercase; text-align:center; line-height:1.9; }
-.closing-overlay { position:absolute; bottom:0; left:0; right:0; background:linear-gradient(to top,rgba(10,10,10,.92) 0%,rgba(10,10,10,.4) 55%,transparent 100%); padding:40px 28px 36px; }
-.closing-motto { font-size:26px; font-weight:200; color:#fff; line-height:1.2; letter-spacing:-.01em; margin-bottom:10px; }
+.closing-overlay { position:absolute; bottom:0; left:0; right:0; background:linear-gradient(to top,rgba(10,10,10,.92) 0%,rgba(10,10,10,.4) 55%,transparent 100%); padding-top:40px; padding-bottom:36px; }
+.closing-motto { font-size:26px; font-weight:200; color:#fff; line-height:1.2; letter-spacing:-.01em; margin-bottom:10px; max-width:600px; }
 .closing-name { font-size:11px; font-weight:400; letter-spacing:.28em; color:rgba(255,255,255,.45); text-transform:uppercase; }
 @media(min-width:768px) {
   .closing-photo img, .closing-photo-ph { height:700px; }
   .closing-motto { font-size:36px; }
-  .closing-overlay { padding:56px 48px 52px; max-width:600px; }
+  .closing-overlay { padding-top:56px; padding-bottom:52px; }
 }
