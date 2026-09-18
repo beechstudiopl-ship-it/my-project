@@ -102,11 +102,20 @@
   <a href="nieruchomosci.html" class="bb"><i class="ti ti-building-estate"></i>Oferty</a>
 </div>
 
+<!-- LIGHTBOX — powiększony podgląd zdjęć -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <button class="lightbox-nav lightbox-prev" onclick="lightboxPrev(event)"><i class="ti ti-chevron-left"></i></button>
+  <img id="lightboxImg" src="" alt="">
+  <button class="lightbox-nav lightbox-next" onclick="lightboxNext(event)"><i class="ti ti-chevron-right"></i></button>
+  <div class="lightbox-count" id="lightboxCount"></div>
+</div>
+
 <!-- MODAL 1 — realna oferta -->
 <div class="modal-overlay" id="modal-1">
   <div class="modal-box">
     <div class="modal-top"><button class="modal-close" onclick="closeListing()">✕</button></div>
-    <div class="modal-img"><img src="images/oferta-kamienica-gdansk/09-ogrod-zimowy.jpg" alt="Apartament w kamienicy — ogród zimowy"></div>
+    <div class="modal-img"><img class="lightbox-src" src="images/oferta-kamienica-gdansk/09-ogrod-zimowy.jpg" alt="Apartament w kamienicy — ogród zimowy" onclick="openLightbox(1,0)"></div>
     <div class="modal-content">
       <span class="modal-status">Na sprzedaż</span>
       <div class="modal-title">Apartament w Kamienicy z Ogrodem Zimowym</div>
@@ -121,19 +130,58 @@
       <div class="modal-desc">
         Elegancki apartament w pełni odrestaurowanej przedwojennej kamienicy w sercu Śródmieścia. Wysokie sztukaterie, oryginalne zdobienia i dębowa podłoga w jodełkę harmonijnie łączą się z nowoczesnym, stonowanym wykończeniem. Przestronny hol prowadzi do salonu, dwóch sypialni oraz unikatowego ogrodu zimowego z oknami od podłogi do sufitu i widokiem na zielone, kameralne podwórze. Idealna propozycja dla osób szukających klimatu i charakteru w centrum miasta.
       </div>
-      <div class="modal-gallery-lbl">Galeria zdjęć</div>
+      <div class="modal-contact-phone">
+        <div class="modal-spec-lbl">Zadzwoń w sprawie tej oferty</div>
+        <a href="tel:+48000000000" class="modal-phone-link"><i class="ti ti-phone"></i>+48 000 000 000</a>
+      </div>
+      <div class="modal-gallery-lbl">Galeria zdjęć — kliknij, aby powiększyć</div>
       <div class="modal-gallery">
-        <img src="images/oferta-kamienica-gdansk/01-hol.jpg" alt="Hol wejściowy">
-        <img src="images/oferta-kamienica-gdansk/02-salon.jpg" alt="Salon">
-        <img src="images/oferta-kamienica-gdansk/03-sypialnia.jpg" alt="Sypialnia">
-        <img src="images/oferta-kamienica-gdansk/04-sypialnia-2.jpg" alt="Druga sypialnia">
-        <img src="images/oferta-kamienica-gdansk/05-hol-2.jpg" alt="Hol">
-        <img src="images/oferta-kamienica-gdansk/06-drzwi.jpg" alt="Drzwi przeszklone">
-        <img src="images/oferta-kamienica-gdansk/07-taras-wejscie.jpg" alt="Wyjście na taras">
-        <img src="images/oferta-kamienica-gdansk/08-ogrod-zimowy-widok.jpg" alt="Widok na ogród zimowy">
-        <img src="images/oferta-kamienica-gdansk/10-ogrod-zimowy-2.jpg" alt="Ogród zimowy">
+        <img class="lightbox-src" src="images/oferta-kamienica-gdansk/01-hol.jpg" alt="Hol wejściowy" onclick="openLightbox(1,1)">
+        <img class="lightbox-src" src="images/oferta-kamienica-gdansk/02-salon.jpg" alt="Salon" onclick="openLightbox(1,2)">
+        <img class="lightbox-src" src="images/oferta-kamienica-gdansk/03-sypialnia.jpg" alt="Sypialnia" onclick="openLightbox(1,3)">
+        <img class="lightbox-src" src="images/oferta-kamienica-gdansk/04-sypialnia-2.jpg" alt="Druga sypialnia" onclick="openLightbox(1,4)">
+        <img class="lightbox-src" src="images/oferta-kamienica-gdansk/05-hol-2.jpg" alt="Hol" onclick="openLightbox(1,5)">
+        <img class="lightbox-src" src="images/oferta-kamienica-gdansk/06-drzwi.jpg" alt="Drzwi przeszklone" onclick="openLightbox(1,6)">
+        <img class="lightbox-src" src="images/oferta-kamienica-gdansk/07-taras-wejscie.jpg" alt="Wyjście na taras" onclick="openLightbox(1,7)">
+        <img class="lightbox-src" src="images/oferta-kamienica-gdansk/08-ogrod-zimowy-widok.jpg" alt="Widok na ogród zimowy" onclick="openLightbox(1,8)">
+        <img class="lightbox-src" src="images/oferta-kamienica-gdansk/10-ogrod-zimowy-2.jpg" alt="Ogród zimowy" onclick="openLightbox(1,9)">
       </div>
       <a href="kontakt.html" class="btn-white" style="margin-top:20px"><i class="ti ti-send"></i>Zapytaj o tę nieruchomość</a>
+      <a class="modal-next-offer" onclick="openListing(2)">Zobacz kolejną ofertę: Apartament przy Chmielnej →</a>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL 2 — realna oferta -->
+<div class="modal-overlay" id="modal-2">
+  <div class="modal-box">
+    <div class="modal-top"><button class="modal-close" onclick="closeListing()">✕</button></div>
+    <div class="modal-img"><img class="lightbox-src" src="images/oferta-chmielna/03-salon-kuchnia.jpg" alt="Apartament przy Chmielnej — salon i kuchnia" onclick="openLightbox(2,0)"></div>
+    <div class="modal-content">
+      <span class="modal-status">Na sprzedaż</span>
+      <div class="modal-title">Nowoczesny Apartament przy Chmielnej</div>
+      <div class="modal-loc">Gdańsk · Wyspa Spichrzów</div>
+      <div class="modal-price">1 250 000 zł</div>
+      <div class="modal-specs">
+        <div><div class="modal-spec-lbl">Powierzchnia</div><div class="modal-spec-val">52 m²</div></div>
+        <div><div class="modal-spec-lbl">Pokoje</div><div class="modal-spec-val">2</div></div>
+        <div><div class="modal-spec-lbl">Piętro</div><div class="modal-spec-val">III / V</div></div>
+        <div><div class="modal-spec-lbl">Rok budowy</div><div class="modal-spec-val">nowa inwestycja</div></div>
+      </div>
+      <div class="modal-desc">
+        Funkcjonalny, w pełni umeblowany apartament w nowoczesnej inwestycji na Wyspie Spichrzów. Otwarta strefa dzienna z aneksem kuchennym, ciepłe drewniane dodatki i miedziane akcenty tworzą kameralny, designerski klimat. Osobna sypialnia z miejscem do pracy. Świetna lokalizacja blisko Głównego Miasta — idealna propozycja zarówno na własne mieszkanie, jak i pod inwestycję pod wynajem.
+      </div>
+      <div class="modal-contact-phone">
+        <div class="modal-spec-lbl">Zadzwoń w sprawie tej oferty</div>
+        <a href="tel:+48000000000" class="modal-phone-link"><i class="ti ti-phone"></i>+48 000 000 000</a>
+      </div>
+      <div class="modal-gallery-lbl">Galeria zdjęć — kliknij, aby powiększyć</div>
+      <div class="modal-gallery">
+        <img class="lightbox-src" src="images/oferta-chmielna/01-jadalnia.jpg" alt="Jadalnia" onclick="openLightbox(2,1)">
+        <img class="lightbox-src" src="images/oferta-chmielna/02-sypialnia-biurko.jpg" alt="Sypialnia z miejscem do pracy" onclick="openLightbox(2,2)">
+      </div>
+      <a href="kontakt.html" class="btn-white" style="margin-top:20px"><i class="ti ti-send"></i>Zapytaj o tę nieruchomość</a>
+      <a class="modal-next-offer" onclick="openListing(1)">Zobacz kolejną ofertę: Apartament w Kamienicy →</a>
     </div>
   </div>
 </div>
