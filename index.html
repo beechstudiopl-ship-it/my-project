@@ -66,6 +66,14 @@
   .status-sep{margin:0 12px;color:var(--hair)}
   @media (max-width:640px){.status-link{display:none}}
 
+  /* --- PROMO BAR --- */
+  .promo-bar{
+    display:block;background:var(--hi);color:var(--ink);text-align:center;text-decoration:none;
+    font-family:'Archivo',sans-serif;font-weight:800;font-size:13px;
+    padding:10px clamp(20px,5vw,48px);
+  }
+  .promo-bar:hover{background:var(--hi-2)}
+
   /* --- CENTER --- */
   main{
     flex:1;display:flex;flex-direction:column;justify-content:center;
@@ -266,6 +274,8 @@
 </head>
 <body>
 
+  <a href="silny-lokalnie.html" class="promo-bar">Raz na jakiś czas robię jedną stronę całkiem za darmo. Sprawdź akcję Silny lokalnie →</a>
+
   <div class="top">
     <div class="logo">działajmy<span class="d">.</span>online<span class="c">^</span></div>
     <div class="status"><i></i>Przyjmuję zlecenia</div>
@@ -461,6 +471,7 @@
       <li><a href="manifest.html"><span class="post-index">001</span><span class="post-title">Ładna, martwa strona</span><span class="post-arrow">→</span></a></li>
       <li><a href="seo90.html"><span class="post-index">002</span><span class="post-title">SEO.90</span><span class="post-arrow">→</span></a></li>
       <li><a href="nie-mam-dostepu.html"><span class="post-index">003</span><span class="post-title">Nie mam dostępu do strony</span><span class="post-arrow">→</span></a></li>
+      <li><a href="silny-lokalnie.html"><span class="post-index">004</span><span class="post-title">Silny lokalnie: jedna strona za darmo</span><span class="post-arrow">→</span></a></li>
     </ul>
   </section>
 
