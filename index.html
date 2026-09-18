@@ -148,14 +148,14 @@
   .case-grid{display:grid;grid-template-columns:1fr;gap:20px;margin-top:32px}
   @media (min-width:720px){.case-grid{grid-template-columns:repeat(3,1fr)}}
   .case-card{border:1.5px solid rgba(20,23,27,.2);background:#fff;padding:24px;display:flex;flex-direction:column}
-  .case-meta{display:flex;flex-wrap:wrap;gap:6px}
+  .case-meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
   .case-tag{
     font-family:'Archivo',sans-serif;font-weight:800;font-size:10.5px;text-transform:uppercase;
     background:var(--hi);color:var(--ink);padding:3px 8px;
   }
   .case-time{margin-top:10px;font-size:12.5px;color:var(--ink-3)}
   .case-quote{margin-top:16px;font-size:14.5px;color:var(--ink-2);line-height:1.5;font-style:italic;flex:1}
-  .case-author{display:flex;align-items:center;gap:10px;margin-top:18px}
+  .case-author{display:flex;align-items:center;gap:10px}
   .case-avatar{
     width:36px;height:36px;border-radius:50%;background:var(--blue);color:#fff;flex:none;
     display:flex;align-items:center;justify-content:center;font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;
@@ -198,19 +198,12 @@
   .faqx p{margin-top:12px;font-size:15px;color:var(--ink-2);line-height:1.55}
 
   /* wiedza z zaplecza (posty) */
-  .posts{display:grid;grid-template-columns:1fr;gap:16px;margin-top:32px}
-  @media (min-width:640px){.posts{grid-template-columns:1fr 1fr}}
-  .post-card{
-    display:block;border:1.5px solid rgba(20,23,27,.2);background:#fff;padding:22px;
-    text-decoration:none;color:inherit;transition:opacity .12s ease;
+  .post-links{list-style:none;margin-top:28px;display:flex;flex-direction:column;gap:14px}
+  .post-links a{
+    font-family:'Archivo',sans-serif;font-weight:800;font-size:16px;color:var(--ink);
+    text-decoration:none;border-bottom:1.5px solid transparent;transition:border-color .12s ease;
   }
-  .post-card:hover{opacity:.85}
-  .post-num{
-    display:inline-block;font-family:'Archivo',sans-serif;font-weight:800;font-size:11px;
-    text-transform:uppercase;background:var(--hi);color:var(--ink);padding:3px 8px;margin-bottom:12px;
-  }
-  .post-card h3{font-family:'Archivo',sans-serif;font-weight:900;font-size:19px;letter-spacing:-.02em;color:var(--ink)}
-  .post-card p{margin-top:8px;font-size:14.5px;color:var(--ink-2);line-height:1.5}
+  .post-links a:hover{border-bottom-color:var(--blue)}
 
   /* znasz to uczucie (dark, under hero) */
   .section-dark{background:var(--ink);border-top:1px solid var(--hair)}
@@ -385,12 +378,6 @@
 
     <div class="case-grid">
       <article class="case-card">
-        <div class="case-meta">
-          <span class="case-tag">Agent nieruchomości</span>
-          <span class="case-tag">FULL + integracje</span>
-        </div>
-        <p class="case-time">Czas realizacji: 7 dni, z poprawkami</p>
-        <blockquote class="case-quote">„Znamy się od lat, ale teraz realizacja poszła szalenie szybko! Projekt wykonany zgodnie z tym co chciałam i szczerze polecam.”</blockquote>
         <div class="case-author">
           <span class="case-avatar">R</span>
           <div>
@@ -398,22 +385,28 @@
             <p class="case-role">CEO</p>
           </div>
         </div>
+        <div class="case-meta">
+          <span class="case-tag">Agent nieruchomości</span>
+          <span class="case-tag">FULL + integracje</span>
+        </div>
+        <p class="case-time">Czas realizacji: 7 dni, z poprawkami</p>
+        <blockquote class="case-quote">„Znamy się od lat i zrealizowaliśmy kilka projektów! Zawsze jest na poziomie, ale teraz otrzymałam perełkę!”</blockquote>
         <a href="http://dargacz.com.pl/" target="_blank" rel="noopener" class="case-link">Zobacz stronę →</a>
       </article>
 
       <article class="case-card">
-        <div class="case-meta">
-          <span class="case-tag">Usługi alpinistyczne</span>
-          <span class="case-tag">FULL</span>
-        </div>
-        <p class="case-time">Czas realizacji: 14 dni</p>
-        <blockquote class="case-quote">„Bartek jest rewelacyjny! Świetnie porusza się w tej dziedzinie i można na nim polegać. Szczerze polecam.”</blockquote>
         <div class="case-author">
           <span class="case-avatar">P</span>
           <div>
             <p class="case-name">Przemek</p>
           </div>
         </div>
+        <div class="case-meta">
+          <span class="case-tag">Usługi alpinistyczne</span>
+          <span class="case-tag">FULL</span>
+        </div>
+        <p class="case-time">Czas realizacji: 14 dni</p>
+        <blockquote class="case-quote">„Bartek jest rewelacyjny! Świetnie porusza się w tej dziedzinie i można na nim polegać. Szczerze polecam.”</blockquote>
         <a href="https://rope-ag.pl" target="_blank" rel="noopener" class="case-link">Zobacz stronę →</a>
       </article>
 
@@ -522,18 +515,11 @@
     <h2>Wiedza z zaplecza</h2>
     <p class="sublead">Krótkie wpisy o tym, jak i dlaczego robię działajmy.online.</p>
 
-    <div class="posts">
-      <a href="manifest.html" class="post-card">
-        <span class="post-num">Wpis 001</span>
-        <h3>Ładna, martwa strona</h3>
-        <p>Dlaczego w ogóle robię działajmy.online.</p>
-      </a>
-      <a href="seo90.html" class="post-card">
-        <span class="post-num">Wpis 002</span>
-        <h3>SEO.90</h3>
-        <p>Program pozycjonowania, który szykuję na później.</p>
-      </a>
-    </div>
+    <ul class="post-links">
+      <li><a href="manifest.html">Wpis 001: Ładna, martwa strona →</a></li>
+      <li><a href="seo90.html">Wpis 002: SEO.90 →</a></li>
+      <li><a href="nie-mam-dostepu.html">Wpis 003: Nie mam dostępu do strony →</a></li>
+    </ul>
   </section>
 
   <footer>
