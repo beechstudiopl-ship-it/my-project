@@ -143,6 +143,16 @@
     font-family:'Archivo',sans-serif;font-weight:700;font-size:14px;
     padding:10px 16px;border:1.5px solid rgba(20,23,27,.2);background:#fff;color:var(--ink);
   }
+  .access-cta{
+    display:block;margin-top:20px;border:1.5px dashed rgba(20,23,27,.3);padding:20px 24px;
+    text-decoration:none;color:inherit;transition:opacity .12s ease;
+  }
+  .access-cta:hover{opacity:.85}
+  .access-cta-text{font-size:15px;color:var(--ink-2);line-height:1.5}
+  .access-cta-link{
+    display:inline-block;margin-top:10px;font-family:'Archivo',sans-serif;font-weight:800;
+    font-size:13px;color:var(--blue);
+  }
 
   /* realizacje */
   .case-grid{display:grid;grid-template-columns:1fr;gap:20px;margin-top:32px}
@@ -198,12 +208,17 @@
   .faqx p{margin-top:12px;font-size:15px;color:var(--ink-2);line-height:1.55}
 
   /* wiedza z zaplecza (posty) */
-  .post-links{list-style:none;margin-top:28px;display:flex;flex-direction:column;gap:14px}
+  .post-links{list-style:none;margin-top:28px;border-top:1px solid var(--hair)}
+  .post-links li{border-bottom:1px solid var(--hair)}
   .post-links a{
-    font-family:'Archivo',sans-serif;font-weight:800;font-size:16px;color:var(--ink);
-    text-decoration:none;border-bottom:1.5px solid transparent;transition:border-color .12s ease;
+    display:flex;align-items:center;gap:16px;padding:18px 4px;
+    text-decoration:none;color:inherit;transition:gap .15s ease;
   }
-  .post-links a:hover{border-bottom-color:var(--blue)}
+  .post-links a:hover{gap:22px}
+  .post-index{font-family:'Archivo',sans-serif;font-weight:900;font-size:13px;color:var(--blue);flex:none;width:32px}
+  .post-title{font-family:'Archivo',sans-serif;font-weight:800;font-size:17px;color:var(--ink);flex:1}
+  .post-arrow{font-family:'Archivo',sans-serif;font-weight:900;font-size:18px;color:var(--ink-3);transition:color .15s ease}
+  .post-links a:hover .post-arrow{color:var(--blue)}
 
   /* znasz to uczucie (dark, under hero) */
   .section-dark{background:var(--ink);border-top:1px solid var(--hair)}
@@ -370,6 +385,11 @@
       <span class="niche-tag">Stomatolodzy</span>
       <span class="niche-tag">Małe firmy</span>
     </div>
+
+    <a href="nie-mam-dostepu.html" class="access-cta">
+      <p class="access-cta-text">...i dla tych wszystkich, którzy nie mają dostępu do swojej strony 😉 To powszechne, i ja to rozwiązuję.</p>
+      <span class="access-cta-link">Przeczytaj wpis →</span>
+    </a>
   </section>
 
   <section id="realizacje" class="section2">
@@ -516,9 +536,9 @@
     <p class="sublead">Krótkie wpisy o tym, jak i dlaczego robię działajmy.online.</p>
 
     <ul class="post-links">
-      <li><a href="manifest.html">Wpis 001: Ładna, martwa strona →</a></li>
-      <li><a href="seo90.html">Wpis 002: SEO.90 →</a></li>
-      <li><a href="nie-mam-dostepu.html">Wpis 003: Nie mam dostępu do strony →</a></li>
+      <li><a href="manifest.html"><span class="post-index">001</span><span class="post-title">Ładna, martwa strona</span><span class="post-arrow">→</span></a></li>
+      <li><a href="seo90.html"><span class="post-index">002</span><span class="post-title">SEO.90</span><span class="post-arrow">→</span></a></li>
+      <li><a href="nie-mam-dostepu.html"><span class="post-index">003</span><span class="post-title">Nie mam dostępu do strony</span><span class="post-arrow">→</span></a></li>
     </ul>
   </section>
 
