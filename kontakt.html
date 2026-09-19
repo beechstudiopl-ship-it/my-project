@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kontakt — DARGACZ Nieruchomości Premium</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="menu-top">
+    <div class="menu-top-logo">D A R G A C Z</div>
+    <button class="menu-close" onclick="closeMenu()">✕</button>
+  </div>
+  <div class="menu-links">
+    <div class="menu-sub-eye">Nawigacja</div>
+    <a href="index.html" onclick="closeMenu()">Strona główna <i class="ti ti-arrow-right"></i></a>
+    <a href="index.html#o-mnie" onclick="closeMenu()">O mnie <i class="ti ti-arrow-right"></i></a>
+    <a href="index.html#oferta" onclick="closeMenu()">Oferta <i class="ti ti-arrow-right"></i></a>
+    <a href="nieruchomosci.html" onclick="closeMenu()">Nieruchomości <i class="ti ti-arrow-right"></i></a>
+    <a href="kontakt.html" onclick="closeMenu()">Kontakt <i class="ti ti-arrow-right"></i></a>
+  </div>
+  <div class="menu-contacts">
+    <a href="tel:+48000000000" class="menu-contact-row"><i class="ti ti-phone"></i><span>+48 000 000 000</span></a>
+    <a href="mailto:kontakt@dargacz.pl" class="menu-contact-row"><i class="ti ti-mail"></i><span>kontakt@dargacz.pl</span></a>
+  </div>
+  <div class="menu-footer">
+    <div class="menu-footer-loc">Sopot · Gdańsk<br>Gdynia · Pomorskie</div>
+    <div class="menu-footer-handle">@dargacz_nieruchomosci<br>_premium</div>
+  </div>
+</div>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="index.html" style="text-decoration:none"><div><div class="logo-main">D A R G A C Z</div><div class="logo-sub">NIERUCHOMOŚCI PREMIUM</div></div></a>
+    <div class="nav-links">
+      <a class="nav-link" href="index.html#o-mnie">O mnie</a>
+      <a class="nav-link" href="index.html#oferta">Oferta</a>
+      <a class="nav-link" href="nieruchomosci.html">Nieruchomości</a>
+      <a class="nav-link" href="kontakt.html">Kontakt</a>
+    </div>
+    <button class="burger" onclick="openMenu()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="wrap">
+  <div class="page-hero-eye">Kontakt</div>
+  <div class="page-hero-title">Porozmawiajmy<br>o Twojej nieruchomości.</div>
+  <div class="page-hero-sub">Wypełnij formularz lub skontaktuj się bezpośrednio — odpowiadam osobiście na każde zapytanie.</div>
+  </div>
+</section>
+
+<section class="contact" id="kontakt">
+  <div class="wrap">
+
+  <div class="contact-info-grid">
+    <div>
+      <div class="ct-eye">Dane kontaktowe</div><div class="ct-ln"></div>
+      <div class="ct-d"><div class="ct-lbl">Telefon</div><div class="ct-val">+48 000 000 000</div></div>
+      <div class="ct-d"><div class="ct-lbl">E-mail</div><div class="ct-val">kontakt@dargacz.pl</div></div>
+      <div class="ct-d"><div class="ct-lbl">Instagram</div><div class="ct-val">@dargacz_nieruchomosci_premium</div></div>
+      <div class="ct-d"><div class="ct-lbl">Obszar działania</div><div class="ct-val">Sopot · Gdańsk · Gdynia · Pomorskie</div></div>
+    </div>
+    <div class="form-sep">
+      <div class="form-eye">Formularz kontaktowy</div>
+      <div class="field"><label>Imię i nazwisko</label><input type="text" placeholder="Jan Kowalski" /></div>
+      <div class="field"><label>Numer telefonu</label><input type="tel" placeholder="+48 000 000 000" /></div>
+      <div class="field">
+        <label>Czego szukam</label>
+        <div class="radio-grp">
+          <div class="r-opt"><div class="r-dot" style="border-color:#ddd"></div><span class="r-lbl" style="color:#fff">Zakup</span></div>
+          <div class="r-opt"><div class="r-dot"></div><span class="r-lbl">Sprzedaż</span></div>
+          <div class="r-opt"><div class="r-dot"></div><span class="r-lbl">Wynajem</span></div>
+          <div class="r-opt"><div class="r-dot"></div><span class="r-lbl">Doradztwo</span></div>
+        </div>
+      </div>
+      <div class="field"><label>Lokalizacja</label>
+        <select><option value="">Wybierz obszar</option><option>Sopot</option><option>Gdańsk</option><option>Gdynia</option><option>Pomorskie</option></select>
+      </div>
+      <div class="field"><label>Wiadomość (opcjonalnie)</label><textarea placeholder="Opisz czego szukasz…"></textarea></div>
+      <div class="gdpr-wrap" onclick="toggleGdpr(this)">
+        <div class="gdpr-box" id="gdprBox"></div>
+        <div class="gdpr-text">Wyrażam zgodę na przetwarzanie moich danych osobowych w celu odpowiedzi na zapytanie, zgodnie z <a href="/polityka-prywatnosci" target="_blank" onclick="event.stopPropagation()">Polityką Prywatności</a>. Zgoda jest dobrowolna i może być cofnięta w każdym czasie.</div>
+      </div>
+      <button class="btn-white" id="submitBtn" style="margin-top:0;border:none;opacity:.4;cursor:not-allowed" disabled><i class="ti ti-send"></i>Wyślij zapytanie</button>
+    </div>
+  </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+  <div class="ft">© 2025 Dargacz Nieruchomości Premium</div>
+  <div class="ft">@dargacz_nieruchomosci_premium</div>
+  </div>
+</footer>
+
+<div class="bbar">
+  <a href="tel:+48000000000" class="bb"><i class="ti ti-phone"></i>Zadzwoń</a>
+  <a href="https://wa.me/48000000000" class="bb" target="_blank"><i class="ti ti-brand-whatsapp"></i>WhatsApp</a>
+  <a href="nieruchomosci.html" class="bb"><i class="ti ti-building-estate"></i>Oferty</a>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
