@@ -44,10 +44,10 @@ body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:var(--black);
 .menu-contact-row:hover{color:#fff}
 
 /* HERO */
-.hero{position:relative;height:100svh;min-height:600px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;padding-top:60px}
+.hero{position:relative;height:100svh;min-height:600px;overflow:hidden;padding-top:60px}
 .hero-bg{position:absolute;inset:0;background-image:url('images/oferta-kamienica-gdansk/01-hol.jpg');background-size:cover;background-position:center 30%}
 .hero-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(20,20,20,.88) 0%,rgba(20,20,20,.15) 60%,transparent 100%)}
-.hero-c{position:relative;padding-bottom:36px}
+.hero-c{position:absolute;left:0;right:0;bottom:0;padding-bottom:36px}
 .hero-eye{font-size:8px;letter-spacing:.3em;color:rgba(255,255,255,.4);text-transform:uppercase;margin-bottom:14px}
 .hero-title{font-size:38px;font-weight:200;line-height:1.05;color:#fff;letter-spacing:-.01em;margin-bottom:12px}
 .hero-tagline{font-size:12px;font-weight:300;color:rgba(255,255,255,.5);margin-bottom:28px}
