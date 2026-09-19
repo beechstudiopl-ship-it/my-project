@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dla kogo · działajmy.online</title>
-<meta name="description" content="Komu pomagam i z jakimi problemami: brak dostępu do strony, brak czasu, odkładanie na później. Zobacz, czy to pasuje do Ciebie.">
-<meta property="og:title" content="Dla kogo · działajmy.online">
-<meta property="og:description" content="Komu pomagam i jak. Lista branż i problemów, które rozwiązuję.">
+<title>Strona z zamówieniami dla gastronomii · działajmy.online</title>
+<meta name="description" content="Strona www z menu i systemem zamówień dla małych lokali gastronomicznych. Zero prowizji dla portali, Ty zbierasz zamówienia sam.">
+<meta property="og:title" content="Strona z zamówieniami dla gastronomii · działajmy.online">
+<meta property="og:description" content="Menu i zamówienia na własnej stronie, bez prowizji dla portali. Dla małych lokali, które umieją zachęcić gości do zamawiania bezpośrednio.">
 <meta property="og:type" content="article">
 <meta property="og:locale" content="pl_PL">
 <meta property="og:image" content="https://dzialajmy.online/og-image.png">
@@ -77,21 +77,11 @@
     font-size:clamp(24px,4vw,32px);line-height:1.15;color:var(--ink);
   }
 
-  /* niches */
-  .tags-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
-  .niche-tag{
-    font-family:'Archivo',sans-serif;font-weight:700;font-size:14px;
-    padding:10px 16px;border:1.5px solid rgba(20,23,27,.2);background:#fff;color:var(--ink);
-    text-decoration:none;
-  }
-  a.niche-tag:hover{border-color:var(--blue);color:var(--blue)}
-
-  /* problems */
-  .problems-list{list-style:none;margin:28px 0;border-top:1px solid rgba(20,23,27,.5)}
-  .problems-list li{padding:22px 0;border-bottom:1px solid var(--hair)}
-  .problems-list h3{font-family:'Archivo',sans-serif;font-weight:800;font-size:17px;color:var(--ink)}
-  .problems-list p{margin-top:8px;font-size:16px;color:var(--ink-2);line-height:1.5}
-  .problems-list .fix{color:var(--blue-d);font-weight:600}
+  /* features list */
+  .features-list{list-style:none;margin:28px 0;border-top:1px solid rgba(20,23,27,.5)}
+  .features-list li{padding:22px 0;border-bottom:1px solid var(--hair)}
+  .features-list h3{font-family:'Archivo',sans-serif;font-weight:800;font-size:17px;color:var(--ink)}
+  .features-list p{margin-top:8px;font-size:16px;color:var(--ink-2);line-height:1.5}
 
   /* CTA BOX */
   .cta-box{background:var(--ink);color:var(--paper);padding:40px clamp(24px,5vw,44px);
@@ -113,6 +103,20 @@
     color:var(--ink-2)}
   .sign b{color:var(--ink)}
 
+  /* phone mockup */
+  .phone-mock{margin:40px auto 0;width:260px}
+  .phone-frame{
+    border:10px solid var(--ink);border-radius:34px;overflow:hidden;
+    aspect-ratio:9/19.5;background:#000;position:relative;
+    box-shadow:0 20px 40px rgba(20,23,27,.18);
+  }
+  .phone-frame::before{
+    content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+    width:70px;height:18px;background:var(--ink);border-radius:0 0 12px 12px;z-index:2;
+  }
+  .phone-frame iframe{width:100%;height:100%;border:none;display:block}
+  .phone-mock-cap{margin-top:16px;text-align:center;font-size:13.5px;color:var(--ink-3);line-height:1.5}
+  .phone-mock-cap a{color:var(--blue-d);font-weight:700}
 
   /* WIECEJ WPISOW */
   .more-posts{margin-top:64px}
@@ -149,64 +153,59 @@
 
 <article>
   <div class="wrap">
-    <div class="meta"><span class="tag">Wiedza z zaplecza</span><span>Wiedza z zaplecza · wpis 005</span></div>
-    <h1>Dla kogo</h1>
-    <p class="dek">Komu pomagam i z jakimi problemami się do mnie zgłaszają. Jeśli rozpoznajesz siebie w którymś punkcie poniżej, prawdopodobnie mogę Ci pomóc.</p>
+    <div class="meta"><span class="tag">Wiedza z zaplecza</span><span>Wiedza z zaplecza · wpis 006</span></div>
+    <h1>Strona z zamówieniami dla gastronomii</h1>
+    <p class="dek">Menu, koszyk i zamówienia na Twojej własnej stronie. Bez comiesięcznej prowizji dla portali, które i tak nie robią za Ciebie marketingu.</p>
 
     <hr class="rule">
 
-    <h2>Komu pomagam</h2>
-    <p>Robię strony dla małych firm działających lokalnie: restauracji, pubów, trenerów, fizjoterapeutów, małego rzemiosła, biur rachunkowych, agentów nieruchomości, stomatologów, salonów urody. Wszystkich, którzy szukają wsparcia w rozwoju, a nie mają czasu ani ochoty na ogarnianie strony samemu. Zobacz <a href="index.html#oferta">dwa pakiety cen</a>, jakie proponuję.</p>
+    <p class="big">Jeśli prowadzisz mały lokal i robisz 10, może 20 zamówień dziennie, portale w rodzaju Pyszne czy Uber Eats zjadają Ci sporą część marży za coś, co robisz sam.</p>
 
-    <div class="tags-grid">
-      <a href="zamowienia-gastronomia.html" class="niche-tag">Restauracje →</a>
-      <span class="niche-tag">Puby</span>
-      <span class="niche-tag">Trenerzy</span>
-      <span class="niche-tag">Fizjoterapeuci</span>
-      <span class="niche-tag">Małe rzemiosło</span>
-      <span class="niche-tag">Biura rachunkowe</span>
-      <span class="niche-tag">Agenci nieruchomości</span>
-      <span class="niche-tag">Stomatolodzy</span>
-      <span class="niche-tag">Salony urody</span>
-    </div>
+    <p>To one wystawiają Cię gościom, pobierają prowizję od każdego zamówienia, i przy okazji stawiają obok konkurencję o jedno kliknięcie dalej. A Ty i tak masz swój marketing: social media, stali klienci, poczta pantoflowa. Ludzie i tak wiedzą, że u Ciebie chcą zamówić. Brakuje im tylko miejsca, gdzie mogą to zrobić bezpośrednio.</p>
 
-    <div class="pull">Skup się na firmie. Stronę zostaw mi.</div>
+    <div class="pull">Nie potrzebujesz portalu. Potrzebujesz miejsca, gdzie gość złoży zamówienie prosto u Ciebie.</div>
 
-    <h2>Z jakimi problemami do mnie trafiacie</h2>
-    <p>To najczęstsze powody, dla których ktoś w końcu pisze do mnie. Rozpoznajesz któryś z nich?</p>
+    <h2>Co dostajesz</h2>
+    <p>Prostą stronę z menu i koszykiem, dopasowaną do Twojego lokalu. Gość przegląda dania, dodaje do zamówienia, widzi sumę na bieżąco i wysyła zamówienie bezpośrednio do Ciebie, bez pośrednika i bez prowizji.</p>
 
-    <ul class="problems-list">
+    <ul class="features-list">
       <li>
-        <h3>Brak dostępów</h3>
-        <p>Nie wiesz, gdzie jest hasło do panelu, domeny czy hostingu. <a href="nie-mam-dostepu.html">Piszę o tym więcej tutaj</a>. <span class="fix">Rozwiązanie: dostajesz pełny dostęp i dane logowania od pierwszego dnia.</span></p>
+        <h3>Menu z podziałem na kategorie</h3>
+        <p>Przystawki, dania główne, desery, tak jak u Ciebie w karcie. Zdjęcia, opisy, ceny.</p>
       </li>
       <li>
-        <h3>Trudność zmiany danych na stronie</h3>
-        <p>Nawet drobna poprawka, numer telefonu czy godziny otwarcia, wymaga proszenia kogoś o pomoc. <span class="fix">Rozwiązanie: prosty panel edycji albo jedna wiadomość do mnie, i mam to zrobione od ręki.</span></p>
+        <h3>Koszyk na żywo</h3>
+        <p>Gość dodaje dania, zmienia ilość, widzi sumę zamówienia, zanim jeszcze je wyśle.</p>
       </li>
       <li>
-        <h3>Brak kontaktu z twórcą</h3>
-        <p>Osoba, która robiła Ci stronę, nie odpowiada, zniknęła, zamknęła działalność. <span class="fix">Rozwiązanie: jestem dostępny, a domena i hosting są rejestrowane na Ciebie, nie na mnie.</span></p>
+        <h3>Zamówienia sezonowe</h3>
+        <p>Osobne menu na Wigilię, Sylwestra czy inne okazje, widoczne tylko wtedy, kiedy je włączysz.</p>
       </li>
       <li>
-        <h3>Brak czasu</h3>
-        <p>Prowadzisz firmę i po prostu nie masz kiedy się tym zająć. <span class="fix">Rozwiązanie: piszesz jedno zdanie, czym się zajmujesz, resztę biorę na siebie.</span></p>
+        <h3>Kilka lokalizacji</h3>
+        <p>Masz więcej niż jeden punkt? Gość wybiera lokalizację na starcie, a resztę już wiadomo.</p>
       </li>
       <li>
-        <h3>Niechęć</h3>
-        <p>Złe doświadczenia z poprzednią realizacją zniechęciły Cię do całego tematu. <span class="fix">Rozwiązanie: zaczynamy od rozmowy bez zobowiązań, widzisz podgląd, zanim cokolwiek zapłacisz.</span></p>
-      </li>
-      <li>
-        <h3>Odkładanie</h3>
-        <p>„Zajmę się tym później”, które nigdy nie nadchodzi. <span class="fix">Rozwiązanie: stąd nazwa działajmy.online. Biorę to na siebie, więc faktycznie zaczynasz działać.</span></p>
+        <h3>Sklep z produktami</h3>
+        <p>Sosy, przetwory, bony podarunkowe, coś, co gość może zamówić niezależnie od dania na wynos.</p>
       </li>
     </ul>
 
-    <p class="big">Znam te problemy z rozmów z klientami, nie z teorii. Ja je rozwiązuję, zamiast dokładać kolejne.</p>
+    <h2>Dla kogo to jest</h2>
+    <p>Dla małych, lokalnych miejsc, które chcą ograniczyć zależność od portali z zamówieniami i już wiedzą, jak zachęcić gości do składania zamówień bezpośrednio. Nie musisz zaczynać marketingu od zera, potrzebujesz tylko narzędzia, żeby te zamówienia faktycznie zbierać u siebie.</p>
+
+    <p class="big">Zobacz, jak to wygląda w praktyce, zanim napiszesz.</p>
+
+    <div class="phone-mock">
+      <div class="phone-frame">
+        <iframe src="demo-gastro.html" title="Podgląd makiety zamówień Gastro" loading="lazy"></iframe>
+      </div>
+      <p class="phone-mock-cap">Poklikaj na żywo, tak jak zrobiłby to Twój gość. <a href="demo-gastro.html" target="_blank" rel="noopener">Otwórz na pełnym ekranie →</a></p>
+    </div>
 
     <div class="cta-box">
-      <h2>Rozpoznajesz <span class="mk">swój problem?</span></h2>
-      <p>Napisz, czym się zajmujesz i co Cię trzyma z boku. Odpowiem szczerze, czy mogę pomóc.</p>
+      <h2>Chcesz <span class="mk">taką stronę dla siebie?</span></h2>
+      <p>Napisz, czym się zajmujesz, a pogadamy o szczegółach.</p>
       <a href="kontakt.html" class="cta-btn"><span>Opisz swoją sytuację</span><span>→</span></a>
     </div>
 
@@ -219,7 +218,7 @@
       <li><a href="seo90.html"><span class="post-index">002</span><span class="post-title">SEO.90</span><span class="post-arrow">→</span></a></li>
       <li><a href="nie-mam-dostepu.html"><span class="post-index">003</span><span class="post-title">Nie mam dostępu do strony</span><span class="post-arrow">→</span></a></li>
       <li><a href="silny-lokalnie.html"><span class="post-index">004</span><span class="post-title">Silny lokalnie: jedna strona za darmo</span><span class="post-arrow">→</span></a></li>
-      <li><a href="zamowienia-gastronomia.html"><span class="post-index">006</span><span class="post-title">Strona z zamówieniami dla gastronomii</span><span class="post-arrow">→</span></a></li>
+      <li><a href="dla-kogo.html"><span class="post-index">005</span><span class="post-title">Dla kogo</span><span class="post-arrow">→</span></a></li>
       </ul>
     </div>
 
