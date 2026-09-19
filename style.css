@@ -176,7 +176,8 @@ footer .wrap{display:flex;justify-content:space-between}
 .ft{font-size:8px;letter-spacing:.1em;color:#444}
 
 /* BOTTOM BAR */
-.bbar{position:fixed;bottom:0;left:0;right:0;z-index:150;display:grid;grid-template-columns:1fr 1fr 1fr;height:60px;border-top:.5px solid #2a2a2a}
+.bbar{position:fixed;bottom:0;left:0;right:0;z-index:150;display:grid;grid-template-columns:1fr 1fr 1fr;height:60px;border-top:.5px solid #2a2a2a;transform:translateY(100%);transition:transform .3s ease}
+.bbar.visible{transform:translateY(0)}
 .bb{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;background:#1c1c1c;border-right:.5px solid #2a2a2a;color:#777;font-size:7px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:background .15s}
 .bb:last-child{border-right:none}
 .bb:hover{background:#252525;color:#aaa}

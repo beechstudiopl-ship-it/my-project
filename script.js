@@ -1,6 +1,16 @@
 function openMenu(){document.getElementById('mobileMenu').classList.add('open')}
 function closeMenu(){document.getElementById('mobileMenu').classList.remove('open')}
 
+(function(){
+  const bbar=document.querySelector('.bbar');
+  if(!bbar)return;
+  function updateBbar(){
+    bbar.classList.toggle('visible', window.scrollY>40);
+  }
+  window.addEventListener('scroll',updateBbar,{passive:true});
+  updateBbar();
+})();
+
 function toggleGdpr(wrap){
   const box=document.getElementById('gdprBox');
   const btn=document.getElementById('submitBtn');
