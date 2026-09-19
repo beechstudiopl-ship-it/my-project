@@ -116,6 +116,22 @@
     padding:14px 22px;transition:opacity .12s ease}
   .cta-btn:hover{opacity:.9}
 
+  /* --- WIECEJ WPISOW --- */
+  .more-posts{margin-top:56px}
+  .more-posts h2{
+    font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:-.02em;
+    font-size:clamp(20px,3vw,26px);margin-bottom:0;
+  }
+  .post-links{list-style:none;margin-top:20px;border-top:1px solid rgba(20,23,27,.5)}
+  .post-links li{border-bottom:1px solid var(--hair)}
+  .post-links a{display:flex;align-items:center;gap:16px;padding:16px 4px;
+    text-decoration:none;color:inherit;transition:gap .15s ease}
+  .post-links a:hover{gap:22px}
+  .post-index{font-family:'Archivo',sans-serif;font-weight:900;font-size:13px;color:var(--ink-3);flex:none;width:32px}
+  .post-title{font-family:'Archivo',sans-serif;font-weight:800;font-size:16px;color:var(--ink);flex:1}
+  .post-arrow{font-family:'Archivo',sans-serif;font-weight:900;font-size:18px;color:var(--ink-3);transition:color .15s ease}
+  .post-links a:hover .post-arrow{color:var(--blue)}
+
   /* --- FOOT --- */
   footer{
     padding:20px clamp(20px,5vw,48px);border-top:1px solid var(--hair);
@@ -123,7 +139,6 @@
     font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:600;text-transform:uppercase;
     color:var(--ink-3);
   }
-  footer .soon b{color:var(--ink-2)}
   footer a{color:var(--ink-2);text-decoration:none}
   footer a:hover{color:var(--blue)}
 
@@ -143,7 +158,6 @@
     .mm-tag{font-family:'Archivo',sans-serif;font-weight:800;font-size:11px;text-transform:uppercase;
       background:var(--hi);color:var(--ink);padding:3px 8px;flex:none}
     .mm-arw{font-family:'Archivo',sans-serif;font-weight:900;font-size:20px;color:var(--hi);flex:none}
-    footer .soon{display:none}
   }
 </style>
 </head>
@@ -184,10 +198,19 @@
       <p>Napisz w dwóch zdaniach, czym się zajmujesz i czemu akurat Ty powinieneś dostać tę stronę za darmo. Przeczytam każde zgłoszenie.</p>
       <a href="kontakt.html" class="cta-btn"><span>Zgłoś się</span><span>→</span></a>
     </div>
+
+    <div class="more-posts">
+      <h2>Więcej wpisów</h2>
+      <ul class="post-links">
+        <li><a href="manifest.html"><span class="post-index">001</span><span class="post-title">Ładna, martwa strona</span><span class="post-arrow">→</span></a></li>
+        <li><a href="seo90.html"><span class="post-index">002</span><span class="post-title">SEO.90</span><span class="post-arrow">→</span></a></li>
+        <li><a href="nie-mam-dostepu.html"><span class="post-index">003</span><span class="post-title">Nie mam dostępu do strony</span><span class="post-arrow">→</span></a></li>
+        <li><a href="dla-kogo.html"><span class="post-index">005</span><span class="post-title">Dla kogo</span><span class="post-arrow">→</span></a></li>
+      </ul>
+    </div>
   </main>
 
   <footer>
-    <span class="soon"><b>[ INFO ]</b> <a href="manifest.html">Manifest</a></span>
     <span>Bartosz · <a href="mailto:kontakt@dzialajmy.online">kontakt@dzialajmy.online</a> · na razie działam tylko ze stronami www</span>
   </footer>
 

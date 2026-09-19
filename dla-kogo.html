@@ -116,6 +116,21 @@
     color:var(--ink-2)}
   .sign b{color:var(--ink)}
 
+
+  /* WIECEJ WPISOW */
+  .more-posts{margin-top:64px}
+  .more-posts h2{font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.035em;
+    font-size:clamp(22px,3.5vw,28px);line-height:1.1}
+  .post-links{list-style:none;margin-top:20px;border-top:1px solid rgba(20,23,27,.5)}
+  .post-links li{border-bottom:1px solid var(--hair)}
+  .post-links a{display:flex;align-items:center;gap:16px;padding:16px 4px;
+    text-decoration:none;color:inherit;transition:gap .15s ease}
+  .post-links a:hover{gap:22px}
+  .post-index{font-family:'Archivo',sans-serif;font-weight:900;font-size:13px;color:var(--ink-3);flex:none;width:32px}
+  .post-title{font-family:'Archivo',sans-serif;font-weight:800;font-size:16px;color:var(--ink);flex:1}
+  .post-arrow{font-family:'Archivo',sans-serif;font-weight:900;font-size:18px;color:var(--ink-3);transition:color .15s ease}
+  .post-links a:hover .post-arrow{color:var(--blue)}
+
   /* FOOTER */
   footer{border-top:1px solid rgba(20,23,27,.5);margin-top:64px;padding:28px 0}
   .ft{max-width:720px;margin:0 auto;padding:0 clamp(20px,5vw,40px);
@@ -212,12 +227,22 @@
     </div>
 
     <p class="sign"><b>Bartosz</b>, działajmy.online</p>
+
+    <div class="more-posts">
+      <h2>Więcej wpisów</h2>
+      <ul class="post-links">
+      <li><a href="manifest.html"><span class="post-index">001</span><span class="post-title">Ładna, martwa strona</span><span class="post-arrow">→</span></a></li>
+      <li><a href="seo90.html"><span class="post-index">002</span><span class="post-title">SEO.90</span><span class="post-arrow">→</span></a></li>
+      <li><a href="nie-mam-dostepu.html"><span class="post-index">003</span><span class="post-title">Nie mam dostępu do strony</span><span class="post-arrow">→</span></a></li>
+      <li><a href="silny-lokalnie.html"><span class="post-index">004</span><span class="post-title">Silny lokalnie: jedna strona za darmo</span><span class="post-arrow">→</span></a></li>
+      </ul>
+    </div>
+
   </div>
 </article>
 
 <footer>
   <div class="ft">
-    <span><b style="color:var(--ink-2)">[ WPIS 004 ]</b> <a href="silny-lokalnie.html">Silny lokalnie →</a></span>
     <span>Bartosz · <a href="mailto:kontakt@dzialajmy.online">kontakt@dzialajmy.online</a> · na razie działam tylko ze stronami www</span>
   </div>
 </footer>
