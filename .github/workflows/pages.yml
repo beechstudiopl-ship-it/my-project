@@ -27,7 +27,7 @@ jobs:
       - name: Stage site files only
         run: |
           mkdir -p _site
-          cp index.html manifest.html seo90.html nie-mam-dostepu.html dla-kogo.html polityka-prywatnosci.html kontakt.html konsultacja.html silny-lokalnie.html CNAME _site/
+          cp index.html manifest.html seo90.html nie-mam-dostepu.html dla-kogo.html polityka-prywatnosci.html kontakt.html konsultacja.html silny-lokalnie.html og-image.png CNAME _site/
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
