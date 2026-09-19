@@ -27,7 +27,7 @@ jobs:
       - name: Stage site files only
         run: |
           mkdir -p _site
-          cp index.html manifest.html seo90.html nie-mam-dostepu.html dla-kogo.html zamowienia-gastronomia.html demo-gastro.html strona-trener-fizjoterapeuta.html demo-trener.html trener-1.avif trener-2.avif trener-3.avif polityka-prywatnosci.html kontakt.html konsultacja.html silny-lokalnie.html og-image.png CNAME _site/
+          cp index.html manifest.html seo90.html nie-mam-dostepu.html dla-kogo.html zamowienia-gastronomia.html demo-gastro.html strona-trener-fizjoterapeuta.html demo-trener.html trener-1.avif trener-2.avif trener-3.avif strona-psycholog-psychoterapia.html demo-psycholog.html demo-psycholog-o-nas.html demo-psycholog-metodyka.html demo-psycholog-zalozenia.html demo-psycholog-kontakt.html demo-psycholog-artykul.html polityka-prywatnosci.html kontakt.html konsultacja.html silny-lokalnie.html og-image.png CNAME _site/
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
