@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ładna, martwa strona · manifest · działajmy.online</title>
-<meta name="description" content="Mam dość patrzenia, jak małe firmy przepłacają za ładne strony, których nikt nie znajduje. Manifest działajmy.online: po co to robię i co dostajesz.">
-<meta property="og:title" content="Ładna, martwa strona · manifest">
-<meta property="og:description" content="Dlaczego robię działajmy.online. Bez ściemy, bez korpo-żargonu.">
+<title>Strona z zapisami dla trenera i fizjoterapeuty · działajmy.online</title>
+<meta name="description" content="Strona www z ofertą, opisem i zapisami dla trenera personalnego lub fizjoterapeuty. Jedna strona, dwie role, mniej chaosu w kalendarzu.">
+<meta property="og:title" content="Strona z zapisami dla trenera i fizjoterapeuty · działajmy.online">
+<meta property="og:description" content="Oferta, o mnie, proces, lokalizacja i zapisy w jednym miejscu. Dla trenerów personalnych i fizjoterapeutów, także tych, którzy łączą obie role.">
 <meta property="og:type" content="article">
 <meta property="og:locale" content="pl_PL">
 <meta property="og:image" content="https://dzialajmy.online/og-image.png">
@@ -76,22 +76,12 @@
     font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.03em;
     font-size:clamp(24px,4vw,32px);line-height:1.15;color:var(--ink);
   }
-  .pull-hi{
-    display:inline;padding:0 .12em;color:var(--ink);
-    background-image:linear-gradient(105deg,rgba(245,227,61,0) 0%,var(--hi) 1.5%,var(--hi-2) 45%,var(--hi) 92%,rgba(245,227,61,0) 100%);
-    background-size:100% .9em;background-position:0 .12em;background-repeat:no-repeat;
-    box-decoration-break:clone;-webkit-box-decoration-break:clone;
-  }
 
-  .creed{list-style:none;margin:28px 0;border-top:1px solid rgba(20,23,27,.5)}
-  .creed li{display:flex;gap:16px;padding:20px 0;border-bottom:1px solid var(--hair);
-    font-size:18px;line-height:1.45}
-  .creed li b{font-family:'Archivo',sans-serif;font-weight:800}
-  .creed .no{color:var(--ink-3);text-decoration:line-through;
-    text-decoration-color:var(--ink-3);flex:none;width:118px;
-    font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;text-transform:uppercase;
-    padding-top:2px}
-  .creed .yes{color:var(--ink)}
+  /* features list */
+  .features-list{list-style:none;margin:28px 0;border-top:1px solid rgba(20,23,27,.5)}
+  .features-list li{padding:22px 0;border-bottom:1px solid var(--hair)}
+  .features-list h3{font-family:'Archivo',sans-serif;font-weight:800;font-size:17px;color:var(--ink)}
+  .features-list p{margin-top:8px;font-size:16px;color:var(--ink-2);line-height:1.5}
 
   /* CTA BOX */
   .cta-box{background:var(--ink);color:var(--paper);padding:40px clamp(24px,5vw,44px);
@@ -113,6 +103,20 @@
     color:var(--ink-2)}
   .sign b{color:var(--ink)}
 
+  /* phone mockup */
+  .phone-mock{margin:40px auto 0;width:260px}
+  .phone-frame{
+    border:10px solid var(--ink);border-radius:34px;overflow:hidden;
+    aspect-ratio:9/19.5;background:#000;position:relative;
+    box-shadow:0 20px 40px rgba(20,23,27,.18);
+  }
+  .phone-frame::before{
+    content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+    width:70px;height:18px;background:var(--ink);border-radius:0 0 12px 12px;z-index:2;
+  }
+  .phone-frame iframe{width:100%;height:100%;border:none;display:block}
+  .phone-mock-cap{margin-top:16px;text-align:center;font-size:13.5px;color:var(--ink-3);line-height:1.5}
+  .phone-mock-cap a{color:var(--blue-d);font-weight:700}
 
   /* WIECEJ WPISOW */
   .more-posts{margin-top:64px}
@@ -149,49 +153,60 @@
 
 <article>
   <div class="wrap">
-    <div class="meta"><span class="tag">001</span><span>Wiedza</span></div>
-    <h1>Ładna, martwa strona</h1>
-    <p class="dek">Widziałem zbyt wiele małych firm, które przepłaciły za stronę na starcie biznesu, zamiast zainwestować w to, co naprawdę przynosi klientów. Piszę to, bo naprawdę mi na tym zależy.</p>
+    <div class="meta"><span class="tag">007</span><span>Demo</span></div>
+    <h1>Strona z zapisami dla trenera i fizjoterapeuty</h1>
+    <p class="dek">Oferta, o mnie, proces i zapis na wizytę w jednym miejscu. Dla trenerów personalnych i fizjoterapeutów, także tych, którzy łączą obie role.</p>
 
     <hr class="rule">
 
-    <p class="big">Widziałem to wiele razy. Ktoś zakłada firmę i od razu wydaje ostatnie oszczędności na drogą, efektowną stronę, bo tak „wypada” na start.</p>
+    <p class="big">Trener personalny i fizjoterapeuta robią z pozoru różne rzeczy, ale trafia do nich ten sam typ klienta: ktoś, kto chce wrócić do formy, po kontuzji albo po prostu po latach zaniedbania.</p>
 
-    <p>Tyle że w pierwszych miesiącach firmy liczy się co innego: żeby ktoś w ogóle o Tobie usłyszał. Ten sam budżet często bardziej pomógłby w reklamie, w pierwszych klientach, w tym, żeby po prostu przetrwać pierwszy rok. Ładna strona nie zastąpi marketingu, kiedy nikt jeszcze o Tobie nie wie.</p>
+    <p>Dlatego często się łączą: jedna osoba prowadzi trening i rehabilitację, albo mały gabinet ma obu specjalistów pod jednym dachem. Problem w tym, że taka oferta rzadko ma jedno miejsce w sieci. Klient trafia na Instagram, potem pisze na Messengerze, potem dzwoni, żeby w końcu umówić się przez telefon. Traci się połowę zapytań po drodze.</p>
 
-    <p><strong>To jest właśnie ładna, martwa strona.</strong> Piękna, kosztowna, i pusta, dopóki nikt jej nie znajdzie.</p>
+    <div class="pull">Jedna strona, dwie role, jeden kalendarz. Klient wie, co dostaje i jak się zapisać.</div>
 
-    <div class="pull">Nie musisz przepłacać za stronę, żeby zacząć biznes. Musisz po prostu zacząć.</div>
+    <h2>Co dostajesz</h2>
+    <p>Prostą stronę, która pokazuje ofertę, Ciebie i sposób pracy, i kończy się zapisem na pierwszą konsultację, bez przełączania się między komunikatorami.</p>
 
-    <p>Stąd nazwa działajmy.online. Najczęstszy powód, dla którego mała firma nie ma jeszcze strony, to nie brak pieniędzy, tylko wieczne „nie mam teraz czasu, zajmę się tym później”. Biorę to na siebie, żebyś faktycznie zaczął działać, zamiast dalej to <a href="dla-kogo.html">odkładać</a>.</p>
-
-    <h2>Zacznij taniej, rozwijaj się z zysków</h2>
-    <p>Dlatego proponuję inaczej. Na start wystarczy <a href="index.html#oferta">prosta, uczciwa strona, za 1000 lub 3000 zł</a>, bez rozdmuchanego budżetu. Resztę zostaw sobie na marketing i pierwszych klientów.</p>
-
-    <p>Kiedy firma zacznie zarabiać, to dobry moment, żeby stronę rozbudować: nowe podstrony, moduły, integracje. Rozwój finansujesz wtedy z zysków, nie z oszczędności sprzed startu.</p>
-
-    <div class="pull">Najpierw biznes. Strona rośnie razem z nim.</div>
-
-    <h2>Znam Wasze problemy</h2>
-    <p>Rozmawiam z właścicielami małych firm i wiem, co ich najbardziej frustruje. Brak hasła do własnej strony czy serwera, bo poprzedni wykonawca zniknął i nikt nie wie, gdzie szukać dostępu. Pieniądze wydane na SEO, które nic nie dało, bo nikt wcześniej nie sprawdził, czy w ogóle się opłaca.</p>
-
-    <p>Nie chcę być kolejnym wykonawcą, po którym zostaje bałagan. Zależy mi, żeby to było uczciwe: jasne dane logowania od pierwszego dnia i żadnych obietnic bez pokrycia.</p>
-
-    <ul class="creed">
-      <li><span class="no">Nie robię</span><span class="yes"><b>Stron bez dostępu.</b> Dostajesz hasła i pełny dostęp od pierwszego dnia, bez tajemnic.</span></li>
-      <li><span class="no">Nie robię</span><span class="yes"><b>Obiecanek bez pokrycia.</b> Jak coś się nie opłaca, powiem to wprost, zamiast sprzedawać na siłę.</span></li>
-      <li><span class="no">Nie robię</span><span class="yes"><b>Rozdmuchanych budżetów na start.</b> Najpierw prosta, działająca strona. Rozwój przychodzi później, razem z zyskami.</span></li>
+    <ul class="features-list">
+      <li>
+        <h3>Oferta usług</h3>
+        <p>Trening indywidualny, rehabilitacja, przygotowanie sportowe, redukcja wagi, cokolwiek robisz, w jednej czytelnej siatce.</p>
+      </li>
+      <li>
+        <h3>O mnie</h3>
+        <p>Doświadczenie, certyfikaty, podejście do pracy. Klient chce wiedzieć, komu się powierza, zanim napisze.</p>
+      </li>
+      <li>
+        <h3>Jak to wygląda</h3>
+        <p>Krok po kroku: konsultacja, plan, sesje, monitoring postępów. Mniej pytań "co dalej" po pierwszej wizycie.</p>
+      </li>
+      <li>
+        <h3>Lokalizacja na mapie</h3>
+        <p>Adres, godziny, dojazd, i opcja sesji online, jeśli je prowadzisz.</p>
+      </li>
+      <li>
+        <h3>Zapis z wyborem usługi</h3>
+        <p>Klient wybiera usługę, zostawia kontakt, Ty się odzywasz, żeby ustalić termin.</p>
+      </li>
     </ul>
 
-    <h2>Co to będzie</h2>
-    <p>Docelowo pełny blog „Wiedza z zaplecza”: konkretne historie z moich projektów, żeby pokazać, jak to wygląda w praktyce, nie w teorii.</p>
+    <h2>Dla kogo to jest</h2>
+    <p>Dla trenerów personalnych i fizjoterapeutów, osobno albo w jednej osobie. Też dla małych gabinetów, gdzie kilka specjalizacji funkcjonuje pod wspólną marką. Nie musisz mieć wielkiego zespołu, potrzebujesz miejsca, gdzie klient przeczyta ofertę i się zapisze.</p>
 
-    <p>Ten manifest to punkt zero. Jeśli dobrniesz do tego miejsca i kiwasz głową, prawdopodobnie się dogadamy.</p>
+    <p class="big">Zobacz, jak to wygląda w praktyce, zanim napiszesz.</p>
+
+    <div class="phone-mock">
+      <div class="phone-frame">
+        <iframe src="demo-trener.html" title="Podgląd makiety Forma." loading="lazy"></iframe>
+      </div>
+      <p class="phone-mock-cap">Poklikaj na żywo, tak jak zrobiłby to Twój klient. <a href="demo-trener.html" target="_blank" rel="noopener">Otwórz na pełnym ekranie →</a></p>
+    </div>
 
     <div class="cta-box">
-      <h2>Zaczynasz biznes i <span class="mk">nie wiesz, ile wydać na stronę?</span></h2>
-      <p>Napisz, czym się zajmujesz. Powiem szczerze, jaki budżet ma sens na start, i co lepiej odłożyć na później.</p>
-      <a href="kontakt.html" class="cta-btn"><span>Działajmy, Panie Bartoszu!</span><span>→</span></a>
+      <h2>Chcesz <span class="mk">taką stronę dla siebie?</span></h2>
+      <p>Napisz, czym się zajmujesz, a pogadamy o szczegółach.</p>
+      <a href="kontakt.html" class="cta-btn"><span>Opisz swoją sytuację</span><span>→</span></a>
     </div>
 
     <p class="sign"><b>Bartosz</b>, działajmy.online</p>
@@ -199,12 +214,12 @@
     <div class="more-posts">
       <h2>Więcej wpisów</h2>
       <ul class="post-links">
+      <li><a href="manifest.html"><span class="post-index">001</span><span class="post-title">Ładna, martwa strona</span><span class="post-arrow">→</span></a></li>
       <li><a href="seo90.html"><span class="post-index">002</span><span class="post-title">SEO.90</span><span class="post-arrow">→</span></a></li>
       <li><a href="nie-mam-dostepu.html"><span class="post-index">003</span><span class="post-title">Nie mam dostępu do strony</span><span class="post-arrow">→</span></a></li>
       <li><a href="silny-lokalnie.html"><span class="post-index">004</span><span class="post-title">Silny lokalnie: jedna strona za darmo</span><span class="post-arrow">→</span></a></li>
       <li><a href="dla-kogo.html"><span class="post-index">005</span><span class="post-title">Dla kogo</span><span class="post-arrow">→</span></a></li>
       <li><a href="zamowienia-gastronomia.html"><span class="post-index">006</span><span class="post-title">Strona z zamówieniami dla gastronomii</span><span class="post-arrow">→</span></a></li>
-      <li><a href="strona-trener-fizjoterapeuta.html"><span class="post-index">007</span><span class="post-title">Strona z zapisami dla trenera i fizjoterapeuty</span><span class="post-arrow">→</span></a></li>
       </ul>
     </div>
 
