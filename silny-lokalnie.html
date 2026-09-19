@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Silny lokalnie · działajmy.online</title>
+<meta name="description" content="Raz na jakiś czas robię jedną stronę całkiem za darmo, dla kogoś kto mi się spodoba. Warunek: robię to po swojemu.">
+<meta property="og:title" content="Silny lokalnie · działajmy.online">
+<meta property="og:description" content="Jedna darmowa strona dla lokalnego rzemieślnika, który mi się spodoba. Warunek: pełna wolność twórcza.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:image" content="https://dzialajmy.online/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4F2EC;
+    --ink:#14171B;
+    --ink-2:#4A525C;
+    --ink-3:#8B939C;
+    --hair:rgba(20,23,27,.14);
+    --blue:#1B4BFF;
+    --blue-d:#0C2B9E;
+    --hi:#F5E33D;
+    --hi-2:#FFF08A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+  html,body{height:100%}
+  body{
+    background:var(--paper);color:var(--ink);
+    font-family:'Source Sans 3',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    min-height:100dvh;
+    background-image:
+      linear-gradient(rgba(20,23,27,.028) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(20,23,27,.028) 1px,transparent 1px);
+    background-size:34px 34px;
+  }
+  .mk{display:inline;padding:0 .14em;
+    background-image:linear-gradient(105deg,var(--hi) 0%,var(--hi-2) 100%);
+    background-size:100% .68em;background-position:0 .5em;background-repeat:no-repeat;
+    box-decoration-break:clone;-webkit-box-decoration-break:clone}
+
+  /* --- TOP --- */
+  .top{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px clamp(20px,5vw,48px);
+  }
+  .logo{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(19px,4.5vw,23px);
+    letter-spacing:-.04em;color:var(--ink);text-decoration:none}
+  .logo .d{color:var(--blue)}
+  .logo .c{display:inline-block;color:var(--blue);transform:translateY(-2px);margin-left:1px;
+    animation:bl 1.2s steps(1) infinite}
+  @keyframes bl{0%,55%{opacity:1}56%,100%{opacity:.12}}
+  .status{
+    display:flex;align-items:center;gap:8px;
+    font-family:'Archivo',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;
+    color:var(--ink-2);
+  }
+  .status i{width:7px;height:7px;border-radius:50%;background:var(--blue);
+    box-shadow:0 0 0 0 rgba(27,75,255,.5);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(27,75,255,.45)}70%{box-shadow:0 0 0 7px rgba(27,75,255,0)}100%{box-shadow:0 0 0 0 rgba(27,75,255,0)}}
+  .status-sep{margin:0 12px;color:var(--hair)}
+  @media (max-width:640px){.status-link{display:none}}
+
+  /* --- BUTTONS --- */
+  .btn{
+    display:inline-flex;align-items:center;gap:12px;text-decoration:none;
+    font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.02em;
+    font-size:clamp(16px,2.2vw,18px);padding:16px 24px;border:1.5px solid var(--blue-d);
+    transition:opacity .12s ease;cursor:pointer;
+  }
+  .btn:hover{opacity:.9}
+  .btn-blue{background:var(--blue);color:#fff}
+  .btn-hi{background:var(--hi);color:var(--ink)}
+  .btn .arw{font-size:20px}
+
+  /* --- PROSE --- */
+  main.prose{max-width:720px;margin:0 auto;padding:56px clamp(20px,5vw,40px) 40px}
+  .prose .tag{
+    display:inline-block;font-family:'Archivo',sans-serif;font-weight:800;font-size:11px;
+    text-transform:uppercase;background:var(--hi);color:var(--ink);padding:4px 9px;margin-bottom:18px;
+  }
+  .prose h1{
+    font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.03em;line-height:1.05;
+    font-size:clamp(32px,6vw,52px);margin-bottom:8px;
+  }
+  .prose .dek{margin-top:18px;font-size:clamp(18px,2.5vw,21px);color:var(--ink-2);line-height:1.5;font-weight:600}
+  .prose section{margin-top:40px}
+  .prose h2{
+    font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:-.02em;
+    font-size:clamp(20px,3vw,26px);margin-bottom:12px;
+  }
+  .prose p{font-size:16px;color:var(--ink-2);line-height:1.6}
+  .prose p a{color:var(--blue-d)}
+  .prose ul.plain{list-style:none;margin-top:16px}
+  .prose ul.plain li{padding-left:24px;position:relative;margin-top:10px;color:var(--ink-2)}
+  .prose ul.plain li::before{content:"✓";position:absolute;left:0;color:var(--blue);font-weight:700}
+  .prose strong{color:var(--ink);font-weight:700}
+
+  /* --- CTA BOX --- */
+  .cta-box{background:var(--ink);padding:40px clamp(24px,5vw,44px);margin-top:56px}
+  .cta-box h2{
+    font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.03em;
+    font-size:clamp(24px,4vw,32px);color:#fff;margin-top:0;
+  }
+  .cta-box p{color:#9AA3AD;margin-top:16px}
+  .cta-box .mk{
+    color:var(--ink);
+    background-image:linear-gradient(105deg,var(--hi) 0%,var(--hi-2) 100%);
+    background-size:100% 100%;background-position:0 0;
+  }
+  .cta-btn{display:inline-flex;align-items:center;gap:12px;margin-top:24px;text-decoration:none;
+    background:var(--hi);color:var(--ink);border:1.5px solid var(--hi);
+    font-family:'Archivo',sans-serif;font-weight:900;font-size:16px;letter-spacing:-.02em;
+    padding:14px 22px;transition:opacity .12s ease}
+  .cta-btn:hover{opacity:.9}
+
+  /* --- WIECEJ WPISOW --- */
+  .more-posts{margin-top:56px}
+  .more-posts h2{
+    font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:-.02em;
+    font-size:clamp(20px,3vw,26px);margin-bottom:0;
+  }
+  .post-links{list-style:none;margin-top:20px;border-top:1px solid rgba(20,23,27,.5)}
+  .post-links li{border-bottom:1px solid var(--hair)}
+  .post-links a{display:flex;align-items:center;gap:16px;padding:16px 4px;
+    text-decoration:none;color:inherit;transition:gap .15s ease}
+  .post-links a:hover{gap:22px}
+  .post-index{font-family:'Archivo',sans-serif;font-weight:900;font-size:13px;color:var(--ink-3);flex:none;width:32px}
+  .post-title{font-family:'Archivo',sans-serif;font-weight:800;font-size:16px;color:var(--ink);flex:1}
+  .post-arrow{font-family:'Archivo',sans-serif;font-weight:900;font-size:18px;color:var(--ink-3);transition:color .15s ease}
+  .post-links a:hover .post-arrow{color:var(--blue)}
+
+  /* --- FOOT --- */
+  footer{
+    padding:20px clamp(20px,5vw,48px);border-top:1px solid var(--hair);
+    display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;justify-content:space-between;
+    font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:600;text-transform:uppercase;
+    color:var(--ink-3);
+  }
+  footer a{color:var(--ink-2);text-decoration:none}
+  footer a:hover{color:var(--blue)}
+
+  /* --- STICKY BACK TO HOME (tylko mobile) --- */
+  .mob-manifest{display:none}
+  @media (max-width:640px){
+    body{padding-bottom:64px}
+    .mob-manifest{
+      position:fixed;left:0;right:0;bottom:0;z-index:40;
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      background:var(--ink);color:var(--paper);text-decoration:none;
+      padding:14px 20px calc(14px + env(safe-area-inset-bottom));
+      border-top:2px solid var(--hi);
+    }
+    .mm-l{display:flex;align-items:center;gap:10px;
+      font-family:'Source Sans 3',sans-serif;font-size:14px;color:#C6CCD4;line-height:1.2}
+    .mm-tag{font-family:'Archivo',sans-serif;font-weight:800;font-size:11px;text-transform:uppercase;
+      background:var(--hi);color:var(--ink);padding:3px 8px;flex:none}
+    .mm-arw{font-family:'Archivo',sans-serif;font-weight:900;font-size:20px;color:var(--hi);flex:none}
+  }
+</style>
+</head>
+<body>
+
+  <div class="top">
+    <a href="index.html" class="logo">działajmy<span class="d">.</span>online<span class="c">^</span></a>
+    <div class="status"><span class="status-link"><a href="index.html" style="color:var(--ink-2);text-decoration:none;border-bottom:2px solid var(--hi);padding-bottom:1px">Strona główna</a><span class="status-sep">·</span></span><a href="index.html#oferta" style="display:flex;align-items:center;gap:8px;color:inherit;text-decoration:none"><i></i>Przyjmuję zlecenia</a></div>
+  </div>
+
+  <main class="prose">
+    <span class="tag">Promocja</span>
+    <h1>Silny lokalnie</h1>
+    <p class="dek">Raz na jakiś czas robię jedną stronę całkiem za darmo. Dla kogoś, kto mi się spodoba. Warunek: robię to po swojemu.</p>
+
+    <section>
+      <h2>O co chodzi</h2>
+      <p>Nie każdy projekt musi być płatny. Od czasu do czasu wybieram jedną osobę, jedną lokalną firmę, i robię jej stronę za darmo. Bez ukrytych kosztów, bez haczyka. To mój sposób, żeby wspierać ludzi, którzy realnie robią dobrą robotę w swojej okolicy, a nie mają jeszcze budżetu na stronę.</p>
+    </section>
+
+    <section>
+      <h2>Dla kogo</h2>
+      <p>Najbardziej lubię ludzi z charakterem. <strong>Fajni rzemieślnicy.</strong> Ktoś, kto robi coś porządnie, ma swoją historię i widać, że mu zależy. Nie musisz mieć wielkiej firmy. Musisz mieć coś, co warto pokazać. Zobacz <a href="dla-kogo.html">pełną listę branż</a>, dla których zwykle pracuję.</p>
+    </section>
+
+    <section>
+      <h2>Jeden warunek</h2>
+      <p>Robię to za darmo, ale nie za darmo oddaję stery. <strong>Projekt robię w mojej wizji.</strong> Nie negocjujemy koloru przycisku w nieskończoność. Ufasz mi, ja się przykładam tak, jakbyś płacił pełną cenę, i dostajesz stronę, z której będziesz dumny.</p>
+      <ul class="plain">
+        <li>Ty: opisujesz swój biznes, odpowiadasz na pytania, ufasz procesowi.</li>
+        <li>Ja: robię research, projektuję, buduję, dowożę gotową stronę.</li>
+        <li>Bez rundy poprawek na każdy szczegół. Poważne uwagi owszem, ale decyzja projektowa jest moja.</li>
+      </ul>
+    </section>
+
+    <div class="cta-box">
+      <h2>Myślisz, że to <span class="mk">Ty?</span></h2>
+      <p>Napisz w dwóch zdaniach, czym się zajmujesz i czemu akurat Ty powinieneś dostać tę stronę za darmo. Przeczytam każde zgłoszenie.</p>
+      <a href="kontakt.html" class="cta-btn"><span>Zgłoś się</span><span>→</span></a>
+    </div>
+
+    <div class="more-posts">
+      <h2>Więcej wpisów</h2>
+      <ul class="post-links">
+        <li><a href="manifest.html"><span class="post-index">001</span><span class="post-title">Ładna, martwa strona</span><span class="post-arrow">→</span></a></li>
+        <li><a href="seo90.html"><span class="post-index">002</span><span class="post-title">SEO.90</span><span class="post-arrow">→</span></a></li>
+        <li><a href="nie-mam-dostepu.html"><span class="post-index">003</span><span class="post-title">Nie mam dostępu do strony</span><span class="post-arrow">→</span></a></li>
+        <li><a href="dla-kogo.html"><span class="post-index">005</span><span class="post-title">Dla kogo</span><span class="post-arrow">→</span></a></li>
+        <li><a href="zamowienia-gastronomia.html"><span class="post-index">006</span><span class="post-title">Strona z zamówieniami dla gastronomii</span><span class="post-arrow">→</span></a></li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    <span>Bartosz · <a href="mailto:kontakt@dzialajmy.online">kontakt@dzialajmy.online</a> · na razie działam tylko ze stronami www</span>
+  </footer>
+
+  <a href="index.html" class="mob-manifest">
+    <span class="mm-l"><span class="mm-tag">Start</span>Wróć na stronę główną</span>
+    <span class="mm-arw">→</span>
+  </a>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+name: Deploy działajmy.online to GitHub Pages
+
+on:
+  push:
+    branches: [claude/install-claude-seo-plugin-jnn8w7] # repo's default branch — there is no "main" here
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Stage site files only
+        run: |
+          mkdir -p _site
+          cp index.html manifest.html seo90.html nie-mam-dostepu.html dla-kogo.html zamowienia-gastronomia.html demo-gastro.html strona-trener-fizjoterapeuta.html demo-trener.html trener-1.avif trener-2.avif trener-3.avif polityka-prywatnosci.html kontakt.html konsultacja.html silny-lokalnie.html og-image.png CNAME _site/
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

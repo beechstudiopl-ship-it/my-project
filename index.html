@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google-site-verification" content="UR9gSWEjmsSu66n3mHAierb6_YMFOI2ZtsTvyRCqUgU">
+<title>Strony www od 1000 zł dla firm lokalnych · działajmy.online</title>
+<meta name="description" content="Strony www dla restauracji, salonów urody, trenerów, rzemieślników i innych lokalnych firm. Od 1000 zł, szybko i bez przepłacania. Napisz, działamy.">
+<meta property="og:title" content="Strony www od 1000 zł dla firm lokalnych · działajmy.online">
+<meta property="og:description" content="Strony www dla restauracji, salonów urody, trenerów, rzemieślników i innych lokalnych firm. Od 1000 zł, szybko i bez przepłacania. Napisz, działamy.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:image" content="https://dzialajmy.online/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4F2EC;
+    --ink:#14171B;
+    --ink-2:#4A525C;
+    --ink-3:#8B939C;
+    --hair:rgba(20,23,27,.14);
+    --blue:#1B4BFF;
+    --blue-d:#0C2B9E;
+    --hi:#F5E33D;
+    --hi-2:#FFF08A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+  html,body{height:100%}
+  body{
+    background:var(--paper);color:var(--ink);
+    font-family:'Source Sans 3',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    min-height:100dvh;display:flex;flex-direction:column;
+    background-image:
+      linear-gradient(rgba(20,23,27,.028) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(20,23,27,.028) 1px,transparent 1px);
+    background-size:34px 34px;
+  }
+  .mk{display:inline;padding:0 .14em;
+    background-image:linear-gradient(105deg,var(--hi) 0%,var(--hi-2) 100%);
+    background-size:100% .68em;background-position:0 .5em;background-repeat:no-repeat;
+    box-decoration-break:clone;-webkit-box-decoration-break:clone}
+  h1 .mk{background-size:100% 100%;background-position:0 0;white-space:nowrap}
+
+  /* --- TOP --- */
+  .top{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px clamp(20px,5vw,48px);
+  }
+  .logo{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(19px,4.5vw,23px);
+    letter-spacing:-.04em}
+  .logo .d{color:var(--blue)}
+  .logo .c{display:inline-block;color:var(--blue);transform:translateY(-2px);margin-left:1px;
+    animation:bl 1.2s steps(1) infinite}
+  @keyframes bl{0%,55%{opacity:1}56%,100%{opacity:.12}}
+  .status{
+    display:flex;align-items:center;gap:8px;
+    font-family:'Archivo',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;
+    color:var(--ink-2);
+  }
+  .status i{width:7px;height:7px;border-radius:50%;background:var(--blue);
+    box-shadow:0 0 0 0 rgba(27,75,255,.5);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(27,75,255,.45)}70%{box-shadow:0 0 0 7px rgba(27,75,255,0)}100%{box-shadow:0 0 0 0 rgba(27,75,255,0)}}
+  .status-sep{margin:0 12px;color:var(--hair)}
+  @media (max-width:640px){.status-link{display:none}}
+
+  /* --- PROMO BAR --- */
+  .promo-bar{
+    display:block;background:var(--hi);color:var(--ink);text-align:center;text-decoration:none;
+    font-family:'Archivo',sans-serif;font-weight:800;font-size:13px;
+    padding:10px clamp(20px,5vw,48px);
+  }
+  .promo-bar:hover{background:var(--hi-2)}
+
+  /* --- CENTER --- */
+  main{
+    flex:1;display:flex;flex-direction:column;justify-content:center;
+    padding:32px clamp(20px,5vw,48px);max-width:960px;width:100%;margin:0 auto;
+  }
+  .kicker{
+    font-family:'Archivo',sans-serif;font-weight:800;font-size:13px;text-transform:uppercase;
+    letter-spacing:.02em;color:var(--blue);margin-bottom:14px;
+  }
+  h1{
+    font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.04em;line-height:1;
+    font-size:clamp(52px,13vw,104px);text-transform:uppercase;
+  }
+  h2{
+    font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.03em;line-height:1.05;
+    font-size:clamp(28px,5vw,44px);
+  }
+  .desc{
+    margin-top:30px;font-size:clamp(17px,2.4vw,20px);color:var(--ink-2);line-height:1.55;
+    max-width:600px;
+  }
+  .desc b{color:var(--ink);font-weight:700}
+
+  /* --- CTA --- */
+  .actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:38px;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:12px;text-decoration:none;
+    font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.02em;
+    font-size:clamp(16px,2.2vw,18px);padding:16px 24px;border:none;
+    transition:opacity .12s ease;
+  }
+  .btn:hover{opacity:.9}
+  .btn-blue{background:var(--blue);color:#fff}
+  .btn-hi{background:var(--hi);color:var(--ink)}
+  .btn .arw{font-size:20px}
+  .or{font-family:'Archivo',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;
+    color:var(--ink-3)}
+
+  .form-note{margin-top:12px;font-size:13.5px;color:var(--ink-3);text-align:center;line-height:1.45}
+
+  /* --- FOOT --- */
+  footer{
+    padding:20px clamp(20px,5vw,48px);border-top:1px solid var(--hair);
+    display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;justify-content:space-between;
+    font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:600;text-transform:uppercase;
+    color:var(--ink-3);
+  }
+  footer .soon b{color:var(--ink-2)}
+  footer a{color:var(--ink-2);text-decoration:none}
+  footer a:hover{color:var(--blue)}
+
+  /* --- STICKY MANIFEST (tylko mobile) --- */
+  /* --- SECTIONS BELOW THE FOLD --- */
+  .section2{
+    width:100%;max-width:960px;margin:0 auto;
+    padding:64px clamp(20px,5vw,48px);
+    border-top:1px solid var(--hair);
+  }
+  .section2 .sublead{margin-top:14px;font-size:clamp(15px,2vw,18px);color:var(--ink-2);line-height:1.5;max-width:520px}
+
+  .tag{
+    display:inline-block;font-family:'Archivo',sans-serif;font-weight:800;font-size:11px;
+    text-transform:uppercase;background:var(--hi);color:var(--ink);padding:3px 8px;
+  }
+
+  /* oferta */
+  .plans{display:grid;grid-template-columns:1fr;gap:20px;margin-top:32px}
+  @media (min-width:720px){.plans{grid-template-columns:1fr 1fr}}
+  .extra-list{list-style:none;display:flex;flex-direction:column;gap:6px}
+  .extra-list li{font-size:14.5px;color:var(--ink-2);display:flex;justify-content:space-between;max-width:320px}
+  .extra-price{font-weight:700;color:var(--ink)}
+
+  /* dla kogo */
+  .tags-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+  .niche-tag{
+    font-family:'Archivo',sans-serif;font-weight:700;font-size:14px;
+    padding:10px 16px;border:1.5px solid rgba(20,23,27,.2);background:#fff;color:var(--ink);
+    text-decoration:none;
+  }
+  a.niche-tag:hover{border-color:var(--blue);color:var(--blue)}
+  .access-cta{
+    display:block;margin-top:20px;border:1.5px dashed rgba(20,23,27,.3);padding:20px 24px;
+    text-decoration:none;color:inherit;transition:opacity .12s ease;
+  }
+  .access-cta:hover{opacity:.85}
+  .access-cta-text{font-size:15px;color:var(--ink-2);line-height:1.5}
+  .access-cta-link{
+    display:inline-block;margin-top:10px;font-family:'Archivo',sans-serif;font-weight:800;
+    font-size:13px;color:var(--blue);
+  }
+
+  .plan{border:1.5px solid rgba(20,23,27,.2);background:#fff;padding:28px;display:flex;flex-direction:column}
+  .plan h3{font-family:'Archivo',sans-serif;font-weight:900;font-size:22px;display:flex;align-items:center;gap:10px;letter-spacing:-.02em}
+  .plan h3 .tag{font-size:18px;padding:4px 10px}
+  .plan .promo{color:var(--blue);font-size:12.5px;font-weight:800;font-family:'Archivo',sans-serif;margin-top:6px}
+  .plan .sub{color:var(--ink-2);font-size:15px;margin-top:6px}
+  .plan ul{list-style:none;margin-top:18px;flex:1}
+  .plan li{padding-left:24px;position:relative;margin-top:10px;font-size:15px;color:var(--ink-2)}
+  .plan li::before{content:"✓";position:absolute;left:0;color:var(--blue);font-weight:700}
+  .plan .btn{margin-top:22px;width:100%;justify-content:center;cursor:pointer;border:1.5px solid var(--blue-d)}
+  .plan.full{border-color:var(--blue)}
+
+  /* faq */
+  .faqs{margin-top:32px;display:flex;flex-direction:column;gap:10px}
+  .faqx{border:1.5px solid var(--hair);padding:16px 18px;background:#fff}
+  .faqx summary{font-family:'Archivo',sans-serif;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .faqx summary::-webkit-details-marker{display:none}
+  .faqx summary::after{content:"+";font-size:20px;color:var(--blue);line-height:1}
+  .faqx[open] summary::after{content:"\2212"}
+  .faqx p{margin-top:12px;font-size:15px;color:var(--ink-2);line-height:1.55}
+
+  /* wiedza z zaplecza (posty) */
+  .post-group-label{
+    font-family:'Archivo',sans-serif;font-weight:800;font-size:12px;text-transform:uppercase;
+    letter-spacing:.04em;color:var(--ink-3);margin-top:36px;
+  }
+  .post-group-label:first-of-type{margin-top:28px}
+  .post-links{list-style:none;margin-top:14px;border-top:1px solid var(--hair)}
+  .post-links li{border-bottom:1px solid var(--hair)}
+  .post-links a{
+    display:flex;align-items:center;gap:16px;padding:18px 4px;
+    text-decoration:none;color:inherit;transition:gap .15s ease;
+  }
+  .post-links a:hover{gap:22px}
+  .post-index{font-family:'Archivo',sans-serif;font-weight:900;font-size:13px;color:var(--ink-3);flex:none;width:32px}
+  .post-title{font-family:'Archivo',sans-serif;font-weight:800;font-size:17px;color:var(--ink);flex:1}
+  .post-arrow{font-family:'Archivo',sans-serif;font-weight:900;font-size:18px;color:var(--ink-3);transition:color .15s ease}
+  .post-links a:hover .post-arrow{color:var(--blue)}
+
+  /* znasz to uczucie (dark, under hero) */
+  .section-dark{background:var(--ink);border-top:1px solid var(--hair)}
+  .sd-inner{width:100%;max-width:960px;margin:0 auto;padding:64px clamp(20px,5vw,48px)}
+  .sd-inner h2{color:var(--paper)}
+  .sd-inner .sublead{color:#C6CCD4}
+
+  .problems{display:grid;grid-template-columns:1fr;gap:20px;margin-top:32px}
+  @media (min-width:720px){.problems{grid-template-columns:repeat(3,1fr)}}
+  .problem{border:1px solid rgba(244,242,236,.18);padding:24px;display:flex;flex-direction:column}
+  .problem h3{font-family:'Archivo',sans-serif;font-weight:800;text-transform:uppercase;font-size:16px;letter-spacing:.02em;color:var(--paper);margin:0 0 10px}
+  .problem p{font-size:14.5px;color:#C6CCD4;line-height:1.5;margin:0}
+  .problem .punch{margin-top:auto;padding-top:14px;color:var(--paper);font-weight:700}
+  .problem .punch::before{content:"> ";color:var(--blue);font-weight:900}
+
+  /* numbered digits shared by "znasz to uczucie" + "jak to działa" */
+  .num-badge{
+    display:block;font-family:'Archivo',sans-serif;font-weight:900;
+    font-size:34px;line-height:1;letter-spacing:-.02em;margin-bottom:12px;
+  }
+  .problem .num-badge{color:var(--blue)}
+  .step .num-badge{color:var(--ink)}
+  .step.done .num-badge{color:var(--blue)}
+
+  /* jak to działa (steps) */
+  .steps{display:grid;grid-template-columns:1fr;gap:20px;margin-top:32px}
+  @media (min-width:720px){.steps{grid-template-columns:repeat(3,1fr)}}
+  .step{position:relative;border:1.5px solid rgba(20,23,27,.5);background:#fff;padding:26px}
+  .step h3{font-family:'Archivo',sans-serif;font-weight:800;text-transform:uppercase;font-size:16px;letter-spacing:.02em;margin:0 0 10px}
+  .step p{font-size:14.5px;color:var(--ink-2);line-height:1.5;margin:0}
+  .step.done{background:var(--ink);border-color:var(--ink)}
+  .step.done h3{color:var(--paper)}
+  .step.done p{color:#C6CCD4}
+  .steps-cta{margin-top:32px}
+  .steps-cta .form-note{text-align:left}
+
+  /* --- DECISION BOX (bezpłatna konsultacja) --- */
+  .decision-box{background:var(--blue)}
+  .decision-box .wrap{width:100%;max-width:960px;margin:0 auto;padding:56px clamp(24px,5vw,48px)}
+  .decision-box h2{color:#fff;text-transform:uppercase}
+  .d-quote{
+    position:relative;background:#fff;color:var(--ink);border:1.5px solid rgba(20,23,27,.5);
+    padding:24px 28px;margin-top:24px;max-width:600px;
+  }
+  .d-quote p{
+    font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.02em;
+    font-size:clamp(20px,3.5vw,28px);color:var(--ink);
+  }
+  .d-quote cite{
+    display:block;margin-top:10px;font-style:normal;font-size:13.5px;color:var(--ink-3);
+    font-family:'Source Sans 3',sans-serif;
+  }
+  .d-quote::after{
+    content:"";position:absolute;left:32px;bottom:-12px;width:0;height:0;
+    border-left:12px solid transparent;border-right:12px solid transparent;border-top:12px solid #fff;
+  }
+  .d-body{margin-top:32px;font-size:16px;color:#fff;max-width:520px;line-height:1.55}
+  .decision-box .btn{margin-top:24px}
+
+  .mob-manifest{display:none}
+  @media (max-width:640px){
+    body{padding-bottom:64px}
+    .mob-manifest{
+      position:fixed;left:0;right:0;bottom:0;z-index:40;
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      background:var(--ink);color:var(--paper);text-decoration:none;
+      padding:14px 20px calc(14px + env(safe-area-inset-bottom));
+      border-top:2px solid var(--hi);
+    }
+    .mm-l{display:flex;align-items:center;gap:10px;
+      font-family:'Source Sans 3',sans-serif;font-size:14px;color:#C6CCD4;line-height:1.2}
+    .mm-tag{font-family:'Archivo',sans-serif;font-weight:800;font-size:11px;text-transform:uppercase;
+      background:var(--hi);color:var(--ink);padding:3px 8px;flex:none}
+    .mm-arw{font-family:'Archivo',sans-serif;font-weight:900;font-size:20px;color:var(--hi);flex:none}
+    footer .soon{display:none}
+  }
+</style>
+</head>
+<body>
+
+  <a href="silny-lokalnie.html" class="promo-bar">Raz na jakiś czas robię jedną stronę całkiem za darmo. Sprawdź akcję Silny lokalnie →</a>
+
+  <div class="top">
+    <div class="logo">działajmy<span class="d">.</span>online<span class="c">^</span></div>
+    <div class="status"><a href="#oferta" style="display:flex;align-items:center;gap:8px;color:inherit;text-decoration:none"><i></i>Przyjmuję zlecenia</a></div>
+  </div>
+
+  <main>
+    <p class="kicker">Strony www dla lokalnych firm, które nie mają czasu</p>
+    <h1>To już <span class="mk">3. rok</span><br>bez strony www?</h1>
+
+    <p class="desc">Łatwo mówić „ogarnę to”, a klienci trafiają do konkurencji. Czas to zmienić. <b>Zrobię dla Ciebie stronę www od 1000 zł.</b> Szybko, sprawnie i bez przepłacania. <b>Ty zajmij się biznesem.</b></p>
+
+    <div class="actions">
+      <a href="#znasz-to-uczucie" class="btn btn-blue">Działajmy<span class="arw">↓</span></a>
+    </div>
+    <p class="form-note" style="text-align:left;margin-top:14px">Bez zobowiązań. Jedna wiadomość, i zobaczysz, czy moja oferta Cię przekona.</p>
+  </main>
+
+  <section id="znasz-to-uczucie" class="section-dark">
+    <div class="sd-inner">
+      <h2>Znasz to uczucie?</h2>
+      <p class="sublead">Chcesz stronę, która działa. Rzeczywistość zwykle wygląda tak.</p>
+
+      <div class="problems">
+        <article class="problem">
+          <span class="num-badge">01</span>
+          <h3>Za drogo</h3>
+          <p>Agencja: często kilka tysięcy złotych i miesiąc czekania. Freelancer: taniej, ale rzadko poniżej paru tysięcy.</p>
+          <p class="punch">Ty chcesz zacząć teraz, bez przepłacania za wizytówkę.</p>
+        </article>
+        <article class="problem">
+          <span class="num-badge">02</span>
+          <h3>Za długo</h3>
+          <p>Zlecasz i czekasz. Tydzień, dwa. Poprawki się ciągną, terminy się przesuwają.</p>
+          <p class="punch">A potrzebujesz strony teraz, nie za miesiąc.</p>
+        </article>
+        <article class="problem">
+          <span class="num-badge">03</span>
+          <h3>Za trudno</h3>
+          <p>Generator: wybierasz szablon, wpisujesz dane i utykasz na drugiej karcie. To „dokończę jutro” zwykle nie przychodzi.</p>
+          <p class="punch">Prowadzisz biznes, nie masz czasu na kreator.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="jak-to-dziala" class="section2">
+    <h2>Jak to działa: 3 kroki</h2>
+
+    <div class="steps">
+      <article class="step">
+        <span class="num-badge">01</span>
+        <h3>Opisz</h3>
+        <p>Wpisz czym się zajmujesz. Jedno zdanie wystarczy, resztę ogarniam ja.</p>
+      </article>
+      <article class="step">
+        <span class="num-badge">02</span>
+        <h3>Ja dobieram styl</h3>
+        <p>Research, styl, typografia, kolory, układ. Dopasowuję je do Twojej branży, Ty nie musisz zgadywać.</p>
+      </article>
+      <article class="step done">
+        <span class="num-badge">03</span>
+        <h3>Gotowe</h3>
+        <p>Dostajesz link do podglądu na maila. 2 do 3 serii poprawek i strona jest live.</p>
+      </article>
+    </div>
+
+    <div class="steps-cta">
+      <a href="kontakt.html" class="btn btn-blue">Opisz swój biznes<span class="arw">→</span></a>
+      <p class="form-note">Bez zobowiązań na etapie researchu. Druga płatność dopiero, gdy strona jest już włączona.</p>
+    </div>
+  </section>
+
+  <section id="dla-kogo" class="section2">
+    <h2>Dla kogo</h2>
+    <p class="sublead">Robię strony dla małych firm działających lokalnie, które szukają wsparcia w rozwoju. Skup się na firmie, stronę zostaw mi!</p>
+
+    <div class="tags-grid">
+      <a href="zamowienia-gastronomia.html" class="niche-tag">Restauracje →</a>
+      <span class="niche-tag">Puby</span>
+      <a href="strona-trener-fizjoterapeuta.html" class="niche-tag">Trenerzy →</a>
+      <a href="strona-trener-fizjoterapeuta.html" class="niche-tag">Fizjoterapeuci →</a>
+      <span class="niche-tag">Małe rzemiosło</span>
+      <span class="niche-tag">Biura rachunkowe</span>
+      <span class="niche-tag">Agenci nieruchomości</span>
+      <span class="niche-tag">Stomatolodzy</span>
+      <span class="niche-tag">Salony urody</span>
+      <a href="dla-kogo.html" class="access-cta-link" style="display:inline-flex;align-items:center;font-size:14px;text-decoration:none">Zobacz pozostałe branże →</a>
+    </div>
+
+    <a href="nie-mam-dostepu.html" class="access-cta">
+      <p class="access-cta-text">...i dla tych wszystkich, którzy kiedyś zrobili stronę i z jakiegoś powodu nie mają do niej dostępu lub nie mogą czegoś zmienić, bo autor przepadł! Ja to rozwiązuję.</p>
+      <span class="access-cta-link">Przeczytaj wpis →</span>
+    </a>
+  </section>
+
+  <section id="oferta" class="section2">
+    <h2>Dwa pakiety cen</h2>
+    <p class="sublead">Zaczynasz od małej strony lub wybierasz pełną wersję. To zależy na jakim jesteś etapie.</p>
+
+    <div class="plans">
+      <article class="plan">
+        <h3>START <span class="tag">1000 zł</span></h3>
+        <p class="sub">Wizytówka, ale która działa</p>
+        <ul>
+          <li>Strona wizytówka</li>
+          <li>Unikalny styl w oparciu o materiały</li>
+          <li>Panel edycji</li>
+          <li>Działa do 48h</li>
+          <li>3 serie poprawkowe</li>
+          <li>Mapa</li>
+          <li>Formularz</li>
+        </ul>
+        <a href="kontakt.html?pakiet=START" class="btn btn-blue">Chcę START</a>
+      </article>
+
+      <article class="plan full">
+        <h3>FULL <span class="tag">3000 zł</span></h3>
+        <p class="sub">Rozbudowana, gotowa na więcej</p>
+        <ul>
+          <li>3 do 5 podstron i blog</li>
+          <li>Możliwość rozbudowy</li>
+          <li>Unikalny styl w oparciu o materiały</li>
+          <li>Panel edycji</li>
+          <li>Formularz</li>
+          <li>3 serie poprawkowe</li>
+          <li>Mapa</li>
+          <li>Integracje z portalami, płatnościami i inne zaawansowane rozwiązania po wcześniejszym ustaleniu</li>
+        </ul>
+        <a href="kontakt.html?pakiet=FULL" class="btn btn-blue">Chcę FULL</a>
+      </article>
+    </div>
+
+    <p class="form-note" style="text-align:left;margin-top:20px">Pierwsza płatność po pokazaniu wstępnego linku do podglądu. Druga przy włączeniu strony.</p>
+  </section>
+
+  <section id="faq" class="section2">
+    <h2>Pytania, które słyszę najczęściej</h2>
+
+    <div class="faqs">
+      <details class="faqx">
+        <summary>Ile czasu zajmie?</summary>
+        <p>Zwykle 5 do 7 dni roboczych, czasem trochę dłużej, zależy jak szybko dostanę od Ciebie teksty i zdjęcia.</p>
+      </details>
+      <details class="faqx">
+        <summary>Mogę Ci nie ufać, czemu miałbym spróbować?</summary>
+        <p>Bo robię to 12 lat i mam co pokazać. Pierwszą płatność pobieram dopiero po tym, jak zobaczysz wstępny link do podglądu strony, więc nie ryzykujesz całości z góry.</p>
+      </details>
+      <details class="faqx">
+        <summary>Co jeśli mi się nie podoba?</summary>
+        <p>Poprawki są w cenie, dopóki nie zaakceptujesz finalnej wersji. Drugą płatność robisz dopiero, gdy strona jest już włączona i działa tak, jak chciałeś.</p>
+      </details>
+      <details class="faqx">
+        <summary>Kiedy płacę?</summary>
+        <p>Pierwsza płatność po pokazaniu wstępnego linku do podglądu. Druga przy włączeniu strony. Bez rat, bez drobnego druku.</p>
+      </details>
+      <details class="faqx">
+        <summary>Jakie są koszty utrzymania?</summary>
+        <ul class="extra-list" style="margin-top:12px">
+          <li>Domena <span class="extra-price">250 zł / rok</span></li>
+          <li>Serwer <span class="extra-price">350 zł / rok</span></li>
+          <li>Skrzynka mailowa <span class="extra-price">150 zł / rok</span></li>
+        </ul>
+        <p>Płatne na początku roku. Jeśli zdecydujesz się na stronę w trakcie roku, pierwsza płatność za utrzymanie wypada dopiero w kolejnym roku. Możliwe są też dodatkowe moduły i integracje, dopasowane do Twoich potrzeb, za dodatkową opłatą.</p>
+      </details>
+      <details class="faqx">
+        <summary>Na ile czasu się wiążemy?</summary>
+        <p>Na jeden projekt. Zero abonamentów, zero zobowiązań na przyszłość. Jak później zechcesz SEO albo zmiany, dogadamy się osobno.</p>
+      </details>
+      <details class="faqx">
+        <summary>Mam stronę www, czy możemy ją odświeżyć?</summary>
+        <p>Jasne, nie musisz zaczynać od zera. Mogę odświeżyć wygląd i treści na istniejącej stronie albo przenieść Cię na nowy, szybszy fundament. Napisz link do obecnej strony, obejrzę i powiem, co faktycznie ma sens.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="decision-box">
+    <div class="wrap">
+      <h2>Działamy czy odkładasz na kiedyś?</h2>
+
+      <blockquote class="d-quote">
+        <p>„Działajmy, Panie Bartku!”</p>
+        <cite>Tak zwykle kończą się te rozmowy.</cite>
+      </blockquote>
+
+      <p class="d-body">Nic nie tracisz, konsultacja jest bezpłatna. Umów 20 minut, powiedz mi, co robisz, a ja powiem Ci szczerze, czy mogę Ci pomóc, czy nie.</p>
+
+      <a href="konsultacja.html" class="btn btn-hi">Umów bezpłatną rozmowę<span class="arw">→</span></a>
+    </div>
+  </section>
+
+  <section class="section2">
+    <h2>Wiedza z zaplecza</h2>
+    <p class="sublead">Krótkie wpisy o tym, jak i dlaczego robię działajmy.online, i przykładowe strony dla różnych branż.</p>
+
+    <div class="post-group-label">Wiedza</div>
+    <ul class="post-links">
+      <li><a href="manifest.html"><span class="post-index">001</span><span class="post-title">Ładna, martwa strona</span><span class="post-arrow">→</span></a></li>
+      <li><a href="seo90.html"><span class="post-index">002</span><span class="post-title">SEO.90</span><span class="post-arrow">→</span></a></li>
+      <li><a href="nie-mam-dostepu.html"><span class="post-index">003</span><span class="post-title">Nie mam dostępu do strony</span><span class="post-arrow">→</span></a></li>
+      <li><a href="silny-lokalnie.html"><span class="post-index">004</span><span class="post-title">Silny lokalnie: jedna strona za darmo</span><span class="post-arrow">→</span></a></li>
+      <li><a href="dla-kogo.html"><span class="post-index">005</span><span class="post-title">Dla kogo</span><span class="post-arrow">→</span></a></li>
+    </ul>
+
+    <div class="post-group-label">Demo stron</div>
+    <ul class="post-links">
+      <li><a href="zamowienia-gastronomia.html"><span class="post-index">006</span><span class="post-title">Strona z zamówieniami dla gastronomii</span><span class="post-arrow">→</span></a></li>
+      <li><a href="strona-trener-fizjoterapeuta.html"><span class="post-index">007</span><span class="post-title">Strona z zapisami dla trenera i fizjoterapeuty</span><span class="post-arrow">→</span></a></li>
+    </ul>
+  </section>
+
+  <footer>
+    <span class="soon"><b>[ NOWE ]</b> <a href="manifest.html" style="color:var(--ink-2)">Przeczytaj manifest →</a></span>
+    <span>Bartosz · <a href="mailto:kontakt@dzialajmy.online">kontakt@dzialajmy.online</a> · na razie działam tylko ze stronami www</span>
+  </footer>
+
+  <a href="manifest.html" class="mob-manifest">
+    <span class="mm-l"><span class="mm-tag">Manifest</span>Dlaczego robię działajmy.online</span>
+    <span class="mm-arw">→</span>
+  </a>
+
+</body>
+</html>

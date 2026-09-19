@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nie mam dostępu do strony · działajmy.online</title>
+<meta name="description" content="Nie wiesz, gdzie jest hasło do Twojej strony, ani kto ją robił? To częstszy problem, niż myślisz, i da się go rozwiązać.">
+<meta property="og:title" content="Nie mam dostępu do strony · działajmy.online">
+<meta property="og:description" content="Zgubiony dostęp do własnej strony to nie wyrok. Pomagam go odzyskać albo stawiam od nowa, tak żeby to się już nie powtórzyło.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:image" content="https://dzialajmy.online/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4F2EC;--paper-2:#E8E5DB;--ink:#14171B;--ink-2:#4A525C;--ink-3:#8B939C;
+    --hair:rgba(20,23,27,.14);--blue:#1B4BFF;--blue-d:#0C2B9E;--hi:#F5E33D;--hi-2:#FFF08A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);color:var(--ink);
+    font-family:'Source Sans 3',system-ui,sans-serif;font-size:19px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:720px;margin:0 auto;padding:0 clamp(20px,5vw,40px)}
+  .mk{display:inline;padding:0 .14em;
+    background-image:linear-gradient(105deg,var(--hi) 0%,var(--hi-2) 100%);
+    background-size:100% .68em;background-position:0 .5em;background-repeat:no-repeat;
+    box-decoration-break:clone;-webkit-box-decoration-break:clone}
+
+  /* HEADER */
+  header{border-bottom:1px solid var(--line,#14171B);background:var(--paper);
+    position:sticky;top:0;z-index:20;
+    border-bottom:1px solid rgba(20,23,27,.5)}
+  .hd{display:flex;align-items:center;justify-content:space-between;height:62px;
+    max-width:720px;margin:0 auto;padding:0 clamp(20px,5vw,40px)}
+  .logo{font-family:'Archivo',sans-serif;font-weight:900;font-size:20px;letter-spacing:-.04em;
+    text-decoration:none;color:var(--ink)}
+  .logo .d{color:var(--blue)}
+  .logo .c{display:inline-block;color:var(--blue);transform:translateY(-2px);margin-left:1px;
+    animation:bl 1.2s steps(1) infinite}
+  @keyframes bl{0%,55%{opacity:1}56%,100%{opacity:.12}}
+  .back{font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;color:var(--ink-2);
+    text-decoration:none;text-transform:uppercase}
+  .back:hover{color:var(--blue)}
+
+  /* ARTICLE */
+  article{padding:64px 0 40px}
+  .meta{font-family:'Archivo',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;
+    color:var(--ink-3);display:flex;align-items:center;gap:10px;margin-bottom:22px}
+  .meta .tag{background:var(--hi);color:var(--ink);padding:4px 9px}
+  h1{font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.04em;line-height:1.02;
+    font-size:clamp(38px,7vw,60px);text-transform:uppercase}
+  .dek{font-size:clamp(20px,3vw,24px);color:var(--ink-2);line-height:1.4;margin-top:24px;
+    font-weight:600}
+
+  article h2{font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.035em;
+    font-size:clamp(26px,4.5vw,34px);line-height:1.1;margin:56px 0 4px}
+  article p{margin-top:20px;color:var(--ink-2)}
+  article p.big{font-size:22px;color:var(--ink);font-weight:600;line-height:1.45}
+  article strong{color:var(--ink);font-weight:700}
+  article em{font-style:italic}
+  article p a{color:var(--blue-d)}
+
+  .rule{border:0;border-top:1px solid var(--hair);margin:52px 0}
+
+  .pull{
+    border-left:4px solid var(--blue);padding:6px 0 6px 24px;margin:40px 0;
+    font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.03em;
+    font-size:clamp(24px,4vw,32px);line-height:1.15;color:var(--ink);
+  }
+
+  .creed{list-style:none;margin:28px 0;border-top:1px solid rgba(20,23,27,.5)}
+  .creed li{display:flex;gap:16px;padding:20px 0;border-bottom:1px solid var(--hair);
+    font-size:18px;line-height:1.45}
+  .creed li b{font-family:'Archivo',sans-serif;font-weight:800}
+  .creed .no{color:var(--ink-3);text-decoration:line-through;
+    text-decoration-color:var(--ink-3);flex:none;width:118px;
+    font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;text-transform:uppercase;
+    padding-top:2px}
+  .creed .yes{color:var(--ink)}
+
+  /* CTA BOX */
+  .cta-box{background:var(--ink);color:var(--paper);padding:40px clamp(24px,5vw,44px);
+    margin-top:64px}
+  .cta-box h2{color:#fff;margin-top:0}
+  .cta-box p{color:#9AA3AD;margin-top:16px}
+  .cta-box .mk{
+    color:var(--ink);
+    background-image:linear-gradient(105deg,var(--hi) 0%,var(--hi-2) 100%);
+    background-size:100% 100%;background-position:0 0;
+  }
+  .cta-btn{display:inline-flex;align-items:center;gap:12px;margin-top:28px;text-decoration:none;
+    background:var(--hi);color:var(--ink);border:1.5px solid var(--hi);
+    font-family:'Archivo',sans-serif;font-weight:900;font-size:18px;letter-spacing:-.02em;
+    padding:16px 24px;transition:opacity .12s ease}
+  .cta-btn:hover{opacity:.9}
+
+  .sign{margin-top:44px;font-family:'Archivo',sans-serif;font-weight:800;font-size:16px;
+    color:var(--ink-2)}
+  .sign b{color:var(--ink)}
+
+
+  /* WIECEJ WPISOW */
+  .more-posts{margin-top:64px}
+  .more-posts h2{font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.035em;
+    font-size:clamp(22px,3.5vw,28px);line-height:1.1}
+  .post-links{list-style:none;margin-top:20px;border-top:1px solid rgba(20,23,27,.5)}
+  .post-links li{border-bottom:1px solid var(--hair)}
+  .post-links a{display:flex;align-items:center;gap:16px;padding:16px 4px;
+    text-decoration:none;color:inherit;transition:gap .15s ease}
+  .post-links a:hover{gap:22px}
+  .post-index{font-family:'Archivo',sans-serif;font-weight:900;font-size:13px;color:var(--ink-3);flex:none;width:32px}
+  .post-title{font-family:'Archivo',sans-serif;font-weight:800;font-size:16px;color:var(--ink);flex:1}
+  .post-arrow{font-family:'Archivo',sans-serif;font-weight:900;font-size:18px;color:var(--ink-3);transition:color .15s ease}
+  .post-links a:hover .post-arrow{color:var(--blue)}
+
+  /* FOOTER */
+  footer{border-top:1px solid rgba(20,23,27,.5);margin-top:64px;padding:28px 0}
+  .ft{max-width:720px;margin:0 auto;padding:0 clamp(20px,5vw,40px);
+    display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between;
+    font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:600;text-transform:uppercase;
+    color:var(--ink-3)}
+  .ft a{color:var(--ink-2);text-decoration:none}
+  .ft a:hover{color:var(--blue)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hd">
+    <a href="index.html" class="logo">działajmy<span class="d">.</span>online<span class="c">^</span></a>
+    <a href="index.html" class="back">← wróć</a>
+  </div>
+</header>
+
+<article>
+  <div class="wrap">
+    <div class="meta"><span class="tag">003</span><span>Wiedza</span></div>
+    <h1>Nie mam dostępu do strony</h1>
+    <p class="dek">Zgadnij, jak często to słyszę. Ktoś ma stronę, płaci za nią co roku, i nie ma pojęcia, gdzie jest hasło, kto ją robił, ani jak zmienić na niej choćby numer telefonu.</p>
+
+    <hr class="rule">
+
+    <p class="big">Scenariusz, który znam na pamięć: kilka lat temu ktoś zrobił Ci stronę. Znajomy, agencja, freelancer z polecenia. Zapłaciłeś, strona działała, więc o niej zapomniałeś.</p>
+
+    <p>Potem ten znajomy przestał odbierać telefon. Agencja zamknęła działalność. Freelancer zniknął. A Ty zostałeś z działającą stroną i zerową kontrolą nad nią. Nie wiesz, gdzie jest zarejestrowana domena. Nie masz dostępu do panelu hostingu. Nie masz loginu do CMS-a, więc nawet drobnej zmiany nie zrobisz sam.</p>
+
+    <p><strong>To nie jest rzadki przypadek.</strong> To jeden z najczęstszych powodów, dla których w ogóle do mnie piszecie.</p>
+
+    <div class="pull">Strona, do której nie masz dostępu, nie jest Twoją stroną. Jest cudzą stroną, za którą Ty płacisz.</div>
+
+    <h2>Dlaczego to się dzieje</h2>
+    <p>Bo na starcie nikt o tym nie myśli. Zlecasz stronę, dostajesz gotowy produkt, i tyle Cię interesuje. Dane logowania zostają w skrzynce wykonawcy, czasem w jednym mailu sprzed lat, którego już nie znajdziesz. Domena bywa zarejestrowana na konto wykonawcy, nie na Twoją firmę. Hosting opłaca się z automatu, z karty, o której zapomniałeś.</p>
+
+    <p>Dopóki nic się nie psuje, nie ma problemu. Problem pojawia się, gdy chcesz coś zmienić, a nie możesz. Albo gorzej, gdy hosting wygasa, bo nikt nie przedłużył opłaty, i strona po prostu znika.</p>
+
+    <h2>Co wtedy robię</h2>
+    <p>Najpierw sprawdzam, co da się odzyskać. Rejestr WHOIS domeny, ślady w starych mailach, kontakt z dotychczasowym hostingiem. Czasem uda się odzyskać dostęp bez zaczynania od zera. Czasem nie, i wtedy stawiam stronę na nowo, na Twoim koncie, z Twoją domeną, z Twoimi danymi logowania od pierwszego dnia.</p>
+
+    <p class="big">W obu przypadkach kończysz z jedną rzeczą: pełnym dostępem, który jest Twój.</p>
+
+    <ul class="creed">
+      <li><span class="no">Nie robię</span><span class="yes"><b>Stron, do których tylko ja mam klucz.</b> Domena i hosting są rejestrowane na Twoje dane, nie na moje.</span></li>
+      <li><span class="no">Nie robię</span><span class="yes"><b>Tajemniczych haseł.</b> Dostajesz login do panelu edycji i do hostingu, spisane, gotowe do użycia.</span></li>
+      <li><span class="no">Nie robię</span><span class="yes"><b>Zniknięć.</b> Jak coś się zepsuje, piszesz, i wracamy do tego razem, nawet jeśli to nie moja robota od początku.</span></li>
+    </ul>
+
+    <h2>Co zrobić, jeśli to Twój przypadek</h2>
+    <p>Napisz, czym zajmuje się Twoja firma i co pamiętasz o obecnej stronie: nazwę domeny, kto ją robił, czy w ogóle wiesz, gdzie jest hosting. Nawet jeśli pamiętasz niewiele, sprawdzę, co da się z tym zrobić. Zobacz też, <a href="dla-kogo.html">komu i z jakimi problemami pomagam</a> najczęściej.</p>
+
+    <div class="cta-box">
+      <h2>Zgubiłeś dostęp do <span class="mk">własnej strony?</span></h2>
+      <p>Napisz, co pamiętasz. Sprawdzę, czy da się to odzyskać, albo powiem wprost, że lepiej postawić stronę od nowa.</p>
+      <a href="kontakt.html" class="cta-btn"><span>Opisz swoją sytuację</span><span>→</span></a>
+    </div>
+
+    <p class="sign"><b>Bartosz</b>, działajmy.online</p>
+
+    <div class="more-posts">
+      <h2>Więcej wpisów</h2>
+      <ul class="post-links">
+      <li><a href="manifest.html"><span class="post-index">001</span><span class="post-title">Ładna, martwa strona</span><span class="post-arrow">→</span></a></li>
+      <li><a href="seo90.html"><span class="post-index">002</span><span class="post-title">SEO.90</span><span class="post-arrow">→</span></a></li>
+      <li><a href="silny-lokalnie.html"><span class="post-index">004</span><span class="post-title">Silny lokalnie: jedna strona za darmo</span><span class="post-arrow">→</span></a></li>
+      <li><a href="dla-kogo.html"><span class="post-index">005</span><span class="post-title">Dla kogo</span><span class="post-arrow">→</span></a></li>
+      <li><a href="zamowienia-gastronomia.html"><span class="post-index">006</span><span class="post-title">Strona z zamówieniami dla gastronomii</span><span class="post-arrow">→</span></a></li>
+      <li><a href="strona-trener-fizjoterapeuta.html"><span class="post-index">007</span><span class="post-title">Strona z zapisami dla trenera i fizjoterapeuty</span><span class="post-arrow">→</span></a></li>
+      </ul>
+    </div>
+
+  </div>
+</article>
+
+<footer>
+  <div class="ft">
+    <span>Bartosz · <a href="mailto:kontakt@dzialajmy.online">kontakt@dzialajmy.online</a> · na razie działam tylko ze stronami www</span>
+  </div>
+</footer>
+
+</body>
+</html>

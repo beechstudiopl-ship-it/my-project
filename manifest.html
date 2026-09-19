@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ładna, martwa strona · manifest · działajmy.online</title>
+<meta name="description" content="Mam dość patrzenia, jak małe firmy przepłacają za ładne strony, których nikt nie znajduje. Manifest działajmy.online: po co to robię i co dostajesz.">
+<meta property="og:title" content="Ładna, martwa strona · manifest">
+<meta property="og:description" content="Dlaczego robię działajmy.online. Bez ściemy, bez korpo-żargonu.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:image" content="https://dzialajmy.online/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4F2EC;--paper-2:#E8E5DB;--ink:#14171B;--ink-2:#4A525C;--ink-3:#8B939C;
+    --hair:rgba(20,23,27,.14);--blue:#1B4BFF;--blue-d:#0C2B9E;--hi:#F5E33D;--hi-2:#FFF08A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);color:var(--ink);
+    font-family:'Source Sans 3',system-ui,sans-serif;font-size:19px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:720px;margin:0 auto;padding:0 clamp(20px,5vw,40px)}
+  .mk{display:inline;padding:0 .14em;
+    background-image:linear-gradient(105deg,var(--hi) 0%,var(--hi-2) 100%);
+    background-size:100% .68em;background-position:0 .5em;background-repeat:no-repeat;
+    box-decoration-break:clone;-webkit-box-decoration-break:clone}
+
+  /* HEADER */
+  header{border-bottom:1px solid var(--line,#14171B);background:var(--paper);
+    position:sticky;top:0;z-index:20;
+    border-bottom:1px solid rgba(20,23,27,.5)}
+  .hd{display:flex;align-items:center;justify-content:space-between;height:62px;
+    max-width:720px;margin:0 auto;padding:0 clamp(20px,5vw,40px)}
+  .logo{font-family:'Archivo',sans-serif;font-weight:900;font-size:20px;letter-spacing:-.04em;
+    text-decoration:none;color:var(--ink)}
+  .logo .d{color:var(--blue)}
+  .logo .c{display:inline-block;color:var(--blue);transform:translateY(-2px);margin-left:1px;
+    animation:bl 1.2s steps(1) infinite}
+  @keyframes bl{0%,55%{opacity:1}56%,100%{opacity:.12}}
+  .back{font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;color:var(--ink-2);
+    text-decoration:none;text-transform:uppercase}
+  .back:hover{color:var(--blue)}
+
+  /* ARTICLE */
+  article{padding:64px 0 40px}
+  .meta{font-family:'Archivo',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;
+    color:var(--ink-3);display:flex;align-items:center;gap:10px;margin-bottom:22px}
+  .meta .tag{background:var(--hi);color:var(--ink);padding:4px 9px}
+  h1{font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.04em;line-height:1.02;
+    font-size:clamp(38px,7vw,60px);text-transform:uppercase}
+  .dek{font-size:clamp(20px,3vw,24px);color:var(--ink-2);line-height:1.4;margin-top:24px;
+    font-weight:600}
+
+  article h2{font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.035em;
+    font-size:clamp(26px,4.5vw,34px);line-height:1.1;margin:56px 0 4px}
+  article p{margin-top:20px;color:var(--ink-2)}
+  article p.big{font-size:22px;color:var(--ink);font-weight:600;line-height:1.45}
+  article strong{color:var(--ink);font-weight:700}
+  article em{font-style:italic}
+  article p a{color:var(--blue-d)}
+
+  .rule{border:0;border-top:1px solid var(--hair);margin:52px 0}
+
+  .pull{
+    border-left:4px solid var(--blue);padding:6px 0 6px 24px;margin:40px 0;
+    font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.03em;
+    font-size:clamp(24px,4vw,32px);line-height:1.15;color:var(--ink);
+  }
+  .pull-hi{
+    display:inline;padding:0 .12em;color:var(--ink);
+    background-image:linear-gradient(105deg,rgba(245,227,61,0) 0%,var(--hi) 1.5%,var(--hi-2) 45%,var(--hi) 92%,rgba(245,227,61,0) 100%);
+    background-size:100% .9em;background-position:0 .12em;background-repeat:no-repeat;
+    box-decoration-break:clone;-webkit-box-decoration-break:clone;
+  }
+
+  .creed{list-style:none;margin:28px 0;border-top:1px solid rgba(20,23,27,.5)}
+  .creed li{display:flex;gap:16px;padding:20px 0;border-bottom:1px solid var(--hair);
+    font-size:18px;line-height:1.45}
+  .creed li b{font-family:'Archivo',sans-serif;font-weight:800}
+  .creed .no{color:var(--ink-3);text-decoration:line-through;
+    text-decoration-color:var(--ink-3);flex:none;width:118px;
+    font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;text-transform:uppercase;
+    padding-top:2px}
+  .creed .yes{color:var(--ink)}
+
+  /* CTA BOX */
+  .cta-box{background:var(--ink);color:var(--paper);padding:40px clamp(24px,5vw,44px);
+    margin-top:64px}
+  .cta-box h2{color:#fff;margin-top:0}
+  .cta-box p{color:#9AA3AD;margin-top:16px}
+  .cta-box .mk{
+    color:var(--ink);
+    background-image:linear-gradient(105deg,var(--hi) 0%,var(--hi-2) 100%);
+    background-size:100% 100%;background-position:0 0;
+  }
+  .cta-btn{display:inline-flex;align-items:center;gap:12px;margin-top:28px;text-decoration:none;
+    background:var(--hi);color:var(--ink);border:1.5px solid var(--hi);
+    font-family:'Archivo',sans-serif;font-weight:900;font-size:18px;letter-spacing:-.02em;
+    padding:16px 24px;transition:opacity .12s ease}
+  .cta-btn:hover{opacity:.9}
+
+  .sign{margin-top:44px;font-family:'Archivo',sans-serif;font-weight:800;font-size:16px;
+    color:var(--ink-2)}
+  .sign b{color:var(--ink)}
+
+
+  /* WIECEJ WPISOW */
+  .more-posts{margin-top:64px}
+  .more-posts h2{font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.035em;
+    font-size:clamp(22px,3.5vw,28px);line-height:1.1}
+  .post-links{list-style:none;margin-top:20px;border-top:1px solid rgba(20,23,27,.5)}
+  .post-links li{border-bottom:1px solid var(--hair)}
+  .post-links a{display:flex;align-items:center;gap:16px;padding:16px 4px;
+    text-decoration:none;color:inherit;transition:gap .15s ease}
+  .post-links a:hover{gap:22px}
+  .post-index{font-family:'Archivo',sans-serif;font-weight:900;font-size:13px;color:var(--ink-3);flex:none;width:32px}
+  .post-title{font-family:'Archivo',sans-serif;font-weight:800;font-size:16px;color:var(--ink);flex:1}
+  .post-arrow{font-family:'Archivo',sans-serif;font-weight:900;font-size:18px;color:var(--ink-3);transition:color .15s ease}
+  .post-links a:hover .post-arrow{color:var(--blue)}
+
+  /* FOOTER */
+  footer{border-top:1px solid rgba(20,23,27,.5);margin-top:64px;padding:28px 0}
+  .ft{max-width:720px;margin:0 auto;padding:0 clamp(20px,5vw,40px);
+    display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between;
+    font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:600;text-transform:uppercase;
+    color:var(--ink-3)}
+  .ft a{color:var(--ink-2);text-decoration:none}
+  .ft a:hover{color:var(--blue)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hd">
+    <a href="index.html" class="logo">działajmy<span class="d">.</span>online<span class="c">^</span></a>
+    <a href="index.html" class="back">← wróć</a>
+  </div>
+</header>
+
+<article>
+  <div class="wrap">
+    <div class="meta"><span class="tag">001</span><span>Wiedza</span></div>
+    <h1>Ładna, martwa strona</h1>
+    <p class="dek">Widziałem zbyt wiele małych firm, które przepłaciły za stronę na starcie biznesu, zamiast zainwestować w to, co naprawdę przynosi klientów. Piszę to, bo naprawdę mi na tym zależy.</p>
+
+    <hr class="rule">
+
+    <p class="big">Widziałem to wiele razy. Ktoś zakłada firmę i od razu wydaje ostatnie oszczędności na drogą, efektowną stronę, bo tak „wypada” na start.</p>
+
+    <p>Tyle że w pierwszych miesiącach firmy liczy się co innego: żeby ktoś w ogóle o Tobie usłyszał. Ten sam budżet często bardziej pomógłby w reklamie, w pierwszych klientach, w tym, żeby po prostu przetrwać pierwszy rok. Ładna strona nie zastąpi marketingu, kiedy nikt jeszcze o Tobie nie wie.</p>
+
+    <p><strong>To jest właśnie ładna, martwa strona.</strong> Piękna, kosztowna, i pusta, dopóki nikt jej nie znajdzie.</p>
+
+    <div class="pull">Nie musisz przepłacać za stronę, żeby zacząć biznes. Musisz po prostu zacząć.</div>
+
+    <p>Stąd nazwa działajmy.online. Najczęstszy powód, dla którego mała firma nie ma jeszcze strony, to nie brak pieniędzy, tylko wieczne „nie mam teraz czasu, zajmę się tym później”. Biorę to na siebie, żebyś faktycznie zaczął działać, zamiast dalej to <a href="dla-kogo.html">odkładać</a>.</p>
+
+    <h2>Zacznij taniej, rozwijaj się z zysków</h2>
+    <p>Dlatego proponuję inaczej. Na start wystarczy <a href="index.html#oferta">prosta, uczciwa strona, za 1000 lub 3000 zł</a>, bez rozdmuchanego budżetu. Resztę zostaw sobie na marketing i pierwszych klientów.</p>
+
+    <p>Kiedy firma zacznie zarabiać, to dobry moment, żeby stronę rozbudować: nowe podstrony, moduły, integracje. Rozwój finansujesz wtedy z zysków, nie z oszczędności sprzed startu.</p>
+
+    <div class="pull">Najpierw biznes. Strona rośnie razem z nim.</div>
+
+    <h2>Znam Wasze problemy</h2>
+    <p>Rozmawiam z właścicielami małych firm i wiem, co ich najbardziej frustruje. Brak hasła do własnej strony czy serwera, bo poprzedni wykonawca zniknął i nikt nie wie, gdzie szukać dostępu. Pieniądze wydane na SEO, które nic nie dało, bo nikt wcześniej nie sprawdził, czy w ogóle się opłaca.</p>
+
+    <p>Nie chcę być kolejnym wykonawcą, po którym zostaje bałagan. Zależy mi, żeby to było uczciwe: jasne dane logowania od pierwszego dnia i żadnych obietnic bez pokrycia.</p>
+
+    <ul class="creed">
+      <li><span class="no">Nie robię</span><span class="yes"><b>Stron bez dostępu.</b> Dostajesz hasła i pełny dostęp od pierwszego dnia, bez tajemnic.</span></li>
+      <li><span class="no">Nie robię</span><span class="yes"><b>Obiecanek bez pokrycia.</b> Jak coś się nie opłaca, powiem to wprost, zamiast sprzedawać na siłę.</span></li>
+      <li><span class="no">Nie robię</span><span class="yes"><b>Rozdmuchanych budżetów na start.</b> Najpierw prosta, działająca strona. Rozwój przychodzi później, razem z zyskami.</span></li>
+    </ul>
+
+    <h2>Co to będzie</h2>
+    <p>Docelowo pełny blog „Wiedza z zaplecza”: konkretne historie z moich projektów, żeby pokazać, jak to wygląda w praktyce, nie w teorii.</p>
+
+    <p>Ten manifest to punkt zero. Jeśli dobrniesz do tego miejsca i kiwasz głową, prawdopodobnie się dogadamy.</p>
+
+    <div class="cta-box">
+      <h2>Zaczynasz biznes i <span class="mk">nie wiesz, ile wydać na stronę?</span></h2>
+      <p>Napisz, czym się zajmujesz. Powiem szczerze, jaki budżet ma sens na start, i co lepiej odłożyć na później.</p>
+      <a href="kontakt.html" class="cta-btn"><span>Działajmy, Panie Bartoszu!</span><span>→</span></a>
+    </div>
+
+    <p class="sign"><b>Bartosz</b>, działajmy.online</p>
+
+    <div class="more-posts">
+      <h2>Więcej wpisów</h2>
+      <ul class="post-links">
+      <li><a href="seo90.html"><span class="post-index">002</span><span class="post-title">SEO.90</span><span class="post-arrow">→</span></a></li>
+      <li><a href="nie-mam-dostepu.html"><span class="post-index">003</span><span class="post-title">Nie mam dostępu do strony</span><span class="post-arrow">→</span></a></li>
+      <li><a href="silny-lokalnie.html"><span class="post-index">004</span><span class="post-title">Silny lokalnie: jedna strona za darmo</span><span class="post-arrow">→</span></a></li>
+      <li><a href="dla-kogo.html"><span class="post-index">005</span><span class="post-title">Dla kogo</span><span class="post-arrow">→</span></a></li>
+      <li><a href="zamowienia-gastronomia.html"><span class="post-index">006</span><span class="post-title">Strona z zamówieniami dla gastronomii</span><span class="post-arrow">→</span></a></li>
+      <li><a href="strona-trener-fizjoterapeuta.html"><span class="post-index">007</span><span class="post-title">Strona z zapisami dla trenera i fizjoterapeuty</span><span class="post-arrow">→</span></a></li>
+      </ul>
+    </div>
+
+  </div>
+</article>
+
+<footer>
+  <div class="ft">
+    <span>Bartosz · <a href="mailto:kontakt@dzialajmy.online">kontakt@dzialajmy.online</a> · na razie działam tylko ze stronami www</span>
+  </div>
+</footer>
+
+</body>
+</html>

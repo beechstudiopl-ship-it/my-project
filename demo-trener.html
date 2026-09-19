@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Forma. · trener personalny (makieta)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0E0E0E;--bg-2:#1A1A1A;--paper:#fff;--ink-2:#B8B8B8;--ink-3:#7A7A7A;
+    --accent:#3ECF6E;--accent-d:#2FAE59;--coral:#FF4D6D;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);color:var(--paper);
+    font-family:'Source Sans 3',system-ui,sans-serif;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 clamp(20px,5vw,48px)}
+  h1,h2,h3{font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.03em}
+  a{color:inherit}
+  .mk{position:relative;display:inline-block}
+  .mk::after{
+    content:"";position:absolute;left:-4%;right:-4%;bottom:.02em;height:.42em;
+    background:var(--accent);z-index:-1;transform:rotate(-1deg);opacity:.9;
+  }
+
+  /* NAV */
+  nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px clamp(20px,5vw,48px);
+  }
+  .logo{font-family:'Archivo',sans-serif;font-weight:900;font-size:20px;letter-spacing:-.03em;text-transform:uppercase}
+  .logo span{color:var(--accent)}
+  .nav-links{display:flex;gap:28px;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--ink-2)}
+  .nav-links a{text-decoration:none}
+  .nav-links a:hover{color:var(--paper)}
+  @media (max-width:760px){.nav-links{display:none}}
+
+  /* HERO */
+  .hero{padding:20px clamp(20px,5vw,48px) 60px;position:relative}
+  .hero-grid{display:grid;grid-template-columns:1fr;gap:32px;align-items:center;max-width:1080px;margin:0 auto}
+  @media (min-width:860px){.hero-grid{grid-template-columns:1.1fr .9fr}}
+  .kicker{
+    display:inline-block;font-family:'Archivo',sans-serif;font-weight:800;font-size:11.5px;
+    text-transform:uppercase;letter-spacing:.05em;background:rgba(62,207,110,.15);color:var(--accent);
+    padding:6px 12px;border-radius:20px;margin-bottom:20px;
+  }
+  .hero h1{font-size:clamp(44px,7vw,76px);line-height:.98;text-transform:uppercase}
+  .hero-desc{margin-top:20px;font-size:16.5px;color:var(--ink-2);max-width:440px;line-height:1.6}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;text-decoration:none;cursor:pointer;
+    font-family:'Archivo',sans-serif;font-weight:800;font-size:14.5px;letter-spacing:-.01em;
+    padding:15px 26px;border-radius:6px;border:none;transition:opacity .12s ease;
+  }
+  .btn:hover{opacity:.88}
+  .btn-accent{background:var(--accent);color:#08130C}
+  .btn-ghost{background:rgba(255,255,255,.06);color:var(--paper);border:1.5px solid rgba(255,255,255,.16)}
+
+  .hero-photo{position:relative;border-radius:14px;overflow:hidden;background:var(--bg-2);aspect-ratio:4/5}
+  .hero-photo img{width:100%;height:100%;object-fit:cover;display:block}
+  .hero-badges{position:absolute;top:16px;right:16px;display:flex;flex-direction:column;gap:10px}
+  .badge{
+    background:rgba(14,14,14,.85);backdrop-filter:blur(6px);border-radius:8px;padding:10px 14px;
+    text-align:right;border:1px solid rgba(255,255,255,.1);
+  }
+  .badge b{display:block;font-family:'Archivo',sans-serif;font-weight:900;font-size:20px;color:var(--accent)}
+  .badge.coral b{color:var(--coral)}
+  .badge span{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-3)}
+
+  /* SECTION GENERIC */
+  section{padding:70px clamp(20px,5vw,48px);border-top:1px solid rgba(255,255,255,.08)}
+  .section-inner{max-width:1080px;margin:0 auto}
+  .section-label{
+    font-family:'Archivo',sans-serif;font-weight:800;font-size:12px;text-transform:uppercase;
+    letter-spacing:.06em;color:var(--accent);margin-bottom:10px;
+  }
+  section h2{font-size:clamp(28px,4.5vw,42px);text-transform:uppercase;line-height:1.05}
+  .section-sub{margin-top:14px;font-size:16px;color:var(--ink-2);max-width:520px;line-height:1.6}
+
+  /* OFERTA GRID */
+  .offer-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:36px}
+  @media (min-width:640px){.offer-grid{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:960px){.offer-grid{grid-template-columns:repeat(3,1fr)}}
+  .offer-card{
+    background:var(--bg-2);border-radius:12px;padding:24px;border:1px solid rgba(255,255,255,.06);
+    transition:border-color .15s ease;
+  }
+  .offer-card:hover{border-color:var(--accent)}
+  .offer-icon{font-size:26px}
+  .offer-card h3{margin-top:14px;font-size:16px;text-transform:none;letter-spacing:-.01em}
+  .offer-card p{margin-top:8px;font-size:14px;color:var(--ink-2);line-height:1.5}
+
+  /* O MNIE */
+  .about-grid{display:grid;grid-template-columns:1fr;gap:36px;margin-top:36px;align-items:center}
+  @media (min-width:760px){.about-grid{grid-template-columns:.8fr 1.2fr}}
+  .about-photo{border-radius:14px;aspect-ratio:1;overflow:hidden;background:var(--bg-2)}
+  .about-photo img{width:100%;height:100%;object-fit:cover;display:block}
+  .about-facts{display:flex;gap:28px;margin-top:26px;flex-wrap:wrap}
+  .about-fact b{display:block;font-family:'Archivo',sans-serif;font-weight:900;font-size:26px;color:var(--accent)}
+  .about-fact span{font-size:12.5px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.03em}
+
+  /* PROCES (numbered list) */
+  .proc-list{list-style:none;margin-top:36px;border-top:1px solid rgba(255,255,255,.1)}
+  .proc-list li{
+    display:flex;align-items:center;gap:24px;padding:24px 4px;
+    border-bottom:1px solid rgba(255,255,255,.1);transition:background .15s ease;
+  }
+  .proc-list li:hover{background:rgba(255,255,255,.02)}
+  .proc-n{font-family:'Archivo',sans-serif;font-weight:900;font-size:15px;color:var(--ink-3);flex:none;width:34px}
+  .proc-body h3{font-size:19px;text-transform:none;letter-spacing:-.01em}
+  .proc-body p{margin-top:4px;font-size:14px;color:var(--ink-2)}
+  .proc-arrow{margin-left:auto;font-size:20px;color:var(--ink-3);flex:none}
+
+  /* LOKALIZACJA */
+  .loc-grid{display:grid;grid-template-columns:1fr;gap:28px;margin-top:36px}
+  @media (min-width:760px){.loc-grid{grid-template-columns:1fr 1fr}}
+  .map-frame{border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.1);aspect-ratio:4/3}
+  .map-frame iframe{width:100%;height:100%;border:0;filter:grayscale(.3) invert(.92) contrast(.9)}
+  .loc-info{display:flex;flex-direction:column;gap:18px;justify-content:center}
+  .loc-row{display:flex;gap:14px;align-items:flex-start}
+  .loc-row-icon{font-size:18px;flex:none;width:24px}
+  .loc-row b{display:block;font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;text-transform:uppercase;letter-spacing:.02em;margin-bottom:2px}
+  .loc-row span{font-size:14.5px;color:var(--ink-2)}
+
+  /* KONTAKT / ZAPIS */
+  .book-box{
+    background:var(--bg-2);border-radius:16px;padding:clamp(28px,4vw,48px);margin-top:36px;
+    border:1px solid rgba(255,255,255,.08);
+  }
+  .book-grid{display:grid;grid-template-columns:1fr;gap:28px}
+  @media (min-width:760px){.book-grid{grid-template-columns:1fr 1fr}}
+  .service-pick{display:flex;flex-direction:column;gap:10px}
+  .svc-opt{
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    padding:14px 16px;border-radius:8px;border:1.5px solid rgba(255,255,255,.12);
+    cursor:pointer;font-size:14.5px;transition:border-color .12s ease;
+  }
+  .svc-opt.picked{border-color:var(--accent);background:rgba(62,207,110,.08)}
+  .svc-opt-price{color:var(--ink-3);font-size:13px}
+  .svc-opt.picked .svc-opt-price{color:var(--accent)}
+  .book-form{display:flex;flex-direction:column;gap:14px}
+  .book-form label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--ink-3)}
+  .book-form input,.book-form textarea{
+    width:100%;margin-top:6px;font-size:15px;padding:12px 14px;border-radius:8px;
+    background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.14);color:var(--paper);
+    font-family:inherit;
+  }
+  .book-form input::placeholder,.book-form textarea::placeholder{color:var(--ink-3)}
+  .book-submit{margin-top:6px}
+  .book-note{margin-top:12px;font-size:12px;color:var(--ink-3);line-height:1.5}
+  .book-done{display:none;text-align:center;padding:20px 0}
+  .book-done.show{display:block}
+  .book-done h3{font-size:20px;text-transform:none}
+  .book-done p{margin-top:8px;color:var(--ink-2);font-size:14.5px}
+
+  /* FOOTER */
+  footer{padding:28px clamp(20px,5vw,48px);border-top:1px solid rgba(255,255,255,.08);
+    display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between;
+    font-size:12.5px;color:var(--ink-3)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Forma<span>.</span></div>
+  <div class="nav-links">
+    <a href="#o-mnie">O mnie</a>
+    <a href="#oferta">Oferta</a>
+    <a href="#jak-to-dziala">Jak to działa</a>
+    <a href="#lokalizacja">Lokalizacja</a>
+  </div>
+  <a href="#zapis" class="btn btn-accent" style="padding:11px 20px;font-size:13px">Umów wizytę</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-grid">
+    <div>
+      <span class="kicker">Trener personalny · fizjoterapia</span>
+      <h1>Silniejszy.<br>Sprawniejszy.<br><span class="mk">Bez bólu.</span></h1>
+      <p class="hero-desc">Indywidualny plan treningowy albo rehabilitacja dopasowana do Ciebie, nie do szablonu. Pierwsza konsultacja pokazuje, od czego zaczynamy.</p>
+      <div class="hero-actions">
+        <a href="#zapis" class="btn btn-accent">Umów konsultację<span>→</span></a>
+        <a href="#oferta" class="btn btn-ghost">Zobacz ofertę</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="trener-1.avif" alt="Trening personalny">
+      <div class="hero-badges">
+        <div class="badge"><b>8 lat</b><span>Doświadczenia</span></div>
+        <div class="badge coral"><b>150+</b><span>Podopiecznych</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="oferta">
+  <div class="section-inner">
+    <div class="section-label">Jak mogę pomóc</div>
+    <h2>Wybierz, czego potrzebujesz</h2>
+    <p class="section-sub">Trening albo rehabilitacja, jednorazowo albo w cyklu. Dopasowujemy zakres do Twojego celu.</p>
+
+    <div class="offer-grid">
+      <div class="offer-card">
+        <h3>Trening indywidualny</h3>
+        <p>Plan dopasowany do celu: sylwetka, siła, kondycja. Sesje 1 na 1.</p>
+      </div>
+      <div class="offer-card">
+        <h3>Rehabilitacja</h3>
+        <p>Powrót do sprawności po kontuzji, praca nad bólem i zakresem ruchu.</p>
+      </div>
+      <div class="offer-card">
+        <h3>Przygotowanie sportowe</h3>
+        <p>Konkretny cel, konkretny termin: bieg, sezon, zawody.</p>
+      </div>
+      <div class="offer-card">
+        <h3>Redukcja wagi</h3>
+        <p>Trening plus plan żywieniowy dopasowany do trybu życia.</p>
+      </div>
+      <div class="offer-card">
+        <h3>Trening funkcjonalny</h3>
+        <p>Siła i mobilność na co dzień, nie tylko na siłowni.</p>
+      </div>
+      <div class="offer-card">
+        <h3>Masaż i mobilność</h3>
+        <p>Regeneracja, praca z napięciami, przygotowanie do treningu.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="o-mnie">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-photo"><img src="trener-2.avif" alt="Trener i fizjoterapeuta"></div>
+      <div>
+        <div class="section-label">O mnie</div>
+        <h2>Cześć, jestem trenerem<br>i fizjoterapeutą</h2>
+        <p class="section-sub" style="max-width:560px">Od 8 lat pomagam ludziom wrócić do formy, po kontuzji albo po prostu po latach siedzącego trybu życia. Nie sprzedaję gotowych planów z internetu, każda współpraca zaczyna się od rozmowy i oceny, gdzie faktycznie jesteś.</p>
+        <div class="about-facts">
+          <div class="about-fact"><b>8</b><span>Lat doświadczenia</span></div>
+          <div class="about-fact"><b>150+</b><span>Podopiecznych</span></div>
+          <div class="about-fact"><b>3</b><span>Certyfikaty branżowe</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="jak-to-dziala">
+  <div class="section-inner">
+    <div class="section-label">Proces</div>
+    <h2>Jak to wygląda</h2>
+
+    <ul class="proc-list">
+      <li>
+        <span class="proc-n">01</span>
+        <div class="proc-body">
+          <h3>Pierwsza konsultacja</h3>
+          <p>Rozmawiamy o celu, historii kontuzji i możliwościach. 30–45 minut.</p>
+        </div>
+        <span class="proc-arrow">→</span>
+      </li>
+      <li>
+        <span class="proc-n">02</span>
+        <div class="proc-body">
+          <h3>Plan dopasowany do Ciebie</h3>
+          <p>Układam program treningowy albo rehabilitacyjny pod Twój cel i możliwości.</p>
+        </div>
+        <span class="proc-arrow">→</span>
+      </li>
+      <li>
+        <span class="proc-n">03</span>
+        <div class="proc-body">
+          <h3>Regularne sesje</h3>
+          <p>Pracujemy razem, na miejscu albo online, w ustalonym rytmie.</p>
+        </div>
+        <span class="proc-arrow">→</span>
+      </li>
+      <li>
+        <span class="proc-n">04</span>
+        <div class="proc-body">
+          <h3>Monitoring postępów</h3>
+          <p>Co kilka tygodni sprawdzamy efekty i modyfikujemy plan.</p>
+        </div>
+        <span class="proc-arrow">→</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section id="lokalizacja">
+  <div class="section-inner">
+    <div class="section-label">Lokalizacja</div>
+    <h2>Gdzie mnie znajdziesz</h2>
+
+    <div class="loc-grid">
+      <div class="map-frame">
+        <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=18.5155%2C54.5089%2C18.5455%2C54.5289&layer=mapnik&marker=54.5189%2C18.5305" loading="lazy" title="Mapa lokalizacji"></iframe>
+      </div>
+      <div class="loc-info">
+        <div class="loc-row"><span class="loc-row-icon">📍</span><span><b>Adres</b><span>ul. Świętojańska 50, Gdynia</span></span></div>
+        <div class="loc-row"><span class="loc-row-icon">🕒</span><span><b>Godziny</b><span>pon–pt 7:00–21:00, sob 9:00–14:00</span></span></div>
+        <div class="loc-row"><span class="loc-row-icon">📞</span><span><b>Telefon</b><span>500 000 000</span></span></div>
+        <div class="loc-row"><span class="loc-row-icon">💻</span><span><b>Online</b><span>Sesje i konsultacje dostępne też zdalnie</span></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="zapis">
+  <div class="section-inner">
+    <div class="section-label">Zapisz się</div>
+    <h2>Umów pierwszą konsultację</h2>
+    <p class="section-sub">Wybierz usługę i zostaw kontakt, odezwę się, żeby ustalić termin.</p>
+
+    <div class="book-box">
+      <div id="bookMain">
+        <div class="book-grid">
+          <div>
+            <label style="display:block;margin-bottom:10px">Wybierz usługę</label>
+            <div class="service-pick" id="servicePick">
+              <div class="svc-opt" data-svc="Trening indywidualny">Trening indywidualny<span class="svc-opt-price">150 zł / sesja</span></div>
+              <div class="svc-opt" data-svc="Rehabilitacja">Rehabilitacja<span class="svc-opt-price">180 zł / sesja</span></div>
+              <div class="svc-opt" data-svc="Konsultacja online">Konsultacja online<span class="svc-opt-price">100 zł / sesja</span></div>
+            </div>
+          </div>
+          <div class="book-form">
+            <div>
+              <label>Imię i nazwisko</label>
+              <input type="text" placeholder="np. Anna Kowalska">
+            </div>
+            <div>
+              <label>Telefon lub e-mail</label>
+              <input type="text" placeholder="np. 500 000 000">
+            </div>
+            <div>
+              <label>Wiadomość (opcjonalnie)</label>
+              <textarea rows="3" placeholder="np. wracam po kontuzji kolana"></textarea>
+            </div>
+            <button class="btn btn-accent book-submit" id="bookSubmit">Wyślij zgłoszenie<span>→</span></button>
+            <p class="book-note">Makieta — przycisk pokazuje potwierdzenie, bez realnej wysyłki zgłoszenia.</p>
+          </div>
+        </div>
+      </div>
+      <div class="book-done" id="bookDone">
+        <h3>Dzięki! Zgłoszenie „wysłane” 🎉</h3>
+        <p>To makieta — w wersji docelowej zgłoszenie trafi do Ciebie mailem, SMS-em albo przez kalendarz online, do ustalenia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Forma. · trener personalny i fizjoterapia</span>
+  <span>Makieta strony · działajmy.online</span>
+</footer>
+
+<script>
+  let picked = null;
+  document.querySelectorAll('.svc-opt').forEach(el=>{
+    el.addEventListener('click', ()=>{
+      document.querySelectorAll('.svc-opt').forEach(o=>o.classList.remove('picked'));
+      el.classList.add('picked');
+      picked = el.dataset.svc;
+    });
+  });
+  document.getElementById('bookSubmit').addEventListener('click', ()=>{
+    document.getElementById('bookMain').style.display = 'none';
+    document.getElementById('bookDone').classList.add('show');
+  });
+</script>
+
+</body>
+</html>

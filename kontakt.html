@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Opisz swój biznes · działajmy.online</title>
+<meta name="description" content="Opowiedz czym się zajmujesz, resztę ogarniam. Formularz zgłoszeniowy działajmy.online.">
+<meta property="og:title" content="Opisz swój biznes · działajmy.online">
+<meta property="og:description" content="Opowiedz czym się zajmujesz, resztę ogarniam. Formularz zgłoszeniowy działajmy.online.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:image" content="https://dzialajmy.online/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4F2EC;
+    --ink:#14171B;
+    --ink-2:#4A525C;
+    --ink-3:#8B939C;
+    --hair:rgba(20,23,27,.14);
+    --blue:#1B4BFF;
+    --blue-d:#0C2B9E;
+    --hi:#F5E33D;
+    --hi-2:#FFF08A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+  html,body{height:100%}
+  body{
+    background:var(--paper);color:var(--ink);
+    font-family:'Source Sans 3',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    min-height:100dvh;
+    background-image:
+      linear-gradient(rgba(20,23,27,.028) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(20,23,27,.028) 1px,transparent 1px);
+    background-size:34px 34px;
+  }
+
+  /* --- TOP --- */
+  .top{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px clamp(20px,5vw,48px);
+  }
+  .logo{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(19px,4.5vw,23px);
+    letter-spacing:-.04em;color:var(--ink);text-decoration:none}
+  .logo .d{color:var(--blue)}
+  .logo .c{display:inline-block;color:var(--blue);transform:translateY(-2px);margin-left:1px;
+    animation:bl 1.2s steps(1) infinite}
+  @keyframes bl{0%,55%{opacity:1}56%,100%{opacity:.12}}
+  .status{
+    display:flex;align-items:center;gap:8px;
+    font-family:'Archivo',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;
+    color:var(--ink-2);
+  }
+  .status i{width:7px;height:7px;border-radius:50%;background:var(--blue);
+    box-shadow:0 0 0 0 rgba(27,75,255,.5);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(27,75,255,.45)}70%{box-shadow:0 0 0 7px rgba(27,75,255,0)}100%{box-shadow:0 0 0 0 rgba(27,75,255,0)}}
+  .status-sep{margin:0 12px;color:var(--hair)}
+  @media (max-width:640px){.status-link{display:none}}
+
+  /* --- BUTTONS --- */
+  .btn{
+    display:inline-flex;align-items:center;gap:12px;text-decoration:none;
+    font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.02em;
+    font-size:clamp(16px,2.2vw,18px);padding:16px 24px;border:none;
+    transition:opacity .12s ease;
+  }
+  .btn:hover{opacity:.9}
+  .btn-blue{background:var(--blue);color:#fff}
+  .btn-hi{background:var(--hi);color:var(--ink)}
+  .btn .arw{font-size:20px}
+
+  /* --- FORM PAGE --- */
+  main.form-page{max-width:600px;margin:0 auto;padding:40px clamp(20px,5vw,40px) 80px;width:100%}
+  .form-page h1{
+    font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.03em;
+    font-size:clamp(28px,5vw,44px);line-height:1.05;
+  }
+  .form-page .sublead{margin-top:12px;font-size:15px;color:var(--ink-3)}
+
+  .lead-form{margin-top:28px;background:#fff;padding:clamp(22px,3.5vw,32px)}
+  .row2{display:grid;grid-template-columns:1fr;gap:14px}
+  @media (min-width:480px){.row2{grid-template-columns:1fr 1fr}}
+  .field{margin-top:14px}
+  .row2 .field{margin-top:0}
+  .field label{
+    display:block;font-family:'Archivo',sans-serif;font-size:11px;font-weight:700;
+    text-transform:uppercase;color:var(--ink-2);margin-bottom:6px;
+  }
+  .field input{
+    width:100%;font-family:'Source Sans 3',sans-serif;font-size:16px;color:var(--ink);
+    background:#fff;border:1.5px solid rgba(20,23,27,.5);padding:13px 14px;
+  }
+  .field input::placeholder{color:var(--ink-3)}
+  .field input:focus{outline:0;box-shadow:0 0 0 3px var(--hi)}
+  .field textarea{
+    width:100%;font-family:'Source Sans 3',sans-serif;font-size:16px;color:var(--ink);
+    background:#fff;border:1.5px solid rgba(20,23,27,.5);padding:13px 14px;resize:vertical;
+  }
+  .field textarea::placeholder{color:var(--ink-3)}
+  .field textarea:focus{outline:0;box-shadow:0 0 0 3px var(--hi)}
+  .hp-field{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+  .visually-hidden{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+  .btn-mini, label.btn-mini{
+    display:inline-flex;align-items:center;flex:none;cursor:pointer;text-decoration:none;
+    background:var(--blue);color:#fff;border:none;
+    font-family:'Archivo',sans-serif;font-weight:800;font-size:13px;text-transform:none;
+    padding:8px 14px;margin-bottom:0;transition:opacity .12s ease;
+  }
+  .btn-mini:hover{opacity:.9}
+
+  .example-banner{
+    background:rgba(27,75,255,.07);border:1.5px solid rgba(27,75,255,.25);
+    padding:10px 10px 10px 14px;font-size:13.5px;font-weight:600;color:var(--ink-2);
+    display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;
+    margin-bottom:10px;
+  }
+
+  .photo-row{
+    border:1.5px solid rgba(20,23,27,.5);background:#fff;padding:14px 16px;
+    display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;
+  }
+  .photo-row-text{display:flex;flex-direction:column;gap:2px}
+  .photo-row-title{font-family:'Archivo',sans-serif;font-weight:700;font-size:14.5px}
+  .photo-row-hint{font-size:13px;color:var(--ink-3)}
+
+  .file-previews{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+  .file-preview{position:relative;width:56px;height:56px}
+  .file-preview img{width:56px;height:56px;object-fit:cover;border:1.5px solid rgba(20,23,27,.5);display:block}
+  .file-preview .rm{
+    position:absolute;top:-7px;right:-7px;width:20px;height:20px;border-radius:50%;
+    background:var(--ink);color:#fff;border:1.5px solid var(--paper);cursor:pointer;
+    display:flex;align-items:center;justify-content:center;font-size:13px;line-height:1;padding:0;
+  }
+  .file-preview .rm:hover{background:var(--blue-d)}
+
+  .reveal-fields{margin-top:0}
+  .reveal-fields > .row2{margin-top:14px}
+
+  .checkbox-field{margin-top:18px}
+  label.checkbox-label{
+    display:flex;align-items:flex-start;gap:10px;cursor:pointer;
+    text-transform:none;font-family:'Source Sans 3',sans-serif;font-weight:400;margin-bottom:0;
+  }
+  .checkbox-label input[type="checkbox"]{
+    width:18px;height:18px;flex:none;margin-top:2px;accent-color:var(--blue);cursor:pointer;
+  }
+  .checkbox-label span{font-size:13px;color:var(--ink-2);line-height:1.5}
+  .checkbox-label a{color:var(--ink);text-decoration:underline}
+
+  .lead-form > button, .reveal-fields > button{
+    width:100%;margin-top:18px;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;gap:12px;
+    background:var(--blue);color:#fff;border:none;
+    font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.02em;
+    font-size:clamp(16px,2.2vw,18px);padding:16px 24px;transition:opacity .12s ease;
+  }
+  .lead-form > button:hover, .reveal-fields > button:hover{opacity:.9}
+  .lead-form > button .arw, .reveal-fields > button .arw{font-size:20px}
+  .form-note{margin-top:12px;font-size:13.5px;color:var(--ink-3);text-align:center;line-height:1.45}
+  .form-note.ok{color:var(--blue);font-weight:700}
+
+  .thanks{margin-top:28px;background:#fff;padding:clamp(22px,3.5vw,32px);text-align:center}
+  .thanks-title{font-family:'Archivo',sans-serif;font-weight:900;font-size:24px}
+  .thanks-note{margin-top:8px;font-size:15px;color:var(--ink-2)}
+  .thanks-link{display:inline-block;margin-top:18px;font-family:'Archivo',sans-serif;font-weight:800;
+    font-size:14px;color:var(--blue);text-decoration:underline}
+
+  /* --- FOOT --- */
+  footer{
+    padding:20px clamp(20px,5vw,48px);border-top:1px solid var(--hair);
+    display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;justify-content:space-between;
+    font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:600;text-transform:uppercase;
+    color:var(--ink-3);
+  }
+  footer .soon b{color:var(--ink-2)}
+  footer a{color:var(--ink-2);text-decoration:none}
+  footer a:hover{color:var(--blue)}
+
+  /* --- STICKY BACK TO HOME (tylko mobile) --- */
+  .mob-manifest{display:none}
+  @media (max-width:640px){
+    body{padding-bottom:64px}
+    .mob-manifest{
+      position:fixed;left:0;right:0;bottom:0;z-index:40;
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      background:var(--ink);color:var(--paper);text-decoration:none;
+      padding:14px 20px calc(14px + env(safe-area-inset-bottom));
+      border-top:2px solid var(--hi);
+    }
+    .mm-l{display:flex;align-items:center;gap:10px;
+      font-family:'Source Sans 3',sans-serif;font-size:14px;color:#C6CCD4;line-height:1.2}
+    .mm-tag{font-family:'Archivo',sans-serif;font-weight:800;font-size:11px;text-transform:uppercase;
+      background:var(--hi);color:var(--ink);padding:3px 8px;flex:none}
+    .mm-arw{font-family:'Archivo',sans-serif;font-weight:900;font-size:20px;color:var(--hi);flex:none}
+    footer .soon{display:none}
+  }
+</style>
+</head>
+<body>
+
+  <div class="top">
+    <a href="index.html" class="logo">działajmy<span class="d">.</span>online<span class="c">^</span></a>
+    <div class="status"><span class="status-link"><a href="index.html" style="color:var(--ink-2);text-decoration:none;border-bottom:2px solid var(--hi);padding-bottom:1px">Strona główna</a><span class="status-sep">·</span></span><i></i>Przyjmuję zlecenia</div>
+  </div>
+
+  <main class="form-page">
+    <h1>Opowiedz mi czym się zajmujesz.</h1>
+    <p class="sublead">Sam wybieram projekty, nie jestem maszyną. Przeczytam każde zgłoszenie.</p>
+
+    <form class="lead-form" id="lead-form">
+      <div class="field">
+        <div class="example-banner">
+          <span>Nie wiesz, od czego zacząć?</span>
+          <button type="button" class="btn-mini" id="example-fill">+ Przykładowy opis</button>
+        </div>
+        <textarea id="about" name="czym" rows="4" aria-label="Czym zajmuje się Twój biznes" placeholder="Opisz w kilku zdaniach, czym się zajmujesz..."></textarea>
+      </div>
+
+      <div class="field">
+        <div class="photo-row">
+          <div class="photo-row-text">
+            <span class="photo-row-title">Zdjęcia lub logo</span>
+            <span class="photo-row-hint">Opcjonalnie, to tylko podgląd dla Ciebie</span>
+          </div>
+          <label class="btn-mini" for="zdjecia">+ Dodaj zdjęcie</label>
+        </div>
+        <input type="file" id="zdjecia" name="zdjecia" accept="image/*" multiple class="visually-hidden">
+        <div class="file-previews" id="file-previews"></div>
+      </div>
+
+      <input type="hidden" id="pakiet-hidden" name="pakiet">
+
+      <div class="reveal-fields" id="reveal-fields" hidden>
+        <div class="row2">
+          <div class="field">
+            <label for="name">Imię i nazwisko</label>
+            <input id="name" name="imie" type="text" placeholder="Jak się nazywasz?" required>
+          </div>
+          <div class="field">
+            <label for="contact">Telefon lub e-mail</label>
+            <input id="contact" name="kontakt" type="text" placeholder="Gdzie mam się odezwać?" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="domena">Domena, jeśli masz</label>
+          <input id="domena" name="domena" type="text" placeholder="np. twojafirma.pl">
+        </div>
+
+        <div class="field checkbox-field">
+          <label class="checkbox-label">
+            <input type="checkbox" id="zgoda" name="zgoda" required>
+            <span>Zgadzam się na kontakt w sprawie mojego zgłoszenia. Dane wykorzystam wyłącznie w tym celu, szczegóły w <a href="polityka-prywatnosci.html">polityce prywatności</a>.</span>
+          </label>
+        </div>
+
+        <div class="field hp-field" aria-hidden="true">
+          <label for="firma">Firma</label>
+          <input id="firma" name="firma" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <button type="submit"><span>Działajmy, Panie Bartoszu!</span><span class="arw">→</span></button>
+        <p class="form-note" id="fnote">Odezwę się z konkretem. Zero ściemy, zero sprzedaży na siłę.</p>
+      </div>
+    </form>
+
+    <div class="thanks" id="thanks" hidden>
+      <p class="thanks-title">Dzięki, mam to.</p>
+      <p class="thanks-note">Odezwę się z konkretem, zero ściemy, zero sprzedaży na siłę.</p>
+      <a href="manifest.html" class="thanks-link">W międzyczasie przeczytaj, dlaczego w ogóle to robię: Manifest →</a>
+    </div>
+  </main>
+
+  <footer>
+    <span class="soon"><b>[ INFO ]</b> <a href="manifest.html">Manifest</a></span>
+    <span>Bartosz · <a href="mailto:kontakt@dzialajmy.online">kontakt@dzialajmy.online</a> · na razie działam tylko ze stronami www</span>
+  </footer>
+
+  <a href="index.html" class="mob-manifest">
+    <span class="mm-l"><span class="mm-tag">Start</span>Wróć na stronę główną</span>
+    <span class="mm-arw">→</span>
+  </a>
+
+  <script>
+    // PODMIEŃ LEAD_EMAIL na swój realny adres, jeśli inny niż kontakt@dzialajmy.online.
+    var LEAD_EMAIL = 'kontakt@dzialajmy.online';
+
+    var EXAMPLES = [
+      'Jestem trenerem personalnym w Krakowie. Pomagam zabieganym 30- i 40-latkom wrócić do formy bez katowania się na siłowni. Trening 1:1, pakiet 10 wejść, plan dietetyczny. Stacjonarnie i online.',
+      'Prowadzę mały warsztat samochodowy w Lęborku. Naprawy bieżące, wymiana opon, diagnostyka komputerowa. Pracuję sam, klienci głównie z polecenia.',
+      'Mam salon kosmetyczny w Gdyni, manicure, pedicure, zabiegi na twarz. Teraz zapisy tylko przez telefon i Instagram, gubię się w wiadomościach.'
+    ];
+    var exampleIndex = 0;
+    var aboutEl = document.getElementById('about');
+    var revealFields = document.getElementById('reveal-fields');
+
+    function checkReveal(){
+      if (revealFields && revealFields.hidden && aboutEl.value.trim().length > 0) {
+        revealFields.hidden = false;
+      }
+    }
+
+    function fillExample(){
+      if (!aboutEl) return;
+      aboutEl.value = EXAMPLES[exampleIndex % EXAMPLES.length];
+      exampleIndex++;
+      checkReveal();
+    }
+    var exampleFillBtn = document.getElementById('example-fill');
+    if (exampleFillBtn) exampleFillBtn.addEventListener('click', fillExample);
+    if (aboutEl) aboutEl.addEventListener('input', checkReveal);
+
+    // Podgląd zdjęć/logo, wyłącznie po stronie przeglądarki, pliki nie są nigdzie wysyłane tędy.
+    // Wybory z kolejnych otwarć okna dialogowego się sumują, bo natywny input.files
+    // nadpisuje poprzedni wybór przy każdym otwarciu.
+    var zdjeciaInput = document.getElementById('zdjecia');
+    var filePreviews = document.getElementById('file-previews');
+    var selectedFiles = [];
+
+    function renderPreviews(){
+      filePreviews.innerHTML = '';
+      selectedFiles.forEach(function(file, index){
+        var wrap = document.createElement('div');
+        wrap.className = 'file-preview';
+
+        var img = document.createElement('img');
+        img.src = URL.createObjectURL(file);
+        img.alt = file.name;
+        wrap.appendChild(img);
+
+        var rm = document.createElement('button');
+        rm.type = 'button';
+        rm.className = 'rm';
+        rm.setAttribute('aria-label', 'Usuń ' + file.name);
+        rm.textContent = '×';
+        rm.addEventListener('click', function(){
+          selectedFiles.splice(index, 1);
+          renderPreviews();
+        });
+        wrap.appendChild(rm);
+
+        filePreviews.appendChild(wrap);
+      });
+    }
+
+    if (zdjeciaInput && filePreviews) {
+      zdjeciaInput.addEventListener('change', function(){
+        Array.prototype.forEach.call(zdjeciaInput.files, function(file){
+          selectedFiles.push(file);
+        });
+        renderPreviews();
+      });
+    }
+
+    // Preselekcja pakietu z linku, np. kontakt.html?pakiet=FULL: zapamiętana cicho, bez wyboru w UI.
+    var params = new URLSearchParams(window.location.search);
+    var pakietParam = params.get('pakiet');
+    var pakietHidden = document.getElementById('pakiet-hidden');
+    if (pakietParam && pakietHidden) pakietHidden.value = pakietParam;
+
+    var form = document.getElementById('lead-form');
+    var note = document.getElementById('fnote');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+
+      if (form.firma.value) return; // honeypot: niewidoczne pole, boty je wypełniają
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      var pliki = selectedFiles.map(function(f){ return f.name; }).join(', ');
+
+      // Treść maila jest od razu gotowym promptem: wklejasz w Claude i masz pierwszą wersję strony.
+      var tresc = 'Wygeneruj pierwszą wersję strony internetowej (landing page) na podstawie opisu biznesu poniżej. Zaproponuj strukturę sekcji, nagłówki i krótkie teksty dopasowane do branży.\n\n' +
+        'OPIS BIZNESU:\n' + (form.czym.value || 'nie podano') + '\n\n' +
+        'DANE ZGŁASZAJĄCEGO (nie umieszczaj w treści strony):\n' +
+        'Imię i nazwisko: ' + form.imie.value + '\n' +
+        'Kontakt: ' + form.kontakt.value + '\n' +
+        (form.domena.value ? 'Domena: ' + form.domena.value + '\n' : '') +
+        (form.pakiet.value ? 'Pakiet (z linku): ' + form.pakiet.value + '\n' : '') +
+        (pliki ? 'Zdjęcia, dośle w odpowiedzi: ' + pliki + '\n' : '');
+      var subject = 'Prompt: wygeneruj stronę dla ' + form.imie.value;
+      var mailtoUrl = 'mailto:' + LEAD_EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(tresc);
+
+      // Imię i kontakt osobno, do szybkiego skanowania. Reszta (opis, domena, pakiet, zdjęcia)
+      // jest już wbudowana w gotowy prompt, więcej pól nie trzeba, resztę dopytam klienta sam.
+      fetch('https://formsubmit.co/ajax/' + LEAD_EMAIL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          _subject: subject,
+          imie_nazwisko: form.imie.value,
+          kontakt: form.kontakt.value,
+          prompt_do_wygenerowania_strony: tresc
+        })
+      }).then(function(res){
+        if (!res.ok) throw new Error('send failed');
+        form.hidden = true;
+        document.getElementById('thanks').hidden = false;
+      }).catch(function(){
+        window.location.href = mailtoUrl;
+        note.textContent = 'Nie udało się wysłać automatycznie, otwieram maila, wyślij, żebym to dostał.';
+        note.classList.add('ok');
+      });
+    });
+  </script>
+
+</body>
+</html>

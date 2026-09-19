@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Strona dla fizjoterapeuty i trenera od 1000 zł · działajmy.online</title>
+<meta name="description" content="Strona www z ofertą, opisem i zapisami dla fizjoterapeuty lub trenera personalnego. Od 1000 zł, jedna strona, dwie role, mniej chaosu w kalendarzu.">
+<meta property="og:title" content="Strona dla fizjoterapeuty i trenera od 1000 zł · działajmy.online">
+<meta property="og:description" content="Oferta, o mnie, proces, lokalizacja i zapisy w jednym miejscu. Od 1000 zł. Dla trenerów personalnych i fizjoterapeutów, także tych, którzy łączą obie role.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:image" content="https://dzialajmy.online/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4F2EC;--paper-2:#E8E5DB;--ink:#14171B;--ink-2:#4A525C;--ink-3:#8B939C;
+    --hair:rgba(20,23,27,.14);--blue:#1B4BFF;--blue-d:#0C2B9E;--hi:#F5E33D;--hi-2:#FFF08A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);color:var(--ink);
+    font-family:'Source Sans 3',system-ui,sans-serif;font-size:19px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:720px;margin:0 auto;padding:0 clamp(20px,5vw,40px)}
+  .mk{display:inline;padding:0 .14em;
+    background-image:linear-gradient(105deg,var(--hi) 0%,var(--hi-2) 100%);
+    background-size:100% .68em;background-position:0 .5em;background-repeat:no-repeat;
+    box-decoration-break:clone;-webkit-box-decoration-break:clone}
+
+  /* HEADER */
+  header{border-bottom:1px solid var(--line,#14171B);background:var(--paper);
+    position:sticky;top:0;z-index:20;
+    border-bottom:1px solid rgba(20,23,27,.5)}
+  .hd{display:flex;align-items:center;justify-content:space-between;height:62px;
+    max-width:720px;margin:0 auto;padding:0 clamp(20px,5vw,40px)}
+  .logo{font-family:'Archivo',sans-serif;font-weight:900;font-size:20px;letter-spacing:-.04em;
+    text-decoration:none;color:var(--ink)}
+  .logo .d{color:var(--blue)}
+  .logo .c{display:inline-block;color:var(--blue);transform:translateY(-2px);margin-left:1px;
+    animation:bl 1.2s steps(1) infinite}
+  @keyframes bl{0%,55%{opacity:1}56%,100%{opacity:.12}}
+  .back{font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;color:var(--ink-2);
+    text-decoration:none;text-transform:uppercase}
+  .back:hover{color:var(--blue)}
+
+  /* ARTICLE */
+  article{padding:64px 0 40px}
+  .meta{font-family:'Archivo',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;
+    color:var(--ink-3);display:flex;align-items:center;gap:10px;margin-bottom:22px}
+  .meta .tag{background:var(--hi);color:var(--ink);padding:4px 9px}
+  h1{font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.04em;line-height:1.02;
+    font-size:clamp(38px,7vw,60px);text-transform:uppercase}
+  .dek{font-size:clamp(20px,3vw,24px);color:var(--ink-2);line-height:1.4;margin-top:24px;
+    font-weight:600}
+
+  article h2{font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.035em;
+    font-size:clamp(26px,4.5vw,34px);line-height:1.1;margin:56px 0 4px}
+  article p{margin-top:20px;color:var(--ink-2)}
+  article p.big{font-size:22px;color:var(--ink);font-weight:600;line-height:1.45}
+  article strong{color:var(--ink);font-weight:700}
+  article em{font-style:italic}
+  article p a{color:var(--blue-d)}
+
+  .rule{border:0;border-top:1px solid var(--hair);margin:52px 0}
+
+  .pull{
+    border-left:4px solid var(--blue);padding:6px 0 6px 24px;margin:40px 0;
+    font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.03em;
+    font-size:clamp(24px,4vw,32px);line-height:1.15;color:var(--ink);
+  }
+
+  /* features list */
+  .features-list{list-style:none;margin:28px 0;border-top:1px solid rgba(20,23,27,.5)}
+  .features-list li{padding:22px 0;border-bottom:1px solid var(--hair)}
+  .features-list h3{font-family:'Archivo',sans-serif;font-weight:800;font-size:17px;color:var(--ink)}
+  .features-list p{margin-top:8px;font-size:16px;color:var(--ink-2);line-height:1.5}
+
+  /* CTA BOX */
+  .cta-box{background:var(--ink);color:var(--paper);padding:40px clamp(24px,5vw,44px);
+    margin-top:64px}
+  .cta-box h2{color:#fff;margin-top:0}
+  .cta-box p{color:#9AA3AD;margin-top:16px}
+  .cta-box .mk{
+    color:var(--ink);
+    background-image:linear-gradient(105deg,var(--hi) 0%,var(--hi-2) 100%);
+    background-size:100% 100%;background-position:0 0;
+  }
+  .cta-btn{display:inline-flex;align-items:center;gap:12px;margin-top:28px;text-decoration:none;
+    background:var(--hi);color:var(--ink);border:1.5px solid var(--hi);
+    font-family:'Archivo',sans-serif;font-weight:900;font-size:18px;letter-spacing:-.02em;
+    padding:16px 24px;transition:opacity .12s ease}
+  .cta-btn:hover{opacity:.9}
+
+  .sign{margin-top:44px;font-family:'Archivo',sans-serif;font-weight:800;font-size:16px;
+    color:var(--ink-2)}
+  .sign b{color:var(--ink)}
+
+  /* desktop mockup */
+  .browser-mock{margin:40px 0 0}
+  .browser-bar{
+    display:flex;align-items:center;gap:6px;background:#E4E2DA;
+    padding:10px 14px;border-radius:10px 10px 0 0;border:1px solid rgba(20,23,27,.15);border-bottom:none;
+  }
+  .browser-dot{width:9px;height:9px;border-radius:50%;background:rgba(20,23,27,.2)}
+  .browser-frame{
+    position:relative;overflow:hidden;border-radius:0 0 10px 10px;
+    border:1px solid rgba(20,23,27,.15);background:#000;
+    box-shadow:0 20px 40px rgba(20,23,27,.14);
+  }
+  .browser-frame iframe{
+    position:absolute;top:0;left:0;width:1280px;height:900px;border:none;
+    transform-origin:top left;
+  }
+  .browser-mock-cap{margin-top:16px;text-align:center;font-size:13.5px;color:var(--ink-3);line-height:1.5}
+  .browser-mock-cap a{color:var(--blue-d);font-weight:700}
+
+  /* WIECEJ WPISOW */
+  .more-posts{margin-top:64px}
+  .more-posts h2{font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.035em;
+    font-size:clamp(22px,3.5vw,28px);line-height:1.1}
+  .post-links{list-style:none;margin-top:20px;border-top:1px solid rgba(20,23,27,.5)}
+  .post-links li{border-bottom:1px solid var(--hair)}
+  .post-links a{display:flex;align-items:center;gap:16px;padding:16px 4px;
+    text-decoration:none;color:inherit;transition:gap .15s ease}
+  .post-links a:hover{gap:22px}
+  .post-index{font-family:'Archivo',sans-serif;font-weight:900;font-size:13px;color:var(--ink-3);flex:none;width:32px}
+  .post-title{font-family:'Archivo',sans-serif;font-weight:800;font-size:16px;color:var(--ink);flex:1}
+  .post-arrow{font-family:'Archivo',sans-serif;font-weight:900;font-size:18px;color:var(--ink-3);transition:color .15s ease}
+  .post-links a:hover .post-arrow{color:var(--blue)}
+
+  /* FOOTER */
+  footer{border-top:1px solid rgba(20,23,27,.5);margin-top:64px;padding:28px 0}
+  .ft{max-width:720px;margin:0 auto;padding:0 clamp(20px,5vw,40px);
+    display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between;
+    font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:600;text-transform:uppercase;
+    color:var(--ink-3)}
+  .ft a{color:var(--ink-2);text-decoration:none}
+  .ft a:hover{color:var(--blue)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hd">
+    <a href="index.html" class="logo">działajmy<span class="d">.</span>online<span class="c">^</span></a>
+    <a href="index.html" class="back">← wróć</a>
+  </div>
+</header>
+
+<article>
+  <div class="wrap">
+    <div class="meta"><span class="tag">007</span><span>Demo</span></div>
+    <h1>Strona z zapisami dla trenera i fizjoterapeuty</h1>
+    <p class="dek">Oferta, o mnie, proces i zapis na wizytę w jednym miejscu. Dla trenerów personalnych i fizjoterapeutów, także tych, którzy łączą obie role.</p>
+
+    <hr class="rule">
+
+    <p class="big">Trener personalny i fizjoterapeuta robią z pozoru różne rzeczy, ale trafia do nich ten sam typ klienta: ktoś, kto chce wrócić do formy, po kontuzji albo po prostu po latach zaniedbania.</p>
+
+    <p>Dlatego często się łączą: jedna osoba prowadzi trening i rehabilitację, albo mały gabinet ma obu specjalistów pod jednym dachem. Problem w tym, że taka oferta rzadko ma jedno miejsce w sieci. Klient trafia na Instagram, potem pisze na Messengerze, potem dzwoni, żeby w końcu umówić się przez telefon. Traci się połowę zapytań po drodze.</p>
+
+    <div class="pull">Jedna strona, dwie role, jeden kalendarz. Klient wie, co dostaje i jak się zapisać.</div>
+
+    <h2>Co dostajesz</h2>
+    <p>Prostą stronę, która pokazuje ofertę, Ciebie i sposób pracy, i kończy się zapisem na pierwszą konsultację, bez przełączania się między komunikatorami.</p>
+
+    <ul class="features-list">
+      <li>
+        <h3>Oferta usług</h3>
+        <p>Trening indywidualny, rehabilitacja, przygotowanie sportowe, redukcja wagi, cokolwiek robisz, w jednej czytelnej siatce.</p>
+      </li>
+      <li>
+        <h3>O mnie</h3>
+        <p>Doświadczenie, certyfikaty, podejście do pracy. Klient chce wiedzieć, komu się powierza, zanim napisze.</p>
+      </li>
+      <li>
+        <h3>Jak to wygląda</h3>
+        <p>Krok po kroku: konsultacja, plan, sesje, monitoring postępów. Mniej pytań "co dalej" po pierwszej wizycie.</p>
+      </li>
+      <li>
+        <h3>Lokalizacja na mapie</h3>
+        <p>Adres, godziny, dojazd, i opcja sesji online, jeśli je prowadzisz.</p>
+      </li>
+      <li>
+        <h3>Zapis z wyborem usługi</h3>
+        <p>Klient wybiera usługę, zostawia kontakt, Ty się odzywasz, żeby ustalić termin.</p>
+      </li>
+    </ul>
+
+    <h2>Dla kogo to jest</h2>
+    <p>Dla trenerów personalnych i fizjoterapeutów, osobno albo w jednej osobie. Też dla małych gabinetów, gdzie kilka specjalizacji funkcjonuje pod wspólną marką. Nie musisz mieć wielkiego zespołu, potrzebujesz miejsca, gdzie klient przeczyta ofertę i się zapisze.</p>
+
+    <h2>Ile to kosztuje</h2>
+    <p>Taka strona to koszt od 1000 zł, w zależności od tego, ile podstron i funkcji faktycznie potrzebujesz. Zobacz <a href="index.html#oferta">dwa pakiety cen</a>, które proponuję, i wybierz ten, który pasuje do Twojego etapu.</p>
+
+    <p class="big">Zobacz, jak to wygląda w praktyce, zanim napiszesz.</p>
+
+    <div class="browser-mock">
+      <div class="browser-bar">
+        <span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span>
+      </div>
+      <div class="browser-frame" id="browserFrame">
+        <iframe src="demo-trener.html" title="Podgląd makiety Forma. (widok desktop)" loading="lazy" id="browserFrameIframe"></iframe>
+      </div>
+      <p class="browser-mock-cap">Tak wygląda na komputerze. Poklikaj na żywo, tak jak zrobiłby to Twój klient. <a href="demo-trener.html" target="_blank" rel="noopener">Otwórz na pełnym ekranie →</a></p>
+    </div>
+
+    <script>
+      (function(){
+        var frame = document.getElementById('browserFrame');
+        var iframe = document.getElementById('browserFrameIframe');
+        function scaleFrame(){
+          var scale = frame.clientWidth / 1280;
+          iframe.style.transform = 'scale(' + scale + ')';
+          frame.style.height = (900 * scale) + 'px';
+        }
+        window.addEventListener('resize', scaleFrame);
+        window.addEventListener('load', scaleFrame);
+        scaleFrame();
+      })();
+    </script>
+
+    <div class="cta-box">
+      <h2>Chcesz <span class="mk">taką stronę dla siebie?</span></h2>
+      <p>Napisz, czym się zajmujesz, a pogadamy o szczegółach.</p>
+      <a href="kontakt.html" class="cta-btn"><span>Opisz swoją sytuację</span><span>→</span></a>
+    </div>
+
+    <p class="sign"><b>Bartosz</b>, działajmy.online</p>
+
+    <div class="more-posts">
+      <h2>Więcej wpisów</h2>
+      <ul class="post-links">
+      <li><a href="manifest.html"><span class="post-index">001</span><span class="post-title">Ładna, martwa strona</span><span class="post-arrow">→</span></a></li>
+      <li><a href="seo90.html"><span class="post-index">002</span><span class="post-title">SEO.90</span><span class="post-arrow">→</span></a></li>
+      <li><a href="nie-mam-dostepu.html"><span class="post-index">003</span><span class="post-title">Nie mam dostępu do strony</span><span class="post-arrow">→</span></a></li>
+      <li><a href="silny-lokalnie.html"><span class="post-index">004</span><span class="post-title">Silny lokalnie: jedna strona za darmo</span><span class="post-arrow">→</span></a></li>
+      <li><a href="dla-kogo.html"><span class="post-index">005</span><span class="post-title">Dla kogo</span><span class="post-arrow">→</span></a></li>
+      <li><a href="zamowienia-gastronomia.html"><span class="post-index">006</span><span class="post-title">Strona z zamówieniami dla gastronomii</span><span class="post-arrow">→</span></a></li>
+      </ul>
+    </div>
+
+  </div>
+</article>
+
+<footer>
+  <div class="ft">
+    <span>Bartosz · <a href="mailto:kontakt@dzialajmy.online">kontakt@dzialajmy.online</a> · na razie działam tylko ze stronami www</span>
+  </div>
+</footer>
+
+</body>
+</html>
