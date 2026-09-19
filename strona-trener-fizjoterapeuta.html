@@ -103,20 +103,24 @@
     color:var(--ink-2)}
   .sign b{color:var(--ink)}
 
-  /* phone mockup */
-  .phone-mock{margin:40px auto 0;width:260px}
-  .phone-frame{
-    border:10px solid var(--ink);border-radius:34px;overflow:hidden;
-    aspect-ratio:9/19.5;background:#000;position:relative;
-    box-shadow:0 20px 40px rgba(20,23,27,.18);
+  /* desktop mockup */
+  .browser-mock{margin:40px 0 0}
+  .browser-bar{
+    display:flex;align-items:center;gap:6px;background:#E4E2DA;
+    padding:10px 14px;border-radius:10px 10px 0 0;border:1px solid rgba(20,23,27,.15);border-bottom:none;
   }
-  .phone-frame::before{
-    content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
-    width:70px;height:18px;background:var(--ink);border-radius:0 0 12px 12px;z-index:2;
+  .browser-dot{width:9px;height:9px;border-radius:50%;background:rgba(20,23,27,.2)}
+  .browser-frame{
+    position:relative;overflow:hidden;border-radius:0 0 10px 10px;
+    border:1px solid rgba(20,23,27,.15);background:#000;
+    box-shadow:0 20px 40px rgba(20,23,27,.14);
   }
-  .phone-frame iframe{width:100%;height:100%;border:none;display:block}
-  .phone-mock-cap{margin-top:16px;text-align:center;font-size:13.5px;color:var(--ink-3);line-height:1.5}
-  .phone-mock-cap a{color:var(--blue-d);font-weight:700}
+  .browser-frame iframe{
+    position:absolute;top:0;left:0;width:1280px;height:900px;border:none;
+    transform-origin:top left;
+  }
+  .browser-mock-cap{margin-top:16px;text-align:center;font-size:13.5px;color:var(--ink-3);line-height:1.5}
+  .browser-mock-cap a{color:var(--blue-d);font-weight:700}
 
   /* WIECEJ WPISOW */
   .more-posts{margin-top:64px}
@@ -199,12 +203,30 @@
 
     <p class="big">Zobacz, jak to wygląda w praktyce, zanim napiszesz.</p>
 
-    <div class="phone-mock">
-      <div class="phone-frame">
-        <iframe src="demo-trener.html" title="Podgląd makiety Forma." loading="lazy"></iframe>
+    <div class="browser-mock">
+      <div class="browser-bar">
+        <span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span>
       </div>
-      <p class="phone-mock-cap">Poklikaj na żywo, tak jak zrobiłby to Twój klient. <a href="demo-trener.html" target="_blank" rel="noopener">Otwórz na pełnym ekranie →</a></p>
+      <div class="browser-frame" id="browserFrame">
+        <iframe src="demo-trener.html" title="Podgląd makiety Forma. (widok desktop)" loading="lazy" id="browserFrameIframe"></iframe>
+      </div>
+      <p class="browser-mock-cap">Tak wygląda na komputerze. Poklikaj na żywo, tak jak zrobiłby to Twój klient. <a href="demo-trener.html" target="_blank" rel="noopener">Otwórz na pełnym ekranie →</a></p>
     </div>
+
+    <script>
+      (function(){
+        var frame = document.getElementById('browserFrame');
+        var iframe = document.getElementById('browserFrameIframe');
+        function scaleFrame(){
+          var scale = frame.clientWidth / 1280;
+          iframe.style.transform = 'scale(' + scale + ')';
+          frame.style.height = (900 * scale) + 'px';
+        }
+        window.addEventListener('resize', scaleFrame);
+        window.addEventListener('load', scaleFrame);
+        scaleFrame();
+      })();
+    </script>
 
     <div class="cta-box">
       <h2>Chcesz <span class="mk">taką stronę dla siebie?</span></h2>
