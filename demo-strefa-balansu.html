@@ -25,17 +25,17 @@
   img{display:block;max-width:100%}
   .wrap{max-width:1120px;margin:0 auto;padding:0 clamp(28px,6vw,64px)}
   h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-.02em;color:var(--ink)}
-  h1,h2{font-weight:800}
-  h3{font-weight:700}
+  h1,h2{font-weight:600}
+  h3{font-weight:600}
 
-  /* HEADER */
-  header{padding:26px 0}
+  /* HEADER — sits transparently on top of the hero photo */
+  header{padding:26px 0;position:relative;z-index:2}
   .hd{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 24px}
-  .logo{flex:none;text-decoration:none;color:var(--ink);white-space:nowrap}
-  .logo span{font-weight:800;font-size:17px;letter-spacing:-.01em}
+  .logo{flex:none;text-decoration:none;color:#fff;white-space:nowrap}
+  .logo span{font-weight:600;font-size:17px;letter-spacing:-.01em}
   .nav-links{display:flex;flex-wrap:wrap;align-items:center;gap:16px 30px;font-size:14px;font-weight:400}
-  .nav-links a{text-decoration:none;color:var(--ink-2);transition:color .15s ease;white-space:nowrap}
-  .nav-links a:hover{color:var(--accent)}
+  .nav-links a{text-decoration:none;color:rgba(255,255,255,.82);transition:color .15s ease;white-space:nowrap}
+  .nav-links a:hover{color:#fff}
   @media (max-width:760px){.nav-links{display:none}}
   @media (max-width:400px){.logo{font-size:13px}}
 
@@ -51,20 +51,23 @@
   .arr{display:inline-block;margin-left:6px;transition:transform .25s cubic-bezier(.2,.8,.2,1)}
   .btn-line:hover .arr{transform:translateX(4px)}
 
-  /* HERO — left-aligned big type, minimal, photo follows full-bleed */
-  .hero{padding:48px 0 0}
-  .eyebrow{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:22px}
-  .hero h1{font-size:clamp(38px,6.4vw,62px);line-height:1.05;max-width:14ch}
-  .hero h1 .hl{color:var(--accent)}
-  .hero-desc{font-size:16.5px;color:var(--ink-2);line-height:1.8;max-width:58ch;margin-top:22px}
-  .hero-actions{display:flex;flex-wrap:wrap;gap:18px;align-items:center;margin-top:30px}
-  .hero-photo-bleed{width:100%;aspect-ratio:21/9;overflow:hidden;margin-top:48px;background:var(--mist-soft)}
-  .hero-photo-bleed img{width:100%;height:100%;object-fit:cover;filter:saturate(.93) contrast(1.05) brightness(1.02)}
-  @media (max-width:700px){.hero-photo-bleed{aspect-ratio:4/5}}
+  /* HERO — full-bleed dimmed photo, header + headline overlaid on top */
+  .hero-stage{position:relative;min-height:92vh;display:flex;flex-direction:column;color:#fff;overflow:hidden}
+  .hero-stage-bg{position:absolute;inset:0;z-index:0}
+  .hero-stage-bg img{width:100%;height:100%;object-fit:cover;filter:saturate(.85) contrast(1.05) brightness(.8)}
+  .hero-stage-bg::after{content:"";position:absolute;inset:0;background:rgba(12,10,8,.4)}
+  .hero{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:center;
+    text-align:center;padding:40px 0 64px}
+  .eyebrow{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:22px}
+  .hero h1{font-size:clamp(34px,5.6vw,58px);line-height:1.12;max-width:16ch;margin:0 auto;color:#fff}
+  .hero h1 .hl{color:#fff}
+  .hero-desc{font-size:16.5px;color:rgba(255,255,255,.82);line-height:1.8;max-width:58ch;margin:22px auto 0}
+  .intro-lead{font-size:16.5px;color:var(--ink-2);line-height:1.8;max-width:70ch;margin-top:44px}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:center;margin-top:30px}
+  @media (max-width:700px){.hero-stage{min-height:78vh}}
 
   /* TRUST BAR */
-  .trust-bar{margin-top:44px;padding:26px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-    display:grid;grid-template-columns:1fr;gap:18px;text-align:left}
+  .trust-bar{margin-top:40px;display:grid;grid-template-columns:1fr;gap:18px;text-align:left}
   @media (min-width:700px){.trust-bar{grid-template-columns:repeat(4,1fr);gap:24px}}
   .trust-item{font-size:14px;color:var(--ink-2)}
   .trust-item b{display:block;font-family:'Inter',sans-serif;font-weight:600;font-size:20px;color:var(--ink);margin-bottom:4px}
@@ -93,7 +96,7 @@
   .goal-grid{display:grid;grid-template-columns:1fr;gap:32px}
   @media (min-width:700px){.goal-grid{grid-template-columns:repeat(3,1fr);gap:40px}}
   .goal-item .n{font-size:14px;color:var(--ink-3);display:block;margin-bottom:12px}
-  .goal-item h3{font-size:17px;font-weight:700}
+  .goal-item h3{font-size:17px;font-weight:600}
   .goal-item p{margin-top:10px;font-size:14.5px;color:var(--ink-2);line-height:1.75}
 
   /* QUOTE BLOCK — editorial pull-quote, no card chrome */
@@ -111,24 +114,25 @@
     .split-row.reverse .split-visual{order:2}
     .split-row.reverse .split-text{order:1}
   }
-  .split-visual{aspect-ratio:4/3;overflow:hidden;background:var(--mist-soft)}
+  .split-visual{aspect-ratio:4/3;overflow:hidden;border-radius:14px;background:var(--mist-soft)}
   .split-visual img{width:100%;height:100%;object-fit:cover;filter:saturate(.93) contrast(1.05) brightness(1.02)}
   .mat-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
   .mat-pill{font-size:13px;color:var(--ink-2);border:1px solid var(--line);border-radius:20px;padding:7px 14px}
 
   /* FINANCE STEPS */
   .fin-steps{display:flex;flex-direction:column;margin-top:32px}
-  .fin-row{display:grid;grid-template-columns:44px 1fr;gap:18px;align-items:baseline;
-    padding:20px 0;border-top:1px solid var(--line)}
+  .fin-row{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;
+    padding:24px 0;border-top:1px solid var(--line)}
   .fin-row:last-child{border-bottom:1px solid var(--line)}
-  .fin-row .n{font-size:14px;color:var(--ink-3)}
-  .fin-row h3{font-size:16px;font-weight:700}
+  .fin-row h3{font-size:17px;font-weight:600}
   .fin-row .frac{display:block;margin-top:6px;font-size:14px;color:var(--ink-3)}
+  .fin-row .arr{margin-left:0;color:var(--ink-3);transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+  .fin-row:hover .arr{transform:translateX(4px);color:var(--accent)}
 
   /* PROOF: portfolio grid */
   .proof-grid{display:grid;grid-template-columns:1fr;gap:28px}
   @media (min-width:700px){.proof-grid{grid-template-columns:repeat(3,1fr);gap:32px}}
-  .proof-card{position:relative;display:block;aspect-ratio:3/4;overflow:hidden;text-decoration:none;color:#fff;background:var(--mist-soft)}
+  .proof-card{position:relative;display:block;aspect-ratio:3/4;overflow:hidden;border-radius:14px;text-decoration:none;color:#fff;background:var(--mist-soft)}
   .proof-photo{position:absolute;inset:0}
   .proof-photo img{width:100%;height:100%;object-fit:cover;filter:saturate(.9) contrast(1.08) brightness(.85)}
   .proof-card::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(10,9,8,.82) 0%,rgba(10,9,8,.15) 45%,rgba(10,9,8,0) 65%)}
@@ -145,6 +149,8 @@
     font-weight:600;margin-bottom:18px;text-align:center}
   .trust-names{text-align:center;line-height:2.1}
   .trust-names span{font-size:13.5px;color:var(--ink-2)}
+  .trust-names a{text-decoration:none;color:inherit;border-bottom:1px solid transparent}
+  .trust-names a:hover{border-color:currentColor}
   .trust-names span:not(:last-child)::after{content:"·";margin:0 12px;color:var(--ink-3)}
 
   /* CTA FINAL — full-bleed photo background */
@@ -158,42 +164,56 @@
   .cta-final p{margin-top:14px;font-size:15.5px;color:rgba(255,255,255,.82);max-width:52ch;margin-left:auto;margin-right:auto}
   .cta-final-actions{display:flex;justify-content:center;margin-top:28px}
 
-  /* FOOTER */
-  footer{border-top:1px solid var(--line);padding:30px 0}
-  .ft{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;align-items:center;
-    font-size:13px;color:var(--ink-3)}
-  .ft a{text-decoration:none;color:var(--ink-3);border-bottom:1px solid var(--line)}
-  .ft a:hover{color:var(--accent);border-color:var(--accent)}
+  /* FOOTER — full-bleed photo, bold contact block, thin rule above legal row */
+  .site-footer{position:relative;color:#fff;overflow:hidden;padding:72px 0 28px}
+  .site-footer-bg{position:absolute;inset:0;z-index:0}
+  .site-footer-bg img{width:100%;height:100%;object-fit:cover;filter:saturate(.8) contrast(1.05) brightness(.55)}
+  .site-footer > .wrap{position:relative;z-index:1}
+  .footer-top{display:grid;grid-template-columns:1fr;gap:36px}
+  @media (min-width:700px){.footer-top{grid-template-columns:1.4fr 1fr 1fr}}
+  .footer-label{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.65);margin-bottom:14px;display:block}
+  .footer-contact{display:flex;flex-direction:column;gap:4px}
+  .footer-contact a{font-size:clamp(22px,3.4vw,32px);font-weight:600;letter-spacing:-.01em;color:#fff;text-decoration:none}
+  .footer-contact a:hover{color:var(--accent)}
+  .footer-meta-val{font-size:20px;font-weight:600}
+  .footer-bottom{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;align-items:center;
+    margin-top:64px;padding-top:22px;border-top:1px solid rgba(255,255,255,.22);
+    font-size:13px;color:rgba(255,255,255,.65)}
+  .footer-bottom a{text-decoration:none;color:rgba(255,255,255,.65);border-bottom:1px solid rgba(255,255,255,.3)}
+  .footer-bottom a:hover{color:#fff;border-color:#fff}
 </style>
 </head>
 <body>
 
-<header class="wrap">
-  <div class="hd">
-    <a href="demo-strefa-balansu.html" class="logo">
-      <span>Strefa Balansu</span>
-    </a>
-    <div class="nav-links">
-      <a href="demo-strefa-balansu-oferta.html">Oferta</a>
-      <a href="demo-strefa-balansu-dla-kogo.html">Dla kogo</a>
-      <a href="demo-strefa-balansu-portfolio.html">Portfolio</a>
-      <a href="demo-strefa-balansu-kontakt.html">Kontakt</a>
+<div class="hero-stage">
+  <div class="hero-stage-bg">
+    <img src="strefa-balansu-pro-amus-2.jpg" alt="Drewniana konstrukcja do zabawy na tle nieba">
+  </div>
+
+  <header class="wrap">
+    <div class="hd">
+      <a href="demo-strefa-balansu.html" class="logo">
+        <span>Strefa Balansu</span>
+      </a>
+      <div class="nav-links">
+        <a href="demo-strefa-balansu-oferta.html">Oferta</a>
+        <a href="demo-strefa-balansu-dla-kogo.html">Dla kogo</a>
+        <a href="demo-strefa-balansu-portfolio.html">Portfolio</a>
+        <a href="demo-strefa-balansu-kontakt.html">Kontakt</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap hero">
+    <h1>Zabawa, która <span class="hl">napędza</span> rozwój, zdrowie i więzi.</h1>
+    <div class="hero-actions">
+      <a href="demo-strefa-balansu-kontakt.html" class="btn-line on-dark">Zamów konsultację<span class="arr">→</span></a>
     </div>
   </div>
-</header>
-
-<div class="wrap hero">
-  <h1>Zabawa, która <span class="hl">napędza</span> rozwój, zdrowie i więzi.</h1>
-  <div class="hero-actions">
-    <a href="demo-strefa-balansu-kontakt.html" class="btn-line">Zamów konsultację<span class="arr">→</span></a>
-  </div>
-</div>
-<div class="hero-photo-bleed">
-  <img src="strefa-balansu-pro-amus-2.jpg" alt="Drewniana konstrukcja do zabawy na tle nieba">
 </div>
 
 <div class="wrap">
-  <p class="hero-desc" style="max-width:70ch;margin-top:44px">Tworzymy unikatowe miejsca, gdzie zabawa napędza procesy: profilaktyki chorób cywilizacyjnych, tworzenia i wzmacniania więzi społecznych oraz pełnego i wszechstronnego rozwoju potencjału dzieci i młodzieży. Łączymy rzemiosło z wiedzą terapeutyczną i pedagogiczną w niskoemisyjne, inspirujące formy.</p>
+  <p class="intro-lead">Tworzymy unikatowe miejsca, gdzie zabawa napędza procesy: profilaktyki chorób cywilizacyjnych, tworzenia i wzmacniania więzi społecznych oraz pełnego i wszechstronnego rozwoju potencjału dzieci i młodzieży. Łączymy rzemiosło z wiedzą terapeutyczną i pedagogiczną w niskoemisyjne, inspirujące formy.</p>
   <div class="trust-bar">
     <div class="trust-item"><b>od 2004</b>na rynku aranżacji prozdrowotnych przestrzeni</div>
     <div class="trust-item"><b>~100</b>certyfikowanych, unikatowych urządzeń</div>
@@ -210,22 +230,19 @@
   </div>
   <div class="goal-grid">
     <div class="goal-item">
-      <span class="n">01</span>
       <h3>Prozdrowotne i profilaktyczne</h3>
       <p>W zakresie: cyberuzależnień, alkoholu i substancji toksycznych, otyłości/nadwagi, wad postawy ciała, działań antyspołecznych.</p>
     </div>
     <div class="goal-item">
-      <span class="n">02</span>
       <h3>Prospołeczne</h3>
       <p>Tworzenie warunków sprzyjających integracji między- i wewnątrzpokoleniowej oraz treningu umiejętności prospołecznych.</p>
     </div>
     <div class="goal-item">
-      <span class="n">03</span>
       <h3>Edukacyjne i rozwojowe</h3>
       <p>W zakresie m.in.: samopoznania, praw fizyki, techniki i ekologii.</p>
     </div>
   </div>
-  <div class="quote-block">
+  <div class="quote-block" style="margin-top:80px">
     <p>„To więcej niż zabawa - to przygotowanie do wyzwań nadchodzącego świata."</p>
     <cite>
       <span class="quote-avatar"><img src="strefa-balansu-marcin-banat.png" alt="Marcin Banat"></span>
@@ -274,16 +291,16 @@
   </div>
   <div class="fin-steps">
     <div class="fin-row">
-      <span class="n">01</span>
       <div><h3>Opracowanie koncepcji i projektu gotowego do wdrożenia</h3><span class="frac">~1/3 wartości inwestycji</span></div>
+      <span class="arr">→</span>
     </div>
     <div class="fin-row">
-      <span class="n">02</span>
       <div><h3>Wykonanie i montaż urządzeń</h3><span class="frac">~1/3 wartości inwestycji</span></div>
+      <span class="arr">→</span>
     </div>
     <div class="fin-row">
-      <span class="n">03</span>
       <div><h3>Odbiór dzieła, przeglądy i serwis</h3><span class="frac">~1/3 wartości inwestycji</span></div>
+      <span class="arr">→</span>
     </div>
   </div>
   <div class="hero-actions" style="justify-content:flex-start;margin-top:32px">
@@ -304,9 +321,9 @@
       <div class="proof-cap">Domek na Drzewie<span class="loc">Gdynia</span><span class="see">Zobacz →</span></div>
     </a>
     <a href="demo-strefa-balansu-portfolio.html" class="proof-card">
-      <div class="proof-photo"><img src="strefa-balansu-pro-amus-4.jpg" alt="Konstrukcja typu Pająk"></div>
+      <div class="proof-photo"><img src="strefa-balansu-pro-amus-4.jpg" alt="Konstrukcja typu Pająk, Las Academy Sopot"></div>
       <span class="proof-badge">Realizacja</span>
-      <div class="proof-cap">Pająk<span class="loc">Pro-Amus</span><span class="see">Zobacz →</span></div>
+      <div class="proof-cap">Pająk<span class="loc">Las Academy, Sopot</span><span class="see">Zobacz →</span></div>
     </a>
     <a href="demo-strefa-balansu-portfolio.html" class="proof-card">
       <div class="proof-photo"><img src="strefa-balansu-realizacja-nowa-1.jpg" alt="Najnowsza realizacja wnętrzarska"></div>
@@ -317,18 +334,18 @@
   <div class="trust-strip">
     <h4>Zaufali mi m.in.</h4>
     <div class="trust-names">
-      <span>Fundacja Rozwoju Dziecka im. J.A. Komeńskiego</span>
-      <span>Fundacja Bullerbyn</span>
-      <span>Wolna Szkoła Między Drzewami</span>
-      <span>Sopocka Szkoła Montessori</span>
-      <span>LAS Academy</span>
-      <span>Miasto Olsztyn</span>
-      <span>Gmina Węgorzewo</span>
-      <span>Miasto i Gmina Szczytno</span>
-      <span>Gmina Pomiechówek</span>
-      <span>Arboretum Wirty</span>
-      <span>Leśny Ogród Botaniczny Marszewo</span>
-      <span>Piknik Naukowy w Warszawie</span>
+      <span><a href="https://www.frd.org.pl/" target="_blank" rel="noopener">Fundacja Rozwoju Dziecka im. J.A. Komeńskiego</a></span>
+      <span><a href="https://bullerbyn.org.pl/" target="_blank" rel="noopener">Fundacja Bullerbyn</a></span>
+      <span><a href="https://miedzydrzewami.edu.pl/" target="_blank" rel="noopener">Wolna Szkoła Między Drzewami</a></span>
+      <span><a href="http://montessori.sopot.pl/" target="_blank" rel="noopener">Sopocka Szkoła Montessori</a></span>
+      <span><a href="https://lasacademy.pl/" target="_blank" rel="noopener">LAS Academy</a></span>
+      <span><a href="https://zdzit.olsztyn.eu/" target="_blank" rel="noopener">Miasto Olsztyn</a></span>
+      <span><a href="https://wegorzewo.pl/" target="_blank" rel="noopener">Gmina Węgorzewo</a></span>
+      <span><a href="https://miastoszczytno.pl/" target="_blank" rel="noopener">Miasto i Gmina Szczytno</a></span>
+      <span><a href="https://www.pomiechowek.pl/" target="_blank" rel="noopener">Gmina Pomiechówek</a></span>
+      <span><a href="https://arboretumlesne.gdansk.lasy.gov.pl/" target="_blank" rel="noopener">Arboretum Wirty</a></span>
+      <span><a href="https://www.marszewo.edu.pl/" target="_blank" rel="noopener">Leśny Ogród Botaniczny Marszewo</a></span>
+      <span><a href="https://pikniknaukowy.pl/" target="_blank" rel="noopener">Piknik Naukowy w Warszawie</a></span>
     </div>
   </div>
   <a href="demo-strefa-balansu-portfolio.html" class="section-more">Zobacz pełne portfolio<span class="arr">→</span></a>
@@ -347,11 +364,31 @@
   </div>
 </div>
 
-<footer class="wrap">
-  <div class="ft">
-    <span>Strefa Balansu · certyfikowane place zabaw</span>
-    <a href="strefa-balansu-portfolio.pdf">Pobierz portfolio (PDF) ↓</a>
-    <span>Makieta strony · działajmy.online</span>
+<footer class="site-footer">
+  <div class="site-footer-bg"><img src="strefa-balansu-domek-na-drzewie-4.jpg" alt=""></div>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <span class="footer-label">Umów konsultację</span>
+        <div class="footer-contact">
+          <a href="mailto:marcinbanat@protonmail.com">marcinbanat@protonmail.com</a>
+          <a href="tel:+48724222005">724 222 005</a>
+        </div>
+      </div>
+      <div>
+        <span class="footer-label">Zasięg działania</span>
+        <div class="footer-meta-val">Cała Polska</div>
+      </div>
+      <div>
+        <span class="footer-label">Model współpracy</span>
+        <div class="footer-meta-val">Umowa o dzieło</div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Strefa Balansu</span>
+      <a href="strefa-balansu-portfolio.pdf">Pobierz portfolio (PDF)</a>
+      <span>Makieta strony · działajmy.online</span>
+    </div>
   </div>
 </footer>
 
