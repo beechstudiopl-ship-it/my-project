@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kontakt · Strefa Balansu (makieta)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FAF8F4;--ink:#211E1A;--ink-2:#5B564C;--ink-3:#948D7C;
+    --line:rgba(34,32,29,.12);--accent:#8A4B36;--mist-soft:#EEF2F1;--card:#FFFFFF;
+    --sage:#E6EAE3;--tan:#ECE1D1;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;font-weight:300;font-size:17px;line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit}
+  img{display:block;max-width:100%}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 clamp(28px,6vw,64px)}
+  h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-.02em;color:var(--ink)}
+  h1,h2{font-weight:600}
+  h3{font-weight:600}
+
+  header.wrap{padding:18px clamp(28px,6vw,64px);max-width:none;position:relative;z-index:2}
+  .hd{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 24px}
+  .logo{flex:none;text-decoration:none;color:#fff;white-space:nowrap}
+  .logo span{font-weight:600;font-size:17px;letter-spacing:-.01em}
+  .nav-links{display:flex;flex-wrap:wrap;align-items:center;gap:28px;font-size:13.5px;font-weight:600}
+  .nav-links a{text-decoration:none;color:rgba(255,255,255,.85);transition:color .15s ease;
+    white-space:nowrap;letter-spacing:.01em;padding:8px 2px}
+  .nav-links a:hover,.nav-links a.active{color:#fff}
+  @media (max-width:760px){.nav-links{display:none}}
+  @media (max-width:400px){.logo{font-size:13px}}
+
+  .arr{display:inline-block;margin-left:6px;transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+  .btn-pill{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;white-space:nowrap;
+    font-weight:600;font-size:14.5px;color:#fff;background:var(--accent);
+    padding:13px 24px;border-radius:8px;transition:opacity .15s ease;border:none;cursor:pointer}
+  .btn-pill:hover{opacity:.88}
+
+  .page-hero{position:relative;min-height:40vh;display:flex;flex-direction:column;color:#fff;overflow:hidden}
+  .page-hero-bg{position:absolute;inset:0;z-index:0}
+  .page-hero-bg img{width:100%;height:100%;object-fit:cover;filter:saturate(.85) contrast(1.05) brightness(.65)}
+  .page-hero-bg::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(10,9,7,.62) 0%,rgba(10,9,7,.3) 30%,rgba(10,9,7,.6) 100%)}
+  .page-hero-in{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:center;padding:40px 0}
+  .eyebrow{font-size:13.5px;letter-spacing:.02em;color:rgba(255,255,255,.75);margin-bottom:16px;font-weight:700}
+  .page-hero h1{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(32px,5vw,52px);
+    line-height:1.15;max-width:18ch;color:#fff;letter-spacing:-.01em}
+  .page-hero-desc{font-size:16px;color:rgba(255,255,255,.82);line-height:1.75;max-width:58ch;margin-top:18px}
+
+  main{padding:68px 0 84px}
+  .contact-grid{display:grid;grid-template-columns:1fr;gap:48px}
+  @media (min-width:900px){.contact-grid{grid-template-columns:1fr 1.1fr;gap:72px}}
+
+  .info-block h2{font-size:clamp(23px,2.8vw,28px)}
+  .info-rows{margin-top:28px;border-top:1px solid var(--line)}
+  .info-row{display:flex;flex-wrap:wrap;gap:6px 20px;padding:18px 0;border-bottom:1px solid var(--line)}
+  .info-row-label{flex:none;width:120px;font-size:12.5px;font-weight:600;text-transform:none;
+    letter-spacing:.01em;color:var(--ink-3);padding-top:2px}
+  .info-row-val{flex:1;min-width:0;font-size:16px;color:var(--ink);overflow-wrap:anywhere}
+  .info-row-val a{text-decoration:none;color:var(--ink);font-weight:600}
+  .info-row-val a:hover{color:var(--accent)}
+
+  .quote-block{border-left:2px solid var(--accent);padding:4px 0 4px 22px;margin-top:36px}
+  .quote-block p{font-weight:500;font-size:18px;color:var(--ink);line-height:1.5}
+  .quote-block cite{display:block;margin-top:14px;font-style:normal;font-size:13px;color:var(--ink-3)}
+
+  .form-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:clamp(28px,4vw,40px)}
+  .form-card h2{font-size:20px}
+  .field{margin-top:16px}
+  .field:first-of-type{margin-top:22px}
+  .field label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-3);margin-bottom:6px;letter-spacing:.01em}
+  .field input,.field select,.field textarea{
+    width:100%;font-size:15px;padding:12px 14px;border-radius:8px;
+    background:var(--bg);border:1.5px solid var(--line);color:var(--ink);font-family:inherit}
+  .field textarea{resize:vertical}
+  .field input::placeholder,.field textarea::placeholder{color:var(--ink-3)}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:0;border-color:var(--accent)}
+  .form-submit{width:100%;margin-top:22px}
+  .form-note{margin-top:12px;font-size:12px;color:var(--ink-3);line-height:1.5}
+  .form-done{display:none;text-align:center;padding:20px 0}
+  .form-done.show{display:block}
+  .form-done h3{font-size:19px}
+  .form-done p{margin-top:8px;color:var(--ink-2);font-size:14.5px}
+
+  footer.site-footer{border-top:1px solid var(--line);background:var(--tan);padding:28px 0}
+  .footer-bottom{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;align-items:center;
+    font-size:13px;color:var(--ink-3)}
+  .footer-bottom a{text-decoration:none;color:var(--ink-3);border-bottom:1px solid var(--line)}
+  .footer-bottom a:hover{color:var(--accent);border-color:var(--accent)}
+</style>
+</head>
+<body>
+
+<div class="page-hero">
+  <div class="page-hero-bg">
+    <img src="strefa-balansu-realizacja-nowa-3.jpg" alt="Drewniana konstrukcja placu zabaw w pomieszczeniu">
+  </div>
+  <header class="wrap">
+    <div class="hd">
+      <a href="demo-strefa-balansu.html" class="logo"><span>Strefa Balansu</span></a>
+      <div class="nav-links">
+        <a href="demo-strefa-balansu-oferta.html">Oferta</a>
+        <a href="demo-strefa-balansu-dla-kogo.html">Dla kogo</a>
+        <a href="demo-strefa-balansu-portfolio.html">Portfolio</a>
+        <a href="demo-strefa-balansu-kontakt.html" class="active">Kontakt</a>
+      </div>
+    </div>
+  </header>
+  <div class="wrap page-hero-in">
+    <div class="eyebrow">Kontakt</div>
+    <h1>Umów konsultację</h1>
+    <p class="page-hero-desc">Napisz kilka słów o miejscu, które macie na myśli. Odpowiemy i zaproponujemy termin konsultacji.</p>
+  </div>
+</div>
+
+<main class="wrap">
+  <div class="contact-grid">
+    <div class="info-block">
+      <h2>Dane kontaktowe</h2>
+      <div class="info-rows">
+        <div class="info-row">
+          <span class="info-row-label">E-mail</span>
+          <span class="info-row-val"><a href="mailto:marcinbanat@protonmail.com">marcinbanat@protonmail.com</a></span>
+        </div>
+        <div class="info-row">
+          <span class="info-row-label">Telefon</span>
+          <span class="info-row-val"><a href="tel:+48724222005">724 222 005</a></span>
+        </div>
+        <div class="info-row">
+          <span class="info-row-label">Zasięg</span>
+          <span class="info-row-val">Cała Polska</span>
+        </div>
+        <div class="info-row">
+          <span class="info-row-label">Model współpracy</span>
+          <span class="info-row-val">Umowa o dzieło</span>
+        </div>
+        <div class="info-row">
+          <span class="info-row-label">Social media</span>
+          <span class="info-row-val"><a href="https://www.facebook.com/p/Strefa-Balansu-100054387555401/" target="_blank" rel="noopener">Facebook</a></span>
+        </div>
+      </div>
+      <div class="quote-block">
+        <p>„To więcej niż zabawa - to przygotowanie do wyzwań nadchodzącego świata."</p>
+        <cite>Marcin Banat, założyciel Strefy Balansu</cite>
+      </div>
+    </div>
+
+    <div class="form-card" id="formCard">
+      <div id="formMain">
+        <h2>Napisz do mnie</h2>
+        <div class="field">
+          <label>Imię</label>
+          <input type="text" placeholder="np. Anna">
+        </div>
+        <div class="field">
+          <label>Telefon lub e-mail</label>
+          <input type="text" placeholder="np. 500 000 000">
+        </div>
+        <div class="field">
+          <label>Rodzaj miejsca</label>
+          <select>
+            <option>Przedszkole / szkoła</option>
+            <option>Park lub przestrzeń publiczna</option>
+            <option>Prywatna posesja</option>
+            <option>Inne</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Kilka słów o miejscu</label>
+          <textarea rows="5" placeholder="Opisz miejsce, które macie na myśli, warunki terenowe i orientacyjny budżet"></textarea>
+        </div>
+        <button class="btn-pill form-submit" id="formSubmit">Wyślij zgłoszenie<span class="arr">→</span></button>
+        <p class="form-note">Makieta, przycisk pokazuje potwierdzenie, bez realnej wysyłki wiadomości.</p>
+      </div>
+      <div class="form-done" id="formDone">
+        <h3>Dzięki za wiadomość</h3>
+        <p>To makieta, w wersji docelowej zgłoszenie trafi mailem lub przez system rezerwacji.</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-bottom">
+      <span>© 2026 Strefa Balansu</span>
+      <a href="strefa-balansu-portfolio.pdf">Pobierz portfolio (PDF)</a>
+      <span>Makieta strony · działajmy.online</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('formSubmit').addEventListener('click', function(){
+    document.getElementById('formMain').style.display = 'none';
+    document.getElementById('formDone').classList.add('show');
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfolio · Strefa Balansu (makieta)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FAF8F4;--ink:#211E1A;--ink-2:#5B564C;--ink-3:#948D7C;
+    --line:rgba(34,32,29,.12);--accent:#8A4B36;--mist-soft:#EEF2F1;--card:#FFFFFF;
+    --sage:#E6EAE3;--tan:#ECE1D1;
+    --navy:#17151E;--navy-line:rgba(255,255,255,.14);--navy-ink-2:rgba(255,255,255,.68);--navy-ink-3:rgba(255,255,255,.46);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;font-weight:300;font-size:17px;line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit}
+  img{display:block;max-width:100%}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 clamp(28px,6vw,64px)}
+  h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-.02em;color:var(--ink)}
+  h1,h2{font-weight:600}
+  h3{font-weight:600}
+
+  header.wrap{padding:18px clamp(28px,6vw,64px);max-width:none;position:relative;z-index:2}
+  .hd{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 24px}
+  .logo{flex:none;text-decoration:none;color:#fff;white-space:nowrap}
+  .logo span{font-weight:600;font-size:17px;letter-spacing:-.01em}
+  .nav-links{display:flex;flex-wrap:wrap;align-items:center;gap:28px;font-size:13.5px;font-weight:600}
+  .nav-links a{text-decoration:none;color:rgba(255,255,255,.85);transition:color .15s ease;
+    white-space:nowrap;letter-spacing:.01em;padding:8px 2px}
+  .nav-links a:hover,.nav-links a.active{color:#fff}
+  @media (max-width:760px){.nav-links{display:none}}
+  @media (max-width:400px){.logo{font-size:13px}}
+
+  .btn-line{
+    position:relative;display:inline-flex;align-items:center;gap:2px;text-decoration:none;white-space:nowrap;
+    font-weight:500;font-size:14px;color:var(--ink);
+    border-bottom:1px solid var(--ink);padding-bottom:3px;transition:color .15s ease,border-color .15s ease;
+  }
+  .btn-line:hover{color:var(--accent);border-color:var(--accent)}
+  .btn-line.on-dark{color:#fff;border-color:rgba(255,255,255,.6)}
+  .btn-line.on-dark:hover{color:#fff;border-color:#fff}
+  .arr{display:inline-block;margin-left:6px;transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+  .btn-line:hover .arr{transform:translateX(4px)}
+  .btn-pill{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;white-space:nowrap;
+    font-weight:600;font-size:14.5px;color:#fff;background:var(--accent);
+    padding:13px 24px;border-radius:8px;transition:opacity .15s ease}
+  .btn-pill:hover{opacity:.88}
+
+  .page-hero{position:relative;min-height:46vh;display:flex;flex-direction:column;color:#fff;overflow:hidden}
+  .page-hero-bg{position:absolute;inset:0;z-index:0}
+  .page-hero-bg img{width:100%;height:100%;object-fit:cover;filter:saturate(.85) contrast(1.05) brightness(.7)}
+  .page-hero-bg::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(10,9,7,.62) 0%,rgba(10,9,7,.3) 30%,rgba(10,9,7,.55) 100%)}
+  .page-hero-in{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:center;padding:40px 0}
+  .eyebrow{font-size:13.5px;letter-spacing:.02em;color:rgba(255,255,255,.75);margin-bottom:16px;font-weight:700}
+  .page-hero h1{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(32px,5vw,52px);
+    line-height:1.15;max-width:18ch;color:#fff;letter-spacing:-.01em}
+  .page-hero-desc{font-size:16px;color:rgba(255,255,255,.82);line-height:1.75;max-width:58ch;margin-top:18px}
+
+  section{padding:68px 0}
+  section.sec-sage{background:var(--sage)}
+  .section-head{display:flex;flex-direction:column;gap:14px;margin-bottom:40px;max-width:680px}
+  .kicker-label{font-size:13.5px;font-weight:600;color:var(--accent);letter-spacing:.02em}
+  section h2{font-size:clamp(23px,2.8vw,29px);line-height:1.15}
+  .section-sub{font-size:15.5px;color:var(--ink-2);line-height:1.75}
+
+  /* PROJECT — a named realization with a photo gallery */
+  .project{padding-top:56px;border-top:1px solid var(--line)}
+  .project:first-child{padding-top:0;border-top:none}
+  .project-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:24px}
+  .project-head h2{font-size:clamp(22px,2.8vw,28px)}
+  .project-head .loc{font-size:14.5px;color:var(--ink-3)}
+  .project-gallery{display:grid;grid-template-columns:1fr;gap:14px}
+  @media (min-width:640px){.project-gallery{grid-template-columns:repeat(3,1fr)}}
+  .project-gallery a{display:block;aspect-ratio:4/3;overflow:hidden;border-radius:12px;background:var(--mist-soft)}
+  .project-gallery img{width:100%;height:100%;object-fit:cover;filter:saturate(.93) contrast(1.05) brightness(1.02);transition:transform .3s ease}
+  .project-gallery a:hover img{transform:scale(1.04)}
+
+  /* Realizacje without photos yet, plain honest list */
+  .more-list{margin-top:8px;border-top:1px solid var(--line)}
+  .more-row{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px;
+    padding:20px 0;border-bottom:1px solid var(--line)}
+  .more-row h3{font-size:16.5px;font-weight:600}
+  .more-row span{font-size:13.5px;color:var(--ink-3)}
+
+  .cta-band{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:clamp(32px,5vw,48px);
+    text-align:center}
+  .cta-band h2{font-size:clamp(23px,3vw,30px)}
+  .cta-band p{margin-top:12px;color:var(--ink-2);font-size:15.5px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta-band-actions{display:flex;justify-content:center;margin-top:26px}
+
+  .site-footer{position:relative;color:var(--ink);overflow:hidden;padding:88px 0 28px;background:var(--tan)}
+  .site-footer > .wrap{position:relative;z-index:1}
+  .footer-hero{display:grid;grid-template-columns:1fr;gap:48px;padding-bottom:56px;margin-bottom:40px;
+    border-bottom:1px solid var(--line)}
+  @media (min-width:900px){.footer-hero{grid-template-columns:1.05fr 1fr;gap:64px;align-items:start}}
+  .footer-info h2{color:var(--ink);font-size:clamp(28px,3.8vw,40px);max-width:14ch}
+  .footer-quote{border-left:2px solid var(--accent);padding-left:20px;margin:32px 0}
+  .footer-quote p{font-size:18px;font-weight:500;color:var(--ink);line-height:1.5}
+  .footer-quote cite{display:flex;align-items:center;gap:10px;margin-top:14px;font-style:normal;font-size:13px;color:var(--ink-3)}
+  .quote-avatar{width:34px;height:34px;border-radius:50%;overflow:hidden;background:var(--mist-soft);flex:none}
+  .quote-avatar img{width:100%;height:100%;object-fit:cover}
+  .footer-meta-row{display:flex;flex-wrap:wrap;gap:28px 40px;margin-top:8px}
+  .footer-label{font-size:13px;letter-spacing:.01em;color:var(--ink-3);margin-bottom:10px;display:block}
+  .footer-contact{display:flex;flex-direction:column;gap:6px}
+  .footer-contact a{font-size:19px;font-weight:600;letter-spacing:-.005em;color:var(--ink);text-decoration:none}
+  .footer-contact a:hover{color:var(--accent)}
+  .footer-meta-val{font-size:19px;font-weight:600;color:var(--ink)}
+  .footer-form-card{background:var(--card);color:var(--ink);border-radius:16px;padding:clamp(26px,4vw,34px);border:1px solid var(--line)}
+  .footer-form-card h3{font-size:19px;font-weight:600}
+  .footer-form-card .field{margin-top:16px}
+  .footer-form-card .field:first-of-type{margin-top:20px}
+  .footer-form-card .field label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-3);margin-bottom:6px;letter-spacing:.01em}
+  .footer-form-card .field input,.footer-form-card .field textarea{
+    width:100%;font-size:15px;padding:12px 14px;border-radius:8px;
+    background:var(--bg);border:1.5px solid var(--line);color:var(--ink);font-family:inherit}
+  .footer-form-card .field textarea{resize:vertical}
+  .footer-form-card .field input::placeholder,.footer-form-card .field textarea::placeholder{color:var(--ink-3)}
+  .footer-form-card .field input:focus,.footer-form-card .field textarea:focus{outline:0;border-color:var(--accent)}
+  .footer-form-submit{width:100%;justify-content:center;margin-top:20px;border:none;cursor:pointer}
+  .footer-form-note{margin-top:12px;font-size:12px;color:var(--ink-3);line-height:1.5}
+  .footer-form-done{display:none;text-align:center;padding:12px 0}
+  .footer-form-done.show{display:block}
+  .footer-form-done h3{font-size:19px}
+  .footer-form-done p{margin-top:8px;color:var(--ink-2);font-size:14.5px}
+  .footer-bottom{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;align-items:center;
+    font-size:13px;color:var(--ink-3)}
+  .footer-bottom a{text-decoration:none;color:var(--ink-3);border-bottom:1px solid var(--line)}
+  .footer-bottom a:hover{color:var(--accent);border-color:var(--accent)}
+</style>
+</head>
+<body>
+
+<div class="page-hero">
+  <div class="page-hero-bg">
+    <img src="strefa-balansu-domek-na-drzewie-1.jpg" alt="Drewniana konstrukcja placu zabaw">
+  </div>
+  <header class="wrap">
+    <div class="hd">
+      <a href="demo-strefa-balansu.html" class="logo"><span>Strefa Balansu</span></a>
+      <div class="nav-links">
+        <a href="demo-strefa-balansu-oferta.html">Oferta</a>
+        <a href="demo-strefa-balansu-dla-kogo.html">Dla kogo</a>
+        <a href="demo-strefa-balansu-portfolio.html" class="active">Portfolio</a>
+        <a href="demo-strefa-balansu-kontakt.html">Kontakt</a>
+      </div>
+    </div>
+  </header>
+  <div class="wrap page-hero-in">
+    <div class="eyebrow">Portfolio</div>
+    <h1>Wybrane realizacje</h1>
+    <p class="page-hero-desc">Lista projektów jest w trakcie uzupełniania przez klienta, kolejne zdjęcia i opisy będą dodawane sukcesywnie.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+  <div class="project">
+    <div class="project-head">
+      <h2>Domek na Drzewie</h2>
+      <span class="loc">Gdynia</span>
+    </div>
+    <div class="project-gallery">
+      <a href="strefa-balansu-domek-na-drzewie-1.jpg" target="_blank"><img src="strefa-balansu-domek-na-drzewie-1.jpg" alt="Domek na Drzewie, Gdynia, zdjęcie 1"></a>
+      <a href="strefa-balansu-domek-na-drzewie-2.jpg" target="_blank"><img src="strefa-balansu-domek-na-drzewie-2.jpg" alt="Domek na Drzewie, Gdynia, zdjęcie 2"></a>
+      <a href="strefa-balansu-domek-na-drzewie-3.jpg" target="_blank"><img src="strefa-balansu-domek-na-drzewie-3.jpg" alt="Domek na Drzewie, Gdynia, zdjęcie 3"></a>
+      <a href="strefa-balansu-domek-na-drzewie-4.jpg" target="_blank"><img src="strefa-balansu-domek-na-drzewie-4.jpg" alt="Domek na Drzewie, Gdynia, zdjęcie 4"></a>
+      <a href="strefa-balansu-domek-na-drzewie-5.jpg" target="_blank"><img src="strefa-balansu-domek-na-drzewie-5.jpg" alt="Domek na Drzewie, Gdynia, zdjęcie 5"></a>
+    </div>
+  </div>
+  </div>
+</section>
+
+<section class="sec-sage">
+  <div class="wrap">
+  <div class="project">
+    <div class="project-head">
+      <h2>Pająk</h2>
+      <span class="loc">Las Academy, Sopot</span>
+    </div>
+    <div class="project-gallery">
+      <a href="strefa-balansu-pro-amus-1.jpg" target="_blank"><img src="strefa-balansu-pro-amus-1.jpg" alt="Pająk, Las Academy Sopot, zdjęcie 1"></a>
+      <a href="strefa-balansu-pro-amus-2.jpg" target="_blank"><img src="strefa-balansu-pro-amus-2.jpg" alt="Pająk, Las Academy Sopot, zdjęcie 2"></a>
+      <a href="strefa-balansu-pro-amus-3.jpg" target="_blank"><img src="strefa-balansu-pro-amus-3.jpg" alt="Pająk, Las Academy Sopot, zdjęcie 3"></a>
+      <a href="strefa-balansu-pro-amus-4.jpg" target="_blank"><img src="strefa-balansu-pro-amus-4.jpg" alt="Pająk, Las Academy Sopot, zdjęcie 4"></a>
+      <a href="strefa-balansu-pro-amus-5.jpg" target="_blank"><img src="strefa-balansu-pro-amus-5.jpg" alt="Pająk, Las Academy Sopot, zdjęcie 5"></a>
+    </div>
+  </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+  <div class="project">
+    <div class="project-head">
+      <h2>Statek Piratów</h2>
+      <span class="loc">Sopot</span>
+    </div>
+    <div class="project-gallery">
+      <a href="strefa-balansu-realizacja-nowa-1.jpg" target="_blank"><img src="strefa-balansu-realizacja-nowa-1.jpg" alt="Statek Piratów, Sopot, zdjęcie 1"></a>
+      <a href="strefa-balansu-realizacja-nowa-2.jpg" target="_blank"><img src="strefa-balansu-realizacja-nowa-2.jpg" alt="Statek Piratów, Sopot, zdjęcie 2"></a>
+      <a href="strefa-balansu-realizacja-nowa-3.jpg" target="_blank"><img src="strefa-balansu-realizacja-nowa-3.jpg" alt="Statek Piratów, Sopot, zdjęcie 3"></a>
+      <a href="strefa-balansu-realizacja-nowa-4.jpg" target="_blank"><img src="strefa-balansu-realizacja-nowa-4.jpg" alt="Statek Piratów, Sopot, zdjęcie 4"></a>
+      <a href="strefa-balansu-realizacja-nowa-5.jpg" target="_blank"><img src="strefa-balansu-realizacja-nowa-5.jpg" alt="Statek Piratów, Sopot, zdjęcie 5"></a>
+      <a href="strefa-balansu-realizacja-nowa-6.jpg" target="_blank"><img src="strefa-balansu-realizacja-nowa-6.jpg" alt="Statek Piratów, Sopot, zdjęcie 6"></a>
+      <a href="strefa-balansu-realizacja-nowa-7.jpg" target="_blank"><img src="strefa-balansu-realizacja-nowa-7.jpg" alt="Statek Piratów, Sopot, zdjęcie 7"></a>
+      <a href="strefa-balansu-realizacja-nowa-8.jpg" target="_blank"><img src="strefa-balansu-realizacja-nowa-8.jpg" alt="Statek Piratów, Sopot, zdjęcie 8"></a>
+      <a href="strefa-balansu-realizacja-nowa-9.jpg" target="_blank"><img src="strefa-balansu-realizacja-nowa-9.jpg" alt="Statek Piratów, Sopot, zdjęcie 9"></a>
+    </div>
+  </div>
+  </div>
+</section>
+
+<section class="sec-sage">
+  <div class="wrap">
+  <div class="section-head">
+    <span class="kicker-label">Pozostałe realizacje</span>
+    <h2>Kolejne projekty, zdjęcia w przygotowaniu</h2>
+    <p class="section-sub">Poniższe realizacje są potwierdzone, materiały zdjęciowe zostaną dodane w kolejnym etapie.</p>
+  </div>
+  <div class="more-list">
+    <div class="more-row"><h3>Sopocka Szkoła Montessori</h3><span>Sopot</span></div>
+    <div class="more-row"><h3>Szkoła Między Drzewami</h3><span>zdjęcia w przygotowaniu</span></div>
+    <div class="more-row"><h3>Park za Torami pod Lipami</h3><span>Olsztyn</span></div>
+    <div class="more-row"><h3>Maple Tree Montessori</h3><span>zdjęcia w przygotowaniu</span></div>
+  </div>
+  <div class="cta-band" style="margin-top:56px">
+    <h2>Masz miejsce, które czeka na projekt?</h2>
+    <p>Pełne portfolio w formie PDF, ze wszystkimi realizacjami i opisami, do pobrania w stopce strony.</p>
+    <div class="cta-band-actions">
+      <a href="demo-strefa-balansu-kontakt.html" class="btn-pill">Zamów konsultację<span class="arr" style="margin-left:2px">→</span></a>
+    </div>
+  </div>
+</div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-hero">
+      <div class="footer-info">
+        <h2>Podnieś wartość i atrakcyjność swojej inwestycji</h2>
+        <blockquote class="footer-quote">
+          <p>„To więcej niż zabawa - to przygotowanie do wyzwań nadchodzącego świata."</p>
+          <cite>
+            <span class="quote-avatar"><img src="strefa-balansu-marcin-banat.png" alt="Marcin Banat"></span>
+            Marcin Banat, założyciel Strefy Balansu
+          </cite>
+        </blockquote>
+        <div class="footer-meta-row">
+          <div>
+            <span class="footer-label">Kontakt</span>
+            <div class="footer-contact">
+              <a href="mailto:marcinbanat@protonmail.com">marcinbanat@protonmail.com</a>
+              <a href="tel:+48724222005">724 222 005</a>
+            </div>
+          </div>
+          <div>
+            <span class="footer-label">Zasięg działania</span>
+            <div class="footer-meta-val">Cała Polska</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-form-card">
+        <div id="footerFormMain">
+          <h3>Zamów konsultację</h3>
+          <div class="field">
+            <label>Imię</label>
+            <input type="text" placeholder="np. Anna">
+          </div>
+          <div class="field">
+            <label>Telefon lub e-mail</label>
+            <input type="text" placeholder="np. 500 000 000">
+          </div>
+          <div class="field">
+            <label>Kilka słów o miejscu</label>
+            <textarea rows="4" placeholder="Opisz miejsce, które macie na myśli"></textarea>
+          </div>
+          <button class="btn-pill footer-form-submit" id="footerFormSubmit">Wyślij zgłoszenie<span class="arr">→</span></button>
+          <p class="footer-form-note">Makieta, przycisk pokazuje potwierdzenie, bez realnej wysyłki wiadomości.</p>
+        </div>
+        <div class="footer-form-done" id="footerFormDone">
+          <h3>Dzięki za wiadomość</h3>
+          <p>To makieta, w wersji docelowej zgłoszenie trafi mailem lub przez system rezerwacji.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Strefa Balansu</span>
+      <a href="https://www.facebook.com/p/Strefa-Balansu-100054387555401/" target="_blank" rel="noopener">Facebook</a>
+      <a href="strefa-balansu-portfolio.pdf">Pobierz portfolio (PDF)</a>
+      <span>Makieta strony · działajmy.online</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('footerFormSubmit').addEventListener('click', function(){
+    document.getElementById('footerFormMain').style.display = 'none';
+    document.getElementById('footerFormDone').classList.add('show');
+  });
+</script>
+
+</body>
+</html>
