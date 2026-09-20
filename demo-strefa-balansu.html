@@ -27,18 +27,19 @@
   /* HEADER */
   header{padding:26px 0}
   .hd{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 24px}
-  .logo{flex:none;font-weight:600;font-size:14.5px;letter-spacing:.14em;
-    text-decoration:none;color:var(--ink);text-transform:uppercase;white-space:nowrap}
+  .logo{flex:none;display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);white-space:nowrap}
+  .logo img{height:40px;width:auto;border-radius:4px}
+  .logo span{font-weight:600;font-size:14.5px;letter-spacing:.1em;text-transform:uppercase}
   .nav-links{display:flex;flex-wrap:wrap;align-items:center;gap:16px 30px;font-size:14px;font-weight:400}
   .nav-links a{text-decoration:none;color:var(--ink-2);transition:color .15s ease;white-space:nowrap}
   .nav-links a:hover{color:var(--accent)}
-  @media (max-width:760px){.nav-links a:not(.cta-btn){display:none}}
+  @media (max-width:760px){.nav-links{display:none}}
   @media (max-width:400px){.logo{font-size:13px}}
 
   /* BUTTONS (arrow micro-interaction) */
   .btn-solid,.btn-line{position:relative}
   .btn-solid{
-    display:inline-flex;align-items:center;gap:2px;text-decoration:none;white-space:nowrap;overflow:hidden;
+    display:inline-flex;align-items:center;gap:2px;text-decoration:none;white-space:nowrap;
     font-weight:600;font-size:14px;color:var(--accent-ink);background:var(--accent);
     padding:12px 22px;border-radius:6px;transition:opacity .15s ease;border:1px solid var(--accent);
   }
@@ -52,13 +53,16 @@
   .arr{display:inline-block;margin-left:6px;transition:transform .25s cubic-bezier(.2,.8,.2,1)}
   .btn-solid:hover .arr,.btn-line:hover .arr{transform:translateX(4px)}
 
-  /* HERO — centered, big type */
-  .hero{padding:56px 0 0;text-align:center}
+  /* HERO — left-aligned big type, minimal, photo follows full-bleed */
+  .hero{padding:48px 0 0}
   .eyebrow{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:22px}
-  .hero h1{font-size:clamp(32px,5.6vw,54px);line-height:1.16;font-weight:600;max-width:18ch;margin:0 auto}
+  .hero h1{font-size:clamp(34px,5.6vw,56px);line-height:1.18;font-weight:600;max-width:16ch}
   .hero h1 .hl{color:var(--accent)}
-  .hero-desc{font-size:16.5px;color:var(--ink-2);line-height:1.8;max-width:58ch;margin:22px auto 0}
-  .hero-actions{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:center;margin-top:30px}
+  .hero-desc{font-size:16.5px;color:var(--ink-2);line-height:1.8;max-width:58ch;margin-top:22px}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:18px;align-items:center;margin-top:30px}
+  .hero-photo-bleed{width:100%;aspect-ratio:21/9;overflow:hidden;margin-top:48px;background:var(--mist-soft)}
+  .hero-photo-bleed img{width:100%;height:100%;object-fit:cover}
+  @media (max-width:700px){.hero-photo-bleed{aspect-ratio:4/5}}
 
   /* TRUST BAR */
   .trust-bar{margin-top:44px;padding:26px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
@@ -106,12 +110,12 @@
 
   /* FINANCE STEPS */
   .fin-steps{display:flex;flex-direction:column;margin-top:32px}
-  .fin-row{display:grid;grid-template-columns:44px 1fr auto;gap:18px;align-items:baseline;
+  .fin-row{display:grid;grid-template-columns:44px 1fr;gap:18px;align-items:baseline;
     padding:20px 0;border-top:1px solid var(--line)}
   .fin-row:last-child{border-bottom:1px solid var(--line)}
   .fin-row .n{font-size:14px;color:var(--ink-3)}
   .fin-row h3{font-size:16px;font-weight:600}
-  .fin-row .frac{font-size:14px;color:var(--ink-3);white-space:nowrap}
+  .fin-row .frac{display:block;margin-top:6px;font-size:14px;color:var(--ink-3)}
 
   /* PROOF: portfolio grid */
   .proof-grid{display:grid;grid-template-columns:1fr;gap:28px}
@@ -126,9 +130,9 @@
   .trust-strip{margin-top:44px;padding-top:32px;border-top:1px solid var(--line)}
   .trust-strip h4{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);
     font-weight:600;margin-bottom:18px;text-align:center}
-  .trust-names{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 28px}
-  .trust-names span{font-size:13.5px;color:var(--ink-2);white-space:nowrap}
-  .trust-names span:not(:last-child)::after{content:"·";margin-left:28px;color:var(--ink-3)}
+  .trust-names{text-align:center;line-height:2.1}
+  .trust-names span{font-size:13.5px;color:var(--ink-2)}
+  .trust-names span:not(:last-child)::after{content:"·";margin:0 12px;color:var(--ink-3)}
 
   /* CTA FINAL — full-bleed photo background */
   .cta-final{position:relative;padding:110px 0;text-align:center;color:#fff;overflow:hidden}
@@ -154,25 +158,31 @@
 
 <header class="wrap">
   <div class="hd">
-    <a href="demo-strefa-balansu.html" class="logo">Strefa Balansu</a>
+    <a href="demo-strefa-balansu.html" class="logo">
+      <img src="strefa-balansu-logo.png" alt="Strefa Balansu">
+      <span>Strefa Balansu</span>
+    </a>
     <div class="nav-links">
       <a href="demo-strefa-balansu-oferta.html">Oferta</a>
       <a href="demo-strefa-balansu-dla-kogo.html">Dla kogo</a>
       <a href="demo-strefa-balansu-portfolio.html">Portfolio</a>
       <a href="demo-strefa-balansu-kontakt.html">Kontakt</a>
-      <a href="demo-strefa-balansu-kontakt.html" class="btn-solid cta-btn">Zamów konsultację</a>
     </div>
   </div>
 </header>
 
 <div class="wrap hero">
-  <div class="eyebrow" style="justify-content:center;display:flex">Autorskie, certyfikowane konstrukcje do zabawy · na zamówienie</div>
   <h1>Zabawa, która <span class="hl">napędza</span> rozwój, zdrowie i więzi.</h1>
-  <p class="hero-desc">Tworzymy unikatowe miejsca, gdzie zabawa napędza procesy: profilaktyki chorób cywilizacyjnych, tworzenia i wzmacniania więzi społecznych oraz pełnego i wszechstronnego rozwoju potencjału dzieci i młodzieży. Łączymy rzemiosło z wiedzą terapeutyczną i pedagogiczną w niskoemisyjne, inspirujące formy.</p>
   <div class="hero-actions">
-    <a href="demo-strefa-balansu-kontakt.html" class="btn-solid">Zamów konsultację<span class="arr">→</span></a>
-    <a href="demo-strefa-balansu-oferta.html" class="btn-line">Zobacz ofertę<span class="arr">→</span></a>
+    <a href="demo-strefa-balansu-kontakt.html" class="btn-line">Zamów konsultację<span class="arr">→</span></a>
   </div>
+</div>
+<div class="hero-photo-bleed">
+  <img src="strefa-balansu-pro-amus-2.jpg" alt="Drewniana konstrukcja do zabawy na tle nieba">
+</div>
+
+<div class="wrap">
+  <p class="hero-desc" style="max-width:70ch;margin-top:44px">Tworzymy unikatowe miejsca, gdzie zabawa napędza procesy: profilaktyki chorób cywilizacyjnych, tworzenia i wzmacniania więzi społecznych oraz pełnego i wszechstronnego rozwoju potencjału dzieci i młodzieży. Łączymy rzemiosło z wiedzą terapeutyczną i pedagogiczną w niskoemisyjne, inspirujące formy.</p>
   <div class="trust-bar">
     <div class="trust-item"><b>od 2004</b>na rynku aranżacji prozdrowotnych przestrzeni</div>
     <div class="trust-item"><b>~100</b>certyfikowanych, unikatowych urządzeń</div>
@@ -184,7 +194,7 @@
 <section class="wrap">
   <div class="section-head">
     <span class="section-num">Dlaczego to ma znaczenie</span>
-    <h2>To więcej niż zabawa — to profilaktyka, więzi i rozwój</h2>
+    <h2>To więcej niż zabawa: profilaktyka, więzi i rozwój</h2>
     <p class="section-sub">Wrodzone potrzeby rozwojowe i poznawcze w formie spontanicznej zabawy są głównym motorem procesu profilaktycznego. Bez zachęty i namawiania realizują się w jej trakcie cele niewidoczne na pierwszy rzut oka:</p>
   </div>
   <div class="goal-grid">
@@ -206,7 +216,7 @@
   </div>
   <div class="quote-block">
     <div class="quote-avatar"><img src="strefa-balansu-marcin-banat.png" alt="Marcin Banat"></div>
-    <p>„To więcej niż zabawa — to przygotowanie do wyzwań nadchodzącego świata."</p>
+    <p>„To więcej niż zabawa - to przygotowanie do wyzwań nadchodzącego świata."</p>
     <cite>Marcin Banat, założyciel Strefy Balansu</cite>
   </div>
 </section>
@@ -216,7 +226,7 @@
     <div class="split-text">
       <span class="section-num">Autorski produkt, nie seryjna produkcja</span>
       <h2 style="margin-top:14px">Zamiana słów i wizji na projekty, osadzone w rzeczywistości</h2>
-      <p class="section-sub" style="margin-top:14px">Tworzenie ze skromnych zasobów wartościowych konstrukcji. Przeobrażanie „nieużytków" w unikatowe i pożyteczne miejsca — każdy projekt dopasowany do konkretnego miejsca i inwestora, nie z katalogu.</p>
+      <p class="section-sub" style="margin-top:14px">Tworzenie ze skromnych zasobów wartościowych konstrukcji. Przeobrażanie „nieużytków" w unikatowe i pożyteczne miejsca. Każdy projekt dopasowany do konkretnego miejsca i inwestora, nie z katalogu.</p>
       <a href="demo-strefa-balansu-oferta.html" class="section-more">Zobacz pełną ofertę i warunki terenowe<span class="arr">→</span></a>
     </div>
     <div class="split-visual"><img src="strefa-balansu-domek-na-drzewie-3.jpg" alt="Detal drewnianej konstrukcji, rzemieślnicze wykonanie"></div>
@@ -227,7 +237,7 @@
   <div class="split-row reverse">
     <div class="split-text">
       <span class="section-num">Eko technologia</span>
-      <h2 style="margin-top:14px">Trwałe, selekcjonowane materiały — znikomy ślad węglowy</h2>
+      <h2 style="margin-top:14px">Trwałe, selekcjonowane materiały o znikomym śladzie węglowym</h2>
       <p class="section-sub" style="margin-top:14px">W celu zapewnienia trwałości i odporności na zużycie oraz zminimalizowania skutków wandalizmu, stosownie do budżetu, używam najbardziej trwałych, selekcjonowanych materiałów. Gdy mam możliwość, unikam trudnych do utylizacji i wysokoemisyjnych tworzyw sztucznych i betonu.</p>
       <div class="mat-list">
         <span class="mat-pill">Drewno dębowe</span>
@@ -244,23 +254,20 @@
 <section class="wrap">
   <div class="section-head">
     <span class="section-num">Model współpracy</span>
-    <h2>Przejrzysty schemat rozliczenia — umowa o dzieło</h2>
+    <h2>Przejrzysty schemat rozliczenia w ramach umowy o dzieło</h2>
   </div>
   <div class="fin-steps">
     <div class="fin-row">
       <span class="n">01</span>
-      <h3>Opracowanie koncepcji i projektu gotowego do wdrożenia</h3>
-      <span class="frac">~1/3 wartości inwestycji</span>
+      <div><h3>Opracowanie koncepcji i projektu gotowego do wdrożenia</h3><span class="frac">~1/3 wartości inwestycji</span></div>
     </div>
     <div class="fin-row">
       <span class="n">02</span>
-      <h3>Wykonanie i montaż urządzeń</h3>
-      <span class="frac">~1/3 wartości inwestycji</span>
+      <div><h3>Wykonanie i montaż urządzeń</h3><span class="frac">~1/3 wartości inwestycji</span></div>
     </div>
     <div class="fin-row">
       <span class="n">03</span>
-      <h3>Odbiór dzieła, przeglądy i serwis</h3>
-      <span class="frac">~1/3 wartości inwestycji</span>
+      <div><h3>Odbiór dzieła, przeglądy i serwis</h3><span class="frac">~1/3 wartości inwestycji</span></div>
     </div>
   </div>
   <div class="hero-actions" style="justify-content:flex-start;margin-top:32px">
@@ -270,7 +277,7 @@
 
 <section class="wrap">
   <div class="section-head">
-    <span class="section-num">Dowód — wybrane realizacje</span>
+    <span class="section-num">Dowód</span>
     <h2>Zaufali mi m.in. fundacje, samorządy i szkoły Montessori</h2>
   </div>
   <div class="proof-grid">
@@ -312,7 +319,7 @@
   <div class="wrap">
     <div class="eyebrow" style="display:flex">Porozmawiajmy o Twoim miejscu</div>
     <h2>Podnieś wartość i atrakcyjność swojej inwestycji</h2>
-    <p>Napisz kilka słów o miejscu, które macie na myśli — odpowiemy i zaproponujemy termin konsultacji.</p>
+    <p>Napisz kilka słów o miejscu, które macie na myśli. Odpowiemy i zaproponujemy termin konsultacji.</p>
     <div class="cta-final-actions">
       <a href="demo-strefa-balansu-kontakt.html" class="btn-solid">Zamów konsultację<span class="arr">→</span></a>
     </div>
