@@ -21,20 +21,21 @@
   }
   a{color:inherit}
   img{display:block;max-width:100%}
-  .wrap{max-width:1120px;margin:0 auto;padding:0 clamp(24px,5vw,56px)}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 clamp(28px,6vw,64px)}
   h1,h2,h3{font-family:'Inter',sans-serif;font-weight:500;letter-spacing:-.01em;color:var(--ink)}
 
   /* HEADER */
   header{padding:30px 0}
-  .hd{display:flex;align-items:center;justify-content:space-between;gap:24px}
-  .logo{font-weight:500;font-size:14.5px;letter-spacing:.14em;
-    text-decoration:none;color:var(--ink);text-transform:uppercase}
-  .nav-links{display:flex;align-items:center;gap:34px;font-size:14px;font-weight:400}
-  .nav-links a{text-decoration:none;color:var(--ink-2);transition:color .15s ease}
+  .hd{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 24px}
+  .logo{flex:none;font-weight:500;font-size:14.5px;letter-spacing:.14em;
+    text-decoration:none;color:var(--ink);text-transform:uppercase;white-space:nowrap}
+  .nav-links{display:flex;flex-wrap:wrap;align-items:center;gap:16px 34px;font-size:14px;font-weight:400}
+  .nav-links a{text-decoration:none;color:var(--ink-2);transition:color .15s ease;white-space:nowrap}
   .nav-links a:hover{color:var(--accent)}
   .nav-links a.cta-link{color:var(--ink);border-bottom:1px solid var(--ink);padding-bottom:2px}
   .nav-links a.cta-link:hover{color:var(--accent);border-color:var(--accent)}
   @media (max-width:760px){.nav-links a:not(.cta-link){display:none}}
+  @media (max-width:400px){.logo{font-size:13px}}
 
   /* HERO — single column, no split alignment */
   .hero{padding:56px 0 0}
@@ -101,7 +102,7 @@
   /* CTA FINAL */
   .cta-final{padding:90px 0;text-align:center}
   .cta-final .eyebrow{text-align:center}
-  .cta-final h2{font-size:clamp(26px,4vw,38px);font-weight:500;max-width:22ch;margin:0 auto}
+  .cta-final h2{font-size:clamp(26px,4vw,38px);font-weight:500;max-width:30ch;margin:0 auto}
   .cta-final p{margin-top:16px;font-size:16px;color:var(--ink-2);max-width:46ch;margin-left:auto;margin-right:auto}
   .cta-final-actions{display:flex;justify-content:center;margin-top:32px}
 
@@ -135,7 +136,7 @@
     <a href="demo-strefa-balansu-oferta.html" class="btn-line muted">Zobacz ofertę</a>
   </div>
   <div class="hero-photo">
-    <img src="strefa-balansu-realizacja-nowa-2.jpg" alt="Drewniana konstrukcja do zabawy w formie statku, wnętrze" loading="lazy">
+    <img src="strefa-balansu-realizacja-nowa-2.jpg" alt="Drewniana konstrukcja do zabawy w formie statku, wnętrze">
   </div>
 </div>
 
@@ -194,15 +195,15 @@
   </div>
   <div class="port-grid">
     <a href="demo-strefa-balansu-portfolio.html" class="port-card">
-      <div class="port-photo"><img src="strefa-balansu-domek-na-drzewie-2.jpg" alt="Domek na Drzewie, Gdynia" loading="lazy"></div>
+      <div class="port-photo"><img src="strefa-balansu-domek-na-drzewie-2.jpg" alt="Domek na Drzewie, Gdynia"></div>
       <div class="port-cap">Domek na Drzewie<span class="loc">Gdynia</span></div>
     </a>
     <a href="demo-strefa-balansu-portfolio.html" class="port-card">
-      <div class="port-photo"><img src="strefa-balansu-pro-amus-4.jpg" alt="Konstrukcja typu Pająk" loading="lazy"></div>
+      <div class="port-photo"><img src="strefa-balansu-pro-amus-4.jpg" alt="Konstrukcja typu Pająk"></div>
       <div class="port-cap">Pająk<span class="loc">Pro-Amus</span></div>
     </a>
     <a href="demo-strefa-balansu-portfolio.html" class="port-card">
-      <div class="port-photo"><img src="strefa-balansu-realizacja-nowa-1.jpg" alt="Najnowsza realizacja wnętrzarska" loading="lazy"></div>
+      <div class="port-photo"><img src="strefa-balansu-realizacja-nowa-1.jpg" alt="Najnowsza realizacja wnętrzarska"></div>
       <div class="port-cap">Najnowsza realizacja<span class="loc">w trakcie uzupełniania</span></div>
     </a>
   </div>
