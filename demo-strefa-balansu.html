@@ -64,7 +64,7 @@
     background:linear-gradient(180deg,rgba(10,9,7,.62) 0%,rgba(10,9,7,.25) 22%,rgba(12,10,8,.42) 60%,rgba(10,9,7,.6) 100%)}
   .hero{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:center;
     text-align:center;padding:40px 0 64px}
-  .eyebrow{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:22px}
+  .eyebrow{font-size:13.5px;letter-spacing:.02em;color:rgba(255,255,255,.75);margin-bottom:22px}
   .hero h1{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(36px,6vw,64px);
     line-height:1.14;max-width:17ch;margin:0 auto;color:#fff;letter-spacing:-.01em}
   .hero h1 .hl{font-style:italic;font-weight:500;color:#fff;text-decoration:underline;
@@ -79,6 +79,7 @@
   @media (max-width:700px){.hero-stage{min-height:100vh}}
 
   /* TRUST BAR */
+  .intro-block{padding-bottom:64px}
   .trust-bar{margin-top:40px;display:grid;grid-template-columns:1fr;gap:18px;text-align:left}
   @media (min-width:700px){.trust-bar{grid-template-columns:repeat(4,1fr);gap:24px}}
   .trust-item{font-size:14px;color:var(--ink-2)}
@@ -121,8 +122,8 @@
   .quote-block{border-left:2px solid var(--accent);padding:4px 0 4px clamp(20px,4vw,32px);margin-top:48px}
   .quote-block p{font-weight:500;font-style:normal;
     font-size:clamp(19px,2.4vw,24px);color:var(--ink);line-height:1.5}
-  .quote-block cite{display:flex;align-items:center;gap:12px;margin-top:20px;font-style:normal;font-size:13px;
-    letter-spacing:.03em;text-transform:uppercase;color:var(--ink-3)}
+  .quote-block cite{display:flex;align-items:center;gap:12px;margin-top:20px;font-style:normal;font-size:13.5px;
+    letter-spacing:.01em;color:var(--ink-3)}
   .quote-avatar{width:34px;height:34px;border-radius:50%;overflow:hidden;background:var(--mist-soft);flex:none}
   .quote-avatar img{width:100%;height:100%;object-fit:cover}
 
@@ -137,15 +138,18 @@
   .mat-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
   .mat-pill{font-size:13px;color:var(--ink-2);border:1px solid var(--line);border-radius:20px;padding:7px 14px}
 
-  /* FINANCE STEPS */
+  /* FINANCE STEPS — accordion */
   .fin-steps{display:flex;flex-direction:column;margin-top:32px}
-  .fin-row{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;
-    padding:24px 0;border-top:1px solid var(--line)}
+  .fin-row{border-top:1px solid var(--line)}
   .fin-row:last-child{border-bottom:1px solid var(--line)}
+  .fin-row summary{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;
+    padding:24px 0;cursor:pointer;list-style:none}
+  .fin-row summary::-webkit-details-marker{display:none}
   .fin-row h3{font-size:17px;font-weight:600}
-  .fin-row .frac{display:block;margin-top:6px;font-size:14px;color:var(--ink-3)}
-  .fin-row .arr{margin-left:0;color:var(--ink-3);transition:transform .25s cubic-bezier(.2,.8,.2,1)}
-  .fin-row:hover .arr{transform:translateX(4px);color:var(--accent)}
+  .fin-row .frac{display:block;margin:-8px 0 22px;font-size:14px;color:var(--ink-3)}
+  .fin-row .arr{color:var(--ink-3);transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+  .fin-row summary:hover .arr{color:var(--accent)}
+  .fin-row[open] .arr{transform:rotate(90deg)}
 
   /* PROOF: portfolio grid */
   .proof-grid{display:grid;grid-template-columns:1fr;gap:28px}
@@ -155,7 +159,7 @@
   .proof-photo img{width:100%;height:100%;object-fit:cover;filter:saturate(.9) contrast(1.08) brightness(.85)}
   .proof-card::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(10,9,8,.82) 0%,rgba(10,9,8,.15) 45%,rgba(10,9,8,0) 65%)}
   .proof-badge{position:absolute;top:16px;left:16px;z-index:1;background:rgba(255,255,255,.92);color:var(--ink);
-    font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:6px 12px;border-radius:20px}
+    font-size:12px;font-weight:600;letter-spacing:.01em;padding:6px 12px;border-radius:20px}
   .proof-cap{position:absolute;left:18px;right:18px;bottom:18px;z-index:1;font-size:15px;font-weight:700;color:#fff}
   .proof-cap .loc{display:block;margin-top:3px;font-size:12.5px;font-weight:400;color:rgba(255,255,255,.72)}
   .proof-cap .see{display:block;margin-top:10px;font-size:12.5px;font-weight:500;color:#fff;
@@ -163,7 +167,7 @@
 
   /* TRUST STRIP (Współpraca — marquee-style) */
   .trust-strip{margin-top:44px;padding-top:32px;border-top:1px solid var(--line)}
-  .trust-strip h4{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);
+  .trust-strip h4{font-size:13.5px;letter-spacing:.01em;color:var(--ink-3);
     font-weight:600;margin-bottom:18px;text-align:center}
   .trust-names{text-align:center;line-height:2.1}
   .trust-names span{font-size:13.5px;color:var(--ink-2)}
@@ -184,7 +188,7 @@
   .footer-lead-actions{display:flex;justify-content:center;margin-top:28px}
   .footer-top{display:grid;grid-template-columns:1fr;gap:36px}
   @media (min-width:700px){.footer-top{grid-template-columns:1.4fr 1fr 1fr}}
-  .footer-label{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.65);margin-bottom:14px;display:block}
+  .footer-label{font-size:13.5px;letter-spacing:.01em;color:rgba(255,255,255,.65);margin-bottom:14px;display:block}
   .footer-contact{display:flex;flex-direction:column;gap:4px}
   .footer-contact a{font-size:clamp(22px,3.4vw,32px);font-weight:600;letter-spacing:-.01em;color:#fff;text-decoration:none}
   .footer-contact a:hover{color:var(--accent)}
@@ -229,7 +233,7 @@
   </div>
 </div>
 
-<div class="wrap">
+<div class="wrap intro-block">
   <p class="intro-lead">Tworzymy unikatowe miejsca, gdzie zabawa napędza procesy: profilaktyki chorób cywilizacyjnych, tworzenia i wzmacniania więzi społecznych oraz pełnego i wszechstronnego rozwoju potencjału dzieci i młodzieży. Łączymy rzemiosło z wiedzą terapeutyczną i pedagogiczną w niskoemisyjne, inspirujące formy.</p>
   <div class="trust-bar">
     <div class="trust-item"><b>od 2004</b>na rynku aranżacji prozdrowotnych przestrzeni</div>
@@ -309,18 +313,18 @@
     <h2>Przejrzysty schemat rozliczenia w ramach umowy o dzieło</h2>
   </div>
   <div class="fin-steps">
-    <div class="fin-row">
-      <div><h3>Opracowanie koncepcji i projektu gotowego do wdrożenia</h3><span class="frac">~1/3 wartości inwestycji</span></div>
-      <span class="arr">→</span>
-    </div>
-    <div class="fin-row">
-      <div><h3>Wykonanie i montaż urządzeń</h3><span class="frac">~1/3 wartości inwestycji</span></div>
-      <span class="arr">→</span>
-    </div>
-    <div class="fin-row">
-      <div><h3>Odbiór dzieła, przeglądy i serwis</h3><span class="frac">~1/3 wartości inwestycji</span></div>
-      <span class="arr">→</span>
-    </div>
+    <details class="fin-row" open>
+      <summary><h3>Opracowanie koncepcji i projektu gotowego do wdrożenia</h3><span class="arr">→</span></summary>
+      <span class="frac">~1/3 wartości inwestycji</span>
+    </details>
+    <details class="fin-row">
+      <summary><h3>Wykonanie i montaż urządzeń</h3><span class="arr">→</span></summary>
+      <span class="frac">~1/3 wartości inwestycji</span>
+    </details>
+    <details class="fin-row">
+      <summary><h3>Odbiór dzieła, przeglądy i serwis</h3><span class="arr">→</span></summary>
+      <span class="frac">~1/3 wartości inwestycji</span>
+    </details>
   </div>
   <div class="hero-actions" style="justify-content:flex-start;margin-top:32px">
     <a href="demo-strefa-balansu-kontakt.html" class="btn-line">Zapytaj o wycenę<span class="arr">→</span></a>
