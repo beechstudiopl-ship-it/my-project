@@ -10,7 +10,7 @@
 <style>
   :root{
     --bg:#FAF8F4;--ink:#22201D;--ink-2:#5B564C;--ink-3:#948D7C;
-    --line:rgba(34,32,29,.12);--accent:#8A4B36;--accent-ink:#fff;--mist-soft:#EEF2F1;--card:#FFFFFF;
+    --line:rgba(34,32,29,.12);--accent:#8A4B36;--mist-soft:#EEF2F1;--card:#FFFFFF;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
@@ -22,7 +22,7 @@
   a{color:inherit}
   img{display:block;max-width:100%}
   .wrap{max-width:1120px;margin:0 auto;padding:0 clamp(28px,6vw,64px)}
-  h1,h2,h3{font-family:'Inter',sans-serif;font-weight:600;letter-spacing:-.01em;color:var(--ink)}
+  h1,h2,h3{font-family:'Inter',sans-serif;font-weight:700;letter-spacing:-.01em;color:var(--ink)}
 
   /* HEADER */
   header{padding:26px 0}
@@ -36,27 +36,22 @@
   @media (max-width:760px){.nav-links{display:none}}
   @media (max-width:400px){.logo{font-size:13px}}
 
-  /* BUTTONS (arrow micro-interaction) */
-  .btn-solid,.btn-line{position:relative}
-  .btn-solid{
-    display:inline-flex;align-items:center;gap:2px;text-decoration:none;white-space:nowrap;
-    font-weight:600;font-size:14px;color:var(--accent-ink);background:var(--accent);
-    padding:12px 22px;border-radius:6px;transition:opacity .15s ease;border:1px solid var(--accent);
-  }
-  .btn-solid:hover{opacity:.9}
+  /* LINKS (underline + arrow micro-interaction, no filled buttons) */
   .btn-line{
-    display:inline-flex;align-items:center;gap:2px;text-decoration:none;white-space:nowrap;
+    position:relative;display:inline-flex;align-items:center;gap:2px;text-decoration:none;white-space:nowrap;
     font-weight:500;font-size:14px;color:var(--ink);
     border-bottom:1px solid var(--ink);padding-bottom:3px;transition:color .15s ease,border-color .15s ease;
   }
   .btn-line:hover{color:var(--accent);border-color:var(--accent)}
+  .btn-line.on-dark{color:#fff;border-color:rgba(255,255,255,.6)}
+  .btn-line.on-dark:hover{color:#fff;border-color:#fff}
   .arr{display:inline-block;margin-left:6px;transition:transform .25s cubic-bezier(.2,.8,.2,1)}
-  .btn-solid:hover .arr,.btn-line:hover .arr{transform:translateX(4px)}
+  .btn-line:hover .arr{transform:translateX(4px)}
 
   /* HERO — left-aligned big type, minimal, photo follows full-bleed */
   .hero{padding:48px 0 0}
   .eyebrow{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:22px}
-  .hero h1{font-size:clamp(34px,5.6vw,56px);line-height:1.18;font-weight:600;max-width:16ch}
+  .hero h1{font-size:clamp(34px,5.6vw,56px);line-height:1.18;font-weight:700;max-width:16ch}
   .hero h1 .hl{color:var(--accent)}
   .hero-desc{font-size:16.5px;color:var(--ink-2);line-height:1.8;max-width:58ch;margin-top:22px}
   .hero-actions{display:flex;flex-wrap:wrap;gap:18px;align-items:center;margin-top:30px}
@@ -75,7 +70,7 @@
   section{padding:68px 0;border-top:1px solid var(--line)}
   .section-head{display:flex;flex-direction:column;gap:14px;margin-bottom:40px;max-width:680px}
   .section-num{font-size:13px;letter-spacing:.1em;color:var(--ink-3)}
-  section h2{font-size:clamp(23px,3vw,29px);font-weight:600;line-height:1.3}
+  section h2{font-size:clamp(23px,3vw,29px);font-weight:700;line-height:1.3}
   .section-sub{font-size:15.5px;color:var(--ink-2);line-height:1.75}
   .section-more{display:inline-block;margin-top:34px;font-size:14px;color:var(--ink);
     border-bottom:1px solid var(--ink);padding-bottom:2px;text-decoration:none}
@@ -85,7 +80,7 @@
   .goal-grid{display:grid;grid-template-columns:1fr;gap:32px}
   @media (min-width:700px){.goal-grid{grid-template-columns:repeat(3,1fr);gap:40px}}
   .goal-item .n{font-size:14px;color:var(--ink-3);display:block;margin-bottom:12px}
-  .goal-item h3{font-size:17px;font-weight:600}
+  .goal-item h3{font-size:17px;font-weight:700}
   .goal-item p{margin-top:10px;font-size:14.5px;color:var(--ink-2);line-height:1.75}
 
   /* QUOTE BLOCK */
@@ -114,7 +109,7 @@
     padding:20px 0;border-top:1px solid var(--line)}
   .fin-row:last-child{border-bottom:1px solid var(--line)}
   .fin-row .n{font-size:14px;color:var(--ink-3)}
-  .fin-row h3{font-size:16px;font-weight:600}
+  .fin-row h3{font-size:16px;font-weight:700}
   .fin-row .frac{display:block;margin-top:6px;font-size:14px;color:var(--ink-3)}
 
   /* PROOF: portfolio grid */
@@ -141,10 +136,9 @@
   .cta-final-bg::after{content:"";position:absolute;inset:0;background:rgba(20,17,14,.62)}
   .cta-final > .wrap{position:relative;z-index:1}
   .cta-final .eyebrow{color:rgba(255,255,255,.75);justify-content:center}
-  .cta-final h2{color:#fff;font-size:clamp(24px,3.6vw,34px);font-weight:600;max-width:30ch;margin:0 auto}
+  .cta-final h2{color:#fff;font-size:clamp(24px,3.6vw,34px);font-weight:700;max-width:30ch;margin:0 auto}
   .cta-final p{margin-top:14px;font-size:15.5px;color:rgba(255,255,255,.82);max-width:52ch;margin-left:auto;margin-right:auto}
   .cta-final-actions{display:flex;justify-content:center;margin-top:28px}
-  .cta-final .btn-solid{background:#fff;color:var(--ink);border-color:#fff}
 
   /* FOOTER */
   footer{border-top:1px solid var(--line);padding:30px 0}
@@ -271,7 +265,7 @@
     </div>
   </div>
   <div class="hero-actions" style="justify-content:flex-start;margin-top:32px">
-    <a href="demo-strefa-balansu-kontakt.html" class="btn-solid">Zapytaj o wycenę<span class="arr">→</span></a>
+    <a href="demo-strefa-balansu-kontakt.html" class="btn-line">Zapytaj o wycenę<span class="arr">→</span></a>
   </div>
 </section>
 
@@ -321,7 +315,7 @@
     <h2>Podnieś wartość i atrakcyjność swojej inwestycji</h2>
     <p>Napisz kilka słów o miejscu, które macie na myśli. Odpowiemy i zaproponujemy termin konsultacji.</p>
     <div class="cta-final-actions">
-      <a href="demo-strefa-balansu-kontakt.html" class="btn-solid">Zamów konsultację<span class="arr">→</span></a>
+      <a href="demo-strefa-balansu-kontakt.html" class="btn-line on-dark">Zamów konsultację<span class="arr">→</span></a>
     </div>
   </div>
 </div>
