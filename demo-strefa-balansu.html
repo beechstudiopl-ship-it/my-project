@@ -6,12 +6,13 @@
 <title>Strefa Balansu · autorskie, certyfikowane place zabaw (makieta)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,440;0,9..144,560;1,9..144,440&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#FAF8F4;--ink:#211E1A;--ink-2:#5B564C;--ink-3:#948D7C;
     --line:rgba(34,32,29,.12);--accent:#8A4B36;--mist-soft:#EEF2F1;--card:#FFFFFF;
-    --navy:#17151E;--navy-line:rgba(255,255,255,.14);
+    --sage:#E6EAE3;--tan:#ECE1D1;
+    --navy:#17151E;--navy-line:rgba(255,255,255,.14);--navy-ink-2:rgba(255,255,255,.68);--navy-ink-3:rgba(255,255,255,.46);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
@@ -23,15 +24,15 @@
   a{color:inherit}
   img{display:block;max-width:100%}
   .wrap{max-width:1120px;margin:0 auto;padding:0 clamp(28px,6vw,64px)}
-  h3{font-family:'Inter',sans-serif;font-weight:700;letter-spacing:-.01em;color:var(--ink)}
-  h1,h2{font-family:'Fraunces',serif;font-weight:440;letter-spacing:-.015em;color:var(--ink)}
+  h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-.02em;color:var(--ink)}
+  h1,h2{font-weight:800}
+  h3{font-weight:700}
 
   /* HEADER */
   header{padding:26px 0}
   .hd{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 24px}
-  .logo{flex:none;display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);white-space:nowrap}
-  .logo img{height:40px;width:auto;border-radius:4px}
-  .logo span{font-weight:600;font-size:14.5px;letter-spacing:.1em;text-transform:uppercase}
+  .logo{flex:none;text-decoration:none;color:var(--ink);white-space:nowrap}
+  .logo span{font-weight:800;font-size:17px;letter-spacing:-.01em}
   .nav-links{display:flex;flex-wrap:wrap;align-items:center;gap:16px 30px;font-size:14px;font-weight:400}
   .nav-links a{text-decoration:none;color:var(--ink-2);transition:color .15s ease;white-space:nowrap}
   .nav-links a:hover{color:var(--accent)}
@@ -53,8 +54,8 @@
   /* HERO — left-aligned big type, minimal, photo follows full-bleed */
   .hero{padding:48px 0 0}
   .eyebrow{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:22px}
-  .hero h1{font-size:clamp(38px,6.4vw,64px);line-height:1.08;font-weight:440;max-width:15ch}
-  .hero h1 .hl{color:var(--accent);font-style:italic}
+  .hero h1{font-size:clamp(38px,6.4vw,62px);line-height:1.05;max-width:14ch}
+  .hero h1 .hl{color:var(--accent)}
   .hero-desc{font-size:16.5px;color:var(--ink-2);line-height:1.8;max-width:58ch;margin-top:22px}
   .hero-actions{display:flex;flex-wrap:wrap;gap:18px;align-items:center;margin-top:30px}
   .hero-photo-bleed{width:100%;aspect-ratio:21/9;overflow:hidden;margin-top:48px;background:var(--mist-soft)}
@@ -69,10 +70,20 @@
   .trust-item b{display:block;font-family:'Inter',sans-serif;font-weight:600;font-size:20px;color:var(--ink);margin-bottom:4px}
 
   /* SECTION GENERIC */
-  section{padding:68px 0;border-top:1px solid var(--line)}
+  section{padding:68px 0}
+  section.sec-sage{background:var(--sage)}
+  section.sec-tan{background:var(--tan)}
+  section.sec-navy{background:var(--navy);color:#fff}
+  section.sec-navy h2{color:#fff}
+  section.sec-navy .section-sub{color:var(--navy-ink-2)}
+  section.sec-navy .trust-strip h4{color:var(--navy-ink-3)}
+  section.sec-navy .trust-names span{color:var(--navy-ink-2)}
+  section.sec-navy .trust-names span::after{color:var(--navy-ink-3)}
+  section.sec-navy .trust-strip{border-top-color:var(--navy-line)}
+  section.sec-navy .section-more{color:#fff;border-color:rgba(255,255,255,.5)}
+  section.sec-navy .section-more:hover{color:var(--accent);border-color:var(--accent)}
   .section-head{display:flex;flex-direction:column;gap:14px;margin-bottom:40px;max-width:680px}
-  .section-num{font-size:13px;letter-spacing:.1em;color:var(--ink-3)}
-  section h2{font-size:clamp(25px,3.2vw,32px);font-weight:560;line-height:1.22}
+  section h2{font-size:clamp(25px,3.2vw,32px);line-height:1.15}
   .section-sub{font-size:15.5px;color:var(--ink-2);line-height:1.75}
   .section-more{display:inline-block;margin-top:34px;font-size:14px;color:var(--ink);
     border-bottom:1px solid var(--ink);padding-bottom:2px;text-decoration:none}
@@ -87,8 +98,8 @@
 
   /* QUOTE BLOCK — editorial pull-quote, no card chrome */
   .quote-block{border-left:2px solid var(--accent);padding:4px 0 4px clamp(20px,4vw,32px);margin-top:48px}
-  .quote-block p{font-family:'Fraunces',serif;font-weight:440;font-style:italic;
-    font-size:clamp(19px,2.4vw,24px);color:var(--ink);line-height:1.55}
+  .quote-block p{font-weight:500;font-style:normal;
+    font-size:clamp(19px,2.4vw,24px);color:var(--ink);line-height:1.5}
   .quote-block cite{display:flex;align-items:center;gap:12px;margin-top:20px;font-style:normal;font-size:13px;
     letter-spacing:.03em;text-transform:uppercase;color:var(--ink-3)}
   .quote-avatar{width:34px;height:34px;border-radius:50%;overflow:hidden;background:var(--mist-soft);flex:none}
@@ -117,11 +128,16 @@
   /* PROOF: portfolio grid */
   .proof-grid{display:grid;grid-template-columns:1fr;gap:28px}
   @media (min-width:700px){.proof-grid{grid-template-columns:repeat(3,1fr);gap:32px}}
-  .proof-card{text-decoration:none;color:inherit}
-  .proof-photo{aspect-ratio:4/3;overflow:hidden;background:var(--mist-soft)}
-  .proof-photo img{width:100%;height:100%;object-fit:cover;filter:saturate(.93) contrast(1.05) brightness(1.02)}
-  .proof-cap{margin-top:12px;font-size:14px;color:var(--ink)}
-  .proof-cap .loc{display:block;margin-top:2px;font-size:12.5px;color:var(--ink-3)}
+  .proof-card{position:relative;display:block;aspect-ratio:3/4;overflow:hidden;text-decoration:none;color:#fff;background:var(--mist-soft)}
+  .proof-photo{position:absolute;inset:0}
+  .proof-photo img{width:100%;height:100%;object-fit:cover;filter:saturate(.9) contrast(1.08) brightness(.85)}
+  .proof-card::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(10,9,8,.82) 0%,rgba(10,9,8,.15) 45%,rgba(10,9,8,0) 65%)}
+  .proof-badge{position:absolute;top:16px;left:16px;z-index:1;background:rgba(255,255,255,.92);color:var(--ink);
+    font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:6px 12px;border-radius:20px}
+  .proof-cap{position:absolute;left:18px;right:18px;bottom:18px;z-index:1;font-size:15px;font-weight:700;color:#fff}
+  .proof-cap .loc{display:block;margin-top:3px;font-size:12.5px;font-weight:400;color:rgba(255,255,255,.72)}
+  .proof-cap .see{display:block;margin-top:10px;font-size:12.5px;font-weight:500;color:#fff;
+    border-bottom:1px solid rgba(255,255,255,.6);padding-bottom:2px;display:inline-block}
 
   /* TRUST STRIP (Współpraca — marquee-style) */
   .trust-strip{margin-top:44px;padding-top:32px;border-top:1px solid var(--line)}
@@ -138,7 +154,7 @@
   .cta-final-bg::after{content:"";position:absolute;inset:0;background:rgba(20,17,14,.62)}
   .cta-final > .wrap{position:relative;z-index:1}
   .cta-final .eyebrow{color:rgba(255,255,255,.75);justify-content:center}
-  .cta-final h2{color:#fff;font-size:clamp(28px,4vw,40px);font-weight:440;max-width:22ch;margin:0 auto}
+  .cta-final h2{color:#fff;font-size:clamp(28px,4vw,40px);max-width:16ch;margin:0 auto}
   .cta-final p{margin-top:14px;font-size:15.5px;color:rgba(255,255,255,.82);max-width:52ch;margin-left:auto;margin-right:auto}
   .cta-final-actions{display:flex;justify-content:center;margin-top:28px}
 
@@ -155,7 +171,6 @@
 <header class="wrap">
   <div class="hd">
     <a href="demo-strefa-balansu.html" class="logo">
-      <img src="strefa-balansu-logo.png" alt="Strefa Balansu">
       <span>Strefa Balansu</span>
     </a>
     <div class="nav-links">
@@ -187,9 +202,9 @@
   </div>
 </div>
 
-<section class="wrap">
+<section class="sec-sage">
+  <div class="wrap">
   <div class="section-head">
-    <span class="section-num">Dlaczego to ma znaczenie</span>
     <h2>To więcej niż zabawa: profilaktyka, więzi i rozwój</h2>
     <p class="section-sub">Wrodzone potrzeby rozwojowe i poznawcze w formie spontanicznej zabawy są głównym motorem procesu profilaktycznego. Bez zachęty i namawiania realizują się w jej trakcie cele niewidoczne na pierwszy rzut oka:</p>
   </div>
@@ -217,26 +232,28 @@
       Marcin Banat, założyciel Strefy Balansu
     </cite>
   </div>
+</div>
 </section>
 
-<section class="wrap">
+<section>
+  <div class="wrap">
   <div class="split-row">
     <div class="split-text">
-      <span class="section-num">Autorski produkt, nie seryjna produkcja</span>
-      <h2 style="margin-top:14px">Zamiana słów i wizji na projekty, osadzone w rzeczywistości</h2>
-      <p class="section-sub" style="margin-top:14px">Tworzenie ze skromnych zasobów wartościowych konstrukcji. Przeobrażanie „nieużytków" w unikatowe i pożyteczne miejsca. Każdy projekt dopasowany do konkretnego miejsca i inwestora, nie z katalogu.</p>
+      <h2>Zamiana słów i wizji na projekty, osadzone w rzeczywistości</h2>
+      <p class="section-sub" style="margin-top:16px">Tworzenie ze skromnych zasobów wartościowych konstrukcji. Przeobrażanie „nieużytków" w unikatowe i pożyteczne miejsca. Każdy projekt dopasowany do konkretnego miejsca i inwestora, nie z katalogu.</p>
       <a href="demo-strefa-balansu-oferta.html" class="section-more">Zobacz pełną ofertę i warunki terenowe<span class="arr">→</span></a>
     </div>
     <div class="split-visual"><img src="strefa-balansu-domek-na-drzewie-3.jpg" alt="Detal drewnianej konstrukcji, rzemieślnicze wykonanie"></div>
   </div>
+</div>
 </section>
 
-<section class="wrap">
+<section class="sec-tan">
+  <div class="wrap">
   <div class="split-row reverse">
     <div class="split-text">
-      <span class="section-num">Eko technologia</span>
-      <h2 style="margin-top:14px">Trwałe, selekcjonowane materiały o znikomym śladzie węglowym</h2>
-      <p class="section-sub" style="margin-top:14px">W celu zapewnienia trwałości i odporności na zużycie oraz zminimalizowania skutków wandalizmu, stosownie do budżetu, używam najbardziej trwałych, selekcjonowanych materiałów. Gdy mam możliwość, unikam trudnych do utylizacji i wysokoemisyjnych tworzyw sztucznych i betonu.</p>
+      <h2>Trwałe, selekcjonowane materiały o znikomym śladzie węglowym</h2>
+      <p class="section-sub" style="margin-top:16px">W celu zapewnienia trwałości i odporności na zużycie oraz zminimalizowania skutków wandalizmu, stosownie do budżetu, używam najbardziej trwałych, selekcjonowanych materiałów. Gdy mam możliwość, unikam trudnych do utylizacji i wysokoemisyjnych tworzyw sztucznych i betonu.</p>
       <div class="mat-list">
         <span class="mat-pill">Drewno dębowe</span>
         <span class="mat-pill">Stal nierdzewna</span>
@@ -247,11 +264,12 @@
     </div>
     <div class="split-visual"><img src="strefa-balansu-pro-amus-1.jpg" alt="Konstrukcja z drewna dębowego na tle nieba"></div>
   </div>
+</div>
 </section>
 
-<section class="wrap">
+<section>
+  <div class="wrap">
   <div class="section-head">
-    <span class="section-num">Model współpracy</span>
     <h2>Przejrzysty schemat rozliczenia w ramach umowy o dzieło</h2>
   </div>
   <div class="fin-steps">
@@ -271,25 +289,29 @@
   <div class="hero-actions" style="justify-content:flex-start;margin-top:32px">
     <a href="demo-strefa-balansu-kontakt.html" class="btn-line">Zapytaj o wycenę<span class="arr">→</span></a>
   </div>
+</div>
 </section>
 
-<section class="wrap">
+<section class="sec-navy">
+  <div class="wrap">
   <div class="section-head">
-    <span class="section-num">Dowód</span>
     <h2>Zaufali mi m.in. fundacje, samorządy i szkoły Montessori</h2>
   </div>
   <div class="proof-grid">
     <a href="demo-strefa-balansu-portfolio.html" class="proof-card">
       <div class="proof-photo"><img src="strefa-balansu-domek-na-drzewie-2.jpg" alt="Domek na Drzewie, Gdynia"></div>
-      <div class="proof-cap">Domek na Drzewie<span class="loc">Gdynia</span></div>
+      <span class="proof-badge">Realizacja</span>
+      <div class="proof-cap">Domek na Drzewie<span class="loc">Gdynia</span><span class="see">Zobacz →</span></div>
     </a>
     <a href="demo-strefa-balansu-portfolio.html" class="proof-card">
       <div class="proof-photo"><img src="strefa-balansu-pro-amus-4.jpg" alt="Konstrukcja typu Pająk"></div>
-      <div class="proof-cap">Pająk<span class="loc">Pro-Amus</span></div>
+      <span class="proof-badge">Realizacja</span>
+      <div class="proof-cap">Pająk<span class="loc">Pro-Amus</span><span class="see">Zobacz →</span></div>
     </a>
     <a href="demo-strefa-balansu-portfolio.html" class="proof-card">
       <div class="proof-photo"><img src="strefa-balansu-realizacja-nowa-1.jpg" alt="Najnowsza realizacja wnętrzarska"></div>
-      <div class="proof-cap">Najnowsza realizacja<span class="loc">w trakcie uzupełniania</span></div>
+      <span class="proof-badge">Realizacja</span>
+      <div class="proof-cap">Najnowsza realizacja<span class="loc">w trakcie uzupełniania</span><span class="see">Zobacz →</span></div>
     </a>
   </div>
   <div class="trust-strip">
@@ -310,6 +332,7 @@
     </div>
   </div>
   <a href="demo-strefa-balansu-portfolio.html" class="section-more">Zobacz pełne portfolio<span class="arr">→</span></a>
+</div>
 </section>
 
 <div class="cta-final">
