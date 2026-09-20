@@ -83,79 +83,40 @@
     flex:1;display:flex;flex-direction:column;justify-content:center;
     padding:32px clamp(20px,5vw,48px);max-width:960px;width:100%;margin:0 auto;
   }
-  .hero-grid{display:grid;grid-template-columns:1fr;gap:36px;align-items:center}
-  @media (min-width:960px){
-    .hero-grid{grid-template-columns:1.15fr 1fr;gap:44px;align-items:end}
-    main{justify-content:flex-end}
-  }
   .kicker{
-    font-family:'Archivo',sans-serif;font-weight:800;font-size:11px;text-transform:uppercase;
-    letter-spacing:.02em;color:var(--blue);margin-bottom:12px;
+    font-family:'Archivo',sans-serif;font-weight:800;font-size:13px;text-transform:uppercase;
+    letter-spacing:.02em;color:var(--blue);margin-bottom:14px;
   }
   h1{
     font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.04em;line-height:1;
-    font-size:clamp(42px,10.5vw,83px);text-transform:uppercase;
+    font-size:clamp(52px,13vw,104px);text-transform:uppercase;
   }
   h2{
     font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.03em;line-height:1.05;
     font-size:clamp(28px,5vw,44px);
   }
   .desc{
-    margin-top:24px;font-size:clamp(14px,2vw,16px);color:var(--ink-2);line-height:1.55;
-    max-width:520px;
+    margin-top:30px;font-size:clamp(17px,2.4vw,20px);color:var(--ink-2);line-height:1.55;
+    max-width:600px;
   }
   .desc b{color:var(--ink);font-weight:700}
 
   /* --- CTA --- */
-  .actions{display:flex;flex-wrap:wrap;gap:11px;margin-top:30px;align-items:center}
+  .actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:38px;align-items:center}
   .btn{
-    display:inline-flex;align-items:center;gap:10px;text-decoration:none;
+    display:inline-flex;align-items:center;gap:12px;text-decoration:none;
     font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.02em;
-    font-size:clamp(13px,1.8vw,14.5px);padding:13px 19px;border:none;
+    font-size:clamp(16px,2.2vw,18px);padding:16px 24px;border:none;
     transition:opacity .12s ease;
   }
   .btn:hover{opacity:.9}
   .btn-blue{background:var(--blue);color:#fff}
   .btn-hi{background:var(--hi);color:var(--ink)}
-  .btn .arw{font-size:16px}
+  .btn .arw{font-size:20px}
   .or{font-family:'Archivo',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;
     color:var(--ink-3)}
 
   .form-note{margin-top:12px;font-size:13.5px;color:var(--ink-3);text-align:center;line-height:1.45}
-
-  /* --- HERO SCREEN (device mockup, rotating demo screenshots) --- */
-  .hero-screen{position:relative}
-  .hero-screen-mobile{max-width:240px;margin:0 auto}
-  .hero-screen-desktop{display:none}
-  @media (min-width:960px){
-    .hero-screen-mobile{display:none}
-    .hero-screen-desktop{display:block}
-    .hero-screen{z-index:2;margin-bottom:-88px}
-  }
-  .browser-mock{position:relative}
-  .browser-mock::before{
-    content:"";position:absolute;inset:-36px;z-index:-1;
-    background:radial-gradient(60% 60% at 50% 38%,rgba(27,75,255,.20),transparent 72%);
-    filter:blur(6px);
-  }
-  .browser-bar{display:flex;align-items:center;gap:6px;background:#E4E2DA;
-    padding:9px 13px;border-radius:10px 10px 0 0;border:1px solid rgba(20,23,27,.15);border-bottom:none}
-  .browser-dot{width:8px;height:8px;border-radius:50%;background:rgba(20,23,27,.2)}
-  .browser-frame{
-    overflow:hidden;border-radius:0 0 10px 10px;border:1px solid rgba(20,23,27,.15);
-    background:#000;box-shadow:0 30px 60px rgba(20,23,27,.22);
-  }
-  .browser-frame img{display:block;width:100%;height:auto;transition:opacity .35s ease}
-  .phone-frame{
-    border:9px solid var(--ink);border-radius:32px;overflow:hidden;
-    aspect-ratio:9/19.5;background:#000;position:relative;
-    box-shadow:0 22px 44px rgba(20,23,27,.2);
-  }
-  .phone-frame::before{
-    content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
-    width:64px;height:16px;background:var(--ink);border-radius:0 0 11px 11px;z-index:2;
-  }
-  .phone-frame img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:opacity .35s ease}
 
   /* --- FOOT --- */
   footer{
@@ -246,9 +207,6 @@
   .post-arrow{font-family:'Archivo',sans-serif;font-weight:900;font-size:18px;color:var(--ink-3);transition:color .15s ease}
   .post-links a:hover .post-arrow{color:var(--blue)}
 
-  /* decorative divider between sections */
-  .section-graphic{max-width:960px;margin:0 auto;padding:8px clamp(20px,5vw,48px)}
-
   /* znasz to uczucie (dark, under hero) */
   .section-dark{background:var(--ink);border-top:1px solid var(--hair)}
   .sd-inner{width:100%;max-width:960px;margin:0 auto;padding:64px clamp(20px,5vw,48px)}
@@ -336,59 +294,16 @@
   </div>
 
   <main>
-    <div class="hero-grid">
-      <div class="hero-text">
-        <p class="kicker">Strony www dla lokalnych firm, które nie mają czasu</p>
-        <h1>To już <span class="mk">3. rok</span><br>bez strony www?</h1>
+    <p class="kicker">Strony www dla lokalnych firm, które nie mają czasu</p>
+    <h1>To już <span class="mk">3. rok</span><br>bez strony www?</h1>
 
-        <p class="desc">Łatwo mówić „ogarnę to”, a klienci trafiają do konkurencji. Czas to zmienić. <b>Zrobię dla Ciebie stronę www od 1000 zł.</b> Szybko, sprawnie i bez przepłacania. <b>Ty zajmij się biznesem.</b></p>
+    <p class="desc">Łatwo mówić „ogarnę to”, a klienci trafiają do konkurencji. Czas to zmienić. <b>Zrobię dla Ciebie stronę www od 1000 zł.</b> Szybko, sprawnie i bez przepłacania. <b>Ty zajmij się biznesem.</b></p>
 
-        <div class="actions">
-          <a href="#znasz-to-uczucie" class="btn btn-blue">Działajmy<span class="arw">↓</span></a>
-        </div>
-        <p class="form-note" style="text-align:left;margin-top:14px">Bez zobowiązań. Jedna wiadomość, i zobaczysz, czy moja oferta Cię przekona.</p>
-      </div>
-
-      <div class="hero-screen">
-        <div class="hero-screen-desktop">
-          <div class="browser-mock">
-            <div class="browser-bar"><span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span></div>
-            <div class="browser-frame">
-              <img id="heroShotDesktop" src="hero-gastro-desktop.png" alt="Przykładowe strony zrobione przez działajmy.online">
-            </div>
-          </div>
-        </div>
-        <div class="hero-screen-mobile">
-          <div class="phone-frame">
-            <img id="heroShotMobile" src="hero-gastro-mobile.png" alt="Przykładowe strony zrobione przez działajmy.online">
-          </div>
-        </div>
-      </div>
+    <div class="actions">
+      <a href="#znasz-to-uczucie" class="btn btn-blue">Działajmy<span class="arw">↓</span></a>
     </div>
+    <p class="form-note" style="text-align:left;margin-top:14px">Bez zobowiązań. Jedna wiadomość, i zobaczysz, czy moja oferta Cię przekona.</p>
   </main>
-
-  <script>
-    (function(){
-      var shotsDesktop = ["hero-gastro-desktop.png","hero-trener-desktop.png","hero-psycholog-desktop.png"];
-      var shotsMobile = ["hero-gastro-mobile.png","hero-trener-mobile.png","hero-psycholog-mobile.png"];
-      var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (reduceMotion) return;
-      function cycle(imgEl, shots){
-        var idx = 0;
-        if (!imgEl || shots.length <= 1) return;
-        setInterval(function(){
-          idx = (idx + 1) % shots.length;
-          imgEl.style.opacity = 0;
-          setTimeout(function(){
-            imgEl.src = shots[idx];
-            imgEl.style.opacity = 1;
-          }, 350);
-        }, 4200);
-      }
-      cycle(document.getElementById('heroShotDesktop'), shotsDesktop);
-      cycle(document.getElementById('heroShotMobile'), shotsMobile);
-    })();
-  </script>
 
   <section id="znasz-to-uczucie" class="section-dark">
     <div class="sd-inner">
@@ -468,15 +383,6 @@
       <span class="access-cta-link">Przeczytaj wpis →</span>
     </a>
   </section>
-
-  <div class="section-graphic" aria-hidden="true">
-    <svg viewBox="0 0 960 96" preserveAspectRatio="xMidYMid meet" width="100%" height="96">
-      <line x1="0" y1="48" x2="960" y2="48" stroke="rgba(20,23,27,.14)" stroke-width="2" stroke-dasharray="2 10"/>
-      <circle cx="160" cy="48" r="5" fill="#1B4BFF"/>
-      <circle cx="480" cy="48" r="7" fill="#F5E33D" stroke="#14171B" stroke-width="1.5"/>
-      <circle cx="800" cy="48" r="5" fill="#1B4BFF"/>
-    </svg>
-  </div>
 
   <section id="oferta" class="section2">
     <h2>Dwa pakiety cen</h2>
