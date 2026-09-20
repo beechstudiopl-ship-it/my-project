@@ -6,7 +6,7 @@
 <title>Strefa Balansu · autorskie, certyfikowane place zabaw (makieta)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#FAF8F4;--ink:#211E1A;--ink-2:#5B564C;--ink-3:#948D7C;
@@ -28,14 +28,15 @@
   h1,h2{font-weight:600}
   h3{font-weight:600}
 
-  /* HEADER — sits transparently on top of the hero photo */
+  /* HEADER — sits transparently on top of the hero photo, with its own dark fade so it stays legible on any photo */
   header{padding:26px 0;position:relative;z-index:2}
   .hd{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 24px}
   .logo{flex:none;text-decoration:none;color:#fff;white-space:nowrap}
   .logo span{font-weight:600;font-size:17px;letter-spacing:-.01em}
-  .nav-links{display:flex;flex-wrap:wrap;align-items:center;gap:16px 30px;font-size:14px;font-weight:400}
-  .nav-links a{text-decoration:none;color:rgba(255,255,255,.82);transition:color .15s ease;white-space:nowrap}
-  .nav-links a:hover{color:#fff}
+  .nav-links{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:13.5px;font-weight:600}
+  .nav-links a{text-decoration:none;color:rgba(255,255,255,.85);transition:color .15s ease,background-color .15s ease;
+    white-space:nowrap;letter-spacing:.01em;padding:8px 14px;border-radius:20px}
+  .nav-links a:hover{color:#fff;background:rgba(255,255,255,.14)}
   @media (max-width:760px){.nav-links{display:none}}
   @media (max-width:400px){.logo{font-size:13px}}
 
@@ -50,20 +51,31 @@
   .btn-line.on-dark:hover{color:#fff;border-color:#fff}
   .arr{display:inline-block;margin-left:6px;transition:transform .25s cubic-bezier(.2,.8,.2,1)}
   .btn-line:hover .arr{transform:translateX(4px)}
+  .btn-pill{display:inline-flex;align-items:center;gap:8px;text-decoration:none;white-space:nowrap;
+    font-weight:600;font-size:14px;color:var(--ink);background:var(--sage);
+    padding:12px 22px;border-radius:30px;transition:background-color .15s ease}
+  .btn-pill:hover{background:var(--tan)}
 
   /* HERO — full-bleed dimmed photo, header + headline overlaid on top */
   .hero-stage{position:relative;min-height:92vh;display:flex;flex-direction:column;color:#fff;overflow:hidden}
   .hero-stage-bg{position:absolute;inset:0;z-index:0}
   .hero-stage-bg img{width:100%;height:100%;object-fit:cover;filter:saturate(.85) contrast(1.05) brightness(.8)}
-  .hero-stage-bg::after{content:"";position:absolute;inset:0;background:rgba(12,10,8,.4)}
+  .hero-stage-bg::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(10,9,7,.62) 0%,rgba(10,9,7,.25) 22%,rgba(12,10,8,.42) 60%,rgba(10,9,7,.6) 100%)}
   .hero{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:center;
     text-align:center;padding:40px 0 64px}
   .eyebrow{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:22px}
-  .hero h1{font-size:clamp(34px,5.6vw,58px);line-height:1.12;max-width:16ch;margin:0 auto;color:#fff}
-  .hero h1 .hl{color:#fff}
-  .hero-desc{font-size:16.5px;color:rgba(255,255,255,.82);line-height:1.8;max-width:58ch;margin:22px auto 0}
+  .hero h1{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(36px,6vw,64px);
+    line-height:1.14;max-width:17ch;margin:0 auto;color:#fff;letter-spacing:-.01em}
+  .hero h1 .hl{font-style:italic;font-weight:500;color:#fff;text-decoration:underline;
+    text-decoration-color:var(--accent);text-decoration-thickness:3px;text-underline-offset:8px}
+  .hero-desc{font-size:16.5px;color:rgba(255,255,255,.82);line-height:1.8;max-width:52ch;margin:24px auto 0}
   .intro-lead{font-size:16.5px;color:var(--ink-2);line-height:1.8;max-width:70ch;margin-top:44px}
-  .hero-actions{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:center;margin-top:30px}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:center;margin-top:34px}
+  .scroll-cue{position:relative;z-index:2;display:flex;justify-content:center;padding-bottom:28px;
+    color:rgba(255,255,255,.65);animation:scroll-cue-bob 2.2s ease-in-out infinite}
+  .scroll-cue svg{display:block}
+  @keyframes scroll-cue-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
   @media (max-width:700px){.hero-stage{min-height:78vh}}
 
   /* TRUST BAR */
@@ -85,7 +97,13 @@
   section.sec-navy .trust-strip{border-top-color:var(--navy-line)}
   section.sec-navy .section-more{color:#fff;border-color:rgba(255,255,255,.5)}
   section.sec-navy .section-more:hover{color:var(--accent);border-color:var(--accent)}
+
+  /* GOALS — one cohesive card, not floating pieces */
+  .goals-card{background:var(--card);border-radius:20px;padding:clamp(32px,5vw,56px)}
+  .goals-card .quote-block{margin-top:44px;padding:32px 0 0;border-left:none;border-top:1px solid var(--line)}
   .section-head{display:flex;flex-direction:column;gap:14px;margin-bottom:40px;max-width:680px}
+  .kicker-label{font-size:13.5px;font-weight:600;color:var(--accent);letter-spacing:.02em}
+  section.sec-navy .kicker-label{color:#fff;opacity:.85}
   section h2{font-size:clamp(25px,3.2vw,32px);line-height:1.15}
   .section-sub{font-size:15.5px;color:var(--ink-2);line-height:1.75}
   .section-more{display:inline-block;margin-top:34px;font-size:14px;color:var(--ink);
@@ -153,22 +171,17 @@
   .trust-names a:hover{border-color:currentColor}
   .trust-names span:not(:last-child)::after{content:"·";margin:0 12px;color:var(--ink-3)}
 
-  /* CTA FINAL — full-bleed photo background */
-  .cta-final{position:relative;padding:110px 0;text-align:center;color:#fff;overflow:hidden}
-  .cta-final-bg{position:absolute;inset:0;z-index:0}
-  .cta-final-bg img{width:100%;height:100%;object-fit:cover;filter:saturate(.85) contrast(1.08) brightness(.95)}
-  .cta-final-bg::after{content:"";position:absolute;inset:0;background:rgba(20,17,14,.62)}
-  .cta-final > .wrap{position:relative;z-index:1}
-  .cta-final .eyebrow{color:rgba(255,255,255,.75);justify-content:center}
-  .cta-final h2{color:#fff;font-size:clamp(28px,4vw,40px);max-width:16ch;margin:0 auto}
-  .cta-final p{margin-top:14px;font-size:15.5px;color:rgba(255,255,255,.82);max-width:52ch;margin-left:auto;margin-right:auto}
-  .cta-final-actions{display:flex;justify-content:center;margin-top:28px}
-
-  /* FOOTER — full-bleed photo, bold contact block, thin rule above legal row */
-  .site-footer{position:relative;color:#fff;overflow:hidden;padding:72px 0 28px}
+  /* FOOTER — one full-bleed photo module: lead CTA + contact + legal, no seam */
+  .site-footer{position:relative;color:#fff;overflow:hidden;padding:96px 0 28px}
   .site-footer-bg{position:absolute;inset:0;z-index:0}
-  .site-footer-bg img{width:100%;height:100%;object-fit:cover;filter:saturate(.8) contrast(1.05) brightness(.55)}
+  .site-footer-bg img{width:100%;height:100%;object-fit:cover;filter:saturate(.8) contrast(1.05) brightness(.5)}
+  .site-footer-bg::after{content:"";position:absolute;inset:0;background:rgba(15,13,10,.4)}
   .site-footer > .wrap{position:relative;z-index:1}
+  .footer-lead{text-align:center;padding-bottom:64px;margin-bottom:56px;border-bottom:1px solid rgba(255,255,255,.22)}
+  .footer-lead .eyebrow{color:rgba(255,255,255,.75);justify-content:center}
+  .footer-lead h2{color:#fff;font-size:clamp(28px,4vw,40px);max-width:16ch;margin:0 auto}
+  .footer-lead p{margin-top:14px;font-size:15.5px;color:rgba(255,255,255,.82);max-width:52ch;margin-left:auto;margin-right:auto}
+  .footer-lead-actions{display:flex;justify-content:center;margin-top:28px}
   .footer-top{display:grid;grid-template-columns:1fr;gap:36px}
   @media (min-width:700px){.footer-top{grid-template-columns:1.4fr 1fr 1fr}}
   .footer-label{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.65);margin-bottom:14px;display:block}
@@ -206,9 +219,13 @@
 
   <div class="wrap hero">
     <h1>Zabawa, która <span class="hl">napędza</span> rozwój, zdrowie i więzi.</h1>
+    <p class="hero-desc">Autorskie, certyfikowane place zabaw z drewna i stali nierdzewnej — na zamówienie, dla przedszkoli, szkół, parków i prywatnych inwestorów. Na rynku od 2004 roku.</p>
     <div class="hero-actions">
       <a href="demo-strefa-balansu-kontakt.html" class="btn-line on-dark">Zamów konsultację<span class="arr">→</span></a>
     </div>
+  </div>
+  <div class="scroll-cue">
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 8l7 7 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </div>
 </div>
 
@@ -224,30 +241,32 @@
 
 <section class="sec-sage">
   <div class="wrap">
-  <div class="section-head">
-    <h2>To więcej niż zabawa: profilaktyka, więzi i rozwój</h2>
-    <p class="section-sub">Wrodzone potrzeby rozwojowe i poznawcze w formie spontanicznej zabawy są głównym motorem procesu profilaktycznego. Bez zachęty i namawiania realizują się w jej trakcie cele niewidoczne na pierwszy rzut oka:</p>
-  </div>
-  <div class="goal-grid">
-    <div class="goal-item">
-      <h3>Prozdrowotne i profilaktyczne</h3>
-      <p>W zakresie: cyberuzależnień, alkoholu i substancji toksycznych, otyłości/nadwagi, wad postawy ciała, działań antyspołecznych.</p>
+  <div class="goals-card">
+    <div class="section-head">
+      <h2>To więcej niż zabawa: profilaktyka, więzi i rozwój</h2>
+      <p class="section-sub">Wrodzone potrzeby rozwojowe i poznawcze w formie spontanicznej zabawy są głównym motorem procesu profilaktycznego. Bez zachęty i namawiania realizują się w jej trakcie cele niewidoczne na pierwszy rzut oka:</p>
     </div>
-    <div class="goal-item">
-      <h3>Prospołeczne</h3>
-      <p>Tworzenie warunków sprzyjających integracji między- i wewnątrzpokoleniowej oraz treningu umiejętności prospołecznych.</p>
+    <div class="goal-grid">
+      <div class="goal-item">
+        <h3>Prozdrowotne i profilaktyczne</h3>
+        <p>W zakresie: cyberuzależnień, alkoholu i substancji toksycznych, otyłości/nadwagi, wad postawy ciała, działań antyspołecznych.</p>
+      </div>
+      <div class="goal-item">
+        <h3>Prospołeczne</h3>
+        <p>Tworzenie warunków sprzyjających integracji między- i wewnątrzpokoleniowej oraz treningu umiejętności prospołecznych.</p>
+      </div>
+      <div class="goal-item">
+        <h3>Edukacyjne i rozwojowe</h3>
+        <p>W zakresie m.in.: samopoznania, praw fizyki, techniki i ekologii.</p>
+      </div>
     </div>
-    <div class="goal-item">
-      <h3>Edukacyjne i rozwojowe</h3>
-      <p>W zakresie m.in.: samopoznania, praw fizyki, techniki i ekologii.</p>
+    <div class="quote-block">
+      <p>„To więcej niż zabawa - to przygotowanie do wyzwań nadchodzącego świata."</p>
+      <cite>
+        <span class="quote-avatar"><img src="strefa-balansu-marcin-banat.png" alt="Marcin Banat"></span>
+        Marcin Banat, założyciel Strefy Balansu
+      </cite>
     </div>
-  </div>
-  <div class="quote-block" style="margin-top:80px">
-    <p>„To więcej niż zabawa - to przygotowanie do wyzwań nadchodzącego świata."</p>
-    <cite>
-      <span class="quote-avatar"><img src="strefa-balansu-marcin-banat.png" alt="Marcin Banat"></span>
-      Marcin Banat, założyciel Strefy Balansu
-    </cite>
   </div>
 </div>
 </section>
@@ -348,25 +367,23 @@
       <span><a href="https://pikniknaukowy.pl/" target="_blank" rel="noopener">Piknik Naukowy w Warszawie</a></span>
     </div>
   </div>
-  <a href="demo-strefa-balansu-portfolio.html" class="section-more">Zobacz pełne portfolio<span class="arr">→</span></a>
+  <div style="text-align:center">
+    <a href="demo-strefa-balansu-portfolio.html" class="section-more">Zobacz pełne portfolio<span class="arr">→</span></a>
+  </div>
 </div>
 </section>
 
-<div class="cta-final">
-  <div class="cta-final-bg"><img src="strefa-balansu-realizacja-nowa-2.jpg" alt=""></div>
-  <div class="wrap">
-    <div class="eyebrow" style="display:flex">Porozmawiajmy o Twoim miejscu</div>
-    <h2>Podnieś wartość i atrakcyjność swojej inwestycji</h2>
-    <p>Napisz kilka słów o miejscu, które macie na myśli. Odpowiemy i zaproponujemy termin konsultacji.</p>
-    <div class="cta-final-actions">
-      <a href="demo-strefa-balansu-kontakt.html" class="btn-line on-dark">Zamów konsultację<span class="arr">→</span></a>
-    </div>
-  </div>
-</div>
-
 <footer class="site-footer">
-  <div class="site-footer-bg"><img src="strefa-balansu-domek-na-drzewie-4.jpg" alt=""></div>
+  <div class="site-footer-bg"><img src="strefa-balansu-realizacja-nowa-2.jpg" alt=""></div>
   <div class="wrap">
+    <div class="footer-lead">
+      <div class="eyebrow" style="display:flex">Porozmawiajmy o Twoim miejscu</div>
+      <h2>Podnieś wartość i atrakcyjność swojej inwestycji</h2>
+      <p>Napisz kilka słów o miejscu, które macie na myśli. Odpowiemy i zaproponujemy termin konsultacji.</p>
+      <div class="footer-lead-actions">
+        <a href="demo-strefa-balansu-kontakt.html" class="btn-line on-dark">Zamów konsultację<span class="arr">→</span></a>
+      </div>
+    </div>
     <div class="footer-top">
       <div>
         <span class="footer-label">Umów konsultację</span>
