@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Strony www dla firm z Kościerzyny, Kartuz i okolic · działajmy.online</title>
+<meta name="description" content="Robię strony internetowe dla małych firm na Kaszubach i w Trójmieście: Kościerzyna, Kartuzy, Sierakowice, Szemud, Pruszcz Gdański, Gdańsk, Gdynia, Sopot.">
+<meta property="og:title" content="Strony www dla firm z Kościerzyny, Kartuz i okolic · działajmy.online">
+<meta property="og:description" content="Robię strony internetowe dla małych firm na Kaszubach i w Trójmieście: Kościerzyna, Kartuzy, Sierakowice, Szemud, Pruszcz Gdański, Gdańsk, Gdynia, Sopot.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:image" content="https://dzialajmy.online/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4F2EC;--paper-2:#E8E5DB;--ink:#14171B;--ink-2:#4A525C;--ink-3:#8B939C;
+    --hair:rgba(20,23,27,.14);--blue:#1B4BFF;--blue-d:#0C2B9E;--hi:#F5E33D;--hi-2:#FFF08A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);color:var(--ink);
+    font-family:'Source Sans 3',system-ui,sans-serif;font-size:19px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:720px;margin:0 auto;padding:0 clamp(20px,5vw,40px)}
+  .mk{display:inline;padding:0 .14em;
+    background-image:linear-gradient(105deg,var(--hi) 0%,var(--hi-2) 100%);
+    background-size:100% .68em;background-position:0 .5em;background-repeat:no-repeat;
+    box-decoration-break:clone;-webkit-box-decoration-break:clone}
+
+  /* HEADER */
+  header{border-bottom:1px solid rgba(20,23,27,.5);background:var(--paper);
+    position:sticky;top:0;z-index:20}
+  .hd{display:flex;align-items:center;justify-content:space-between;height:62px;
+    max-width:720px;margin:0 auto;padding:0 clamp(20px,5vw,40px)}
+  .logo{font-family:'Archivo',sans-serif;font-weight:900;font-size:20px;letter-spacing:-.04em;
+    text-decoration:none;color:var(--ink)}
+  .logo .d{color:var(--blue)}
+  .logo .c{display:inline-block;color:var(--blue);transform:translateY(-2px);margin-left:1px;
+    animation:bl 1.2s steps(1) infinite}
+  @keyframes bl{0%,55%{opacity:1}56%,100%{opacity:.12}}
+  .back{font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;color:var(--ink-2);
+    text-decoration:none;text-transform:uppercase}
+  .back:hover{color:var(--blue)}
+
+  /* ARTICLE */
+  article{padding:64px 0 40px}
+  .meta{font-family:'Archivo',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;
+    color:var(--ink-3);display:flex;align-items:center;gap:10px;margin-bottom:22px}
+  .meta .tag{background:var(--hi);color:var(--ink);padding:4px 9px}
+  h1{font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.04em;line-height:1.02;
+    font-size:clamp(36px,6.5vw,54px);text-transform:uppercase}
+  .dek{font-size:clamp(20px,3vw,24px);color:var(--ink-2);line-height:1.4;margin-top:24px;
+    font-weight:600}
+
+  article h2{font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.035em;
+    font-size:clamp(26px,4.5vw,34px);line-height:1.1;margin:56px 0 4px}
+  article p{margin-top:20px;color:var(--ink-2)}
+  article p.big{font-size:22px;color:var(--ink);font-weight:600;line-height:1.45}
+  article strong{color:var(--ink);font-weight:700}
+  article p a{color:var(--blue-d)}
+
+  .rule{border:0;border-top:1px solid var(--hair);margin:52px 0}
+
+  .pull{
+    border-left:4px solid var(--blue);padding:6px 0 6px 24px;margin:40px 0;
+    font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.03em;
+    font-size:clamp(24px,4vw,32px);line-height:1.15;color:var(--ink);
+  }
+
+  /* towns */
+  .tags-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+  .place-tag{
+    font-family:'Archivo',sans-serif;font-weight:700;font-size:14px;
+    padding:10px 16px;border:1.5px solid rgba(20,23,27,.2);background:#fff;color:var(--ink);
+  }
+  .place-tag.wide{border-style:dashed;color:var(--ink-2)}
+
+  /* features list (branże) */
+  .features-list{list-style:none;margin:28px 0;border-top:1px solid rgba(20,23,27,.5)}
+  .features-list li{border-bottom:1px solid var(--hair)}
+  .features-list a{display:flex;align-items:center;gap:16px;padding:18px 4px;
+    text-decoration:none;color:inherit;transition:gap .15s ease}
+  .features-list a:hover{gap:22px}
+  .features-list h3{font-family:'Archivo',sans-serif;font-weight:800;font-size:16px;color:var(--ink);flex:1}
+  .features-list .arrow{font-family:'Archivo',sans-serif;font-weight:900;font-size:18px;color:var(--ink-3);transition:color .15s ease}
+  .features-list a:hover .arrow{color:var(--blue)}
+
+  /* CTA BOX */
+  .cta-box{background:var(--ink);color:var(--paper);padding:40px clamp(24px,5vw,44px);
+    margin-top:64px}
+  .cta-box h2{color:#fff;margin-top:0}
+  .cta-box p{color:#9AA3AD;margin-top:16px}
+  .cta-box .mk{
+    color:var(--ink);
+    background-image:linear-gradient(105deg,var(--hi) 0%,var(--hi-2) 100%);
+    background-size:100% 100%;background-position:0 0;
+  }
+  .cta-btn{display:inline-flex;align-items:center;gap:12px;margin-top:28px;text-decoration:none;
+    background:var(--hi);color:var(--ink);border:1.5px solid var(--hi);
+    font-family:'Archivo',sans-serif;font-weight:900;font-size:18px;letter-spacing:-.02em;
+    padding:16px 24px;transition:opacity .12s ease}
+  .cta-btn:hover{opacity:.9}
+
+  .sign{margin-top:44px;font-family:'Archivo',sans-serif;font-weight:800;font-size:16px;
+    color:var(--ink-2)}
+  .sign b{color:var(--ink)}
+
+  /* WIECEJ WPISOW */
+  .more-posts{margin-top:64px}
+  .more-posts h2{font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.035em;
+    font-size:clamp(22px,3.5vw,28px);line-height:1.1}
+  .post-links{list-style:none;margin-top:20px;border-top:1px solid rgba(20,23,27,.5)}
+  .post-links li{border-bottom:1px solid var(--hair)}
+  .post-links a{display:flex;align-items:center;gap:16px;padding:16px 4px;
+    text-decoration:none;color:inherit;transition:gap .15s ease}
+  .post-links a:hover{gap:22px}
+  .post-index{font-family:'Archivo',sans-serif;font-weight:900;font-size:13px;color:var(--ink-3);flex:none;width:32px}
+  .post-title{font-family:'Archivo',sans-serif;font-weight:800;font-size:16px;color:var(--ink);flex:1}
+  .post-arrow{font-family:'Archivo',sans-serif;font-weight:900;font-size:18px;color:var(--ink-3);transition:color .15s ease}
+  .post-links a:hover .post-arrow{color:var(--blue)}
+
+  /* FOOTER */
+  footer{border-top:1px solid rgba(20,23,27,.5);margin-top:64px;padding:28px 0}
+  .ft{max-width:720px;margin:0 auto;padding:0 clamp(20px,5vw,40px);
+    display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between;
+    font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:600;text-transform:uppercase;
+    color:var(--ink-3)}
+  .ft a{color:var(--ink-2);text-decoration:none}
+  .ft a:hover{color:var(--blue)}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "działajmy.online",
+  "url": "https://dzialajmy.online/",
+  "image": "https://dzialajmy.online/og-image.png",
+  "priceRange": "od 1000 zł",
+  "areaServed": [
+    {"@type": "City", "name": "Kościerzyna"},
+    {"@type": "City", "name": "Kartuzy"},
+    {"@type": "City", "name": "Sierakowice"},
+    {"@type": "City", "name": "Szemud"},
+    {"@type": "City", "name": "Pruszcz Gdański"},
+    {"@type": "City", "name": "Malbork"},
+    {"@type": "City", "name": "Gdańsk"},
+    {"@type": "City", "name": "Gdynia"},
+    {"@type": "City", "name": "Sopot"}
+  ],
+  "makesOffer": {
+    "@type": "Offer",
+    "itemOffered": {
+      "@type": "Service",
+      "name": "Projektowanie i budowa stron internetowych dla małych firm"
+    }
+  }
+}
+</script>
+</head>
+<body>
+
+<header>
+  <div class="hd">
+    <a href="index.html" class="logo">działajmy<span class="d">.</span>online<span class="c">^</span></a>
+    <a href="index.html" class="back">← wróć</a>
+  </div>
+</header>
+
+<article>
+  <div class="wrap">
+    <div class="meta"><span class="tag">Obszar</span><span>Gdzie działam</span></div>
+    <h1>Robię strony dla małych firm na Kaszubach i w Trójmieście</h1>
+    <p class="dek">Lubię się spotykać, więc nie zostawiam Cię tylko z mailem i wideorozmową. Działam w obszarze, do którego mogę realnie dojechać.</p>
+
+    <hr class="rule">
+
+    <p class="big">Jeśli prowadzisz firmę w Kościerzynie, Kartuzach, Sierakowicach, Szemudzie, Pruszczu Gdańskim, Malborku albo w samym Trójmieście, mogę wpaść na miejsce, porozmawiać na żywo i zrobić Ci stronę tak samo sprawnie, jakbym siedział po sąsiedzku.</p>
+
+    <p>Część rzeczy i tak ustalamy mailem czy na szybkim telefonie, ale jeśli wolisz pogadać przy kawie o tym, czym się zajmujesz, to dla mnie żaden problem, w tym obszarze naprawdę mogę się zjawić. To nie kończy się na pierwszym spotkaniu: dojeżdżam też do klientów już w trakcie współpracy, nie tylko na starcie. Rozumiem przy tym specyfikę małych firm w tym regionie: restauracji, gabinetów, warsztatów, punktów usługowych, które nie mają czasu ani etatu na ogarnianie strony internetowej.</p>
+
+    <div class="tags-grid">
+      <span class="place-tag">Kościerzyna</span>
+      <span class="place-tag">Kartuzy</span>
+      <span class="place-tag">Sierakowice</span>
+      <span class="place-tag">Szemud</span>
+      <span class="place-tag">Pruszcz Gdański</span>
+      <span class="place-tag">Malbork</span>
+      <span class="place-tag">Gdańsk</span>
+      <span class="place-tag">Gdynia</span>
+      <span class="place-tag">Sopot</span>
+      <span class="place-tag wide">i okolice</span>
+    </div>
+
+    <div class="pull">Wolę spotkanie na żywo niż same maile. Dlatego trzymam się obszaru, do którego mogę realnie dojechać.</div>
+
+    <h2>Przykłady dla różnych branż</h2>
+    <p>Zobacz, jak wyglądają rozwiązania, które robię dla konkretnych typów działalności, mogą pasować też do Twojej firmy niezależnie od miejscowości.</p>
+
+    <ul class="features-list">
+      <li><a href="zamowienia-gastronomia.html"><h3>Restauracje i gastronomia</h3><span class="arrow">→</span></a></li>
+      <li><a href="strona-trener-fizjoterapeuta.html"><h3>Trenerzy i fizjoterapeuci</h3><span class="arrow">→</span></a></li>
+      <li><a href="strona-psycholog-psychoterapia.html"><h3>Psychologowie i gabinety terapii</h3><span class="arrow">→</span></a></li>
+      <li><a href="dla-kogo.html"><h3>Zobacz pozostałe branże</h3><span class="arrow">→</span></a></li>
+    </ul>
+
+    <p class="big">Prowadzisz firmę w jednej z tych miejscowości? Napisz, pogadamy.</p>
+
+    <div class="cta-box">
+      <h2>Zaczynamy <span class="mk">od jednej wiadomości?</span></h2>
+      <p>Opisz, czym się zajmujesz i gdzie działasz, a ja powiem, jak mogę pomóc.</p>
+      <a href="index.html#oferta" class="cta-btn"><span>Zobacz ofertę</span><span>→</span></a>
+    </div>
+
+    <p class="sign"><b>Bartosz</b>, działajmy.online</p>
+
+    <div class="more-posts">
+      <h2>Więcej wpisów</h2>
+      <ul class="post-links">
+      <li><a href="manifest.html"><span class="post-index">001</span><span class="post-title">Ładna, martwa strona</span><span class="post-arrow">→</span></a></li>
+      <li><a href="seo90.html"><span class="post-index">002</span><span class="post-title">SEO.90</span><span class="post-arrow">→</span></a></li>
+      <li><a href="nie-mam-dostepu.html"><span class="post-index">003</span><span class="post-title">Nie mam dostępu do strony</span><span class="post-arrow">→</span></a></li>
+      <li><a href="silny-lokalnie.html"><span class="post-index">004</span><span class="post-title">Silny lokalnie: jedna strona za darmo</span><span class="post-arrow">→</span></a></li>
+      <li><a href="dla-kogo.html"><span class="post-index">005</span><span class="post-title">Dla kogo</span><span class="post-arrow">→</span></a></li>
+      <li><a href="zamowienia-gastronomia.html"><span class="post-index">006</span><span class="post-title">Strona z zamówieniami dla gastronomii</span><span class="post-arrow">→</span></a></li>
+      <li><a href="strona-trener-fizjoterapeuta.html"><span class="post-index">007</span><span class="post-title">Strona z zapisami dla trenera i fizjoterapeuty</span><span class="post-arrow">→</span></a></li>
+      <li><a href="strona-psycholog-psychoterapia.html"><span class="post-index">008</span><span class="post-title">Strona dla psychologa i gabinetu psychoterapii</span><span class="post-arrow">→</span></a></li>
+      </ul>
+    </div>
+
+  </div>
+</article>
+
+<footer>
+  <div class="ft">
+    <span>Bartosz · <a href="mailto:kontakt@dzialajmy.online">kontakt@dzialajmy.online</a> · na razie działam tylko ze stronami www</span>
+  </div>
+</footer>
+
+</body>
+</html>
