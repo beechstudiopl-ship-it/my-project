@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<title>Cześć · działajmy.online</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4F2EC;--ink:#14171B;--ink-2:#4A525C;--ink-3:#8B939C;
+    --hair:rgba(20,23,27,.14);--blue:#1B4BFF;--blue-d:#0C2B9E;--hi:#F5E33D;--hi-2:#FFF08A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--paper);color:var(--ink);
+    font-family:'Source Sans 3',system-ui,sans-serif;font-size:19px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    min-height:100dvh;display:flex;flex-direction:column;
+  }
+  .mk{display:inline;padding:0 .14em;
+    background-image:linear-gradient(105deg,var(--hi) 0%,var(--hi-2) 100%);
+    background-size:100% .68em;background-position:0 .5em;background-repeat:no-repeat;
+    box-decoration-break:clone;-webkit-box-decoration-break:clone}
+
+  .logo{font-family:'Archivo',sans-serif;font-weight:900;font-size:20px;letter-spacing:-.04em;
+    text-decoration:none;color:var(--ink);padding:22px clamp(20px,5vw,48px);display:inline-block}
+  .logo .d{color:var(--blue)}
+  .logo .c{display:inline-block;color:var(--blue);transform:translateY(-2px);margin-left:1px;
+    animation:bl 1.2s steps(1) infinite}
+  @keyframes bl{0%,55%{opacity:1}56%,100%{opacity:.12}}
+
+  main{flex:1;display:flex;align-items:center;padding:20px clamp(20px,5vw,48px) 60px}
+  .wrap{max-width:600px;margin:0 auto;width:100%}
+
+  h1{font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.03em;line-height:1.1;
+    font-size:clamp(30px,5vw,42px)}
+  .note p{margin-top:20px;color:var(--ink-2);font-size:19px;line-height:1.6}
+  .note strong{color:var(--ink)}
+
+  ul.list{list-style:none;margin-top:24px;display:flex;flex-direction:column;gap:10px}
+  ul.list li{
+    padding:14px 18px;background:#fff;border:1.5px solid rgba(20,23,27,.2);
+    font-size:16.5px;color:var(--ink);
+  }
+
+  .cta-btn{display:inline-flex;align-items:center;gap:12px;margin-top:32px;text-decoration:none;
+    background:var(--hi);color:var(--ink);border:1.5px solid var(--hi);
+    font-family:'Archivo',sans-serif;font-weight:900;font-size:18px;letter-spacing:-.02em;
+    padding:16px 24px;transition:opacity .12s ease}
+  .cta-btn:hover{opacity:.9}
+
+  .sign{margin-top:40px;font-family:'Archivo',sans-serif;font-weight:800;font-size:16px;
+    color:var(--ink-2)}
+  .sign b{color:var(--ink)}
+</style>
+</head>
+<body>
+
+<a href="index.html" class="logo">działajmy<span class="d">.</span>online<span class="c">^</span></a>
+
+<main>
+  <div class="wrap">
+    <h1>Cześć, <span class="mk">to ja</span></h1>
+
+    <div class="note">
+      <p>Robię strony od lat i przerobiłem dziesiątki tematów, spraw i projektów. Teraz buduję coś zupełnie innego, nowego, i chętnie zrobię coś dla Ciebie.</p>
+      <p><strong>Daj znać, jeśli masz na tapecie:</strong></p>
+    </div>
+
+    <ul class="list">
+      <li>Pomysł, który chodzi Ci po głowie</li>
+      <li>Stary, niedziałający serwis</li>
+      <li>Chcesz z czymś ruszyć, ale się zastanawiasz</li>
+      <li>Coś zupełnie innego</li>
+    </ul>
+
+    <p style="margin-top:24px;color:var(--ink-2)">Możemy się dogadać.</p>
+
+    <a href="mailto:kontakt@dzialajmy.online" class="cta-btn"><span>Napisz do mnie</span><span>→</span></a>
+
+    <p class="sign"><b>Bartosz</b></p>
+  </div>
+</main>
+
+</body>
+</html>

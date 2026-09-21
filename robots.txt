@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /dla-znajomych.html
 
 Sitemap: https://dzialajmy.online/sitemap.xml
