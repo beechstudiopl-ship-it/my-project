@@ -87,6 +87,7 @@
 
   /* SECTION GENERIC */
   section{padding:68px 0}
+  #oferta,#dla-kogo,#kontakt{scroll-margin-top:24px}
   section.sec-sage{background:var(--sage)}
   section.sec-tan{background:var(--tan)}
   section.sec-navy{background:var(--navy);color:#fff}
@@ -219,6 +220,24 @@
     font-size:13px;color:var(--ink-3)}
   .footer-bottom a{text-decoration:none;color:var(--ink-3);border-bottom:1px solid var(--line)}
   .footer-bottom a:hover{color:var(--accent);border-color:var(--accent)}
+
+  /* MOBILE BOTTOM TAB BAR — replaces the hidden desktop nav below 760px */
+  .mobile-tabbar{display:none}
+  @media (max-width:760px){
+    body{padding-bottom:64px}
+    .mobile-tabbar{
+      display:flex;position:fixed;left:0;right:0;bottom:0;z-index:50;
+      background:var(--card);border-top:1px solid var(--line);
+      padding:8px 4px calc(8px + env(safe-area-inset-bottom));
+    }
+    .mobile-tabbar a{
+      flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;
+      text-decoration:none;color:var(--ink-3);font-size:11px;font-weight:600;
+      padding:6px 2px;letter-spacing:.01em;
+    }
+    .mobile-tabbar a:hover,.mobile-tabbar a:active{color:var(--accent)}
+    .mobile-tabbar svg{display:block}
+  }
 </style>
 </head>
 <body>
@@ -234,10 +253,10 @@
         <span>Strefa Balansu</span>
       </a>
       <div class="nav-links">
-        <a href="demo-strefa-balansu-oferta.html">Oferta</a>
-        <a href="demo-strefa-balansu-dla-kogo.html">Dla kogo</a>
+        <a href="#oferta">Oferta</a>
+        <a href="#dla-kogo">Dla kogo</a>
         <a href="demo-strefa-balansu-portfolio.html">Portfolio</a>
-        <a href="demo-strefa-balansu-kontakt.html">Kontakt</a>
+        <a href="#kontakt">Kontakt</a>
       </div>
     </div>
   </header>
@@ -246,7 +265,7 @@
     <h1>Zabawa, która <span class="hl">napędza</span> rozwój, zdrowie i więzi.</h1>
     <p class="hero-desc">Autorskie, certyfikowane place zabaw z drewna i stali nierdzewnej, na zamówienie, dla przedszkoli, szkół, parków i prywatnych inwestorów. Na rynku od 2004 roku.</p>
     <div class="hero-actions">
-      <a href="demo-strefa-balansu-kontakt.html" class="btn-line on-dark">Zamów konsultację<span class="arr">→</span></a>
+      <a href="#kontakt" class="btn-line on-dark">Zamów konsultację<span class="arr">→</span></a>
     </div>
   </div>
   <div class="scroll-cue">
@@ -264,7 +283,7 @@
   </div>
 </div>
 
-<section class="sec-sage">
+<section class="sec-sage" id="dla-kogo">
   <div class="wrap">
   <div class="goals-card">
     <div class="section-head">
@@ -296,13 +315,13 @@
 </div>
 </section>
 
-<section>
+<section id="oferta">
   <div class="wrap">
   <div class="split-row">
     <div class="split-text">
       <h2>Zamiana słów i wizji na projekty, osadzone w rzeczywistości</h2>
       <p class="section-sub" style="margin-top:16px">Tworzenie ze skromnych zasobów wartościowych konstrukcji. Przeobrażanie „nieużytków" w unikatowe i pożyteczne miejsca. Każdy projekt dopasowany do konkretnego miejsca i inwestora, nie z katalogu.</p>
-      <a href="demo-strefa-balansu-oferta.html" class="section-more">Zobacz pełną ofertę i warunki terenowe<span class="arr">→</span></a>
+      <a href="#kontakt" class="section-more">Zobacz pełną ofertę i warunki terenowe<span class="arr">→</span></a>
     </div>
     <div class="split-visual"><img src="strefa-balansu-domek-na-drzewie-3.jpg" alt="Detal drewnianej konstrukcji, rzemieślnicze wykonanie"></div>
   </div>
@@ -348,12 +367,12 @@
     </details>
   </div>
   <div class="hero-actions" style="justify-content:flex-start;margin-top:32px">
-    <a href="demo-strefa-balansu-kontakt.html" class="btn-line">Zapytaj o wycenę<span class="arr">→</span></a>
+    <a href="#kontakt" class="btn-line">Zapytaj o wycenę<span class="arr">→</span></a>
   </div>
 </div>
 </section>
 
-<section class="sec-navy">
+<section class="sec-navy" id="portfolio">
   <div class="wrap">
   <div class="section-head">
     <h2>Zaufali mi m.in. fundacje, samorządy i szkoły Montessori</h2>
@@ -393,7 +412,7 @@
 </div>
 </section>
 
-<footer class="site-footer">
+<footer class="site-footer" id="kontakt">
   <div class="wrap">
     <div class="footer-hero">
       <div class="footer-info">
@@ -448,11 +467,30 @@
     <div class="footer-bottom">
       <span>© 2026 Strefa Balansu</span>
       <a href="https://www.facebook.com/p/Strefa-Balansu-100054387555401/" target="_blank" rel="noopener">Facebook</a>
-      <a href="strefa-balansu-portfolio.pdf">Pobierz portfolio (PDF)</a>
-      <span>Makieta strony · działajmy.online</span>
+      <a href="strefa-balansu-portfolio.pdf" download>Pobierz portfolio (PDF)</a>
+      <a href="https://dzialajmy.online" target="_blank" rel="noopener">Makieta strony · działajmy.online</a>
     </div>
   </div>
 </footer>
+
+<nav class="mobile-tabbar">
+  <a href="#oferta">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 3.5h9l3 3v10a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 .5-.5Z" stroke="currentColor" stroke-width="1.4"/><path d="M7 9h6M7 12.5h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+    Oferta
+  </a>
+  <a href="#dla-kogo">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="7.5" cy="7" r="2.5" stroke="currentColor" stroke-width="1.4"/><circle cx="14" cy="8" r="2" stroke="currentColor" stroke-width="1.4"/><path d="M3 16c.5-3 2.3-4.5 4.5-4.5s4 1.5 4.5 4.5M12.5 12c1.7 0 3 1.2 3.5 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+    Dla kogo
+  </a>
+  <a href="demo-strefa-balansu-portfolio.html">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="4" width="14" height="12" rx="1.5" stroke="currentColor" stroke-width="1.4"/><circle cx="7" cy="8" r="1.3" stroke="currentColor" stroke-width="1.4"/><path d="M3 14l4-3.5 3 2.3 3.5-3.3 3.5 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Portfolio
+  </a>
+  <a href="#kontakt">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="4.5" width="14" height="11" rx="1.5" stroke="currentColor" stroke-width="1.4"/><path d="M3.5 5.5l6.5 5 6.5-5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Kontakt
+  </a>
+</nav>
 
 <script>
   document.getElementById('footerFormSubmit').addEventListener('click', function(){
