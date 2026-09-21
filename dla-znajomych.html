@@ -58,11 +58,12 @@
 
   .rule{border:0;border-top:1px solid var(--hair);margin:52px 0}
 
-  ul.list{list-style:none;margin-top:24px;display:flex;flex-direction:column;gap:10px}
+  ul.list{list-style:none;margin-top:20px;display:flex;flex-direction:column;gap:10px}
   ul.list li{
-    padding:14px 18px;background:#fff;border:1.5px solid rgba(20,23,27,.2);
-    font-size:16.5px;color:var(--ink);
+    padding-left:22px;position:relative;
+    font-size:16.5px;color:var(--ink-2);
   }
+  ul.list li::before{content:"—";position:absolute;left:0;color:var(--blue)}
 
   /* FORM (uproszczona wersja formularza z kontakt.html) */
   .lead-form{margin-top:40px;background:#fff;padding:clamp(22px,3.5vw,32px);border:1.5px solid rgba(20,23,27,.2)}
