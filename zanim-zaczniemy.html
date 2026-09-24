@@ -82,11 +82,8 @@
   /* examples gallery — deliberately different from the phone/browser mockups elsewhere */
   .examples{display:flex;flex-direction:column;gap:24px;margin-top:32px}
   .example-card{
-    display:block;text-decoration:none;color:inherit;
-    border:1.5px solid rgba(20,23,27,.2);background:#fff;overflow:hidden;
-    transition:border-color .12s ease;
+    display:block;border:1.5px solid rgba(20,23,27,.2);background:#fff;overflow:hidden;
   }
-  .example-card:hover{border-color:var(--blue)}
   .example-shot-wrap{background:var(--paper-2);display:flex;align-items:center;justify-content:center;
     padding:28px 16px}
   .example-phone{
@@ -98,14 +95,16 @@
     content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
     width:46px;height:11px;background:var(--ink);border-radius:0 0 8px 8px;z-index:2;
   }
-  .example-phone img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+  .example-phone iframe{width:100%;height:100%;border:none;display:block}
   .example-browser{width:100%;max-width:360px}
   .example-browser-bar{display:flex;align-items:center;gap:5px;background:#E4E2DA;
     padding:7px 10px;border-radius:8px 8px 0 0;border:1px solid rgba(20,23,27,.15);border-bottom:none}
   .example-browser-dot{width:7px;height:7px;border-radius:50%;background:rgba(20,23,27,.2)}
-  .example-browser-frame{overflow:hidden;border-radius:0 0 8px 8px;border:1px solid rgba(20,23,27,.15);
+  .example-browser-frame{position:relative;overflow:hidden;border-radius:0 0 8px 8px;
+    border:1px solid rgba(20,23,27,.15);background:#000;
     box-shadow:0 14px 28px rgba(20,23,27,.16)}
-  .example-browser-frame img{width:100%;display:block}
+  .example-browser-frame iframe{position:absolute;top:0;left:0;width:1280px;height:900px;
+    border:none;transform-origin:top left}
   .example-body{padding:18px 20px}
   .example-tag{
     font-family:'Archivo',sans-serif;font-weight:800;font-size:11px;text-transform:uppercase;
@@ -116,7 +115,8 @@
   .example-body p{margin-top:6px;font-size:15px;color:var(--ink-2);line-height:1.5}
   .example-links{margin-top:12px;display:flex;gap:18px;font-family:'Archivo',sans-serif;
     font-weight:800;font-size:13px}
-  .example-links span{color:var(--blue)}
+  .example-links a{color:var(--blue);text-decoration:none}
+  .example-links a:hover{text-decoration:underline}
 
   /* CTA BOX */
   .cta-box{background:var(--ink);color:var(--paper);padding:40px clamp(24px,5vw,44px);
@@ -199,26 +199,26 @@
     <p>Zamiast opisywać to w teorii, pokazuję konkretne przykłady, które już zrobiłem. Każdy z nich zaczynał się dokładnie tak: od rozeznania i wstępnego projektu, zanim ktokolwiek zapłacił złotówkę.</p>
 
     <div class="examples">
-      <a href="zamowienia-gastronomia.html" class="example-card">
+      <div class="example-card">
         <div class="example-shot-wrap">
           <div class="example-phone">
-            <img src="zanim-gastro.png" alt="Zrzut ekranu demo Gastro. — strona z zamówieniami dla restauracji">
+            <iframe src="demo-gastro.html" title="Podgląd makiety Gastro. (widok mobile)" loading="lazy"></iframe>
           </div>
         </div>
         <div class="example-body">
           <span class="example-tag">Gastronomia</span>
           <h3>Gastro. — zamówienia bez pośredników</h3>
           <p>Menu, koszyk i zamówienia bezpośrednio u właściciela, bez prowizji dla portali.</p>
-          <div class="example-links"><span>Przeczytaj wpis →</span></div>
+          <div class="example-links"><a href="zamowienia-gastronomia.html">Przeczytaj wpis →</a></div>
         </div>
-      </a>
+      </div>
 
-      <a href="strona-trener-fizjoterapeuta.html" class="example-card">
+      <div class="example-card">
         <div class="example-shot-wrap">
           <div class="example-browser">
             <div class="example-browser-bar"><span class="example-browser-dot"></span><span class="example-browser-dot"></span><span class="example-browser-dot"></span></div>
-            <div class="example-browser-frame">
-              <img src="zanim-trener.png" alt="Zrzut ekranu demo Forma. — strona dla trenera personalnego i fizjoterapeuty">
+            <div class="example-browser-frame" id="browserFrameTrener">
+              <iframe src="demo-trener.html" title="Podgląd makiety Forma. (widok desktop)" loading="lazy" id="browserFrameTrenerIframe"></iframe>
             </div>
           </div>
         </div>
@@ -226,24 +226,25 @@
           <span class="example-tag">Trener / fizjoterapeuta</span>
           <h3>Forma. — zapisy na treningi i konsultacje</h3>
           <p>Ciemny, mocny landing z ofertą, procesem współpracy i formularzem zapisu.</p>
-          <div class="example-links"><span>Przeczytaj wpis →</span></div>
+          <div class="example-links"><a href="strona-trener-fizjoterapeuta.html">Przeczytaj wpis →</a></div>
         </div>
-      </a>
-
-      <a href="strona-psycholog-psychoterapia.html" class="example-card">
-        <div class="example-shot-wrap">
-          <div class="example-phone">
-            <img src="zanim-psycholog.png" alt="Zrzut ekranu demo Strefa Balansu. — strona dla gabinetu psychoterapii">
-          </div>
-        </div>
-        <div class="example-body">
-          <span class="example-tag">Psychoterapia</span>
-          <h3>Strefa Balansu. — gabinet psychoterapii</h3>
-          <p>Jasna, spokojna strona z osobnymi podstronami: o nas, metodyka, założenia, kontakt.</p>
-          <div class="example-links"><span>Przeczytaj wpis →</span></div>
-        </div>
-      </a>
+      </div>
     </div>
+
+    <script>
+      (function(){
+        var frame = document.getElementById('browserFrameTrener');
+        var iframe = document.getElementById('browserFrameTrenerIframe');
+        function scaleFrame(){
+          var scale = frame.clientWidth / 1280;
+          iframe.style.transform = 'scale(' + scale + ')';
+          frame.style.height = (900 * scale) + 'px';
+        }
+        window.addEventListener('resize', scaleFrame);
+        window.addEventListener('load', scaleFrame);
+        scaleFrame();
+      })();
+    </script>
 
     <div class="cta-box">
       <h2>Chcesz <span class="mk">zobaczyć swój wstępny projekt?</span></h2>
@@ -263,7 +264,6 @@
       <li><a href="dla-kogo.html"><span class="post-index">005</span><span class="post-title">Dla kogo</span><span class="post-arrow">→</span></a></li>
       <li><a href="zamowienia-gastronomia.html"><span class="post-index">006</span><span class="post-title">Strona z zamówieniami dla gastronomii</span><span class="post-arrow">→</span></a></li>
       <li><a href="strona-trener-fizjoterapeuta.html"><span class="post-index">007</span><span class="post-title">Strona z zapisami dla trenera i fizjoterapeuty</span><span class="post-arrow">→</span></a></li>
-      <li><a href="strona-psycholog-psychoterapia.html"><span class="post-index">008</span><span class="post-title">Strona dla psychologa i gabinetu psychoterapii</span><span class="post-arrow">→</span></a></li>
       </ul>
     </div>
 
