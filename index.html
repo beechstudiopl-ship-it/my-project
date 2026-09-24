@@ -292,20 +292,31 @@
     font-size:34px;line-height:1;letter-spacing:-.02em;margin-bottom:12px;
   }
   .problem .num-badge{color:var(--blue)}
-  .step .num-badge{color:var(--ink)}
-  .step.done .num-badge{color:var(--blue)}
 
-  /* jak to działa (steps) */
-  .steps{display:grid;grid-template-columns:1fr;gap:28px;margin-top:32px;
-    padding-top:28px;border-top:1px solid rgba(20,23,27,.5)}
-  @media (min-width:720px){
-    .steps{grid-template-columns:repeat(3,1fr);gap:0}
-    .step{padding-left:28px;border-left:1px solid var(--hair)}
-    .step:first-child{padding-left:0;border-left:none}
-  }
+  /* jak to działa (steps: numbered pill + connecting arrow) */
+  .steps{display:grid;grid-template-columns:1fr;gap:36px;margin-top:40px}
+  @media (min-width:720px){.steps{grid-template-columns:repeat(3,1fr);gap:0}}
   .step{position:relative}
-  .step h3{font-family:'Archivo',sans-serif;font-weight:800;text-transform:uppercase;font-size:16px;letter-spacing:.02em;margin:0 0 10px}
-  .step p{font-size:14.5px;color:var(--ink-2);line-height:1.5;margin:0}
+  @media (min-width:720px){.step{padding-right:32px}}
+  .step-num{
+    display:block;font-family:'Archivo',sans-serif;font-weight:900;font-size:13px;
+    color:var(--ink-3);letter-spacing:.02em;margin-bottom:10px;
+  }
+  .step h3{
+    display:inline-block;font-family:'Archivo',sans-serif;font-weight:800;
+    text-transform:uppercase;font-size:14px;letter-spacing:.02em;
+    background:var(--hi);color:var(--ink);padding:7px 13px;margin:0;
+  }
+  .step.done h3{background:var(--blue);color:#fff}
+  .step p{font-size:14.5px;color:var(--ink-2);line-height:1.5;margin:16px 0 0}
+  .step-arrow{display:none}
+  @media (min-width:720px){
+    .step-arrow{
+      display:flex;align-items:center;justify-content:center;
+      position:absolute;top:1px;right:-6px;width:32px;height:28px;
+      font-family:'Archivo',sans-serif;font-weight:900;font-size:18px;color:var(--blue);
+    }
+  }
   .steps-cta{margin-top:32px}
   .steps-cta .form-note{text-align:left}
 
@@ -405,17 +416,19 @@
 
     <div class="steps">
       <article class="step">
-        <span class="num-badge">01</span>
+        <span class="step-num">01</span>
         <h3>Opisz</h3>
         <p>Wpisz czym się zajmujesz. Jedno zdanie wystarczy, resztę ogarniam ja.</p>
+        <span class="step-arrow">→</span>
       </article>
       <article class="step">
-        <span class="num-badge">02</span>
+        <span class="step-num">02</span>
         <h3>Ja dobieram styl</h3>
         <p>Research, styl, typografia, kolory, układ. Dopasowuję je do Twojej branży, Ty nie musisz zgadywać.</p>
+        <span class="step-arrow">→</span>
       </article>
       <article class="step done">
-        <span class="num-badge">03</span>
+        <span class="step-num">03</span>
         <h3>Gotowe</h3>
         <p>Dostajesz link do podglądu na maila. 2 do 3 serii poprawek i strona jest live.</p>
       </article>
