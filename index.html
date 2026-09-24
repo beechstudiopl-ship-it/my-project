@@ -293,7 +293,7 @@
   }
   .problem .num-badge{color:var(--blue)}
 
-  /* jak to działa (steps: numbered pill + connecting arrow) */
+  /* jak to działa (steps: numbered pill) */
   .steps{display:grid;grid-template-columns:1fr;gap:36px;margin-top:40px}
   @media (min-width:720px){.steps{grid-template-columns:repeat(3,1fr);gap:0}}
   .step{position:relative}
@@ -309,14 +309,6 @@
   }
   .step.done h3{background:var(--blue);color:#fff}
   .step p{font-size:14.5px;color:var(--ink-2);line-height:1.5;margin:16px 0 0}
-  .step-arrow{display:none}
-  @media (min-width:720px){
-    .step-arrow{
-      display:flex;align-items:center;justify-content:center;
-      position:absolute;top:1px;right:-6px;width:32px;height:28px;
-      font-family:'Archivo',sans-serif;font-weight:900;font-size:18px;color:var(--blue);
-    }
-  }
   .steps-cta{margin-top:32px}
   .steps-cta .form-note{text-align:left}
 
@@ -419,13 +411,11 @@
         <span class="step-num">01</span>
         <h3>Opisz</h3>
         <p>Wpisz czym się zajmujesz. Jedno zdanie wystarczy, resztę ogarniam ja.</p>
-        <span class="step-arrow">→</span>
       </article>
       <article class="step">
         <span class="step-num">02</span>
         <h3>Ja dobieram styl</h3>
         <p>Research, styl, typografia, kolory, układ. Dopasowuję je do Twojej branży, Ty nie musisz zgadywać.</p>
-        <span class="step-arrow">→</span>
       </article>
       <article class="step done">
         <span class="step-num">03</span>
