@@ -545,3 +545,6 @@
   }
   @media (max-width:400px){.h-cta{display:none}.nav-toggle{margin-left:auto}}
   @media (max-width:560px){.logo img{height:28px}}
+  /* górny pasek: szary, tekst w kolorze fontów */
+  .topbar{background:var(--mist);color:var(--ink);border-bottom:1px solid var(--line)}
+  .topbar a{color:var(--ink)}
