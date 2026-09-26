@@ -169,6 +169,11 @@
   .loc-row{display:flex;gap:14px;align-items:flex-start}
   .loc-row-icon{font-size:18px;flex:none;width:24px}
   .loc-row b{display:block;font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;text-transform:uppercase;letter-spacing:.02em;margin-bottom:2px}
+  .contact-person{display:flex;align-items:center;gap:16px;padding:14px 16px;border-radius:12px;
+    background:var(--bg-2);border:1px solid var(--line)}
+  .contact-person img{width:72px;height:72px;border-radius:50%;object-fit:cover;flex:none;display:block}
+  .contact-person b{display:block;font-family:'Archivo',sans-serif;font-weight:800;font-size:17px;letter-spacing:-.01em}
+  .contact-person span{font-size:14px;color:var(--ink-3)}
   .loc-row span{font-size:15px;color:var(--ink-2)}
 
   /* TEST WKRÓTCE */
@@ -416,6 +421,10 @@
         <!-- TODO: dokładny adres, telefon i e-mail -->
         <div class="loc-row"><span class="loc-row-icon">📍</span><span><b>Miejsce</b><span>Praust Office, Pruszcz Gdański</span></span></div>
         <div class="loc-row"><span class="loc-row-icon">🗓️</span><span><b>Rytm</b><span>Jedno spotkanie w tygodniu, 4 lekcje w miesiącu</span></span></div>
+        <div class="contact-person">
+          <img src="dorota-jechna.png" alt="Dorota Jechna" width="72" height="72" loading="lazy">
+          <div><b>Dorota Jechna</b><span>Kontakt w sprawie zajęć</span></div>
+        </div>
         <div class="loc-row"><span class="loc-row-icon">📞</span><span><b>Telefon</b><span>000 000 000</span></span></div>
         <div class="loc-row"><span class="loc-row-icon">✉️</span><span><b>E-mail</b><span>kontakt@zacznijangielski.pl</span></span></div>
       </div>
