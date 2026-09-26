@@ -456,3 +456,4 @@
   .hero-points li{font-size:var(--fs-body);line-height:var(--lh-body)}
   .btn{font-size:var(--fs-body)}
   .about-works{margin-top:clamp(40px,6vw,64px)}
+  :root{--fs-body:15px}
