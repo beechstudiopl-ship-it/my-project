@@ -163,10 +163,17 @@
   (() => {
     const b = document.querySelector('.nav-toggle'), h = document.querySelector('header.site');
     if (!b) return;
-    const set = (o) => { h.classList.toggle('menu-open', o); b.setAttribute('aria-expanded', o); b.setAttribute('aria-label', o ? 'Zamknij menu' : 'Menu'); };
+    const set = (o) => { if (o) document.documentElement.style.setProperty('--menu-top', h.getBoundingClientRect().bottom + 'px'); h.classList.toggle('menu-open', o); document.documentElement.classList.toggle('menu-lock', o); b.setAttribute('aria-expanded', o); b.setAttribute('aria-label', o ? 'Zamknij menu' : 'Menu'); };
     b.addEventListener('click', () => set(!h.classList.contains('menu-open')));
     document.querySelectorAll('#menu a').forEach(a => a.addEventListener('click', () => set(false)));
     document.addEventListener('keydown', e => { if (e.key === 'Escape') set(false); });
+  })();
+  // dolny pasek kontaktu pokazuje się po pierwszym przewinięciu
+  (() => {
+    const bar = document.querySelector('.m-bar');
+    if (!bar) return;
+    const upd = () => bar.classList.toggle('show', window.scrollY > 80);
+    addEventListener('scroll', upd, { passive: true }); upd();
   })();
 </script>
 </body>
