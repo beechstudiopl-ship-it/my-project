@@ -524,3 +524,24 @@
   .hero-full .lead strong{color:#fff}
   @media (max-width:760px){.hero-full .hero-bg img{object-position:50% 0}}
   @media (max-width:760px){.hero-full.hero-home .wrap{padding-top:300px}}
+
+  /* ---- menu mobilne (hamburger) ---- */
+  .nav-toggle{display:none;flex:none;width:44px;height:44px;border:1.5px solid var(--navy);border-radius:8px;background:#fff;cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:0}
+  .nav-toggle span{display:block;width:20px;height:2px;background:var(--navy);border-radius:2px;transition:transform .2s,opacity .2s}
+  .menu-open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .menu-open .nav-toggle span:nth-child(2){opacity:0}
+  .menu-open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  nav.main .menu-tel{display:none}
+  @media (max-width:1180px){
+    .nav-toggle{display:flex}
+    header.site .wrap{gap:12px}
+    .h-cta{margin-left:auto}
+    nav.main{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;gap:0;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 12px 24px rgba(22,18,86,.12);padding:8px clamp(16px,4vw,32px) 16px}
+    .menu-open nav.main{display:flex}
+    nav.main a{font-size:var(--fs-strong);padding:14px 0;border-bottom:1px solid var(--line)}
+    nav.main a:last-child{border-bottom:0}
+    nav.main .menu-tel{display:block;color:var(--red);font-weight:700}
+    nav.main a[aria-current="page"]{text-decoration:none;color:var(--red)}
+  }
+  @media (max-width:400px){.h-cta{display:none}.nav-toggle{margin-left:auto}}
+  @media (max-width:560px){.logo img{height:28px}}
