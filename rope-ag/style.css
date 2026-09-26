@@ -40,7 +40,6 @@
   h2{font-weight:800;text-transform:uppercase;font-size:var(--fs-h2)}
   h3{font-weight:700;line-height:1.15;font-size:var(--fs-h3)}
   .wrap{max-width:var(--wrap);margin:0 auto;padding:0 clamp(16px,4vw,32px)}
-  .eyebrow{display:inline-block;font-weight:700;letter-spacing:.02em;color:var(--navy);margin-bottom:12px;font-size:var(--fs-small)}
   .lead{line-height:1.6;color:var(--ink-2);max-width:62ch;font-size:var(--fs-lead)}
   section{padding:clamp(64px,9vw,112px) 0}
   .sec-head{max-width:760px;margin-bottom:clamp(32px,5vw,52px)}
@@ -148,7 +147,6 @@
   /* serwis */
   .service-deal{background:var(--navy);color:#fff;position:relative;overflow:hidden}
   .service-deal h2{color:#fff}
-  .service-deal .eyebrow{color:#fff}
   .service-deal .lead{color:#fff}
   .deal-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);align-items:start}
   .deal-list{list-style:none;display:grid;gap:14px}
@@ -340,3 +338,5 @@
   .f-world{margin-top:36px;padding:18px 20px;border:1px solid rgba(255,255,255,.14);border-radius:12px;display:flex;flex-wrap:wrap;gap:10px 24px;align-items:center;justify-content:space-between}
   .f-world p{flex:1 1 480px;font-size:var(--fs-small);line-height:1.6}
   .f-world a{font-weight:700;font-size:var(--fs-body);text-decoration:underline;text-decoration-color:var(--red);text-underline-offset:4px;white-space:nowrap}
+  /* na telefonie wycenę i telefon obsługuje dolny pasek */
+  @media (max-width:760px){.hero .hero-cta{display:none}.hero-note{margin-top:0}}
