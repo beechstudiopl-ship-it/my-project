@@ -270,11 +270,11 @@
       </div>
 
       <div class="footer-form-card">
-        <div id="footerFormMain">
+        <form id="footerFormMain">
           <h3>Zamów konsultację</h3>
           <div class="field">
             <label>Imię</label>
-            <input type="text" id="footerFormName" placeholder="np. Anna">
+            <input type="text" id="footerFormName" placeholder="np. Anna" required>
           </div>
           <div class="field">
             <label>E-mail</label>
@@ -288,12 +288,12 @@
             <label>Kilka słów o miejscu</label>
             <textarea rows="4" id="footerFormMsg" placeholder="Opisz miejsce, które macie na myśli"></textarea>
           </div>
-          <button class="btn-pill footer-form-submit" id="footerFormSubmit">Wyślij zgłoszenie<span class="arr">→</span></button>
-          <p class="footer-form-note">Kliknięcie otworzy Twój program pocztowy z gotową wiadomością do Marcina.</p>
-        </div>
+          <button type="submit" class="btn-pill footer-form-submit" id="footerFormSubmit">Wyślij zgłoszenie<span class="arr">→</span></button>
+          <p class="footer-form-note" id="footerFormNote">Wiadomość trafi bezpośrednio na maila Marcina.</p>
+        </form>
         <div class="footer-form-done" id="footerFormDone">
           <h3>Dzięki za wiadomość</h3>
-          <p>Otworzyliśmy Twój program pocztowy z gotową wiadomością. Wystarczy ją wysłać.</p>
+          <p>Marcin odpowie najszybciej jak to możliwe.</p>
         </div>
       </div>
     </div>
@@ -308,20 +308,38 @@
 </footer>
 
 <script>
-  document.getElementById('footerFormSubmit').addEventListener('click', function(){
+  document.getElementById('footerFormMain').addEventListener('submit', function(e){
+    e.preventDefault();
     var name = document.getElementById('footerFormName').value.trim();
     var email = document.getElementById('footerFormEmail').value.trim();
     var phone = document.getElementById('footerFormPhone').value.trim();
     var msg = document.getElementById('footerFormMsg').value.trim();
+    var note = document.getElementById('footerFormNote');
     if(!name || (!email && !phone)){
       alert('Podaj imię oraz e-mail lub telefon.');
       return;
     }
-    var body = 'Imię: ' + name + '\nE-mail: ' + (email || '-') + '\nTelefon: ' + (phone || '-') + '\n\nWiadomość:\n' + (msg || '-');
-    var mailto = 'mailto:bananaprojekt@gmail.com?subject=' + encodeURIComponent('Zapytanie ze strony Strefa Balansu') + '&body=' + encodeURIComponent(body);
-    window.location.href = mailto;
-    document.getElementById('footerFormMain').style.display = 'none';
-    document.getElementById('footerFormDone').classList.add('show');
+    var btn = document.getElementById('footerFormSubmit');
+    btn.disabled = true;
+    note.textContent = 'Wysyłanie...';
+    fetch('https://formsubmit.co/ajax/bananaprojekt@gmail.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        _subject: 'Zapytanie ze strony Strefa Balansu',
+        Imię: name,
+        'E-mail': email || '-',
+        Telefon: phone || '-',
+        'Kilka słów o miejscu': msg || '-'
+      })
+    }).then(function(res){
+      if(!res.ok) throw new Error('bad response');
+      document.getElementById('footerFormMain').style.display = 'none';
+      document.getElementById('footerFormDone').classList.add('show');
+    }).catch(function(){
+      note.textContent = 'Nie udało się wysłać. Zadzwoń: 506 006 323 lub napisz na bananaprojekt@gmail.com.';
+      btn.disabled = false;
+    });
   });
 </script>
 
