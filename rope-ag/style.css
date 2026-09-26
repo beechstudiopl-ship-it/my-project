@@ -518,3 +518,9 @@
   .hero-full .lead{max-width:780px}
   .hero-full .crumbs,.hero-full .crumbs a{color:#fff}
   .hero-full .crumbs{margin-bottom:16px;opacity:.9}
+  /* strona główna: wyższy hero, jest więcej treści */
+  .hero-full.hero-home{min-height:clamp(560px,82vh,760px)}
+  .hero-full .hero-note{color:#fff}
+  .hero-full .lead strong{color:#fff}
+  @media (max-width:760px){.hero-full .hero-bg img{object-position:50% 0}}
+  @media (max-width:760px){.hero-full.hero-home .wrap{padding-top:300px}}

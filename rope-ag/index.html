@@ -30,7 +30,8 @@
 <link rel="icon" href="favicon-48.png" type="image/png" sizes="48x48">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
-<link rel="preload" as="image" href="img/prace-wysokosciowe-gdansk-technik-na-linie-640.webp" imagesrcset="img/prace-wysokosciowe-gdansk-technik-na-linie-640.webp 640w, img/prace-wysokosciowe-gdansk-technik-na-linie-1100.webp 1100w" imagesizes="(min-width: 960px) 44vw, 100vw" fetchpriority="high">
+<link rel="preload" as="image" href="img/hero/montaz-reklamy-biurowiec-1920.webp" imagesrcset="img/hero/montaz-reklamy-biurowiec-960.webp 960w, img/hero/montaz-reklamy-biurowiec-1920.webp 1920w" imagesizes="100vw" media="(min-width: 761px)" fetchpriority="high">
+<link rel="preload" as="image" href="img/hero/montaz-reklamy-biurowiec-m.webp" media="(max-width: 760px)" fetchpriority="high">
 <link rel="preload" href="fonts/barlow-condensed-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/source-sans-3-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 
@@ -177,9 +178,13 @@
 <main>
 
 <!-- HERO -->
-<section class="hero" aria-labelledby="h1">
+<section class="hero hero-full hero-home" aria-labelledby="h1">
+  <picture class="hero-bg">
+    <source media="(max-width: 760px)" srcset="img/hero/montaz-reklamy-biurowiec-m.webp">
+    <img src="img/hero/montaz-reklamy-biurowiec-1920.webp" srcset="img/hero/montaz-reklamy-biurowiec-960.webp 960w, img/hero/montaz-reklamy-biurowiec-1920.webp 1920w" sizes="100vw" width="1920" height="864" fetchpriority="high" alt="Prace wysokościowe Gdynia, Sopot, Gdańsk – Przemysław Szapar z&nbsp;Rope Access Group montuje podświetlany napis na elewacji biurowca">
+  </picture>
   <div class="wrap">
-    <div>
+    <div class="hero-full-text">
       <h1 id="h1">Prace wysokościowe <span class="accent">Gdynia, Sopot, Gdańsk</span></h1>
       <p class="lead">Obsługujemy <strong>zarządców nieruchomości, wspólnoty mieszkaniowe i&nbsp;deweloperów</strong>. Myjemy, naprawiamy i&nbsp;konserwujemy elewacje, dachy i&nbsp;przeszklenia biurowców, budynków mieszkalnych, magazynów i&nbsp;hal. Pracujemy na linach, bez rusztowań.</p>
       <ul class="hero-points">
@@ -189,16 +194,9 @@
       </ul>
       <div class="hero-cta">
         <a class="btn btn-red" href="kontakt/#formularz" data-track="cta-hero"><svg aria-hidden="true"><use href="#i-camera"/></svg>Bezpłatna wycena online</a>
-        <a class="btn btn-ghost" href="tel:+48501282983" data-track="tel-hero"><svg aria-hidden="true"><use href="#i-phone"/></svg>501 282 983</a>
+        <a class="btn btn-light" href="tel:+48501282983" data-track="tel-hero"><svg aria-hidden="true"><use href="#i-phone"/></svg>501 282 983</a>
       </div>
       <p class="hero-note">Każdą wycenę przygotowujemy indywidualnie. Jest bezpłatna i&nbsp;niezobowiązująca.</p>
-    </div>
-    <div class="hero-photo">
-      <img src="img/prace-wysokosciowe-gdansk-technik-na-linie-640.webp"
-           srcset="img/prace-wysokosciowe-gdansk-technik-na-linie-640.webp 640w, img/prace-wysokosciowe-gdansk-technik-na-linie-1100.webp 1100w"
-           sizes="(min-width: 960px) 44vw, 100vw" width="1100" height="1467" fetchpriority="high"
-           alt="Prace wysokościowe Gdynia, Sopot, Gdańsk – alpinista Rope Access Group na linie przy montażu na budynku">
-      <div class="hero-badge"><strong>Certyfikowani technicy IRATA</strong>Rodzinna firma z&nbsp;Gdyni z&nbsp;25-letnim doświadczeniem w&nbsp;pracach na wysokości</div>
     </div>
   </div>
 </section>
