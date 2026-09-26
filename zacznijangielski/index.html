@@ -154,6 +154,8 @@
   .partners-text p{margin-top:12px;font-size:16px;color:var(--ink-2);line-height:1.6}
   .partners-logos{display:flex;align-items:center;justify-content:center;gap:clamp(14px,3vw,28px);flex-wrap:wrap}
   .partner-logo{flex:1 1 150px;max-width:220px;display:flex;align-items:center;justify-content:center}
+  .partner-logo{transition:opacity .15s ease}
+  .partner-logo:hover{opacity:.75}
   .partner-logo img{width:100%;height:auto;max-height:90px;object-fit:contain;display:block}
   @media (max-width:560px){.partners-logos{flex-direction:column;gap:12px}.partner-logo{flex:none;width:70%}}
   .partners-plus{font-family:'Archivo',sans-serif;font-weight:900;font-size:28px;color:var(--hi);flex:none}
@@ -206,13 +208,6 @@
   .book-grid{display:grid;grid-template-columns:1fr;gap:28px}
   @media (min-width:760px){.book-grid{grid-template-columns:1fr 1fr}}
   .level-pick{display:flex;flex-direction:column;gap:10px}
-  .chat-mini{
-    margin-top:22px;background:var(--accent);border-radius:14px;padding:20px;
-    display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden;
-  }
-  .chat-mini::before{content:"";position:absolute;right:-40px;top:-40px;width:130px;height:130px;border-radius:50%;background:rgba(255,255,255,.06)}
-  .chat-mini .bubble{max-width:88%;font-size:15px;padding:11px 15px}
-  .chat-mini .bubble small{font-size:10.5px}
   .lvl-opt{
     display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;text-align:left;
     padding:14px 16px;border-radius:8px;border:1.5px solid rgba(20,33,61,.14);background:transparent;
@@ -399,9 +394,9 @@
         <p>Business English to wspólny projekt dwóch miejsc z Pruszcza Gdańskiego. Praust Office daje przestrzeń i biznesowe otoczenie, a Leo Academy lektorkę i program nauki.</p>
       </div>
       <div class="partners-logos">
-        <div class="partner-logo"><img src="praust-office.svg" alt="Praust Office · #rozwijajbiznes"></div>
+        <a class="partner-logo" href="https://praustoffice.pl/" target="_blank" rel="noopener"><img src="praust-office.svg" alt="Praust Office · #rozwijajbiznes"></a>
         <span class="partners-plus" aria-hidden="true">+</span>
-        <div class="partner-logo"><img src="leo-academy.svg" alt="Leo Academy · Języki, pamięć, rozwój"></div>
+        <a class="partner-logo" href="https://www.leoschool.pl/" target="_blank" rel="noopener"><img src="leo-academy.svg" alt="Leo Academy · Języki, pamięć, rozwój"></a>
       </div>
     </div>
   </div>
@@ -470,11 +465,6 @@
               <button type="button" class="lvl-opt" data-lvl="Zaawansowany">Zaawansowany<span class="lvl-opt-hint">C1+</span></button>
               <button type="button" class="lvl-opt" data-lvl="Nie wiem">Nie wiem, sprawdźmy<span class="lvl-opt-hint">krótka rozmowa</span></button>
             </div>
-            <div class="chat-mini" aria-hidden="true">
-              <div class="bubble them"><small>Lektorka</small>Hey! Let's start 👋</div>
-              <div class="bubble you" id="chatYou"><small>Ty</small>I'm in. What's next?</div>
-              <div class="bubble them"><small>Lektorka</small>Leave your contact. I'll get back to you!</div>
-            </div>
           </div>
           <!-- TODO: podpiąć wysyłkę zgłoszenia (np. Formspree albo mailto) -->
           <form class="book-form" id="bookForm">
@@ -509,7 +499,7 @@
 </section>
 
 <footer>
-  <span>zacznijangielski · Business English w Praust Office, Pruszcz Gdański · we współpracy z Leo Academy</span>
+  <span>zacznijangielski · Business English w <a href="https://praustoffice.pl/" target="_blank" rel="noopener">Praust Office</a>, Pruszcz Gdański · we współpracy z <a href="https://www.leoschool.pl/" target="_blank" rel="noopener">Leo Academy</a></span>
   <span>© 2026 · Realizacja: <a href="https://dzialajmy.online" target="_blank" rel="noopener">dzialajmy.online</a></span>
 </footer>
 
@@ -520,13 +510,6 @@
       document.querySelectorAll('.lvl-opt').forEach(o=>o.classList.remove('picked'));
       el.classList.add('picked');
       pickedLevel = el.dataset.lvl;
-      const lines = {
-        'Podstawowy':'My English is basic, A1–A2.',
-        'Średni':'I think I\'m B1–B2.',
-        'Zaawansowany':'I\'m quite advanced, C1+.',
-        'Nie wiem':'Not sure about my level. Can we check?'
-      };
-      document.getElementById('chatYou').innerHTML = '<small>Ty</small>' + lines[pickedLevel];
     });
   });
   document.getElementById('testToForm').addEventListener('click', ()=>{
