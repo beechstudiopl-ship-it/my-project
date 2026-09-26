@@ -5,8 +5,6 @@
 @font-face{font-family:'Barlow Condensed';font-style:normal;font-weight:800;font-display:swap;src:url(fonts/barlow-condensed-latin-800-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'Source Sans 3';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/source-sans-3-latin-ext-400-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
 @font-face{font-family:'Source Sans 3';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/source-sans-3-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:'Source Sans 3';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/source-sans-3-latin-ext-600-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
-@font-face{font-family:'Source Sans 3';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/source-sans-3-latin-600-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'Source Sans 3';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/source-sans-3-latin-ext-700-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
 @font-face{font-family:'Source Sans 3';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/source-sans-3-latin-700-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 
@@ -72,7 +70,7 @@
   /* top bar + header */
   .topbar{background:var(--navy-3);color:#fff;font-size:var(--fs-small)}
   .topbar .wrap{display:flex;justify-content:space-between;gap:16px;padding-top:8px;padding-bottom:8px}
-  .topbar a{color:#fff;text-decoration:none;font-weight:600}
+  .topbar a{color:#fff;text-decoration:none;font-weight:700}
   .topbar .tb-right{display:flex;gap:22px}
   @media (max-width:760px){.topbar .tb-right{display:none}}
   header.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:saturate(1.4) blur(8px);border-bottom:1px solid var(--line)}
@@ -80,7 +78,7 @@
   .logo{flex:none}
   .logo img{height:30px;width:auto}
   nav.main{display:flex;gap:20px;white-space:nowrap}
-  nav.main a{text-decoration:none;font-weight:600;color:var(--ink-2);font-size:var(--fs-body)}
+  nav.main a{text-decoration:none;font-weight:700;color:var(--ink-2);font-size:var(--fs-body)}
   nav.main a:hover{color:var(--navy)}
   .h-cta{display:flex;align-items:center;gap:12px}
   .h-tel{font-weight:700;text-decoration:none;color:var(--navy);white-space:nowrap}
@@ -95,7 +93,7 @@
   .hero h1 .accent{color:var(--red)}
   .hero .lead{margin-top:20px}
   .hero-points{list-style:none;display:grid;gap:10px;margin:26px 0 30px}
-  .hero-points li{display:flex;gap:10px;align-items:flex-start;font-weight:600;line-height:1.45;font-size:var(--fs-strong)}
+  .hero-points li{display:flex;gap:10px;align-items:flex-start;font-weight:700;line-height:1.45;font-size:var(--fs-strong)}
   .hero-points svg{flex:none;width:18px;height:18px;margin-top:2px;color:var(--red)}
   .hero-cta{display:flex;flex-wrap:wrap;gap:12px}
   .hero-note{margin-top:14px;color:var(--ink-3);font-size:var(--fs-small)}
@@ -248,7 +246,7 @@
   form.quote .sub{color:var(--ink-2);margin:6px 0 20px;font-size:var(--fs-body)}
   .f-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
   .f{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
-  .f label{font-weight:600;font-size:var(--fs-body)}
+  .f label{font-weight:700;font-size:var(--fs-body)}
   .f label small{font-weight:400;color:var(--ink-3);font-size:var(--fs-small)}
   .f input,.f select,.f textarea{font:inherit;font-size:16px;padding:12px 14px;border:1px solid #C9CCDA;border-radius:10px;background:#fff;color:var(--ink);width:100%}
   .f textarea{min-height:110px;resize:vertical}
@@ -377,3 +375,55 @@
   @media (min-width:961px) and (max-width:1180px){.hero h1{font-size:5.2vw}}
   .svc .more a:hover,.city .more a:hover,.about-grid .more a:hover{background:rgba(22,18,86,.06)}
   .f-world a:hover{background:rgba(255,255,255,.1)}
+
+  /* =========================================================
+     SYSTEM TYPOGRAFII – jedyne źródło prawdy (nadpisuje wyżej)
+     Barlow Condensed: H1, H2, H3, liczby
+     Source Sans 3: wszystko inne, tylko 400 i 700
+     ========================================================= */
+  :root{
+    --lh-tight:1.05;   /* H1, H2 */
+    --lh-title:1.15;   /* H3, liczby */
+    --lh-strong:1.4;   /* tytuły 16 px */
+    --lh-lead:1.55;    /* tekst wprowadzający 18 px */
+    --lh-body:1.65;    /* tekst 14 px */
+    --lh-small:1.5;    /* drobny tekst 13 px */
+    --gap-head:20px;   /* nagłówek -> tekst */
+    --gap-title:8px;   /* tytuł -> opis */
+  }
+  h1,h2,h3{letter-spacing:0}
+  h1{line-height:var(--lh-tight)}
+  h2{line-height:var(--lh-tight)}
+  h3,.svc h3,.city h3,.offshore h3,.map-info h3,.form-title,.side-title,.legal-body h2,.hero-badge strong{
+    font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:var(--fs-h3);line-height:var(--lh-title);letter-spacing:0;text-transform:none}
+  .trust-item b,.about-facts b,.steps li::before{font-size:var(--fs-stat);line-height:1;letter-spacing:0}
+
+  /* tekst wprowadzający */
+  .lead{font-size:var(--fs-lead);line-height:var(--lh-lead);font-weight:400}
+  .sec-head .lead,.sec-head p,.page-hero .lead,.hero .lead,.about-grid h2 + p{margin-top:var(--gap-head)}
+  .service-deal .lead{margin-top:var(--gap-head)!important}
+
+  /* tytuły 16 px */
+  .who h3,.pain-card .q-t,.deal-list b,.steps b,.faq summary,.c-way b,.c-card h3,footer.site h4,.work figcaption b,.hero-points li{
+    font-family:'Source Sans 3',system-ui,sans-serif;font-size:var(--fs-strong);font-weight:700;line-height:var(--lh-strong);letter-spacing:0;text-transform:none}
+
+  /* tekst 14 px */
+  body,p,li,address,.who p,.pain-card .a,.svc > p,.svc li,.deal-list span,.city p,.area-note,.offshore p,.about-grid p,.steps span,.faq details p,.c-hours,.c-card p,.tips,.map-info p,.legal-body p,.legal-body li,form.quote .sub,.f label,footer.site,footer.site li{
+    font-size:var(--fs-body);line-height:var(--lh-body)}
+  .lead,.hero .lead{font-size:var(--fs-lead);line-height:var(--lh-lead)}
+  .hero-points li{font-size:var(--fs-strong);line-height:var(--lh-strong)}
+
+  /* drobny tekst 13 px */
+  .hero-note,.hero-badge,.trust-item span,.city .districts,.work figcaption,.about-facts span,.c-way span,.consent,.f label small,.f-bottom,.f-world p,.crumbs,.topbar{
+    font-size:var(--fs-small);line-height:var(--lh-small)}
+
+  /* odstępy tytuł -> opis */
+  .who h3 + p,.svc-top + p,.city h3 + p,.offshore h3 + p,.c-card h3 + p,.map-info h3 + p,.work figcaption b{margin-top:var(--gap-title)}
+  .work figcaption b{margin:0 0 2px}
+  .steps b{margin:12px 0 var(--gap-title)}
+  .deal-list b{margin-bottom:4px}
+  .who svg{margin-bottom:14px}
+  .svc-top{margin-bottom:0}
+  .svc-top + p{margin-top:14px}
+  .faq details p{padding-top:0}
+  footer.site address{line-height:var(--lh-body)}
