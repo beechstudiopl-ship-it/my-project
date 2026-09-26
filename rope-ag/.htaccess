@@ -24,9 +24,8 @@ ErrorDocument 404 /404.html
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule ^(prace-wysokosciowe-gdansk|prace-wysokosciowe-gdynia|nieruchomosci-komercyjne|nieruchomosci-mieszkaniowe)/?$ / [L,R=302]
 
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule ^zespol/?$ /#o-nas [L,R=302,NE]
+  # stara strona zespołu -> nowa strona O nas (na stałe)
+  RewriteRule ^zespol/?$ /o-nas/ [L,R=301]
 
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
