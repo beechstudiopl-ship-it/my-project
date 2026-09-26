@@ -29,7 +29,7 @@
   h3{font-weight:600}
 
   /* HEADER — sits transparently on top of the hero photo, with its own dark fade so it stays legible on any photo */
-  header.wrap{padding:18px clamp(20px,3vw,40px);max-width:none;position:relative;z-index:2}
+  header.wrap{padding:18px clamp(20px,3vw,40px);max-width:none;margin:0;position:relative;z-index:2}
   .hd{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px 24px}
   .logo{flex:none;display:block}
   .logo img{display:block;height:100px;width:auto}
@@ -39,7 +39,7 @@
   .nav-links a:hover{color:#fff}
   @media (max-width:760px){.nav-links{display:none}}
   @media (min-width:760px){
-    .hd{justify-content:space-between}
+    .hd{justify-content:flex-start;gap:16px 64px}
     .logo img{height:78px}
   }
 
