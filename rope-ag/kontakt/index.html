@@ -30,9 +30,8 @@
 <link rel="icon" href="../favicon-48.png" type="image/png" sizes="48x48">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="manifest" href="../site.webmanifest">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="preload" href="../fonts/barlow-condensed-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/source-sans-3-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../style.css">
 <script type="application/ld+json">
 {
@@ -147,7 +146,7 @@
   <div class="wrap">
     <nav class="crumbs" aria-label="Ścieżka"><a href="../">Strona główna</a><span aria-hidden="true">›</span><span aria-current="page">Kontakt</span></nav>
     <h1 id="h1">Bezpłatna wycena <span class="accent">prac wysokościowych</span></h1>
-    <p class="lead">Wyślij zdjęcia i krótki opis przez formularz. Każdą wycenę przygotowujemy indywidualnie, zwykle tego samego dnia roboczego. Pracujemy w Gdyni, Sopocie, Gdańsku i okolicach.</p>
+    <p class="lead">Wyślij zdjęcia i&nbsp;krótki opis przez formularz. Każdą wycenę przygotowujemy indywidualnie, zwykle tego samego dnia roboczego. Pracujemy w&nbsp;Gdyni, Sopocie, Gdańsku i&nbsp;okolicach.</p>
   </div>
 </section>
 
@@ -157,7 +156,7 @@
       <h2 class="form-title">Formularz wyceny online</h2>
       <p class="sub">Pola oznaczone * są wymagane.</p>
       <div class="f-row">
-        <div class="f"><label for="f-name">Imię i nazwisko / firma *</label><input id="f-name" name="imie" autocomplete="name" required></div>
+        <div class="f"><label for="f-name">Imię i&nbsp;nazwisko / firma *</label><input id="f-name" name="imie" autocomplete="name" required></div>
         <div class="f"><label for="f-tel">Telefon *</label><input id="f-tel" name="telefon" type="tel" autocomplete="tel" inputmode="tel" required></div>
       </div>
       <div class="f-row">
@@ -165,7 +164,7 @@
         <div class="f"><label for="f-type">Rodzaj prac</label>
           <select id="f-type" name="rodzaj">
             <option>Mycie elewacji / przeszkleń</option>
-            <option>Konserwacja i naprawy (elewacja, dach, komin)</option>
+            <option>Konserwacja i&nbsp;naprawy (elewacja, dach, komin)</option>
             <option>Montaż na wysokości</option>
             <option>Odśnieżanie / prace sezonowe</option>
             <option>Umowa serwisowa (stała obsługa)</option>
@@ -178,7 +177,7 @@
       <div class="f"><label for="f-files">Zdjęcia obiektu <small>(możesz zaznaczyć kilka naraz, do 8 plików, maks. 10 MB każdy)</small></label><input id="f-files" name="zdjecia[]" type="file" accept="image/*,.heic,.heif,application/pdf" multiple>
         <ul class="f-files" id="f-files-list" aria-live="polite"></ul></div>
       <div class="hp" aria-hidden="true"><label for="f-web">Strona www</label><input id="f-web" name="website" tabindex="-1" autocomplete="off"></div>
-      <label class="consent"><input type="checkbox" name="zgoda" required> <span>Wyrażam zgodę na przetwarzanie moich danych w celu przygotowania wyceny. Szczegóły w <a href="../polityka-prywatnosci/">polityce prywatności</a>.</span></label>
+      <label class="consent"><input type="checkbox" name="zgoda" required> <span>Wyrażam zgodę na przetwarzanie moich danych w&nbsp;celu przygotowania wyceny. Szczegóły w <a href="../polityka-prywatnosci/">polityce prywatności</a>.</span></label>
       <button class="btn btn-red" type="submit" data-track="form-submit">Wyślij zapytanie</button>
       <p class="f-msg" id="f-status" role="status" aria-live="polite"></p>
     </form>
@@ -196,7 +195,7 @@
         </a>
         <a class="c-way" href="mailto:office@rope-ag.pl?subject=Zapytanie%20o%20wycen%C4%99%20%E2%80%93%20prace%20wysoko%C5%9Bciowe" data-track="email-contact">
           <span class="ic"><svg aria-hidden="true"><use href="#i-mail"/></svg></span>
-          <span><b>office@rope-ag.pl</b><span>Zapytania od firm i zarządców</span></span>
+          <span><b>office@rope-ag.pl</b><span>Zapytania od firm i&nbsp;zarządców</span></span>
         </a>
       </div>
       <div class="c-card">
@@ -207,8 +206,8 @@
       <div class="c-card">
         <h3>Co warto przesłać do wyceny</h3>
         <ul class="tips">
-          <li>2–5 zdjęć miejsca prac, z bliska i z daleka</li>
-          <li>adres obiektu i orientacyjna wysokość budynku</li>
+          <li>2–5 zdjęć miejsca prac, z&nbsp;bliska i&nbsp;z&nbsp;daleka</li>
+          <li>adres obiektu i&nbsp;orientacyjna wysokość budynku</li>
           <li>opis problemu, np. przeciek, zabrudzenie, montaż</li>
           <li>preferowany termin realizacji</li>
         </ul>
@@ -224,9 +223,9 @@
     </div>
     <ol class="steps steps-4">
       <li><b>Wysyłasz zapytanie</b><span>Formularz, WhatsApp lub e-mail. Zdjęcia bardzo pomagają.</span></li>
-      <li><b>Przygotowujemy wycenę</b><span>Indywidualną i bezpłatną, zwykle tego samego dnia roboczego.</span></li>
-      <li><b>Ustalamy termin</b><span>Start możliwy w ciągu 24–48 godzin.</span></li>
-      <li><b>Realizacja i protokół</b><span>Praca na linach, potem zdjęcia przed i po oraz faktura VAT.</span></li>
+      <li><b>Przygotowujemy wycenę</b><span>Indywidualną i&nbsp;bezpłatną, zwykle tego samego dnia roboczego.</span></li>
+      <li><b>Ustalamy termin</b><span>Start możliwy w&nbsp;ciągu 24–48 godzin.</span></li>
+      <li><b>Realizacja i&nbsp;protokół</b><span>Praca na linach, potem zdjęcia przed i&nbsp;po oraz faktura VAT.</span></li>
     </ol>
   </div>
 </section>
@@ -235,11 +234,11 @@
   <div class="wrap">
     <div class="reviews-card">
       <div>
-        <h2 id="h-reviews">Zobacz, co mówią o nas klienci</h2>
-        <p class="lead">Opinie naszych klientów znajdziesz w wizytówce Google Rope Access. Współpracowałeś z nami? Będzie nam miło, jeśli zostawisz opinię.</p>
+        <h2 id="h-reviews">Zobacz, co mówią o&nbsp;nas klienci</h2>
+        <p class="lead">Opinie naszych klientów znajdziesz w&nbsp;wizytówce Google Rope Access. Współpracowałeś z&nbsp;nami? Będzie nam miło, jeśli zostawisz opinię.</p>
       </div>
       <div class="reviews-cta">
-        <a class="btn btn-red" href="https://www.google.com/maps?cid=4472124167094056393" target="_blank" rel="noopener" data-track="google-reviews">Zobacz opinie w Google</a>
+        <a class="btn btn-red" href="https://www.google.com/maps?cid=4472124167094056393" target="_blank" rel="noopener" data-track="google-reviews">Zobacz opinie w&nbsp;Google</a>
         <a class="btn btn-ghost" href="https://www.google.com/maps?cid=4472124167094056393" target="_blank" rel="noopener" data-track="google-review-add">Wystaw opinię</a>
       </div>
     </div>
@@ -255,7 +254,7 @@
         <h3>Jak do nas trafić</h3>
         <p><strong>Rope Access Group</strong><br>ul. 10 Lutego 10<br>81-364 Gdynia</p>
         <p>pn–pt 8:00–16:00<br><a href="tel:+48501282983">+48 501 282 983</a></p>
-        <a class="btn btn-ghost" href="https://www.google.com/maps?cid=4472124167094056393" target="_blank" rel="noopener" data-track="google-maps">Otwórz w Mapach Google</a>
+        <a class="btn btn-ghost" href="https://www.google.com/maps?cid=4472124167094056393" target="_blank" rel="noopener" data-track="google-maps">Otwórz w&nbsp;Mapach Google</a>
       </div>
     </div>
   </div>
@@ -290,7 +289,7 @@
         <ul>
           <li><a href="https://rope-ag.pl/nieruchomosci-komercyjne/">Nieruchomości komercyjne</a></li>
           <li><a href="https://rope-ag.pl/nieruchomosci-mieszkaniowe/">Wspólnoty mieszkaniowe</a></li>
-          <li><a href="../#uslugi">Mycie elewacji i przeszkleń</a></li>
+          <li><a href="../#uslugi">Mycie elewacji i&nbsp;przeszkleń</a></li>
           <li><a href="../#uslugi">Montaże na wysokości</a></li>
         </ul>
       </div>
@@ -300,12 +299,12 @@
           <li><a href="https://rope-ag.pl/zespol/">Zespół</a></li>
           <li><a href="https://rope-ag.pl/blog">Blog</a></li>
           <li><a href="https://rope-ag.pl/kontakt/">Kontakt</a></li>
-          <li><a href="https://www.google.com/maps?cid=4472124167094056393" target="_blank" rel="noopener">Opinie w Google</a></li>
+          <li><a href="https://www.google.com/maps?cid=4472124167094056393" target="_blank" rel="noopener">Opinie w&nbsp;Google</a></li>
         </ul>
       </div>
     </div>
     <div class="f-world">
-      <p><strong>Rope Access Group na świecie.</strong> Poza obsługą budynków w Trójmieście pracujemy przy wymagających projektach przemysłowych w Polsce i za granicą: serwis turbin wiatrowych onshore i offshore, platformy Oil &amp; Gas oraz konstrukcje stalowe. Certyfikaty IRATA i GWO.</p>
+      <p><strong>Rope Access Group na świecie.</strong> Poza obsługą budynków w&nbsp;Trójmieście pracujemy przy wymagających projektach przemysłowych w&nbsp;Polsce i&nbsp;za granicą: serwis turbin wiatrowych onshore i&nbsp;offshore, platformy Oil &amp; Gas oraz konstrukcje stalowe. Certyfikaty IRATA i&nbsp;GWO.</p>
       <a href="https://rope-ag.pl/zespol/">Poznaj nasze doświadczenie</a>
     </div>
     <div class="f-bottom">
