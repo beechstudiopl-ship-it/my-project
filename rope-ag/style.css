@@ -560,3 +560,9 @@
   .m-bar.show{transform:none}
   @media (prefers-reduced-motion:reduce){.m-bar{transition:none}}
   header.site.menu-open{backdrop-filter:none;-webkit-backdrop-filter:none;background:#fff}
+  /* dolny pasek kontaktu: wysuwa się po pierwszym przewinięciu */
+  .m-bar{transform:translateY(110%);transition:transform .25s ease}
+  .m-bar.show{transform:none}
+  @media (prefers-reduced-motion:reduce){.m-bar{transition:none}}
+  /* telefon: w nagłówku tylko logo i hamburger */
+  @media (max-width:760px){.h-cta{display:none}.nav-toggle{margin-left:auto}}
