@@ -17,12 +17,7 @@ ErrorDocument 404 /404.html
   RewriteRule ^(.*/)?index\.html$ /$1 [L,R=301]
 
   # 3. Stare adresy z WordPressa, które mają ranking w Google.
-  #    Dopóki nie wgramy ich nowych wersji (etap 2), kierują tymczasowo (302).
-  #    Gdy pojawi się katalog np. /prace-wysokosciowe-gdansk/ z plikiem index.html,
-  #    serwer sam zacznie go pokazywać, bez zmian w tym pliku.
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule ^(nieruchomosci-komercyjne)/?$ / [L,R=302]
+  #    Gdańsk, wspólnoty i nieruchomości komercyjne mają już nowe wersje pod tymi samymi adresami.
 
   # stara strona Gdyni -> strona główna (fraza „prace wysokościowe Gdynia” należy do strony głównej)
   RewriteRule ^prace-wysokosciowe-gdynia/?$ / [L,R=301]
@@ -30,9 +25,9 @@ ErrorDocument 404 /404.html
   # stara strona zespołu -> nowa strona O nas (na stałe)
   RewriteRule ^zespol/?$ /o-nas/ [L,R=301]
 
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule ^(blog|category/.*|nieszczelnosc-opierzenia-komina)/?$ / [L,R=302]
+  # stary wpis bloga i kategorie WordPressa -> nowy blog (na stałe)
+  RewriteRule ^nieszczelnosc-opierzenia-komina/?$ /blog/nieszczelnosc-opierzenia-komina/ [L,R=301]
+  RewriteRule ^category(/.*)?$ /blog/ [L,R=301]
 
   # 4. Pozostałości WordPressa – na stałe na stronę główną
   RewriteRule ^(feed|comments/feed|wp-json|xmlrpc\.php)(/.*)?$ / [L,R=301]
