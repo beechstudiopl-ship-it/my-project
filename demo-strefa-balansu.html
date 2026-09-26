@@ -211,14 +211,16 @@
   .footer-bottom a{text-decoration:none;color:var(--ink-3);border-bottom:1px solid var(--line)}
   .footer-bottom a:hover{color:var(--accent);border-color:var(--accent)}
 
-  /* GALLERY — grid of tiles opening a full-screen lightbox */
-  .gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:8px}
-  @media (min-width:600px){.gallery-grid{grid-template-columns:repeat(2,1fr);gap:16px}}
-  @media (min-width:900px){.gallery-grid{grid-template-columns:repeat(3,1fr);gap:18px}}
-  .gallery-item{position:relative;aspect-ratio:1;overflow:hidden;border-radius:10px;border:none;
+  /* GALLERY — grid of varied-size tiles opening a full-screen lightbox */
+  .gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);grid-auto-rows:120px;grid-auto-flow:dense;gap:10px;margin-top:8px}
+  @media (min-width:600px){.gallery-grid{grid-template-columns:repeat(3,1fr);grid-auto-rows:150px;gap:14px}}
+  @media (min-width:900px){.gallery-grid{grid-template-columns:repeat(4,1fr);grid-auto-rows:180px;gap:16px}}
+  .gallery-item{position:relative;overflow:hidden;border-radius:10px;border:none;
     padding:0;cursor:pointer;background:var(--mist-soft)}
   .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .3s ease;display:block}
   .gallery-item:hover img{transform:scale(1.06)}
+  .gallery-item:nth-child(7n+1){grid-column:span 2;grid-row:span 2}
+  .gallery-item:nth-child(7n+4){grid-column:span 2}
 
   .lightbox{display:none;position:fixed;inset:0;z-index:100;background:rgba(10,9,7,.94);
     align-items:center;justify-content:center}
@@ -333,7 +335,6 @@
     <div class="split-text">
       <h2>Zamiana słów i wizji na projekty, osadzone w rzeczywistości</h2>
       <p class="section-sub" style="margin-top:16px">Tworzenie ze skromnych zasobów wartościowych konstrukcji. Przeobrażanie „nieużytków" w unikatowe i pożyteczne miejsca. Każdy projekt dopasowany do konkretnego miejsca i inwestora, nie z katalogu.</p>
-      <a href="#kontakt" class="section-more">Zobacz pełną ofertę i warunki terenowe<span class="arr">→</span></a>
     </div>
     <div class="split-visual"><img src="strefa-balansu-domek-na-drzewie-3.jpg" alt="Detal drewnianej konstrukcji, rzemieślnicze wykonanie"></div>
   </div>
@@ -368,12 +369,12 @@
     <a href="demo-strefa-balansu-portfolio.html" class="proof-card">
       <div class="proof-photo"><img src="strefa-balansu-domek-na-drzewie-2.jpg" alt="Domek na Drzewie, Gdynia"></div>
       <span class="proof-badge">Realizacja</span>
-      <div class="proof-cap">Domek na Drzewie<span class="loc">Gdynia</span><span class="see">Zobacz →</span></div>
+      <div class="proof-cap">Domek na Drzewie<span class="loc">Gdynia</span></div>
     </a>
     <a href="demo-strefa-balansu-portfolio.html" class="proof-card">
       <div class="proof-photo"><img src="strefa-balansu-pro-amus-4.jpg" alt="Konstrukcja Sześciolinia, Las Academy Sopot"></div>
       <span class="proof-badge">Realizacja</span>
-      <div class="proof-cap">Sześciolinia<span class="loc">Las Academy, Sopot</span><span class="see">Zobacz →</span></div>
+      <div class="proof-cap">Sześciolinia<span class="loc">Las Academy, Sopot</span></div>
     </a>
   </div>
   <div class="trust-strip">
@@ -399,8 +400,7 @@
   <div class="wrap">
   <div class="section-head">
     <span class="kicker-label">Galeria</span>
-    <h2>Realizacje w akcji</h2>
-    <p class="section-sub">Kadry z różnych realizacji — place zabaw w lasach, na plażach i we wnętrzach.</p>
+    <h2>Kadry z różnych realizacji, place zabaw w lasach, na plażach i we wnętrzach</h2>
   </div>
   <div class="gallery-grid" id="galleryGrid">
     <button class="gallery-item"><img src="strefa-balansu-galeria-1.jpg" alt="Wnętrze drewnianego statku zabaw" loading="lazy"></button>
@@ -451,8 +451,8 @@
           <div>
             <span class="footer-label">Kontakt</span>
             <div class="footer-contact">
-              <a href="mailto:marcinbanat@protonmail.com">marcinbanat@protonmail.com</a>
-              <a href="tel:+48724222005">724 222 005</a>
+              <a href="mailto:bananaprojekt@gmail.com">bananaprojekt@gmail.com</a>
+              <a href="tel:+48506006323">506 006 323</a>
             </div>
           </div>
           <div>
@@ -467,22 +467,26 @@
           <h3>Zamów konsultację</h3>
           <div class="field">
             <label>Imię</label>
-            <input type="text" placeholder="np. Anna">
+            <input type="text" id="footerFormName" placeholder="np. Anna">
           </div>
           <div class="field">
-            <label>Telefon lub e-mail</label>
-            <input type="text" placeholder="np. 500 000 000">
+            <label>E-mail</label>
+            <input type="email" id="footerFormEmail" placeholder="np. anna@poczta.pl">
+          </div>
+          <div class="field">
+            <label>Telefon</label>
+            <input type="tel" id="footerFormPhone" placeholder="np. 500 000 000">
           </div>
           <div class="field">
             <label>Kilka słów o miejscu</label>
-            <textarea rows="4" placeholder="Opisz miejsce, które macie na myśli"></textarea>
+            <textarea rows="4" id="footerFormMsg" placeholder="Opisz miejsce, które macie na myśli"></textarea>
           </div>
           <button class="btn-pill footer-form-submit" id="footerFormSubmit">Wyślij zgłoszenie<span class="arr">→</span></button>
-          <p class="footer-form-note">Makieta, przycisk pokazuje potwierdzenie, bez realnej wysyłki wiadomości.</p>
+          <p class="footer-form-note">Kliknięcie otworzy Twój program pocztowy z gotową wiadomością do Marcina.</p>
         </div>
         <div class="footer-form-done" id="footerFormDone">
           <h3>Dzięki za wiadomość</h3>
-          <p>To makieta, w wersji docelowej zgłoszenie trafi mailem lub przez system rezerwacji.</p>
+          <p>Otworzyliśmy Twój program pocztowy z gotową wiadomością. Wystarczy ją wysłać.</p>
         </div>
       </div>
     </div>
@@ -517,6 +521,17 @@
 
 <script>
   document.getElementById('footerFormSubmit').addEventListener('click', function(){
+    var name = document.getElementById('footerFormName').value.trim();
+    var email = document.getElementById('footerFormEmail').value.trim();
+    var phone = document.getElementById('footerFormPhone').value.trim();
+    var msg = document.getElementById('footerFormMsg').value.trim();
+    if(!name || (!email && !phone)){
+      alert('Podaj imię oraz e-mail lub telefon.');
+      return;
+    }
+    var body = 'Imię: ' + name + '\nE-mail: ' + (email || '-') + '\nTelefon: ' + (phone || '-') + '\n\nWiadomość:\n' + (msg || '-');
+    var mailto = 'mailto:bananaprojekt@gmail.com?subject=' + encodeURIComponent('Zapytanie ze strony Strefa Balansu') + '&body=' + encodeURIComponent(body);
+    window.location.href = mailto;
     document.getElementById('footerFormMain').style.display = 'none';
     document.getElementById('footerFormDone').classList.add('show');
   });
