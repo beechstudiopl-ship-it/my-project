@@ -208,6 +208,29 @@
   .footer-bottom a{text-decoration:none;color:var(--ink-3);border-bottom:1px solid var(--line)}
   .footer-bottom a:hover{color:var(--accent);border-color:var(--accent)}
 
+  /* GALLERY — grid of tiles opening a full-screen lightbox */
+  .gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:8px}
+  @media (min-width:600px){.gallery-grid{grid-template-columns:repeat(3,1fr)}}
+  @media (min-width:900px){.gallery-grid{grid-template-columns:repeat(4,1fr);gap:14px}}
+  .gallery-item{position:relative;aspect-ratio:1;overflow:hidden;border-radius:10px;border:none;
+    padding:0;cursor:pointer;background:var(--mist-soft)}
+  .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .3s ease;display:block}
+  .gallery-item:hover img{transform:scale(1.06)}
+
+  .lightbox{display:none;position:fixed;inset:0;z-index:100;background:rgba(10,9,7,.94);
+    align-items:center;justify-content:center}
+  .lightbox.open{display:flex}
+  .lightbox-img{max-width:88vw;max-height:84vh;object-fit:contain;border-radius:6px}
+  .lightbox-close{position:absolute;top:18px;right:20px;background:none;border:none;color:#fff;
+    font-size:30px;line-height:1;cursor:pointer;padding:10px}
+  .lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.12);
+    border:none;color:#fff;font-size:22px;width:46px;height:46px;border-radius:50%;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;transition:background-color .15s ease}
+  .lightbox-nav:hover{background:rgba(255,255,255,.24)}
+  .lightbox-prev{left:14px}
+  .lightbox-next{right:14px}
+  @media (max-width:600px){.lightbox-nav{width:38px;height:38px;font-size:18px}}
+
   /* MOBILE BOTTOM TAB BAR — replaces the hidden desktop nav below 760px */
   .mobile-tabbar{display:none}
   @media (max-width:760px){
@@ -359,19 +382,55 @@
       <span><a href="http://montessori.sopot.pl/" target="_blank" rel="noopener">Sopocka Szkoła Montessori</a></span>
       <span><a href="https://lasacademy.pl/" target="_blank" rel="noopener">LAS Academy</a></span>
       <span><a href="https://zdzit.olsztyn.eu/" target="_blank" rel="noopener">Miasto Olsztyn</a></span>
-      <span><a href="https://wegorzewo.pl/" target="_blank" rel="noopener">Gmina Węgorzewo</a></span>
-      <span><a href="https://miastoszczytno.pl/" target="_blank" rel="noopener">Miasto i Gmina Szczytno</a></span>
-      <span><a href="https://www.pomiechowek.pl/" target="_blank" rel="noopener">Gmina Pomiechówek</a></span>
       <span><a href="https://arboretumlesne.gdansk.lasy.gov.pl/" target="_blank" rel="noopener">Arboretum Wirty</a></span>
       <span><a href="https://www.marszewo.edu.pl/" target="_blank" rel="noopener">Leśny Ogród Botaniczny Marszewo</a></span>
       <span><a href="https://pikniknaukowy.pl/" target="_blank" rel="noopener">Piknik Naukowy w Warszawie</a></span>
+      <span><a href="https://spis.ngo.pl/335776-fundacja-dziki-brzeg-tropem-siebie" target="_blank" rel="noopener">Fundacja Dziki Brzeg - Tropem Siebie</a></span>
+      <span><a href="https://www.przystanedukacja.com/" target="_blank" rel="noopener">Przystań Edukacja</a></span>
     </div>
-  </div>
-  <div style="text-align:center">
-    <a href="demo-strefa-balansu-portfolio.html" class="section-more">Zobacz pełne portfolio<span class="arr">→</span></a>
   </div>
 </div>
 </section>
+
+<section>
+  <div class="wrap">
+  <div class="section-head">
+    <span class="kicker-label">Galeria</span>
+    <h2>Realizacje w akcji</h2>
+    <p class="section-sub">Kadry z różnych realizacji — place zabaw w lasach, na plażach i we wnętrzach.</p>
+  </div>
+  <div class="gallery-grid" id="galleryGrid">
+    <button class="gallery-item"><img src="strefa-balansu-galeria-1.jpg" alt="Wnętrze drewnianego statku zabaw" loading="lazy"></button>
+    <button class="gallery-item"><img src="strefa-balansu-galeria-2.jpg" alt="Kolorowe wnętrze statku zabaw" loading="lazy"></button>
+    <button class="gallery-item"><img src="strefa-balansu-galeria-3.jpg" alt="Drewniany detal wnętrza statku zabaw" loading="lazy"></button>
+    <button class="gallery-item"><img src="strefa-balansu-galeria-4.jpg" alt="Kolorowa dekoracja wnętrza z gałęziami" loading="lazy"></button>
+    <button class="gallery-item"><img src="strefa-balansu-galeria-5.jpg" alt="Sieć linowa we wnętrzu" loading="lazy"></button>
+    <button class="gallery-item"><img src="strefa-balansu-galeria-6.jpg" alt="Tor równowagi z drewna i metalu" loading="lazy"></button>
+    <button class="gallery-item"><img src="strefa-balansu-galeria-7.jpg" alt="Drewniany tor wodny, zabawa dzieci" loading="lazy"></button>
+    <button class="gallery-item"><img src="strefa-balansu-galeria-8.jpg" alt="Drewniana konstrukcja wspinaczkowa w lesie" loading="lazy"></button>
+    <button class="gallery-item"><img src="strefa-balansu-galeria-9.jpg" alt="Maszt konstrukcji linowej na plaży" loading="lazy"></button>
+    <button class="gallery-item"><img src="strefa-balansu-galeria-10.jpg" alt="Konstrukcja linowa w kształcie statku na plaży" loading="lazy"></button>
+    <button class="gallery-item"><img src="strefa-balansu-galeria-11.jpg" alt="Detal połączenia liny i drewna" loading="lazy"></button>
+    <button class="gallery-item"><img src="strefa-balansu-galeria-12.jpg" alt="Piramida z bali drewnianych na trawie" loading="lazy"></button>
+    <button class="gallery-item"><img src="strefa-balansu-galeria-13.jpg" alt="Koło sterowe we wnętrzu statku zabaw" loading="lazy"></button>
+    <button class="gallery-item"><img src="strefa-balansu-galeria-14.jpg" alt="Detal wnętrza statku zabaw" loading="lazy"></button>
+    <button class="gallery-item"><img src="strefa-balansu-galeria-15.jpg" alt="Huśtawka linowa na drzewie" loading="lazy"></button>
+    <button class="gallery-item"><img src="strefa-balansu-galeria-16.jpg" alt="Huśtawka linowa nad wodą o zachodzie słońca" loading="lazy"></button>
+    <button class="gallery-item"><img src="strefa-balansu-galeria-17.jpg" alt="Konstrukcja linowa w otoczeniu lasu" loading="lazy"></button>
+    <button class="gallery-item"><img src="strefa-balansu-galeria-18.jpg" alt="Konstrukcja linowa na otwartej przestrzeni" loading="lazy"></button>
+    <button class="gallery-item"><img src="strefa-balansu-galeria-19.jpg" alt="Koło wodne w leśnym parku zabaw" loading="lazy"></button>
+    <button class="gallery-item"><img src="strefa-balansu-galeria-20.jpg" alt="Dzieci przy zabawie na drzewie" loading="lazy"></button>
+    <button class="gallery-item"><img src="strefa-balansu-galeria-21.jpg" alt="Konstrukcja linowo-drewniana na plaży o zachodzie słońca" loading="lazy"></button>
+  </div>
+</div>
+</section>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Zamknij">×</button>
+  <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Poprzednie zdjęcie">←</button>
+  <img class="lightbox-img" id="lightboxImg" src="" alt="">
+  <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Następne zdjęcie">→</button>
+</div>
 
 <footer class="site-footer" id="kontakt">
   <div class="wrap">
@@ -458,6 +517,36 @@
     document.getElementById('footerFormMain').style.display = 'none';
     document.getElementById('footerFormDone').classList.add('show');
   });
+
+  (function(){
+    var items = Array.prototype.slice.call(document.querySelectorAll('.gallery-item img'));
+    if(!items.length) return;
+    var lightbox = document.getElementById('lightbox');
+    var lightboxImg = document.getElementById('lightboxImg');
+    var current = 0;
+
+    function show(i){
+      current = (i + items.length) % items.length;
+      lightboxImg.src = items[current].src;
+      lightboxImg.alt = items[current].alt;
+    }
+    function open(i){ show(i); lightbox.classList.add('open'); }
+    function close(){ lightbox.classList.remove('open'); }
+
+    items.forEach(function(img, i){
+      img.closest('.gallery-item').addEventListener('click', function(){ open(i); });
+    });
+    document.getElementById('lightboxClose').addEventListener('click', close);
+    document.getElementById('lightboxNext').addEventListener('click', function(){ show(current + 1); });
+    document.getElementById('lightboxPrev').addEventListener('click', function(){ show(current - 1); });
+    lightbox.addEventListener('click', function(e){ if(e.target === lightbox) close(); });
+    document.addEventListener('keydown', function(e){
+      if(!lightbox.classList.contains('open')) return;
+      if(e.key === 'Escape') close();
+      if(e.key === 'ArrowRight') show(current + 1);
+      if(e.key === 'ArrowLeft') show(current - 1);
+    });
+  })();
 </script>
 
 </body>
