@@ -457,3 +457,5 @@
   .btn{font-size:var(--fs-body)}
   .about-works{margin-top:clamp(40px,6vw,64px)}
   :root{--fs-body:15px}
+  /* tekst pod nagłówkami = 18 px, jak tytuły */
+  .lead,.sec-head .lead,.service-deal .lead,.reviews-card .lead,.hero .lead,.page-hero .lead{font-size:var(--fs-lead);line-height:var(--lh-lead)}
