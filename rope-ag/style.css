@@ -488,3 +488,6 @@
   .lb-next{grid-column:3;grid-row:1}
   @media (max-width:600px){.lb{grid-template-columns:0 1fr 0}.lb-prev,.lb-next{position:absolute;bottom:18px;grid-column:auto}.lb-prev{left:18px}.lb-next{right:18px}.lb-fig{padding:56px 8px 84px}}
   .works-more{margin-top:24px;text-align:center}
+  /* duże zdjęcie wypełnia wysokość obu rzędów (równo z modułem tekstowym) */
+  @media (min-width:961px){.work.big{aspect-ratio:auto;height:100%;min-height:0}.work.big img{position:absolute;inset:0}}
+  .works-more{margin-top:32px}
