@@ -195,6 +195,9 @@
   .book-form input:focus,.book-form textarea:focus{outline:none;border-color:var(--accent)}
   .book-form input::placeholder,.book-form textarea::placeholder{color:var(--ink-3)}
   .book-submit{margin-top:6px;align-self:flex-start}
+  .book-box label.consent{display:flex;gap:10px;align-items:flex-start;cursor:pointer;
+    font-size:13.5px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-2);line-height:1.45}
+  .consent input{flex:none;width:18px;height:18px;margin-top:1px;accent-color:var(--accent);cursor:pointer}
   .book-note{margin-top:4px;font-size:12.5px;color:var(--ink-3);line-height:1.5}
   .book-done{display:none;text-align:center;padding:20px 0}
   .book-done.show{display:block}
@@ -421,6 +424,11 @@
               <label for="f-msg">Wiadomość (opcjonalnie)</label>
               <textarea id="f-msg" rows="3" placeholder="np. pracuję z klientami z Niemiec, potrzebuję angielskiego do spotkań"></textarea>
             </div>
+            <!-- TODO: nazwa administratora danych i link do polityki prywatności -->
+            <label class="consent" for="f-consent">
+              <input id="f-consent" type="checkbox" required>
+              <span>Wyrażam zgodę na przetwarzanie moich danych w celu kontaktu w sprawie zapisu na zajęcia.</span>
+            </label>
             <button type="submit" class="btn btn-accent book-submit">Wyślij zgłoszenie<span>→</span></button>
             <p class="book-note">Odpowiadamy zwykle w ciągu jednego dnia roboczego.</p>
           </form>
