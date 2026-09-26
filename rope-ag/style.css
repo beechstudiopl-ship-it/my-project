@@ -152,7 +152,7 @@
   .svc li{position:relative;padding-left:18px;line-height:1.45;font-size:var(--fs-body)}
   .svc li::before{content:"";position:absolute;left:0;top:.5em;width:6px;height:6px;background:var(--red);border-radius:50%}
   .svc .more{margin-top:auto;padding-top:20px;font-size:var(--fs-body)}
-  .svc .more a{font-weight:700;color:var(--navy);text-decoration:none;border-bottom:2px solid var(--red)}
+  .svc .more a{display:inline-flex;align-items:center;min-height:40px;padding:0 16px;border:1.5px solid var(--navy);border-radius:8px;font-weight:700;font-size:var(--fs-body);color:var(--navy);text-decoration:none;transition:background .15s}
   @media (max-width:860px){.svc-grid{grid-template-columns:1fr}}
   @media (max-width:480px){.svc{padding:22px}}
 
@@ -177,7 +177,7 @@
   .city p{color:var(--ink-2);margin-top:10px;line-height:1.6;font-size:var(--fs-body)}
   .city .districts{line-height:1.5;color:var(--ink-3);margin-top:12px;font-size:var(--fs-small)}
   .city .more{margin-top:auto;padding-top:18px;font-size:var(--fs-body)}
-  .city .more a{font-weight:700;color:var(--navy);text-decoration:none;border-bottom:2px solid var(--red)}
+  .city .more a{display:inline-flex;align-items:center;min-height:40px;padding:0 16px;border:1.5px solid var(--navy);border-radius:8px;font-weight:700;font-size:var(--fs-body);color:var(--navy);text-decoration:none;transition:background .15s}
   .area-note{margin-top:22px;background:var(--mist);border-radius:12px;padding:16px 20px;color:var(--ink-2);font-size:var(--fs-body)}
   .area-note b{color:var(--ink)}
   @media (max-width:960px){.area-grid{grid-template-columns:1fr}}
@@ -210,13 +210,13 @@
   .about-facts b{display:block;font-family:'Barlow Condensed',sans-serif;color:var(--navy);line-height:1;font-size:var(--fs-stat)}
   .about-facts span{display:block;line-height:1.35;color:var(--ink-2);font-size:var(--fs-small)}
   .about-grid .more{margin-top:22px}
-  .about-grid .more a{font-weight:700;color:var(--navy);text-decoration:none;border-bottom:2px solid var(--red)}
+  .about-grid .more a{display:inline-flex;align-items:center;min-height:40px;padding:0 16px;border:1.5px solid var(--navy);border-radius:8px;font-weight:700;font-size:var(--fs-body);color:var(--navy);text-decoration:none;transition:background .15s}
   @media (max-width:860px){.about-grid{grid-template-columns:1fr}}
   @media (max-width:420px){.about-facts{grid-template-columns:1fr}}
 
   /* proces */
   .steps{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);gap:14px;counter-reset:s}
-  .steps li{counter-increment:s;border-top:4px solid var(--navy);padding-top:16px}
+  .steps li{counter-increment:s;border-top:1px solid var(--navy);padding-top:18px}
   .steps li::before{content:counter(s,decimal-leading-zero);font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:var(--fs-stat);color:var(--red);line-height:1}
   .steps b{display:block;margin:8px 0 4px;font-size:var(--fs-strong)}
   .steps span{display:block;line-height:1.5;color:var(--ink-2);font-size:var(--fs-body)}
@@ -304,7 +304,7 @@
   .page-hero h1 .accent{color:var(--red)}
   .crumbs{display:flex;flex-wrap:wrap;gap:8px;font-size:var(--fs-small);margin-bottom:18px}
   .crumbs a{color:var(--navy)}
-  nav.main a[aria-current="page"]{color:var(--navy);text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:6px}
+  nav.main a[aria-current="page"]{color:var(--navy);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px}
 
   /* podstrona kontakt */
   .contact-page{padding-top:0}
@@ -349,7 +349,7 @@
   .contact-page{padding-bottom:clamp(40px,5vw,64px)}
   .f-world{margin-top:36px;padding:18px 20px;border:1px solid rgba(255,255,255,.14);border-radius:12px;display:flex;flex-wrap:wrap;gap:10px 24px;align-items:center;justify-content:space-between}
   .f-world p{flex:1 1 480px;font-size:var(--fs-small);line-height:1.6}
-  .f-world a{font-weight:700;font-size:var(--fs-body);text-decoration:underline;text-decoration-color:var(--red);text-underline-offset:4px;white-space:nowrap}
+  .f-world a{display:inline-flex;align-items:center;min-height:40px;padding:0 16px;border:1.5px solid rgba(255,255,255,.7);border-radius:8px;font-weight:700;font-size:var(--fs-body);text-decoration:none!important;white-space:nowrap}
   /* na telefonie wycenę i telefon obsługuje dolny pasek */
   @media (max-width:760px){.hero .hero-cta{display:none}.hero-note{margin-top:0}}
 
@@ -375,3 +375,5 @@
   h1{text-wrap:wrap}
   h1 .accent{display:block}
   @media (min-width:961px) and (max-width:1180px){.hero h1{font-size:5.2vw}}
+  .svc .more a:hover,.city .more a:hover,.about-grid .more a:hover{background:rgba(22,18,86,.06)}
+  .f-world a:hover{background:rgba(255,255,255,.1)}
