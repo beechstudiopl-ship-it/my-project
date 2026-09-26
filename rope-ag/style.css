@@ -508,3 +508,8 @@
     .hero-full{min-height:0}
     .hero-full .wrap{padding-top:300px}
   }
+  /* niższy hero na podstronach */
+  .hero-full{min-height:clamp(380px,52vh,500px)}
+  .hero-full .wrap{padding-top:clamp(72px,9vw,110px);padding-bottom:clamp(36px,5vw,56px)}
+  @media (max-width:760px){.hero-full{min-height:0}.hero-full .wrap{padding-top:200px;padding-bottom:32px}}
+  .hero-full .hero-bg img{object-position:50% 12%}
