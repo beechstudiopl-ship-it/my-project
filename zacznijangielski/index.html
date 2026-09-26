@@ -149,6 +149,20 @@
   }
   .about-photo img{width:100%;height:100%;object-fit:cover;display:block}
 
+  /* PARTNERZY */
+  .partners{
+    margin-top:56px;background:var(--bg-2);border:1px solid var(--line);border-radius:18px;
+    padding:clamp(24px,4vw,40px);display:grid;grid-template-columns:1fr;gap:28px;align-items:center;
+  }
+  @media (min-width:860px){.partners{grid-template-columns:1fr 1.1fr}}
+  .partners h3{font-size:clamp(22px,3vw,28px);line-height:1.15}
+  .partners-text p{margin-top:12px;font-size:16px;color:var(--ink-2);line-height:1.6}
+  .partners-logos{display:flex;align-items:center;justify-content:center;gap:clamp(14px,3vw,28px);flex-wrap:wrap}
+  .partner-logo{flex:1 1 150px;max-width:220px;display:flex;align-items:center;justify-content:center}
+  .partner-logo img{width:100%;height:auto;max-height:90px;object-fit:contain;display:block}
+  @media (max-width:560px){.partners-logos{flex-direction:column;gap:12px}.partner-logo{flex:none;width:70%}}
+  .partners-plus{font-family:'Archivo',sans-serif;font-weight:900;font-size:28px;color:var(--hi);flex:none}
+
   /* DOJAZD */
   .loc-grid{display:grid;grid-template-columns:1fr;gap:28px;margin-top:36px}
   @media (min-width:760px){.loc-grid{grid-template-columns:1fr 1fr}}
@@ -333,13 +347,25 @@
 <section id="prowadzaca">
   <div class="section-inner">
     <div class="about-grid">
-      <!-- TODO: zdjęcie od Anny, np. <img src="anna.avif" alt="Anna Zaorska"> -->
-      <div class="about-photo">AZ</div>
+      <div class="about-photo"><img src="anna-zaorska.webp" alt="Anna Zaorska w Leo Academy" loading="lazy"></div>
       <div>
         <div class="section-label">Prowadząca</div>
         <h2>Anna Zaorska</h2>
         <!-- TODO: dane od Anny (doświadczenie, kwalifikacje, podejście do zajęć) -->
-        <p class="section-sub" style="max-width:600px">Zajęcia prowadzi Anna Zaorska. Tu pojawi się kilka zdań o jej doświadczeniu, kwalifikacjach i o tym, jak pracuje z grupami biznesowymi.</p>
+        <p class="section-sub" style="max-width:600px">Zajęcia prowadzi Anna Zaorska z Leo Academy. Tu pojawi się kilka zdań o jej doświadczeniu, kwalifikacjach i o tym, jak pracuje z grupami biznesowymi.</p>
+      </div>
+    </div>
+
+    <div class="partners">
+      <div class="partners-text">
+        <div class="section-label">Połączenie sił</div>
+        <h3>Praust Office + Leo Academy</h3>
+        <p>Business English to wspólny projekt dwóch miejsc z Pruszcza Gdańskiego. Praust Office daje przestrzeń i biznesowe otoczenie, a Leo Academy lektorkę i program nauki.</p>
+      </div>
+      <div class="partners-logos">
+        <div class="partner-logo"><img src="praust-office.svg" alt="Praust Office · #rozwijajbiznes"></div>
+        <span class="partners-plus" aria-hidden="true">+</span>
+        <div class="partner-logo"><img src="leo-academy.svg" alt="Leo Academy · Języki, pamięć, rozwój"></div>
       </div>
     </div>
   </div>
@@ -412,7 +438,7 @@
 </section>
 
 <footer>
-  <span>zacznijangielski · Business English w Praust Office, Pruszcz Gdański</span>
+  <span>zacznijangielski · Business English w Praust Office, Pruszcz Gdański · we współpracy z Leo Academy</span>
   <span>© 2026</span>
 </footer>
 
