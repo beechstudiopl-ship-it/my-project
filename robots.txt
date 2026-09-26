@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /dla-znajomych.html
+# podgląd strony klienta, właściwa wersja jest na rope-ag.pl
+Disallow: /rope-ag/
 
 Sitemap: https://dzialajmy.online/sitemap.xml

@@ -1,0 +1,70 @@
+# Rope Access Group – rope-ag.pl (Apache)
+Options -Indexes
+DirectoryIndex index.html index.php
+AddDefaultCharset utf-8
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # 1. Jeden adres strony: https://rope-ag.pl (bez www)
+  RewriteCond %{HTTPS} !=on [OR]
+  RewriteCond %{HTTP_HOST} ^www\. [NC]
+  RewriteRule ^ https://rope-ag.pl%{REQUEST_URI} [L,R=301]
+
+  # 2. /index.html -> /
+  RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html[\s?] [NC]
+  RewriteRule ^(.*/)?index\.html$ /$1 [L,R=301]
+
+  # 3. Stare adresy z WordPressa, które mają ranking w Google.
+  #    Dopóki nie wgramy ich nowych wersji (etap 2), kierują tymczasowo (302).
+  #    Gdy pojawi się katalog np. /prace-wysokosciowe-gdansk/ z plikiem index.html,
+  #    serwer sam zacznie go pokazywać, bez zmian w tym pliku.
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(prace-wysokosciowe-gdansk|prace-wysokosciowe-gdynia|nieruchomosci-komercyjne|nieruchomosci-mieszkaniowe)/?$ / [L,R=302]
+
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^zespol/?$ /#o-nas [L,R=302,NE]
+
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(blog|category/.*|nieszczelnosc-opierzenia-komina)/?$ / [L,R=302]
+
+  # 4. Pozostałości WordPressa – na stałe na stronę główną
+  RewriteRule ^(feed|comments/feed|wp-json|xmlrpc\.php)(/.*)?$ / [L,R=301]
+</IfModule>
+
+# Kompresja
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/xml application/javascript application/json image/svg+xml application/manifest+json
+</IfModule>
+
+# Cache: zdjęcia i ikony na rok, CSS na tydzień, HTML zawsze świeży
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType text/css "access plus 1 week"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+AddType application/manifest+json .webmanifest
+
+# Bezpieczeństwo
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</IfModule>
+
+# Limity dla formularza ze zdjęciami (działa, gdy PHP jest modułem Apache)
+<IfModule mod_php.c>
+  php_value upload_max_filesize 10M
+  php_value post_max_size 30M
+  php_value max_file_uploads 10
+</IfModule>

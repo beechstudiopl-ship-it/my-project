@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /kontakt/wyslij.php
+
+Sitemap: https://rope-ag.pl/sitemap.xml
