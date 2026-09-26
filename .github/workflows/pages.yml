@@ -28,6 +28,7 @@ jobs:
         run: |
           mkdir -p _site
           cp index.html manifest.html seo90.html nie-mam-dostepu.html dla-kogo.html gdzie-dzialam.html dla-znajomych.html zanim-zaczniemy.html zanim-gastro.png zanim-trener.png zamowienia-gastronomia.html demo-gastro.html strona-trener-fizjoterapeuta.html demo-trener.html trener-1.avif trener-2.avif trener-3.avif polityka-prywatnosci.html kontakt.html konsultacja.html silny-lokalnie.html stopka-mailowa.html og-image.png favicon.svg sitemap.xml robots.txt CNAME _site/
+          cp -r rope-ag _site/
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
