@@ -22,7 +22,10 @@ ErrorDocument 404 /404.html
   #    serwer sam zacznie go pokazywać, bez zmian w tym pliku.
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule ^(prace-wysokosciowe-gdansk|prace-wysokosciowe-gdynia|nieruchomosci-komercyjne|nieruchomosci-mieszkaniowe)/?$ / [L,R=302]
+  RewriteRule ^(nieruchomosci-komercyjne)/?$ / [L,R=302]
+
+  # stara strona Gdyni -> strona główna (fraza „prace wysokościowe Gdynia” należy do strony głównej)
+  RewriteRule ^prace-wysokosciowe-gdynia/?$ / [L,R=301]
 
   # stara strona zespołu -> nowa strona O nas (na stałe)
   RewriteRule ^zespol/?$ /o-nas/ [L,R=301]
