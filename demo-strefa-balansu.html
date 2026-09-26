@@ -29,16 +29,19 @@
   h3{font-weight:600}
 
   /* HEADER — sits transparently on top of the hero photo, with its own dark fade so it stays legible on any photo */
-  header.wrap{padding:18px clamp(28px,6vw,64px);max-width:none;position:relative;z-index:2}
-  .hd{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 24px}
-  .logo{flex:none;text-decoration:none;color:#fff;white-space:nowrap}
-  .logo span{font-weight:600;font-size:17px;letter-spacing:-.01em}
+  header.wrap{padding:18px clamp(20px,3vw,40px);max-width:none;position:relative;z-index:2}
+  .hd{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px 24px}
+  .logo{flex:none;display:block}
+  .logo img{display:block;height:100px;width:auto}
   .nav-links{display:flex;flex-wrap:wrap;align-items:center;gap:28px;font-size:13.5px;font-weight:600}
   .nav-links a{text-decoration:none;color:rgba(255,255,255,.85);transition:color .15s ease;
     white-space:nowrap;letter-spacing:.01em;padding:8px 2px}
   .nav-links a:hover{color:#fff}
   @media (max-width:760px){.nav-links{display:none}}
-  @media (max-width:400px){.logo{font-size:13px}}
+  @media (min-width:760px){
+    .hd{justify-content:space-between}
+    .logo img{height:78px}
+  }
 
   /* LINKS (underline + arrow micro-interaction, no filled buttons) */
   .btn-line{
@@ -66,7 +69,7 @@
     text-align:center;padding:40px 0 64px}
   .eyebrow{font-size:13.5px;letter-spacing:.02em;color:rgba(255,255,255,.75);margin-bottom:22px}
   .hero h1{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(36px,6vw,64px);
-    line-height:1.14;max-width:17ch;margin:0 auto;color:#fff;letter-spacing:-.01em}
+    line-height:1.14;max-width:25ch;margin:0 auto;color:#fff;letter-spacing:-.01em}
   .hero h1 .hl{font-style:italic;font-weight:500;color:#fff;text-decoration:underline;
     text-decoration-color:var(--accent);text-decoration-thickness:3px;text-underline-offset:8px}
   .hero-desc{font-size:16.5px;color:rgba(255,255,255,.82);line-height:1.8;max-width:52ch;margin:24px auto 0}
@@ -209,9 +212,9 @@
   .footer-bottom a:hover{color:var(--accent);border-color:var(--accent)}
 
   /* GALLERY — grid of tiles opening a full-screen lightbox */
-  .gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:8px}
-  @media (min-width:600px){.gallery-grid{grid-template-columns:repeat(3,1fr)}}
-  @media (min-width:900px){.gallery-grid{grid-template-columns:repeat(4,1fr);gap:14px}}
+  .gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:8px}
+  @media (min-width:600px){.gallery-grid{grid-template-columns:repeat(2,1fr);gap:16px}}
+  @media (min-width:900px){.gallery-grid{grid-template-columns:repeat(3,1fr);gap:18px}}
   .gallery-item{position:relative;aspect-ratio:1;overflow:hidden;border-radius:10px;border:none;
     padding:0;cursor:pointer;background:var(--mist-soft)}
   .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .3s ease;display:block}
@@ -260,7 +263,7 @@
   <header class="wrap">
     <div class="hd">
       <a href="demo-strefa-balansu.html" class="logo">
-        <span>Strefa Balansu</span>
+        <img src="strefa-balansu-logo-white.svg" alt="Strefa Balansu">
       </a>
       <div class="nav-links">
         <a href="#oferta">Oferta</a>
@@ -368,9 +371,9 @@
       <div class="proof-cap">Domek na Drzewie<span class="loc">Gdynia</span><span class="see">Zobacz →</span></div>
     </a>
     <a href="demo-strefa-balansu-portfolio.html" class="proof-card">
-      <div class="proof-photo"><img src="strefa-balansu-pro-amus-4.jpg" alt="Konstrukcja typu Pająk, Las Academy Sopot"></div>
+      <div class="proof-photo"><img src="strefa-balansu-pro-amus-4.jpg" alt="Konstrukcja Sześciolinia, Las Academy Sopot"></div>
       <span class="proof-badge">Realizacja</span>
-      <div class="proof-cap">Pająk<span class="loc">Las Academy, Sopot</span><span class="see">Zobacz →</span></div>
+      <div class="proof-cap">Sześciolinia<span class="loc">Las Academy, Sopot</span><span class="see">Zobacz →</span></div>
     </a>
   </div>
   <div class="trust-strip">
