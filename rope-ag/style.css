@@ -427,3 +427,32 @@
   .svc-top + p{margin-top:14px}
   .faq details p{padding-top:0}
   footer.site address{line-height:var(--lh-body)}
+
+  /* ---- mniej stopni: H1, H2, H3, lead (tylko hero), tekst 14 ---- */
+  :root{
+    --fs-strong:var(--fs-body);   /* tytuły kart = tekst pogrubiony */
+    --fs-small:var(--fs-body);    /* bez drobnego tekstu */
+    --fs-stat:var(--fs-h3);       /* liczby = H3 */
+    --lh-strong:var(--lh-body);
+    --lh-small:var(--lh-body);
+  }
+  /* tekst pod nagłówkami sekcji = zwykły tekst; 18 px zostaje tylko w hero */
+  .sec-head .lead,.service-deal .lead,.reviews-card .lead{font-size:var(--fs-body);line-height:var(--lh-body)}
+  .hero .lead,.page-hero .lead{font-size:var(--fs-lead);line-height:var(--lh-lead)}
+  .hero-points li{font-size:var(--fs-body);line-height:var(--lh-body)}
+  .hero-badge strong{font-size:var(--fs-h3)}
+  .deal-list .n{font-family:'Source Sans 3',system-ui,sans-serif;font-weight:700;font-size:var(--fs-body)}
+  .trust-item b,.about-facts b,.steps li::before{font-weight:700}
+
+  /* ---- skala końcowa: H1 64 / H2 44 / H3 28 / tytuły 18 / tekst 14 ---- */
+  :root{
+    --fs-h2:clamp(30px,8vw,44px);
+    --fs-h3:clamp(24px,6vw,28px);
+    --fs-strong:18px;
+    --lh-strong:1.35;
+    --fs-stat:var(--fs-h3);
+  }
+  .who h3,.pain-card .q-t,.deal-list b,.steps b,.faq summary,.c-way b,.c-card h3,footer.site h4,.work figcaption b{font-size:var(--fs-strong);line-height:var(--lh-strong)}
+  .hero-points li{font-size:var(--fs-body);line-height:var(--lh-body)}
+  .btn{font-size:var(--fs-body)}
+  .about-works{margin-top:clamp(40px,6vw,64px)}
