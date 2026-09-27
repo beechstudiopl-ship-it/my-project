@@ -60,14 +60,14 @@
   /* CASE GRID */
   .case-list{list-style:none;margin:44px 0 64px;display:grid;grid-template-columns:1fr;gap:28px}
   @media (min-width:640px){.case-list{grid-template-columns:repeat(2,1fr)}}
-  .case-list li:first-child,.case-list li:last-child{grid-column:1 / -1;display:flex;justify-content:center}
+  .case-list li:first-child,.case-list li:last-child{grid-column:1 / -1}
   .case-tile{
     display:flex;flex-direction:column;text-decoration:none;color:inherit;background:#fff;
     border:1.5px solid rgba(20,23,27,.5);overflow:hidden;transition:border-color .12s ease;height:100%;
   }
   .case-tile:hover{border-color:var(--blue)}
   @media (min-width:760px){
-    .case-list li:first-child .case-tile,.case-list li:last-child .case-tile{flex-direction:row;max-width:760px}
+    .case-list li:first-child .case-tile,.case-list li:last-child .case-tile{flex-direction:row}
   }
 
   .case-visual{display:flex;flex-direction:column}
