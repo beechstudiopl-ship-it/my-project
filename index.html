@@ -272,6 +272,49 @@
   .post-arrow{font-family:'Archivo',sans-serif;font-weight:900;font-size:18px;color:var(--ink-3);transition:color .15s ease}
   .post-links a:hover .post-arrow{color:var(--blue)}
 
+  /* zrealizowane projekty */
+  .case-list{list-style:none;margin-top:28px;display:grid;grid-template-columns:1fr;gap:24px}
+  @media (min-width:640px){.case-list{grid-template-columns:repeat(2,1fr)}}
+  .case-list li:first-child,.case-list li:last-child{grid-column:1 / -1}
+  .case-tile{
+    display:flex;flex-direction:column;text-decoration:none;color:inherit;background:#fff;
+    border:1.5px solid rgba(20,23,27,.5);overflow:hidden;transition:border-color .12s ease;height:100%;
+  }
+  .case-tile:hover{border-color:var(--blue)}
+  @media (min-width:760px){
+    .case-list li:first-child .case-tile,.case-list li:last-child .case-tile{flex-direction:row}
+  }
+  .case-visual{display:flex;flex-direction:column}
+  @media (min-width:760px){
+    .case-list li:first-child .case-visual,.case-list li:last-child .case-visual{width:46%;flex:none}
+  }
+  .case-browser-bar{display:flex;align-items:center;gap:6px;background:#E4E2DA;padding:9px 12px}
+  .case-dot{width:8px;height:8px;border-radius:50%;background:rgba(20,23,27,.2)}
+  .case-shot{position:relative;overflow:hidden;height:190px;background:#000;flex:1}
+  @media (min-width:760px){
+    .case-list li:first-child .case-shot,.case-list li:last-child .case-shot{height:100%}
+  }
+  .case-shot-scale{position:absolute;top:0;left:0;width:1280px;transform-origin:top left}
+  .case-shot-scale iframe{width:1280px;height:2400px;border:none;display:block;pointer-events:none;
+    animation:caseShotPan 18s ease-in-out infinite alternate}
+  @keyframes caseShotPan{from{transform:translateY(0)}to{transform:translateY(-900px)}}
+  .case-body{padding:22px;flex:1;display:flex;flex-direction:column}
+  @media (min-width:760px){
+    .case-list li:first-child .case-body,.case-list li:last-child .case-body{justify-content:center;padding:32px}
+  }
+  .case-tile h3{font-family:'Archivo',sans-serif;font-weight:800;font-size:19px;margin-bottom:14px}
+  .case-checks{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+  .case-checks li{display:flex;gap:10px;align-items:flex-start;font-size:15px;color:var(--ink-2);line-height:1.4}
+  .case-checks li::before{content:"✓";color:var(--blue);font-weight:900;flex:none}
+  .case-checks b{color:var(--ink)}
+  .case-btn{display:block;text-align:center;background:var(--blue);color:#fff;text-decoration:none;
+    font-family:'Archivo',sans-serif;font-weight:900;font-size:14px;letter-spacing:.02em;
+    text-transform:uppercase;padding:14px;transition:background .12s ease;margin-top:auto}
+  .case-tile:hover .case-btn{background:var(--blue-d)}
+  .case-more{margin-top:24px}
+  .case-more a{color:var(--blue-d);font-weight:700;text-decoration:none}
+  .case-more a:hover{text-decoration:underline}
+
   /* znasz to uczucie (dark, under hero) */
   .section-dark{background:var(--ink);border-top:1px solid var(--hair)}
   .sd-inner{width:100%;max-width:960px;margin:0 auto;padding:64px clamp(20px,5vw,48px)}
@@ -570,6 +613,50 @@
       <li><a href="zamowienia-gastronomia.html"><span class="post-index">006</span><span class="post-title">Strona z zamówieniami dla gastronomii</span><span class="post-arrow">→</span></a></li>
       <li><a href="strona-trener-fizjoterapeuta.html"><span class="post-index">007</span><span class="post-title">Strona z zapisami dla trenera i fizjoterapeuty</span><span class="post-arrow">→</span></a></li>
     </ul>
+  </section>
+
+  <section class="section2">
+    <h2>Zrealizowane projekty</h2>
+    <p class="sublead">Prawdziwe strony dla prawdziwych klientów, nie makiety.</p>
+
+    <ul class="case-list">
+      <li>
+        <a href="realizacja-rope-access-group.html" class="case-tile">
+          <div class="case-visual">
+            <div class="case-browser-bar"><span class="case-dot"></span><span class="case-dot"></span><span class="case-dot"></span></div>
+            <div class="case-shot" data-case-shot>
+              <div class="case-shot-scale" data-case-scale>
+                <iframe src="https://rope-ag.pl" title="Podgląd strony Rope Access Group" loading="lazy" tabindex="-1"></iframe>
+              </div>
+            </div>
+          </div>
+          <div class="case-body">
+            <h3>Strona www</h3>
+            <ul class="case-checks">
+              <li><span>Wybrany pakiet <b>FULL + SEO.90</b></span></li>
+              <li><span>3 miasta w SEO lokalnym</span></li>
+              <li><span>Schema.org + FAQPage</span></li>
+              <li><span>Sticky kontakt: telefon, WhatsApp, wycena</span></li>
+            </ul>
+            <span class="case-btn">Zobacz projekt</span>
+          </div>
+        </a>
+      </li>
+    </ul>
+
+    <script>
+      (function(){
+        document.querySelectorAll('[data-case-shot]').forEach(function(shot){
+          var scaleEl = shot.querySelector('[data-case-scale]');
+          function scaleIt(){ scaleEl.style.transform = 'scale(' + (shot.clientWidth / 1280) + ')'; }
+          window.addEventListener('resize', scaleIt);
+          window.addEventListener('load', scaleIt);
+          scaleIt();
+        });
+      })();
+    </script>
+
+    <p class="case-more"><a href="realizacje.html">Zobacz wszystkie realizacje →</a></p>
   </section>
 
   <footer>
