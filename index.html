@@ -305,7 +305,10 @@
   .case-btn{display:block;text-align:center;background:var(--blue);color:#fff;text-decoration:none;
     font-family:'Archivo',sans-serif;font-weight:900;font-size:14px;letter-spacing:.02em;
     text-transform:uppercase;padding:14px;transition:background .12s ease;margin-top:auto}
-  .case-tile:hover .case-btn{background:var(--blue-d)}
+  .case-btn:hover{background:var(--blue-d)}
+  .case-link-ext{display:block;text-align:center;color:var(--blue-d);font-weight:700;font-size:14px;
+    text-decoration:none;margin-top:12px}
+  .case-link-ext:hover{text-decoration:underline}
   .case-more{margin-top:24px}
   .case-more a{color:var(--blue-d);font-weight:700;text-decoration:none}
   .case-more a:hover{text-decoration:underline}
@@ -617,7 +620,7 @@
 
     <ul class="case-list">
       <li>
-        <a href="realizacja-rope-access-group.html" class="case-tile">
+        <div class="case-tile">
           <div class="case-visual">
             <div class="case-browser-bar"><span class="case-dot"></span><span class="case-dot"></span><span class="case-dot"></span></div>
             <div class="case-shot" data-case-shot>
@@ -632,9 +635,10 @@
               <li><span>Schema.org + FAQPage</span></li>
               <li><span>Sticky kontakt: telefon, WhatsApp, wycena</span></li>
             </ul>
-            <span class="case-btn">Zobacz projekt</span>
+            <a href="realizacja-rope-access-group.html" class="case-btn">Zobacz projekt</a>
+            <a href="https://rope-ag.pl" class="case-link-ext" target="_blank" rel="noopener">Zobacz stronę: rope-ag.pl →</a>
           </div>
-        </a>
+        </div>
       </li>
     </ul>
 
