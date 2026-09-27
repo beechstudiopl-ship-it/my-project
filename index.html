@@ -290,14 +290,9 @@
   }
   .case-browser-bar{display:flex;align-items:center;gap:6px;background:#E4E2DA;padding:9px 12px}
   .case-dot{width:8px;height:8px;border-radius:50%;background:rgba(20,23,27,.2)}
-  .case-shot{position:relative;overflow:hidden;height:190px;background:#000;flex:1}
-  @media (min-width:760px){
-    .case-list li:first-child .case-shot,.case-list li:last-child .case-shot{height:100%}
-  }
-  .case-shot-scale{position:absolute;top:0;left:0;width:1280px;transform-origin:top left}
-  .case-shot-scale iframe{width:1280px;height:2400px;border:none;display:block;pointer-events:none;
-    animation:caseShotPan 18s ease-in-out infinite alternate}
-  @keyframes caseShotPan{from{transform:translateY(0)}to{transform:translateY(-900px)}}
+  .case-shot{position:relative;overflow:hidden;background:#000}
+  .case-shot iframe{position:absolute;top:0;left:0;width:1280px;height:900px;border:none;
+    transform-origin:top left}
   .case-body{padding:22px;flex:1;display:flex;flex-direction:column}
   @media (min-width:760px){
     .case-list li:first-child .case-body,.case-list li:last-child .case-body{justify-content:center;padding:32px}
@@ -606,6 +601,7 @@
       <li><a href="silny-lokalnie.html"><span class="post-index">004</span><span class="post-title">Silny lokalnie: jedna strona za darmo</span><span class="post-arrow">→</span></a></li>
       <li><a href="dla-kogo.html"><span class="post-index">005</span><span class="post-title">Dla kogo</span><span class="post-arrow">→</span></a></li>
       <li><a href="zanim-zaczniemy.html"><span class="post-index">009</span><span class="post-title">Zanim zaczniemy, pokazuję Ci wstępny projekt</span><span class="post-arrow">→</span></a></li>
+      <li><a href="slownik-seo.html"><span class="post-index">010</span><span class="post-title">Słownik SEO po ludzku</span><span class="post-arrow">→</span></a></li>
     </ul>
 
     <div class="post-group-label">Demo stron</div>
@@ -625,9 +621,7 @@
           <div class="case-visual">
             <div class="case-browser-bar"><span class="case-dot"></span><span class="case-dot"></span><span class="case-dot"></span></div>
             <div class="case-shot" data-case-shot>
-              <div class="case-shot-scale" data-case-scale>
-                <iframe src="https://rope-ag.pl" title="Podgląd strony Rope Access Group" loading="lazy" tabindex="-1"></iframe>
-              </div>
+              <iframe src="https://rope-ag.pl" title="Podgląd strony Rope Access Group" loading="lazy"></iframe>
             </div>
           </div>
           <div class="case-body">
@@ -647,8 +641,12 @@
     <script>
       (function(){
         document.querySelectorAll('[data-case-shot]').forEach(function(shot){
-          var scaleEl = shot.querySelector('[data-case-scale]');
-          function scaleIt(){ scaleEl.style.transform = 'scale(' + (shot.clientWidth / 1280) + ')'; }
+          var iframe = shot.querySelector('iframe');
+          function scaleIt(){
+            var scale = shot.clientWidth / 1280;
+            iframe.style.transform = 'scale(' + scale + ')';
+            shot.style.height = (900 * scale) + 'px';
+          }
           window.addEventListener('resize', scaleIt);
           window.addEventListener('load', scaleIt);
           scaleIt();

@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<title>Nie mam dostępu do strony · działajmy.online</title>
-<meta name="description" content="Nie wiesz, gdzie jest hasło do Twojej strony, ani kto ją robił? To częstszy problem, niż myślisz, i da się go rozwiązać.">
-<meta property="og:title" content="Nie mam dostępu do strony · działajmy.online">
-<meta property="og:description" content="Zgubiony dostęp do własnej strony to nie wyrok. Pomagam go odzyskać albo stawiam od nowa, tak żeby to się już nie powtórzyło.">
+<title>Słownik SEO po ludzku · działajmy.online</title>
+<meta name="description" content="Podstawowe pojęcia SEO wyjaśnione prosto, bez żargonu: słowa kluczowe, meta title, backlink, SEO lokalne, dane strukturalne i inne.">
+<meta property="og:title" content="Słownik SEO po ludzku · działajmy.online">
+<meta property="og:description" content="Podstawowe pojęcia SEO wyjaśnione prosto, bez żargonu: słowa kluczowe, meta title, backlink, SEO lokalne, dane strukturalne i inne.">
 <meta property="og:type" content="article">
 <meta property="og:locale" content="pl_PL">
 <meta property="og:image" content="https://dzialajmy.online/og-image.png">
@@ -37,9 +37,8 @@
     box-decoration-break:clone;-webkit-box-decoration-break:clone}
 
   /* HEADER */
-  header{border-bottom:1px solid var(--line,#14171B);background:var(--paper);
-    position:sticky;top:0;z-index:20;
-    border-bottom:1px solid rgba(20,23,27,.5)}
+  header{border-bottom:1px solid rgba(20,23,27,.5);background:var(--paper);
+    position:sticky;top:0;z-index:20}
   .hd{display:flex;align-items:center;justify-content:space-between;height:62px;
     max-width:720px;margin:0 auto;padding:0 clamp(20px,5vw,40px)}
   .logo{font-family:'Archivo',sans-serif;font-weight:900;font-size:20px;letter-spacing:-.04em;
@@ -58,35 +57,24 @@
     color:var(--ink-3);display:flex;align-items:center;gap:10px;margin-bottom:22px}
   .meta .tag{background:var(--hi);color:var(--ink);padding:4px 9px}
   h1{font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.04em;line-height:1.02;
-    font-size:clamp(38px,7vw,60px);text-transform:uppercase}
+    font-size:clamp(36px,6.5vw,54px);text-transform:uppercase}
   .dek{font-size:clamp(20px,3vw,24px);color:var(--ink-2);line-height:1.4;margin-top:24px;
     font-weight:600}
 
   article h2{font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.035em;
-    font-size:clamp(26px,4.5vw,34px);line-height:1.1;margin:56px 0 4px}
+    font-size:clamp(24px,4vw,30px);line-height:1.1;margin:52px 0 4px}
   article p{margin-top:20px;color:var(--ink-2)}
   article p.big{font-size:22px;color:var(--ink);font-weight:600;line-height:1.45}
   article strong{color:var(--ink);font-weight:700}
-  article em{font-style:italic}
   article p a{color:var(--blue-d)}
 
   .rule{border:0;border-top:1px solid var(--hair);margin:52px 0}
 
-  .pull{
-    border-left:4px solid var(--blue);padding:6px 0 6px 24px;margin:40px 0;
-    font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.03em;
-    font-size:clamp(24px,4vw,32px);line-height:1.15;color:var(--ink);
-  }
-
-  .creed{list-style:none;margin:28px 0;border-top:1px solid rgba(20,23,27,.5)}
-  .creed li{display:flex;gap:16px;padding:20px 0;border-bottom:1px solid var(--hair);
-    font-size:18px;line-height:1.45}
-  .creed li b{font-family:'Archivo',sans-serif;font-weight:800}
-  .creed .no{color:var(--ink-3);text-decoration:line-through;
-    text-decoration-color:var(--ink-3);flex:none;width:118px;
-    font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;text-transform:uppercase;
-    padding-top:2px}
-  .creed .yes{color:var(--ink)}
+  /* glossary */
+  .gloss-list{list-style:none;margin:20px 0;border-top:1px solid rgba(20,23,27,.5)}
+  .gloss-list li{padding:20px 0;border-bottom:1px solid var(--hair)}
+  .gloss-list h3{font-family:'Archivo',sans-serif;font-weight:800;font-size:17px;color:var(--ink)}
+  .gloss-list p{margin-top:6px;font-size:15.5px;color:var(--ink-2);line-height:1.5}
 
   /* CTA BOX */
   .cta-box{background:var(--ink);color:var(--paper);padding:40px clamp(24px,5vw,44px);
@@ -107,7 +95,6 @@
   .sign{margin-top:44px;font-family:'Archivo',sans-serif;font-weight:800;font-size:16px;
     color:var(--ink-2)}
   .sign b{color:var(--ink)}
-
 
   /* WIECEJ WPISOW */
   .more-posts{margin-top:64px}
@@ -132,6 +119,21 @@
   .ft a{color:var(--ink-2);text-decoration:none}
   .ft a:hover{color:var(--blue)}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "DefinedTermSet",
+  "name": "Słownik SEO",
+  "url": "https://dzialajmy.online/slownik-seo.html",
+  "hasDefinedTerm": [
+    {"@type": "DefinedTerm", "name": "SEO", "description": "Działania, które pomagają stronie pojawiać się wyżej w bezpłatnych wynikach wyszukiwania Google."},
+    {"@type": "DefinedTerm", "name": "Słowa kluczowe", "description": "Frazy, które ludzie wpisują w wyszukiwarkę, szukając usługi takiej jak Twoja."},
+    {"@type": "DefinedTerm", "name": "Meta title i meta description", "description": "Tytuł i opis strony widoczne w wynikach wyszukiwania Google, zanim ktoś kliknie."},
+    {"@type": "DefinedTerm", "name": "SEO lokalne", "description": "Optymalizacja pod wyszukiwania z konkretnej miejscowości lub okolicy."},
+    {"@type": "DefinedTerm", "name": "Backlink", "description": "Link z innej strony do Twojej, traktowany przez Google jako sygnał zaufania."}
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -144,42 +146,104 @@
 
 <article>
   <div class="wrap">
-    <div class="meta"><span class="tag">003</span><span>Wiedza</span></div>
-    <h1>Nie mam dostępu do strony</h1>
-    <p class="dek">Zgadnij, jak często to słyszę. Ktoś ma stronę, płaci za nią co roku, i nie ma pojęcia, gdzie jest hasło, kto ją robił, ani jak zmienić na niej choćby numer telefonu.</p>
+    <div class="meta"><span class="tag">010</span><span>Wiedza</span></div>
+    <h1>Słownik SEO po ludzku</h1>
+    <p class="dek">Podstawowe pojęcia SEO, o które klienci pytają najczęściej, wyjaśnione bez żargonu. Bez tego nie da się sensownie pogadać o tym, co właściwie robię przy okazji strony.</p>
 
     <hr class="rule">
 
-    <p class="big">Scenariusz, który znam na pamięć: kilka lat temu ktoś zrobił Ci stronę. Znajomy, agencja, freelancer z polecenia. Zapłaciłeś, strona działała, więc o niej zapomniałeś.</p>
+    <p class="big">SEO to nie magia i nie jednorazowa usługa, tylko zbiór konkretnych, sprawdzalnych działań. Poniżej pojęcia, które faktycznie mają znaczenie dla małej firmy, nie cały żargon agencyjny.</p>
 
-    <p>Potem ten znajomy przestał odbierać telefon. Agencja zamknęła działalność. Freelancer zniknął. A Ty zostałeś z działającą stroną i zerową kontrolą nad nią. Nie wiesz, gdzie jest zarejestrowana domena. Nie masz dostępu do panelu hostingu. Nie masz loginu do CMS-a, więc nawet drobnej zmiany nie zrobisz sam.</p>
-
-    <p><strong>To nie jest rzadki przypadek.</strong> To jeden z najczęstszych powodów, dla których w ogóle do mnie piszecie.</p>
-
-    <div class="pull">Strona, do której nie masz dostępu, nie jest Twoją stroną. Jest cudzą stroną, za którą Ty płacisz.</div>
-
-    <h2>Dlaczego to się dzieje</h2>
-    <p>Bo na starcie nikt o tym nie myśli. Zlecasz stronę, dostajesz gotowy produkt, i tyle Cię interesuje. Dane logowania zostają w skrzynce wykonawcy, czasem w jednym mailu sprzed lat, którego już nie znajdziesz. Domena bywa zarejestrowana na konto wykonawcy, nie na Twoją firmę. Hosting opłaca się z automatu, z karty, o której zapomniałeś.</p>
-
-    <p>Dopóki nic się nie psuje, nie ma problemu. Problem pojawia się, gdy chcesz coś zmienić, a nie możesz. Albo gorzej, gdy hosting wygasa, bo nikt nie przedłużył opłaty, i strona po prostu znika.</p>
-
-    <h2>Co wtedy robię</h2>
-    <p>Najpierw sprawdzam, co da się odzyskać. Rejestr WHOIS domeny, ślady w starych mailach, kontakt z dotychczasowym hostingiem. Czasem uda się odzyskać dostęp bez zaczynania od zera. Czasem nie, i wtedy stawiam stronę na nowo, na Twoim koncie, z Twoją domeną, z Twoimi danymi logowania od pierwszego dnia.</p>
-
-    <p class="big">W obu przypadkach kończysz z jedną rzeczą: pełnym dostępem, który jest Twój.</p>
-
-    <ul class="creed">
-      <li><span class="no">Nie robię</span><span class="yes"><b>Stron, do których tylko ja mam klucz.</b> Domena i hosting są rejestrowane na Twoje dane, nie na moje.</span></li>
-      <li><span class="no">Nie robię</span><span class="yes"><b>Tajemniczych haseł.</b> Dostajesz login do panelu edycji i do hostingu, spisane, gotowe do użycia.</span></li>
-      <li><span class="no">Nie robię</span><span class="yes"><b>Zniknięć.</b> Jak coś się zepsuje, piszesz, i wracamy do tego razem, nawet jeśli to nie moja robota od początku.</span></li>
+    <h2>Podstawy</h2>
+    <ul class="gloss-list">
+      <li>
+        <h3>SEO</h3>
+        <p>Skrót od Search Engine Optimization, czyli działania, dzięki którym strona pojawia się wyżej w bezpłatnych (nie płatnych) wynikach wyszukiwania Google.</p>
+      </li>
+      <li>
+        <h3>Słowa kluczowe / frazy kluczowe</h3>
+        <p>Konkretne słowa albo zwroty, które ktoś wpisuje w wyszukiwarkę, szukając Twojej usługi, np. "strona www dla trenera personalnego".</p>
+      </li>
+      <li>
+        <h3>Meta title i meta description</h3>
+        <p>Tytuł i krótki opis strony widoczne w Google, zanim ktoś jeszcze na nią wejdzie. Dobrze napisane realnie zwiększają liczbę kliknięć.</p>
+      </li>
+      <li>
+        <h3>Nagłówki H1, H2, H3</h3>
+        <p>Struktura tekstu na stronie: H1 to główny tytuł, H2 i H3 to sekcje i podsekcje. Pomagają Google (i czytelnikowi) zrozumieć, o czym jest strona.</p>
+      </li>
+      <li>
+        <h3>CTR (współczynnik klikalności)</h3>
+        <p>Procent osób, które widziały Twój wynik w Google i faktycznie w niego kliknęły. Zależy głównie od meta title i description.</p>
+      </li>
+      <li>
+        <h3>Bounce rate (współczynnik odrzuceń)</h3>
+        <p>Procent osób, które wchodzą na stronę i od razu z niej wychodzą, bez żadnej dodatkowej akcji. Wysoki bounce rate zwykle znaczy, że strona nie odpowiada na potrzebę, z którą ktoś przyszedł.</p>
+      </li>
     </ul>
 
-    <h2>Co zrobić, jeśli to Twój przypadek</h2>
-    <p>Napisz, czym zajmuje się Twoja firma i co pamiętasz o obecnej stronie: nazwę domeny, kto ją robił, czy w ogóle wiesz, gdzie jest hosting. Nawet jeśli pamiętasz niewiele, sprawdzę, co da się z tym zrobić. Zobacz też, <a href="dla-kogo.html">komu i z jakimi problemami pomagam</a> najczęściej.</p>
+    <h2>SEO lokalne</h2>
+    <p>Najważniejsze dla małej firmy działającej w jednym mieście czy regionie, tak jak <a href="gdzie-dzialam.html">obszar, w którym sam działam</a>.</p>
+    <ul class="gloss-list">
+      <li>
+        <h3>SEO lokalne</h3>
+        <p>Optymalizacja strony pod wyszukiwania z konkretnej miejscowości, np. "strony www Kartuzy" zamiast ogólnego "strony www".</p>
+      </li>
+      <li>
+        <h3>NAP (Name, Address, Phone)</h3>
+        <p>Nazwa firmy, adres i telefon, spójnie podane wszędzie: na stronie, w Google Business Profile, w innych katalogach firm. Niespójność szkodzi zaufaniu wyszukiwarki.</p>
+      </li>
+      <li>
+        <h3>Google Business Profile (Wizytówka Google)</h3>
+        <p>Darmowy profil firmy w Google Maps i wyszukiwarce. Dla lokalnego biznesu często ważniejszy niż sama strona www.</p>
+      </li>
+      <li>
+        <h3>Dane strukturalne (schema.org)</h3>
+        <p>Dodatkowy kod na stronie, który tłumaczy Google wprost, czym jest dana treść: firmą, artykułem, pytaniem i odpowiedzią (FAQ), usługą itd.</p>
+      </li>
+    </ul>
+
+    <h2>Techniczne, ale warto wiedzieć</h2>
+    <ul class="gloss-list">
+      <li>
+        <h3>Indeksowanie</h3>
+        <p>Proces, w którym Google "zapisuje" Twoją stronę w swojej bazie. Jeśli strona nie jest zaindeksowana, nie pojawi się w wynikach wyszukiwania w ogóle.</p>
+      </li>
+      <li>
+        <h3>Sitemap.xml</h3>
+        <p>Plik z listą wszystkich podstron serwisu, który ułatwia Google ich odnalezienie i zaindeksowanie.</p>
+      </li>
+      <li>
+        <h3>Robots.txt</h3>
+        <p>Plik, który mówi robotom wyszukiwarek, które części strony mogą przeglądać, a które mają pominąć.</p>
+      </li>
+      <li>
+        <h3>Duplicate content (duplikat treści)</h3>
+        <p>Ta sama albo prawie identyczna treść na kilku podstronach. Google słabo to ocenia, bo nie wie, którą wersję pokazać w wynikach.</p>
+      </li>
+      <li>
+        <h3>Thin content (płytka treść)</h3>
+        <p>Strona z bardzo mało wartościową, ogólnikową treścią, tworzona głównie pod frazę kluczową, nie pod realną potrzebę odwiedzającego. Google to filtruje.</p>
+      </li>
+      <li>
+        <h3>Backlink (link zwrotny)</h3>
+        <p>Link z innej strony internetowej do Twojej. Google traktuje wartościowe backlinki jako sygnał zaufania, ale masowe, kupione linki mogą zaszkodzić.</p>
+      </li>
+      <li>
+        <h3>301 redirect (przekierowanie)</h3>
+        <p>Trwałe przekierowanie ze starego adresu strony na nowy, tak żeby ani odwiedzający, ani Google nie trafiali na błąd 404.</p>
+      </li>
+      <li>
+        <h3>Core Web Vitals</h3>
+        <p>Zestaw wskaźników Google mierzących szybkość ładowania i wygodę korzystania ze strony na realnym urządzeniu, nie tylko w teorii.</p>
+      </li>
+    </ul>
+
+    <p class="big">Nie musisz znać tych wszystkich pojęć na pamięć. Ja się tym zajmuję, Ty prowadzisz firmę. Zobacz, jak wygląda to w praktyce w <a href="seo90.html">SEO.90</a>.</p>
 
     <div class="cta-box">
-      <h2>Zgubiłeś dostęp do <span class="mk">własnej strony?</span></h2>
-      <p>Napisz, co pamiętasz. Sprawdzę, czy da się to odzyskać, albo powiem wprost, że lepiej postawić stronę od nowa.</p>
+      <h2>Masz stronę i <span class="mk">nie wiesz, jak stoi z SEO?</span></h2>
+      <p>Napisz, rzucę okiem i powiem szczerze, co ma sens, a co jest tylko sprzedawaniem żargonu.</p>
       <a href="kontakt.html" class="cta-btn"><span>Opisz swoją sytuację</span><span>→</span></a>
     </div>
 
@@ -190,12 +254,12 @@
       <ul class="post-links">
       <li><a href="manifest.html"><span class="post-index">001</span><span class="post-title">Ładna, martwa strona</span><span class="post-arrow">→</span></a></li>
       <li><a href="seo90.html"><span class="post-index">002</span><span class="post-title">SEO.90</span><span class="post-arrow">→</span></a></li>
+      <li><a href="nie-mam-dostepu.html"><span class="post-index">003</span><span class="post-title">Nie mam dostępu do strony</span><span class="post-arrow">→</span></a></li>
       <li><a href="silny-lokalnie.html"><span class="post-index">004</span><span class="post-title">Silny lokalnie: jedna strona za darmo</span><span class="post-arrow">→</span></a></li>
       <li><a href="dla-kogo.html"><span class="post-index">005</span><span class="post-title">Dla kogo</span><span class="post-arrow">→</span></a></li>
       <li><a href="zamowienia-gastronomia.html"><span class="post-index">006</span><span class="post-title">Strona z zamówieniami dla gastronomii</span><span class="post-arrow">→</span></a></li>
       <li><a href="strona-trener-fizjoterapeuta.html"><span class="post-index">007</span><span class="post-title">Strona z zapisami dla trenera i fizjoterapeuty</span><span class="post-arrow">→</span></a></li>
       <li><a href="zanim-zaczniemy.html"><span class="post-index">009</span><span class="post-title">Zanim zaczniemy, pokazuję Ci wstępny projekt</span><span class="post-arrow">→</span></a></li>
-      <li><a href="slownik-seo.html"><span class="post-index">010</span><span class="post-title">Słownik SEO po ludzku</span><span class="post-arrow">→</span></a></li>
       </ul>
     </div>
 
