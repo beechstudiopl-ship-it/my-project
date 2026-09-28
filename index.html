@@ -96,7 +96,7 @@
   }
   *{box-sizing:border-box;margin:0;padding:0}
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-  html,body{height:100%}
+  html{height:100%}
   body{
     background:var(--paper);color:var(--ink);
     font-family:'Source Sans 3',system-ui,sans-serif;
@@ -117,7 +117,16 @@
   .top{
     display:flex;align-items:center;justify-content:space-between;
     padding:22px clamp(20px,5vw,48px);
+    position:sticky;top:0;z-index:50;background:var(--paper);
+    border-bottom:1px solid var(--hair);
   }
+  .top-nav{display:none;align-items:center;gap:28px}
+  @media (min-width:640px){.top-nav{display:flex}}
+  .top-nav a{
+    font-family:'Archivo',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;
+    letter-spacing:.02em;color:var(--ink-2);text-decoration:none;
+  }
+  .top-nav a:hover{color:var(--blue)}
   .logo{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(19px,4.5vw,23px);
     letter-spacing:-.04em}
   .logo .d{color:var(--blue)}
@@ -394,6 +403,11 @@
 
   <div class="top">
     <div class="logo">działajmy<span class="d">.</span>online<span class="c">^</span></div>
+    <nav class="top-nav">
+      <a href="#dla-kogo">Dla kogo</a>
+      <a href="#oferta">Cennik</a>
+      <a href="kontakt.html">Kontakt</a>
+    </nav>
     <div class="status"><a href="#oferta" style="display:flex;align-items:center;gap:8px;color:inherit;text-decoration:none"><i></i>Przyjmuję zlecenia</a></div>
   </div>
 
