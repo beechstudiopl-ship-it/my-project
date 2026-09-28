@@ -533,6 +533,53 @@
     <p class="form-note" style="text-align:left;margin-top:10px">Masz potrzebę wykraczającą poza zwykłą stronę www? Zdarzają się też bardziej zaawansowane, dedykowane rozwiązania w zupełnie innej formie — to zawsze wymaga wcześniejszego omówienia.</p>
   </section>
 
+  <section class="section2">
+    <h2>Zrealizowane projekty</h2>
+    <p class="sublead">Prawdziwe strony dla prawdziwych klientów, nie makiety.</p>
+
+    <ul class="case-list">
+      <li>
+        <div class="case-tile">
+          <div class="case-visual">
+            <div class="case-browser-bar"><span class="case-dot"></span><span class="case-dot"></span><span class="case-dot"></span></div>
+            <div class="case-shot" data-case-shot>
+              <iframe src="demo-rope-access-group.html" title="Podgląd strony Rope Access Group" loading="lazy"></iframe>
+            </div>
+          </div>
+          <div class="case-body">
+            <h3>Strona www</h3>
+            <ul class="case-checks">
+              <li><span>Wybrany pakiet <b>FULL + SEO.90</b></span></li>
+              <li><span>3 miasta w SEO lokalnym</span></li>
+              <li><span>Schema.org + FAQPage</span></li>
+              <li><span>Sticky kontakt: telefon, WhatsApp, wycena</span></li>
+            </ul>
+            <a href="realizacja-rope-access-group.html" class="case-btn">Więcej o projekcie</a>
+            <a href="https://rope-ag.pl" class="case-link-ext" target="_blank" rel="noopener">Zobacz live →</a>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+    <script>
+      (function(){
+        document.querySelectorAll('[data-case-shot]').forEach(function(shot){
+          var iframe = shot.querySelector('iframe');
+          function scaleIt(){
+            var scale = shot.clientWidth / 1280;
+            iframe.style.transform = 'scale(' + scale + ')';
+            shot.style.height = (900 * scale) + 'px';
+          }
+          window.addEventListener('resize', scaleIt);
+          window.addEventListener('load', scaleIt);
+          scaleIt();
+        });
+      })();
+    </script>
+
+    <p class="case-more"><a href="realizacje.html">Zobacz wszystkie realizacje →</a></p>
+  </section>
+
   <section id="faq" class="section2">
     <h2>Pytania, które słyszę najczęściej</h2>
 
@@ -612,53 +659,6 @@
       <li><a href="zamowienia-gastronomia.html"><span class="post-index">006</span><span class="post-title">Strona z zamówieniami dla gastronomii</span><span class="post-arrow">→</span></a></li>
       <li><a href="strona-trener-fizjoterapeuta.html"><span class="post-index">007</span><span class="post-title">Strona z zapisami dla trenera i fizjoterapeuty</span><span class="post-arrow">→</span></a></li>
     </ul>
-  </section>
-
-  <section class="section2">
-    <h2>Zrealizowane projekty</h2>
-    <p class="sublead">Prawdziwe strony dla prawdziwych klientów, nie makiety.</p>
-
-    <ul class="case-list">
-      <li>
-        <div class="case-tile">
-          <div class="case-visual">
-            <div class="case-browser-bar"><span class="case-dot"></span><span class="case-dot"></span><span class="case-dot"></span></div>
-            <div class="case-shot" data-case-shot>
-              <iframe src="demo-rope-access-group.html" title="Podgląd strony Rope Access Group" loading="lazy"></iframe>
-            </div>
-          </div>
-          <div class="case-body">
-            <h3>Strona www</h3>
-            <ul class="case-checks">
-              <li><span>Wybrany pakiet <b>FULL + SEO.90</b></span></li>
-              <li><span>3 miasta w SEO lokalnym</span></li>
-              <li><span>Schema.org + FAQPage</span></li>
-              <li><span>Sticky kontakt: telefon, WhatsApp, wycena</span></li>
-            </ul>
-            <a href="realizacja-rope-access-group.html" class="case-btn">Zobacz projekt</a>
-            <a href="https://rope-ag.pl" class="case-link-ext" target="_blank" rel="noopener">Zobacz stronę: rope-ag.pl →</a>
-          </div>
-        </div>
-      </li>
-    </ul>
-
-    <script>
-      (function(){
-        document.querySelectorAll('[data-case-shot]').forEach(function(shot){
-          var iframe = shot.querySelector('iframe');
-          function scaleIt(){
-            var scale = shot.clientWidth / 1280;
-            iframe.style.transform = 'scale(' + scale + ')';
-            shot.style.height = (900 * scale) + 'px';
-          }
-          window.addEventListener('resize', scaleIt);
-          window.addEventListener('load', scaleIt);
-          scaleIt();
-        });
-      })();
-    </script>
-
-    <p class="case-more"><a href="realizacje.html">Zobacz wszystkie realizacje →</a></p>
   </section>
 
   <footer>
