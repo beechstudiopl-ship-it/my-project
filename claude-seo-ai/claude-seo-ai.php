@@ -2,8 +2,8 @@
 /**
  * Plugin Name:       Claude SEO — AI Visibility
  * Plugin URI:        https://northtc.pl
- * Description:        Automatyczne SEO pod AI (AEO): wpuszcza boty AI w robots.txt oraz wstrzykuje dane strukturalne (firma, FAQ, kursy) do <head>. Konfiguracja w jednym miejscu.
- * Version:           1.0.0
+ * Description:        Automatyczne SEO pod AI (AEO): wpuszcza boty AI w robots.txt, wstrzykuje dane strukturalne (firma, FAQ, kursy) do <head> oraz ustawia tytuly i opisy (meta) z pliku CSV. Konfiguracja w jednym miejscu.
+ * Version:           1.1.0
  * Requires at least: 5.6
  * Requires PHP:      7.2
  * Author:            NorthTC
@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Nie pozwalamy na bezposredni dostep.
 }
 
-define( 'CSA_VERSION', '1.0.0' );
+define( 'CSA_VERSION', '1.1.0' );
 define( 'CSA_PLUGIN_FILE', __FILE__ );
 define( 'CSA_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'CSA_OPTION_KEY', 'csa_settings' );
@@ -28,6 +28,7 @@ require_once CSA_PLUGIN_DIR . 'includes/class-csa-robots.php';
 require_once CSA_PLUGIN_DIR . 'includes/class-csa-schema.php';
 require_once CSA_PLUGIN_DIR . 'includes/class-csa-faq.php';
 require_once CSA_PLUGIN_DIR . 'includes/class-csa-course.php';
+require_once CSA_PLUGIN_DIR . 'includes/class-csa-metamap.php';
 
 /**
  * Zwraca zapisane ustawienia wtyczki, uzupelnione o wartosci domyslne.
@@ -73,6 +74,7 @@ function csa_init() {
 	new CSA_Schema();
 	new CSA_Faq();
 	new CSA_Course();
+	new CSA_MetaMap();
 }
 add_action( 'plugins_loaded', 'csa_init' );
 

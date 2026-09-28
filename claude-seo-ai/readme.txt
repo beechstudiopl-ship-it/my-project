@@ -4,7 +4,7 @@ Tags: seo, ai, aeo, schema, json-ld, robots, gpt, claude, perplexity
 Requires at least: 5.6
 Tested up to: 6.5
 Requires PHP: 7.2
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,6 +21,9 @@ Wtyczka "na automat" zwieksza widocznosc firmy w asystentach i wyszukiwarkach AI
 2. Dane firmy — wstrzykuje schema Organization / EducationalOrganization / LocalBusiness
    (nazwa, adres, telefon, obszary dzialania, profile spolecznosciowe).
 3. FAQ i kursy — buduje schema FAQPage z wpisow FAQ oraz Course na oznaczonych stronach.
+4. Tytuly i opisy (meta) — ustawia meta title / meta description dla stron z pliku CSV
+   (lub jednym kliknieciem z gotowego zestawu NorthTC), bez recznej edycji kazdej strony.
+   Integruje sie z Rank Math i Yoast, aby uniknac duplikatow tagow.
 
 == Instalacja ==
 
@@ -40,7 +43,19 @@ wtyczka wyswietli ostrzezenie — wtedy reguly botow AI dodaj recznie do tego pl
 Pamietaj tez, ze blokada botow (np. bledy 403) czesto pochodzi z firewalla / WAF
 (Cloudflare, Wordfence) — to trzeba odblokowac poza WordPressem.
 
+== Import tytulow i opisow (CSV) ==
+
+Menu: Ustawienia > Claude SEO: Import CSV.
+- Kliknij "Wgraj gotowy zestaw NorthTC (10 stron)", albo
+- wgraj wlasny plik CSV z kolumnami: URL, meta_title, meta_description.
+Wtyczka sama ustawi tytul i opis na kazdej pasujacej stronie (dopasowanie po adresie URL).
+Jesli masz Rank Math lub Yoast, wartosci sa podawane przez ich filtry (bez duplikatow).
+
 == Changelog ==
+
+= 1.1.0 =
+* Nowy modul: import meta title / meta description z CSV + gotowy zestaw NorthTC.
+* Integracja z Rank Math i Yoast (filtry tytulu/opisu) oraz fallback bez wtyczki SEO.
 
 = 1.0.0 =
 * Pierwsza wersja: robots.txt (boty AI), schema firmy, FAQPage (CPT), Course (metabox).
