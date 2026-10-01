@@ -94,6 +94,15 @@
   .features-list .arrow{font-family:'Archivo',sans-serif;font-weight:900;font-size:18px;color:var(--ink-3);transition:color .15s ease}
   .features-list a:hover .arrow{color:var(--blue)}
 
+  /* FAQ */
+  .faqs{margin-top:32px;display:flex;flex-direction:column;gap:10px}
+  .faqx{border:1.5px solid var(--hair);padding:16px 18px;background:#fff}
+  .faqx summary{font-family:'Archivo',sans-serif;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .faqx summary::-webkit-details-marker{display:none}
+  .faqx summary::after{content:"+";font-size:20px;color:var(--blue);line-height:1}
+  .faqx[open] summary::after{content:"\2212"}
+  .faqx p{margin-top:12px;font-size:15px;color:var(--ink-2);line-height:1.55}
+
   /* CTA BOX */
   .cta-box{background:var(--ink);color:var(--paper);padding:40px clamp(24px,5vw,44px);
     margin-top:64px}
@@ -140,31 +149,72 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "działajmy.online",
-  "url": "https://dzialajmy.online/",
-  "image": "https://dzialajmy.online/og-image.png",
-  "priceRange": "od 1000 zł",
-  "areaServed": [
-    {"@type": "City", "name": "Kościerzyna"},
-    {"@type": "City", "name": "Kartuzy"},
-    {"@type": "City", "name": "Żukowo"},
-    {"@type": "City", "name": "Sierakowice"},
-    {"@type": "City", "name": "Szemud"},
-    {"@type": "City", "name": "Pruszcz Gdański"},
-    {"@type": "City", "name": "Malbork"},
-    {"@type": "City", "name": "Stegna"},
-    {"@type": "City", "name": "Gdańsk"},
-    {"@type": "City", "name": "Gdynia"},
-    {"@type": "City", "name": "Sopot"}
-  ],
-  "makesOffer": {
-    "@type": "Offer",
-    "itemOffered": {
-      "@type": "Service",
-      "name": "Projektowanie i budowa stron internetowych dla małych firm"
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "name": "działajmy.online",
+      "url": "https://dzialajmy.online/",
+      "image": "https://dzialajmy.online/og-image.png",
+      "priceRange": "od 1000 zł",
+      "areaServed": [
+        {"@type": "City", "name": "Kościerzyna"},
+        {"@type": "City", "name": "Kartuzy"},
+        {"@type": "City", "name": "Żukowo"},
+        {"@type": "City", "name": "Sierakowice"},
+        {"@type": "City", "name": "Szemud"},
+        {"@type": "City", "name": "Pruszcz Gdański"},
+        {"@type": "City", "name": "Malbork"},
+        {"@type": "City", "name": "Stegna"},
+        {"@type": "City", "name": "Gdańsk"},
+        {"@type": "City", "name": "Gdynia"},
+        {"@type": "City", "name": "Sopot"}
+      ],
+      "makesOffer": {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Projektowanie i budowa stron internetowych dla małych firm"
+        }
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Czy robisz strony dla firm poza Trójmiastem, np. w Kartuzach albo Kościerzynie?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tak, to mój podstawowy obszar działania: Kaszuby (Kartuzy, Kościerzyna, Żukowo, Sierakowice, Szemud), Żuławy (Malbork, Stegna) i całe Trójmiasto. Mogę się spotkać na miejscu w każdej z tych lokalizacji."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Czy trzeba się spotykać osobiście, czy da się wszystko załatwić zdalnie?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Da się w pełni zdalnie, mailem i telefonem. Ale w obszarze, do którego mogę realnie dojechać, wolę czasem wpaść na miejsce, jeśli to ułatwi rozmowę o firmie."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Jak daleko od Gdyni realnie dojeżdżasz?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bazuję w Gdyni, więc do Trójmiasta docieram najszybciej. Kartuzy, Kościerzyna czy Malbork to dla mnie wciąż realny dojazd, nie tylko deklaracja na stronie."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Masz już jakąś realizację w tym regionie?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tak, w Gdyni zrobiłem stronę i SEO lokalne dla Rope Access Group, firmy zajmującej się pracami wysokościowymi. Szczegóły tego projektu są opisane w sekcji realizacji."
+          }
+        }
+      ]
     }
-  }
+  ]
 }
 </script>
 </head>
@@ -258,6 +308,24 @@
           <p style="margin-top:6px;font-size:15px">Nadmorska gmina na Mierzei Wiślanej: sezonowe noclegi, gastronomia i wypożyczalnie, którym strona musi dobrze działać zwłaszcza przed wakacjami.</p>
         </div>
       </li>
+      <li>
+        <div style="padding:18px 4px">
+          <h3 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:16px;color:var(--ink)">Gdynia</h3>
+          <p style="margin-top:6px;font-size:15px">Tu mam najkrótszy dojazd, więc to naturalna baza działania. Zrobiłem tu już <a href="realizacja-rope-access-group.html">stronę i SEO lokalne dla firmy prac wysokościowych</a> — zobacz, jak wyglądał ten projekt.</p>
+        </div>
+      </li>
+      <li>
+        <div style="padding:18px 4px">
+          <h3 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:16px;color:var(--ink)">Sopot</h3>
+          <p style="margin-top:6px;font-size:15px">Gastronomia, hotele i usługi nastawione na ruch turystyczny przez cały sezon, więc strona musi dobrze wyglądać też dla gości spoza regionu.</p>
+        </div>
+      </li>
+      <li>
+        <div style="padding:18px 4px">
+          <h3 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:16px;color:var(--ink)">Gdańsk</h3>
+          <p style="margin-top:6px;font-size:15px">Najwięcej różnych branż naraz: biurowce, usługi, handel i firmy B2B, więc strona musi jasno mówić, do kogo konkretnie jest adresowana.</p>
+        </div>
+      </li>
     </ul>
 
     <h2>Przykłady dla różnych branż</h2>
@@ -269,7 +337,28 @@
       <li><a href="dla-kogo.html"><h3>Zobacz pozostałe branże</h3><span class="arrow">→</span></a></li>
     </ul>
 
-    <p class="big">Prowadzisz firmę w jednej z tych miejscowości? Napisz, pogadamy.</p>
+    <h2>Najczęstsze pytania o obszar działania</h2>
+
+    <div class="faqs">
+      <details class="faqx">
+        <summary>Czy robisz strony dla firm poza Trójmiastem, np. w Kartuzach albo Kościerzynie?</summary>
+        <p>Tak, to mój podstawowy obszar działania: Kaszuby (Kartuzy, Kościerzyna, Żukowo, Sierakowice, Szemud), Żuławy (Malbork, Stegna) i całe Trójmiasto. Mogę się spotkać na miejscu w każdej z tych lokalizacji.</p>
+      </details>
+      <details class="faqx">
+        <summary>Czy trzeba się spotykać osobiście, czy da się wszystko załatwić zdalnie?</summary>
+        <p>Da się w pełni zdalnie, mailem i telefonem. Ale w obszarze, do którego mogę realnie dojechać, wolę czasem wpaść na miejsce, jeśli to ułatwi rozmowę o firmie.</p>
+      </details>
+      <details class="faqx">
+        <summary>Jak daleko od Gdyni realnie dojeżdżasz?</summary>
+        <p>Bazuję w Gdyni, więc do Trójmiasta docieram najszybciej. Kartuzy, Kościerzyna czy Malbork to dla mnie wciąż realny dojazd, nie tylko deklaracja na stronie.</p>
+      </details>
+      <details class="faqx">
+        <summary>Masz już jakąś realizację w tym regionie?</summary>
+        <p>Tak, w Gdyni zrobiłem <a href="realizacja-rope-access-group.html">stronę i SEO lokalne dla Rope Access Group</a>, firmy zajmującej się pracami wysokościowymi.</p>
+      </details>
+    </div>
+
+    <p class="big" style="margin-top:56px">Prowadzisz firmę w jednej z tych miejscowości? Napisz, pogadamy.</p>
 
     <div class="cta-box">
       <h2>Zaczynamy <span class="mk">od jednej wiadomości?</span></h2>
