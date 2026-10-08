@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,26 +10,28 @@
   MAILING · Orłowo Square · dane do specyfikacji technicznej
   =====================================================================
   Tytuł mailingu:      Orłowo Square: kompaktowe lokale pod Twój biznes w Gdyni
-  Adres zwrotny:       [UZUPEŁNIJ: np. sprzedaz@...]
+  Adres zwrotny:       [UZUPEŁNIJ]
   Adresy do testów:    [UZUPEŁNIJ]
-  Landing page:        [UZUPEŁNIJ: adres strony z dostępnymi lokalami]
-                       (podmień wszystkie wystąpienia LANDING_URL w tym pliku)
-  Grafika:             grafika.jpg, 600 × 700 px, JPG, maks. 300 KB
-  Czcionki:            Helvetica (treść), Georgia (nagłówek), tylko z listy dozwolonych
-  Tekst:               ok. 950 znaków (wymagane 500–1000)
-  Stopka:              4 linie (limit 5)
+  Landing page:        podmień wszystkie wystąpienia LANDING_URL
+  Czcionki:            Helvetica / Georgia, tylko z listy dozwolonych
 
-  Grafikę przekazuje się wydawcy jako osobny plik. Jeśli wysyłasz ten
-  HTML sam, zamień src="grafika.jpg" na pełny adres URL obrazka.
+  ZDJĘCIA (losowe, tymczasowe z picsum.photos, do podmiany):
+    ZDJĘCIE 1  nagłówek (klif / morze)     600 × 180 px
+    ZDJĘCIE 2  rzut lokalu                 230 × 260 px
   =====================================================================
 -->
 <style>
   body{margin:0;padding:0;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}
   img{border:0;outline:none;text-decoration:none;display:block}
+  a{text-decoration:none}
   @media only screen and (max-width:620px){
     .wrap{width:100% !important}
+    .col{display:block !important;width:auto !important;max-width:100% !important}
+    .col-plan{padding:24px 20px 0 !important}
     .pad{padding-left:20px !important;padding-right:20px !important}
     .fluid{width:100% !important;height:auto !important}
+    .h1{font-size:20px !important;line-height:27px !important}
+    .lines{display:none !important}
   }
 </style>
 </head>
@@ -37,7 +39,7 @@
 
 <!-- Preheader: tekst widoczny w skrzynce obok tytułu, ukryty w treści -->
 <div style="display:none;max-height:0;overflow:hidden;mso-hide:all;font-size:1px;line-height:1px;color:#EDEAE4;">
-  Lokale od ok. 28 m² w Gdyni Orłowie, z odbiorem na początku 2027 roku. Sprawdź dostępne powierzchnie.
+  Kompaktowe lokale w Gdyni Orłowie, odbiór na początku 2027 roku. Sprawdź dostępne powierzchnie.
 </div>
 
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#EDEAE4;">
@@ -47,39 +49,164 @@
       <table role="presentation" class="wrap" width="600" cellpadding="0" cellspacing="0" border="0"
         style="width:600px;max-width:600px;background:#2E2E2E;">
 
-        <!-- TEKST (ok. 950 znaków) -->
+        <!-- ============ NAGŁÓWEK: ZDJĘCIE 1 + LOGO ============ -->
         <tr>
-          <td class="pad" style="padding:36px 40px 12px;font-family:Helvetica,Arial,sans-serif;
-            font-size:16px;line-height:25px;color:#DCDCDC;">
+          <td background="https://picsum.photos/seed/orlowo-klif/600/180" bgcolor="#5A4A3A" valign="top" height="180"
+            style="background:#5A4A3A url('https://picsum.photos/seed/orlowo-klif/600/180') center/cover no-repeat;height:180px;">
+            <!--[if gte mso 9]>
+            <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:600px;height:180px;">
+              <v:fill type="frame" src="https://picsum.photos/seed/orlowo-klif/600/180" color="#5A4A3A" />
+              <v:textbox inset="0,0,0,0">
+            <![endif]-->
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td align="right" valign="top" style="padding:24px 26px 0 0;">
+                  <a href="LANDING_URL" target="_blank" style="text-decoration:none;">
+                    <span style="font-family:Helvetica,Arial,sans-serif;font-weight:bold;font-size:30px;line-height:30px;
+                      letter-spacing:1px;color:#FFFFFF;">orłowo</span><br>
+                    <span style="font-family:Helvetica,Arial,sans-serif;font-size:14px;line-height:18px;
+                      color:#C9A24A;">square.</span>
+                  </a>
+                </td>
+              </tr>
+            </table>
+            <!--[if gte mso 9]>
+              </v:textbox>
+            </v:rect>
+            <![endif]-->
+          </td>
+        </tr>
 
-            <p style="margin:0 0 6px;font-family:Helvetica,Arial,sans-serif;font-size:13px;line-height:18px;
-              letter-spacing:2px;text-transform:uppercase;color:#C9A24A;">
-              Orłowo Square · Gdynia
-            </p>
+        <!-- ============ HASŁO ============ -->
+        <tr>
+          <td class="pad h1" align="center" style="padding:30px 30px 18px;font-family:Helvetica,Arial,sans-serif;
+            font-weight:bold;font-size:23px;line-height:30px;color:#FFFFFF;">
+            Nie płać za metry, których nie potrzebujesz!
+          </td>
+        </tr>
 
-            <p style="margin:0 0 18px;font-family:Georgia,'Times New Roman',serif;font-size:24px;line-height:31px;color:#FFFFFF;">
-              Nie płać za metry, których nie potrzebujesz
-            </p>
+        <!-- ============ ZŁOTE LINIE (schodkowo, do prawej) ============ -->
+        <tr>
+          <td class="lines" align="right" style="padding:0 0 30px;">
+            <table role="presentation" width="330" cellpadding="0" cellspacing="0" border="0" align="right">
+              <tr><td height="1" style="height:1px;line-height:1px;font-size:1px;background:#C9A24A;">&nbsp;</td></tr>
+            </table>
+            <br style="line-height:14px;">
+            <table role="presentation" width="315" cellpadding="0" cellspacing="0" border="0" align="right">
+              <tr><td height="1" style="height:1px;line-height:1px;font-size:1px;background:#C9A24A;">&nbsp;</td></tr>
+            </table>
+            <br style="line-height:14px;">
+            <table role="presentation" width="300" cellpadding="0" cellspacing="0" border="0" align="right">
+              <tr><td height="1" style="height:1px;line-height:1px;font-size:1px;background:#C9A24A;">&nbsp;</td></tr>
+            </table>
+          </td>
+        </tr>
 
-            <p style="margin:0 0 14px;">
+        <!-- ============ DWIE KOLUMNY: TEKST | RZUT ============ -->
+        <tr>
+          <td style="padding:0;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+
+                <!-- LEWA: tekst -->
+                <td class="col pad" width="340" valign="top" style="width:340px;padding:0 10px 0 26px;
+                  font-family:Helvetica,Arial,sans-serif;color:#FFFFFF;">
+
+                  <p style="margin:0;text-align:center;font-size:21px;line-height:28px;color:#E6E6E6;">
+                    Twój biznes potrzebuje
+                  </p>
+                  <p style="margin:0 0 20px;text-align:center;font-size:21px;line-height:28px;font-weight:bold;color:#C9A24A;">
+                    dobrego miejsca.
+                  </p>
+
+                  <!-- Pinezka: emoji jako zamiennik, możesz podmienić na ikonę PNG -->
+                  <p style="margin:0 0 26px;text-align:center;font-size:21px;line-height:28px;color:#E6E6E6;">
+                    <span style="color:#C9A24A;">&#128205;</span>&nbsp;&nbsp;Gdynia
+                  </p>
+
+                  <table role="presentation" cellpadding="0" cellspacing="0" border="0"
+                    style="font-family:Helvetica,Arial,sans-serif;font-size:17px;line-height:24px;font-weight:bold;">
+                    <tr>
+                      <td valign="top" style="color:#C9A24A;padding:0 8px 10px 0;">&bull;</td>
+                      <td style="color:#FFFFFF;padding:0 0 10px;">kompaktowe lokale</td>
+                    </tr>
+                    <tr>
+                      <td valign="top" style="color:#C9A24A;padding:0 8px 10px 0;">&bull;</td>
+                      <td style="color:#C9A24A;padding:0 0 10px;">pod Twoją działalność</td>
+                    </tr>
+                    <tr>
+                      <td valign="top" style="color:#C9A24A;padding:0 8px 10px 0;">&bull;</td>
+                      <td style="color:#FFFFFF;padding:0 0 10px;">poszukiwane powierzchnie na rynku najmu!</td>
+                    </tr>
+                    <tr>
+                      <td valign="top" style="color:#C9A24A;padding:0 8px 0 0;">&bull;</td>
+                      <td style="color:#C9A24A;">odbiór na początku 2027</td>
+                    </tr>
+                  </table>
+
+                  <p style="margin:34px 0 0;font-size:19px;line-height:26px;">
+                    <a href="LANDING_URL" target="_blank" style="color:#FFFFFF;text-decoration:none;">
+                      sprawdź dostępne lokale&nbsp;<span style="color:#C9A24A;">&rarr;</span>
+                    </a>
+                  </p>
+                </td>
+
+                <!-- PRAWA: karta z rzutem -->
+                <td class="col col-plan" width="260" valign="top" style="width:260px;padding:0 26px 0 0;">
+                  <a href="LANDING_URL" target="_blank" style="text-decoration:none;">
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#FFFFFF"
+                      style="background:#FFFFFF;">
+                      <tr>
+                        <td style="padding:14px 14px 6px;">
+                          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
+                            style="font-family:Helvetica,Arial,sans-serif;font-size:9px;line-height:14px;color:#444444;text-transform:uppercase;">
+                            <tr>
+                              <td style="border-bottom:1px solid #DDDDDD;">Pow. podst. biur</td>
+                              <td align="right" style="border-bottom:1px solid #DDDDDD;">19,89&nbsp;m²</td>
+                            </tr>
+                            <tr>
+                              <td style="border-bottom:1px solid #DDDDDD;">Łazienka</td>
+                              <td align="right" style="border-bottom:1px solid #DDDDDD;">4,05&nbsp;m²</td>
+                            </tr>
+                            <tr>
+                              <td style="border-bottom:1px solid #DDDDDD;">Korytarz</td>
+                              <td align="right" style="border-bottom:1px solid #DDDDDD;">3,87&nbsp;m²</td>
+                            </tr>
+                            <tr>
+                              <td style="color:#C9A24A;font-weight:bold;">Powierzchnia użytkowa</td>
+                              <td align="right" style="color:#C9A24A;font-weight:bold;">27,81&nbsp;m²</td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td align="center" style="padding:6px 14px 14px;">
+                          <!-- ZDJĘCIE 2: rzut lokalu -->
+                          <img src="https://picsum.photos/seed/orlowo-rzut/230/260" width="230" height="260"
+                            alt="Rzut przykładowego lokalu 27,81 m²"
+                            style="display:block;width:230px;max-width:100%;height:auto;border:0;background:#EEEEEE;
+                              font-family:Helvetica,Arial,sans-serif;font-size:12px;color:#444444;">
+                        </td>
+                      </tr>
+                    </table>
+                  </a>
+                </td>
+
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- ============ TEKST INFORMACYJNY (spec: 500–1000 znaków łącznie) ============ -->
+        <tr>
+          <td class="pad" style="padding:40px 26px 8px;font-family:Helvetica,Arial,sans-serif;
+            font-size:14px;line-height:22px;color:#BDBDBD;">
+            <p style="margin:0 0 12px;">
               W&nbsp;Gdyni rośnie zapotrzebowanie na niewielkie, dobrze zaplanowane lokale usługowe i&nbsp;biurowe.
-              Firmy coraz częściej szukają przestrzeni dopasowanej do realnych potrzeb, zamiast utrzymywać duże
-              powierzchnie, które w&nbsp;praktyce stoją puste.
+              Orłowo Square to kompaktowe powierzchnie, które można zaaranżować pod konkretną działalność: biuro,
+              gabinet, pracownię czy punkt usługowy. Takie lokale należą do najbardziej poszukiwanych na rynku najmu,
+              dlatego sprawdzą się zarówno do prowadzenia własnej firmy, jak i&nbsp;jako inwestycja pod wynajem.
             </p>
-
-            <p style="margin:0 0 14px;">
-              Orłowo Square to kompaktowe lokale, które można zaaranżować pod konkretną działalność: biuro, gabinet,
-              pracownię czy punkt usługowy. Przykładowy lokal ma
-              <strong style="color:#FFFFFF;">27,81&nbsp;m²</strong> powierzchni użytkowej, w&nbsp;tym pomieszczenie
-              biurowe 19,89&nbsp;m², łazienkę 4,05&nbsp;m² i&nbsp;korytarz 3,87&nbsp;m².
-            </p>
-
-            <p style="margin:0 0 14px;">
-              Takie powierzchnie należą do najbardziej poszukiwanych na rynku najmu, dlatego sprawdzą się zarówno
-              do prowadzenia własnej firmy, jak i&nbsp;jako inwestycja pod wynajem. Odbiór lokali zaplanowano na
-              <strong style="color:#C9A24A;">początek 2027 roku</strong>.
-            </p>
-
             <p style="margin:0;">
               Pełną listę dostępnych lokali wraz z&nbsp;rzutami znajdziesz na
               <a href="LANDING_URL" target="_blank" style="color:#C9A24A;text-decoration:underline;">stronie inwestycji</a>.
@@ -87,28 +214,22 @@
           </td>
         </tr>
 
-        <!-- GRAFIKA 600 px, klikalna, prowadzi na landing page -->
+        <!-- ============ STOPKA (4 linie, limit 5) ============ -->
         <tr>
-          <td style="padding:24px 0 0;">
-            <a href="LANDING_URL" target="_blank">
-              <img src="grafika.jpg" class="fluid" width="600" height="700"
-                alt="Orłowo Square, Gdynia: kompaktowe lokale pod Twoją działalność, odbiór na początku 2027. Sprawdź dostępne lokale."
-                style="display:block;width:600px;max-width:100%;height:auto;border:0;
-                  font-family:Helvetica,Arial,sans-serif;font-size:16px;color:#FFFFFF;background:#2E2E2E;">
-            </a>
-          </td>
-        </tr>
-
-        <!-- STOPKA (4 linie, limit 5) -->
-        <tr>
-          <td class="pad" style="padding:20px 40px 26px;font-family:Helvetica,Arial,sans-serif;
-            font-size:12px;line-height:19px;color:#9A9A9A;border-top:1px solid #C9A24A;">
-            Orłowo Square · [UZUPEŁNIJ: nazwa dewelopera / sprzedawcy]<br>
-            [UZUPEŁNIJ: adres biura sprzedaży] · tel. [UZUPEŁNIJ]<br>
-            <a href="mailto:[UZUPEŁNIJ]" style="color:#C9A24A;text-decoration:underline;">[UZUPEŁNIJ: e-mail]</a>
-            &nbsp;·&nbsp;
-            <a href="LANDING_URL" target="_blank" style="color:#C9A24A;text-decoration:underline;">[UZUPEŁNIJ: www]</a><br>
-            Niniejsza informacja nie stanowi oferty w rozumieniu Kodeksu cywilnego.
+          <td class="pad" style="padding:24px 26px 26px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td style="border-top:1px solid #4A4A4A;padding-top:18px;font-family:Helvetica,Arial,sans-serif;
+                  font-size:12px;line-height:19px;color:#8E8E8E;">
+                  Orłowo Square · [UZUPEŁNIJ: nazwa dewelopera / sprzedawcy]<br>
+                  [UZUPEŁNIJ: adres biura sprzedaży] · tel. [UZUPEŁNIJ]<br>
+                  <a href="mailto:[UZUPEŁNIJ]" style="color:#C9A24A;text-decoration:underline;">[UZUPEŁNIJ: e-mail]</a>
+                  &nbsp;·&nbsp;
+                  <a href="LANDING_URL" target="_blank" style="color:#C9A24A;text-decoration:underline;">[UZUPEŁNIJ: www]</a><br>
+                  Niniejsza informacja nie stanowi oferty w rozumieniu Kodeksu cywilnego.
+                </td>
+              </tr>
+            </table>
           </td>
         </tr>
 
