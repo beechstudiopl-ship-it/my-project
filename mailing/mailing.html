@@ -18,7 +18,7 @@
   LOGO:                logo.png (z logo.svg, 2× dla ekranów retina); podmień src na pełny URL
   ZDJĘCIA (losowe, tymczasowe z picsum.photos, do podmiany):
     ZDJĘCIE 1  nagłówek (klif / morze)     600 × 180 px
-    ZDJĘCIE 2  rzut lokalu                 230 × 260 px
+    ZDJĘCIE 2  rzut lokalu                 208 × 220 px (plik 416 × 440)
   =====================================================================
 -->
 <style>
@@ -28,11 +28,12 @@
   @media only screen and (max-width:620px){
     .wrap{width:100% !important}
     .col{display:block !important;width:auto !important;max-width:100% !important}
-    .col-plan{padding:24px 20px 0 !important}
+    .col-plan{padding:28px 0 0 !important}
+    .col-plan table{max-width:100% !important}
     .pad{padding-left:20px !important;padding-right:20px !important}
     .fluid{width:100% !important;height:auto !important}
+    .gap{display:none !important}
     .h1{font-size:20px !important;line-height:27px !important}
-    .lines{display:none !important}
   }
 </style>
 </head>
@@ -61,7 +62,7 @@
             <![endif]-->
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
               <tr>
-                <td align="right" valign="top" style="padding:24px 26px 0 0;">
+                <td align="right" valign="top" style="padding:24px 32px 0 0;">
                   <a href="https://batory.com.pl/" target="_blank" style="text-decoration:none;">
                     <!-- LOGO: logo.png (394 × 94 px, wyświetlane 197 × 47). Przy wysyłce podmień src na pełny URL. -->
                     <img src="logo.png" width="197" height="47" alt="Orłowo Square"
@@ -78,108 +79,97 @@
           </td>
         </tr>
 
-        <!-- ============ HASŁO ============ -->
+        <!-- ============ HASŁO + AKCENT ============ -->
         <tr>
-          <td class="pad h1" align="left" style="padding:30px 26px 18px;text-align:left;font-family:Helvetica,Arial,sans-serif;
-            font-weight:bold;font-size:23px;line-height:30px;color:#FFFFFF;">
+          <td class="pad h1" align="left" style="padding:36px 32px 0;text-align:left;font-family:Helvetica,Arial,sans-serif;
+            font-weight:bold;font-size:24px;line-height:31px;color:#FFFFFF;">
             Nie płać za metry, których nie potrzebujesz!
           </td>
         </tr>
-
-        <!-- ============ ZŁOTE LINIE (schodkowo, do prawej) ============ -->
         <tr>
-          <td class="lines" align="right" style="padding:0 0 30px;">
-            <table role="presentation" width="330" cellpadding="0" cellspacing="0" border="0" align="right">
-              <tr><td height="1" style="height:1px;line-height:1px;font-size:1px;background:#C9A24A;">&nbsp;</td></tr>
-            </table>
-            <br style="line-height:14px;">
-            <table role="presentation" width="315" cellpadding="0" cellspacing="0" border="0" align="right">
-              <tr><td height="1" style="height:1px;line-height:1px;font-size:1px;background:#C9A24A;">&nbsp;</td></tr>
-            </table>
-            <br style="line-height:14px;">
-            <table role="presentation" width="300" cellpadding="0" cellspacing="0" border="0" align="right">
-              <tr><td height="1" style="height:1px;line-height:1px;font-size:1px;background:#C9A24A;">&nbsp;</td></tr>
+          <td class="pad" align="left" style="padding:18px 32px 36px;">
+            <table role="presentation" width="56" cellpadding="0" cellspacing="0" border="0">
+              <tr><td height="2" style="height:2px;line-height:2px;font-size:2px;background:#C9A24A;">&nbsp;</td></tr>
             </table>
           </td>
         </tr>
 
-        <!-- ============ DWIE KOLUMNY: TEKST | RZUT ============ -->
+        <!-- ============ DWIE KOLUMNY: TEKST | RZUT (280 + 24 + 232 = 536) ============ -->
         <tr>
-          <td style="padding:0;">
-            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+          <td class="pad" style="padding:0 32px;">
+            <table role="presentation" width="536" cellpadding="0" cellspacing="0" border="0" style="width:100%;max-width:536px;">
               <tr>
 
                 <!-- LEWA: tekst -->
-                <td class="col pad" width="340" valign="top" style="width:340px;padding:0 10px 0 26px;
-                  font-family:Helvetica,Arial,sans-serif;color:#FFFFFF;">
+                <td class="col" width="280" valign="top" style="width:280px;padding:0;">
 
-                  <p style="margin:0;text-align:left;font-size:21px;line-height:28px;color:#E6E6E6;">
-                    Twój biznes potrzebuje
-                  </p>
-                  <p style="margin:0 0 20px;text-align:left;font-size:21px;line-height:28px;font-weight:bold;color:#C9A24A;">
-                    dobrego miejsca.
+                  <p style="margin:0 0 10px;font-family:Helvetica,Arial,sans-serif;font-size:12px;line-height:16px;letter-spacing:2px;text-transform:uppercase;">
+                    <a href="https://share.google/3T1jWBAYrTzElUlvu" target="_blank" style="color:#C9A24A;text-decoration:none;">Gdynia</a>
                   </p>
 
-                  <p style="margin:0 0 26px;text-align:left;font-size:21px;line-height:28px;color:#E6E6E6;">
-                    <a href="https://share.google/3T1jWBAYrTzElUlvu" target="_blank" style="color:#E6E6E6;text-decoration:none;">Gdynia</a>
+                  <p style="margin:0 0 28px;font-family:Helvetica,Arial,sans-serif;font-size:22px;line-height:29px;color:#E6E6E6;">
+                    Twój biznes potrzebuje<br>
+                    <strong style="color:#C9A24A;">dobrego miejsca.</strong>
                   </p>
 
-                  <table role="presentation" cellpadding="0" cellspacing="0" border="0"
-                    style="font-family:Helvetica,Arial,sans-serif;font-size:17px;line-height:24px;font-weight:bold;">
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
                     <tr>
-                      <td valign="top" style="color:#C9A24A;padding:0 8px 10px 0;">&bull;</td>
-                      <td style="color:#FFFFFF;padding:0 0 10px;">kompaktowe lokale</td>
+                      <td width="18" valign="top" style="width:18px;padding:0 0 12px;font-family:Helvetica,Arial,sans-serif;font-size:16px;line-height:22px;color:#C9A24A;">&bull;</td>
+                      <td valign="top" style="padding:0 0 12px;font-family:Helvetica,Arial,sans-serif;font-size:16px;line-height:22px;color:#FFFFFF;">kompaktowe lokale</td>
                     </tr>
                     <tr>
-                      <td valign="top" style="color:#C9A24A;padding:0 8px 10px 0;">&bull;</td>
-                      <td style="color:#C9A24A;padding:0 0 10px;">pod Twoją działalność</td>
+                      <td width="18" valign="top" style="width:18px;padding:0 0 12px;font-family:Helvetica,Arial,sans-serif;font-size:16px;line-height:22px;color:#C9A24A;">&bull;</td>
+                      <td valign="top" style="padding:0 0 12px;font-family:Helvetica,Arial,sans-serif;font-size:16px;line-height:22px;color:#FFFFFF;">pod Twoją działalność</td>
                     </tr>
                     <tr>
-                      <td valign="top" style="color:#C9A24A;padding:0 8px 10px 0;">&bull;</td>
-                      <td style="color:#FFFFFF;padding:0 0 10px;">poszukiwane powierzchnie na rynku najmu!</td>
+                      <td width="18" valign="top" style="width:18px;padding:0 0 12px;font-family:Helvetica,Arial,sans-serif;font-size:16px;line-height:22px;color:#C9A24A;">&bull;</td>
+                      <td valign="top" style="padding:0 0 12px;font-family:Helvetica,Arial,sans-serif;font-size:16px;line-height:22px;color:#FFFFFF;">poszukiwane powierzchnie na&nbsp;rynku najmu</td>
                     </tr>
                     <tr>
-                      <td valign="top" style="color:#C9A24A;padding:0 8px 0 0;">&bull;</td>
-                      <td style="color:#C9A24A;">odbiór na początku 2027</td>
+                      <td width="18" valign="top" style="width:18px;padding:0 0 0px;font-family:Helvetica,Arial,sans-serif;font-size:16px;line-height:22px;color:#C9A24A;">&bull;</td>
+                      <td valign="top" style="padding:0 0 0px;font-family:Helvetica,Arial,sans-serif;font-size:16px;line-height:22px;color:#FFFFFF;">odbiór na początku 2027</td>
                     </tr>
                   </table>
                 </td>
 
+                <!-- ODSTĘP -->
+                <td class="col gap" width="24" style="width:24px;font-size:0;line-height:0;">&nbsp;</td>
+
                 <!-- PRAWA: karta z rzutem -->
-                <td class="col col-plan" width="260" valign="top" style="width:260px;padding:0 26px 0 0;">
+                <td class="col col-plan" width="232" valign="top" style="width:232px;padding:0;">
                   <a href="https://batory.com.pl/" target="_blank" style="text-decoration:none;">
-                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#FFFFFF"
-                      style="background:#FFFFFF;">
+                    <table role="presentation" width="232" cellpadding="0" cellspacing="0" border="0" bgcolor="#FFFFFF"
+                      style="width:100%;max-width:232px;background:#FFFFFF;">
                       <tr>
-                        <td style="padding:14px 14px 6px;">
-                          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
-                            style="font-family:Helvetica,Arial,sans-serif;font-size:9px;line-height:14px;color:#444444;text-transform:uppercase;">
-                            <tr>
-                              <td style="border-bottom:1px solid #DDDDDD;">Pow. podst. biur</td>
-                              <td align="right" style="border-bottom:1px solid #DDDDDD;">19,89&nbsp;m²</td>
-                            </tr>
-                            <tr>
-                              <td style="border-bottom:1px solid #DDDDDD;">Łazienka</td>
-                              <td align="right" style="border-bottom:1px solid #DDDDDD;">4,05&nbsp;m²</td>
-                            </tr>
-                            <tr>
-                              <td style="border-bottom:1px solid #DDDDDD;">Korytarz</td>
-                              <td align="right" style="border-bottom:1px solid #DDDDDD;">3,87&nbsp;m²</td>
-                            </tr>
-                            <tr>
-                              <td style="color:#C9A24A;font-weight:bold;">Powierzchnia użytkowa</td>
-                              <td align="right" style="color:#C9A24A;font-weight:bold;">27,81&nbsp;m²</td>
-                            </tr>
-                          </table>
+                        <td style="padding:12px 12px 0;">
+                          <!-- ZDJĘCIE 2: rzut lokalu (208 × 220 px, najlepiej 416 × 440 dla retina) -->
+                          <img src="https://picsum.photos/seed/orlowo-rzut/416/440" class="fluid" width="208" height="220"
+                            alt="Rzut przykładowego lokalu 27,81 m²"
+                            style="display:block;width:208px;max-width:100%;height:auto;border:0;background:#EEEEEE;
+                              font-family:Helvetica,Arial,sans-serif;font-size:12px;color:#444444;">
                         </td>
                       </tr>
                       <tr>
-                        <td align="center" style="padding:6px 14px 14px;">
-                          <!-- ZDJĘCIE 2: rzut lokalu -->
-                          <img src="https://picsum.photos/seed/orlowo-rzut/230/260" width="230" height="260"
-                            alt="Rzut przykładowego lokalu 27,81 m²"
-                            style="display:block;width:230px;max-width:100%;height:auto;border:0;background:#EEEEEE;
-                              font-family:Helvetica,Arial,sans-serif;font-size:12px;color:#444444;">
+                        <td style="padding:12px 12px 14px;">
+                          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
+                            style="font-family:Helvetica,Arial,sans-serif;font-size:11px;line-height:15px;color:#555555;">
+                            <tr>
+                              <td style="padding:5px 0;border-bottom:1px solid #E6E6E6;">Pow. biurowa</td>
+                              <td align="right" style="padding:5px 0;border-bottom:1px solid #E6E6E6;white-space:nowrap;">19,89&nbsp;m²</td>
+                            </tr>
+                            <tr>
+                              <td style="padding:5px 0;border-bottom:1px solid #E6E6E6;">Łazienka</td>
+                              <td align="right" style="padding:5px 0;border-bottom:1px solid #E6E6E6;white-space:nowrap;">4,05&nbsp;m²</td>
+                            </tr>
+                            <tr>
+                              <td style="padding:5px 0;border-bottom:1px solid #2E2E2E;">Korytarz</td>
+                              <td align="right" style="padding:5px 0;border-bottom:1px solid #2E2E2E;white-space:nowrap;">3,87&nbsp;m²</td>
+                            </tr>
+                            <tr>
+                              <td style="padding:7px 0 0;font-size:12px;font-weight:bold;color:#2E2E2E;">Razem</td>
+                              <td align="right" style="padding:7px 0 0;font-size:14px;font-weight:bold;color:#A8862F;white-space:nowrap;">27,81&nbsp;m²</td>
+                            </tr>
+                          </table>
                         </td>
                       </tr>
                     </table>
@@ -193,9 +183,9 @@
 
         <!-- ============ DUŻY PRZYCISK: STRONA INWESTYCJI ============ -->
         <tr>
-          <td class="pad" align="center" style="padding:40px 26px 0;">
+          <td class="pad" align="center" style="padding:40px 32px 0;">
             <!--[if mso]>
-            <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" href="https://batory.com.pl/" arcsize="9%" style="height:64px;v-text-anchor:middle;width:548px;" stroke="f">
+            <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" href="https://batory.com.pl/" arcsize="9%" style="height:64px;v-text-anchor:middle;width:536px;" stroke="f">
               <v:fill type="gradient" color="#DCC583" color2="#9A7B2F" angle="90" />
               <center style="color:#FFFFFF;font-family:Helvetica,Arial,sans-serif;font-size:20px;font-weight:bold;">PRZEJDŹ DO STRONY INWESTYCJI &rarr;</center>
             </v:roundrect>
@@ -218,7 +208,7 @@
 
         <!-- ============ TEKST INFORMACYJNY (spec: 500–1000 znaków łącznie) ============ -->
         <tr>
-          <td class="pad" style="padding:40px 26px 8px;font-family:Helvetica,Arial,sans-serif;
+          <td class="pad" style="padding:32px 32px 8px;font-family:Helvetica,Arial,sans-serif;
             font-size:12px;line-height:18px;color:#BDBDBD;">
             <p style="margin:0 0 12px;">
               W&nbsp;Gdyni rośnie zapotrzebowanie na niewielkie, dobrze zaplanowane lokale usługowe i&nbsp;biurowe.
@@ -235,7 +225,7 @@
 
         <!-- ============ STOPKA (5 linii, limit 5) ============ -->
         <tr>
-          <td class="pad" style="padding:24px 26px 26px;">
+          <td class="pad" style="padding:24px 32px 28px;">
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td style="border-top:1px solid #4A4A4A;padding-top:18px;font-family:Helvetica,Arial,sans-serif;
