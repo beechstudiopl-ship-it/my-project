@@ -21,8 +21,22 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  "@graph": [
+    {
+      "@type": "Person",
+      "name": "Bartosz",
+      "jobTitle": "Twórca stron internetowych",
+      "url": "https://dzialajmy.online/",
+      "description": "Samodzielnie projektuję i koduję strony internetowe dla lokalnych firm od 12 lat, bez WordPressa i kreatorów. Działam w rejonie Kaszub i Trójmiasta.",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "działajmy.online",
+        "url": "https://dzialajmy.online/"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
     {
       "@type": "Question",
       "name": "Ile czasu zajmie zrobienie strony?",
@@ -78,6 +92,8 @@
         "@type": "Answer",
         "text": "Jasne, nie musisz zaczynać od zera. Mogę odświeżyć wygląd i treści na istniejącej stronie albo przenieść Cię na nowy, szybszy fundament."
       }
+    }
+      ]
     }
   ]
 }
@@ -233,6 +249,8 @@
   .photo-slot-icon{flex:none;font-size:20px;opacity:.6}
   .photo-slot-text{font-size:13.5px;color:var(--ink-3);line-height:1.45}
   .photo-slot-text b{color:var(--ink-2);font-weight:700}
+  .bio-line{margin-top:16px;font-size:14px;color:var(--ink-2);line-height:1.5;max-width:460px}
+  .bio-line b{color:var(--ink);font-family:'Archivo',sans-serif;font-weight:800}
 
   /* --- FOOT --- */
   footer{
@@ -544,6 +562,8 @@
           <span class="photo-slot-icon">📷</span>
           <span class="photo-slot-text"><b>Miejsce na zdjęcie:</b> Ty — żeby klient wiedział, z kim rozmawia.</span>
         </div>
+
+        <p class="bio-line"><b>Bartosz</b> — robię strony internetowe od 12 lat, solo, bez agencji i WordPressa. Każdą kodzę ręcznie. Działam w rejonie Kaszub i Trójmiasta.</p>
       </div>
 
       <div class="hero-visual">
