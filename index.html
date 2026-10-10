@@ -178,21 +178,35 @@
 
   .hero-visual{display:none}
   @media (min-width:640px){.hero-visual{display:block}}
+  .hero-visual-glow{
+    position:relative;border-radius:var(--r);padding:24px;overflow:hidden;
+    background:
+      radial-gradient(480px circle at 50% -10%,rgba(124,58,237,.38),transparent 65%),
+      radial-gradient(380px circle at 90% 30%,rgba(230,70,180,.20),transparent 60%),
+      var(--ink);
+  }
   .browser-mock{margin:0}
   .browser-bar{
-    display:flex;align-items:center;gap:6px;background:#E4E2DA;
-    padding:10px 14px;border-radius:var(--r) var(--r) 0 0;border:1px solid rgba(20,23,27,.15);border-bottom:none;
+    position:relative;display:flex;align-items:center;gap:6px;background:#E4E2DA;
+    padding:10px 14px;border-radius:var(--r-sm) var(--r-sm) 0 0;border:1px solid rgba(20,23,27,.15);border-bottom:none;
   }
   .browser-dot{width:9px;height:9px;border-radius:50%;background:rgba(20,23,27,.2)}
+  .browser-bar-label{
+    position:absolute;left:0;right:0;text-align:center;font-family:'Archivo',sans-serif;
+    font-weight:700;font-size:11.5px;color:var(--ink-2);pointer-events:none;
+  }
   .browser-frame{
-    position:relative;overflow:hidden;border-radius:0 0 var(--r) var(--r);
-    border:1px solid rgba(20,23,27,.15);background:#000;box-shadow:var(--shadow-hover);
+    position:relative;overflow:hidden;border-radius:0 0 var(--r-sm) var(--r-sm);
+    border:1px solid rgba(20,23,27,.15);background:#000;box-shadow:0 20px 48px rgba(0,0,0,.4);
   }
   .browser-frame iframe{
     position:absolute;top:0;left:0;width:1280px;height:900px;border:none;
     transform-origin:top left;pointer-events:none;
   }
-  .hero-visual-cap{margin-top:14px;text-align:center;font-size:13px;color:var(--ink-3);line-height:1.5}
+  .hero-visual-dots{display:flex;justify-content:center;gap:7px;margin-top:16px}
+  .hv-dot{width:6px;height:6px;border-radius:50%;background:rgba(11,11,12,.2);transition:background .3s ease}
+  .hv-dot-active{background:var(--blue)}
+  .hero-visual-cap{margin-top:12px;text-align:center;font-size:13px;color:var(--ink-3);line-height:1.5}
   .hero-visual-cap a{color:var(--blue-d);font-weight:700;text-decoration:none}
   .hero-visual-cap a:hover{text-decoration:underline}
   .kicker{
@@ -558,25 +572,51 @@
           <div><b><a href="realizacja-rope-access-group.html">Realizacja →</a></b><span>Rope Access Group</span></div>
         </div>
 
-        <div class="photo-slot photo-slot-inline">
-          <span class="photo-slot-icon">📷</span>
-          <span class="photo-slot-text"><b>Miejsce na zdjęcie:</b> Ty — żeby klient wiedział, z kim rozmawia.</span>
-        </div>
-
         <p class="bio-line"><b>Bartosz</b> — robię strony internetowe od 12 lat, solo, bez agencji i WordPressa. Każdą kodzę ręcznie. Działam w rejonie Kaszub i Trójmiasta.</p>
       </div>
 
       <div class="hero-visual">
-        <div class="browser-mock">
-          <div class="browser-bar"><span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span></div>
-          <div class="browser-frame" data-case-shot>
-            <iframe src="demo-rope-access-group.html" title="Podgląd realizacji: Rope Access Group" loading="lazy" tabindex="-1"></iframe>
+        <div class="hero-visual-glow">
+          <div class="browser-mock">
+            <div class="browser-bar">
+              <span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span>
+              <span class="browser-bar-label" id="heroRotateLabel">Rope Access Group</span>
+            </div>
+            <div class="browser-frame" data-case-shot>
+              <iframe id="heroRotateFrame" src="demo-rope-access-group.html" title="Podgląd prawdziwych stron www" loading="lazy" tabindex="-1"></iframe>
+            </div>
           </div>
         </div>
-        <p class="hero-visual-cap">Prawdziwa realizacja, nie makieta. <a href="realizacja-rope-access-group.html">Zobacz case →</a></p>
+        <div class="hero-visual-dots" id="heroRotateDots">
+          <span class="hv-dot hv-dot-active"></span><span class="hv-dot"></span><span class="hv-dot"></span>
+        </div>
+        <p class="hero-visual-cap">Prawdziwe strony, nie makiety. <a href="realizacje.html">Zobacz realizacje →</a></p>
       </div>
     </div>
   </main>
+
+  <script>
+    (function(){
+      var sites = [
+        { src: 'demo-rope-access-group.html', label: 'Rope Access Group' },
+        { src: 'zamowienia-gastronomia.html', label: 'Restauracja' },
+        { src: 'strona-trener-fizjoterapeuta.html', label: 'Trener / fizjoterapeuta' }
+      ];
+      var i = 0;
+      var frame = document.getElementById('heroRotateFrame');
+      var label = document.getElementById('heroRotateLabel');
+      var dots = document.getElementById('heroRotateDots');
+      if (!frame) return;
+      var dotEls = dots ? dots.querySelectorAll('.hv-dot') : [];
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      setInterval(function(){
+        i = (i + 1) % sites.length;
+        frame.src = sites[i].src;
+        label.textContent = sites[i].label;
+        dotEls.forEach(function(d, idx){ d.classList.toggle('hv-dot-active', idx === i); });
+      }, 4500);
+    })();
+  </script>
 
   <section id="znasz-to-uczucie" class="section-dark">
     <div class="sd-inner">
