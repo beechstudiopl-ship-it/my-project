@@ -225,6 +225,15 @@
   .trust-strip a{color:var(--ink-3);text-decoration:none}
   .trust-strip a:hover{color:var(--blue)}
 
+  .photo-slot{
+    display:flex;align-items:center;gap:12px;margin-top:24px;padding:16px 18px;
+    border:1.5px dashed rgba(20,23,27,.25);border-radius:var(--r-sm);background:rgba(20,23,27,.02);
+  }
+  .photo-slot-inline{max-width:460px}
+  .photo-slot-icon{flex:none;font-size:20px;opacity:.6}
+  .photo-slot-text{font-size:13.5px;color:var(--ink-3);line-height:1.45}
+  .photo-slot-text b{color:var(--ink-2);font-weight:700}
+
   /* --- FOOT --- */
   footer{
     padding:20px clamp(20px,5vw,48px);border-top:1px solid var(--hair);
@@ -499,6 +508,11 @@
           <div><b>od 1000 zł</b><span>bez przepłacania</span></div>
           <div><b><a href="realizacja-rope-access-group.html">Realizacja →</a></b><span>Rope Access Group</span></div>
         </div>
+
+        <div class="photo-slot photo-slot-inline">
+          <span class="photo-slot-icon">📷</span>
+          <span class="photo-slot-text"><b>Miejsce na zdjęcie:</b> Ty — żeby klient wiedział, z kim rozmawia.</span>
+        </div>
       </div>
 
       <div class="hero-visual">
@@ -614,6 +628,11 @@
       <p class="access-cta-text">...i dla tych wszystkich, którzy kiedyś zrobili stronę i z jakiegoś powodu nie mają do niej dostępu lub nie mogą czegoś zmienić, bo autor przepadł! Ja to rozwiązuję.</p>
       <span class="access-cta-link">Przeczytaj wpis →</span>
     </a>
+
+    <div class="photo-slot">
+      <span class="photo-slot-icon">📷</span>
+      <span class="photo-slot-text"><b>Miejsce na zdjęcie:</b> Kaszuby / Trójmiasto — żeby było widać, że to naprawdę lokalnie.</span>
+    </div>
   </section>
 
   <section id="oferta" class="section2">
