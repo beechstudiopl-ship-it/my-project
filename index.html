@@ -318,6 +318,14 @@
   }
   .faqx[open] summary::after{content:"\2212";background:var(--blue);color:#fff}
   .faqx p{margin-top:12px;font-size:15px;color:var(--ink-2);line-height:1.55}
+  .faqs-more{display:flex;flex-direction:column;gap:12px;margin-top:12px}
+  .faqs-more[hidden]{display:none}
+  .faqs-toggle{
+    display:inline-flex;align-items:center;gap:8px;margin-top:20px;padding:0;border:none;background:none;
+    cursor:pointer;font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;color:var(--blue-d);
+  }
+  .faqs-toggle:hover{text-decoration:underline}
+  .faqs-toggle .arw{font-size:14px}
 
   /* czego tu nie znajdziesz */
   .not-find{display:grid;grid-template-columns:1fr;gap:20px;margin-top:32px}
@@ -559,19 +567,16 @@
         <article class="problem">
           <span class="num-badge">01</span>
           <h3>„Nie mam czasu ogarnąć strony"</h3>
-          <p>Odkładasz to od miesięcy, bo zawsze jest coś pilniejszego w biznesie.</p>
           <p class="punch">Jedna wiadomość wystarczy, resztę ogarniam ja.</p>
         </article>
         <article class="problem">
           <span class="num-badge">02</span>
           <h3>„Boję się zapłacić i dostać coś, czego nie chciałem"</h3>
-          <p>Zlecałeś już coś w ciemno i wyszło nie tak, jak miało.</p>
           <p class="punch">W STARCIE płacisz dopiero po pokazaniu demo.</p>
         </article>
         <article class="problem">
           <span class="num-badge">03</span>
           <h3>„Nie mam teraz budżetu na porządną stronę"</h3>
-          <p>Stać Cię na coś, ale nie na wszystko naraz.</p>
           <p class="punch">Zaczynasz od 1000 zł, FULL dokładasz, gdy biznes urośnie.</p>
         </article>
       </div>
@@ -580,23 +585,6 @@
     </div>
   </section>
 
-  <section class="section2">
-    <h2>Czego tu nie znajdziesz</h2>
-    <div class="not-find">
-      <article class="not-find-item">
-        <span class="not-find-x">✕</span>
-        <p><b>Opiekuna konta.</b> Rozmawiasz zawsze bezpośrednio ze mną, od pierwszej wiadomości po wdrożenie.</p>
-      </article>
-      <article class="not-find-item">
-        <span class="not-find-x">✕</span>
-        <p><b>Abonamentu.</b> Jeden projekt, zero zobowiązań na przyszłość.</p>
-      </article>
-      <article class="not-find-item">
-        <span class="not-find-x">✕</span>
-        <p><b>Szablonu z kreatora.</b> Styl dobieram ręcznie pod Twoją branżę, nie wrzucam gotowca.</p>
-      </article>
-    </div>
-  </section>
 
   <section id="jak-to-dziala" class="section2">
     <h2>Jak to działa: 3 kroki</h2>
@@ -767,28 +755,47 @@
         <summary>Kiedy płacę?</summary>
         <p>W pakiecie START płacisz jednorazowo po pokazaniu demo. W pakiecie FULL wpłacasz zaliczkę 1000 zł na start, a resztę dopiero po włączeniu strony. Bez rat.</p>
       </details>
-      <details class="faqx">
-        <summary>Jakie są koszty utrzymania?</summary>
-        <ul class="extra-list" style="margin-top:12px">
-          <li>Domena <span class="extra-price">250 zł / rok</span></li>
-          <li>Serwer <span class="extra-price">350 zł / rok</span></li>
-          <li>Skrzynka mailowa <span class="extra-price">150 zł / rok</span></li>
-        </ul>
-        <p>Płatne na początku roku. Jeśli zdecydujesz się na stronę w trakcie roku, pierwsza płatność za utrzymanie wypada dopiero w kolejnym roku. Możliwe są też dodatkowe moduły i integracje, dopasowane do Twoich potrzeb, za dodatkową opłatą.</p>
-      </details>
-      <details class="faqx">
-        <summary>Na ile czasu się wiążemy?</summary>
-        <p>Na jeden projekt. Zero abonamentów, zero zobowiązań na przyszłość. Jak później zechcesz SEO albo zmiany, dogadamy się osobno.</p>
-      </details>
-      <details class="faqx">
-        <summary>Mam stronę www, czy możemy ją odświeżyć?</summary>
-        <p>Jasne, nie musisz zaczynać od zera. Mogę odświeżyć wygląd i treści na istniejącej stronie albo przenieść Cię na nowy, szybszy fundament. Napisz link do obecnej strony, obejrzę i powiem, co faktycznie ma sens.</p>
-      </details>
-      <details class="faqx">
-        <summary>Potrzebuję czegoś większego niż wizytówka, da się?</summary>
-        <p>Tak, można zamówić większą stronę z dodatkowymi integracjami, np. płatnościami, systemem rezerwacji czy panelem dla klientów. To zawsze wymaga wcześniejszego omówienia, bo wycena i czas zależą od tego, co dokładnie potrzebujesz.</p>
-      </details>
+
+      <div class="faqs-more" id="faqsMore" hidden>
+        <details class="faqx">
+          <summary>Jakie są koszty utrzymania?</summary>
+          <ul class="extra-list" style="margin-top:12px">
+            <li>Domena <span class="extra-price">250 zł / rok</span></li>
+            <li>Serwer <span class="extra-price">350 zł / rok</span></li>
+            <li>Skrzynka mailowa <span class="extra-price">150 zł / rok</span></li>
+          </ul>
+          <p>Płatne na początku roku. Jeśli zdecydujesz się na stronę w trakcie roku, pierwsza płatność za utrzymanie wypada dopiero w kolejnym roku. Możliwe są też dodatkowe moduły i integracje, dopasowane do Twoich potrzeb, za dodatkową opłatą.</p>
+        </details>
+        <details class="faqx">
+          <summary>Na ile czasu się wiążemy?</summary>
+          <p>Na jeden projekt. Zero abonamentów, zero zobowiązań na przyszłość. Jak później zechcesz SEO albo zmiany, dogadamy się osobno.</p>
+        </details>
+        <details class="faqx">
+          <summary>Mam stronę www, czy możemy ją odświeżyć?</summary>
+          <p>Jasne, nie musisz zaczynać od zera. Mogę odświeżyć wygląd i treści na istniejącej stronie albo przenieść Cię na nowy, szybszy fundament. Napisz link do obecnej strony, obejrzę i powiem, co faktycznie ma sens.</p>
+        </details>
+        <details class="faqx">
+          <summary>Potrzebuję czegoś większego niż wizytówka, da się?</summary>
+          <p>Tak, można zamówić większą stronę z dodatkowymi integracjami, np. płatnościami, systemem rezerwacji czy panelem dla klientów. To zawsze wymaga wcześniejszego omówienia, bo wycena i czas zależą od tego, co dokładnie potrzebujesz.</p>
+        </details>
+      </div>
     </div>
+
+    <button type="button" class="faqs-toggle" id="faqsToggle">Zobacz więcej pytań<span class="arw">↓</span></button>
+
+    <script>
+      (function(){
+        var btn = document.getElementById('faqsToggle');
+        var more = document.getElementById('faqsMore');
+        btn.addEventListener('click', function(){
+          var showing = !more.hidden;
+          more.hidden = showing;
+          btn.innerHTML = showing
+            ? 'Zobacz więcej pytań<span class="arw">↓</span>'
+            : 'Pokaż mniej<span class="arw">↑</span>';
+        });
+      })();
+    </script>
   </section>
 
   <section class="decision-box">
