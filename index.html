@@ -187,6 +187,7 @@
     font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.04em;line-height:1;
     font-size:clamp(52px,13vw,104px);text-transform:uppercase;
   }
+  .h1-fade{color:var(--ink-3)}
   h2{
     font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.03em;line-height:1.05;
     font-size:clamp(28px,5vw,44px);
@@ -207,6 +208,8 @@
   }
   .btn:hover{opacity:.92;transform:translateY(-1px)}
   .btn-blue{background:var(--blue);color:#fff;box-shadow:0 10px 24px -8px rgba(27,75,255,.45)}
+  .btn-outline{background:transparent;color:var(--ink);border:1.5px solid rgba(20,23,27,.3);padding:14.5px 26px}
+  .btn-outline:hover{opacity:1;border-color:var(--ink);background:rgba(20,23,27,.03)}
   .btn-hi{background:var(--hi);color:var(--ink);box-shadow:0 10px 24px -10px rgba(20,23,27,.25)}
   .btn .arw{font-size:20px}
   .or{font-family:'Archivo',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;
@@ -386,6 +389,12 @@
   .problem p{font-size:14.5px;color:#C6CCD4;line-height:1.5;margin:0}
   .problem .punch{margin-top:auto;padding-top:14px;color:var(--paper);font-weight:700}
   .problem .punch::before{content:"> ";color:var(--blue);font-weight:900}
+  .brand-line{
+    margin-top:36px;padding-top:28px;border-top:1px solid rgba(244,242,236,.14);
+    font-family:'Archivo',sans-serif;font-weight:700;font-size:clamp(17px,2.4vw,21px);
+    color:#C6CCD4;letter-spacing:-.01em;
+  }
+  .brand-line b{color:var(--paper);font-weight:900}
 
   /* numbered digits shared by "znasz to uczucie" + "jak to działa" */
   .num-badge{
@@ -473,13 +482,14 @@
   <main>
     <div class="hero-grid">
       <div class="hero-copy">
-        <p class="kicker">Strony www dla lokalnych firm, które nie mają czasu</p>
-        <h1>To już <span class="mk">3. rok</span><br>bez strony www?</h1>
+        <p class="kicker">Dla firm, które wiecznie to odkładają</p>
+        <h1>To już <span class="mk">3. rok</span><br><span class="h1-fade">bez strony www?</span></h1>
 
         <p class="desc">Łatwo mówić „ogarnę to”, a klienci trafiają do konkurencji. Czas to zmienić. <b>Zrobię dla Ciebie stronę www od 1000 zł.</b> Szybko, sprawnie i bez przepłacania. <b>Ty zajmij się biznesem.</b></p>
 
         <div class="actions">
           <a href="#znasz-to-uczucie" class="btn btn-blue">Działajmy<span class="arw">↓</span></a>
+          <a href="konsultacja.html" class="btn btn-outline">Umów bezpłatną rozmowę</a>
         </div>
         <p class="form-note" style="text-align:left;margin-top:14px">Bez zobowiązań. Jedna wiadomość, i zobaczysz, czy moja oferta Cię przekona.</p>
 
@@ -528,6 +538,8 @@
           <p class="punch">Zaczynasz od 1000 zł, FULL dokładasz, gdy biznes urośnie.</p>
         </article>
       </div>
+
+      <p class="brand-line">Dlatego to się nazywa <b>działajmy</b>.online — nie „kiedyś", nie „jak znajdę czas". Teraz.</p>
     </div>
   </section>
 
