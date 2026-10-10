@@ -155,8 +155,30 @@
   /* --- CENTER --- */
   main{
     flex:1;display:flex;flex-direction:column;justify-content:center;
-    padding:32px clamp(20px,5vw,48px);max-width:960px;width:100%;margin:0 auto;
+    padding:32px clamp(20px,5vw,48px);max-width:1120px;width:100%;margin:0 auto;
   }
+  .hero-grid{display:grid;grid-template-columns:1fr;gap:44px;align-items:center}
+  @media (min-width:960px){.hero-grid{grid-template-columns:1.08fr .92fr}}
+
+  .hero-visual{display:none}
+  @media (min-width:640px){.hero-visual{display:block}}
+  .browser-mock{margin:0}
+  .browser-bar{
+    display:flex;align-items:center;gap:6px;background:#E4E2DA;
+    padding:10px 14px;border-radius:var(--r) var(--r) 0 0;border:1px solid rgba(20,23,27,.15);border-bottom:none;
+  }
+  .browser-dot{width:9px;height:9px;border-radius:50%;background:rgba(20,23,27,.2)}
+  .browser-frame{
+    position:relative;overflow:hidden;border-radius:0 0 var(--r) var(--r);
+    border:1px solid rgba(20,23,27,.15);background:#000;box-shadow:var(--shadow-hover);
+  }
+  .browser-frame iframe{
+    position:absolute;top:0;left:0;width:1280px;height:900px;border:none;
+    transform-origin:top left;pointer-events:none;
+  }
+  .hero-visual-cap{margin-top:14px;text-align:center;font-size:13px;color:var(--ink-3);line-height:1.5}
+  .hero-visual-cap a{color:var(--blue-d);font-weight:700;text-decoration:none}
+  .hero-visual-cap a:hover{text-decoration:underline}
   .kicker{
     font-family:'Archivo',sans-serif;font-weight:800;font-size:13px;text-transform:uppercase;
     letter-spacing:.02em;color:var(--blue);margin-bottom:14px;
@@ -449,21 +471,35 @@
   </div>
 
   <main>
-    <p class="kicker">Strony www dla lokalnych firm, które nie mają czasu</p>
-    <h1>To już <span class="mk">3. rok</span><br>bez strony www?</h1>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="kicker">Strony www dla lokalnych firm, które nie mają czasu</p>
+        <h1>To już <span class="mk">3. rok</span><br>bez strony www?</h1>
 
-    <p class="desc">Łatwo mówić „ogarnę to”, a klienci trafiają do konkurencji. Czas to zmienić. <b>Zrobię dla Ciebie stronę www od 1000 zł.</b> Szybko, sprawnie i bez przepłacania. <b>Ty zajmij się biznesem.</b></p>
+        <p class="desc">Łatwo mówić „ogarnę to”, a klienci trafiają do konkurencji. Czas to zmienić. <b>Zrobię dla Ciebie stronę www od 1000 zł.</b> Szybko, sprawnie i bez przepłacania. <b>Ty zajmij się biznesem.</b></p>
 
-    <div class="actions">
-      <a href="#znasz-to-uczucie" class="btn btn-blue">Działajmy<span class="arw">↓</span></a>
-    </div>
-    <p class="form-note" style="text-align:left;margin-top:14px">Bez zobowiązań. Jedna wiadomość, i zobaczysz, czy moja oferta Cię przekona.</p>
+        <div class="actions">
+          <a href="#znasz-to-uczucie" class="btn btn-blue">Działajmy<span class="arw">↓</span></a>
+        </div>
+        <p class="form-note" style="text-align:left;margin-top:14px">Bez zobowiązań. Jedna wiadomość, i zobaczysz, czy moja oferta Cię przekona.</p>
 
-    <div class="trust-strip">
-      <div><b>12 lat</b><span>doświadczenia</span></div>
-      <div><b>7–14 dni</b><span>do live</span></div>
-      <div><b>od 1000 zł</b><span>bez przepłacania</span></div>
-      <div><b><a href="realizacja-rope-access-group.html">Realizacja →</a></b><span>Rope Access Group</span></div>
+        <div class="trust-strip">
+          <div><b>12 lat</b><span>doświadczenia</span></div>
+          <div><b>7–14 dni</b><span>do live</span></div>
+          <div><b>od 1000 zł</b><span>bez przepłacania</span></div>
+          <div><b><a href="realizacja-rope-access-group.html">Realizacja →</a></b><span>Rope Access Group</span></div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="browser-mock">
+          <div class="browser-bar"><span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span></div>
+          <div class="browser-frame" data-case-shot>
+            <iframe src="demo-rope-access-group.html" title="Podgląd realizacji: Rope Access Group" loading="lazy" tabindex="-1"></iframe>
+          </div>
+        </div>
+        <p class="hero-visual-cap">Prawdziwa realizacja, nie makieta. <a href="realizacja-rope-access-group.html">Zobacz case →</a></p>
+      </div>
     </div>
   </main>
 
