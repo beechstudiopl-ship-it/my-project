@@ -295,8 +295,12 @@
   .plan .sub{color:var(--ink-2);font-size:15px;margin-top:6px}
   .plan .plan-fit{color:var(--blue-d);font-size:13px;font-weight:700;margin-top:10px}
   .plan ul{list-style:none;margin-top:18px;flex:1}
-  .plan li{padding-left:24px;position:relative;margin-top:10px;font-size:15px;color:var(--ink-2)}
-  .plan li::before{content:"✓";position:absolute;left:0;color:var(--blue);font-weight:700}
+  .plan li{padding-left:28px;position:relative;margin-top:10px;font-size:15px;color:var(--ink-2)}
+  .plan li::before{
+    content:"✓";position:absolute;left:0;top:1px;width:18px;height:18px;border-radius:50%;
+    background:var(--blue);color:#fff;font-size:11px;font-weight:900;
+    display:flex;align-items:center;justify-content:center;
+  }
   .plan .btn{margin-top:22px;width:100%;justify-content:center;cursor:pointer}
   .plan.full{border-color:var(--blue);border-width:1.5px}
 
@@ -307,8 +311,12 @@
   .faqx:hover{box-shadow:var(--shadow-hover)}
   .faqx summary{font-family:'Archivo',sans-serif;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}
   .faqx summary::-webkit-details-marker{display:none}
-  .faqx summary::after{content:"+";font-size:20px;color:var(--blue);line-height:1}
-  .faqx[open] summary::after{content:"\2212"}
+  .faqx summary::after{
+    content:"+";flex:none;width:26px;height:26px;border-radius:50%;background:rgba(20,23,27,.06);
+    color:var(--ink);font-size:15px;font-weight:700;line-height:1;
+    display:flex;align-items:center;justify-content:center;transition:background .15s ease,color .15s ease;
+  }
+  .faqx[open] summary::after{content:"\2212";background:var(--blue);color:#fff}
   .faqx p{margin-top:12px;font-size:15px;color:var(--ink-2);line-height:1.55}
 
   /* czego tu nie znajdziesz */
@@ -373,7 +381,11 @@
   .case-tile h3{font-family:'Archivo',sans-serif;font-weight:800;font-size:19px;margin-bottom:14px}
   .case-checks{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
   .case-checks li{display:flex;gap:10px;align-items:flex-start;font-size:15px;color:var(--ink-2);line-height:1.4}
-  .case-checks li::before{content:"✓";color:var(--blue);font-weight:900;flex:none}
+  .case-checks li::before{
+    content:"✓";flex:none;width:18px;height:18px;border-radius:50%;margin-top:1px;
+    background:var(--blue);color:#fff;font-size:11px;font-weight:900;
+    display:flex;align-items:center;justify-content:center;
+  }
   .case-checks b{color:var(--ink)}
   .case-btn{display:block;text-align:center;background:var(--blue);color:#fff;text-decoration:none;
     font-family:'Archivo',sans-serif;font-weight:900;font-size:14px;letter-spacing:.02em;
@@ -384,7 +396,12 @@
   .case-link-ext:hover{text-decoration:underline}
 
   /* znasz to uczucie (dark, under hero) */
-  .section-dark{background:var(--ink);border-top:1px solid var(--hair)}
+  .section-dark{
+    background:
+      radial-gradient(520px circle at 92% 0%,rgba(27,75,255,.16),transparent 60%),
+      var(--ink);
+    border-top:1px solid var(--hair);
+  }
   .sd-inner{width:100%;max-width:960px;margin:0 auto;padding:64px clamp(20px,5vw,48px)}
   .sd-inner h2{color:var(--paper)}
   .sd-inner .sublead{color:#C6CCD4}
