@@ -347,6 +347,85 @@
     .mm-arw{font-family:'Archivo',sans-serif;font-weight:900;font-size:20px;color:var(--hi);flex:none}
     footer .soon{display:none}
   }
+
+  /* fakty pod hero */
+  .facts{list-style:none;display:grid;grid-template-columns:repeat(4,auto);justify-content:start;gap:0;margin-top:34px;border:1.5px solid var(--hair);background:#fff;width:fit-content;max-width:100%}
+  .facts li{padding:12px 18px;font-size:14px;color:var(--ink-2);line-height:1.3}
+  .facts li+li{border-left:1.5px solid var(--hair)}
+  .facts b{display:block;font-family:'Archivo',sans-serif;font-weight:900;font-size:19px;letter-spacing:-.02em;color:var(--ink)}
+  @media (max-width:640px){.facts{grid-template-columns:1fr 1fr;width:100%}.facts li:nth-child(3){border-left:0}.facts li:nth-child(n+3){border-top:1.5px solid var(--hair)}}
+
+  /* diagnoza (w "znasz to uczucie") */
+  .diag{margin-top:56px;padding-top:40px;border-top:1px solid rgba(244,242,236,.14)}
+  .diag-h{font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.03em;font-size:clamp(22px,3.6vw,30px);color:var(--paper)}
+  .diag-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:26px;align-items:start}
+  @media (min-width:720px){.diag-grid{grid-template-columns:repeat(3,1fr)}}
+  .diag-item{border:1px solid rgba(244,242,236,.18);background:#1C2026;transition:border-color .15s ease}
+  .diag-item:hover,.diag-item.open{border-color:var(--blue)}
+  .diag-btn{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;width:100%;text-align:left;background:none;border:0;cursor:pointer;
+    padding:22px;font-family:'Archivo',sans-serif;font-weight:800;font-size:17px;line-height:1.3;letter-spacing:-.01em;color:var(--paper)}
+  .diag-btn i{position:relative;flex:none;width:14px;height:14px;margin-top:4px}
+  .diag-btn i::before,.diag-btn i::after{content:"";position:absolute;left:0;top:6px;width:14px;height:2px;background:var(--hi);transition:transform .15s ease}
+  .diag-btn i::after{transform:rotate(90deg)}
+  .diag-item.open .diag-btn i::after{transform:rotate(0)}
+  .diag-a{padding:0 22px 22px}
+  .diag-a p{font-size:14.5px;line-height:1.55;color:#C6CCD4;border-top:1px solid rgba(244,242,236,.14);padding-top:14px}
+  .diag-a b{color:var(--paper)}
+  .diag-a a{display:inline-block;margin-top:12px;font-family:'Archivo',sans-serif;font-weight:800;font-size:13px;color:var(--hi);text-decoration:none}
+  .diag-hint{border:1.5px dashed rgba(244,242,236,.3);padding:22px;font-size:14.5px;line-height:1.55;color:#C6CCD4}
+  .diag-hint a{color:var(--hi)}
+  .diag-sq{display:flex;margin-bottom:14px}.diag-sq i{width:18px;height:18px;background:var(--hi)}.diag-sq i+i{background:#3A414B}
+
+  /* etap w krokach */
+  .step-meta{margin-top:14px!important;font-family:'Archivo',sans-serif;font-weight:800;font-size:11.5px!important;text-transform:uppercase;letter-spacing:.04em;color:var(--blue)!important}
+  .step.done .step-meta{color:var(--hi)!important}
+
+  /* demo stron (karty) */
+  .cases{display:grid;grid-template-columns:1fr;gap:20px;margin-top:32px}
+  @media (min-width:720px){.cases{grid-template-columns:1fr 1fr}}
+  .case{border:1.5px solid rgba(20,23,27,.2);background:#fff;display:flex;flex-direction:column}
+  .case-img{display:block;height:220px;overflow:hidden;background:var(--ink);border-bottom:1.5px solid rgba(20,23,27,.2)}
+  .case-img img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;transition:transform .3s ease}
+  .case:hover .case-img img{transform:scale(1.03)}
+  .case-img-phone img{object-fit:contain;padding:16px 0 0}
+  .case-body{padding:24px;display:flex;flex-direction:column;gap:12px;flex:1}
+  .case-body .tag{align-self:flex-start}
+  .case h3{font-family:'Archivo',sans-serif;font-weight:900;font-size:21px;letter-spacing:-.02em;line-height:1.15}
+  .case p{font-size:15px;color:var(--ink-2);line-height:1.55}
+  .case-links{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;margin-top:auto;padding-top:6px}
+  .case-links a{font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;color:var(--ink-2);text-decoration:none}
+  .case-links a.case-go{color:var(--ink);border-bottom:3px solid var(--hi);padding-bottom:2px}
+  .case-links a:hover{color:var(--blue)}
+
+  /* pakiety: dla kogo */
+  .plan-for{margin-top:14px;padding:12px 14px;background:var(--paper);border-left:3px solid var(--hi);font-size:14.5px;color:var(--ink-2);line-height:1.45}
+  .plan-for b{color:var(--ink)}
+
+  /* rozmawiasz ze mną */
+  .kicker-hi{color:var(--hi)}
+  .me-lead{max-width:640px!important;margin-top:16px}
+  .mk-dark{color:var(--ink)}
+  .me-contact{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+  .me-contact a{font-family:'Archivo',sans-serif;font-weight:800;font-size:15px;text-decoration:none;padding:12px 16px;border:1px solid rgba(244,242,236,.25);color:var(--paper)}
+  .me-contact a:last-child{background:var(--hi);color:var(--ink);border-color:var(--hi)}
+  .me-contact a:hover{opacity:.9}
+  .nots{margin-top:48px;border-top:2px solid var(--paper);padding-top:26px}
+  .nots-h{font-family:'Archivo',sans-serif;font-weight:800;font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;color:#8B939C}
+  .nots ul{list-style:none;display:grid;gap:20px;margin-top:22px}
+  @media (min-width:720px){.nots ul{grid-template-columns:repeat(3,1fr);gap:28px}}
+  .nots li{display:flex;gap:14px;align-items:flex-start}
+  .nots .x{flex:none;width:34px;height:34px;display:flex;align-items:center;justify-content:center;background:#262B33;color:var(--hi);font-size:22px;font-weight:700;line-height:1}
+  .nots p{font-size:15px;color:#C6CCD4;line-height:1.5}
+  .nots b{color:var(--paper);font-family:'Archivo',sans-serif;font-weight:800}
+
+  /* pasek mobilny: dwa przyciski */
+  @media (max-width:640px){
+    .mob-manifest{padding:0 0 env(safe-area-inset-bottom);gap:0;align-items:stretch}
+    .mob-manifest a{text-decoration:none}
+    .mob-manifest .mm-l{padding:16px 18px;gap:8px}
+    .mob-manifest .mm-cta{flex:1;display:flex;align-items:center;justify-content:center;background:var(--hi);color:var(--ink);
+      font-family:'Archivo',sans-serif;font-weight:900;font-size:15px;letter-spacing:-.01em}
+  }
 </style>
 </head>
 <body>
@@ -368,6 +447,12 @@
       <a href="#znasz-to-uczucie" class="btn btn-blue">Działajmy<span class="arw">↓</span></a>
     </div>
     <p class="form-note" style="text-align:left;margin-top:14px">Bez zobowiązań. Jedna wiadomość, i zobaczysz, czy moja oferta Cię przekona.</p>
+    <ul class="facts">
+      <li><b>12 lat</b> robię strony</li>
+      <li><b>od 1000 zł</b> za stronę</li>
+      <li><b>7–14 dni</b> do startu</li>
+      <li><b>płacisz</b> po podglądzie</li>
+    </ul>
   </main>
 
   <section id="znasz-to-uczucie" class="section-dark">
@@ -395,6 +480,52 @@
           <p class="punch">Prowadzisz biznes, nie masz czasu na kreator.</p>
         </article>
       </div>
+
+      <div class="diag">
+        <h3 class="diag-h">A może brzmi to tak?</h3>
+        <p class="sublead">Kliknij zdanie, które pasuje do Ciebie. Pokażę, od czego zacząć.</p>
+        <div class="diag-grid">
+        <div class="diag-item">
+          <button type="button" class="diag-btn" aria-expanded="false" aria-controls="diag-0"><span>„Mam stronę, ale nikt przez nią nie dzwoni.”</span><i aria-hidden="true"></i></button>
+          <div class="diag-a" id="diag-0" hidden>
+            <p>To ładna, martwa strona. Na start wystarczy prosta, uczciwa strona za 1000 lub 3000 zł. <b>Resztę budżetu zostaw na marketing i pierwszych klientów.</b></p>
+            <a href="manifest.html">Przeczytaj manifest →</a>
+          </div>
+        </div>
+        <div class="diag-item">
+          <button type="button" class="diag-btn" aria-expanded="false" aria-controls="diag-1"><span>„Nie mam dostępu do własnej strony, a autor przepadł.”</span><i aria-hidden="true"></i></button>
+          <div class="diag-a" id="diag-1" hidden>
+            <p>Najpierw sprawdzam, co da się odzyskać: domenę, hosting, stare maile. Jeśli się nie da, stawiam stronę na nowo, <b>na Twoim koncie i z Twoimi danymi logowania od pierwszego dnia.</b></p>
+            <a href="nie-mam-dostepu.html">Jak to rozwiązuję →</a>
+          </div>
+        </div>
+        <div class="diag-item">
+          <button type="button" class="diag-btn" aria-expanded="false" aria-controls="diag-2"><span>„Nie zapłacę za coś, czego nie widziałem.”</span><i aria-hidden="true"></i></button>
+          <div class="diag-a" id="diag-2" hidden>
+            <p>I nie musisz. Zanim padnie słowo o pieniądzach, robię rozeznanie i <b>pokazuję wstępny projekt albo demo działające na żywo.</b></p>
+            <a href="zanim-zaczniemy.html">Zobacz, jak to wygląda →</a>
+          </div>
+        </div>
+        <div class="diag-item">
+          <button type="button" class="diag-btn" aria-expanded="false" aria-controls="diag-3"><span>„Nie ma mnie w Google.”</span><i aria-hidden="true"></i></button>
+          <div class="diag-a" id="diag-3" hidden>
+            <p>Najpierw strona, która działa, potem ruch, który ją znajduje. <b>SEO.90, czyli pozycjonowanie rozłożone na 90 dni, dopiero się szykuje.</b> Możesz zapisać się do kolejki.</p>
+            <a href="seo90.html">Czym jest SEO.90 →</a>
+          </div>
+        </div>
+        <div class="diag-item">
+          <button type="button" class="diag-btn" aria-expanded="false" aria-controls="diag-4"><span>„Na razie nie mam budżetu na stronę.”</span><i aria-hidden="true"></i></button>
+          <div class="diag-a" id="diag-4" hidden>
+            <p>START kosztuje 1000 zł. A raz na jakiś czas <b>robię jedną stronę całkiem za darmo</b> dla lokalnej firmy, która robi dobrą robotę.</p>
+            <a href="silny-lokalnie.html">Silny lokalnie →</a>
+          </div>
+        </div>
+          <div class="diag-hint">
+            <span class="diag-sq" aria-hidden="true"><i></i><i></i></span>
+            <p>Nie widzisz swojej sytuacji? <a href="kontakt.html">Opisz ją w jednym zdaniu</a>, odpiszę, czy mogę pomóc.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -406,22 +537,57 @@
         <span class="num-badge">01</span>
         <h3>Opisz</h3>
         <p>Wpisz czym się zajmujesz. Jedno zdanie wystarczy, resztę ogarniam ja.</p>
+        <p class="step-meta">Bez zobowiązań</p>
       </article>
       <article class="step">
         <span class="num-badge">02</span>
         <h3>Ja dobieram styl</h3>
         <p>Research, styl, typografia, kolory, układ. Dopasowuję je do Twojej branży, Ty nie musisz zgadywać.</p>
+        <p class="step-meta">Podgląd → 1. płatność</p>
       </article>
       <article class="step done">
         <span class="num-badge">03</span>
         <h3>Gotowe</h3>
         <p>Dostajesz link do podglądu na maila. 2 do 3 serii poprawek i strona jest live.</p>
+        <p class="step-meta">Strona live → 2. płatność</p>
       </article>
     </div>
 
     <div class="steps-cta">
       <a href="kontakt.html" class="btn btn-blue">Opisz swój biznes<span class="arw">→</span></a>
       <p class="form-note">Bez zobowiązań na etapie researchu. Druga płatność dopiero, gdy strona jest już włączona.</p>
+    </div>
+  </section>
+
+  <section id="demo" class="section2">
+    <h2>Zobacz, jak to może wyglądać</h2>
+    <p class="sublead">Działające demo dla dwóch branż. Poklikaj tak, jak zrobiłby to Twój klient.</p>
+
+    <div class="cases">
+      <article class="case">
+        <a href="demo-gastro.html" class="case-img case-img-phone"><img src="zanim-gastro.png" alt="Demo strony z zamówieniami dla restauracji, widok na telefonie" width="390" height="700" loading="lazy"></a>
+        <div class="case-body">
+          <span class="tag">Gastronomia · demo</span>
+          <h3>Gastro. Zamówienia bez pośredników dla restauracji</h3>
+          <p>Strona z menu i systemem zamówień dla małego lokalu. <span class="mk">Zero prowizji dla portali</span>, zamówienia zbierasz sam.</p>
+          <div class="case-links">
+            <a href="demo-gastro.html" class="case-go">Otwórz demo →</a>
+            <a href="zamowienia-gastronomia.html">Przeczytaj wpis</a>
+          </div>
+        </div>
+      </article>
+      <article class="case">
+        <a href="demo-trener.html" class="case-img"><img src="zanim-trener.png" alt="Demo strony z zapisami dla trenera i fizjoterapeuty, widok na komputerze" width="1280" height="800" loading="lazy"></a>
+        <div class="case-body">
+          <span class="tag">Trener i fizjoterapeuta · demo</span>
+          <h3>Forma. Zapisy na treningi dla trenera i fizjoterapeuty</h3>
+          <p>Oferta, opis i zapisy w jednym miejscu. <span class="mk">Jedna strona, dwie role</span>, mniej chaosu w kalendarzu.</p>
+          <div class="case-links">
+            <a href="demo-trener.html" class="case-go">Otwórz demo →</a>
+            <a href="strona-trener-fizjoterapeuta.html">Przeczytaj wpis</a>
+          </div>
+        </div>
+      </article>
     </div>
   </section>
 
@@ -458,6 +624,7 @@
       <article class="plan">
         <h3>START <span class="tag">1000 zł</span></h3>
         <p class="sub">Wizytówka, ale która działa</p>
+        <p class="plan-for"><b>Dla Ciebie, jeśli</b> dopiero startujesz albo potrzebujesz prostej wizytówki z mapą i formularzem.</p>
         <ul>
           <li>Strona wizytówka</li>
           <li>Unikalny styl w oparciu o materiały</li>
@@ -473,6 +640,7 @@
       <article class="plan full">
         <h3>FULL <span class="tag">3000 zł</span></h3>
         <p class="sub">Rozbudowana, gotowa na więcej</p>
+        <p class="plan-for"><b>Dla Ciebie, jeśli</b> masz kilka usług do pokazania, chcesz bloga albo planujesz rozbudowę.</p>
         <ul>
           <li>3 do 5 podstron i blog</li>
           <li>Możliwość rozbudowy</li>
@@ -490,6 +658,27 @@
     <p class="sublead" style="margin-top:24px;max-width:640px">Ceny zaczynają się od 1000 zł, bo wiem, że na start ciężko o dużą kwotę. Myślę długoterminowo: pomagam teraz bez przepłacania, licząc na to, że wrócisz, kiedy firma urośnie i będzie potrzebować czegoś więcej.</p>
 
     <p class="form-note" style="text-align:left;margin-top:20px">Pierwsza płatność po pokazaniu wstępnego linku do podglądu. Druga przy włączeniu strony.</p>
+  </section>
+
+  <section id="ze-mna" class="section-dark">
+    <div class="sd-inner">
+      <p class="kicker kicker-hi">Kto robi Twoją stronę</p>
+      <h2>Rozmawiasz ze mną, nie z opiekunem konta</h2>
+      <p class="sublead me-lead">Robię strony od 12 lat. <span class="mk mk-dark">Research, projekt, budowę i poprawki prowadzę osobiście</span>, więc od pierwszej wiadomości do włączenia strony masz jeden kontakt: mnie.</p>
+      <div class="me-contact">
+        <a href="mailto:kontakt@dzialajmy.online">kontakt@dzialajmy.online</a>
+        <a href="konsultacja.html">Bezpłatna rozmowa, 20 minut →</a>
+      </div>
+
+      <div class="nots">
+        <p class="nots-h">Trzy rzeczy, których u mnie nie znajdziesz</p>
+        <ul>
+          <li><span class="x" aria-hidden="true">×</span><p><b>Abonamentu.</b> Wiążemy się na jeden projekt. SEO czy późniejsze zmiany dogadujemy osobno.</p></li>
+          <li><span class="x" aria-hidden="true">×</span><p><b>Płatności za całość z góry.</b> Pierwsza płatność po wstępnym podglądzie, druga przy włączeniu strony.</p></li>
+          <li><span class="x" aria-hidden="true">×</span><p><b>Obietnic „strona w 48 h”.</b> Zwykle 7 do 14 dni, bo wolę zrobić to porządnie.</p></li>
+        </ul>
+      </div>
+    </div>
   </section>
 
   <section id="faq" class="section2">
@@ -574,10 +763,20 @@
     <span>Bartosz · <a href="mailto:kontakt@dzialajmy.online">kontakt@dzialajmy.online</a> · na razie działam tylko ze stronami www</span>
   </footer>
 
-  <a href="manifest.html" class="mob-manifest">
-    <span class="mm-l"><span class="mm-tag">Manifest</span>Dlaczego robię działajmy.online</span>
-    <span class="mm-arw">→</span>
-  </a>
+  <nav class="mob-manifest" aria-label="Szybkie linki">
+    <a href="manifest.html" class="mm-l"><span class="mm-tag">Manifest</span><span class="mm-arw">→</span></a>
+    <a href="konsultacja.html" class="mm-cta">Bezpłatna rozmowa →</a>
+  </nav>
 
+<script>
+  document.querySelectorAll('.diag-btn').forEach(function(b){
+    b.addEventListener('click',function(){
+      var open=b.getAttribute('aria-expanded')!=='true';
+      b.setAttribute('aria-expanded',open);
+      b.parentNode.classList.toggle('open',open);
+      document.getElementById(b.getAttribute('aria-controls')).hidden=!open;
+    });
+  });
+</script>
 </body>
 </html>
