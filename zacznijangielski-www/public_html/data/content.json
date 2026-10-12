@@ -1,0 +1,190 @@
+{
+  "meta": {
+    "title": "Business English w Praust Office · zacznijangielski",
+    "description": "Business English w Pruszczu Gdańskim: spotkania, klienci, negocjacje, e-maile i rozmowy online. 4 lekcje w miesiącu za 399 zł, grupy dobierane według poziomu."
+  },
+  "brand": {
+    "part1": "zacznij",
+    "part2": "angielski",
+    "nav_cta": "Zapisz się"
+  },
+  "hero": {
+    "kicker": "Business English · Praust Office",
+    "title": "Angielski, którego używasz w pracy.",
+    "lead": "Spotkania, klienci, negocjacje i e-maile. Uczymy nie tylko słownictwa: rozmawiamy, ćwiczymy konkretne sytuacje i pracujemy na przykładach z Twojej codziennej pracy.",
+    "cta_primary": "Zapisz się",
+    "cta_secondary": "Zobacz tematy",
+    "bubbles": [
+      {
+        "who": "Klient",
+        "text": "Could we move the meeting to Thursday?",
+        "side": "them"
+      },
+      {
+        "who": "Ty",
+        "text": "Sure. Let me confirm the details by email.",
+        "side": "you"
+      },
+      {
+        "who": "Klient",
+        "text": "Great. What about the pricing?",
+        "side": "them"
+      }
+    ],
+    "badges": [
+      {
+        "value": "399 zł",
+        "label": "Miesięcznie"
+      },
+      {
+        "value": "4 lekcje",
+        "label": "W miesiącu"
+      }
+    ]
+  },
+  "topics": {
+    "label": "Program",
+    "title": "O czym będziemy rozmawiać?",
+    "sub": "Osiem sytuacji, w których angielski przydaje się w pracy najczęściej. Ćwiczymy je na zajęciach, aż zaczniesz mówić bez scenariusza.",
+    "items": [
+      {
+        "title": "Spotkania biznesowe",
+        "text": "Swobodnie zabierasz głos, przedstawiasz stanowisko, zadajesz pytania i podsumowujesz ustalenia."
+      },
+      {
+        "title": "Klienci i kontrahenci",
+        "text": "Pierwsze rozmowy, przedstawianie siebie i firmy, prezentowanie oferty i dalsza rozmowa z klientem."
+      },
+      {
+        "title": "Negocjacje",
+        "text": "Cena, warunki, terminy, rabaty. Jasno przedstawiasz oczekiwania i reagujesz na propozycje drugiej strony."
+      },
+      {
+        "title": "Prezentacja firmy i oferty",
+        "text": "Opowiadasz, czym zajmuje się Twoja firma, przedstawiasz produkt i odpowiadasz na dodatkowe pytania."
+      },
+      {
+        "title": "Telefony i spotkania online",
+        "text": "Umawianie i przekładanie terminów, rozmowy na Teams i Zoomie, wyjaśnianie problemów na bieżąco."
+      },
+      {
+        "title": "E-maile i korespondencja",
+        "text": "Zapytania ofertowe, odpowiedzi dla klientów, potwierdzanie ustaleń, przypomnienia i codzienna komunikacja."
+      },
+      {
+        "title": "Networking i wydarzenia",
+        "text": "Przedstawianie się, zaczynanie rozmowy i opowiadanie o swojej działalności osobie, którą dopiero poznajesz."
+      },
+      {
+        "title": "Trudniejsze sytuacje",
+        "text": "Reklamacje, opóźnienia, nieporozumienia, odmowa, niezadowolony klient albo wyjaśnienie błędu."
+      }
+    ]
+  },
+  "business": {
+    "label": "Dla firm i specjalistów",
+    "title": "Rozmawiamy również o Twoim biznesie",
+    "questions": [
+      "Prowadzisz firmę?",
+      "Pracujesz z klientami zagranicznymi?",
+      "Przygotowujesz się do spotkania, prezentacji albo wyjazdu służbowego?"
+    ],
+    "note": "Możemy pracować na sytuacjach, które rzeczywiście dotyczą Twojej pracy.",
+    "quote": "Business English nie powinien kończyć się wraz z zakończeniem lekcji.",
+    "quote_note": "To, czego uczysz się na zajęciach, ma przydać Ci się podczas kolejnej rozmowy, spotkania czy kontaktu z klientem."
+  },
+  "price": {
+    "label": "Cena",
+    "title": "Jedna prosta opcja",
+    "amount": "399 zł",
+    "period": "/ miesiąc",
+    "per": "4 lekcje w miesiącu",
+    "cta": "Zapisz się",
+    "points": [
+      "Jedno spotkanie w tygodniu",
+      "Zajęcia stacjonarne w Praust Office w Pruszczu Gdańskim",
+      "Grupy dobierane według poziomu znajomości języka",
+      "Praca na sytuacjach z Twojej pracy, nie tylko z podręcznika"
+    ]
+  },
+  "teacher": {
+    "label": "Prowadząca",
+    "name": "Anna Zaorska",
+    "bio": "Zajęcia prowadzi Anna Zaorska z Leo Academy. Tu pojawi się kilka zdań o jej doświadczeniu, kwalifikacjach i o tym, jak pracuje z grupami biznesowymi.",
+    "photo": "assets/anna-zaorska.webp"
+  },
+  "partners": {
+    "enabled": true,
+    "label": "Połączenie sił",
+    "title": "Praust Office + Leo Academy",
+    "text": "Business English to wspólny projekt dwóch miejsc z Pruszcza Gdańskiego. Praust Office daje przestrzeń i biznesowe otoczenie, a Leo Academy lektorkę i program nauki.",
+    "items": [
+      {
+        "name": "Praust Office · #rozwijajbiznes",
+        "url": "https://praustoffice.pl/",
+        "logo": "assets/praust-office.svg"
+      },
+      {
+        "name": "Leo Academy · Języki, pamięć, rozwój",
+        "url": "https://www.leoschool.pl/",
+        "logo": "assets/leo-academy.svg"
+      }
+    ]
+  },
+  "location": {
+    "label": "Dojazd",
+    "title": "Gdzie odbywają się zajęcia",
+    "place": "Praust Office, Pruszcz Gdański",
+    "address": "",
+    "schedule": "Jedno spotkanie w tygodniu, 4 lekcje w miesiącu",
+    "phone": "",
+    "email": "",
+    "map_lat": "54.2620",
+    "map_lng": "18.6360",
+    "contact_name": "Dorota Jechna",
+    "contact_role": "Kontakt w sprawie zajęć",
+    "contact_photo": "assets/dorota-jechna.png"
+  },
+  "test": {
+    "enabled": true,
+    "badge": "Wkrótce",
+    "title": "Test poziomu online",
+    "sub": "Już niedługo sprawdzisz swój poziom angielskiego w kilka minut, jeszcze przed zapisem. Test powie, do której grupy najlepiej pasujesz.",
+    "meanwhile": "Do tego czasu zaznacz w formularzu **„Nie wiem, sprawdźmy”**, a poziom ustalimy w krótkiej rozmowie.",
+    "cta": "Zapisz się bez testu"
+  },
+  "signup": {
+    "label": "Zapisy",
+    "title": "Zapisz się na Business English",
+    "sub": "Zaznacz swój poziom i zostaw kontakt. Odezwiemy się, żeby dobrać grupę i termin.",
+    "levels_label": "Twój poziom angielskiego",
+    "levels": [
+      {
+        "name": "Podstawowy",
+        "hint": "A1–A2"
+      },
+      {
+        "name": "Średni",
+        "hint": "B1–B2"
+      },
+      {
+        "name": "Zaawansowany",
+        "hint": "C1+"
+      },
+      {
+        "name": "Nie wiem, sprawdźmy",
+        "hint": "krótka rozmowa"
+      }
+    ],
+    "message_placeholder": "np. pracuję z klientami z Niemiec, potrzebuję angielskiego do spotkań",
+    "consent": "Wyrażam zgodę na przetwarzanie moich danych w celu kontaktu w sprawie zapisu na zajęcia.",
+    "button": "Wyślij zgłoszenie",
+    "note": "Odpowiadamy zwykle w ciągu jednego dnia roboczego.",
+    "done_title": "Dziękujemy! Zgłoszenie wysłane",
+    "done_text": "Odezwiemy się wkrótce, żeby dobrać grupę i termin."
+  },
+  "footer": {
+    "left": "zacznijangielski · Business English w [Praust Office](https://praustoffice.pl/), Pruszcz Gdański · we współpracy z [Leo Academy](https://www.leoschool.pl/)",
+    "right": "© 2026 · Realizacja: [dzialajmy.online](https://dzialajmy.online)"
+  }
+}
