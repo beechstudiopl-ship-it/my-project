@@ -13,21 +13,28 @@ Paczka zawiera stronę, działający formularz zapisu i panel do edycji treści 
 
 ## 2. Konfiguracja: plik `app/config.php`
 
-Otwórz go w menedżerze plików (Edytuj) i uzupełnij:
+Plik jest już ustawiony pod Praust Office. Zmieniasz go tylko wtedy, gdy chcesz dopisać kolejne adresy.
 
-| Ustawienie | Co wpisać |
-|---|---|
-| `site_url` | `https://zacznijangielski.pl` (bez ukośnika na końcu) |
-| `admins` | adresy e-mail osób, które mogą wejść do panelu, np. Twój i Doroty |
-| `leads_to` | adres(y), na które mają przychodzić zgłoszenia z formularza |
-| `mail_from` | adres nadawcy w tej domenie, np. `formularz@zacznijangielski.pl` |
+| Ustawienie | Wartość | Co robi |
+|---|---|---|
+| `site_url` | `https://zacznijangielski.pl` | adres strony, używany w linkach w mailach |
+| `admins` | `biuro@praustoffice.pl` | kto może wejść do panelu; możesz dopisać kolejne adresy, np. Gmail |
+| `leads_to` | `biuro@praustoffice.pl` | dokąd przychodzą zgłoszenia z formularza |
+| `mail_from` | `formularz@zacznijangielski.pl` | techniczny nadawca maili ze strony (nie zmieniaj) |
 
-**Ważne:** skrzynkę z `mail_from` załóż w panelu cyber_Folks (Poczta → Konta e-mail). Bez niej maile ze strony mogą trafiać do spamu albo w ogóle nie wychodzić.
+### Poczta: dlaczego nadawcą nie jest biuro@praustoffice.pl
+
+Strona wysyła maile z serwera cyber_Folks, a poczta praustoffice.pl działa gdzie indziej. Gdyby strona podpisywała się jako `biuro@praustoffice.pl`, skrzynki odbiorcze uznałyby to za podszywanie się (SPF/DMARC) i odrzuciłyby wiadomość albo wrzuciły ją do spamu. Dlatego:
+
+- maile przychodzą **na** `biuro@praustoffice.pl`, **od** `formularz@zacznijangielski.pl`;
+- w każdym zgłoszeniu z adresem e-mail klienta ustawione jest „Odpowiedz do” na klienta, więc kliknięcie **Odpowiedz** w skrzynce biuro@ pisze od razu do niego;
+- na `formularz@zacznijangielski.pl` nikt nie musi zaglądać. W cyber_Folks wystarczy, że domena zacznijangielski.pl jest dodana z włączoną pocztą. Przy delegacji na ns1–ns3.cyberfolks.pl panel sam dodaje rekord SPF (w strefie DNS rekord TXT zaczynający się od `v=spf1`; warto sprawdzić, że jest);
+- gdyby pierwsze zgłoszenia wpadły do spamu w skrzynce biuro@, oznacz nadawcę `formularz@zacznijangielski.pl` jako zaufanego („To nie spam”).
 
 ## 3. Sprawdzenie
 
-1. Wejdź na `https://zacznijangielski.pl` i wyślij testowe zgłoszenie z formularza. Powinno przyjść na adres z `leads_to`.
-2. Wejdź na `https://zacznijangielski.pl/admin`, wpisz swój adres z listy `admins` i kliknij **Wyślij link do logowania**. Kliknij link z maila: działa 15 minut i tylko raz.
+1. Wejdź na `https://zacznijangielski.pl` i wyślij testowe zgłoszenie z formularza. Powinno przyjść na `biuro@praustoffice.pl` (sprawdź też spam).
+2. Wejdź na `https://zacznijangielski.pl/admin`, wpisz `biuro@praustoffice.pl` i kliknij **Wyślij link do logowania**. Kliknij link z maila: działa 15 minut i tylko raz.
 3. W panelu, w zakładce **Zgłoszenia**, powinno być widać testowe zgłoszenie. Zgłoszenia zapisują się tu zawsze, nawet gdyby mail nie doszedł; takie są oznaczone jako „bez maila”.
 
 ## 4. Logowanie przez Google (opcjonalne)
