@@ -5,11 +5,15 @@ Paczka zawiera stronę, działający formularz zapisu i panel do edycji treści 
 ## 1. Wgranie plików
 
 1. W panelu cyber_Folks (DirectAdmin) dodaj domenę `zacznijangielski.pl`, jeśli jeszcze jej nie ma.
-2. Otwórz **Menedżer plików** albo połącz się przez FTP i wejdź do `domains/zacznijangielski.pl/public_html/`.
-3. Usuń stąd domyślny plik `index.html` (strona powitalna hostingu).
-4. Wgraj **zawartość** folderu `public_html` z paczki, czyli pliki i foldery `index.php`, `wyslij.php`, `admin/`, `app/`, `assets/`, `data/`, `uploads/`, `.htaccess`, `robots.txt` i `sitemap.xml`. Nie wgrywaj samego folderu `public_html` jako podfolderu.
-   - Plik `.htaccess` jest ukryty. W menedżerze plików włącz pokazywanie ukrytych plików albo wgraj cały ZIP i rozpakuj go na serwerze.
-5. Sprawdź, czy katalogi `data/` i `uploads/` mają prawo zapisu (zwykle `755`, na cyber_Folks działa od razu).
+2. **Najpierw włącz SSL**: **Certyfikaty SSL** → `zacznijangielski.pl` → darmowy certyfikat Let's Encrypt dla `zacznijangielski.pl` i `www.zacznijangielski.pl`. Poczekaj, aż `https://zacznijangielski.pl` otworzy się bez ostrzeżenia (strona „Witamy” cyber_Folks). Strona przekierowuje na https, więc bez certyfikatu pokazałaby błąd.
+3. Otwórz **Menedżer plików** i wejdź do `domains/zacznijangielski.pl/public_html/`.
+4. Usuń stąd domyślne pliki cyber_Folks: `index.html` i `.htaccess`.
+5. Wgraj tu plik `zacznijangielski-www.zip` i rozpakuj go **w tym samym katalogu**. Pliki strony (`index.php`, `admin/`, `app/`, `data/` itd.) muszą leżeć bezpośrednio w `public_html`, a nie w podfolderze.
+6. Usuń plik ZIP po rozpakowaniu. Tej instrukcji nie wgrywaj na serwer.
+7. Sprawdź:
+   - `https://zacznijangielski.pl` pokazuje stronę;
+   - `https://zacznijangielski.pl/admin` pokazuje logowanie;
+   - `https://zacznijangielski.pl/data/content.json` daje błąd 403, czyli blokada działa.
 
 ## 2. Konfiguracja: plik `app/config.php`
 
