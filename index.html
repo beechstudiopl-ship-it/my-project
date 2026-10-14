@@ -316,6 +316,21 @@
     transition:box-shadow .15s ease,transform .15s ease,color .15s ease,border-color .15s ease;
   }
   a.niche-tag:hover{border-color:var(--blue);color:var(--blue);box-shadow:var(--shadow-hover);transform:translateY(-1px)}
+
+  .niche-examples{display:grid;grid-template-columns:1fr;gap:14px;margin-top:28px}
+  @media (min-width:720px){.niche-examples{grid-template-columns:repeat(3,1fr)}}
+  .niche-example{
+    display:flex;flex-direction:column;gap:6px;padding:20px;background:#fff;color:inherit;
+    text-decoration:none;border:1px solid rgba(20,23,27,.08);border-radius:var(--r-sm);box-shadow:var(--shadow);
+    transition:box-shadow .15s ease,transform .15s ease;
+  }
+  .niche-example:hover{box-shadow:var(--shadow-hover);transform:translateY(-2px)}
+  .niche-example-name{font-family:'Archivo',sans-serif;font-weight:800;font-size:var(--fs-6);color:var(--ink)}
+  .niche-example-cta{font-family:'Archivo',sans-serif;font-weight:700;font-size:var(--fs-2);color:var(--blue-d)}
+  .niche-demo-cta{margin-top:20px;font-size:var(--fs-4);color:var(--ink-2)}
+  .niche-demo-cta a{color:var(--blue-d);font-weight:700;text-decoration:none}
+  .niche-demo-cta a:hover{text-decoration:underline}
+
   .access-cta{
     display:block;margin-top:20px;border:1.5px dashed rgba(20,23,27,.3);padding:20px 24px;
     border-radius:var(--r);text-decoration:none;color:inherit;transition:opacity .12s ease;
@@ -482,7 +497,14 @@
   .step.done .num-badge{color:var(--blue)}
 
   /* jak to działa (steps) */
-  .steps{display:grid;grid-template-columns:1fr;gap:24px;margin-top:36px}
+  .steps-wrap{position:relative;margin-top:36px}
+  .steps-connector{display:none}
+  @media (min-width:720px){
+    .steps-connector{
+      display:block;position:absolute;top:49px;left:0;width:100%;height:10px;z-index:0;opacity:.5;
+    }
+  }
+  .steps{position:relative;z-index:1;display:grid;grid-template-columns:1fr;gap:24px;margin-top:0}
   @media (min-width:720px){.steps{grid-template-columns:repeat(3,1fr)}}
   .step{position:relative;border:1px solid rgba(20,23,27,.08);background:#fff;padding:32px;
     border-radius:var(--r);box-shadow:var(--shadow);transition:box-shadow .15s ease,transform .15s ease}
@@ -632,7 +654,11 @@
   <section id="jak-to-dziala" class="section2">
     <h2>Jak to działa: 3 kroki</h2>
 
-    <div class="steps">
+    <div class="steps-wrap">
+      <svg class="steps-connector" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true">
+        <line x1="16" y1="5" x2="84" y2="5" stroke="var(--blue)" stroke-width="0.6" stroke-dasharray="2,3" stroke-linecap="round"/>
+      </svg>
+      <div class="steps">
       <article class="step">
         <span class="num-badge">01</span>
         <h3>Opisz</h3>
@@ -651,6 +677,7 @@
         <span class="step-time">do 14 dni łącznie</span>
         <p>Dostajesz link do podglądu na maila. 2 do 3 serii poprawek i strona jest live.</p>
       </article>
+      </div>
     </div>
 
     <div class="steps-cta">
@@ -663,11 +690,23 @@
     <h2>Dla kogo</h2>
     <p class="sublead">Robię strony dla małych firm działających lokalnie, które szukają wsparcia w rozwoju. Skup się na firmie, stronę zostaw mi!</p>
 
+    <div class="niche-examples">
+      <a href="zamowienia-gastronomia.html" class="niche-example">
+        <span class="niche-example-name">Restauracje</span>
+        <span class="niche-example-cta">Zobacz przykład →</span>
+      </a>
+      <a href="strona-trener-fizjoterapeuta.html" class="niche-example">
+        <span class="niche-example-name">Trenerzy i fizjoterapeuci</span>
+        <span class="niche-example-cta">Zobacz przykład →</span>
+      </a>
+      <a href="realizacja-rope-access-group.html" class="niche-example">
+        <span class="niche-example-name">Firmy usługowe / B2B</span>
+        <span class="niche-example-cta">Zobacz realizację →</span>
+      </a>
+    </div>
+
     <div class="tags-grid">
-      <a href="zamowienia-gastronomia.html" class="niche-tag">Restauracje →</a>
       <span class="niche-tag">Puby</span>
-      <a href="strona-trener-fizjoterapeuta.html" class="niche-tag">Trenerzy →</a>
-      <a href="strona-trener-fizjoterapeuta.html" class="niche-tag">Fizjoterapeuci →</a>
       <span class="niche-tag">Psychologowie</span>
       <span class="niche-tag">Małe rzemiosło</span>
       <span class="niche-tag">Biura rachunkowe</span>
@@ -677,6 +716,8 @@
       <a href="dla-kogo.html" class="access-cta-link" style="display:inline-flex;align-items:center;text-decoration:none">Zobacz pozostałe branże →</a>
       <a href="gdzie-dzialam.html" class="access-cta-link" style="display:inline-flex;align-items:center;text-decoration:none">Gdzie działam →</a>
     </div>
+
+    <p class="niche-demo-cta">Nie widzisz swojej branży? <a href="zanim-zaczniemy.html">Zobacz, jak za darmo przygotowuję demo pod Twoją →</a></p>
 
     <a href="nie-mam-dostepu.html" class="access-cta">
       <p class="access-cta-text">...i dla tych wszystkich, którzy kiedyś zrobili stronę i z jakiegoś powodu nie mają do niej dostępu lub nie mogą czegoś zmienić, bo autor przepadł! Ja to rozwiązuję.</p>
