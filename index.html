@@ -358,6 +358,29 @@
     display:flex;align-items:center;justify-content:center;
   }
   .plan .btn{margin-top:22px;width:100%;justify-content:center;cursor:pointer}
+
+  /* kiedyś vs dziś */
+  .compare-grid{display:grid;grid-template-columns:1fr;gap:20px;margin-top:32px}
+  @media (min-width:720px){.compare-grid{grid-template-columns:1fr 1fr}}
+  .compare-col{padding:28px;border-radius:var(--r);border:1px solid rgba(20,23,27,.08)}
+  .compare-was{background:rgba(20,23,27,.03)}
+  .compare-now{background:#fff;box-shadow:var(--shadow);border-color:var(--blue)}
+  .compare-col h3{font-family:'Archivo',sans-serif;font-weight:900;font-size:var(--fs-6);margin-bottom:16px}
+  .compare-was h3{color:var(--ink-3)}
+  .compare-now h3{color:var(--blue-d)}
+  .compare-list{list-style:none;display:flex;flex-direction:column;gap:12px}
+  .compare-list li{padding-left:28px;position:relative;font-size:var(--fs-4);color:var(--ink-2)}
+  .compare-list-x li::before{
+    content:"✕";position:absolute;left:0;top:1px;width:18px;height:18px;border-radius:50%;
+    background:rgba(20,23,27,.08);color:var(--ink-3);font-size:var(--fs-1);font-weight:900;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .compare-list-check li::before{
+    content:"✓";position:absolute;left:0;top:1px;width:18px;height:18px;border-radius:50%;
+    background:var(--blue);color:#fff;font-size:var(--fs-1);font-weight:900;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .compare-list-check li{color:var(--ink)}
   .plan.full{border-color:var(--blue);border-width:1.5px}
 
   /* faq */
@@ -650,6 +673,31 @@
     </div>
   </section>
 
+  <section id="kiedys-dzis" class="section2">
+    <h2>Kiedyś <span class="h1-fade">vs dziś</span></h2>
+    <p class="sublead">Krótko: co się zmienia, gdy w końcu to ogarniesz.</p>
+
+    <div class="compare-grid">
+      <div class="compare-col compare-was">
+        <h3>Kiedyś</h3>
+        <ul class="compare-list compare-list-x">
+          <li>Konkurencja widoczna w Google, Ty nie</li>
+          <li>Klient dzwoni do kogoś innego, bo Cię nie znalazł</li>
+          <li>Strona odkładana od miesięcy</li>
+          <li>Czekasz na „lepszy moment"</li>
+        </ul>
+      </div>
+      <div class="compare-col compare-now">
+        <h3>Dziś, z działajmy.online</h3>
+        <ul class="compare-list compare-list-check">
+          <li>Strona gotowa w 7–14 dni</li>
+          <li>Płacisz dopiero po pokazaniu demo</li>
+          <li>Jeden kontakt, zero pośredników</li>
+          <li>Realna strona, nie szablon z kreatora</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
   <section id="jak-to-dziala" class="section2">
     <h2>Jak to działa: 3 kroki</h2>

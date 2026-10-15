@@ -100,6 +100,11 @@
   }
   .field input::placeholder{color:var(--ink-3)}
   .field input:focus{outline:0;box-shadow:0 0 0 3px var(--hi)}
+  .field select{
+    width:100%;font-family:'Source Sans 3',sans-serif;font-size:16px;color:var(--ink);
+    background:#fff;border:1.5px solid rgba(20,23,27,.5);padding:13px 14px;
+  }
+  .field select:focus{outline:0;box-shadow:0 0 0 3px var(--hi)}
   .field textarea{
     width:100%;font-family:'Source Sans 3',sans-serif;font-size:16px;color:var(--ink);
     background:#fff;border:1.5px solid rgba(20,23,27,.5);padding:13px 14px;resize:vertical;
@@ -251,6 +256,27 @@
           </div>
         </div>
 
+        <div class="row2">
+          <div class="field">
+            <label for="branza">Branża</label>
+            <input id="branza" name="branza" type="text" placeholder="np. restauracja, salon urody">
+          </div>
+          <div class="field">
+            <label for="lokalizacja">Lokalizacja</label>
+            <input id="lokalizacja" name="lokalizacja" type="text" placeholder="Twoje miasto">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="budzet">Budżet</label>
+          <select id="budzet" name="budzet">
+            <option value="">Nie wiem jeszcze</option>
+            <option value="~1000 zł (START)">~1000 zł (START)</option>
+            <option value="3500 zł+ (FULL)">3500 zł+ (FULL)</option>
+            <option value="Większy / nietypowy projekt">Większy / nietypowy projekt</option>
+          </select>
+        </div>
+
         <div class="field">
           <label for="domena">Domena, jeśli masz</label>
           <input id="domena" name="domena" type="text" placeholder="np. twojafirma.pl">
@@ -387,6 +413,9 @@
         'DANE ZGŁASZAJĄCEGO (nie umieszczaj w treści strony):\n' +
         'Imię i nazwisko: ' + form.imie.value + '\n' +
         'Kontakt: ' + form.kontakt.value + '\n' +
+        (form.branza.value ? 'Branża: ' + form.branza.value + '\n' : '') +
+        (form.lokalizacja.value ? 'Lokalizacja: ' + form.lokalizacja.value + '\n' : '') +
+        (form.budzet.value ? 'Budżet: ' + form.budzet.value + '\n' : '') +
         (form.domena.value ? 'Domena: ' + form.domena.value + '\n' : '') +
         (form.pakiet.value ? 'Pakiet (z linku): ' + form.pakiet.value + '\n' : '') +
         (pliki ? 'Zdjęcia, dośle w odpowiedzi: ' + pliki + '\n' : '');
