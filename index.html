@@ -295,6 +295,31 @@
   .step .num-badge{color:var(--ink)}
   .step.done .num-badge{color:var(--blue)}
 
+  /* odszedł z niczym (lost clients) */
+  .lost{display:grid;grid-template-columns:1fr;gap:20px;margin-top:32px}
+  @media (min-width:720px){.lost{grid-template-columns:1fr 1fr}}
+  .lost-card{border:1.5px solid rgba(20,23,27,.5);background:#fff;padding:26px;display:flex;flex-direction:column}
+  .lost-ico{width:44px;height:44px;display:flex;align-items:center;justify-content:center;
+    background:var(--paper);border:1px solid var(--hair);margin-bottom:16px}
+  .lost-ico svg{width:22px;height:22px;stroke:var(--ink);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+  .lost-card h3{font-family:'Archivo',sans-serif;font-weight:800;text-transform:uppercase;font-size:16px;letter-spacing:.02em;margin:0 0 10px}
+  .lost-card p{font-size:14.5px;color:var(--ink-2);line-height:1.5;margin:0 0 18px}
+  .lost-card .punch{margin:auto 0 0;padding-top:14px;border-top:1px solid var(--hair);color:var(--blue);font-weight:700}
+
+  /* panel edycji */
+  .edit-wrap{display:grid;grid-template-columns:1fr;gap:20px}
+  @media (min-width:720px){.edit-wrap{grid-template-columns:1.4fr 1fr}}
+  .edit-main{border:1.5px solid rgba(20,23,27,.5);background:#fff;padding:30px}
+  .edit-main h2{margin:14px 0 18px}
+  .edit-main p{font-size:15.5px;color:var(--ink-2);line-height:1.6;margin:0 0 14px}
+  .edit-main p:last-child{margin-bottom:0}
+  .edit-main b{color:var(--ink)}
+  .edit-side{border:1px solid var(--hair);padding:30px}
+  .edit-side h3{font-family:'Archivo',sans-serif;font-weight:900;font-size:19px;letter-spacing:-.02em;margin:0 0 16px}
+  .nope{list-style:none;margin:0;padding:0}
+  .nope li{position:relative;padding-left:26px;margin-bottom:12px;font-size:15px;color:var(--ink-2);line-height:1.5}
+  .nope li::before{content:"✕";position:absolute;left:0;top:0;color:var(--ink-3);font-size:14px}
+
   /* jak to działa (steps) */
   .steps{display:grid;grid-template-columns:1fr;gap:20px;margin-top:32px}
   @media (min-width:720px){.steps{grid-template-columns:repeat(3,1fr)}}
@@ -369,6 +394,38 @@
     </div>
     <p class="form-note" style="text-align:left;margin-top:14px">Bez zobowiązań. Jedna wiadomość, i zobaczysz, czy moja oferta Cię przekona.</p>
   </main>
+
+  <section id="odszedl-z-niczym" class="section2">
+    <h2>Twój potencjalny klient właśnie Cię wygooglował <span class="mk">i&nbsp;odszedł z&nbsp;niczym</span></h2>
+    <p class="sublead">Klient, który nie znajdzie Cię w sieci albo zobaczy tam bałagan, nie dzwoni z pretensjami. Po prostu wybiera kogoś innego.</p>
+
+    <div class="lost">
+      <article class="lost-card">
+        <span class="lost-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17" cy="9" r="2.5"/><path d="M17 14c2.6 0 4.5 1.9 4.5 4.5"/></svg></span>
+        <h3>Klient z polecenia</h3>
+        <p>Ktoś polecił Cię znajomemu. Znajomy wpisuje Twoją firmę w Google, a tam nic nie ma. Szuka dalej i trafia na Twoją konkurencję.</p>
+        <p class="punch">Dzwoni do kogoś, kto ma stronę.</p>
+      </article>
+      <article class="lost-card">
+        <span class="lost-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20.5 20.5 16 16"/></svg></span>
+        <h3>Szukanie w Google</h3>
+        <p>Ktoś szuka usług w Twojej okolicy. Twoja konkurencja jest widoczna online, a Ty nie istniejesz dla algorytmu.</p>
+        <p class="punch">Klient nawet nie wie, że istniejesz.</p>
+      </article>
+      <article class="lost-card">
+        <span class="lost-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M15 8h-1.5A2 2 0 0 0 11.5 10v10.5M9 13h5.5"/></svg></span>
+        <h3>Masz tylko Facebooka</h3>
+        <p>Klient szuka cennika i zdjęć, a trafia na post sprzed pół roku. Wygląda, jakby firma już nie działała.</p>
+        <p class="punch">Wybiera firmę, która wygląda poważniej.</p>
+      </article>
+      <article class="lost-card">
+        <span class="lost-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="2"/><path d="M11 18h2"/></svg></span>
+        <h3>Strona sprzed lat</h3>
+        <p>Na telefonie wszystko jest malutkie, numeru nie da się kliknąć, a strona długo się ładuje.</p>
+        <p class="punch">Wraca do Google i klika następny wynik.</p>
+      </article>
+    </div>
+  </section>
 
   <section id="znasz-to-uczucie" class="section-dark">
     <div class="sd-inner">
@@ -490,6 +547,24 @@
     <p class="sublead" style="margin-top:24px;max-width:640px">Ceny zaczynają się od 1000 zł, bo wiem, że na start ciężko o dużą kwotę. Myślę długoterminowo: pomagam teraz bez przepłacania, licząc na to, że wrócisz, kiedy firma urośnie i będzie potrzebować czegoś więcej.</p>
 
     <p class="form-note" style="text-align:left;margin-top:20px">Pierwsza płatność po pokazaniu wstępnego linku do podglądu. Druga przy włączeniu strony.</p>
+  </section>
+
+  <section id="panel-edycji" class="section2">
+    <div class="edit-wrap">
+      <article class="edit-main">
+        <span class="tag">Po prostu</span>
+        <h2>Własny panel edycji. Wchodzisz, edytujesz i&nbsp;heja!</h2>
+        <p><b>Nie dostajesz WordPressa z dziesiątką zaawansowanych wtyczek.</b> Dostajesz prosty panel zrobiony pod Twoją stronę: tylko to, co faktycznie zmieniasz.</p>
+        <p>Godziny otwarcia, cennik, zdjęcia, nowy wpis. Zmieniasz w kilka minut, bez szkoleń i bez strachu, że jedno kliknięcie rozsypie całą stronę.</p>
+      </article>
+      <aside class="edit-side">
+        <h3>Ta oferta nie jest dla Ciebie, jeśli:</h3>
+        <ul class="nope">
+          <li>szukasz WordPressa z wtyczkami do wszystkiego,</li>
+          <li>potrzebujesz dużego sklepu internetowego z setkami produktów.</li>
+        </ul>
+      </aside>
+    </div>
   </section>
 
   <section id="faq" class="section2">
