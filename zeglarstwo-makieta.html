@@ -44,7 +44,6 @@
   .photo img{width:100%;height:100%;object-fit:cover}
 
   section{padding:56px 0}
-  .facts-band + section{padding-top:44px}
   .bg-cream{background:var(--cream)}
   .bg-navy{background:var(--navy);color:var(--cream)}
   .bg-navy .muted,.bg-navy .lead{color:#C9D3DB}
@@ -124,7 +123,8 @@
   }
 
   /* FAKTY */
-  .facts-band{padding:28px 0 0}
+  #kursy{padding-bottom:28px}
+  .facts-band{padding:0 0 56px}
   .facts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
   .facts div{background:var(--cream);border-radius:var(--r);padding:16px;font-size:15px;color:var(--ink-2)}
   .facts b{display:block;font-family:'Outfit',sans-serif;font-size:17px;color:var(--navy)}
@@ -304,19 +304,6 @@
   </div>
 </section>
 
-<!-- S2 FAKTY -->
-<section class="facts-band" aria-label="W skrócie">
-  <div class="wrap">
-    <span class="tag">S2 · Fakty</span>
-    <div class="facts" aria-label="W skrócie">
-      <div><b>Wdzydze</b>Stanica Wodna PTTK</div>
-      <div><b>Własny jacht</b>„Patent na Żeglowanie”</div>
-      <div><b>Mała załoga</b>bez tłumu na pokładzie</div>
-      <div><b>Sezon 2027</b>zapisy na listę już teraz</div>
-    </div>
-  </div>
-</section>
-
 <!-- S3 KURSY -->
 <section id="kursy">
   <div class="wrap">
@@ -376,6 +363,19 @@
           <button class="btn" data-pick="sternik">Zapisz się na ten kurs</button>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- S2 FAKTY -->
+<section class="facts-band" aria-label="W skrócie">
+  <div class="wrap">
+    <span class="tag">S2 · Fakty</span>
+    <div class="facts" aria-label="W skrócie">
+      <div><b>Wdzydze</b>Stanica Wodna PTTK</div>
+      <div><b>Własny jacht</b>„Patent na Żeglowanie”</div>
+      <div><b>Mała załoga</b>bez tłumu na pokładzie</div>
+      <div><b>Sezon 2027</b>zapisy na listę już teraz</div>
     </div>
   </div>
 </section>
