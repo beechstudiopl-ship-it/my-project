@@ -64,14 +64,14 @@
 
   /* HEADER */
   header{position:sticky;top:0;z-index:30;background:var(--navy);color:#fff}
-  .hdr{display:flex;align-items:center;justify-content:space-between;height:104px;transition:height .2s ease}
-  header.scrolled .hdr{height:68px}
+  .hdr{display:flex;align-items:center;justify-content:space-between;height:92px;transition:height .2s ease}
+  header.scrolled .hdr{height:66px}
   .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
-  .brand img{width:96px;height:96px;transition:width .2s ease,height .2s ease}
-  header.scrolled .brand img{width:60px;height:60px}
-  @media (min-width:960px){.hdr{height:132px}.brand img{width:120px;height:120px}}
-  .menu .brand img{width:96px;height:96px}
-  footer .brand img{width:120px;height:120px}
+  .brand img{height:64px;width:auto;transition:height .2s ease}
+  header.scrolled .brand img{height:46px}
+  @media (min-width:960px){.hdr{height:112px}.brand img{height:78px}}
+  .menu .brand img{height:64px}
+  footer .brand img{height:80px}
   .nav-desk{display:none}
   .burger{width:48px;height:48px;border:1.5px solid rgba(255,255,255,.5);border-radius:10px;background:transparent;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px}
   .burger i{display:block;width:20px;height:2px;background:#fff}
@@ -84,7 +84,7 @@
   }
   .menu{position:fixed;inset:0;z-index:50;background:var(--navy);color:#fff;display:flex;flex-direction:column;padding:8px 20px 24px;transform:translateY(-100%);visibility:hidden;transition:transform .25s ease,visibility .25s}
   .menu.open{transform:none;visibility:visible}
-  .menu-top{display:flex;justify-content:space-between;align-items:center;height:104px;margin:-8px 0 8px}
+  .menu-top{display:flex;justify-content:space-between;align-items:center;height:92px;margin:-8px 0 8px}
   .menu-close{width:48px;height:48px;border:1.5px solid rgba(255,255,255,.5);border-radius:10px;background:transparent;color:#fff;font-size:22px;cursor:pointer}
   .menu nav a{display:block;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.12);font-family:'Outfit',sans-serif;font-size:22px;font-weight:600;text-decoration:none}
   .menu .btn{margin-top:auto}
@@ -105,7 +105,7 @@
   .jacek b{display:block;font-family:'Outfit',sans-serif;font-size:17px}
   .jacek span{font-size:14.5px;color:#D6DEE5;line-height:1.35;display:block}
   @media (min-width:900px){
-    .hero{min-height:calc(100vh - 132px);display:flex;align-items:flex-end;padding:0 0 48px}
+    .hero{min-height:calc(100vh - 112px);display:flex;align-items:flex-end;padding:0 0 48px}
     .hero-bg{left:42%;height:auto;bottom:0;background-position:center 40%}
     .hero-bg::after{background:linear-gradient(90deg,var(--navy) 0%,rgba(12,46,71,.6) 30%,rgba(12,46,71,.1) 70%),linear-gradient(0deg,var(--navy) 0%,rgba(12,46,71,0) 30%)}
     .hero-inner{padding-top:72px;max-width:640px}
@@ -249,7 +249,7 @@
 <header>
   <div class="wrap hdr">
     <a href="#top" class="brand" aria-label="Patent na Żeglowanie, strona główna">
-      <img src="assets/zeglarstwo/logo.jpg" alt="Patent na Żeglowanie, Szkoła Żeglarstwa" width="56" height="56">
+      <img src="assets/zeglarstwo/logo-poziome.png" alt="Patent na Żeglowanie, Szkoła Żeglarstwa" width="495" height="159">
     </a>
     <nav class="nav-desk" aria-label="Główna nawigacja">
       <a href="#kursy">Kursy</a>
@@ -265,7 +265,7 @@
 
 <div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu">
   <div class="menu-top">
-    <span class="brand"><img src="assets/zeglarstwo/logo.jpg" alt="Patent na Żeglowanie, Szkoła Żeglarstwa" width="56" height="56"></span>
+    <span class="brand"><img src="assets/zeglarstwo/logo-poziome.png" alt="Patent na Żeglowanie, Szkoła Żeglarstwa" width="495" height="159"></span>
     <button class="menu-close" id="menu-close" aria-label="Zamknij menu">✕</button>
   </div>
   <nav>
@@ -611,7 +611,7 @@
     <span class="tag">S14 · Stopka</span>
     <div class="foot">
       <div>
-        <span class="brand"><img src="assets/zeglarstwo/logo.jpg" alt="Patent na Żeglowanie, Szkoła Żeglarstwa" width="56" height="56"></span>
+        <span class="brand"><img src="assets/zeglarstwo/logo-poziome.png" alt="Patent na Żeglowanie, Szkoła Żeglarstwa" width="495" height="159"></span>
         <p><b>Mała załoga. Dużo steru. Wsparcie także po kursie.</b></p>
       </div>
       <div>
