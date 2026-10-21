@@ -44,6 +44,7 @@
   .photo img{width:100%;height:100%;object-fit:cover}
 
   section{padding:56px 0}
+  .facts-band + section{padding-top:44px}
   .bg-cream{background:var(--cream)}
   .bg-navy{background:var(--navy);color:var(--cream)}
   .bg-navy .muted,.bg-navy .lead{color:#C9D3DB}
@@ -111,9 +112,10 @@
   }
 
   /* FAKTY */
-  .facts{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.14);border-radius:var(--r);overflow:hidden;margin-top:30px}
-  .facts div{background:var(--navy-2);padding:14px;font-size:14.5px;color:#C9D3DB}
-  .facts b{display:block;font-family:'Outfit',sans-serif;font-size:16px;color:#fff}
+  .facts-band{padding:28px 0 0}
+  .facts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .facts div{background:var(--cream);border-radius:var(--r);padding:16px;font-size:15px;color:var(--ink-2)}
+  .facts b{display:block;font-family:'Outfit',sans-serif;font-size:17px;color:var(--navy)}
   @media (min-width:900px){.facts{grid-template-columns:repeat(4,1fr)}}
 
   /* KURSY - TABS */
@@ -287,7 +289,13 @@
       </div>
     </div>
 
-    <!-- S2 FAKTY -->
+  </div>
+</section>
+
+<!-- S2 FAKTY -->
+<section class="facts-band" aria-label="W skrócie">
+  <div class="wrap">
+    <span class="tag">S2 · Fakty</span>
     <div class="facts" aria-label="W skrócie">
       <div><b>Wdzydze</b>Stanica Wodna PTTK</div>
       <div><b>Własny jacht</b>„Patent na Żeglowanie”</div>
