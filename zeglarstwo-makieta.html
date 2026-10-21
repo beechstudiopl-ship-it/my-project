@@ -4,193 +4,226 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#0C2E47">
+<link rel="icon" href="assets/zeglarstwo/logo-znak.jpg" type="image/jpeg">
 <title>Patent na Żeglowanie · strona główna (makieta)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  /* WIREFRAME: celowo bez kolorów i bez docelowego designu. Mobile-first. */
+  /* Paleta z logo: granat + krem, akcent pomarańcz (kamizelka / flaga sygnałowa). Mobile-first. */
   :root{
-    --bg:#fff;--bg-2:#f3f3f3;--bg-3:#e6e6e6;--line:#cfcfcf;--line-2:#9a9a9a;
-    --ink:#111;--ink-2:#555;--ink-3:#8a8a8a;--r:10px;
+    --navy:#0C2E47;--navy-2:#082234;--navy-3:#16405F;
+    --cream:#F8F0E5;--cream-2:#EFE3D2;--white:#fff;
+    --orange:#EE5A24;--orange-d:#D4481A;
+    --ink:#0C2E47;--ink-2:#4A5F70;--ink-3:#7C8C99;--line:#E4D8C6;
+    --r:14px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth;scroll-padding-top:64px}
-  body{background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;padding-bottom:84px}
+  html{scroll-behavior:smooth;scroll-padding-top:68px}
+  body{background:var(--white);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;padding-bottom:84px}
   a{color:inherit}
   img{max-width:100%;display:block}
-  h1,h2,h3{line-height:1.15;letter-spacing:-.01em}
-  h1{font-size:clamp(28px,7.6vw,46px)}
-  h2{font-size:clamp(23px,6vw,34px)}
-  h3{font-size:18px}
-  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+  h1,h2,h3{font-family:'Outfit',system-ui,sans-serif;line-height:1.1;letter-spacing:-.015em;font-weight:700}
+  h1{font-size:clamp(32px,8.4vw,58px);font-weight:800}
+  h2{font-size:clamp(26px,6.4vw,40px)}
+  h3{font-size:19px}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
   .muted{color:var(--ink-2)}
-  .small{font-size:13.5px}
+  .small{font-size:14px}
+  .eyebrow{font-family:'Outfit',sans-serif;font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:10px}
 
-  /* etykieta sekcji do omawiania makiety */
-  .tag{display:inline-block;font:600 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);border:1px dashed var(--line-2);border-radius:4px;padding:4px 6px;margin-bottom:14px}
-  body.hide-tags .tag{display:none}
+  /* etykieta sekcji makiety (domyślnie ukryta) */
+  .tag{display:none;font:600 11px/1 ui-monospace,Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);border:1px dashed var(--ink-3);border-radius:4px;padding:4px 6px;margin-bottom:14px}
+  body.show-tags .tag{display:inline-block}
 
-  /* placeholder zdjęcia / logo / mapy */
-  .ph{position:relative;background:repeating-linear-gradient(135deg,var(--bg-2) 0 12px,var(--bg-3) 12px 24px);border:1.5px dashed var(--line-2);border-radius:var(--r);display:flex;align-items:center;justify-content:center;text-align:center;padding:12px;color:var(--ink-2);font:600 12.5px/1.35 ui-monospace,SFMono-Regular,Menlo,monospace}
-  .ph span{background:var(--bg);padding:4px 8px;border-radius:4px}
+  /* placeholder na brakujące zdjęcia */
+  .ph{background:repeating-linear-gradient(135deg,var(--cream) 0 12px,var(--cream-2) 12px 24px);border:1.5px dashed var(--ink-3);border-radius:var(--r);display:flex;align-items:center;justify-content:center;text-align:center;padding:12px;color:var(--ink-2);font:600 13px/1.35 ui-monospace,Menlo,monospace}
+  .ph span{background:var(--white);padding:4px 8px;border-radius:4px}
+  .photo{border-radius:var(--r);overflow:hidden;background:var(--cream-2)}
+  .photo img{width:100%;height:100%;object-fit:cover}
 
-  section{padding:44px 0;border-top:1px solid var(--line)}
+  section{padding:56px 0}
+  .bg-cream{background:var(--cream)}
+  .bg-navy{background:var(--navy);color:var(--cream)}
+  .bg-navy .muted,.bg-navy .lead{color:#C9D3DB}
   section > .wrap > h2{margin-bottom:12px}
-  .lead{font-size:17px;color:var(--ink-2);max-width:620px}
+  .lead{font-size:18px;color:var(--ink-2);max-width:640px}
 
   /* przyciski */
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 20px;border-radius:8px;border:1.5px solid var(--ink);background:var(--ink);color:#fff;font-family:inherit;font-weight:700;font-size:16px;line-height:1.2;text-decoration:none;cursor:pointer;width:100%}
-  .btn.ghost{background:transparent;color:var(--ink)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:13px 24px;border-radius:999px;border:2px solid var(--orange);background:var(--orange);color:#fff;font-family:'Outfit',sans-serif;font-weight:700;font-size:17px;line-height:1.2;text-decoration:none;cursor:pointer;width:100%;transition:background .15s,border-color .15s}
+  .btn:hover{background:var(--orange-d);border-color:var(--orange-d)}
+  .btn.ghost{background:transparent;color:var(--navy);border-color:var(--navy)}
+  .btn.ghost:hover{background:var(--navy);color:var(--cream)}
+  .bg-navy .btn.ghost,.hero .btn.ghost{color:#fff;border-color:rgba(255,255,255,.7)}
+  .bg-navy .btn.ghost:hover,.hero .btn.ghost:hover{background:#fff;color:var(--navy)}
   @media (min-width:560px){.btn{width:auto}}
-  .actions{display:flex;flex-direction:column;gap:10px;margin-top:22px}
+  .actions{display:flex;flex-direction:column;gap:10px;margin-top:26px}
   @media (min-width:560px){.actions{flex-direction:row;flex-wrap:wrap}}
 
   /* HEADER */
-  header{position:sticky;top:0;z-index:30;background:var(--bg);border-bottom:1px solid var(--line)}
-  .hdr{display:flex;align-items:center;justify-content:space-between;height:60px}
-  .logo{height:40px;width:150px;font-size:11px}
+  header{position:sticky;top:0;z-index:30;background:var(--navy);color:#fff;border-bottom:1px solid rgba(255,255,255,.08)}
+  .hdr{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+  .brand img{width:42px;height:42px;border-radius:8px}
+  .brand b{font-family:'Outfit',sans-serif;font-weight:800;font-size:17px;letter-spacing:.04em;line-height:1;text-transform:uppercase}
+  .brand small{display:block;font-family:'Outfit',sans-serif;font-weight:500;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;opacity:.75;margin-top:4px}
   .nav-desk{display:none}
-  .burger{width:48px;height:48px;border:1.5px solid var(--ink);border-radius:8px;background:var(--bg);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px}
-  .burger i{display:block;width:20px;height:2px;background:var(--ink)}
+  .burger{width:48px;height:48px;border:1.5px solid rgba(255,255,255,.5);border-radius:10px;background:transparent;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px}
+  .burger i{display:block;width:20px;height:2px;background:#fff}
   @media (min-width:960px){
     .burger{display:none}
-    .nav-desk{display:flex;align-items:center;gap:22px;font-size:14.5px;font-weight:600}
-    .nav-desk a{text-decoration:none}
-    .nav-desk .btn{min-height:40px;padding:8px 16px;font-size:14.5px}
+    .nav-desk{display:flex;align-items:center;gap:24px;font-size:15.5px;font-weight:600}
+    .nav-desk a{text-decoration:none;opacity:.85}
+    .nav-desk a:hover{opacity:1}
+    .nav-desk .btn{min-height:42px;padding:8px 18px;font-size:15px;opacity:1}
   }
-  .menu{position:fixed;inset:0;z-index:50;background:var(--bg);display:flex;flex-direction:column;padding:12px 20px 24px;transform:translateY(-100%);visibility:hidden;transition:transform .25s ease,visibility .25s}
+  .menu{position:fixed;inset:0;z-index:50;background:var(--navy);color:#fff;display:flex;flex-direction:column;padding:8px 20px 24px;transform:translateY(-100%);visibility:hidden;transition:transform .25s ease,visibility .25s}
   .menu.open{transform:none;visibility:visible}
-  .menu-top{display:flex;justify-content:space-between;align-items:center;height:48px;margin-bottom:16px}
-  .menu-close{width:48px;height:48px;border:1.5px solid var(--ink);border-radius:8px;background:var(--bg);font-size:22px;cursor:pointer}
-  .menu nav a{display:block;padding:16px 0;border-bottom:1px solid var(--line);font-size:20px;font-weight:700;text-decoration:none}
+  .menu-top{display:flex;justify-content:space-between;align-items:center;height:56px;margin-bottom:16px}
+  .menu-close{width:48px;height:48px;border:1.5px solid rgba(255,255,255,.5);border-radius:10px;background:transparent;color:#fff;font-size:22px;cursor:pointer}
+  .menu nav a{display:block;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.12);font-family:'Outfit',sans-serif;font-size:22px;font-weight:600;text-decoration:none}
   .menu .btn{margin-top:auto}
 
-  /* HERO */
-  .hero{padding:20px 0 36px;border-top:none}
-  .hero-grid{display:grid;gap:22px}
-  .hero-photo{aspect-ratio:4/3;max-height:42vh;width:100%}
-  .hero-photo .badge{position:absolute;left:12px;bottom:12px;right:12px;background:var(--bg);border:1px solid var(--ink);border-radius:8px;padding:10px 12px;text-align:left;font:600 13.5px/1.35 system-ui,sans-serif;color:var(--ink)}
-  .hero-photo .badge b{display:block;font-size:15px}
-  .claim{margin-top:14px;font-size:18px;font-weight:700}
+  /* HERO: granat jak tło logo, zdjęcie jachtu w tle, biała typografia */
+  .hero{position:relative;overflow:hidden;background:var(--navy);color:#fff;padding:0 0 32px}
+  .hero-bg{position:absolute;left:0;right:0;top:0;height:min(64vh,620px);background:url(assets/zeglarstwo/hero-jacht.jpg) center 68%/cover no-repeat}
+  .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,46,71,.15) 0%,rgba(12,46,71,.1) 45%,rgba(12,46,71,.75) 80%,var(--navy) 100%)}
+  .hero .wrap{position:relative;width:100%}
+  .hero-inner{padding-top:min(52vh,500px)}
+  .hero .eyebrow{color:#fff;opacity:.85}
+  .hero h1{color:#fff;max-width:760px;text-wrap:balance}
+  .claim{margin-top:16px;font-family:'Outfit',sans-serif;font-size:20px;font-weight:600;color:var(--cream)}
+  .claim em{font-style:normal;color:var(--orange)}
+  .hero .lead{color:#D6DEE5;margin-top:12px}
+  .jacek{display:flex;align-items:center;gap:14px;margin-top:22px;padding:12px 16px 12px 12px;background:rgba(8,34,52,.6);border:1px solid rgba(255,255,255,.18);border-radius:999px;max-width:460px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+  .jacek img{width:62px;height:62px;border-radius:50%;object-fit:cover;border:2px solid var(--cream);flex:0 0 62px}
+  .jacek b{display:block;font-family:'Outfit',sans-serif;font-size:17px}
+  .jacek span{font-size:14.5px;color:#D6DEE5;line-height:1.35;display:block}
   @media (min-width:900px){
-    .hero{padding:48px 0 56px}
-    .hero-grid{grid-template-columns:1fr 1fr;align-items:center;gap:48px}
-    .hero-photo{order:2;max-height:none}
+    .hero{min-height:calc(100vh - 64px);display:flex;align-items:flex-end;padding:0 0 48px}
+    .hero-bg{left:42%;height:auto;bottom:0;background-position:center 40%}
+    .hero-bg::after{background:linear-gradient(90deg,var(--navy) 0%,rgba(12,46,71,.6) 30%,rgba(12,46,71,.1) 70%),linear-gradient(0deg,var(--navy) 0%,rgba(12,46,71,0) 30%)}
+    .hero-inner{padding-top:72px;max-width:640px}
   }
 
   /* FAKTY */
-  .facts{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-top:28px}
-  .facts div{background:var(--bg);padding:14px 12px;font-size:14px}
-  .facts b{display:block;font-size:15.5px}
+  .facts{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.14);border-radius:var(--r);overflow:hidden;margin-top:30px}
+  .facts div{background:var(--navy-2);padding:14px;font-size:14.5px;color:#C9D3DB}
+  .facts b{display:block;font-family:'Outfit',sans-serif;font-size:16px;color:#fff}
   @media (min-width:900px){.facts{grid-template-columns:repeat(4,1fr)}}
 
   /* KURSY - TABS */
-  .tabs{display:grid;grid-template-columns:1fr 1fr;border:1.5px solid var(--ink);border-radius:10px;overflow:hidden;margin:20px 0 16px}
-  .tabs button{min-height:52px;padding:8px;border:0;background:var(--bg);font-family:inherit;font-weight:700;font-size:15px;line-height:1.2;cursor:pointer;color:var(--ink)}
-  .tabs button[aria-selected="true"]{background:var(--ink);color:#fff}
-  .panel{border:1px solid var(--line);border-radius:var(--r);padding:20px}
+  .tabs{display:grid;grid-template-columns:1fr 1fr;background:var(--cream);border-radius:999px;padding:4px;margin:22px 0 16px;max-width:560px}
+  .tabs button{min-height:50px;padding:8px;border:0;border-radius:999px;background:transparent;font-family:'Outfit',sans-serif;font-weight:700;font-size:15.5px;line-height:1.15;cursor:pointer;color:var(--navy)}
+  .tabs button[aria-selected="true"]{background:var(--navy);color:#fff}
+  .panel{border:1px solid var(--line);border-radius:var(--r);padding:16px;background:#fff}
   .panel[hidden]{display:none}
   .panel-grid{display:grid;gap:18px}
-  .panel .ph{aspect-ratio:16/9}
-  .when{display:inline-block;border:1px solid var(--ink);border-radius:20px;padding:4px 12px;font-size:13.5px;font-weight:700;margin-bottom:10px}
-  ul.ticks{list-style:none;display:grid;gap:8px;margin:12px 0}
-  ul.ticks li{padding-left:26px;position:relative}
-  ul.ticks li::before{content:"";position:absolute;left:2px;top:.5em;width:12px;height:12px;border:2px solid var(--ink);border-radius:2px}
-  dl.meta{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:14.5px;margin:12px 0 18px}
+  .panel .photo,.panel .ph{aspect-ratio:16/10}
+  .when{display:inline-block;background:var(--cream);color:var(--navy);border-radius:999px;padding:5px 12px;font-size:14px;font-weight:700;margin-bottom:10px}
+  ul.ticks{list-style:none;display:grid;gap:9px;margin:14px 0}
+  ul.ticks li{padding-left:28px;position:relative}
+  ul.ticks li::before{content:"";position:absolute;left:0;top:.28em;width:18px;height:18px;border-radius:50%;background:var(--orange) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.5l2.5 2.5L12 5.5' fill='none' stroke='%23fff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat}
+  ul.ticks.no li::before{background:var(--ink-3) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M5 5l6 6M11 5l-6 6' fill='none' stroke='%23fff' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E") center/11px no-repeat}
+  dl.meta{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:15.5px;margin:12px 0 18px;padding-top:12px;border-top:1px solid var(--line)}
   dl.meta dt{color:var(--ink-3)}
-  @media (min-width:900px){.panel-grid{grid-template-columns:1fr 1.2fr;gap:32px}}
+  @media (min-width:900px){.panel{padding:22px}.panel-grid{grid-template-columns:1fr 1.1fr;gap:34px;align-items:center}.panel .photo,.panel .ph{aspect-ratio:4/3}}
 
   /* KARTY */
-  .cards{display:grid;gap:12px;margin-top:20px}
-  .card{border:1px solid var(--line);border-radius:var(--r);padding:18px}
-  .card .num{font:700 12px/1 ui-monospace,monospace;color:var(--ink-3);margin-bottom:8px}
-  .card p{color:var(--ink-2);margin-top:6px;font-size:15px}
+  .cards{display:grid;gap:12px;margin-top:22px}
+  .card{border-radius:var(--r);padding:20px;background:#fff;border:1px solid var(--line)}
+  .bg-cream .card{border-color:transparent}
+  .card .num{font-family:'Outfit',sans-serif;font-weight:800;font-size:28px;color:var(--orange);line-height:1;margin-bottom:10px}
+  .card p{color:var(--ink-2);margin-top:6px;font-size:16px}
   @media (min-width:700px){.cards.c2{grid-template-columns:1fr 1fr}.cards.c3{grid-template-columns:repeat(3,1fr)}}
-  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
-  .chips span{border:1px solid var(--line-2);border-radius:20px;padding:6px 12px;font-size:14px}
-  .quote{border-left:3px solid var(--ink);padding:6px 0 6px 16px;margin-top:20px;font-size:18px;font-weight:600}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .chips span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:15px}
+  .bg-cream .chips span{border-color:transparent}
+  .quote{border-left:4px solid var(--orange);padding:4px 0 4px 18px;margin-top:22px;font-family:'Outfit',sans-serif;font-size:20px;font-weight:600;line-height:1.35}
 
   /* OŚ: kurs -> egzamin -> czarter */
-  .steps{list-style:none;display:grid;gap:0;margin-top:22px;counter-reset:s}
-  .steps li{position:relative;padding:0 0 22px 46px}
-  .steps li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:0;width:32px;height:32px;border:1.5px solid var(--ink);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;background:var(--bg)}
-  .steps li::after{content:"";position:absolute;left:16px;top:32px;bottom:0;border-left:1.5px dashed var(--line-2)}
+  .steps{list-style:none;display:grid;margin-top:26px;counter-reset:s}
+  .steps li{position:relative;padding:2px 0 26px 54px;font-family:'Outfit',sans-serif;font-size:19px;font-weight:600}
+  .steps li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:0;width:38px;height:38px;border:2px solid rgba(255,255,255,.5);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;background:var(--navy)}
+  .steps li::after{content:"";position:absolute;left:19px;top:40px;bottom:2px;border-left:2px dashed rgba(255,255,255,.3)}
   .steps li:last-child::after{display:none}
-  .steps li.goal::before{background:var(--ink);color:#fff}
-  .steps li.goal{font-weight:700}
-  .steps small{display:block;font-weight:400;color:var(--ink-2);font-size:14.5px}
+  .steps li.goal::before{background:var(--orange);border-color:var(--orange);color:#fff}
+  .steps li.goal{color:#fff;font-size:22px}
+  .steps small{display:block;font-family:'Source Sans 3',sans-serif;font-weight:400;color:#C9D3DB;font-size:16px;margin-top:2px}
 
   /* JACHT */
-  .two{display:grid;gap:16px;margin-top:20px}
-  .two .ph{aspect-ratio:4/5}
-  .two .ph.map{aspect-ratio:4/3}
-  @media (min-width:700px){.two{grid-template-columns:1fr 1fr}.two .ph{aspect-ratio:4/5}.two .ph.map{aspect-ratio:auto}}
+  .two{display:grid;gap:14px;margin-top:22px}
+  .two .photo{aspect-ratio:4/5}
+  .map{border-radius:var(--r);overflow:hidden;border:1px solid var(--line);aspect-ratio:4/3;background:var(--cream)}
+  .map iframe{width:100%;height:100%;border:0;display:block}
+  @media (min-width:700px){.two{grid-template-columns:1fr 1fr}.map{aspect-ratio:auto}}
 
   /* JACEK */
-  .about{display:grid;gap:20px;margin-top:8px}
-  .about .ph{aspect-ratio:1/1;max-width:420px}
-  @media (min-width:900px){.about{grid-template-columns:.8fr 1.2fr;align-items:center;gap:40px}}
+  .about{display:grid;gap:22px}
+  .about .photo{aspect-ratio:4/3}
+  @media (min-width:900px){.about{grid-template-columns:1fr 1fr;align-items:center;gap:44px}}
+  .sign{margin-top:16px;font-family:'Outfit',sans-serif;font-weight:700}
 
   /* GALERIA */
-  .gallery{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 20px 12px;margin:20px -20px 0;-webkit-overflow-scrolling:touch}
-  .gallery .ph{flex:0 0 78%;aspect-ratio:4/3;scroll-snap-align:start}
-  @media (min-width:700px){.gallery .ph{flex-basis:40%}}
-  @media (min-width:1080px){.gallery{margin:20px 0 0;padding:4px 0 12px}.gallery .ph{flex-basis:31%}}
-  .hint{font-size:13px;color:var(--ink-3);margin-top:6px}
+  .gallery{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 20px 12px;margin:22px -20px 0;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+  .gallery .photo{flex:0 0 80%;aspect-ratio:4/3;scroll-snap-align:start}
+  @media (min-width:700px){.gallery .photo{flex-basis:42%}}
+  @media (min-width:1120px){.gallery{margin:22px 0 0;padding:4px 0 12px}.gallery .photo{flex-basis:32%}}
+  .hint{font-size:14px;color:var(--ink-3);margin-top:6px}
 
   /* DLA KOGO */
-  .fit{display:grid;gap:12px;margin-top:20px}
-  .fit .card h3{margin-bottom:8px}
+  .fit{display:grid;gap:12px;margin-top:22px}
+  .fit .card h3{margin-bottom:6px}
   @media (min-width:700px){.fit{grid-template-columns:1fr 1fr}}
 
   /* FAQ */
-  .faq{margin-top:18px;border-top:1px solid var(--line)}
+  .faq{margin-top:20px;border-top:1px solid var(--line)}
   .faq details{border-bottom:1px solid var(--line)}
-  .faq summary{list-style:none;cursor:pointer;min-height:56px;padding:16px 40px 16px 0;font-weight:700;position:relative}
+  .faq summary{list-style:none;cursor:pointer;min-height:58px;padding:17px 44px 17px 0;font-family:'Outfit',sans-serif;font-weight:600;font-size:18px;position:relative}
   .faq summary::-webkit-details-marker{display:none}
-  .faq summary::after{content:"+";position:absolute;right:6px;top:12px;font-size:24px;font-weight:400}
-  .faq details[open] summary::after{content:"–"}
-  .faq details p{padding:0 0 16px;color:var(--ink-2)}
+  .faq summary::after{content:"+";position:absolute;right:4px;top:13px;width:30px;height:30px;border-radius:50%;background:var(--cream);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:600;color:var(--navy)}
+  .faq details[open] summary::after{content:"–";background:var(--orange);color:#fff}
+  .faq details p{padding:0 0 18px;color:var(--ink-2)}
 
   /* FORMULARZ */
-  .signup{background:var(--bg-2)}
-  .form-box{background:var(--bg);border:1.5px solid var(--ink);border-radius:12px;padding:20px;margin-top:20px;max-width:640px}
-  fieldset{border:0;margin-bottom:18px}
-  legend,label.lbl{display:block;font-weight:700;font-size:15px;margin-bottom:8px}
-  .opt{font-weight:400;color:var(--ink-3)}
+  .form-box{background:#fff;color:var(--ink);border-radius:18px;padding:22px 18px;margin-top:24px;max-width:660px;box-shadow:0 20px 50px rgba(0,0,0,.25)}
+  @media (min-width:560px){.form-box{padding:28px}}
+  fieldset{border:0}
+  .field{margin-bottom:18px}
+  legend,label.lbl{display:block;font-family:'Outfit',sans-serif;font-weight:600;font-size:16px;margin-bottom:8px}
+  .opt{font-family:'Source Sans 3',sans-serif;font-weight:400;color:var(--ink-3)}
   .choice{display:flex;flex-wrap:wrap;gap:8px}
   .choice label{position:relative}
   .choice input{position:absolute;opacity:0;pointer-events:none}
-  .choice span{display:inline-flex;align-items:center;min-height:44px;padding:8px 14px;border:1.5px solid var(--line-2);border-radius:22px;cursor:pointer;font-size:15px;user-select:none}
-  .choice input:checked + span{border-color:var(--ink);background:var(--ink);color:#fff}
-  .choice input:focus-visible + span{outline:2px solid var(--ink);outline-offset:2px}
-  .field{margin-bottom:16px}
-  .field input[type=text],.field input[type=email],.field input[type=tel]{width:100%;min-height:50px;padding:12px 14px;border:1.5px solid var(--line-2);border-radius:8px;font-family:inherit;font-size:16px;line-height:1.3;background:var(--bg);color:var(--ink)}
-  .field input:focus{outline:2px solid var(--ink);outline-offset:1px;border-color:var(--ink)}
-  .consent{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--ink-2);margin-bottom:18px}
-  .consent input{width:22px;height:22px;flex:0 0 22px;margin-top:1px}
-  .err{display:none;color:var(--ink);font-size:13.5px;font-weight:600;margin-top:6px}
-  .err::before{content:"⚠ "}
+  .choice span{display:inline-flex;align-items:center;min-height:44px;padding:8px 16px;border:1.5px solid var(--line);background:var(--cream);border-radius:999px;cursor:pointer;font-size:16px;user-select:none}
+  .choice input:checked + span{border-color:var(--navy);background:var(--navy);color:#fff}
+  .choice input:focus-visible + span{outline:3px solid var(--orange);outline-offset:2px}
+  .field input[type=text],.field input[type=email],.field input[type=tel]{width:100%;min-height:52px;padding:12px 16px;border:1.5px solid var(--line);border-radius:12px;font-family:inherit;font-size:17px;line-height:1.3;background:#fff;color:var(--ink)}
+  .field input:focus{outline:3px solid rgba(238,90,36,.35);border-color:var(--orange)}
+  .consent{display:flex;gap:10px;align-items:flex-start;font-size:15px;color:var(--ink-2);margin-bottom:18px}
+  .consent input{width:22px;height:22px;flex:0 0 22px;margin-top:1px;accent-color:var(--navy)}
+  .err{display:none;color:#C0331B;font-size:14.5px;font-weight:600;margin-top:6px}
   .invalid .err{display:block}
-  .invalid input[type=text],.invalid input[type=email]{border-color:var(--ink);border-width:2.5px}
-  .invalid .choice span{border-style:dashed;border-color:var(--ink)}
+  .invalid input[type=text],.invalid input[type=email]{border-color:#C0331B}
+  .invalid .choice span{border-color:#C0331B}
   .thanks{text-align:center;padding:20px 4px}
-  .thanks .ok{width:56px;height:56px;margin:0 auto 14px;border:2px solid var(--ink);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px}
-  .note{font-size:13px;color:var(--ink-3);margin-top:12px}
+  .thanks .ok{width:60px;height:60px;margin:0 auto 14px;background:var(--orange);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px}
+  .note{font-size:13.5px;color:var(--ink-3);margin-top:12px}
 
   /* FOOTER */
-  footer{border-top:1px solid var(--line);padding:36px 0 24px;font-size:14.5px}
-  footer .logo{margin-bottom:14px}
-  .foot{display:grid;gap:16px}
-  @media (min-width:700px){.foot{grid-template-columns:1.2fr 1fr 1fr}}
+  footer{background:var(--navy-2);color:#C9D3DB;padding:44px 0 28px;font-size:15.5px}
+  footer b{color:#fff}
+  .foot{display:grid;gap:22px}
+  footer .brand{margin-bottom:12px;color:#fff}
+  @media (min-width:700px){.foot{grid-template-columns:1.3fr 1fr 1fr}}
+  .wf-toggle{margin-top:18px;border:1px solid rgba(255,255,255,.25);background:transparent;color:#C9D3DB;border-radius:20px;padding:6px 12px;font:600 11px/1 ui-monospace,monospace;cursor:pointer}
 
   /* STICKY CTA (mobile) */
-  .sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:20;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--line);transition:transform .2s ease}
+  .sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:20;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);border-top:1px solid var(--line);transition:transform .2s ease;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
   .sticky-cta.away{transform:translateY(110%)}
   .sticky-cta .btn{width:100%}
   @media (min-width:960px){.sticky-cta{display:none}body{padding-bottom:0}}
-
-  /* przełącznik etykiet makiety */
-  .wf-toggle{margin-top:16px;border:1px solid var(--line-2);background:var(--bg);border-radius:20px;padding:6px 10px;font:600 11px/1 ui-monospace,monospace;color:var(--ink-2);cursor:pointer}
 </style>
 </head>
 <body>
@@ -198,7 +231,10 @@
 <!-- S0 HEADER -->
 <header>
   <div class="wrap hdr">
-    <a href="#top" class="ph logo" aria-label="Patent na Żeglowanie, strona główna"><span>[LOGO]</span></a>
+    <a href="#top" class="brand" aria-label="Patent na Żeglowanie, strona główna">
+      <img src="assets/zeglarstwo/logo-znak.jpg" alt="" width="42" height="42">
+      <span><b>Patent</b><small>na Żeglowanie</small></span>
+    </a>
     <nav class="nav-desk" aria-label="Główna nawigacja">
       <a href="#kursy">Kursy</a>
       <a href="#jak-ucze">Jak uczę</a>
@@ -213,7 +249,7 @@
 
 <div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu">
   <div class="menu-top">
-    <div class="ph logo"><span>[LOGO]</span></div>
+    <span class="brand"><img src="assets/zeglarstwo/logo-znak.jpg" alt="" width="42" height="42"><span><b>Patent</b><small>na Żeglowanie</small></span></span>
     <button class="menu-close" id="menu-close" aria-label="Zamknij menu">✕</button>
   </div>
   <nav>
@@ -229,24 +265,23 @@
 
 <main id="top">
 
-<!-- S1 HERO: JACEK -->
+<!-- S1 HERO -->
 <section class="hero">
+  <div class="hero-bg" role="img" aria-label="Jacht szkoły Patent na Żeglowanie przy pomoście o zmierzchu"></div>
   <div class="wrap">
-    <span class="tag">S1 · Hero: Jacek</span>
-    <div class="hero-grid">
-      <div class="ph hero-photo">
-        <span>[FOTO: Jacek na jachcie PATENT, portret, doślesz]</span>
-        <div class="badge"><b>Jacek</b>instruktor · 37 lat pod żaglami · szkolenia prowadzę osobiście</div>
+    <div class="hero-inner">
+      <span class="tag">S1 · Hero</span>
+      <p class="eyebrow">Szkoła żeglarstwa · Wdzydze</p>
+      <h1>Wracamy. Ale nie po to, żeby robić kolejne zwykłe kursy żeglarskie.</h1>
+      <p class="claim">Mała załoga. Dużo steru. <em>Wsparcie także po kursie.</em></p>
+      <p class="lead">Własny jacht, baza we Wdzydzach i jeden cel: żebyś po kursie spokojnie odebrał swój pierwszy czarter.</p>
+      <div class="jacek">
+        <img src="assets/zeglarstwo/jacek-twarz.jpg" alt="Jacek, instruktor" width="62" height="62">
+        <div><b>Jacek</b><span>instruktor · 37 lat pod żaglami · szkolenia prowadzę osobiście</span></div>
       </div>
-      <div>
-        <p class="small muted">Szkoła Żeglarstwa i Sportów Motorowodnych · Wdzydze</p>
-        <h1 style="margin-top:8px">Wracamy. Ale nie po to, żeby robić kolejne zwykłe kursy żeglarskie.</h1>
-        <p class="claim">Mała załoga. Dużo steru. Wsparcie także po kursie.</p>
-        <p class="lead" style="margin-top:12px">Własny jacht, baza we Wdzydzach i jeden cel: żebyś po kursie spokojnie odebrał swój pierwszy czarter.</p>
-        <div class="actions">
-          <a href="#zapis" class="btn">Zapisz się na 2027</a>
-          <a href="#kursy" class="btn ghost">Zobacz kursy</a>
-        </div>
+      <div class="actions">
+        <a href="#zapis" class="btn">Zapisz się na 2027</a>
+        <a href="#kursy" class="btn ghost">Zobacz kursy</a>
       </div>
     </div>
 
@@ -264,6 +299,7 @@
 <section id="kursy">
   <div class="wrap">
     <span class="tag">S3 · Dwa kursy</span>
+    <p class="eyebrow">Kursy 2027</p>
     <h2>Dwa kursy. Ten sam sposób uczenia.</h2>
     <p class="lead">Kameralne grupy, dużo praktyki, instruktor, który odpowiada za cały proces.</p>
 
@@ -274,7 +310,7 @@
 
     <div class="panel" role="tabpanel" id="p-z" aria-labelledby="tab-z">
       <div class="panel-grid">
-        <div class="ph"><span>[FOTO: jacht pod żaglami, kursant za sterem]</span></div>
+        <div class="photo"><img src="assets/zeglarstwo/absolwenci-1.jpg" alt="Kursanci z dyplomami na pomoście obok jachtu" loading="lazy"></div>
         <div>
           <span class="when">Terminy: 2027 · wkrótce</span>
           <h3>Patent żeglarza jachtowego</h3>
@@ -298,7 +334,7 @@
 
     <div class="panel" role="tabpanel" id="p-s" aria-labelledby="tab-s" hidden>
       <div class="panel-grid">
-        <div class="ph"><span>[FOTO: łódź motorowodna / manewry przy kei]</span></div>
+        <div class="ph"><span>[FOTO: łódź motorowodna, doślesz]</span></div>
         <div>
           <span class="when">Terminy: 2027 · wkrótce</span>
           <h3>Patent sternika motorowodnego</h3>
@@ -323,9 +359,10 @@
 </section>
 
 <!-- S4 PROBLEM -->
-<section>
+<section class="bg-cream">
   <div class="wrap">
     <span class="tag">S4 · Problem</span>
+    <p class="eyebrow">O tym mówi się za mało</p>
     <h2>Masz patent i nadal boisz się wyczarterować jacht?</h2>
     <p class="lead">Wielu kursantów zdaje egzamin, odbiera patent i… nadal nie czuje się pewnie. Mają dokument, ale brakuje im pewności.</p>
     <div class="chips">
@@ -339,6 +376,7 @@
 <section id="jak-ucze">
   <div class="wrap">
     <span class="tag">S5 · Model szkolenia</span>
+    <p class="eyebrow">Model szkolenia</p>
     <h2>Jak uczę</h2>
     <div class="cards c3">
       <div class="card"><div class="num">01</div><h3>Mała załoga</h3><p>Na pokładzie nie ma tłumu. Nie czekasz w kolejce do steru.</p></div>
@@ -351,9 +389,10 @@
 </section>
 
 <!-- S6 CEL -->
-<section>
+<section class="bg-navy">
   <div class="wrap">
     <span class="tag">S6 · Cel: pierwszy czarter</span>
+    <p class="eyebrow">Cel szkolenia</p>
     <h2>Celem nie jest sam egzamin</h2>
     <p class="lead">Celem jest moment, w którym odbierasz swój pierwszy czarter, wchodzisz na pokład i wiesz, jak bezpiecznie poprowadzić jacht oraz załogę.</p>
     <ol class="steps">
@@ -365,9 +404,10 @@
 </section>
 
 <!-- S7 PO KURSIE -->
-<section id="po-kursie">
+<section id="po-kursie" class="bg-cream">
   <div class="wrap">
     <span class="tag">S7 · Wsparcie po kursie</span>
+    <p class="eyebrow">Po kursie</p>
     <h2>Instruktor nie znika po wydaniu patentu</h2>
     <p class="lead">Relacja ze szkołą nie kończy się w dniu egzaminu.</p>
     <div class="cards c2">
@@ -383,26 +423,28 @@
 <section id="jacht">
   <div class="wrap">
     <span class="tag">S8 · Jacht i baza</span>
+    <p class="eyebrow">Jacht i baza</p>
     <h2>Własny jacht. Baza we Wdzydzach.</h2>
     <p class="lead">Szkoła ma własny, dobrze wyposażony jacht. Jednostka nosi nazwę naszej marki, a jej bazą jest Stanica Wodna PTTK we Wdzydzach.</p>
     <div class="two">
-      <div class="ph"><span>[FOTO: jacht PATENT przy pomoście, z materiałów]</span></div>
-      <div class="ph map"><span>[MAPA: Wdzydze, Stanica Wodna PTTK + dojazd]</span></div>
+      <div class="photo"><img src="assets/zeglarstwo/jacht-pomost.jpg" alt="Jacht PATENT na żeglowanie przy pomoście" loading="lazy"></div>
+      <div class="map"><iframe title="Mapa: Stanica Wodna PTTK Wdzydze" src="https://maps.google.com/maps?q=Stanica%20Wodna%20PTTK%20Wdzydze&z=13&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
     </div>
   </div>
 </section>
 
 <!-- S9 JACEK -->
-<section id="jacek">
+<section id="jacek" class="bg-cream">
   <div class="wrap">
     <span class="tag">S9 · O mnie</span>
     <div class="about">
-      <div class="ph"><span>[FOTO: Jacek, drugie ujęcie, np. za sterem]</span></div>
+      <div class="photo"><img src="assets/zeglarstwo/jacek-absolwenci.jpg" alt="Jacek z kursantami po egzaminie" loading="lazy"></div>
       <div>
+        <p class="eyebrow">Instruktor</p>
         <h2>Za szkolenia odpowiadam osobiście</h2>
         <p class="lead" style="margin-top:10px">Mam 37 lat doświadczenia żeglarskiego i wiele lat pracy instruktorskiej.</p>
         <p class="quote">Wiem, że można szybko przygotować człowieka do egzaminu. Znacznie trudniej nauczyć go spokojnego, odpowiedzialnego i samodzielnego prowadzenia jachtu. I właśnie to jest celem moich szkoleń.</p>
-        <p style="margin-top:14px;font-weight:700">Jacek, Patent na Żeglowanie</p>
+        <p class="sign">Jacek, Patent na Żeglowanie</p>
       </div>
     </div>
   </div>
@@ -412,24 +454,25 @@
 <section>
   <div class="wrap">
     <span class="tag">S10 · Absolwenci</span>
+    <p class="eyebrow">Absolwenci</p>
     <h2>Nasi absolwenci</h2>
     <p class="lead">Z poprzednich sezonów, zanim zrobiliśmy przerwę.</p>
     <div class="gallery" tabindex="0" aria-label="Galeria absolwentów, przewiń w bok">
-      <div class="ph"><span>[FOTO 1: grupa z dyplomami]</span></div>
-      <div class="ph"><span>[FOTO 2: grupa z dyplomami]</span></div>
-      <div class="ph"><span>[FOTO 3: grupa z dyplomami]</span></div>
-      <div class="ph"><span>[FOTO 4: grupa z dyplomami]</span></div>
-      <div class="ph"><span>[FOTO 5: grupa z dyplomami]</span></div>
-      <div class="ph"><span>[FOTO 6: grupa z dyplomami]</span></div>
+      <div class="photo"><img src="assets/zeglarstwo/absolwenci-2.jpg" alt="Absolwenci z dyplomami" loading="lazy"></div>
+      <div class="photo"><img src="assets/zeglarstwo/absolwenci-3.jpg" alt="Absolwenci z dyplomami" loading="lazy"></div>
+      <div class="photo"><img src="assets/zeglarstwo/absolwenci-4.jpg" alt="Absolwenci z dyplomami" loading="lazy"></div>
+      <div class="photo"><img src="assets/zeglarstwo/absolwenci-5.jpg" alt="Absolwenci z dyplomami" loading="lazy"></div>
+      <div class="photo"><img src="assets/zeglarstwo/absolwenci-1.jpg" alt="Absolwenci z dyplomami" loading="lazy"></div>
     </div>
     <p class="hint">← przewiń w bok →</p>
   </div>
 </section>
 
 <!-- S11 DLA KOGO -->
-<section>
+<section class="bg-cream">
   <div class="wrap">
     <span class="tag">S11 · Dla kogo</span>
+    <p class="eyebrow">Dla kogo</p>
     <h2>Nie będziemy najtańszą szkołą. Nie będziemy też największą.</h2>
     <div class="fit">
       <div class="card">
@@ -438,7 +481,7 @@
       </div>
       <div class="card">
         <h3>Raczej nie, jeśli szukasz</h3>
-        <ul class="ticks"><li>najtańszego kursu w okolicy</li><li>dużej grupy i „odbębnienia” egzaminu</li></ul>
+        <ul class="ticks no"><li>najtańszego kursu w okolicy</li><li>dużej grupy i „odbębnienia” egzaminu</li></ul>
       </div>
     </div>
   </div>
@@ -448,6 +491,7 @@
 <section id="faq">
   <div class="wrap">
     <span class="tag">S12 · FAQ</span>
+    <p class="eyebrow">FAQ</p>
     <h2>Pytania</h2>
     <div class="faq">
       <details><summary>Kiedy będą terminy?</summary><p>Kursy ruszają w sezonie 2027. Program i pierwsze terminy opublikuję wkrótce. Osoby z listy dowiedzą się pierwsze.</p></details>
@@ -461,11 +505,12 @@
 </section>
 
 <!-- S13 FORMULARZ -->
-<section id="zapis" class="signup">
+<section id="zapis" class="bg-navy">
   <div class="wrap">
     <span class="tag">S13 · Zapis na listę</span>
+    <p class="eyebrow">Sezon 2027</p>
     <h2>Zapisz się już dziś, aby dowiedzieć się, jak ruszymy</h2>
-    <p class="lead">Kursy w 2027. Program i pierwsze terminy dostaniesz jako pierwszy. Zapis nic nie kosztuje i do niczego nie zobowiązuje.</p>
+    <p class="lead">Program i pierwsze terminy dostaniesz jako pierwszy. Zapis nic nie kosztuje i do niczego nie zobowiązuje.</p>
 
     <div class="form-box">
       <form id="signup" novalidate>
@@ -542,20 +587,20 @@
     <span class="tag">S14 · Stopka</span>
     <div class="foot">
       <div>
-        <div class="ph logo"><span>[LOGO]</span></div>
+        <span class="brand"><img src="assets/zeglarstwo/logo-znak.jpg" alt="" width="42" height="42"><span><b>Patent</b><small>na Żeglowanie</small></span></span>
         <p><b>Mała załoga. Dużo steru. Wsparcie także po kursie.</b></p>
       </div>
       <div>
         <p><b>Baza</b></p>
-        <p class="muted">Stanica Wodna PTTK<br>Wdzydze [adres do uzupełnienia]</p>
+        <p>Stanica Wodna PTTK<br>Wdzydze [adres do uzupełnienia]</p>
       </div>
       <div>
         <p><b>Kontakt</b></p>
-        <p class="muted">[telefon]<br>[e-mail]<br>[Facebook / Instagram]</p>
+        <p>[telefon]<br>[e-mail]<br>[Facebook / Instagram]</p>
       </div>
     </div>
-    <p class="small muted" style="margin-top:24px">© 2026 Patent na Żeglowanie · <a href="#">Polityka prywatności</a></p>
-    <button class="wf-toggle" id="wf-toggle" type="button">makieta · etykiety sekcji: wł.</button>
+    <p class="small" style="margin-top:26px">© 2026 Patent na Żeglowanie · <a href="#">Polityka prywatności</a></p>
+    <button class="wf-toggle" id="wf-toggle" type="button">makieta · etykiety sekcji: wył.</button>
   </div>
 </footer>
 
@@ -619,8 +664,8 @@
   // Etykiety sekcji makiety
   var wf = document.getElementById('wf-toggle');
   wf.addEventListener('click', function(){
-    var hidden = document.body.classList.toggle('hide-tags');
-    wf.textContent = 'makieta · etykiety sekcji: ' + (hidden ? 'wył.' : 'wł.');
+    var on = document.body.classList.toggle('show-tags');
+    wf.textContent = 'makieta · etykiety sekcji: ' + (on ? 'wł.' : 'wył.');
   });
 
   // Formularz: walidacja + wysyłka (FormSubmit, jak na dzialajmy.online)
