@@ -36,7 +36,7 @@
       "name": "Mogę Ci nie ufać, czemu miałbym spróbować?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Bo robię to 12 lat i mam co pokazać. Pierwszą płatność pobieram dopiero po tym, jak zobaczysz wstępny link do podglądu strony, więc nie ryzykujesz całości z góry."
+        "text": "Bo robię to 12 lat. Pierwszą płatność pobieram dopiero po tym, jak zobaczysz wstępny link do podglądu strony, więc nie ryzykujesz całości z góry."
       }
     },
     {
@@ -261,25 +261,6 @@
   .starter p{font-size:15px;color:var(--ink-2);line-height:1.55;max-width:560px}
   @media (max-width:540px){.cmp-row{grid-template-columns:1fr auto;padding:20px}.cmp-row .cmp-ico{display:none}.cmp-me{text-align:left}}
 
-  /* case */
-  .cases{display:grid;grid-template-columns:1fr;gap:20px;margin-top:32px}
-  @media (min-width:720px){.cases{grid-template-columns:1fr 1fr}}
-  .case{border:1.5px solid rgba(20,23,27,.5);background:#fff;display:flex;flex-direction:column}
-  .case-img{display:block;height:220px;overflow:hidden;background:var(--ink);border-bottom:1.5px solid rgba(20,23,27,.5)}
-  .case-img img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .3s ease}
-  .case-img:hover img{transform:scale(1.03)}
-  .case-body{padding:24px 26px 26px;display:flex;flex-direction:column;flex:1}
-  .case h3{font-family:'Archivo',sans-serif;font-weight:900;font-size:21px;letter-spacing:-.02em;margin:12px 0 14px}
-  .case dl{margin:0 0 18px}
-  .case dt{font-family:'Archivo',sans-serif;font-weight:800;font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-3);margin-top:10px}
-  .case dd{margin:2px 0 0;font-size:14.5px;color:var(--ink-2);line-height:1.5}
-  .case dt:last-of-type+dd{color:var(--ink);font-weight:700}
-  .case-link{margin-top:auto;font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;color:var(--blue);text-decoration:none}
-
-  /* zapytanie teaser */
-  .q-teaser{display:flex;flex-wrap:wrap;gap:24px;align-items:flex-end;justify-content:space-between}
-  .q-teaser>div{flex:1 1 480px}
-
   /* faq */
   .faqs{margin-top:32px;display:flex;flex-direction:column;gap:10px}
   .faqx{border:1.5px solid var(--hair);padding:16px 18px;background:#fff}
@@ -416,11 +397,10 @@
   /* --- LŻEJSZY WYGLĄD: mniej ramek i linii --- */
   body{background-image:none}
   .section2{border-top:0}
-  .lost-card,.step,.case,.edit-main,.cmp,.q-card,.plan{border:0;box-shadow:0 1px 2px rgba(20,23,27,.04),0 8px 24px rgba(20,23,27,.05)}
+  .lost-card,.step,.edit-main,.cmp,.q-card,.plan{border:0;box-shadow:0 1px 2px rgba(20,23,27,.04),0 8px 24px rgba(20,23,27,.05)}
   .step.done{box-shadow:none}
   .lost-card .punch{border-top:0;padding-top:0}
   .lost-ico,.cmp-ico{border:0}
-  .case-img{border-bottom:0}
   .problem{border:0;background:rgba(244,242,236,.05)}
   .edit-side{border:0;background:rgba(20,23,27,.035)}
   .starter{border:0;background:var(--hi-2)}
@@ -438,7 +418,7 @@
 </head>
 <body>
 
-  <a href="zanim-zaczniemy.html" class="promo-bar">Zobacz przykładowe strony z różnych branż. Sprawdź, jak to wygląda →</a>
+  <a href="zapytanie.html" class="promo-bar">Opisz swoją firmę w 2 minuty. Sprawdzę rynek i konkurencję i odpowiem osobiście →</a>
 
   <div class="top">
     <div class="logo">działajmy<span class="d">.</span>online<span class="c">^</span></div>
@@ -561,49 +541,15 @@
     </div>
   </section>
 
-  <section id="case" class="section2">
-    <h2>Strony, po których <span class="mk">dzwonią telefony i&nbsp;lecą zapytania</span></h2>
-    <p class="sublead">Ładna strona to za mało. Każda, którą robię, prowadzi klienta do jednego: zadzwoń, napisz albo zamów. Dwa przykłady.</p>
-
-    <div class="cases">
-      <article class="case">
-        <a href="zamowienia-gastronomia.html" class="case-img"><img src="zanim-gastro.png" alt="Demo Gastro: menu i koszyk na telefonie" loading="lazy" width="390" height="700"></a>
-        <div class="case-body">
-          <span class="tag">Gastronomia · demo</span>
-          <h3>Gastro. Zamówienia bez pośredników</h3>
-          <dl>
-            <dt>Problem</dt><dd>Zamówienia idą przez portale, a od każdego leci prowizja.</dd>
-            <dt>Rozwiązanie</dt><dd>Menu z kategoriami i koszyk na żywo na własnej stronie lokalu.</dd>
-            <dt>Efekt</dt><dd>Gość składa zamówienie, które trafia prosto do Ciebie, bez prowizji.</dd>
-          </dl>
-          <a href="zamowienia-gastronomia.html" class="case-link">Zobacz case →</a>
-        </div>
-      </article>
-      <article class="case">
-        <a href="strona-trener-fizjoterapeuta.html" class="case-img"><img src="zanim-trener.png" alt="Demo Forma: strona trenera i fizjoterapeuty" loading="lazy" width="1280" height="800"></a>
-        <div class="case-body">
-          <span class="tag">Trener / fizjo · demo</span>
-          <h3>Forma. Zapisy na pierwszą wizytę</h3>
-          <dl>
-            <dt>Problem</dt><dd>Klienci pytają o to samo w trzech komunikatorach, a zapisy giną w wiadomościach.</dd>
-            <dt>Rozwiązanie</dt><dd>Oferta, o mnie, proces i mapa na jednej stronie, zakończonej zapisem z wyborem usługi.</dd>
-            <dt>Efekt</dt><dd>Klient sam wybiera usługę i zostawia kontakt. Ty tylko oddzwaniasz.</dd>
-          </dl>
-          <a href="strona-trener-fizjoterapeuta.html" class="case-link">Zobacz case →</a>
-        </div>
-      </article>
-    </div>
-  </section>
-
   <section id="dla-kogo" class="section2">
     <h2>Dla kogo</h2>
     <p class="sublead">Małe firmy działające lokalnie, które chcą rosnąć. Najczęściej pracuję z:</p>
 
     <div class="tags-grid">
-      <a href="zamowienia-gastronomia.html" class="niche-tag">Restauracje →</a>
+      <span class="niche-tag">Restauracje</span>
       <span class="niche-tag">Puby</span>
-      <a href="strona-trener-fizjoterapeuta.html" class="niche-tag">Trenerzy →</a>
-      <a href="strona-trener-fizjoterapeuta.html" class="niche-tag">Fizjoterapeuci →</a>
+      <span class="niche-tag">Trenerzy</span>
+      <span class="niche-tag">Fizjoterapeuci</span>
       <span class="niche-tag">Psychologowie</span>
       <span class="niche-tag">Małe rzemiosło</span>
       <span class="niche-tag">Biura rachunkowe</span>
@@ -719,7 +665,7 @@
       </details>
       <details class="faqx">
         <summary>Mogę Ci nie ufać, czemu miałbym spróbować?</summary>
-        <p>Bo robię to 12 lat i <a href="zanim-zaczniemy.html" style="color:var(--blue-d)">mam co pokazać</a>. Pierwszą płatność pobieram dopiero po tym, jak zobaczysz wstępny link do podglądu strony, więc nie ryzykujesz całości z góry.</p>
+        <p>Bo robię to 12 lat. Pierwszą płatność pobieram dopiero po tym, jak zobaczysz wstępny link do podglądu strony, więc nie ryzykujesz całości z góry.</p>
       </details>
       <details class="faqx">
         <summary>Co jeśli mi się nie podoba?</summary>
@@ -766,7 +712,7 @@
 
   <section class="section2">
     <h2>Wiedza z zaplecza</h2>
-    <p class="sublead">Krótkie wpisy o tym, jak i dlaczego robię działajmy.online, i przykładowe strony dla różnych branż.</p>
+    <p class="sublead">Krótkie wpisy o tym, jak i dlaczego robię działajmy.online.</p>
 
     <div class="post-group-label">Wiedza</div>
     <ul class="post-links">
@@ -775,14 +721,8 @@
       <li><a href="nie-mam-dostepu.html"><span class="post-index">003</span><span class="post-title">Nie mam dostępu do strony</span><span class="post-arrow">→</span></a></li>
       <li><a href="silny-lokalnie.html"><span class="post-index">004</span><span class="post-title">Silny lokalnie: jedna strona za darmo</span><span class="post-arrow">→</span></a></li>
       <li><a href="dla-kogo.html"><span class="post-index">005</span><span class="post-title">Dla kogo</span><span class="post-arrow">→</span></a></li>
-      <li><a href="zanim-zaczniemy.html"><span class="post-index">009</span><span class="post-title">Zanim zaczniemy, pokazuję Ci wstępny projekt</span><span class="post-arrow">→</span></a></li>
     </ul>
 
-    <div class="post-group-label">Demo stron</div>
-    <ul class="post-links">
-      <li><a href="zamowienia-gastronomia.html"><span class="post-index">006</span><span class="post-title">Strona z zamówieniami dla gastronomii</span><span class="post-arrow">→</span></a></li>
-      <li><a href="strona-trener-fizjoterapeuta.html"><span class="post-index">007</span><span class="post-title">Strona z zapisami dla trenera i fizjoterapeuty</span><span class="post-arrow">→</span></a></li>
-    </ul>
   </section>
 
   <footer>
