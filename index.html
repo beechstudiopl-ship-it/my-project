@@ -276,42 +276,9 @@
   .case dt:last-of-type+dd{color:var(--ink);font-weight:700}
   .case-link{margin-top:auto;font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;color:var(--blue);text-decoration:none}
 
-  /* formularz zapytania */
-  .q-grid{display:grid;grid-template-columns:1fr;gap:36px;align-items:start}
-  @media (min-width:860px){.q-grid{grid-template-columns:1fr 1.05fr}}
-  .q-flow{list-style:none;margin:28px 0 0;padding:0;counter-reset:q}
-  .q-flow li{counter-increment:q;position:relative;padding:0 0 16px 44px;color:#C6CCD4;font-size:15px;line-height:1.5}
-  .q-flow li::before{content:"0" counter(q);position:absolute;left:0;top:-2px;font-family:'Archivo',sans-serif;font-weight:900;font-size:20px;color:var(--blue)}
-  .q-flow b{color:var(--paper)}
-  .q-card{background:#fff;color:var(--ink);padding:28px;border:1.5px solid var(--paper)}
-  .q-head{display:flex;align-items:center;gap:14px;margin-bottom:22px}
-  .q-count{font-family:'Archivo',sans-serif;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-3);white-space:nowrap}
-  .q-bar{flex:1;height:4px;background:var(--hair)}
-  .q-bar i{display:block;height:100%;width:20%;background:var(--blue);transition:width .25s ease}
-  .q-step{border:0;margin:0;padding:0;min-width:0}
-  .q-step legend{float:left;width:100%;font-family:'Archivo',sans-serif;font-weight:900;font-size:21px;letter-spacing:-.02em;line-height:1.2;margin-bottom:18px;padding:0;outline:none}
-  .q-step>*:not(legend){clear:both}
-  .q-back{display:block;background:none;border:0;padding:0;margin-bottom:14px;font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;color:var(--ink-3);cursor:pointer}
-  .q-back:hover{color:var(--blue)}
-  .q-opt{display:block;width:100%;text-align:left;margin-top:10px;padding:15px 18px;background:var(--paper);border:1.5px solid var(--hair);font:inherit;font-size:15.5px;color:var(--ink);cursor:pointer}
-  .q-opt:hover{border-color:var(--ink)}
-  .q-opt.on{border-color:var(--blue);background:#fff;box-shadow:inset 3px 0 0 var(--blue)}
-  .q-warn{margin-top:14px;padding:16px 18px;background:var(--hi-2);border:1.5px solid var(--hi)}
-  .q-warn p{font-size:14.5px;color:var(--ink);line-height:1.5}
-  .q-warn a{color:var(--ink)}
-  .q-next{margin-top:10px;background:none;border:0;padding:0;font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;color:var(--blue);cursor:pointer;text-decoration:underline}
-  .q-lbl{display:block;font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;margin:14px 0 6px}
-  .q-step input[type=text],.q-step input[type=tel],.q-step input[type=email],.q-step textarea{width:100%;padding:13px 14px;border:1.5px solid rgba(20,23,27,.3);background:#fff;font:inherit;font-size:15.5px;color:var(--ink)}
-  .q-step textarea{resize:vertical;line-height:1.5}
-  .q-step input:focus,.q-step textarea:focus{outline:none;border-color:var(--blue)}
-  .q-hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
-  .q-check{display:flex;gap:10px;align-items:flex-start;margin-top:16px;font-size:13px;color:var(--ink-2);line-height:1.45;cursor:pointer}
-  .q-check input{margin-top:3px;flex:none}
-  .q-check a{color:var(--ink-2)}
-  .q-step .btn{margin-top:20px;width:100%;justify-content:center;cursor:pointer}
-  .q-note{margin-top:10px;font-size:13px;color:var(--ink-3);text-align:center}
-  .q-thanks h3{font-family:'Archivo',sans-serif;font-weight:900;font-size:24px;letter-spacing:-.02em;margin:14px 0 10px}
-  .q-thanks p{font-size:15.5px;color:var(--ink-2);line-height:1.55}
+  /* zapytanie teaser */
+  .q-teaser{display:flex;flex-wrap:wrap;gap:24px;align-items:flex-end;justify-content:space-between}
+  .q-teaser>div{flex:1 1 480px}
 
   /* faq */
   .faqs{margin-top:32px;display:flex;flex-direction:column;gap:10px}
@@ -445,6 +412,28 @@
     .mm-arw{font-family:'Archivo',sans-serif;font-weight:900;font-size:20px;color:var(--hi);flex:none}
     footer .soon{display:none}
   }
+
+  /* --- LŻEJSZY WYGLĄD: mniej ramek i linii --- */
+  body{background-image:none}
+  .section2{border-top:0}
+  .lost-card,.step,.case,.edit-main,.cmp,.q-card,.plan{border:0;box-shadow:0 1px 2px rgba(20,23,27,.04),0 8px 24px rgba(20,23,27,.05)}
+  .step.done{box-shadow:none}
+  .lost-card .punch{border-top:0;padding-top:0}
+  .lost-ico,.cmp-ico{border:0}
+  .case-img{border-bottom:0}
+  .problem{border:0;background:rgba(244,242,236,.05)}
+  .edit-side{border:0;background:rgba(20,23,27,.035)}
+  .starter{border:0;background:var(--hi-2)}
+  .niche-tag{border:0;box-shadow:0 1px 2px rgba(20,23,27,.06)}
+  .access-cta{border:0;background:rgba(20,23,27,.035)}
+  .faqx{border:0}
+  .cmp-row{border-bottom:1px solid rgba(20,23,27,.06)}
+  .addons{border-top:0}
+  .addons div{border-bottom:0;padding:8px 0}
+  .q-opt{border-color:transparent}
+  .q-opt:hover{border-color:rgba(20,23,27,.25)}
+  .q-step input[type=text],.q-step input[type=tel],.q-step input[type=email],.q-step textarea{border-color:rgba(20,23,27,.15);background:#FAFAF8}
+  footer{border-top:0}
 </style>
 </head>
 <body>
@@ -469,7 +458,8 @@
   </main>
 
   <section id="odszedl-z-niczym" class="section2">
-    <h2>Twój potencjalny klient właśnie Cię wygooglował <span class="mk">i&nbsp;odszedł z&nbsp;niczym</span></h2>
+    <p class="kicker">Z tym mierzysz się na co dzień</p>
+    <h2>Pięć sytuacji, w których <span class="mk">tracisz klienta</span>, zanim w&nbsp;ogóle zadzwoni</h2>
     <p class="sublead">Klient, który nie znajdzie Cię w sieci albo zobaczy tam bałagan, nie dzwoni z pretensjami. Po prostu wybiera kogoś innego.</p>
 
     <div class="lost">
@@ -539,7 +529,7 @@
           <h3>Zrobię to za Ciebie. Działajmy.</h3>
           <p>Zbiorę informacje, napiszę teksty i wykonam stronę. Nie musisz szukać zdjęć na Facebooku ani sklejać prezentacji w AI. Robię strony dla małych firm działających lokalnie, które szukają wsparcia w rozwoju. Wystarczy, że raz zdecydujesz się działać. Skup się na firmie, stronę zostaw mi!</p>
         </div>
-        <a href="#formularz" class="btn btn-hi">Działajmy<span class="arw">→</span></a>
+        <a href="zapytanie.html" class="btn btn-hi">Działajmy<span class="arw">→</span></a>
       </div>
     </div>
   </section>
@@ -566,7 +556,7 @@
     </div>
 
     <div class="steps-cta">
-      <a href="#formularz" class="btn btn-blue">Opisz swój biznes<span class="arw">→</span></a>
+      <a href="zapytanie.html" class="btn btn-blue">Opisz swój biznes<span class="arw">→</span></a>
       <p class="form-note">Bez zobowiązań na etapie rozmowy. Druga płatność dopiero, gdy strona jest już włączona.</p>
     </div>
   </section>
@@ -675,7 +665,7 @@
           <div><span>Każda dodatkowa podstrona</span><b>250 zł</b></div>
           <div><span>Integracje API: płatności, rezerwacje, portale</span><b>wycena osobno</b></div>
         </div>
-        <a href="#formularz" class="btn btn-blue">Chcę taką stronę<span class="arw">→</span></a>
+        <a href="zapytanie.html" class="btn btn-blue">Chcę taką stronę<span class="arw">→</span></a>
         <p class="form-note" style="text-align:left">Pierwsza płatność po pokazaniu wstępnego linku do podglądu. Druga przy włączeniu strony.</p>
       </div>
     </div>
@@ -686,7 +676,7 @@
         <h3>Wizytówka one page za 1 300 zł</h3>
         <p>Jedna strona: kim jesteś, co robisz, gdzie Cię znaleźć i jak się skontaktować. Z mapą, formularzem i panelem edycji. Strona na dziś, na teraz. Rozwój przyjdzie później: gdy firma urośnie, dorobimy zakładki.</p>
       </div>
-      <a href="#formularz" class="btn btn-hi">Chcę wizytówkę<span class="arw">→</span></a>
+      <a href="zapytanie.html" class="btn btn-hi">Chcę wizytówkę<span class="arw">→</span></a>
     </div>
   </section>
 
@@ -709,88 +699,13 @@
   </section>
 
   <section id="formularz" class="section-dark">
-    <div class="sd-inner q-grid">
-      <div class="q-side">
+    <div class="sd-inner q-teaser">
+      <div>
         <span class="tag">Zapytanie</span>
         <h2 style="margin-top:14px">Zacznijmy od Twojej firmy, nie od ceny</h2>
-        <p class="sublead">Trzy krótkie pytania, potem opisujesz swój biznes własnymi słowami. Zajmie Ci to 2 minuty.</p>
-        <ol class="q-flow">
-          <li><b>Wysyłasz zapytanie.</b> Trafia prosto do mnie, nie do bota.</li>
-          <li><b>Badam rynek.</b> Sprawdzam Twoją branżę i konkurencję w okolicy.</li>
-          <li><b>Oceniam sytuację.</b> Co masz, czego brakuje, co da Ci telefony.</li>
-          <li><b>Odpowiadam osobiście.</b> Z konkretną propozycją albo szczerym „to nie dla Ciebie”.</li>
-        </ol>
+        <p class="sublead">Trzy krótkie pytania i opis firmy własnymi słowami. Badam rynek, sprawdzam konkurencję, oceniam sytuację i odpowiadam osobiście.</p>
       </div>
-
-      <div class="q-card">
-        <form id="q-form" novalidate>
-          <div class="q-head">
-            <span class="q-count">Krok <b id="q-n">1</b> z 5</span>
-            <span class="q-bar"><i id="q-bar"></i></span>
-          </div>
-
-          <fieldset class="q-step" data-step="1">
-            <legend>Czy prowadzisz zarejestrowaną firmę lub działalność?</legend>
-            <button type="button" class="q-opt" data-k="firma" data-v="Tak, mam działającą firmę">Tak, mam działającą firmę</button>
-            <button type="button" class="q-opt" data-k="firma" data-v="Dopiero planuję założyć">Dopiero planuję założyć</button>
-          </fieldset>
-
-          <fieldset class="q-step" data-step="2" hidden>
-            <button type="button" class="q-back">← Wstecz</button>
-            <legend>Jaki jest Twój główny cel z nową stroną?</legend>
-            <button type="button" class="q-opt" data-k="cel" data-v="Chcę, żeby lokalni klienci dzwonili i zamawiali usługi">Chcę, żeby lokalni klienci do mnie dzwonili i zamawiali usługi</button>
-            <button type="button" class="q-opt" data-k="cel" data-v="Chcę po prostu mieć stronę, jak najtaniej" data-warn="w-cel">Chcę po prostu mieć stronę, jak najtaniej</button>
-            <div class="q-warn" id="w-cel" hidden>
-              <p>Moja główna oferta jest dla firm, które chcą zdobywać klientów przez stronę. Jeśli potrzebujesz po prostu być w sieci, na start wystarczy wizytówka one page za 1 300 zł.</p>
-              <button type="button" class="q-next">Dalej mimo to →</button>
-            </div>
-          </fieldset>
-
-          <fieldset class="q-step" data-step="3" hidden>
-            <button type="button" class="q-back">← Wstecz</button>
-            <legend>Jaki budżet masz na stronę?</legend>
-            <button type="button" class="q-opt" data-k="budzet" data-v="Od 3 500 zł, strona z zakładkami">Od 3 500 zł, mam środki i chcę zacząć</button>
-            <button type="button" class="q-opt" data-k="budzet" data-v="Mam budżet, ale najpierw chcę porozmawiać">Mam budżet, ale najpierw chcę porozmawiać</button>
-            <button type="button" class="q-opt" data-k="budzet" data-v="Wizytówka za 1 300 zł">Na start wizytówka za 1 300 zł</button>
-            <button type="button" class="q-opt" data-k="budzet" data-v="Szukam darmowych rozwiązań" data-warn="w-budzet">Szukam darmowych rozwiązań</button>
-            <div class="q-warn" id="w-budzet" hidden>
-              <p>Za darmo nie działam i nie przygotowuję darmowych projektów na zapytanie. Raz na jakiś czas robię jedną stronę w ramach akcji <a href="silny-lokalnie.html">Silny lokalnie</a>.</p>
-              <button type="button" class="q-next">Dalej mimo to →</button>
-            </div>
-          </fieldset>
-
-          <fieldset class="q-step" data-step="4" hidden>
-            <button type="button" class="q-back">← Wstecz</button>
-            <legend>Opisz swój biznes własnymi słowami</legend>
-            <label class="q-lbl" for="q-opis">Czym się zajmujesz, gdzie działasz, kim są Twoi klienci, kto jest Twoją konkurencją? *</label>
-            <textarea id="q-opis" name="opis" rows="6" required minlength="20" placeholder="Np. Salon fryzjerski w Tarnowie, 2 stanowiska. Klientki głównie 25–50 lat. Konkurencja: dwa salony na rynku, oba mają strony. Chcę więcej zapisów bez telefonu w trakcie strzyżenia."></textarea>
-            <label class="q-lbl" for="q-link">Masz już stronę albo profil? Wklej link</label>
-            <input id="q-link" name="link" type="text" placeholder="np. facebook.com/twojafirma">
-            <button type="button" class="btn btn-blue q-go">Dalej<span class="arw">→</span></button>
-          </fieldset>
-
-          <fieldset class="q-step" data-step="5" hidden>
-            <button type="button" class="q-back">← Wstecz</button>
-            <legend>Zostaw kontakt, a odezwę się z konkretem</legend>
-            <label class="q-lbl" for="q-imie">Imię i nazwisko *</label>
-            <input id="q-imie" name="imie" type="text" required autocomplete="name" placeholder="Jan Kowalski">
-            <label class="q-lbl" for="q-tel">Numer telefonu *</label>
-            <input id="q-tel" name="tel" type="tel" required autocomplete="tel" placeholder="+48 500 000 000">
-            <label class="q-lbl" for="q-mail">Adres e-mail *</label>
-            <input id="q-mail" name="mail" type="email" required autocomplete="email" placeholder="jan@kowalski.pl">
-            <input type="text" name="firma_hp" class="q-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-            <label class="q-check"><input type="checkbox" name="zgoda" required> <span>Wyrażam zgodę na przetwarzanie moich danych w celu odpowiedzi na zapytanie, zgodnie z <a href="polityka-prywatnosci.html">polityką prywatności</a>. *</span></label>
-            <button type="submit" class="btn btn-blue q-go">Wyślij zapytanie<span class="arw">→</span></button>
-            <p class="q-note" id="q-note">Bez zobowiązań. Odpowiadam osobiście.</p>
-          </fieldset>
-        </form>
-
-        <div class="q-thanks" id="q-thanks" hidden>
-          <span class="tag">Dostałem</span>
-          <h3>Dzięki, biorę się za research</h3>
-          <p>Sprawdzam Twoją branżę i konkurencję w okolicy, oceniam sytuację i odezwę się osobiście z konkretną odpowiedzią.</p>
-        </div>
-      </div>
+      <a href="zapytanie.html" class="btn btn-hi">Wyślij zapytanie<span class="arw">→</span></a>
     </div>
   </section>
 
@@ -881,88 +796,6 @@
     <span class="mm-arw">→</span>
   </a>
 
-  <script>
-  (function(){
-    var LEAD_EMAIL = 'kontakt@dzialajmy.online';
-    var form = document.getElementById('q-form');
-    if (!form) return;
-    var steps = form.querySelectorAll('.q-step');
-    var total = steps.length, cur = 1, odp = {};
-
-    function show(n){
-      cur = n;
-      steps.forEach(function(s){ s.hidden = +s.dataset.step !== n; });
-      document.getElementById('q-n').textContent = n;
-      document.getElementById('q-bar').style.width = (n / total * 100) + '%';
-      var first = steps[n-1].querySelector('legend');
-      if (first) { first.setAttribute('tabindex','-1'); first.focus({preventScroll:true}); }
-    }
-
-    form.addEventListener('click', function(e){
-      var t = e.target.closest('button');
-      if (!t) return;
-      var step = t.closest('.q-step');
-      if (t.classList.contains('q-opt')) {
-        odp[t.dataset.k] = t.dataset.v;
-        step.querySelectorAll('.q-opt').forEach(function(b){ b.classList.toggle('on', b === t); });
-        step.querySelectorAll('.q-warn').forEach(function(w){ w.hidden = true; });
-        if (t.dataset.warn) { document.getElementById(t.dataset.warn).hidden = false; return; }
-        show(cur + 1);
-      } else if (t.classList.contains('q-next')) {
-        show(cur + 1);
-      } else if (t.classList.contains('q-back')) {
-        show(cur - 1);
-      } else if (t.classList.contains('q-go') && t.type === 'button') {
-        var opis = form.opis;
-        if (!opis.checkValidity()) { opis.reportValidity(); return; }
-        show(cur + 1);
-      }
-    });
-
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-      if (form.firma_hp.value) return; // honeypot
-      var pola = [form.imie, form.tel, form.mail, form.zgoda];
-      for (var i = 0; i < pola.length; i++) if (!pola[i].checkValidity()) { pola[i].reportValidity(); return; }
-
-      var tresc =
-        'Firma: ' + (odp.firma || '-') + '\n' +
-        'Cel: ' + (odp.cel || '-') + '\n' +
-        'Budżet: ' + (odp.budzet || '-') + '\n\n' +
-        'OPIS BIZNESU:\n' + form.opis.value + '\n\n' +
-        (form.link.value ? 'Link: ' + form.link.value + '\n' : '') +
-        'Imię i nazwisko: ' + form.imie.value + '\n' +
-        'Telefon: ' + form.tel.value + '\n' +
-        'E-mail: ' + form.mail.value;
-      var subject = 'Zapytanie ze strony: ' + form.imie.value;
-      var note = document.getElementById('q-note');
-
-      fetch('https://formsubmit.co/ajax/' + LEAD_EMAIL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({
-          _subject: subject,
-          _replyto: form.mail.value,
-          imie_nazwisko: form.imie.value,
-          telefon: form.tel.value,
-          email: form.mail.value,
-          firma: odp.firma || '',
-          cel: odp.cel || '',
-          budzet: odp.budzet || '',
-          link: form.link.value,
-          opis_biznesu: form.opis.value
-        })
-      }).then(function(res){
-        if (!res.ok) throw new Error('send failed');
-        form.hidden = true;
-        document.getElementById('q-thanks').hidden = false;
-      }).catch(function(){
-        window.location.href = 'mailto:' + LEAD_EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(tresc);
-        note.textContent = 'Nie udało się wysłać automatycznie, otwieram maila, wyślij, żebym to dostał.';
-      });
-    });
-  })();
-  </script>
 
 </body>
 </html>
