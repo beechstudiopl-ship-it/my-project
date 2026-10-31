@@ -121,7 +121,7 @@ body.no-notes .note{display:none}
 </style></head>
 <body>
 <div class="bar"><span><b>WIREFRAME</b> · wersja:</span>
-<span><button data-variant="A" class="on">A · Problem → rozwiązanie</button> <button data-variant="B">B · Lustro: myśli klienta</button> <button data-variant="C">C · Formularz od razu</button> <button data-variant="D">D · Wiążące decyzję</button> <button data-variant="F">Formularz</button> <button id="tn">Ukryj notatki</button></span>
+<span><button data-variant="A" class="on">A · Problem → rozwiązanie</button> <button data-variant="B">B · Lustro: myśli klienta</button> <button data-variant="C">C · Formularz od razu</button> <button data-variant="D">D · Wiążące decyzję</button> <button data-variant="E">E · Miks D + C</button> <button data-variant="F">Formularz</button> <button id="tn">Ukryj notatki</button></span>
 <span class="vd" id="vd">Najpierw ból klienta i wymówki, potem dowody i cena. Najbliżej obecnej wersji.</span></div>
 <div class="screen" id="vA"><header class="top w"><b class="logo">działajmy.online</b><span class="k">Przyjmuję zlecenia</span></header><section class="hero"><div class="w split">
 <div><p class="k">Strony www dla firm, które nie mają czasu</p><h1>Chcesz stronę, <u>ale znów jej nie masz?</u></h1>
@@ -263,6 +263,89 @@ body.no-notes .note{display:none}
 <aside class="note"><b>Mechanizm:</b> Domknięcie przez kontrast. Pokazanie „drogi bez zmian” obok „drogi z działaniem” zamienia decyzję w wybór między dwiema przyszłościami. Lekki humor (powrót do listy z hero) spina całą stronę klamrą.</aside>
 </div></section>
 <footer class="w"><span>Bartosz · kontakt@dzialajmy.online</span><a href="#">Polityka prywatności</a></footer>
+</div><div class="screen" id="vE" hidden><header class="top w"><b class="logo">działajmy.online</b><span class="k">Przyjmuję zlecenia</span></header>
+<section class="hero"><div class="w split">
+<div>
+<p class="k">Strony www dla firm, które nie mają czasu</p>
+<h1 style="font-size:clamp(34px,5.4vw,54px)">Ta jedna rzecz z listy, <u>która nigdy się nie odhacza?</u></h1>
+<div class="todo" style="margin-top:22px">
+<label><input type="checkbox" checked disabled> <s>Wystawić fakturę</s></label>
+<label><input type="checkbox" checked disabled> <s>Oddzwonić do klienta</s></label>
+<label class="never"><input type="checkbox" disabled> Zrobić stronę www <span class="moved">przeniesione: styczeń → po sezonie → po świętach → w przyszłym roku</span></label>
+</div>
+<p class="sub">Odhaczę ją za Ciebie: zbiorę informacje, napiszę teksty, zrobię stronę.</p>
+</div>
+<div class="c">
+<p class="k">Krok 1 z 5 · zajmie 2 minuty</p>
+<h3 style="margin:10px 0 14px">Od kiedy odkładasz stronę?</h3>
+<a href="#" class="opt" data-go="zapytanie">Od kilku miesięcy</a>
+<a href="#" class="opt" data-go="zapytanie">Ponad rok</a>
+<a href="#" class="opt" data-go="zapytanie">Szczerze? Od zawsze</a>
+<a href="#" class="opt" data-go="zapytanie">Dopiero zakładam firmę</a>
+<div class="who" style="margin-top:18px"><div class="ph" style="aspect-ratio:1/1;width:44px;flex:none;border-radius:50%"><span>ZDJĘCIE: Ty</span></div><span class="micro"><b>Bartosz</b>, odpowiadam osobiście</span></div>
+</div></div>
+<div class="w"><p class="micro" style="margin-top:18px">7–14 dni · płacisz dopiero po podglądzie · od 1 300 zł netto</p>
+<aside class="note"><b>Mechanizm:</b> Z D: lista zadań, przy której klient uśmiecha się pod nosem. Z C: pierwszy krok formularza od razu obok, więc najkrótsza droga do zapytania. Pytanie „Od kiedy odkładasz?” jest w tonie strony i od razu wciąga, a przy okazji mówi Ci, z kim rozmawiasz. Kliknięcie odpowiedzi przenosi do formularza, a odpowiedź trafia do zapytania.</aside></div></section>
+
+<section class="s gray"><div class="w">
+<p class="k">Szybki test, 10 sekund</p><h2>Zaznacz, co o Tobie</h2>
+<div class="quiz" id="quizE">
+<label><input type="checkbox"> Na pytanie „macie stronę?” mówisz „na razie Facebook”.</label>
+<label><input type="checkbox"> Cennik dyktujesz przez telefon, bo nie ma go gdzie wysłać.</label>
+<label><input type="checkbox"> Masz domenę, a na niej… nic.</label>
+<label><input type="checkbox"> Mówisz „zrobię po sezonie” już trzeci sezon.</label>
+</div>
+<div class="c quiz-out"><p class="big" id="quizE-n" style="font-size:28px">0 z 4</p><p id="quizE-msg">Zaznacz, co pasuje.</p><div class="cta" id="quizE-cta" hidden><a href="#" class="btn" data-go="zapytanie">Działajmy, odhaczamy to →</a></div></div>
+<aside class="note"><b>Mechanizm:</b> Z D, skrócone do 4 punktów. Każde „tak, to ja” to mikro-zobowiązanie. Zaznaczone punkty mogą przejść do zapytania, żeby klient się nie powtarzał.</aside>
+</div></section>
+
+<section class="s"><div class="w">
+<p class="k">Znasz to uczucie?</p><h2>Zawsze jest jakiś powód. Każdy biorę na siebie.</h2>
+<ul class="ex"><li><q>Nie mam czasu</q><span>2 minuty na formularz. Resztę zbieram ja.</span></li><li><q>Nie wiem, co napisać</q><span>Teksty piszę za Ciebie.</span></li><li><q>Za drogo</q><span>Wizytówka 1 300 zł netto.</span></li><li><q>A jak mi się nie spodoba?</q><span>Płacisz dopiero po podglądzie.</span></li></ul>
+<div class="cta"><a href="#" class="btn" data-go="zapytanie">Działajmy, odhaczamy to →</a></div>
+<aside class="note"><b>Mechanizm:</b> Z C: wymówki z odpowiedziami. Krótko, 4 najczęstsze. Zamiast kalkulatora z D, bo ta wersja ma być krótsza.</aside>
+</div></section>
+
+<section class="s gray"><div class="w">
+<p class="k">Jak to wygląda</p><h2>Za około 14 dni wysyłasz klientowi link, a nie przepraszasz</h2>
+<ol class="tl">
+<li><b>Dziś, 2 minuty</b>Wypełniasz krótki formularz.</li>
+<li><b>Kolejne dni</b>Sprawdzam rynek, piszę teksty, dobieram styl.</li>
+<li><b>Około 7. dnia</b>Link do podglądu. Dopiero teraz pierwsza płatność.</li>
+<li><b>Około 14. dnia</b>Strona działa.</li>
+</ol>
+<aside class="note"><b>Mechanizm:</b> Z D: oś czasu zamiast ogólnych „3 kroków”. Konkretne dni zamieniają „kiedyś” w plan.</aside>
+</div></section>
+
+<section class="s"><div class="w">
+<p class="k">Cennik</p><h2>Tyle kosztuje odhaczenie</h2>
+<div class="g g2">
+<div class="c"><p class="k">Na dziś, na teraz</p><h3>Wizytówka one page</h3><p class="big">1 300 zł netto</p><ul><li>Jedna strona, telefon, mapa, formularz</li><li>Teksty piszę ja</li></ul></div>
+<div class="c"><p class="k">Gdy firma rośnie</p><h3>Strona z zakładkami</h3><p class="big">od 3 500 zł netto</p><ul><li>Do 5 podstron i blog, SEO, domena, poczta</li><li>U 4 specjalistów to samo: <s>4 650 zł</s></li></ul></div>
+</div>
+<div class="c center" style="margin-top:16px"><h3>Zero ryzyka na start</h3><p>Pierwsza płatność dopiero po podglądzie. Poprawki w cenie, dopóki nie zaakceptujesz.</p></div>
+<aside class="note"><b>Mechanizm:</b> Cena z kotwicą (4 specjalistów) i od razu pod nią odwrócenie ryzyka z C. Klient widzi koszt i w tej samej chwili, że nic nie ryzykuje.</aside>
+</div></section>
+
+<section class="s gray"><div class="w">
+<p class="k">Opinie</p><h2>Inni już nie odkładają</h2>
+<div class="g g3"><div class="c"><p class="quote">„Prawdziwa opinia klienta, najlepiej o tym, że odkładał.”</p><div class="who"><div class="ph" style="aspect-ratio:1/1;width:48px;flex:none;border-radius:50%"><span>ZDJĘCIE</span></div><div><b>Imię</b><br><span class="micro">Firma, miasto</span></div></div></div><div class="c"><p class="quote">„Prawdziwa opinia klienta, najlepiej o tym, że odkładał.”</p><div class="who"><div class="ph" style="aspect-ratio:1/1;width:48px;flex:none;border-radius:50%"><span>ZDJĘCIE</span></div><div><b>Imię</b><br><span class="micro">Firma, miasto</span></div></div></div><div class="c"><p class="quote">„Prawdziwa opinia klienta, najlepiej o tym, że odkładał.”</p><div class="who"><div class="ph" style="aspect-ratio:1/1;width:48px;flex:none;border-radius:50%"><span>ZDJĘCIE</span></div><div><b>Imię</b><br><span class="micro">Firma, miasto</span></div></div></div></div>
+<aside class="note"><b>Mechanizm:</b> Miejsce na prawdziwe opinie. Dopóki ich nie ma, sekcja jest ukryta.</aside>
+</div></section>
+
+<section class="s"><div class="w">
+<p class="k">FAQ</p><h2>Pytania, które słyszę najczęściej</h2><div class="faq"><details><summary>Ile czasu zajmie?</summary><p>Odpowiedź z obecnej strony.</p></details><details><summary>Mogę Ci nie ufać, czemu miałbym spróbować?</summary><p>Odpowiedź z obecnej strony.</p></details><details><summary>Kiedy płacę?</summary><p>Odpowiedź z obecnej strony.</p></details><details><summary>Jakie są koszty utrzymania?</summary><p>Odpowiedź z obecnej strony.</p></details></div>
+</div></section>
+
+<section class="s gray"><div class="w">
+<p class="k">Decyzja</p><h2>Masz dwie drogi</h2>
+<div class="g g2">
+<div class="c"><h3>Droga 1: odkładasz</h3><p>„Zrobić stronę www”, przeniesione po raz kolejny.</p><p class="pn">Nic się nie zmienia.</p></div>
+<div class="c"><h3>Droga 2: działamy</h3><p>2 minuty dziś. Strona za około 2 tygodnie.</p><div class="cta"><a href="#" class="btn" data-go="zapytanie">Działajmy, odhaczamy to →</a></div></div>
+</div>
+<aside class="note"><b>Mechanizm:</b> Z D: domknięcie przez kontrast, klamra z listą zadań z hero.</aside>
+</div></section>
+<footer class="w"><span>Bartosz · kontakt@dzialajmy.online</span><a href="#">Polityka prywatności</a></footer>
 </div><div class="screen" id="vF" hidden><header class="top w"><b class="logo">działajmy.online</b><span class="k">Przyjmuję zlecenia</span></header><section class="s" style="padding-top:24px"><div class="w"><div class="center" style="margin-bottom:28px"><p class="k">Zapytanie</p><h2>Zacznijmy od Twojej firmy</h2><p class="sub">Trzy krótkie pytania i opis firmy własnymi słowami.</p></div>
 <div class="q-card">
         <form id="q-form" novalidate>
@@ -336,9 +419,9 @@ body.no-notes .note{display:none}
 <div class="mob"><a href="#" class="btn" data-go="zapytanie">Działajmy →</a></div>
 <script>
 window.fetch=function(){return Promise.resolve({ok:true})};
-var D={'A': 'Najpierw ból klienta i wymówki, potem dowody i cena. Najbliżej obecnej wersji.', 'B': 'Hero to myśli klienta, w których się rozpoznaje. Potem problemy, Ty, realizacje i opinie.', 'C': 'Pierwszy krok formularza w hero. Najkrótsza ścieżka do zapytania, mniej czytania.'};D.D='Humor i rozpoznanie siebie, mini-test, kalkulator straty, wizja za 14 dni, osobista obietnica, dwie drogi.';D.F='Wspólny formularz dla wszystkich wersji. Niczego nie wysyła.';
+var D={'A': 'Najpierw ból klienta i wymówki, potem dowody i cena. Najbliżej obecnej wersji.', 'B': 'Hero to myśli klienta, w których się rozpoznaje. Potem problemy, Ty, realizacje i opinie.', 'C': 'Pierwszy krok formularza w hero. Najkrótsza ścieżka do zapytania, mniej czytania.'};D.D='Humor i rozpoznanie siebie, mini-test, kalkulator straty, wizja za 14 dni, osobista obietnica, dwie drogi.';D.E='Hak z listą zadań z D i pierwszy krok formularza z C obok. Krótszy test, wymówki, oś czasu, cena z gwarancją, dwie drogi.';D.F='Wspólny formularz dla wszystkich wersji. Niczego nie wysyła.';
 var last='A';
-function show(v){['A','B','C','D','F'].forEach(function(k){document.getElementById('v'+k).hidden=k!==v});
+function show(v){['A','B','C','D','E','F'].forEach(function(k){document.getElementById('v'+k).hidden=k!==v});
 document.querySelectorAll('.bar [data-variant]').forEach(function(b){b.classList.toggle('on',b.dataset.variant===v)});
 document.getElementById('vd').textContent=D[v];if(v!=='F')last=v;window.scrollTo(0,0)}
 document.addEventListener('click',function(e){var b=e.target.closest('[data-variant]');if(b){show(b.dataset.variant);return}
@@ -442,6 +525,16 @@ document.getElementById('tn').onclick=function(){var h=document.body.classList.t
     var out=a*v*m;document.getElementById('c-out').textContent=fmt(out);
     var need=Math.ceil(1300/v);document.getElementById('c-cmp').textContent='Zwraca się po '+need+(need===1?' zleceniu.':' zleceniach.');}
   ['c-q','c-v','c-m'].forEach(function(id){document.getElementById(id).addEventListener('input',calc)});calc();
+})();
+</script>
+
+<script>
+(function(){
+  var q=document.getElementById('quizE');if(!q)return;
+  var msgs=['Zaznacz, co pasuje.','Jedno „tak”. Coś w tym jest.','Dwa „tak”. To o Tobie.','Trzy „tak”. Najwyższy czas to odhaczyć.','Komplet. Uśmiechnąłeś się? Działajmy.'];
+  q.addEventListener('change',function(){var n=q.querySelectorAll('input:checked').length;
+    document.getElementById('quizE-n').textContent=n+' z 4';document.getElementById('quizE-msg').textContent=msgs[n];
+    document.getElementById('quizE-cta').hidden=n<2;});
 })();
 </script>
 </body></html>
