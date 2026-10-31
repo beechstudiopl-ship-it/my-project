@@ -43,7 +43,7 @@ h3{font-size:20px;line-height:1.25;font-weight:800}
 .trust{display:flex;flex-wrap:wrap;gap:12px 32px;padding-top:24px;padding-bottom:8px;border-top:1px solid #ddd;color:#666;font-size:15px}
 .ex{list-style:none;margin-top:28px}.ex li{display:grid;gap:4px;padding:14px 0;border-top:1px solid #ccc}
 @media(min-width:760px){.ex li{grid-template-columns:1fr 1.4fr;gap:24px}}
-.ex q{font-weight:800;color:#777}
+.ex q{font-weight:800;color:#777;quotes:"„" "”"}
 .faq{margin-top:28px;display:flex;flex-direction:column;gap:8px}.faq details{border:1.5px dashed #bbb;padding:14px 18px}.faq summary{font-weight:800;cursor:pointer}
 .final{padding:40px}
 footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-top:24px;padding-bottom:24px;font-size:14px;color:#888}
@@ -366,6 +366,11 @@ body.no-notes .note{display:none}
 </div></section><section class="s"><div class="w"><p class="k">Ile kosztuje „zrobię później”</p><h2>Pięć sytuacji, w których tracisz klienta, zanim zadzwoni</h2>
 <div class="g g2"><div class="c"><div class="ico"></div><h3>Klient z polecenia</h3><p>Wpisuje Twoją firmę w Google, a tam nic nie ma.</p><p class="pn">Dzwoni do kogoś, kto ma stronę.</p></div><div class="c"><div class="ico"></div><h3>Szukanie w Google</h3><p>Konkurencja jest widoczna online, a Ciebie nie ma.</p><p class="pn">Klient nawet nie wie, że istniejesz.</p></div><div class="c"><div class="ico"></div><h3>Masz tylko Facebooka</h3><p>Post sprzed pół roku. Wygląda, jakby firma nie działała.</p><p class="pn">Wybiera firmę, która wygląda poważniej.</p></div><div class="c"><div class="ico"></div><h3>Strona sprzed lat</h3><p>Na telefonie nic się nie da kliknąć.</p><p class="pn">Wraca do Google i klika następny wynik.</p></div><div class="c span2"><div class="ico"></div><h3>Prośba o ofertę</h3><p>Znów nie wiesz, co wysłać. Sklejasz coś w pośpiechu.</p><p class="pn">Klient wybiera kogoś, kto wysłał link.</p></div></div>
 <aside class="note"><b>Dobra praktyka:</b> Problemy klienta jego językiem, nie Twoje usługi. Każda karta kończy się konsekwencją, bo to ją klient czuje.</aside></div></section><section class="s gray"><div class="w">
+<p class="k">Znasz to uczucie?</p><h2>Zawsze jest jakiś powód. Każdy biorę na siebie.</h2>
+<ul class="ex"><li><q>Nie mam czasu</q><span>2 minuty na formularz. Resztę zbieram ja.</span></li><li><q>Nie wiem, co napisać</q><span>Teksty piszę za Ciebie.</span></li><li><q>Za drogo</q><span>Wizytówka 1 300 zł netto.</span></li><li><q>A jak mi się nie spodoba?</q><span>Płacisz dopiero po podglądzie.</span></li></ul>
+<div class="cta"><a href="#" class="btn" data-go="zapytanie">Działajmy, odhaczamy to →</a></div>
+<aside class="note"><b>Mechanizm:</b> Wymówki z odpowiedziami. Po teście i 5 sytuacjach klient wie, że problem jest jego. Tu dostaje odpowiedź na każde „ale”, zanim zdąży je wymyślić.</aside>
+</div></section><section class="s gray"><div class="w">
 <p class="k">Wyobraź sobie</p><h2>Za 14 dni wysyłasz klientowi link, a nie przepraszasz</h2>
 <ol class="tl">
 <li><b>Dziś, 2 minuty</b>Wypełniasz krótki formularz. Jedno zdanie o firmie wystarczy.</li>
@@ -475,7 +480,7 @@ body.no-notes .note{display:none}
 <div class="mob"><a href="#" class="btn" data-go="zapytanie">Działajmy →</a></div>
 <script>
 window.fetch=function(){return Promise.resolve({ok:true})};
-var D={'A': 'Najpierw ból klienta i wymówki, potem dowody i cena. Najbliżej obecnej wersji.', 'B': 'Hero to myśli klienta, w których się rozpoznaje. Potem problemy, Ty, realizacje i opinie.', 'C': 'Pierwszy krok formularza w hero. Najkrótsza ścieżka do zapytania, mniej czytania.'};D.D='Humor i rozpoznanie siebie, mini-test, kalkulator straty, wizja za 14 dni, osobista obietnica, dwie drogi.';D.E='Hak z listą zadań z D i pierwszy krok formularza z C obok. Krótszy test, wymówki, oś czasu, cena z gwarancją, dwie drogi.';D.M='Hero z myślami klienta (B), test i oś czasu (D), o mnie z obietnicą, cennik z B, a na sam koniec kalkulator straty z dwiema drogami.';D.F='Wspólny formularz dla wszystkich wersji. Niczego nie wysyła.';
+var D={'A': 'Najpierw ból klienta i wymówki, potem dowody i cena. Najbliżej obecnej wersji.', 'B': 'Hero to myśli klienta, w których się rozpoznaje. Potem problemy, Ty, realizacje i opinie.', 'C': 'Pierwszy krok formularza w hero. Najkrótsza ścieżka do zapytania, mniej czytania.'};D.D='Humor i rozpoznanie siebie, mini-test, kalkulator straty, wizja za 14 dni, osobista obietnica, dwie drogi.';D.E='Hak z listą zadań z D i pierwszy krok formularza z C obok. Krótszy test, wymówki, oś czasu, cena z gwarancją, dwie drogi.';D.M='Hero z myślami klienta (B), test (D), 5 sytuacji, wymówki, oś czasu (D), o mnie z obietnicą, cennik z B, a na sam koniec kalkulator straty z dwiema drogami.';D.F='Wspólny formularz dla wszystkich wersji. Niczego nie wysyła.';
 var last='A';
 function show(v){['A','B','C','D','E','M','F'].forEach(function(k){document.getElementById('v'+k).hidden=k!==v});
 document.querySelectorAll('.bar [data-variant]').forEach(function(b){b.classList.toggle('on',b.dataset.variant===v)});
