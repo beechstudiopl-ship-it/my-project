@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Makieta działajmy.online (wireframe)</title>
+<meta name="robots" content="noindex">
+<style>
+  /* ===== TOKENS ===== */
+  :root{
+    --paper:#F4F2EC; --white:#fff;
+    --ink:#14171B; --ink-2:#4A525C; --ink-3:#8B939C;
+    --line:rgba(20,23,27,.08);
+    --blue:#1B4BFF;            /* tylko przyciski CTA */
+    --hi:#F5E33D; --hi-2:#FFF08A; /* tylko wyróżnienia w tekście */
+    --dark-2:#C6CCD4;
+
+    --display:'Archivo',sans-serif;
+    --text:'Source Sans 3',system-ui,sans-serif;
+    --fs-1:clamp(44px,9vw,88px);  /* H1 */
+    --fs-2:clamp(30px,4.6vw,44px);/* H2 */
+    --fs-3:20px;                  /* H3, ceny */
+    --fs-body:17px;               /* tekst */
+    --fs-small:14px;              /* etykiety, przypisy */
+
+    --gap:16px; --pad:28px; --sec:96px;
+    --wrap:960px; --side:clamp(20px,5vw,48px);
+    --shadow:0 1px 2px rgba(20,23,27,.04),0 8px 24px rgba(20,23,27,.06);
+  }
+  @media (max-width:640px){:root{--sec:64px;--pad:22px}}
+
+  /* ===== BASE ===== */
+  *{box-sizing:border-box;margin:0;padding:0}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+  body{background:var(--paper);color:var(--ink);font-family:var(--text);font-size:var(--fs-body);line-height:1.55;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:var(--display);font-weight:900;letter-spacing:-.03em;line-height:1.05}
+  h1{font-size:var(--fs-1);letter-spacing:-.04em;line-height:1}
+  h2{font-size:var(--fs-2)}
+  h3{font-size:var(--fs-3);letter-spacing:-.02em;line-height:1.2}
+  p{color:var(--ink-2)}
+  b{color:var(--ink);font-weight:700}
+  a{color:inherit}
+  .mk{padding:0 .12em;background-image:linear-gradient(105deg,var(--hi),var(--hi-2));background-size:100% .62em;background-position:0 .52em;background-repeat:no-repeat;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+  .label{font-family:var(--display);font-weight:800;font-size:var(--fs-small);text-transform:uppercase;letter-spacing:.04em;color:var(--ink-3)}
+  .note{font-size:var(--fs-small);color:var(--ink-3)}
+
+  /* ===== LAYOUT ===== */
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--side)}
+  .sec{padding:var(--sec) 0}
+  .sec-head .label{display:block;margin-bottom:12px}
+  .sec-head p{margin-top:16px;max-width:580px}
+  .grid{display:grid;gap:var(--gap);margin-top:40px}
+  @media (min-width:720px){.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.span2{grid-column:1/-1}}
+
+  /* ===== CARD (jeden styl) ===== */
+  .card{background:var(--white);padding:var(--pad);box-shadow:var(--shadow);display:flex;flex-direction:column}
+  .card h3{margin-bottom:8px}
+  .card .ico{width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:var(--paper);margin-bottom:18px}
+  .card .ico svg{width:20px;height:20px;stroke:var(--ink);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+  .card .num{font-family:var(--display);font-weight:900;font-size:var(--fs-3);color:var(--ink-3);margin-bottom:14px}
+  .card .punch{margin-top:auto;padding-top:16px;color:var(--ink);font-weight:700}
+
+  /* ===== BUTTON (jedno CTA) ===== */
+  .btn{display:inline-flex;align-items:center;gap:12px;text-decoration:none;background:var(--blue);color:#fff;font-family:var(--display);font-weight:900;font-size:18px;letter-spacing:-.02em;padding:16px 26px;border:0;cursor:pointer;transition:opacity .12s}
+  .btn:hover{opacity:.9}
+  .cta{margin-top:40px;display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px}
+
+  /* ===== TOP / HERO ===== */
+  .top{display:flex;align-items:center;justify-content:space-between;padding:22px var(--side)}
+  .logo{font-family:var(--display);font-weight:900;font-size:22px;letter-spacing:-.04em}
+  .logo .d{color:var(--blue)}
+  .status{display:flex;align-items:center;gap:8px}
+  .status i{width:7px;height:7px;border-radius:50%;background:#2BB673}
+  .hero{padding:56px 0 var(--sec)}
+  .hero h1 .mk{background-size:100% .5em;background-position:0 .62em}
+  .hero .lead{margin-top:28px;font-size:20px;max-width:600px}
+  .hero .price{margin-top:20px;font-family:var(--display);font-weight:800;font-size:var(--fs-small);text-transform:uppercase;letter-spacing:.04em;color:var(--ink)}
+
+  /* ===== DARK: wymówki ===== */
+  .dark{background:var(--ink)}
+  .dark h2{color:var(--paper)}
+  .dark p,.dark .sec-head p{color:var(--dark-2)}
+  .dark .label{color:var(--ink-3)}
+  .excuses{list-style:none;margin-top:40px}
+  .excuses li{display:grid;grid-template-columns:1fr;gap:6px;padding:20px 0;border-top:1px solid rgba(244,242,236,.1)}
+  .excuses li:last-child{border-bottom:1px solid rgba(244,242,236,.1)}
+  @media (min-width:720px){.excuses li{grid-template-columns:1fr 1.3fr;gap:32px}}
+  .excuses q{font-family:var(--display);font-weight:800;font-size:var(--fs-3);color:var(--ink-3);quotes:"„" "”"}
+  .excuses span{color:var(--paper)}
+  .dark .closing{margin-top:40px;font-family:var(--display);font-weight:900;font-size:var(--fs-3);color:var(--paper);max-width:560px}
+
+  /* ===== CENNIK ===== */
+  .plan .price-big{font-family:var(--display);font-weight:900;font-size:var(--fs-2);letter-spacing:-.03em;color:var(--ink);margin:6px 0 12px}
+  .plan ul{list-style:none;margin:18px 0 0}
+  .plan li{position:relative;padding-left:24px;margin-top:8px;color:var(--ink-2)}
+  .plan li::before{content:"✓";position:absolute;left:0;color:var(--ink);font-weight:700}
+  .plan .extras{margin-top:20px;padding-top:16px;border-top:1px solid var(--line)}
+  .plan .extras div{display:flex;justify-content:space-between;gap:16px;padding:4px 0;color:var(--ink-2)}
+  .cmp{margin-top:var(--gap);padding:0}
+  .cmp-row{display:flex;justify-content:space-between;gap:20px;padding:18px var(--pad);border-bottom:1px solid var(--line)}
+  .cmp-row p{font-size:var(--fs-small)}
+  .cmp-row b,.cmp-row s{font-family:var(--display);white-space:nowrap}
+  .cmp-row.total{border-bottom:0;background:var(--paper);align-items:center}
+  .cmp-row.total s{color:var(--ink-3);font-size:var(--fs-3)}
+  .cmp-row.total b{font-size:var(--fs-3)}
+
+  /* ===== FAQ ===== */
+  .faq{margin-top:40px;display:flex;flex-direction:column;gap:8px}
+  .faq details{background:var(--white);padding:18px var(--pad)}
+  .faq summary{font-family:var(--display);font-weight:800;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";color:var(--ink-3)}
+  .faq details[open] summary::after{content:"\2212"}
+  .faq p,.faq ul{margin-top:10px}
+  .faq ul{list-style:none}
+  .faq li{display:flex;justify-content:space-between;max-width:320px;color:var(--ink-2)}
+
+  /* ===== FINAL ===== */
+  .final{text-align:left}
+  .final .quote{margin-top:24px;font-family:var(--display);font-weight:900;font-size:var(--fs-3);color:var(--ink)}
+
+  /* ===== FOOTER / MOBILE CTA ===== */
+  footer{padding:24px var(--side);font-size:var(--fs-small);color:var(--ink-3);display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between}
+  footer a{color:var(--ink-2)}
+  .mob-cta{display:none}
+  @media (max-width:640px){
+    body{padding-bottom:72px}
+    .mob-cta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:40;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--paper);box-shadow:0 -6px 20px rgba(20,23,27,.08)}
+    .mob-cta .btn{width:100%;justify-content:center}
+  }
+  /* formularz zapytania */
+  .q-grid{display:grid;grid-template-columns:1fr;gap:36px;align-items:start}
+  @media (min-width:860px){.q-grid{grid-template-columns:1fr 1.05fr}}
+  .q-flow{list-style:none;margin:28px 0 0;padding:0;counter-reset:q}
+  .q-flow li{counter-increment:q;position:relative;padding:0 0 16px 44px;color:#C6CCD4;font-size:15px;line-height:1.5}
+  .q-flow li::before{content:"0" counter(q);position:absolute;left:0;top:-2px;font-family:'Archivo',sans-serif;font-weight:900;font-size:20px;color:var(--blue)}
+  .q-flow b{color:var(--paper)}
+  .q-card{background:#fff;color:var(--ink);padding:28px;border:1.5px solid var(--paper)}
+  .q-head{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+  .q-count{font-family:'Archivo',sans-serif;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-3);white-space:nowrap}
+  .q-bar{flex:1;height:4px;background:var(--hair)}
+  .q-bar i{display:block;height:100%;width:20%;background:var(--blue);transition:width .25s ease}
+  .q-step{border:0;margin:0;padding:0;min-width:0}
+  .q-step legend{float:left;width:100%;font-family:'Archivo',sans-serif;font-weight:900;font-size:21px;letter-spacing:-.02em;line-height:1.2;margin-bottom:18px;padding:0;outline:none}
+  .q-step>*:not(legend){clear:both}
+  .q-back{display:block;background:none;border:0;padding:0;margin-bottom:14px;font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;color:var(--ink-3);cursor:pointer}
+  .q-back:hover{color:var(--blue)}
+  .q-opt{display:block;width:100%;text-align:left;margin-top:10px;padding:15px 18px;background:var(--paper);border:1.5px solid var(--hair);font:inherit;font-size:15.5px;color:var(--ink);cursor:pointer}
+  .q-opt:hover{border-color:var(--ink)}
+  .q-opt.on{border-color:var(--blue);background:#fff;box-shadow:inset 3px 0 0 var(--blue)}
+  .q-warn{margin-top:14px;padding:16px 18px;background:var(--hi-2);border:1.5px solid var(--hi)}
+  .q-warn p{font-size:14.5px;color:var(--ink);line-height:1.5}
+  .q-warn a{color:var(--ink)}
+  .q-next{margin-top:10px;background:none;border:0;padding:0;font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;color:var(--blue);cursor:pointer;text-decoration:underline}
+  .q-lbl{display:block;font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;margin:14px 0 6px}
+  .q-step input[type=text],.q-step input[type=tel],.q-step input[type=email],.q-step textarea{width:100%;padding:13px 14px;border:1.5px solid rgba(20,23,27,.3);background:#fff;font:inherit;font-size:15.5px;color:var(--ink)}
+  .q-step textarea{resize:vertical;line-height:1.5}
+  .q-step input:focus,.q-step textarea:focus{outline:none;border-color:var(--blue)}
+  .q-hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+  .q-check{display:flex;gap:10px;align-items:flex-start;margin-top:16px;font-size:13px;color:var(--ink-2);line-height:1.45;cursor:pointer}
+  .q-check input{margin-top:3px;flex:none}
+  .q-check a{color:var(--ink-2)}
+  .q-step .btn{margin-top:20px;width:100%;justify-content:center;cursor:pointer}
+  .q-note{margin-top:10px;font-size:13px;color:var(--ink-3);text-align:center}
+  .q-thanks h3{font-family:'Archivo',sans-serif;font-weight:900;font-size:24px;letter-spacing:-.02em;margin:14px 0 10px}
+  .q-thanks p{font-size:15.5px;color:var(--ink-2);line-height:1.55}
+
+  /* --- ZAPYTANIE PAGE --- */
+  .tag{display:inline-block;font-family:'Archivo',sans-serif;font-weight:800;font-size:11px;text-transform:uppercase;background:var(--hi);color:var(--ink);padding:3px 8px}
+  .q-page{width:100%;max-width:1040px;margin:0 auto;padding:40px clamp(20px,5vw,48px) 80px}
+  .q-side h1{font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.03em;line-height:1.05;font-size:clamp(32px,5.5vw,52px);margin-top:14px}
+  .q-side .sublead{margin-top:14px;font-size:clamp(15px,2vw,18px);color:var(--ink-2);line-height:1.5;max-width:460px}
+  .q-flow li{color:var(--ink-2)}
+  .q-flow b{color:var(--ink)}
+  .q-card{border:1.5px solid rgba(20,23,27,.5)}
+  .q-prices{margin-top:26px;padding-top:18px;border-top:1px solid var(--hair);font-size:14.5px;color:var(--ink-2);line-height:1.6}
+  .q-prices b{font-family:'Archivo',sans-serif;color:var(--ink)}
+  /* --- spójność ze stroną główną --- */
+  .label{font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-3)}
+  .q-flow li::before{color:var(--ink-3)}
+  .q-flow li,.q-side .sublead{font-size:17px}
+  .q-step legend{font-size:20px}
+  .q-card{box-shadow:0 1px 2px rgba(20,23,27,.04),0 8px 24px rgba(20,23,27,.06)}
+  .q-opt.on{box-shadow:inset 3px 0 0 var(--ink);border-color:var(--ink)}
+  .q-bar i{background:var(--ink)}
+  .q-warn{background:var(--paper);border:0}
+  .q-next{color:var(--ink)}
+
+  /* ===== WIREFRAME: bez kolorów ===== */
+  :root{--paper:#fff;--white:#fff;--ink:#222;--ink-2:#555;--ink-3:#999;--blue:#222;--hi:transparent;--hi-2:transparent;--line:#ddd;--dark-2:#555;
+    --display:system-ui,-apple-system,'Segoe UI',sans-serif;--text:system-ui,-apple-system,'Segoe UI',sans-serif;--shadow:none}
+  body{background:#fff}
+  body,h1,h2,h3,.btn,.label,.logo,.q-step legend,.q-lbl,.q-count,.q-flow li::before,.q-back,.q-next{font-family:system-ui,-apple-system,'Segoe UI',sans-serif!important}
+  .mk{background:none;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px}
+  .card,.q-card,.faq details{background:#fff;border:1.5px dashed #bbb;box-shadow:none}
+  .card .ico{background:#e6e6e6;border:1px solid #ccc}.card .ico svg{display:none}
+  .dark{background:#f2f2f2}.dark h2,.dark .excuses span,.dark .closing{color:#222}.dark p,.dark .excuses q{color:#666}
+  .excuses li{border-color:#ccc!important}
+  .cmp-row.total{background:#f2f2f2}
+  .btn{background:#222;color:#fff}
+  .logo .d{color:#222}
+  .status i{background:#999}
+  .q-opt{background:#f2f2f2;border:1px solid #ccc}
+  .q-warn{background:#f2f2f2;border:1px dashed #999}
+  .q-bar i{background:#222}
+  .q-step input[type=text],.q-step input[type=tel],.q-step input[type=email],.q-step textarea{background:#fff;border:1px solid #bbb}
+  .wf-bar{position:sticky;top:0;z-index:50;background:#222;color:#fff;font:600 13px/1 system-ui,sans-serif;padding:10px 16px;display:flex;gap:16px;align-items:center;justify-content:space-between}
+  .wf-bar a{color:#fff}
+  .screen[hidden]{display:none!important}
+  .wf-note{position:relative}
+</style>
+</head>
+<body>
+  <div class="wf-bar"><span>WIREFRAME · makieta klikalna, bez kolorów, formularz nic nie wysyła</span><span><a href="#" data-go="home">Strona główna</a> · <a href="#zapytanie" data-go="zapytanie">Zapytanie</a></span></div>
+
+  <div class="screen" id="screen-home">
+
+
+  <header class="top">
+    <div class="logo">działajmy<span class="d">.</span>online</div>
+    <div class="status label"><i></i>Przyjmuję zlecenia</div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <p class="label" style="margin-bottom:18px">Strony www dla firm, które nie mają czasu</p>
+        <h1>Chcesz stronę, <span class="mk">ale znów jej nie masz?</span></h1>
+        <p class="lead">Mija kolejny rok, a Ty dalej mówisz „ogarnę to”. Ja to ogarnę za Ciebie: <b>zbiorę informacje, napiszę teksty i zrobię stronę.</b> Ty tylko mówisz „działajmy”.</p>
+        <p class="price">Wizytówka 1 300 zł netto · Strona z zakładkami od 3 500 zł netto</p>
+        <div class="cta">
+          <a href="#zapytanie" data-go="zapytanie" class="btn">Działajmy<span>→</span></a>
+          <span class="note">Gotowe zwykle w 7–14 dni. Płacisz dopiero, gdy zobaczysz podgląd.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="koszt" style="padding-top:0">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="label">Ile kosztuje „zrobię później”</span>
+          <h2>Pięć sytuacji, w których <span class="mk">tracisz klienta</span>, zanim w&nbsp;ogóle zadzwoni</h2>
+          <p>Klient, który nie znajdzie Cię w sieci albo zobaczy tam bałagan, nie dzwoni z pretensjami. Po prostu wybiera kogoś innego.</p>
+        </div>
+        <div class="grid g2">
+          <article class="card"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17" cy="9" r="2.5"/><path d="M17 14c2.6 0 4.5 1.9 4.5 4.5"/></svg></span>
+            <h3>Klient z polecenia</h3>
+            <p>Ktoś polecił Cię znajomemu. Znajomy wpisuje Twoją firmę w Google, a tam nic nie ma.</p>
+            <p class="punch">Dzwoni do kogoś, kto ma stronę.</p>
+          </article>
+          <article class="card"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20.5 20.5 16 16"/></svg></span>
+            <h3>Szukanie w Google</h3>
+            <p>Ktoś szuka usług w Twojej okolicy. Konkurencja jest widoczna online, a Ciebie nie ma.</p>
+            <p class="punch">Klient nawet nie wie, że istniejesz.</p>
+          </article>
+          <article class="card"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M15 8h-1.5A2 2 0 0 0 11.5 10v10.5M9 13h5.5"/></svg></span>
+            <h3>Masz tylko Facebooka</h3>
+            <p>Klient szuka cennika i zdjęć, a trafia na post sprzed pół roku. Wygląda, jakby firma już nie działała.</p>
+            <p class="punch">Wybiera firmę, która wygląda poważniej.</p>
+          </article>
+          <article class="card"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="2"/><path d="M11 18h2"/></svg></span>
+            <h3>Strona sprzed lat</h3>
+            <p>Na telefonie wszystko jest malutkie, numeru nie da się kliknąć, a strona długo się ładuje.</p>
+            <p class="punch">Wraca do Google i klika następny wynik.</p>
+          </article>
+          <article class="card span2"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></span>
+            <h3>Prośba o ofertę</h3>
+            <p>Klient prosi o ofertę, a Ty znów nie wiesz, co wysłać. Zbierasz zdjęcia z social mediów, na szybko sklejasz prezentację w AI. Wszystko w pośpiechu i bez sensu.</p>
+            <p class="punch">Klient dostaje chaos i wybiera kogoś, kto po prostu wysłał link.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec dark" id="znasz-to-uczucie">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="label">Znasz to uczucie?</span>
+          <h2>Chcesz, ale znów nie masz. Bo zawsze jest jakiś powód.</h2>
+          <p>Każdy z tych powodów biorę na siebie.</p>
+        </div>
+        <ul class="excuses">
+          <li><q>Nie mam czasu się tym zająć</q><span>Wystarczą 2 minuty na formularz i jedno zdanie o firmie. Informacje, teksty i zdjęcia zbieram ja.</span></li>
+          <li><q>Nie wiem, co napisać</q><span>Teksty piszę za Ciebie.</span></li>
+          <li><q>Agencja to kilka tysięcy</q><span>Wizytówka 1 300 zł netto. Strona z zakładkami od 3 500 zł netto.</span></li>
+          <li><q>To się będzie ciągnąć miesiącami</q><span>Zwykle 7–14 dni do gotowej strony.</span></li>
+          <li><q>A jak mi się nie spodoba?</q><span>Pierwsza płatność dopiero, gdy zobaczysz podgląd. Poprawki w cenie.</span></li>
+          <li><q>Zrobię to po sezonie</q><span>Każdy miesiąc odkładania to klienci, którzy w tym czasie wybrali konkurencję.</span></li>
+        </ul>
+        <p class="closing">Ty skup się na firmie. Stronę zostaw mi.</p>
+        <div class="cta"><a href="#zapytanie" data-go="zapytanie" class="btn">Działajmy<span>→</span></a></div>
+      </div>
+    </section>
+
+    <section class="sec" id="jak-to-dziala">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="label">Jak to działa</span>
+          <h2>Ty robisz jeden krok. Resztę robię ja.</h2>
+        </div>
+        <div class="grid g3">
+          <article class="card"><span class="num">01</span><h3>Opisujesz firmę</h3><p>Formularz na 2 minuty. Jedno zdanie o tym, co robisz, wystarczy.</p></article>
+          <article class="card"><span class="num">02</span><h3>Ja robię resztę</h3><p>Sprawdzam branżę i konkurencję, piszę teksty, dobieram styl i układ.</p></article>
+          <article class="card"><span class="num">03</span><h3>Strona działa</h3><p>Dostajesz link do podglądu. 2–3 serie poprawek i strona jest online.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="oferta" style="padding-top:0">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="label">Cennik</span>
+          <h2>Dwie opcje. Bez drobnego druku.</h2>
+          <p>Wszystkie ceny netto.</p>
+        </div>
+        <div class="grid g2">
+          <article class="card plan">
+            <span class="label">Na dziś, na teraz</span>
+            <h3 style="margin-top:8px">Wizytówka one page</h3>
+            <p class="price-big">1 300 zł <span class="note">netto</span></p>
+            <p>Kim jesteś, co robisz, gdzie Cię znaleźć i jak się skontaktować. Rozwój przyjdzie później.</p>
+            <ul><li>Jedna strona, wersja na telefon</li><li>Teksty piszę ja</li><li>Mapa i formularz kontaktowy</li><li>Prosty panel edycji</li></ul>
+          </article>
+          <article class="card plan">
+            <span class="label">Gdy firma rośnie</span>
+            <h3 style="margin-top:8px">Strona z zakładkami</h3>
+            <p class="price-big">od 3 500 zł <span class="note">netto</span></p>
+            <p>Pełna strona z ofertą na osobnych podstronach i blogiem.</p>
+            <ul><li>Do 5 podstron i blog</li><li>Teksty i podstawowe SEO</li><li>Domena i poczta podpięte</li><li>Prosty panel edycji, formularz, mapa</li><li>3 serie poprawek</li></ul>
+            <div class="extras"><div><span>Każda dodatkowa podstrona</span><b>250 zł</b></div><div><span>Integracje API (płatności, rezerwacje)</span><b>wycena osobno</b></div></div>
+          </article>
+        </div>
+        <div class="card cmp">
+          <div class="cmp-row"><div><b>Projektant i programista</b><p>Projekt i wykonanie 5 podstron, wersja na telefon</p></div><b>3 000 zł</b></div>
+          <div class="cmp-row"><div><b>Copywriter</b><p>Teksty na 5 podstron</p></div><b>750 zł</b></div>
+          <div class="cmp-row"><div><b>Specjalista SEO</b><p>Tytuły i opisy w Google, Search Console, wizytówka Google</p></div><b>600 zł</b></div>
+          <div class="cmp-row"><div><b>Informatyk</b><p>Domena, poczta w domenie, SSL, hosting</p></div><b>300 zł</b></div>
+          <div class="cmp-row total"><div><b>To samo u czterech specjalistów</b><p>Typowe stawki freelancerów. U mnie jedna cena i jedna osoba do kontaktu.</p></div><span><s>4 650 zł</s>&nbsp;&nbsp;<b>od 3 500 zł</b></span></div>
+        </div>
+        <p class="note" style="margin-top:20px">Bez WordPressa z dziesiątką wtyczek: dostajesz prosty panel, w którym zmienisz godziny, cennik czy zdjęcia w kilka minut. Nie robię dużych sklepów internetowych.</p>
+        <div class="cta"><a href="#zapytanie" data-go="zapytanie" class="btn">Działajmy<span>→</span></a><span class="note">Pierwsza płatność po podglądzie, druga przy włączeniu strony.</span></div>
+      </div>
+    </section>
+
+    <section class="sec" id="faq" style="padding-top:0">
+      <div class="wrap">
+        <div class="sec-head"><span class="label">FAQ</span><h2>Pytania, które słyszę najczęściej</h2></div>
+        <div class="faq">
+          <details><summary>Ile czasu zajmie?</summary><p>Zwykle 7 do 14 dni, zależy jak szybko dostanę od Ciebie potrzebne informacje. Wolę dać sobie czas i zrobić to porządnie, niż obiecywać 48h.</p></details>
+          <details><summary>Mogę Ci nie ufać, czemu miałbym spróbować?</summary><p>Bo robię to 12 lat. Pierwszą płatność pobieram dopiero po tym, jak zobaczysz wstępny link do podglądu strony, więc nie ryzykujesz całości z góry.</p></details>
+          <details><summary>Co jeśli mi się nie podoba?</summary><p>Poprawki są w cenie, dopóki nie zaakceptujesz finalnej wersji. Drugą płatność robisz dopiero, gdy strona jest już włączona i działa tak, jak chciałeś.</p></details>
+          <details><summary>Kiedy płacę?</summary><p>Pierwsza płatność po pokazaniu wstępnego linku do podglądu. Druga przy włączeniu strony. Bez rat, bez drobnego druku.</p></details>
+          <details><summary>Jakie są koszty utrzymania?</summary><ul><li>Domena <b>250 zł / rok</b></li><li>Serwer <b>350 zł / rok</b></li><li>Skrzynka mailowa <b>150 zł / rok</b></li></ul><p>Płatne na początku roku. Jeśli zdecydujesz się na stronę w trakcie roku, pierwsza płatność za utrzymanie wypada dopiero w kolejnym roku.</p></details>
+          <details><summary>Na ile czasu się wiążemy?</summary><p>Na jeden projekt. Zero abonamentów, zero zobowiązań na przyszłość. Jak później zechcesz SEO albo zmiany, dogadamy się osobno.</p></details>
+          <details><summary>Mam stronę www, czy możemy ją odświeżyć?</summary><p>Jasne, nie musisz zaczynać od zera. Mogę odświeżyć wygląd i treści na istniejącej stronie albo przenieść Cię na nowy, szybszy fundament. Wklej link w formularzu, obejrzę i powiem, co ma sens.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec final" style="padding-top:0">
+      <div class="wrap">
+        <div class="card" style="padding:clamp(28px,5vw,56px)">
+          <span class="label">Decyzja</span>
+          <h2 style="margin-top:12px">Działamy czy znów odkładasz na kiedyś?</h2>
+          <p class="quote">„Działajmy, Panie Bartku!” <span class="note" style="font-family:var(--text);font-weight:400">Tak zwykle kończą się te rozmowy.</span></p>
+          <p style="margin-top:16px;max-width:560px">Opisz firmę w 2 minuty. Sprawdzę rynek i konkurencję i odpowiem osobiście, czy i jak mogę Ci pomóc.</p>
+          <div class="cta"><a href="#zapytanie" data-go="zapytanie" class="btn">Działajmy<span>→</span></a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Bartosz · <a href="mailto:kontakt@dzialajmy.online">kontakt@dzialajmy.online</a></span>
+    <a href="#">Polityka prywatności</a>
+  </footer>
+
+  <div class="mob-cta"><a href="#zapytanie" data-go="zapytanie" class="btn">Działajmy<span>→</span></a></div>
+
+
+  </div>
+
+  <div class="screen" id="screen-zapytanie" hidden>
+    <header class="top"><a href="#" data-go="home" class="logo" style="text-decoration:none">działajmy.online</a><span class="label">Przyjmuję zlecenia</span></header>
+<main class="q-page">
+    <div class="q-grid">
+      <div class="q-side">
+        <span class="label">Zapytanie</span>
+        <h1>Zacznijmy od Twojej firmy, nie od ceny</h1>
+        <p class="sublead">Trzy krótkie pytania, potem opisujesz swój biznes własnymi słowami. Zajmie Ci to 2 minuty.</p>
+        <ol class="q-flow">
+          <li><b>Wysyłasz zapytanie.</b> Trafia prosto do mnie, nie do bota.</li>
+          <li><b>Badam rynek.</b> Sprawdzam Twoją branżę i konkurencję w okolicy.</li>
+          <li><b>Oceniam sytuację.</b> Co masz, czego brakuje, co da Ci telefony.</li>
+          <li><b>Odpowiadam osobiście.</b> Z konkretną propozycją albo szczerym „to nie dla Ciebie”.</li>
+        </ol>
+        <p class="q-prices">Wizytówka one page: <b>1 300 zł netto</b><br>Strona z zakładkami: <b>od 3 500 zł netto</b></p>
+      </div>
+
+      <div class="q-card">
+        <form id="q-form" novalidate>
+          <div class="q-head">
+            <span class="q-count">Krok <b id="q-n">1</b> z 5</span>
+            <span class="q-bar"><i id="q-bar"></i></span>
+          </div>
+
+          <fieldset class="q-step" data-step="1">
+            <legend>Czy prowadzisz zarejestrowaną firmę lub działalność?</legend>
+            <button type="button" class="q-opt" data-k="firma" data-v="Tak, mam działającą firmę">Tak, mam działającą firmę</button>
+            <button type="button" class="q-opt" data-k="firma" data-v="Dopiero planuję założyć">Dopiero planuję założyć</button>
+          </fieldset>
+
+          <fieldset class="q-step" data-step="2" hidden>
+            <button type="button" class="q-back">← Wstecz</button>
+            <legend>Jaki jest Twój główny cel z nową stroną?</legend>
+            <button type="button" class="q-opt" data-k="cel" data-v="Chcę, żeby lokalni klienci dzwonili i zamawiali usługi">Chcę, żeby lokalni klienci do mnie dzwonili i zamawiali usługi</button>
+            <button type="button" class="q-opt" data-k="cel" data-v="Chcę po prostu mieć stronę, jak najtaniej" data-warn="w-cel">Chcę po prostu mieć stronę, jak najtaniej</button>
+            <div class="q-warn" id="w-cel" hidden>
+              <p>Moja główna oferta jest dla firm, które chcą zdobywać klientów przez stronę. Jeśli potrzebujesz po prostu być w sieci, na start wystarczy wizytówka one page za 1 300 zł netto.</p>
+              <button type="button" class="q-next">Dalej mimo to →</button>
+            </div>
+          </fieldset>
+
+          <fieldset class="q-step" data-step="3" hidden>
+            <button type="button" class="q-back">← Wstecz</button>
+            <legend>Jaki budżet masz na stronę?</legend>
+            <button type="button" class="q-opt" data-k="budzet" data-v="Od 3 500 zł netto, strona z zakładkami">Od 3 500 zł netto, mam środki i chcę zacząć</button>
+            <button type="button" class="q-opt" data-k="budzet" data-v="Mam budżet, ale najpierw chcę porozmawiać">Mam budżet, ale najpierw chcę porozmawiać</button>
+            <button type="button" class="q-opt" data-k="budzet" data-v="Wizytówka za 1 300 zł netto">Na start wizytówka za 1 300 zł netto</button>
+            <button type="button" class="q-opt" data-k="budzet" data-v="Szukam darmowych rozwiązań" data-warn="w-budzet">Szukam darmowych rozwiązań</button>
+            <div class="q-warn" id="w-budzet" hidden>
+              <p>Za darmo nie działam i nie przygotowuję darmowych projektów na zapytanie. Raz na jakiś czas robię jedną stronę w ramach akcji <a href="#">Silny lokalnie</a>.</p>
+              <button type="button" class="q-next">Dalej mimo to →</button>
+            </div>
+          </fieldset>
+
+          <fieldset class="q-step" data-step="4" hidden>
+            <button type="button" class="q-back">← Wstecz</button>
+            <legend>Opisz swój biznes własnymi słowami</legend>
+            <label class="q-lbl" for="q-opis">Czym się zajmujesz, gdzie działasz, kim są Twoi klienci, kto jest Twoją konkurencją? *</label>
+            <textarea id="q-opis" name="opis" rows="6" required minlength="20" placeholder="Np. Salon fryzjerski w Tarnowie, 2 stanowiska. Klientki głównie 25–50 lat. Konkurencja: dwa salony na rynku, oba mają strony. Chcę więcej zapisów bez telefonu w trakcie strzyżenia."></textarea>
+            <label class="q-lbl" for="q-link">Masz już stronę albo profil? Wklej link</label>
+            <input id="q-link" name="link" type="text" placeholder="np. facebook.com/twojafirma">
+            <button type="button" class="btn btn-blue q-go">Dalej<span class="arw">→</span></button>
+          </fieldset>
+
+          <fieldset class="q-step" data-step="5" hidden>
+            <button type="button" class="q-back">← Wstecz</button>
+            <legend>Zostaw kontakt, a odezwę się z konkretem</legend>
+            <label class="q-lbl" for="q-imie">Imię i nazwisko *</label>
+            <input id="q-imie" name="imie" type="text" required autocomplete="name" placeholder="Jan Kowalski">
+            <label class="q-lbl" for="q-tel">Numer telefonu *</label>
+            <input id="q-tel" name="tel" type="tel" required autocomplete="tel" placeholder="+48 500 000 000">
+            <label class="q-lbl" for="q-mail">Adres e-mail *</label>
+            <input id="q-mail" name="mail" type="email" required autocomplete="email" placeholder="jan@kowalski.pl">
+            <input type="text" name="firma_hp" class="q-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <label class="q-check"><input type="checkbox" name="zgoda" required> <span>Wyrażam zgodę na przetwarzanie moich danych w celu odpowiedzi na zapytanie, zgodnie z <a href="#">polityką prywatności</a>. *</span></label>
+            <button type="submit" class="btn btn-blue q-go">Wyślij zapytanie<span class="arw">→</span></button>
+            <p class="q-note" id="q-note">Bez zobowiązań. Odpowiadam osobiście.</p>
+          </fieldset>
+        </form>
+
+        <div class="q-thanks" id="q-thanks" hidden>
+          <span class="label">Dostałem</span>
+          <h3>Dzięki, biorę się za research</h3>
+          <p>Sprawdzam Twoją branżę i konkurencję w okolicy, oceniam sytuację i odezwę się osobiście z konkretną odpowiedzią.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+    <footer><span>Bartosz · kontakt@dzialajmy.online</span><a href="#">Polityka prywatności</a></footer>
+  </div>
+
+  <script>
+    // Makieta: nic nie wysyłamy, udajemy sukces.
+    window.fetch = function(){ return Promise.resolve({ ok: true }); };
+    function go(name){
+      document.getElementById('screen-home').hidden = name !== 'home';
+      document.getElementById('screen-zapytanie').hidden = name !== 'zapytanie';
+      window.scrollTo(0,0);
+    }
+    document.addEventListener('click', function(e){
+      var a = e.target.closest('[data-go]');
+      if (!a) return;
+      e.preventDefault(); go(a.dataset.go);
+    });
+    if (location.hash === '#zapytanie') go('zapytanie');
+  </script>
+  <script>
+  (function(){
+    var LEAD_EMAIL = 'kontakt@dzialajmy.online';
+    var form = document.getElementById('q-form');
+    if (!form) return;
+    var steps = form.querySelectorAll('.q-step');
+    var total = steps.length, cur = 1, odp = {};
+
+    function show(n){
+      cur = n;
+      steps.forEach(function(s){ s.hidden = +s.dataset.step !== n; });
+      document.getElementById('q-n').textContent = n;
+      document.getElementById('q-bar').style.width = (n / total * 100) + '%';
+      var first = steps[n-1].querySelector('legend');
+      if (first) { first.setAttribute('tabindex','-1'); first.focus({preventScroll:true}); }
+    }
+
+    form.addEventListener('click', function(e){
+      var t = e.target.closest('button');
+      if (!t) return;
+      var step = t.closest('.q-step');
+      if (t.classList.contains('q-opt')) {
+        odp[t.dataset.k] = t.dataset.v;
+        step.querySelectorAll('.q-opt').forEach(function(b){ b.classList.toggle('on', b === t); });
+        step.querySelectorAll('.q-warn').forEach(function(w){ w.hidden = true; });
+        if (t.dataset.warn) { document.getElementById(t.dataset.warn).hidden = false; return; }
+        show(cur + 1);
+      } else if (t.classList.contains('q-next')) {
+        show(cur + 1);
+      } else if (t.classList.contains('q-back')) {
+        show(cur - 1);
+      } else if (t.classList.contains('q-go') && t.type === 'button') {
+        var opis = form.opis;
+        if (!opis.checkValidity()) { opis.reportValidity(); return; }
+        show(cur + 1);
+      }
+    });
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      if (form.firma_hp.value) return; // honeypot
+      var pola = [form.imie, form.tel, form.mail, form.zgoda];
+      for (var i = 0; i < pola.length; i++) if (!pola[i].checkValidity()) { pola[i].reportValidity(); return; }
+
+      var tresc =
+        'Firma: ' + (odp.firma || '-') + '\n' +
+        'Cel: ' + (odp.cel || '-') + '\n' +
+        'Budżet: ' + (odp.budzet || '-') + '\n\n' +
+        'OPIS BIZNESU:\n' + form.opis.value + '\n\n' +
+        (form.link.value ? 'Link: ' + form.link.value + '\n' : '') +
+        'Imię i nazwisko: ' + form.imie.value + '\n' +
+        'Telefon: ' + form.tel.value + '\n' +
+        'E-mail: ' + form.mail.value;
+      var subject = 'Zapytanie ze strony: ' + form.imie.value;
+      var note = document.getElementById('q-note');
+
+      fetch('https://formsubmit.co/ajax/' + LEAD_EMAIL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          _subject: subject,
+          _replyto: form.mail.value,
+          imie_nazwisko: form.imie.value,
+          telefon: form.tel.value,
+          email: form.mail.value,
+          firma: odp.firma || '',
+          cel: odp.cel || '',
+          budzet: odp.budzet || '',
+          link: form.link.value,
+          opis_biznesu: form.opis.value
+        })
+      }).then(function(res){
+        if (!res.ok) throw new Error('send failed');
+        form.hidden = true;
+        document.getElementById('q-thanks').hidden = false;
+      }).catch(function(){
+        window.location.href = 'mailto:' + LEAD_EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(tresc);
+        note.textContent = 'Nie udało się wysłać automatycznie, otwieram maila, wyślij, żebym to dostał.';
+      });
+    });
+  })();
+  </script>
+</body>
+</html>
