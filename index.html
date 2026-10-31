@@ -205,6 +205,57 @@
     .mob-cta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:40;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--paper);box-shadow:0 -6px 20px rgba(20,23,27,.08)}
     .mob-cta .btn{width:100%;justify-content:center}
   }
+
+  /* ===== WERSJA D: lista zadań, test, kalkulator, oś czasu, dwie drogi ===== */
+  .hero-grid{display:grid;gap:40px;align-items:center}
+  @media (min-width:860px){.hero-grid{grid-template-columns:1fr 1.15fr}}
+  .hero h1.h-d{font-size:clamp(36px,5.6vw,60px)}
+  .todo{background:var(--white);box-shadow:var(--shadow);padding:var(--pad);transform:rotate(-1.2deg)}
+  .todo-row{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line);color:var(--ink-3)}
+  .todo-row:last-child{border-bottom:0}
+  .todo-box{flex:none;width:20px;height:20px;border:2px solid var(--ink-3);margin-top:3px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900}
+  .todo-row.done .todo-box{background:var(--ink-3);color:var(--white)}
+  .todo-row.done span{text-decoration:line-through}
+  .todo-row.never{color:var(--ink);font-weight:700}
+  .todo-row.never .todo-box{border-color:var(--ink)}
+  .moved{display:block;margin-top:6px;font-weight:400;font-size:var(--fs-small);color:var(--ink-3)}
+  .moved s{text-decoration-color:var(--ink-3)}
+  .moved .mk{color:var(--ink)}
+
+  .quiz{display:grid;gap:10px;margin-top:40px}
+  @media (min-width:720px){.quiz{grid-template-columns:1fr 1fr}}
+  .quiz label{display:flex;gap:14px;align-items:flex-start;background:var(--white);padding:18px 20px;cursor:pointer;box-shadow:inset 0 0 0 1.5px transparent;transition:box-shadow .12s}
+  .quiz label:hover{box-shadow:inset 0 0 0 1.5px var(--line)}
+  .quiz label:has(input:checked){box-shadow:inset 0 0 0 2px var(--ink)}
+  .quiz input{width:20px;height:20px;margin-top:3px;flex:none;accent-color:var(--ink)}
+  .quiz-out{margin-top:var(--gap);display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px}
+  .quiz-n{font-family:var(--display);font-weight:900;font-size:var(--fs-2);letter-spacing:-.03em;line-height:1}
+  .quiz-out p{color:var(--ink)}
+
+  .calc{display:grid;gap:var(--gap);margin-top:40px}
+  @media (min-width:760px){.calc{grid-template-columns:1fr 1fr}}
+  .calc label{display:block;margin-bottom:22px}
+  .calc label:last-child{margin-bottom:0}
+  .calc .lbl{display:flex;justify-content:space-between;gap:12px;color:var(--ink-2)}
+  .calc .lbl b{font-family:var(--display);white-space:nowrap}
+  .calc input[type=range]{width:100%;margin-top:10px;accent-color:var(--ink)}
+  .calc-res{justify-content:center}
+  .calc-res .big{font-family:var(--display);font-weight:900;font-size:clamp(40px,6vw,56px);letter-spacing:-.03em;line-height:1;margin:10px 0 14px;color:var(--ink)}
+  .calc-res .big .mk{background-size:100% .5em;background-position:0 .6em}
+
+  .tl{list-style:none;display:grid;gap:var(--gap);margin-top:40px}
+  @media (min-width:760px){.tl{grid-template-columns:repeat(4,1fr)}}
+  .tl li{border-top:3px solid var(--ink);padding-top:14px}
+  .tl b{display:block;font-family:var(--display);font-weight:900;font-size:var(--fs-3);margin-bottom:6px}
+  .tl li:last-child{border-top-color:var(--hi)}
+
+  .promise{list-style:none;display:grid;gap:var(--gap);margin-top:40px}
+  @media (min-width:760px){.promise{grid-template-columns:repeat(3,1fr)}}
+
+  .paths .card h3{font-size:var(--fs-3)}
+  .paths .stay{background:transparent;box-shadow:inset 0 0 0 1.5px var(--line)}
+  .paths .stay p{color:var(--ink-3)}
+  .paths .go{box-shadow:var(--shadow)}
 </style>
 </head>
 <body>
@@ -216,86 +267,95 @@
 
   <main>
     <section class="hero">
-      <div class="wrap">
-        <p class="label" style="margin-bottom:18px">Strony www dla firm, które nie mają czasu</p>
-        <h1>Chcesz stronę, <span class="mk">ale znów jej nie masz?</span></h1>
-        <p class="lead">Mija kolejny rok, a Ty dalej mówisz „ogarnę to”. Ja to ogarnę za Ciebie: <b>zbiorę informacje, napiszę teksty i zrobię stronę.</b> Ty tylko mówisz „działajmy”.</p>
-        <p class="price">Wizytówka 1 300 zł netto · Strona z zakładkami od 3 500 zł netto</p>
-        <div class="cta">
-          <a href="zapytanie.html" class="btn">Działajmy<span>→</span></a>
-          <span class="note">Gotowe zwykle w 7–14 dni. Płacisz dopiero, gdy zobaczysz podgląd.</span>
+      <div class="wrap hero-grid">
+        <div class="todo" aria-label="Lista zadań na później">
+          <p class="label" style="margin-bottom:6px">Twoja lista „na później”</p>
+          <div class="todo-row done"><span class="todo-box">✓</span><span>Odpisać księgowej</span></div>
+          <div class="todo-row done"><span class="todo-box">✓</span><span>Zamówić wizytówki</span></div>
+          <div class="todo-row never"><span class="todo-box"></span><span>Zrobić stronę www
+            <span class="moved">przeniesione: <s>styczeń</s> → <s>po sezonie</s> → <s>po świętach</s> → <s>„od poniedziałku”</s> → <span class="mk">w przyszłym roku</span></span></span></div>
+        </div>
+        <div>
+          <p class="label" style="margin-bottom:18px">Strony www dla firm, które nie mają czasu</p>
+          <h1 class="h-d">Ta jedna rzecz z listy, <span class="mk">która nigdy się nie odhacza?</span></h1>
+          <p class="lead">Odhaczę ją za Ciebie. <b>Zbiorę informacje, napiszę teksty i zrobię stronę.</b> Ty poświęcisz na to 2 minuty, nie 2 weekendy.</p>
+          <div class="cta"><a href="zapytanie.html" class="btn">Działajmy, odhaczamy to<span>→</span></a></div>
+          <p class="note" style="margin-top:12px">Gotowe zwykle w 7–14 dni · płacisz dopiero po podglądzie · od 1 300 zł netto</p>
         </div>
       </div>
     </section>
 
-    <section class="sec" id="koszt" style="padding-top:0">
+    <section class="sec" id="test" style="background:rgba(20,23,27,.035)">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="label">Szybki test, 10 sekund</span>
+          <h2>Zaznacz, co o Tobie</h2>
+        </div>
+        <div class="quiz" id="quiz">
+          <label><input type="checkbox" id="q1"> <span>Na pytanie „macie stronę?” mówisz „na razie Facebook”.</span></label>
+          <label><input type="checkbox" id="q2"> <span>Cennik dyktujesz przez telefon, bo nie ma go gdzie wysłać.</span></label>
+          <label><input type="checkbox" id="q3"> <span>Masz wykupioną domenę, a na niej… nic.</span></label>
+          <label><input type="checkbox" id="q4"> <span>Raz zacząłeś w kreatorze stron. Utknąłeś na drugiej zakładce.</span></label>
+          <label><input type="checkbox" id="q5"> <span>Ktoś Cię polecił, a znajomy nie mógł Cię znaleźć w Google.</span></label>
+          <label><input type="checkbox" id="q6"> <span>Mówisz „zrobię po sezonie” już trzeci sezon.</span></label>
+        </div>
+        <div class="card quiz-out">
+          <div><span class="quiz-n" id="quiz-n">0 z 6</span><p id="quiz-msg" style="margin-top:8px">Zaznacz, co pasuje. Bez oceniania.</p></div>
+          <div id="quiz-cta" hidden><a href="zapytanie.html" class="btn">Działajmy, odhaczamy to<span>→</span></a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="koszt">
       <div class="wrap">
         <div class="sec-head">
           <span class="label">Ile kosztuje „zrobię później”</span>
-          <h2>Pięć sytuacji, w których <span class="mk">tracisz klienta</span>, zanim w&nbsp;ogóle zadzwoni</h2>
-          <p>Klient, który nie znajdzie Cię w sieci albo zobaczy tam bałagan, nie dzwoni z pretensjami. Po prostu wybiera kogoś innego.</p>
+          <h2>Policz, ile tracisz, odkładając</h2>
+          <p>Wpisz swoje liczby. Wynik jest Twój, nie mój.</p>
         </div>
-        <div class="grid g2">
-          <article class="card"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17" cy="9" r="2.5"/><path d="M17 14c2.6 0 4.5 1.9 4.5 4.5"/></svg></span>
-            <h3>Klient z polecenia</h3>
-            <p>Ktoś polecił Cię znajomemu. Znajomy wpisuje Twoją firmę w Google, a tam nic nie ma.</p>
-            <p class="punch">Dzwoni do kogoś, kto ma stronę.</p>
-          </article>
-          <article class="card"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20.5 20.5 16 16"/></svg></span>
-            <h3>Szukanie w Google</h3>
-            <p>Ktoś szuka usług w Twojej okolicy. Konkurencja jest widoczna online, a Ciebie nie ma.</p>
-            <p class="punch">Klient nawet nie wie, że istniejesz.</p>
-          </article>
-          <article class="card"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M15 8h-1.5A2 2 0 0 0 11.5 10v10.5M9 13h5.5"/></svg></span>
-            <h3>Masz tylko Facebooka</h3>
-            <p>Klient szuka cennika i zdjęć, a trafia na post sprzed pół roku. Wygląda, jakby firma już nie działała.</p>
-            <p class="punch">Wybiera firmę, która wygląda poważniej.</p>
-          </article>
-          <article class="card"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="2"/><path d="M11 18h2"/></svg></span>
-            <h3>Strona sprzed lat</h3>
-            <p>Na telefonie wszystko jest malutkie, numeru nie da się kliknąć, a strona długo się ładuje.</p>
-            <p class="punch">Wraca do Google i klika następny wynik.</p>
-          </article>
-          <article class="card span2"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></span>
-            <h3>Prośba o ofertę</h3>
-            <p>Klient prosi o ofertę, a Ty znów nie wiesz, co wysłać. Zbierasz zdjęcia z social mediów, na szybko sklejasz prezentację w AI. Wszystko w pośpiechu i bez sensu.</p>
-            <p class="punch">Klient dostaje chaos i wybiera kogoś, kto po prostu wysłał link.</p>
-          </article>
+        <div class="calc">
+          <div class="card">
+            <label for="c-q"><span class="lbl">Ile zapytań miesięcznie może Ci uciekać? <b id="c-qv">3</b></span><input type="range" id="c-q" min="1" max="20" value="3"></label>
+            <label for="c-v"><span class="lbl">Średnia wartość jednego zlecenia <b id="c-vv">500 zł</b></span><input type="range" id="c-v" min="100" max="5000" step="100" value="500"></label>
+            <label for="c-m"><span class="lbl">O ile miesięcy znów odłożysz? <b id="c-mv">3</b></span><input type="range" id="c-m" min="1" max="12" value="3"></label>
+          </div>
+          <div class="card calc-res">
+            <span class="label">Odkładając, zostawiasz u konkurencji ok.</span>
+            <p class="big"><span class="mk" id="c-out">4 500 zł</span></p>
+            <p>Wizytówka kosztuje 1 300 zł netto. <b id="c-cmp">Zwraca się po 3 zleceniach.</b></p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="sec dark" id="znasz-to-uczucie">
+    <section class="sec dark" id="za-14-dni">
       <div class="wrap">
         <div class="sec-head">
-          <span class="label">Znasz to uczucie?</span>
-          <h2>Chcesz, ale znów nie masz. Bo zawsze jest jakiś powód.</h2>
-          <p>Każdy z tych powodów biorę na siebie.</p>
+          <span class="label">Wyobraź sobie</span>
+          <h2>Za 14 dni wysyłasz klientowi link, a&nbsp;nie przepraszasz</h2>
         </div>
-        <ul class="excuses">
-          <li><q>Nie mam czasu się tym zająć</q><span>Wystarczą 2 minuty na formularz i jedno zdanie o firmie. Informacje, teksty i zdjęcia zbieram ja.</span></li>
-          <li><q>Nie wiem, co napisać</q><span>Teksty piszę za Ciebie.</span></li>
-          <li><q>Agencja to kilka tysięcy</q><span>Wizytówka 1 300 zł netto. Strona z zakładkami od 3 500 zł netto.</span></li>
-          <li><q>To się będzie ciągnąć miesiącami</q><span>Zwykle 7–14 dni do gotowej strony.</span></li>
-          <li><q>A jak mi się nie spodoba?</q><span>Pierwsza płatność dopiero, gdy zobaczysz podgląd. Poprawki w cenie.</span></li>
-          <li><q>Zrobię to po sezonie</q><span>Każdy miesiąc odkładania to klienci, którzy w tym czasie wybrali konkurencję.</span></li>
+        <ol class="tl">
+          <li><b style="color:var(--paper)">Dziś, 2 minuty</b><p>Wypełniasz krótki formularz. Jedno zdanie o firmie wystarczy.</p></li>
+          <li><b style="color:var(--paper)">Kolejne dni</b><p>Sprawdzam rynek i konkurencję, piszę teksty, dobieram styl. Ty prowadzisz firmę.</p></li>
+          <li><b style="color:var(--paper)">Około 7. dnia</b><p>Dostajesz link do podglądu. Dopiero teraz pierwsza płatność.</p></li>
+          <li><b style="color:var(--paper)">Około 14. dnia</b><p>Strona działa. Następnemu klientowi wysyłasz link zamiast „podeślę na Messengera”.</p></li>
+        </ol>
+        <div class="cta"><a href="zapytanie.html" class="btn">Działajmy, odhaczamy to<span>→</span></a></div>
+      </div>
+    </section>
+
+    <section class="sec" id="obietnica">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="label">Osobiście</span>
+          <h2>Obiecuję Ci trzy rzeczy</h2>
+          <p>Bartosz, 12 lat robienia stron.</p>
+        </div>
+        <ul class="promise">
+          <li class="card"><h3>Odpowiadam ja, nie bot</h3><p>Każde zapytanie czytam osobiście i odpisuję z konkretem.</p></li>
+          <li class="card"><h3>Nie płacisz za coś, czego nie widziałeś</h3><p>Pierwsza płatność dopiero po podglądzie strony.</p></li>
+          <li class="card"><h3>Nie zostawię Cię z niedokończoną stroną</h3><p>Poprawki w cenie, dopóki nie zaakceptujesz.</p></li>
         </ul>
-        <p class="closing">Ty skup się na firmie. Stronę zostaw mi.</p>
-        <div class="cta"><a href="zapytanie.html" class="btn">Działajmy<span>→</span></a></div>
-      </div>
-    </section>
-
-    <section class="sec" id="jak-to-dziala">
-      <div class="wrap">
-        <div class="sec-head">
-          <span class="label">Jak to działa</span>
-          <h2>Ty robisz jeden krok. Resztę robię ja.</h2>
-        </div>
-        <div class="grid g3">
-          <article class="card"><span class="num">01</span><h3>Opisujesz firmę</h3><p>Formularz na 2 minuty. Jedno zdanie o tym, co robisz, wystarczy.</p></article>
-          <article class="card"><span class="num">02</span><h3>Ja robię resztę</h3><p>Sprawdzam branżę i konkurencję, piszę teksty, dobieram styl i układ.</p></article>
-          <article class="card"><span class="num">03</span><h3>Strona działa</h3><p>Dostajesz link do podglądu. 2–3 serie poprawek i strona jest online.</p></article>
-        </div>
       </div>
     </section>
 
@@ -303,7 +363,7 @@
       <div class="wrap">
         <div class="sec-head">
           <span class="label">Cennik</span>
-          <h2>Dwie opcje. Bez drobnego druku.</h2>
+          <h2>Tyle kosztuje odhaczenie</h2>
           <p>Wszystkie ceny netto.</p>
         </div>
         <div class="grid g2">
@@ -324,14 +384,8 @@
           </article>
         </div>
         <div class="card cmp">
-          <div class="cmp-row"><div><b>Projektant i programista</b><p>Projekt i wykonanie 5 podstron, wersja na telefon</p></div><b>3 000 zł</b></div>
-          <div class="cmp-row"><div><b>Copywriter</b><p>Teksty na 5 podstron</p></div><b>750 zł</b></div>
-          <div class="cmp-row"><div><b>Specjalista SEO</b><p>Tytuły i opisy w Google, Search Console, wizytówka Google</p></div><b>600 zł</b></div>
-          <div class="cmp-row"><div><b>Informatyk</b><p>Domena, poczta w domenie, SSL, hosting</p></div><b>300 zł</b></div>
-          <div class="cmp-row total"><div><b>To samo u czterech specjalistów</b><p>Typowe stawki freelancerów. U mnie jedna cena i jedna osoba do kontaktu.</p></div><span><s>4 650 zł</s>&nbsp;&nbsp;<b>od 3 500 zł</b></span></div>
+          <div class="cmp-row total"><div><b>To samo u czterech specjalistów</b><p>Projektant, copywriter, specjalista SEO i informatyk osobno. U mnie jedna cena i jedna osoba.</p></div><span><s>4 650 zł</s>&nbsp;&nbsp;<b>od 3 500 zł</b></span></div>
         </div>
-        <p class="note" style="margin-top:20px">Bez WordPressa z dziesiątką wtyczek: dostajesz prosty panel, w którym zmienisz godziny, cennik czy zdjęcia w kilka minut. Nie robię dużych sklepów internetowych.</p>
-        <div class="cta"><a href="zapytanie.html" class="btn">Działajmy<span>→</span></a><span class="note">Pierwsza płatność po podglądzie, druga przy włączeniu strony.</span></div>
       </div>
     </section>
 
@@ -350,14 +404,12 @@
       </div>
     </section>
 
-    <section class="sec final" style="padding-top:0">
+    <section class="sec paths" id="decyzja" style="padding-top:0">
       <div class="wrap">
-        <div class="card" style="padding:clamp(28px,5vw,56px)">
-          <span class="label">Decyzja</span>
-          <h2 style="margin-top:12px">Działamy czy znów odkładasz na kiedyś?</h2>
-          <p class="quote">„Działajmy, Panie Bartku!” <span class="note" style="font-family:var(--text);font-weight:400">Tak zwykle kończą się te rozmowy.</span></p>
-          <p style="margin-top:16px;max-width:560px">Opisz firmę w 2 minuty. Sprawdzę rynek i konkurencję i odpowiem osobiście, czy i jak mogę Ci pomóc.</p>
-          <div class="cta"><a href="zapytanie.html" class="btn">Działajmy<span>→</span></a></div>
+        <div class="sec-head"><span class="label">Decyzja</span><h2>Masz dwie drogi</h2></div>
+        <div class="grid g2">
+          <article class="card stay"><h3>Droga 1: odkładasz</h3><p>„Zrobić stronę www”, przeniesione po raz kolejny. Za rok wracasz na tę stronę i czytasz to samo.</p><p class="punch" style="color:var(--ink-3)">Nic się nie zmienia.</p></article>
+          <article class="card go"><h3>Droga 2: działamy</h3><p>2 minuty dziś. Link do podglądu za około tydzień. Strona za około dwa tygodnie.</p><div class="cta" style="margin-top:20px"><a href="zapytanie.html" class="btn">Działajmy, odhaczamy to<span>→</span></a></div></article>
         </div>
       </div>
     </section>
@@ -368,7 +420,32 @@
     <a href="polityka-prywatnosci.html">Polityka prywatności</a>
   </footer>
 
-  <div class="mob-cta"><a href="zapytanie.html" class="btn">Działajmy<span>→</span></a></div>
+  <div class="mob-cta"><a href="zapytanie.html" class="btn">Działajmy, odhaczamy to<span>→</span></a></div>
+
+  <script>
+  (function(){
+    var q=document.getElementById('quiz');
+    var msgs=['Zaznacz, co pasuje. Bez oceniania.','Jedno „tak”. Hmm, coś w tym jest.','Dwa „tak”. Zaczyna brzmieć znajomo.','Trzy „tak”. To o Tobie. Dobra wiadomość: każdą z tych rzeczy da się załatwić w około 14 dni.','Cztery „tak”. Najwyższy czas to odhaczyć.','Pięć „tak”. Serio, działajmy.','Komplet. Uśmiechnąłeś się? To dobry moment, żeby to zamknąć.'];
+    q.addEventListener('change',function(){
+      var n=q.querySelectorAll('input:checked').length;
+      document.getElementById('quiz-n').textContent=n+' z 6';
+      document.getElementById('quiz-msg').textContent=msgs[n];
+      document.getElementById('quiz-cta').hidden=n<2;
+    });
+    function zl(x){return x.toLocaleString('pl-PL',{useGrouping:true})+' zł'}
+    function calc(){
+      var a=+document.getElementById('c-q').value, v=+document.getElementById('c-v').value, m=+document.getElementById('c-m').value;
+      document.getElementById('c-qv').textContent=a;
+      document.getElementById('c-vv').textContent=zl(v);
+      document.getElementById('c-mv').textContent=m;
+      document.getElementById('c-out').textContent=zl(a*v*m);
+      var need=Math.ceil(1300/v);
+      document.getElementById('c-cmp').textContent='Zwraca się po '+need+(need===1?' zleceniu.':' zleceniach.');
+    }
+    ['c-q','c-v','c-m'].forEach(function(id){document.getElementById(id).addEventListener('input',calc)});
+    calc();
+  })();
+  </script>
 
 </body>
 </html>
