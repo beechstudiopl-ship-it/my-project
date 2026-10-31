@@ -174,19 +174,30 @@
   .q-opt:hover{border-color:rgba(20,23,27,.25)}
   .q-step input[type=text],.q-step input[type=tel],.q-step input[type=email],.q-step textarea{border-color:rgba(20,23,27,.15);background:#FAFAF8}
   footer{border-top:0}
+
+  /* --- spójność ze stroną główną --- */
+  .label{font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-3)}
+  .q-flow li::before{color:var(--ink-3)}
+  .q-flow li,.q-side .sublead{font-size:17px}
+  .q-step legend{font-size:20px}
+  .q-card{box-shadow:0 1px 2px rgba(20,23,27,.04),0 8px 24px rgba(20,23,27,.06)}
+  .q-opt.on{box-shadow:inset 3px 0 0 var(--ink);border-color:var(--ink)}
+  .q-bar i{background:var(--ink)}
+  .q-warn{background:var(--paper);border:0}
+  .q-next{color:var(--ink)}
 </style>
 </head>
 <body>
 
   <div class="top">
     <a href="index.html" class="logo">działajmy<span class="d">.</span>online<span class="c">^</span></a>
-    <div class="status"><span class="status-link"><a href="index.html" style="color:var(--ink-2);text-decoration:none;border-bottom:2px solid var(--hi);padding-bottom:1px">Strona główna</a><span class="status-sep">·</span></span><i></i>Przyjmuję zlecenia</div>
+    <div class="status"><i></i>Przyjmuję zlecenia</div>
   </div>
 
   <main class="q-page">
     <div class="q-grid">
       <div class="q-side">
-        <span class="tag">Zapytanie</span>
+        <span class="label">Zapytanie</span>
         <h1>Zacznijmy od Twojej firmy, nie od ceny</h1>
         <p class="sublead">Trzy krótkie pytania, potem opisujesz swój biznes własnymi słowami. Zajmie Ci to 2 minuty.</p>
         <ol class="q-flow">
@@ -262,7 +273,7 @@
         </form>
 
         <div class="q-thanks" id="q-thanks" hidden>
-          <span class="tag">Dostałem</span>
+          <span class="label">Dostałem</span>
           <h3>Dzięki, biorę się za research</h3>
           <p>Sprawdzam Twoją branżę i konkurencję w okolicy, oceniam sytuację i odezwę się osobiście z konkretną odpowiedzią.</p>
         </div>
@@ -271,14 +282,10 @@
   </main>
 
   <footer>
-    <span class="soon"><b>[ INFO ]</b> <a href="manifest.html">Manifest</a></span>
+    <a href="polityka-prywatnosci.html">Polityka prywatności</a>
     <span>Bartosz · <a href="mailto:kontakt@dzialajmy.online">kontakt@dzialajmy.online</a> · na razie działam tylko ze stronami www</span>
   </footer>
 
-  <a href="index.html" class="mob-manifest">
-    <span class="mm-l"><span class="mm-tag">Start</span>Wróć na stronę główną</span>
-    <span class="mm-arw">→</span>
-  </a>
 
   <script>
   (function(){
