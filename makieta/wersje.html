@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Makieta: 3 wersje</title><meta name="robots" content="noindex"><style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;color:#222;background:#fff;font-size:17px;line-height:1.55}
+.w{max-width:1000px;margin:0 auto;padding:0 20px}
+h1{font-size:clamp(38px,7vw,68px);line-height:1.02;letter-spacing:-.03em;font-weight:900}
+h1 u{text-decoration-thickness:3px;text-underline-offset:6px}
+h2{font-size:clamp(28px,4.4vw,40px);line-height:1.08;letter-spacing:-.02em;font-weight:900}
+h3{font-size:20px;line-height:1.25;font-weight:800}
+.k{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:#888;margin-bottom:10px}
+.sub{margin-top:14px;color:#555;max-width:580px}
+.micro{font-size:13px;color:#888}
+.s{padding:72px 0}.gray{background:#f3f3f3}
+.hero{padding:40px 0 56px}
+.top{display:flex;justify-content:space-between;align-items:center;padding-top:20px;padding-bottom:20px}
+.logo{font-size:20px;letter-spacing:-.03em}
+.split{display:grid;gap:32px;align-items:center}
+@media(min-width:800px){.split{grid-template-columns:1.2fr 1fr}.split.rev{grid-template-columns:1fr 1.2fr}.split.rev>.ph{order:-1}}
+.g{display:grid;gap:16px;margin-top:32px}
+@media(min-width:760px){.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.span2{grid-column:1/-1}}
+.c{border:1.5px dashed #bbb;padding:24px;background:#fff;display:flex;flex-direction:column}
+.c h3{margin-bottom:6px}.c p{color:#555}
+.c .pn{margin-top:auto;padding-top:12px;color:#222;font-weight:700}
+.ico{width:36px;height:36px;background:#e5e5e5;margin-bottom:14px}
+.n{font-weight:900;color:#aaa;margin-bottom:10px}
+.big{font-size:36px;font-weight:900;color:#222!important;margin:4px 0 8px}
+.c ul,.check{list-style:none;margin-top:10px}.c li,.check li{padding-left:22px;position:relative;margin-top:6px;color:#555}
+.c li::before,.check li::before{content:"✓";position:absolute;left:0;color:#222;font-weight:700}
+.row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.center{text-align:center}.center .sub{margin-left:auto;margin-right:auto}
+.cta{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
+.btn{display:inline-block;background:#222;color:#fff;text-decoration:none;font-weight:800;font-size:18px;padding:15px 24px}
+.lnk{margin-top:10px;color:#222;font-weight:700;font-size:14px}
+.opt{display:block;border:1px solid #ccc;background:#f3f3f3;padding:14px 16px;margin-top:8px;color:#222;text-decoration:none}
+.ph{position:relative;width:100%;background:#eee;border:1px solid #ccc;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;
+  background-image:linear-gradient(to top right,transparent calc(50% - 1px),#ccc,transparent calc(50% + 1px)),linear-gradient(to bottom right,transparent calc(50% - 1px),#ccc,transparent calc(50% + 1px))}
+.ph span{position:relative;background:#eee;padding:6px 10px;font-size:12px;font-weight:700;color:#666;max-width:85%}
+.who .ph span{display:none}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.who{display:flex;gap:12px;align-items:center;margin-top:16px}
+.quote{font-size:18px;color:#222!important}
+.trust{display:flex;flex-wrap:wrap;gap:12px 32px;padding-top:24px;padding-bottom:8px;border-top:1px solid #ddd;color:#666;font-size:15px}
+.ex{list-style:none;margin-top:28px}.ex li{display:grid;gap:4px;padding:14px 0;border-top:1px solid #ccc}
+@media(min-width:760px){.ex li{grid-template-columns:1fr 1.4fr;gap:24px}}
+.ex q{font-weight:800;color:#777}
+.faq{margin-top:28px;display:flex;flex-direction:column;gap:8px}.faq details{border:1.5px dashed #bbb;padding:14px 18px}.faq summary{font-weight:800;cursor:pointer}
+.final{padding:40px}
+footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-top:24px;padding-bottom:24px;font-size:14px;color:#888}
+footer a{color:#555}
+.note{margin-top:20px;border-left:3px solid #222;background:#f6f6f6;padding:10px 14px;font-size:14px;color:#444;max-width:760px}
+body.no-notes .note{display:none}
+.bar{position:sticky;top:0;z-index:50;background:#222;color:#fff;font-size:14px;padding:10px 16px;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between}
+.bar button{font:inherit;font-weight:700;background:transparent;color:#fff;border:1px solid #666;padding:6px 12px;cursor:pointer}
+.bar button.on{background:#fff;color:#222;border-color:#fff}
+.bar .vd{flex-basis:100%;color:#bbb;font-size:13px}
+.screen[hidden]{display:none!important}
+.mob{display:none}
+@media(max-width:640px){body{padding-bottom:70px}.mob{display:block;position:fixed;left:0;right:0;bottom:0;padding:10px 16px;background:#fff;border-top:1px solid #ddd;z-index:40}.mob .btn{display:block;text-align:center}}
+/* formularz */
+:root{--paper:#f3f3f3;--ink:#222;--ink-2:#555;--ink-3:#999;--hair:#ddd;--blue:#222;--hi:#f3f3f3;--hi-2:#f3f3f3}
+  /* formularz zapytania */
+  .q-grid{display:grid;grid-template-columns:1fr;gap:36px;align-items:start}
+  @media (min-width:860px){.q-grid{grid-template-columns:1fr 1.05fr}}
+  .q-flow{list-style:none;margin:28px 0 0;padding:0;counter-reset:q}
+  .q-flow li{counter-increment:q;position:relative;padding:0 0 16px 44px;color:#C6CCD4;font-size:15px;line-height:1.5}
+  .q-flow li::before{content:"0" counter(q);position:absolute;left:0;top:-2px;font-family:'Archivo',sans-serif;font-weight:900;font-size:20px;color:var(--blue)}
+  .q-flow b{color:var(--paper)}
+  .q-card{background:#fff;color:var(--ink);padding:28px;border:1.5px solid var(--paper)}
+  .q-head{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+  .q-count{font-family:'Archivo',sans-serif;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-3);white-space:nowrap}
+  .q-bar{flex:1;height:4px;background:var(--hair)}
+  .q-bar i{display:block;height:100%;width:20%;background:var(--blue);transition:width .25s ease}
+  .q-step{border:0;margin:0;padding:0;min-width:0}
+  .q-step legend{float:left;width:100%;font-family:'Archivo',sans-serif;font-weight:900;font-size:21px;letter-spacing:-.02em;line-height:1.2;margin-bottom:18px;padding:0;outline:none}
+  .q-step>*:not(legend){clear:both}
+  .q-back{display:block;background:none;border:0;padding:0;margin-bottom:14px;font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;color:var(--ink-3);cursor:pointer}
+  .q-back:hover{color:var(--blue)}
+  .q-opt{display:block;width:100%;text-align:left;margin-top:10px;padding:15px 18px;background:var(--paper);border:1.5px solid var(--hair);font:inherit;font-size:15.5px;color:var(--ink);cursor:pointer}
+  .q-opt:hover{border-color:var(--ink)}
+  .q-opt.on{border-color:var(--blue);background:#fff;box-shadow:inset 3px 0 0 var(--blue)}
+  .q-warn{margin-top:14px;padding:16px 18px;background:var(--hi-2);border:1.5px solid var(--hi)}
+  .q-warn p{font-size:14.5px;color:var(--ink);line-height:1.5}
+  .q-warn a{color:var(--ink)}
+  .q-next{margin-top:10px;background:none;border:0;padding:0;font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;color:var(--blue);cursor:pointer;text-decoration:underline}
+  .q-lbl{display:block;font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;margin:14px 0 6px}
+  .q-step input[type=text],.q-step input[type=tel],.q-step input[type=email],.q-step textarea{width:100%;padding:13px 14px;border:1.5px solid rgba(20,23,27,.3);background:#fff;font:inherit;font-size:15.5px;color:var(--ink)}
+  .q-step textarea{resize:vertical;line-height:1.5}
+  .q-step input:focus,.q-step textarea:focus{outline:none;border-color:var(--blue)}
+  .q-hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+  .q-check{display:flex;gap:10px;align-items:flex-start;margin-top:16px;font-size:13px;color:var(--ink-2);line-height:1.45;cursor:pointer}
+  .q-check input{margin-top:3px;flex:none}
+  .q-check a{color:var(--ink-2)}
+  .q-step .btn{margin-top:20px;width:100%;justify-content:center;cursor:pointer}
+  .q-note{margin-top:10px;font-size:13px;color:var(--ink-3);text-align:center}
+  .q-thanks h3{font-family:'Archivo',sans-serif;font-weight:900;font-size:24px;letter-spacing:-.02em;margin:14px 0 10px}
+  .q-thanks p{font-size:15.5px;color:var(--ink-2);line-height:1.55}
+
+
+.q-card{border:1.5px dashed #bbb;max-width:520px;margin:0 auto}
+.q-step legend,.q-lbl,.q-count,.q-back,.q-next,.btn{font-family:inherit!important}
+.q-step .btn{display:flex;width:100%;justify-content:center;background:#222;color:#fff;border:0;font-size:18px;font-weight:800;padding:15px}
+.q-opt{background:#f3f3f3;border:1px solid #ccc}.q-opt.on{box-shadow:inset 3px 0 0 #222}
+.q-bar i{background:#222}.q-warn{background:#f3f3f3;border:1px dashed #999}.q-next{color:#222}
+.q-step input[type=text],.q-step input[type=tel],.q-step input[type=email],.q-step textarea{border:1px solid #bbb}
+.thoughts{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}.thoughts p{border:1.5px dashed #bbb;padding:10px 16px;font-size:18px;font-weight:700;color:#555;background:#fafafa}
+</style></head>
+<body>
+<div class="bar"><span><b>WIREFRAME</b> · wersja:</span>
+<span><button data-variant="A" class="on">A · Problem → rozwiązanie</button> <button data-variant="B">B · Lustro: myśli klienta</button> <button data-variant="C">C · Formularz od razu</button> <button data-variant="F">Formularz</button> <button id="tn">Ukryj notatki</button></span>
+<span class="vd" id="vd">Najpierw ból klienta i wymówki, potem dowody i cena. Najbliżej obecnej wersji.</span></div>
+<div class="screen" id="vA"><header class="top w"><b class="logo">działajmy.online</b><span class="k">Przyjmuję zlecenia</span></header><section class="hero"><div class="w split">
+<div><p class="k">Strony www dla firm, które nie mają czasu</p><h1>Chcesz stronę, <u>ale znów jej nie masz?</u></h1>
+<p class="sub">Zbiorę informacje, napiszę teksty i zrobię stronę. Ty tylko mówisz „działajmy”.</p><p class="k" style="margin-top:16px;color:#222">Wizytówka 1 300 zł · Strona z zakładkami od 3 500 zł (netto)</p>
+<div class="cta"><a href="#" class="btn" data-go="zapytanie">Działajmy →</a><span class="micro">Gotowe zwykle w 7–14 dni · płacisz dopiero po podglądzie · ceny netto</span></div></div>
+<div class="ph" style="aspect-ratio:4/5"><span>ZDJĘCIE 1: Ty, twarz, uśmiech, wzrok w stronę przycisku</span></div></div>
+<div class="w"><aside class="note"><b>Dobra praktyka:</b> Zatrzymanie w 3 sekundy: pierwsze zdanie to problem klienta jego słowami, nie nazwa usługi. Hero = problem + obietnica + jeden przycisk + mikrotekst zdejmujący ryzyko. Zdjęcie Twojej twarzy obok: ludzie ufają ludziom. Kierunek wzroku na zdjęciu prowadzi oko do przycisku.</aside></div></section><div class="trust w"><span><b>12 lat</b> robienia stron</span><span><b>XX</b> oddanych stron</span><span><b>5,0 ★</b> w opiniach Google (XX)</span><span><b>7–14 dni</b> do gotowej strony</span></div><div class="w"><aside class="note"><b>Dobra praktyka:</b> Pasek zaufania tuż pod hero: liczby zamiast przymiotników. Wpisuj tylko prawdziwe, sprawdzalne dane.</aside></div><section class="s"><div class="w"><p class="k">Ile kosztuje „zrobię później”</p><h2>Pięć sytuacji, w których tracisz klienta, zanim zadzwoni</h2>
+<div class="g g2"><div class="c"><div class="ico"></div><h3>Klient z polecenia</h3><p>Wpisuje Twoją firmę w Google, a tam nic nie ma.</p><p class="pn">Dzwoni do kogoś, kto ma stronę.</p></div><div class="c"><div class="ico"></div><h3>Szukanie w Google</h3><p>Konkurencja jest widoczna online, a Ciebie nie ma.</p><p class="pn">Klient nawet nie wie, że istniejesz.</p></div><div class="c"><div class="ico"></div><h3>Masz tylko Facebooka</h3><p>Post sprzed pół roku. Wygląda, jakby firma nie działała.</p><p class="pn">Wybiera firmę, która wygląda poważniej.</p></div><div class="c"><div class="ico"></div><h3>Strona sprzed lat</h3><p>Na telefonie nic się nie da kliknąć.</p><p class="pn">Wraca do Google i klika następny wynik.</p></div><div class="c span2"><div class="ico"></div><h3>Prośba o ofertę</h3><p>Znów nie wiesz, co wysłać. Sklejasz coś w pośpiechu.</p><p class="pn">Klient wybiera kogoś, kto wysłał link.</p></div></div>
+<aside class="note"><b>Dobra praktyka:</b> Problemy klienta jego językiem, nie Twoje usługi. Każda karta kończy się konsekwencją, bo to ją klient czuje.</aside></div></section><section class="s gray"><div class="w"><p class="k">Znasz to uczucie?</p><h2>Chcesz, ale znów nie masz. Bo zawsze jest jakiś powód.</h2><p class="sub">Każdy z nich biorę na siebie.</p>
+<ul class="ex"><li><q>Nie mam czasu</q><span>2 minuty na formularz. Resztę zbieram ja.</span></li><li><q>Nie wiem, co napisać</q><span>Teksty piszę za Ciebie.</span></li><li><q>Za drogo</q><span>Wizytówka 1 300 zł netto.</span></li><li><q>Będzie się ciągnąć</q><span>Zwykle 7–14 dni.</span></li><li><q>A jak mi się nie spodoba?</q><span>Płacisz dopiero po podglądzie.</span></li><li><q>Zrobię po sezonie</q><span>W tym czasie klienci wybierają konkurencję.</span></li></ul>
+<div class="cta"><a href="#" class="btn" data-go="zapytanie">Działajmy →</a></div><aside class="note"><b>Dobra praktyka:</b> Obiekcje rozbrajane jedna po drugiej. Po tej sekcji klient nie ma już wymówki, więc od razu dostaje przycisk.</aside></div></section><section class="s"><div class="w"><p class="k">Jak to działa</p><h2>Ty robisz jeden krok. Resztę robię ja.</h2>
+<div class="g g3"><div class="c"><span class="n">01</span><h3>Opisujesz firmę</h3><p>Formularz na 2 minuty.</p></div><div class="c"><span class="n">02</span><h3>Ja robię resztę</h3><p>Rynek, konkurencja, teksty, styl.</p></div><div class="c"><span class="n">03</span><h3>Strona działa</h3><p>Podgląd, 2–3 serie poprawek, online.</p></div></div><aside class="note"><b>Dobra praktyka:</b> Proces z czasem przy każdym kroku zmniejsza lęk przed „to się będzie ciągnąć”. Maksymalnie 3–4 kroki.</aside></div></section><section class="s" id="portfolio"><div class="w"><p class="k">Realizacje</p><h2>Strony, które już pracują dla klientów</h2><p class="sub">Wybrane realizacje: jaki był problem i co się zmieniło.</p>
+<div class="g g3"><div class="c pf"><div class="ph" style="aspect-ratio:16/10"><span>ZRZUT: strona na laptopie + telefonie</span></div><p class="k" style="margin-top:14px">Branża A</p><h3>Problem klienta</h3><p>Efekt: np. pierwsze zapytania z formularza w 2 tygodnie</p><a href="#" class="lnk">Zobacz stronę ↗</a></div><div class="c pf"><div class="ph" style="aspect-ratio:16/10"><span>ZRZUT: strona na laptopie + telefonie</span></div><p class="k" style="margin-top:14px">Branża B</p><h3>Problem klienta</h3><p>Efekt: np. klienci przestali pytać o cennik przez telefon</p><a href="#" class="lnk">Zobacz stronę ↗</a></div><div class="c pf"><div class="ph" style="aspect-ratio:16/10"><span>ZRZUT: strona na laptopie + telefonie</span></div><p class="k" style="margin-top:14px">Branża C</p><h3>Problem klienta</h3><p>Efekt: np. strona zamiast prezentacji przy ofertach</p><a href="#" class="lnk">Zobacz stronę ↗</a></div></div><aside class="note"><b>Dobra praktyka:</b> Pokaż 3 najlepsze, nie 20. Podpis to „problem → efekt”, nie „nowoczesna strona”. Zrzut w makiecie laptopa i telefonu. Link otwieraj w nowej karcie, żeby nie wypuścić klienta z lejka. Dopóki nie masz realizacji, tę sekcję ukrywamy (tak jak teraz).</aside></div></section><section class="s"><div class="w"><p class="k">Opinie</p><h2>Co mówią klienci</h2>
+<div class="g g3"><div class="c"><p class="quote">„Konkretny efekt własnymi słowami klienta, 1–2 zdania.”</p><div class="who"><div class="ph" style="aspect-ratio:1/1;width:48px;flex:none;border-radius:50%"><span>ZDJĘCIE klienta</span></div><div><b>Imię Nazwisko</b><br><span class="micro">Firma, miasto</span></div></div></div><div class="c"><p class="quote">„Konkretny efekt własnymi słowami klienta, 1–2 zdania.”</p><div class="who"><div class="ph" style="aspect-ratio:1/1;width:48px;flex:none;border-radius:50%"><span>ZDJĘCIE klienta</span></div><div><b>Imię Nazwisko</b><br><span class="micro">Firma, miasto</span></div></div></div><div class="c"><p class="quote">„Konkretny efekt własnymi słowami klienta, 1–2 zdania.”</p><div class="who"><div class="ph" style="aspect-ratio:1/1;width:48px;flex:none;border-radius:50%"><span>ZDJĘCIE klienta</span></div><div><b>Imię Nazwisko</b><br><span class="micro">Firma, miasto</span></div></div></div></div><aside class="note"><b>Dobra praktyka:</b> Tylko prawdziwe opinie, ze zdjęciem, imieniem i firmą. Najlepiej skopiowane z Google (gwiazdki budują zaufanie). Opinia z liczbą lub konkretem bije ogólne „polecam”.</aside></div></section><section class="s" id="cennik"><div class="w"><p class="k">Cennik</p><h2>Dwie opcje. Bez drobnego druku.</h2><p class="sub">Wszystkie ceny netto.</p>
+<div class="g g2"><div class="c"><p class="k">Na dziś, na teraz</p><h3>Wizytówka one page</h3><p class="big">1 300 zł</p><ul><li>Jedna strona, wersja na telefon</li><li>Teksty piszę ja</li><li>Mapa, formularz, panel edycji</li></ul></div>
+<div class="c"><p class="k">Gdy firma rośnie</p><h3>Strona z zakładkami</h3><p class="big">od 3 500 zł</p><ul><li>Do 5 podstron i blog</li><li>Teksty, SEO, domena, poczta</li><li>Panel edycji, 3 serie poprawek</li><li>Dodatkowa podstrona 250 zł</li></ul></div></div>
+<div class="c" style="margin-top:16px"><div class="row"><span>To samo u 4 specjalistów (projektant, copywriter, SEO, informatyk)</span><b><s>4 650 zł</s> → od 3 500 zł</b></div></div>
+<div class="cta"><a href="#" class="btn" data-go="zapytanie">Działajmy →</a><span class="micro">Gotowe zwykle w 7–14 dni · płacisz dopiero po podglądzie · ceny netto</span></div><aside class="note"><b>Dobra praktyka:</b> Cena widoczna od razu odsiewa niepasujących i oszczędza Ci rozmów. Porównanie z 4 specjalistami to „kotwica”: ustawia punkt odniesienia wyżej niż Twoja cena.</aside></div></section><section class="s"><div class="w split"><div class="ph" style="aspect-ratio:4/5"><span>ZDJĘCIE 2: Ty przy pracy (biurko, laptop), naturalne światło</span></div>
+<div><p class="k">Kto to robi</p><h2>Cześć, jestem Bartosz</h2><p class="sub">Krótko: kim jesteś, od kiedy to robisz (12 lat), dlaczego działajmy.online i dla kogo. 3–4 zdania, pierwsza osoba, bez korporacyjnego języka.</p><div class="cta"><a href="#" class="btn" data-go="zapytanie">Działajmy →</a></div></div></div>
+<div class="w"><aside class="note"><b>Dobra praktyka:</b> Przy usłudze robionej przez jedną osobę twarz to najmocniejszy dowód zaufania. Prawdziwe zdjęcie, nie stock. Ten sam człowiek na zdjęciu co w hero.</aside></div></section><section class="s"><div class="w"><p class="k">FAQ</p><h2>Pytania, które słyszę najczęściej</h2><div class="faq"><details><summary>Ile czasu zajmie?</summary><p>Odpowiedź z obecnej strony.</p></details><details><summary>Mogę Ci nie ufać, czemu miałbym spróbować?</summary><p>Odpowiedź z obecnej strony.</p></details><details><summary>Co jeśli mi się nie podoba?</summary><p>Odpowiedź z obecnej strony.</p></details><details><summary>Kiedy płacę?</summary><p>Odpowiedź z obecnej strony.</p></details><details><summary>Jakie są koszty utrzymania?</summary><p>Odpowiedź z obecnej strony.</p></details><details><summary>Na ile czasu się wiążemy?</summary><p>Odpowiedź z obecnej strony.</p></details><details><summary>Mam stronę www, czy możemy ją odświeżyć?</summary><p>Odpowiedź z obecnej strony.</p></details></div><aside class="note"><b>Dobra praktyka:</b> FAQ to ostatnie obiekcje przed przyciskiem. Pytania brzmią jak myśli klienta, odpowiedzi 1–3 zdania.</aside></div></section><section class="s"><div class="w"><div class="c final"><p class="k">Decyzja</p><h2>Działamy czy znów odkładasz na kiedyś?</h2><p class="sub">Opisz firmę w 2 minuty. Sprawdzę rynek i konkurencję i odpowiem osobiście.</p><div class="cta"><a href="#" class="btn" data-go="zapytanie">Działajmy →</a><span class="micro">Gotowe zwykle w 7–14 dni · płacisz dopiero po podglądzie · ceny netto</span></div></div><aside class="note"><b>Dobra praktyka:</b> Ten sam przycisk co w hero: jedna etykieta, jeden kolor, jedno działanie. Na telefonie przycisk przyklejony na dole ekranu.</aside></div></section><footer class="w"><span>Bartosz · kontakt@dzialajmy.online</span><a href="#">Polityka prywatności</a></footer></div><div class="screen" id="vB" hidden><header class="top w"><b class="logo">działajmy.online</b><span class="k">Przyjmuję zlecenia</span></header><section class="hero"><div class="w center">
+<div class="thoughts"><p>„Muszę wreszcie zrobić stronę.”</p><p>„Zrobię po sezonie.”</p><p>„Teraz nie mam głowy.”</p><p>„Dokończę jutro.”</p></div>
+<h1 style="margin-top:28px">Brzmi znajomo? <u>To już kolejny rok bez strony.</u></h1>
+<p class="sub" style="margin:16px auto 0">Zrobię ją za Ciebie: zbiorę informacje, napiszę teksty, wykonam stronę. Ty tylko mówisz „działajmy”.</p>
+<div class="cta" style="justify-content:center"><a href="#" class="btn" data-go="zapytanie">Działajmy →</a></div><p class="micro">7–14 dni · płacisz po podglądzie · od 1 300 zł netto</p></div>
+<div class="w"><aside class="note"><b>Dobra praktyka:</b> Zatrzymanie w 3 sekundy: klient ma zobaczyć <b>własne myśli</b>, nie Twoją usługę. „Lustro” działa, bo czytelnik rozpoznaje siebie, zanim zdąży przewinąć. Zdjęcia dopiero niżej, gdy już się zatrzymał.</aside></div></section><section class="s"><div class="w"><p class="k">Ile kosztuje „zrobię później”</p><h2>Pięć sytuacji, w których tracisz klienta, zanim zadzwoni</h2>
+<div class="g g2"><div class="c"><div class="ico"></div><h3>Klient z polecenia</h3><p>Wpisuje Twoją firmę w Google, a tam nic nie ma.</p><p class="pn">Dzwoni do kogoś, kto ma stronę.</p></div><div class="c"><div class="ico"></div><h3>Szukanie w Google</h3><p>Konkurencja jest widoczna online, a Ciebie nie ma.</p><p class="pn">Klient nawet nie wie, że istniejesz.</p></div><div class="c"><div class="ico"></div><h3>Masz tylko Facebooka</h3><p>Post sprzed pół roku. Wygląda, jakby firma nie działała.</p><p class="pn">Wybiera firmę, która wygląda poważniej.</p></div><div class="c"><div class="ico"></div><h3>Strona sprzed lat</h3><p>Na telefonie nic się nie da kliknąć.</p><p class="pn">Wraca do Google i klika następny wynik.</p></div><div class="c span2"><div class="ico"></div><h3>Prośba o ofertę</h3><p>Znów nie wiesz, co wysłać. Sklejasz coś w pośpiechu.</p><p class="pn">Klient wybiera kogoś, kto wysłał link.</p></div></div>
+<aside class="note"><b>Dobra praktyka:</b> Problemy klienta jego językiem, nie Twoje usługi. Każda karta kończy się konsekwencją, bo to ją klient czuje.</aside></div></section><section class="s"><div class="w split rev"><div class="ph" style="aspect-ratio:4/5"><span>ZDJĘCIE 2: Ty przy pracy (biurko, laptop), naturalne światło</span></div>
+<div><p class="k">Kto to robi</p><h2>Cześć, jestem Bartosz</h2><p class="sub">Krótko: kim jesteś, od kiedy to robisz (12 lat), dlaczego działajmy.online i dla kogo. 3–4 zdania, pierwsza osoba, bez korporacyjnego języka.</p><div class="cta"><a href="#" class="btn" data-go="zapytanie">Działajmy →</a></div></div></div>
+<div class="w"><aside class="note"><b>Dobra praktyka:</b> Przy usłudze robionej przez jedną osobę twarz to najmocniejszy dowód zaufania. Prawdziwe zdjęcie, nie stock. Ten sam człowiek na zdjęciu co w hero.</aside></div></section><section class="s" id="portfolio"><div class="w"><p class="k">Realizacje</p><h2>Strony, które już pracują dla klientów</h2><p class="sub">Wybrane realizacje: jaki był problem i co się zmieniło.</p>
+<div class="g g3"><div class="c pf"><div class="ph" style="aspect-ratio:16/10"><span>ZRZUT: strona na laptopie + telefonie</span></div><p class="k" style="margin-top:14px">Branża A</p><h3>Problem klienta</h3><p>Efekt: np. pierwsze zapytania z formularza w 2 tygodnie</p><a href="#" class="lnk">Zobacz stronę ↗</a></div><div class="c pf"><div class="ph" style="aspect-ratio:16/10"><span>ZRZUT: strona na laptopie + telefonie</span></div><p class="k" style="margin-top:14px">Branża B</p><h3>Problem klienta</h3><p>Efekt: np. klienci przestali pytać o cennik przez telefon</p><a href="#" class="lnk">Zobacz stronę ↗</a></div><div class="c pf"><div class="ph" style="aspect-ratio:16/10"><span>ZRZUT: strona na laptopie + telefonie</span></div><p class="k" style="margin-top:14px">Branża C</p><h3>Problem klienta</h3><p>Efekt: np. strona zamiast prezentacji przy ofertach</p><a href="#" class="lnk">Zobacz stronę ↗</a></div><div class="c pf"><div class="ph" style="aspect-ratio:16/10"><span>ZRZUT: strona na laptopie + telefonie</span></div><p class="k" style="margin-top:14px">Branża D</p><h3>Problem klienta</h3><p>Efekt</p><a href="#" class="lnk">Zobacz stronę ↗</a></div><div class="c pf"><div class="ph" style="aspect-ratio:16/10"><span>ZRZUT: strona na laptopie + telefonie</span></div><p class="k" style="margin-top:14px">Branża E</p><h3>Problem klienta</h3><p>Efekt</p><a href="#" class="lnk">Zobacz stronę ↗</a></div><div class="c pf"><div class="ph" style="aspect-ratio:16/10"><span>ZRZUT: strona na laptopie + telefonie</span></div><p class="k" style="margin-top:14px">Branża F</p><h3>Problem klienta</h3><p>Efekt</p><a href="#" class="lnk">Zobacz stronę ↗</a></div></div><aside class="note"><b>Dobra praktyka:</b> Pokaż 3 najlepsze, nie 20. Podpis to „problem → efekt”, nie „nowoczesna strona”. Zrzut w makiecie laptopa i telefonu. Link otwieraj w nowej karcie, żeby nie wypuścić klienta z lejka. Dopóki nie masz realizacji, tę sekcję ukrywamy (tak jak teraz).</aside></div></section><section class="s"><div class="w"><p class="k">Opinie</p><h2>Co mówią klienci</h2>
+<div class="g g3"><div class="c"><p class="quote">„Konkretny efekt własnymi słowami klienta, 1–2 zdania.”</p><div class="who"><div class="ph" style="aspect-ratio:1/1;width:48px;flex:none;border-radius:50%"><span>ZDJĘCIE klienta</span></div><div><b>Imię Nazwisko</b><br><span class="micro">Firma, miasto</span></div></div></div><div class="c"><p class="quote">„Konkretny efekt własnymi słowami klienta, 1–2 zdania.”</p><div class="who"><div class="ph" style="aspect-ratio:1/1;width:48px;flex:none;border-radius:50%"><span>ZDJĘCIE klienta</span></div><div><b>Imię Nazwisko</b><br><span class="micro">Firma, miasto</span></div></div></div><div class="c"><p class="quote">„Konkretny efekt własnymi słowami klienta, 1–2 zdania.”</p><div class="who"><div class="ph" style="aspect-ratio:1/1;width:48px;flex:none;border-radius:50%"><span>ZDJĘCIE klienta</span></div><div><b>Imię Nazwisko</b><br><span class="micro">Firma, miasto</span></div></div></div></div><aside class="note"><b>Dobra praktyka:</b> Tylko prawdziwe opinie, ze zdjęciem, imieniem i firmą. Najlepiej skopiowane z Google (gwiazdki budują zaufanie). Opinia z liczbą lub konkretem bije ogólne „polecam”.</aside></div></section><section class="s"><div class="w"><p class="k">Jak to działa</p><h2>Ty robisz jeden krok. Resztę robię ja.</h2>
+<div class="g g3"><div class="c"><span class="n">01</span><h3>Opisujesz firmę</h3><p>Formularz na 2 minuty.</p></div><div class="c"><span class="n">02</span><h3>Ja robię resztę</h3><p>Rynek, konkurencja, teksty, styl.</p></div><div class="c"><span class="n">03</span><h3>Strona działa</h3><p>Podgląd, 2–3 serie poprawek, online.</p></div></div><aside class="note"><b>Dobra praktyka:</b> Proces z czasem przy każdym kroku zmniejsza lęk przed „to się będzie ciągnąć”. Maksymalnie 3–4 kroki.</aside></div></section><section class="s" id="cennik"><div class="w"><p class="k">Cennik</p><h2>Dwie opcje. Bez drobnego druku.</h2><p class="sub">Wszystkie ceny netto.</p>
+<div class="g g2"><div class="c"><p class="k">Na dziś, na teraz</p><h3>Wizytówka one page</h3><p class="big">1 300 zł</p><ul><li>Jedna strona, wersja na telefon</li><li>Teksty piszę ja</li><li>Mapa, formularz, panel edycji</li></ul></div>
+<div class="c"><p class="k">Gdy firma rośnie</p><h3>Strona z zakładkami</h3><p class="big">od 3 500 zł</p><ul><li>Do 5 podstron i blog</li><li>Teksty, SEO, domena, poczta</li><li>Panel edycji, 3 serie poprawek</li><li>Dodatkowa podstrona 250 zł</li></ul></div></div>
+<div class="c" style="margin-top:16px"><div class="row"><span>To samo u 4 specjalistów (projektant, copywriter, SEO, informatyk)</span><b><s>4 650 zł</s> → od 3 500 zł</b></div></div>
+<div class="cta"><a href="#" class="btn" data-go="zapytanie">Działajmy →</a><span class="micro">Gotowe zwykle w 7–14 dni · płacisz dopiero po podglądzie · ceny netto</span></div><aside class="note"><b>Dobra praktyka:</b> Cena widoczna od razu odsiewa niepasujących i oszczędza Ci rozmów. Porównanie z 4 specjalistami to „kotwica”: ustawia punkt odniesienia wyżej niż Twoja cena.</aside></div></section><section class="s"><div class="w"><div class="c center"><div class="ico" style="margin:0 auto 16px"></div><h3>Zero ryzyka na start</h3><p>Pierwsza płatność dopiero, gdy zobaczysz podgląd strony. Poprawki w cenie, dopóki nie zaakceptujesz.</p></div><aside class="note"><b>Dobra praktyka:</b> Odwrócenie ryzyka tuż przed decyzją. Dla kogoś, kto odkłada, „co jeśli przepłacę za coś, co mi się nie spodoba” to główny hamulec.</aside></div></section><section class="s"><div class="w"><p class="k">FAQ</p><h2>Pytania, które słyszę najczęściej</h2><div class="faq"><details><summary>Ile czasu zajmie?</summary><p>Odpowiedź z obecnej strony.</p></details><details><summary>Mogę Ci nie ufać, czemu miałbym spróbować?</summary><p>Odpowiedź z obecnej strony.</p></details><details><summary>Co jeśli mi się nie podoba?</summary><p>Odpowiedź z obecnej strony.</p></details><details><summary>Kiedy płacę?</summary><p>Odpowiedź z obecnej strony.</p></details><details><summary>Jakie są koszty utrzymania?</summary><p>Odpowiedź z obecnej strony.</p></details><details><summary>Na ile czasu się wiążemy?</summary><p>Odpowiedź z obecnej strony.</p></details><details><summary>Mam stronę www, czy możemy ją odświeżyć?</summary><p>Odpowiedź z obecnej strony.</p></details></div><aside class="note"><b>Dobra praktyka:</b> FAQ to ostatnie obiekcje przed przyciskiem. Pytania brzmią jak myśli klienta, odpowiedzi 1–3 zdania.</aside></div></section><section class="s"><div class="w"><div class="c final"><p class="k">Decyzja</p><h2>Działamy czy znów odkładasz na kiedyś?</h2><p class="sub">Opisz firmę w 2 minuty. Sprawdzę rynek i konkurencję i odpowiem osobiście.</p><div class="cta"><a href="#" class="btn" data-go="zapytanie">Działajmy →</a><span class="micro">Gotowe zwykle w 7–14 dni · płacisz dopiero po podglądzie · ceny netto</span></div></div><aside class="note"><b>Dobra praktyka:</b> Ten sam przycisk co w hero: jedna etykieta, jeden kolor, jedno działanie. Na telefonie przycisk przyklejony na dole ekranu.</aside></div></section><footer class="w"><span>Bartosz · kontakt@dzialajmy.online</span><a href="#">Polityka prywatności</a></footer></div><div class="screen" id="vC" hidden><header class="top w"><b class="logo">działajmy.online</b><span class="k">Przyjmuję zlecenia</span></header><section class="hero"><div class="w split">
+<div><p class="k">Strony www dla firm, które nie mają czasu</p><h1>Chcesz stronę, <u>ale znów jej nie masz?</u></h1>
+<ul class="check"><li>Teksty i informacje zbieram ja</li><li>Gotowe zwykle w 7–14 dni</li><li>Płacisz dopiero po podglądzie</li><li>Od 1 300 zł netto</li></ul>
+<div class="who" style="margin-top:24px"><div class="ph" style="aspect-ratio:1/1;width:56px;flex:none;border-radius:50%"><span>ZDJĘCIE: Ty</span></div><span class="micro"><b>Bartosz</b>, odpowiadam osobiście</span></div></div>
+<div class="c"><p class="k">Krok 1 z 5</p><h3 style="margin:10px 0 14px">Czy prowadzisz zarejestrowaną firmę?</h3>
+<a href="#" class="opt" data-go="zapytanie">Tak, mam działającą firmę</a><a href="#" class="opt" data-go="zapytanie">Dopiero planuję założyć</a></div></div>
+<div class="w"><aside class="note"><b>Dobra praktyka:</b> Nagłówek nadal zaczyna się od problemu, żeby zatrzymać. Wariant „formularz od razu”: pierwszy krok formularza już w hero. Kliknięcie w odpowiedź to mikro-zobowiązanie, po którym łatwiej dokończyć. Najkrótsza droga do zapytania.</aside></div></section><div class="trust w"><span><b>12 lat</b> robienia stron</span><span><b>XX</b> oddanych stron</span><span><b>5,0 ★</b> w opiniach Google (XX)</span><span><b>7–14 dni</b> do gotowej strony</span></div><div class="w"><aside class="note"><b>Dobra praktyka:</b> Pasek zaufania tuż pod hero: liczby zamiast przymiotników. Wpisuj tylko prawdziwe, sprawdzalne dane.</aside></div><section class="s gray"><div class="w"><p class="k">Znasz to uczucie?</p><h2>Chcesz, ale znów nie masz. Bo zawsze jest jakiś powód.</h2><p class="sub">Każdy z nich biorę na siebie.</p>
+<ul class="ex"><li><q>Nie mam czasu</q><span>2 minuty na formularz. Resztę zbieram ja.</span></li><li><q>Nie wiem, co napisać</q><span>Teksty piszę za Ciebie.</span></li><li><q>Za drogo</q><span>Wizytówka 1 300 zł netto.</span></li><li><q>Będzie się ciągnąć</q><span>Zwykle 7–14 dni.</span></li><li><q>A jak mi się nie spodoba?</q><span>Płacisz dopiero po podglądzie.</span></li><li><q>Zrobię po sezonie</q><span>W tym czasie klienci wybierają konkurencję.</span></li></ul>
+<div class="cta"><a href="#" class="btn" data-go="zapytanie">Działajmy →</a></div><aside class="note"><b>Dobra praktyka:</b> Obiekcje rozbrajane jedna po drugiej. Po tej sekcji klient nie ma już wymówki, więc od razu dostaje przycisk.</aside></div></section><section class="s" id="portfolio"><div class="w"><p class="k">Realizacje</p><h2>Strony, które już pracują dla klientów</h2><p class="sub">Wybrane realizacje: jaki był problem i co się zmieniło.</p>
+<div class="g g2"><div class="c"><div class="ba"><div class="ph" style="aspect-ratio:4/3"><span>PRZED: zrzut starej strony / FB</span></div><div class="ph" style="aspect-ratio:4/3"><span>PO: nowa strona</span></div></div><h3>Branża A</h3><p>Problem klienta → <b>Efekt: np. pierwsze zapytania z formularza w 2 tygodnie</b></p></div><div class="c"><div class="ba"><div class="ph" style="aspect-ratio:4/3"><span>PRZED: zrzut starej strony / FB</span></div><div class="ph" style="aspect-ratio:4/3"><span>PO: nowa strona</span></div></div><h3>Branża B</h3><p>Problem klienta → <b>Efekt: np. klienci przestali pytać o cennik przez telefon</b></p></div></div><aside class="note"><b>Dobra praktyka:</b> Pokaż 3 najlepsze, nie 20. Podpis to „problem → efekt”, nie „nowoczesna strona”. Zrzut w makiecie laptopa i telefonu. Link otwieraj w nowej karcie, żeby nie wypuścić klienta z lejka. Dopóki nie masz realizacji, tę sekcję ukrywamy (tak jak teraz).</aside></div></section><section class="s"><div class="w"><p class="k">Jak to działa</p><h2>Ty robisz jeden krok. Resztę robię ja.</h2>
+<div class="g g3"><div class="c"><span class="n">01</span><h3>Opisujesz firmę</h3><p>Formularz na 2 minuty.</p></div><div class="c"><span class="n">02</span><h3>Ja robię resztę</h3><p>Rynek, konkurencja, teksty, styl.</p></div><div class="c"><span class="n">03</span><h3>Strona działa</h3><p>Podgląd, 2–3 serie poprawek, online.</p></div></div><aside class="note"><b>Dobra praktyka:</b> Proces z czasem przy każdym kroku zmniejsza lęk przed „to się będzie ciągnąć”. Maksymalnie 3–4 kroki.</aside></div></section><section class="s" id="cennik"><div class="w"><p class="k">Cennik</p><h2>Dwie opcje. Bez drobnego druku.</h2><p class="sub">Wszystkie ceny netto.</p>
+<div class="g g2"><div class="c"><p class="k">Na dziś, na teraz</p><h3>Wizytówka one page</h3><p class="big">1 300 zł</p><ul><li>Jedna strona, wersja na telefon</li><li>Teksty piszę ja</li><li>Mapa, formularz, panel edycji</li></ul></div>
+<div class="c"><p class="k">Gdy firma rośnie</p><h3>Strona z zakładkami</h3><p class="big">od 3 500 zł</p><ul><li>Do 5 podstron i blog</li><li>Teksty, SEO, domena, poczta</li><li>Panel edycji, 3 serie poprawek</li><li>Dodatkowa podstrona 250 zł</li></ul></div></div>
+<div class="c" style="margin-top:16px"><div class="row"><span>To samo u 4 specjalistów (projektant, copywriter, SEO, informatyk)</span><b><s>4 650 zł</s> → od 3 500 zł</b></div></div>
+<div class="cta"><a href="#" class="btn" data-go="zapytanie">Działajmy →</a><span class="micro">Gotowe zwykle w 7–14 dni · płacisz dopiero po podglądzie · ceny netto</span></div><aside class="note"><b>Dobra praktyka:</b> Cena widoczna od razu odsiewa niepasujących i oszczędza Ci rozmów. Porównanie z 4 specjalistami to „kotwica”: ustawia punkt odniesienia wyżej niż Twoja cena.</aside></div></section><section class="s"><div class="w"><div class="c center"><div class="ico" style="margin:0 auto 16px"></div><h3>Zero ryzyka na start</h3><p>Pierwsza płatność dopiero, gdy zobaczysz podgląd strony. Poprawki w cenie, dopóki nie zaakceptujesz.</p></div><aside class="note"><b>Dobra praktyka:</b> Odwrócenie ryzyka tuż przed decyzją. Dla kogoś, kto odkłada, „co jeśli przepłacę za coś, co mi się nie spodoba” to główny hamulec.</aside></div></section><section class="s"><div class="w"><p class="k">Opinie</p><h2>Co mówią klienci</h2>
+<div class="g g3"><div class="c"><p class="quote">„Konkretny efekt własnymi słowami klienta, 1–2 zdania.”</p><div class="who"><div class="ph" style="aspect-ratio:1/1;width:48px;flex:none;border-radius:50%"><span>ZDJĘCIE klienta</span></div><div><b>Imię Nazwisko</b><br><span class="micro">Firma, miasto</span></div></div></div><div class="c"><p class="quote">„Konkretny efekt własnymi słowami klienta, 1–2 zdania.”</p><div class="who"><div class="ph" style="aspect-ratio:1/1;width:48px;flex:none;border-radius:50%"><span>ZDJĘCIE klienta</span></div><div><b>Imię Nazwisko</b><br><span class="micro">Firma, miasto</span></div></div></div><div class="c"><p class="quote">„Konkretny efekt własnymi słowami klienta, 1–2 zdania.”</p><div class="who"><div class="ph" style="aspect-ratio:1/1;width:48px;flex:none;border-radius:50%"><span>ZDJĘCIE klienta</span></div><div><b>Imię Nazwisko</b><br><span class="micro">Firma, miasto</span></div></div></div></div><aside class="note"><b>Dobra praktyka:</b> Tylko prawdziwe opinie, ze zdjęciem, imieniem i firmą. Najlepiej skopiowane z Google (gwiazdki budują zaufanie). Opinia z liczbą lub konkretem bije ogólne „polecam”.</aside></div></section><section class="s"><div class="w"><p class="k">FAQ</p><h2>Pytania, które słyszę najczęściej</h2><div class="faq"><details><summary>Ile czasu zajmie?</summary><p>Odpowiedź z obecnej strony.</p></details><details><summary>Mogę Ci nie ufać, czemu miałbym spróbować?</summary><p>Odpowiedź z obecnej strony.</p></details><details><summary>Co jeśli mi się nie podoba?</summary><p>Odpowiedź z obecnej strony.</p></details><details><summary>Kiedy płacę?</summary><p>Odpowiedź z obecnej strony.</p></details><details><summary>Jakie są koszty utrzymania?</summary><p>Odpowiedź z obecnej strony.</p></details><details><summary>Na ile czasu się wiążemy?</summary><p>Odpowiedź z obecnej strony.</p></details><details><summary>Mam stronę www, czy możemy ją odświeżyć?</summary><p>Odpowiedź z obecnej strony.</p></details></div><aside class="note"><b>Dobra praktyka:</b> FAQ to ostatnie obiekcje przed przyciskiem. Pytania brzmią jak myśli klienta, odpowiedzi 1–3 zdania.</aside></div></section><section class="s"><div class="w"><div class="c final"><p class="k">Decyzja</p><h2>Działamy czy znów odkładasz na kiedyś?</h2><p class="sub">Opisz firmę w 2 minuty. Sprawdzę rynek i konkurencję i odpowiem osobiście.</p><div class="cta"><a href="#" class="btn" data-go="zapytanie">Działajmy →</a><span class="micro">Gotowe zwykle w 7–14 dni · płacisz dopiero po podglądzie · ceny netto</span></div></div><aside class="note"><b>Dobra praktyka:</b> Ten sam przycisk co w hero: jedna etykieta, jeden kolor, jedno działanie. Na telefonie przycisk przyklejony na dole ekranu.</aside></div></section><footer class="w"><span>Bartosz · kontakt@dzialajmy.online</span><a href="#">Polityka prywatności</a></footer></div><div class="screen" id="vF" hidden><header class="top w"><b class="logo">działajmy.online</b><span class="k">Przyjmuję zlecenia</span></header><section class="s" style="padding-top:24px"><div class="w"><div class="center" style="margin-bottom:28px"><p class="k">Zapytanie</p><h2>Zacznijmy od Twojej firmy</h2><p class="sub">Trzy krótkie pytania i opis firmy własnymi słowami.</p></div>
+<div class="q-card">
+        <form id="q-form" novalidate>
+          <div class="q-head">
+            <span class="q-count">Krok <b id="q-n">1</b> z 5</span>
+            <span class="q-bar"><i id="q-bar"></i></span>
+          </div>
+
+          <fieldset class="q-step" data-step="1">
+            <legend>Czy prowadzisz zarejestrowaną firmę lub działalność?</legend>
+            <button type="button" class="q-opt" data-k="firma" data-v="Tak, mam działającą firmę">Tak, mam działającą firmę</button>
+            <button type="button" class="q-opt" data-k="firma" data-v="Dopiero planuję założyć">Dopiero planuję założyć</button>
+          </fieldset>
+
+          <fieldset class="q-step" data-step="2" hidden>
+            <button type="button" class="q-back">← Wstecz</button>
+            <legend>Jaki jest Twój główny cel z nową stroną?</legend>
+            <button type="button" class="q-opt" data-k="cel" data-v="Chcę, żeby lokalni klienci dzwonili i zamawiali usługi">Chcę, żeby lokalni klienci do mnie dzwonili i zamawiali usługi</button>
+            <button type="button" class="q-opt" data-k="cel" data-v="Chcę po prostu mieć stronę, jak najtaniej" data-warn="w-cel">Chcę po prostu mieć stronę, jak najtaniej</button>
+            <div class="q-warn" id="w-cel" hidden>
+              <p>Moja główna oferta jest dla firm, które chcą zdobywać klientów przez stronę. Jeśli potrzebujesz po prostu być w sieci, na start wystarczy wizytówka one page za 1 300 zł netto.</p>
+              <button type="button" class="q-next">Dalej mimo to →</button>
+            </div>
+          </fieldset>
+
+          <fieldset class="q-step" data-step="3" hidden>
+            <button type="button" class="q-back">← Wstecz</button>
+            <legend>Jaki budżet masz na stronę?</legend>
+            <button type="button" class="q-opt" data-k="budzet" data-v="Od 3 500 zł netto, strona z zakładkami">Od 3 500 zł netto, mam środki i chcę zacząć</button>
+            <button type="button" class="q-opt" data-k="budzet" data-v="Mam budżet, ale najpierw chcę porozmawiać">Mam budżet, ale najpierw chcę porozmawiać</button>
+            <button type="button" class="q-opt" data-k="budzet" data-v="Wizytówka za 1 300 zł netto">Na start wizytówka za 1 300 zł netto</button>
+            <button type="button" class="q-opt" data-k="budzet" data-v="Szukam darmowych rozwiązań" data-warn="w-budzet">Szukam darmowych rozwiązań</button>
+            <div class="q-warn" id="w-budzet" hidden>
+              <p>Za darmo nie działam i nie przygotowuję darmowych projektów na zapytanie. Raz na jakiś czas robię jedną stronę w ramach akcji <a href="#">Silny lokalnie</a>.</p>
+              <button type="button" class="q-next">Dalej mimo to →</button>
+            </div>
+          </fieldset>
+
+          <fieldset class="q-step" data-step="4" hidden>
+            <button type="button" class="q-back">← Wstecz</button>
+            <legend>Opisz swój biznes własnymi słowami</legend>
+            <label class="q-lbl" for="q-opis">Czym się zajmujesz, gdzie działasz, kim są Twoi klienci, kto jest Twoją konkurencją? *</label>
+            <textarea id="q-opis" name="opis" rows="6" required minlength="20" placeholder="Np. Salon fryzjerski w Tarnowie, 2 stanowiska. Klientki głównie 25–50 lat. Konkurencja: dwa salony na rynku, oba mają strony. Chcę więcej zapisów bez telefonu w trakcie strzyżenia."></textarea>
+            <label class="q-lbl" for="q-link">Masz już stronę albo profil? Wklej link</label>
+            <input id="q-link" name="link" type="text" placeholder="np. facebook.com/twojafirma">
+            <button type="button" class="btn btn-blue q-go">Dalej<span class="arw">→</span></button>
+          </fieldset>
+
+          <fieldset class="q-step" data-step="5" hidden>
+            <button type="button" class="q-back">← Wstecz</button>
+            <legend>Zostaw kontakt, a odezwę się z konkretem</legend>
+            <label class="q-lbl" for="q-imie">Imię i nazwisko *</label>
+            <input id="q-imie" name="imie" type="text" required autocomplete="name" placeholder="Jan Kowalski">
+            <label class="q-lbl" for="q-tel">Numer telefonu *</label>
+            <input id="q-tel" name="tel" type="tel" required autocomplete="tel" placeholder="+48 500 000 000">
+            <label class="q-lbl" for="q-mail">Adres e-mail *</label>
+            <input id="q-mail" name="mail" type="email" required autocomplete="email" placeholder="jan@kowalski.pl">
+            <input type="text" name="firma_hp" class="q-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <label class="q-check"><input type="checkbox" name="zgoda" required> <span>Wyrażam zgodę na przetwarzanie moich danych w celu odpowiedzi na zapytanie, zgodnie z <a href="#">polityką prywatności</a>. *</span></label>
+            <button type="submit" class="btn btn-blue q-go">Wyślij zapytanie<span class="arw">→</span></button>
+            <p class="q-note" id="q-note">Bez zobowiązań. Odpowiadam osobiście.</p>
+          </fieldset>
+        </form>
+
+        <div class="q-thanks" id="q-thanks" hidden>
+          <span class="label">Dostałem</span>
+          <h3>Dzięki, biorę się za research</h3>
+          <p>Sprawdzam Twoją branżę i konkurencję w okolicy, oceniam sytuację i odezwę się osobiście z konkretną odpowiedzią.</p>
+        </div>
+      </div></div><div class="w"><aside class="note"><b>Dobra praktyka:</b> Osobna strona formularza bez menu i stopki z linkami: zero rozpraszaczy. Pasek postępu i jedno pytanie na ekran zmniejszają porzucenia.</aside></div></section><footer class="w"><span>Bartosz · kontakt@dzialajmy.online</span><a href="#">Polityka prywatności</a></footer></div>
+<div class="mob"><a href="#" class="btn" data-go="zapytanie">Działajmy →</a></div>
+<script>
+window.fetch=function(){return Promise.resolve({ok:true})};
+var D={'A': 'Najpierw ból klienta i wymówki, potem dowody i cena. Najbliżej obecnej wersji.', 'B': 'Hero to myśli klienta, w których się rozpoznaje. Potem problemy, Ty, realizacje i opinie.', 'C': 'Pierwszy krok formularza w hero. Najkrótsza ścieżka do zapytania, mniej czytania.'};D.F='Wspólny formularz dla wszystkich wersji. Niczego nie wysyła.';
+var last='A';
+function show(v){['A','B','C','F'].forEach(function(k){document.getElementById('v'+k).hidden=k!==v});
+document.querySelectorAll('.bar [data-variant]').forEach(function(b){b.classList.toggle('on',b.dataset.variant===v)});
+document.getElementById('vd').textContent=D[v];if(v!=='F')last=v;window.scrollTo(0,0)}
+document.addEventListener('click',function(e){var b=e.target.closest('[data-variant]');if(b){show(b.dataset.variant);return}
+var g=e.target.closest('[data-go]');if(g){e.preventDefault();show('F')}
+if(e.target.closest('a[href="#"]')&&!g)e.preventDefault()});
+document.getElementById('tn').onclick=function(){var h=document.body.classList.toggle('no-notes');this.textContent=h?'Pokaż notatki':'Ukryj notatki'};
+</script>
+  <script>
+  (function(){
+    var LEAD_EMAIL = 'kontakt@dzialajmy.online';
+    var form = document.getElementById('q-form');
+    if (!form) return;
+    var steps = form.querySelectorAll('.q-step');
+    var total = steps.length, cur = 1, odp = {};
+
+    function show(n){
+      cur = n;
+      steps.forEach(function(s){ s.hidden = +s.dataset.step !== n; });
+      document.getElementById('q-n').textContent = n;
+      document.getElementById('q-bar').style.width = (n / total * 100) + '%';
+      var first = steps[n-1].querySelector('legend');
+      if (first) { first.setAttribute('tabindex','-1'); first.focus({preventScroll:true}); }
+    }
+
+    form.addEventListener('click', function(e){
+      var t = e.target.closest('button');
+      if (!t) return;
+      var step = t.closest('.q-step');
+      if (t.classList.contains('q-opt')) {
+        odp[t.dataset.k] = t.dataset.v;
+        step.querySelectorAll('.q-opt').forEach(function(b){ b.classList.toggle('on', b === t); });
+        step.querySelectorAll('.q-warn').forEach(function(w){ w.hidden = true; });
+        if (t.dataset.warn) { document.getElementById(t.dataset.warn).hidden = false; return; }
+        show(cur + 1);
+      } else if (t.classList.contains('q-next')) {
+        show(cur + 1);
+      } else if (t.classList.contains('q-back')) {
+        show(cur - 1);
+      } else if (t.classList.contains('q-go') && t.type === 'button') {
+        var opis = form.opis;
+        if (!opis.checkValidity()) { opis.reportValidity(); return; }
+        show(cur + 1);
+      }
+    });
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      if (form.firma_hp.value) return; // honeypot
+      var pola = [form.imie, form.tel, form.mail, form.zgoda];
+      for (var i = 0; i < pola.length; i++) if (!pola[i].checkValidity()) { pola[i].reportValidity(); return; }
+
+      var tresc =
+        'Firma: ' + (odp.firma || '-') + '\n' +
+        'Cel: ' + (odp.cel || '-') + '\n' +
+        'Budżet: ' + (odp.budzet || '-') + '\n\n' +
+        'OPIS BIZNESU:\n' + form.opis.value + '\n\n' +
+        (form.link.value ? 'Link: ' + form.link.value + '\n' : '') +
+        'Imię i nazwisko: ' + form.imie.value + '\n' +
+        'Telefon: ' + form.tel.value + '\n' +
+        'E-mail: ' + form.mail.value;
+      var subject = 'Zapytanie ze strony: ' + form.imie.value;
+      var note = document.getElementById('q-note');
+
+      fetch('https://formsubmit.co/ajax/' + LEAD_EMAIL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          _subject: subject,
+          _replyto: form.mail.value,
+          imie_nazwisko: form.imie.value,
+          telefon: form.tel.value,
+          email: form.mail.value,
+          firma: odp.firma || '',
+          cel: odp.cel || '',
+          budzet: odp.budzet || '',
+          link: form.link.value,
+          opis_biznesu: form.opis.value
+        })
+      }).then(function(res){
+        if (!res.ok) throw new Error('send failed');
+        form.hidden = true;
+        document.getElementById('q-thanks').hidden = false;
+      }).catch(function(){
+        window.location.href = 'mailto:' + LEAD_EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(tresc);
+        note.textContent = 'Nie udało się wysłać automatycznie, otwieram maila, wyślij, żebym to dostał.';
+      });
+    });
+  })();
+  </script>
+</body></html>
