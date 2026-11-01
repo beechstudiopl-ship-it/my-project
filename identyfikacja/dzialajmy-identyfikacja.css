@@ -1,0 +1,65 @@
+/* działajmy.online — identyfikacja do wklejenia na stronę
+   Wersja 1 · baza: Bricolage Grotesque + Onest, akcent: Pixelify Sans (tylko logo)
+   Użycie: <link rel="stylesheet" href="dzialajmy-identyfikacja.css"> + fonty z Google (patrz README). */
+
+:root {
+  /* kolory */
+  --dz-bg: #F3F4F1;          /* tło strony */
+  --dz-surface: #FFFFFF;     /* karty, moduły */
+  --dz-ink: #132A22;         /* tekst, ciemna zieleń */
+  --dz-muted: #5D6B65;       /* tekst drugorzędny */
+  --dz-line: #E2E6E0;        /* linie, obrysy kart */
+  --dz-lime: #E3FF3D;        /* przycisk, zakreślenia */
+  --dz-blue: #3B5EF6;        /* ".online", kursor, pasy u góry i na dole */
+  --dz-orange: #FF5A1F;      /* tylko w pasie bloków */
+  /* fonty */
+  --dz-display: 'Bricolage Grotesque', 'Onest', system-ui, sans-serif;
+  --dz-text: 'Onest', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --dz-pixel: 'Pixelify Sans', 'Courier New', monospace;
+  /* kształt */
+  --dz-radius: 4px;          /* jedno zaokrąglenie dla wszystkiego */
+  --dz-u: 24px;              /* jednostka pikseli w pasach */
+}
+@media (max-width: 640px) { :root { --dz-u: 16px; } }
+
+/* ---------- LOGO z kursorem Commodore ----------
+   <a class="dz-logo" href="/" aria-label="działajmy.online">działajmy<b>.online</b><i></i></a> */
+.dz-logo { font-family: var(--dz-pixel); font-weight: 700; font-size: 24px; line-height: 1; color: var(--dz-ink);
+  display: inline-flex; align-items: center; text-decoration: none; white-space: nowrap; }
+.dz-logo b { font-weight: inherit; color: var(--dz-blue); }
+.dz-logo i { display: inline-block; width: .5em; height: .78em; margin-left: .12em; background: var(--dz-blue);
+  animation: dz-blink 1.06s steps(1) infinite; }
+.dz-logo--lg { font-size: 32px; }
+@keyframes dz-blink { 50% { opacity: 0; } }
+@media (max-width: 640px) { .dz-logo { font-size: 20px; } .dz-logo--lg { font-size: 24px; } }
+
+/* ---------- PRZYCISK (jeden w całym serwisie) ----------
+   <a class="dz-btn" href="#zapytanie">Działajmy, odhaczamy to <span class="dz-arrow" aria-hidden="true"></span></a> */
+.dz-btn { display: inline-flex; align-items: center; gap: 10px; padding: 18px 28px; border: 0; border-radius: var(--dz-radius);
+  background: var(--dz-lime); color: var(--dz-ink); font: 700 17px/1 var(--dz-text); text-decoration: none; cursor: pointer; }
+.dz-btn:hover { background: #D6F52B; }
+.dz-btn:focus-visible { outline: 2px solid var(--dz-ink); outline-offset: 3px; }
+.dz-arrow { display: inline-block; width: 24px; height: 22px; background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2012%2011%22%20shape-rendering%3D%22crispEdges%22%3E%3Crect%20x%3D%226%22%20y%3D%220%22%20width%3D%221%22%20height%3D%221%22%20fill%3D%22%23132a22%22/%3E%3Crect%20x%3D%226%22%20y%3D%221%22%20width%3D%222%22%20height%3D%221%22%20fill%3D%22%23132a22%22/%3E%3Crect%20x%3D%226%22%20y%3D%222%22%20width%3D%223%22%20height%3D%221%22%20fill%3D%22%23132a22%22/%3E%3Crect%20x%3D%226%22%20y%3D%223%22%20width%3D%224%22%20height%3D%221%22%20fill%3D%22%23132a22%22/%3E%3Crect%20x%3D%220%22%20y%3D%224%22%20width%3D%2211%22%20height%3D%221%22%20fill%3D%22%23132a22%22/%3E%3Crect%20x%3D%220%22%20y%3D%225%22%20width%3D%2212%22%20height%3D%221%22%20fill%3D%22%23132a22%22/%3E%3Crect%20x%3D%220%22%20y%3D%226%22%20width%3D%2211%22%20height%3D%221%22%20fill%3D%22%23132a22%22/%3E%3Crect%20x%3D%226%22%20y%3D%227%22%20width%3D%224%22%20height%3D%221%22%20fill%3D%22%23132a22%22/%3E%3Crect%20x%3D%226%22%20y%3D%228%22%20width%3D%223%22%20height%3D%221%22%20fill%3D%22%23132a22%22/%3E%3Crect%20x%3D%226%22%20y%3D%229%22%20width%3D%222%22%20height%3D%221%22%20fill%3D%22%23132a22%22/%3E%3Crect%20x%3D%226%22%20y%3D%2210%22%20width%3D%221%22%20height%3D%221%22%20fill%3D%22%23132a22%22/%3E%3C/svg%3E") no-repeat center / contain; image-rendering: pixelated; }
+
+/* ---------- PASY u góry i na dole strony ----------
+   <div class="dz-bar" aria-hidden="true"></div>   — tuż po <body>
+   <div class="dz-bar dz-bar--bottom" aria-hidden="true"></div>   — tuż przed </body> */
+.dz-bar { height: calc(var(--dz-u) * 3); margin-bottom: calc(var(--dz-u) * -1); pointer-events: none;
+  background:
+    linear-gradient(var(--dz-blue), var(--dz-blue)) 0 0 / calc(100% - var(--dz-u)) var(--dz-u) no-repeat,
+    linear-gradient(var(--dz-blue), var(--dz-blue)) 0 var(--dz-u) / calc(100% - var(--dz-u) * 2) var(--dz-u) no-repeat,
+    linear-gradient(var(--dz-blue), var(--dz-blue)) calc(100% - var(--dz-u)) calc(var(--dz-u) * 2) / var(--dz-u) var(--dz-u) no-repeat; }
+.dz-bar--bottom { transform: scale(-1, -1); margin: calc(var(--dz-u) * -1) 0 0; }
+
+/* ---------- PAS BLOKÓW (jeden mocny akcent na stronę) ----------
+   Wklej SVG z pliku svg/bloki-pas.svg do <div class="dz-blocks" aria-hidden="true">…</div>
+   jako pierwsze dziecko ciemnego modułu. Moduł potrzebuje overflow:hidden i paddingu = --dz-pad. */
+.dz-blocks { --dz-pad: 56px; display: block; line-height: 0; margin: calc(var(--dz-pad) * -1) calc(var(--dz-pad) * -1) var(--dz-pad); }
+.dz-blocks svg { display: block; width: 100%; height: auto; }
+@media (max-width: 640px) { .dz-blocks { --dz-pad: 28px; } }
+
+/* ---------- WYRÓŻNIENIE w nagłówku ----------
+   <h1>To już kolejny rok <em class="dz-mark">bez strony www?</em></h1> */
+.dz-mark { font-style: normal; color: var(--dz-ink); background: linear-gradient(transparent 80%, var(--dz-lime) 80%, var(--dz-lime) 95%, transparent 95%); }
+
+@media (prefers-reduced-motion: reduce) { .dz-logo i { animation: none; } }
