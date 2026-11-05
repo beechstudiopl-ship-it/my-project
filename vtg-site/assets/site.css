@@ -190,3 +190,12 @@ a { color: var(--up); }
   .hero__in { padding-top: var(--space-24); padding-bottom: var(--space-16); }
   .hero__bg::before { background: linear-gradient(0deg, rgba(7,8,10,.95) 0%, rgba(7,8,10,.7) 50%, rgba(7,8,10,.2) 100%); }
 }
+
+/* ---- Revision 2: alternating dark / light sections ---- */
+.s, .facts { background: var(--surface-000); color: var(--ink); }
+.s--alt { background: var(--surface-100); }
+.facts { background: var(--surface-100); }
+[data-theme="light"] .vtg-service, [data-theme="light"] .aud, [data-theme="light"] .vtg-project { background: var(--surface-100); }
+.s[data-theme="light"]:not(.s--alt) + .s[data-theme="light"]:not(.s--alt) { border-top-color: var(--line); }
+[data-theme="light"] .makes li { color: var(--steel-mid); }
+[data-theme="dark"].s--alt { background: var(--surface-100); }
