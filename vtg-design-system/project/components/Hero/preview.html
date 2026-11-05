@@ -1,0 +1,19 @@
+<!-- @dsCard group="Layout" height=640 width=1200 subtitle="Hero ze zdjęciem z realizacji" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>preview</title>
+<style>body{margin:0} #root{box-sizing:border-box;}</style></head>
+<body>
+<div id="root"></div>
+<script>
+var V = window.VTG, h = React.createElement;
+ReactDOM.createRoot(document.getElementById('root')).render(h(V.Hero, {
+  title: 'One group. Every part of the lift.',
+  lead: 'Diagnostics, mechanical and electrical repairs, door systems, refurbishment and modernisation — for service firms, facilities managers and building owners.',
+  actions: h(React.Fragment, null, h(V.Button, {variant: 'primary', size: 'lg', icon: 'right'}, 'Request a quote'), h(V.Button, {variant: 'secondary', size: 'lg'}, 'Report a fault')),
+  image: '/_blob/c12ae2e88be4dce917dd8586da4a378c', imageAlt: 'Lift shaft with guide rails and ropes, looking up',
+  aside: h(V.FloorIndicator, {value: '01', label: 'Group website', direction: 'up'})
+}));
+</script>
+</body>
+</html>

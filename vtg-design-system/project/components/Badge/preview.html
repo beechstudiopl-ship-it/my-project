@@ -1,0 +1,18 @@
+<!-- @dsCard group="Actions" height=90 subtitle="Etykiety i statusy" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>preview</title>
+<style>body{margin:0} #root{box-sizing:border-box;padding:24px;display:flex;gap:8px;flex-wrap:wrap;}</style></head>
+<body>
+<div id="root"></div>
+<script>
+var V = window.VTG, h = React.createElement;
+ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null,
+  h(V.Badge, null, 'Traction'),
+  h(V.Badge, {tone: 'up'}, 'Door systems'),
+  h(V.Badge, {tone: 'down'}, 'Urgent'),
+  h(V.Badge, {tone: 'success'}, 'Completed'),
+  h(V.Badge, {tone: 'danger'}, 'Out of service')));
+</script>
+</body>
+</html>

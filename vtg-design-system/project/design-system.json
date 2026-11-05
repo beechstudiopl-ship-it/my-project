@@ -1,0 +1,147 @@
+{
+  "v": 3,
+  "assetGroups": {
+    "Aplikacje": {
+      "files": {
+        "vtg-applications.webp": {
+          "blob": "117b875fc67ddbb1973261f50a5b3433",
+          "name": "vtg-applications.webp",
+          "size": 207990,
+          "type": "image/webp"
+        }
+      },
+      "name": "Aplikacje",
+      "order": [
+        "vtg-applications.webp"
+      ],
+      "tile": "l"
+    },
+    "Logos": {
+      "files": {
+        "vtg-lockup-dark.png": {
+          "blob": "d736b95800d72ddc006d041e4164185f",
+          "name": "vtg-lockup-dark.png",
+          "size": 334461,
+          "type": "image/png"
+        },
+        "vtg-lockup-texture.png": {
+          "blob": "91e9204c23367d6b8b71c48c474977e8",
+          "name": "vtg-lockup-texture.png",
+          "size": 645859,
+          "type": "image/png"
+        },
+        "vtg-lockup-web.webp": {
+          "blob": "9ed492ce98c2733d3622c27d5ba19f91",
+          "name": "vtg-lockup-web.webp",
+          "size": 21576,
+          "type": "image/webp"
+        },
+        "vtg-mark-3d-a.png": {
+          "blob": "f6027a139c42f60a542b29a334682d4e",
+          "name": "vtg-mark-3d-a.png",
+          "size": 1561524,
+          "type": "image/png"
+        },
+        "vtg-mark-3d-b.png": {
+          "blob": "a2afc5d16d1479640b2a311e0c7c44bb",
+          "name": "vtg-mark-3d-b.png",
+          "size": 1576270,
+          "type": "image/png"
+        },
+        "vtg-mark-3d-c.png": {
+          "blob": "9a2cb211edd24b999b1a82ede6215faf",
+          "name": "vtg-mark-3d-c.png",
+          "size": 1980174,
+          "type": "image/png"
+        }
+      },
+      "name": "Logos",
+      "order": [
+        "vtg-lockup-web.webp",
+        "vtg-lockup-dark.png",
+        "vtg-lockup-texture.png",
+        "vtg-mark-3d-a.png",
+        "vtg-mark-3d-b.png",
+        "vtg-mark-3d-c.png"
+      ],
+      "tile": "l"
+    },
+    "Realizacje": {
+      "files": {
+        "hol-drzwi-przystankowe.webp": {
+          "blob": "27bb2450d321c9250546a3d2a3d79afc",
+          "name": "hol-drzwi-przystankowe.webp",
+          "size": 92596,
+          "type": "image/webp"
+        },
+        "podszybie-zderzaki.webp": {
+          "blob": "c4d5e404a03e93ea1a7750863310ebb6",
+          "name": "podszybie-zderzaki.webp",
+          "size": 179898,
+          "type": "image/webp"
+        },
+        "szyb-dach-kabiny.webp": {
+          "blob": "4a0f04651546a8dab26281ff77e858a7",
+          "name": "szyb-dach-kabiny.webp",
+          "size": 257038,
+          "type": "image/webp"
+        },
+        "szyb-prowadnice.webp": {
+          "blob": "c12ae2e88be4dce917dd8586da4a378c",
+          "name": "szyb-prowadnice.webp",
+          "size": 294060,
+          "type": "image/webp"
+        },
+        "zespol-napedowy-mrl.webp": {
+          "blob": "9281fa4bedd11bed330e7ec7d80bcaa1",
+          "name": "zespol-napedowy-mrl.webp",
+          "size": 169276,
+          "type": "image/webp"
+        }
+      },
+      "name": "Realizacje",
+      "order": [
+        "szyb-prowadnice.webp",
+        "zespol-napedowy-mrl.webp",
+        "hol-drzwi-przystankowe.webp",
+        "szyb-dach-kabiny.webp",
+        "podszybie-zderzaki.webp"
+      ],
+      "tile": "l"
+    }
+  },
+  "blobs": {},
+  "createdOnFiles": {
+    "at": "2026-11-03T16:24:43Z",
+    "v": 1
+  },
+  "docs": {
+    "readme": "project/README.md",
+    "sections": []
+  },
+  "groups": [
+    "Logos",
+    "Realizacje",
+    "Aplikacje"
+  ],
+  "lastChange": {
+    "by": "Claude",
+    "at": "2026-11-03T16:28:43Z",
+    "via": "Claude",
+    "note": "Usunięto nadtytuły z kreską nad nagłówkami; przyciski bez ściętych narożników."
+  },
+  "layout": "files",
+  "libraries": [
+    {
+      "name": "react",
+      "version": "18.3.1"
+    },
+    {
+      "name": "react-dom",
+      "version": "18.3.1"
+    }
+  ],
+  "namespace": "VTG",
+  "sections": {},
+  "title": "VTG"
+}

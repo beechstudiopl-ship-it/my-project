@@ -1,0 +1,16 @@
+<!-- @dsCard group="Portfolio" height=200 subtitle="Logo grupy + oznaczenie strony specjalistycznej" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>preview</title>
+<style>body{margin:0} #root{box-sizing:border-box;padding:24px;display:flex;flex-direction:column;gap:32px;}</style></head>
+<body>
+<div id="root"></div>
+<script>
+var V = window.VTG, h = React.createElement;
+ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null,
+  h(V.SiteMark, {logoSrc: '/_blob/9ed492ce98c2733d3622c27d5ba19f91'}),
+  h(V.SiteMark, {logoSrc: '/_blob/9ed492ce98c2733d3622c27d5ba19f91', num: '03', name: 'Lift door systems', sub: 'Car & landing door expertise'}),
+  h(V.SiteMark, {logoSrc: '/_blob/9ed492ce98c2733d3622c27d5ba19f91', num: '04', name: 'Electrical fault finding', sub: 'Electrical systems & diagnostics'})));
+</script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+Plansza zastosowań logotypu z dostarczonego PDF: wersje na metalu i czerni, oklejenie busa, wizytówki, kask i kurtka robocza. Materiał referencyjny — pokazuje, że marka żyje na czerni i stali; nie używać jako grafiki na stronie.

@@ -1,0 +1,16 @@
+<!-- @dsCard group="Content" height=560 width=1100 subtitle="Realizacje — prawdziwe zdjęcia" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>preview</title>
+<style>body{margin:0} #root{box-sizing:border-box;padding:24px;}</style></head>
+<body>
+<div id="root"></div>
+<script>
+var V = window.VTG, h = React.createElement;
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', {style: {display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 'var(--space-6)', alignItems: 'start'}},
+  h(V.ProjectCard, {tall: true, image: '/_blob/9281fa4bedd11bed330e7ec7d80bcaa1', imageAlt: 'Machine-room-less traction machine and controller in the shaft headroom', category: 'Mechanical', title: 'Traction machine overhaul', location: 'Commercial building · London'}),
+  h(V.ProjectCard, {image: '/_blob/27bb2450d321c9250546a3d2a3d79afc', imageAlt: 'Lobby with brushed stainless steel landing doors', category: 'Door systems', title: 'Landing door refurbishment', location: 'Office lobby · London'}),
+  h(V.ProjectCard, {image: '/_blob/c4d5e404a03e93ea1a7750863310ebb6', imageAlt: 'Refurbished lift pit with buffers', category: 'Modernisation', title: 'Pit refurbishment & buffers', location: 'Residential block · London'})));
+</script>
+</body>
+</html>

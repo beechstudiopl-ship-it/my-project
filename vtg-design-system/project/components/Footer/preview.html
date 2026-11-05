@@ -1,0 +1,22 @@
+<!-- @dsCard group="Layout" height=360 width=1200 subtitle="Stopka z linkami do pięciu stron" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>preview</title>
+<style>body{margin:0} #root{box-sizing:border-box;}</style></head>
+<body>
+<div id="root"></div>
+<script>
+var V = window.VTG, h = React.createElement;
+ReactDOM.createRoot(document.getElementById('root')).render(h(V.Footer, {
+  logoSrc: '/_blob/d736b95800d72ddc006d041e4164185f',
+  tagline: 'One group. Four specialist companies. Lift repair specialists in London.',
+  columns: [
+    {title: 'Group websites', links: [{label: 'The Vertical Transportation Group'}, {label: 'Mechanical lift repairs'}, {label: 'Lift door systems'}, {label: 'Electrical fault finding'}, {label: 'Modernisation & refurbishment'}]},
+    {title: 'Who we work with', links: [{label: 'Lift service firms'}, {label: 'Facilities managers'}, {label: 'Managing agents'}, {label: 'Building owners'}]},
+    {title: 'Contact', links: [{label: 'Report a fault'}, {label: 'Request a quote'}, {label: 'Careers'}]}
+  ],
+  legal: '© 2026 The Vertical Transportation Group · London'
+}));
+</script>
+</body>
+</html>

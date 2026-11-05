@@ -1,0 +1,17 @@
+<!-- @dsCard group="Content" height=420 width=1100 subtitle="Karty czterech specjalizacji" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>preview</title>
+<style>body{margin:0} #root{box-sizing:border-box;padding:24px;}</style></head>
+<body>
+<div id="root"></div>
+<script>
+var V = window.VTG, h = React.createElement;
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', {style: {display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 'var(--space-6)'}},
+  h(V.ServiceCard, {num: '02', icon: 'wrench', title: 'Mechanical lift repairs', subtitle: 'Traction & mechanical systems', items: ['Traction machines & motors', 'Brakes, bearings, gearboxes', 'Ropes, sheaves, guide shoes'], href: '#'}),
+  h(V.ServiceCard, {num: '03', icon: 'right', title: 'Lift door systems', subtitle: 'Car & landing door expertise', items: ['Operators & door motors', 'Locks, rollers, tracks', 'Hangers & refurbishment'], href: '#'}),
+  h(V.ServiceCard, {num: '04', icon: 'shield', title: 'Electrical fault finding', subtitle: 'Electrical systems & diagnostics', items: ['Controllers, drives, inverters', 'Sensors & safety circuits', 'Wiring & communication'], href: '#'}),
+  h(V.ServiceCard, {num: '05', icon: 'up', title: 'Modernisation', subtitle: 'Upgrade & improvement projects', items: ['Control system upgrades', 'Obsolete component replacement', 'Car refurbishment'], href: '#'})));
+</script>
+</body>
+</html>

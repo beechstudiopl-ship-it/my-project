@@ -1,0 +1,16 @@
+<!-- @dsCard group="Forms" height=460 subtitle="Pola formularza zgłoszenia" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>preview</title>
+<style>body{margin:0} #root{box-sizing:border-box;padding:24px;display:grid;gap:20px;max-width:520px;}</style></head>
+<body>
+<div id="root"></div>
+<script>
+var V = window.VTG, h = React.createElement;
+ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null,
+  h(V.Field, {label: 'Building address', placeholder: 'Street, postcode'}),
+  h(V.Field, {label: 'Email', type: 'email', defaultValue: 'facilities@', error: 'Enter a full email address'}),
+  h(V.Field, {label: 'Describe the fault', multiline: true, optional: true, hint: 'Lift make, symptoms, error codes if visible.'})));
+</script>
+</body>
+</html>

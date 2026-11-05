@@ -1,0 +1,89 @@
+/* VTG — generated from tokens.json */
+:root, [data-theme="dark"] {
+  --surface-000: #07080a;
+  --surface-100: #0f1115;
+  --surface-200: #171a1f;
+  --surface-300: #22262d;
+  --line: #2a2e35;
+  --line-strong: #6b717b;
+  --ink: #eceef1;
+  --ink-muted: #a4a9b1;
+  --ink-faint: #80868f;
+  --steel-hi: #f2f1f3;
+  --steel-mid: #afaeae;
+  --steel-lo: #5d5f65;
+  --up: #3d9bff;
+  --up-fill: #0a6fe0;
+  --on-up: #ffffff;
+  --up-glow: #62dafe;
+  --down: #f0ac2e;
+  --down-fill: #e0a027;
+  --on-down: #07080a;
+  --focus: #62b8ff;
+  --success: #4cc98a;
+  --danger: #ff6b5e;
+  --shadow-card: 0 1px 0 rgba(255,255,255,0.05) inset, 0 16px 40px rgba(0,0,0,0.45);
+  --glow-up: 0 0 0 1px rgba(98,218,254,0.35), 0 8px 28px rgba(10,111,224,0.45);
+  --glow-down: 0 0 0 1px rgba(251,211,102,0.35), 0 8px 28px rgba(224,160,39,0.4);
+}
+[data-theme="light"] {
+  --surface-000: #ffffff;
+  --surface-100: #f4f5f7;
+  --surface-200: #e9ebee;
+  --surface-300: #dde0e4;
+  --line: #d3d7dc;
+  --line-strong: #757b84;
+  --ink: #111318;
+  --ink-muted: #4b515a;
+  --ink-faint: #646a73;
+  --steel-hi: #5d5f65;
+  --steel-mid: #2c2e33;
+  --steel-lo: #111318;
+  --up: #0058b8;
+  --up-fill: #0a6fe0;
+  --on-up: #ffffff;
+  --up-glow: #3d9bff;
+  --down: #8f5d00;
+  --down-fill: #e0a027;
+  --on-down: #111318;
+  --focus: #0058b8;
+  --success: #1b7a4a;
+  --danger: #c0262d;
+  --shadow-card: 0 1px 2px rgba(17,19,24,0.08), 0 12px 32px rgba(17,19,24,0.08);
+  --glow-up: 0 6px 20px rgba(10,111,224,0.28);
+  --glow-down: 0 6px 20px rgba(224,160,39,0.3);
+}
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
+  --space-32: 128px;
+  --radius-0: 0;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --chamfer-lg: 24px;
+  --container-max: 1280px;
+  --header-height: 76px;
+  --measure: 60ch;
+  --font-display: "Archivo", "Arial Black", system-ui, sans-serif;
+  --font-sans: "Archivo", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+}
+.display-xl { font-family: var(--font-display); font-size: 88px; line-height: 0.95; font-weight: 800; letter-spacing: -0.01em; }
+.display-l { font-family: var(--font-display); font-size: 64px; line-height: 1; font-weight: 800; letter-spacing: -0.01em; }
+.h1 { font-family: var(--font-display); font-size: 48px; line-height: 1.05; font-weight: 800; }
+.h2 { font-family: var(--font-display); font-size: 36px; line-height: 1.1; font-weight: 700; }
+.h3 { font-family: var(--font-display); font-size: 22px; line-height: 1.25; font-weight: 700; }
+.lead { font-family: var(--font-sans); font-size: 20px; line-height: 30px; font-weight: 400; }
+.body { font-family: var(--font-sans); font-size: 16px; line-height: 26px; font-weight: 400; }
+.body-strong { font-family: var(--font-sans); font-size: 16px; line-height: 26px; font-weight: 600; }
+.small { font-family: var(--font-sans); font-size: 14px; line-height: 22px; font-weight: 400; }
+.label { font-family: var(--font-sans); font-size: 12px; line-height: 16px; font-weight: 600; letter-spacing: 0.24em; }
+.data { font-family: var(--font-mono); font-size: 14px; line-height: 20px; font-weight: 500; }
+.floor { font-family: var(--font-mono); font-size: 44px; line-height: 1; font-weight: 600; }

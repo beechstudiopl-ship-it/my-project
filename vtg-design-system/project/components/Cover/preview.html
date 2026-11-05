@@ -1,0 +1,45 @@
+<!-- @dsCard height=300 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>VTG — cover</title>
+<style>
+  html, body { margin: 0; }
+  .cover { position: relative; width: 960px; height: 300px; background: var(--surface-000); overflow: hidden; }
+  .cover svg { position: absolute; inset: 0; }
+  .up { fill: var(--up-fill); }
+  .down { fill: var(--down-fill); }
+  .s3 { fill: var(--surface-300); }
+  .s2 { fill: var(--surface-200); }
+  .cut { fill: var(--surface-000); }
+  .rail { stroke: var(--line-strong); stroke-width: 1; }
+  .txt { position: absolute; left: 40px; bottom: 32px; max-width: 440px; }
+  .name { margin: 0; font-family: var(--font-display); font-weight: 800; font-stretch: 125%; font-size: 120px; line-height: .92; color: var(--ink); letter-spacing: -0.01em; }
+  .tag { margin: 12px 0 0; font-family: var(--font-sans); font-size: 14px; line-height: 20px; color: var(--ink-muted); }
+</style></head>
+<body>
+<div class="cover">
+  <!--
+    blocks: up-fill 128×200 (space-32) off the top; down-fill 128×196 (space-32) off the bottom; surface-300 96×300 (space-24) on the right edge; surface-200 80×104 at the base.
+    arrangement: blue high-left, amber low-right, the way the logo places its up and down arrows; corners cut by chamfer-lg (24px), the bevelled letters.
+    pattern: two pairs of guide rails (line-strong hairlines) running full height, plus one up chevron cut from blue and one down chevron cut from amber. Picked because the brand is vertical travel in a shaft (its own photos are rails looking up).
+    scales: space-32, space-24, space-16, space-6; chamfer-lg 24; radius-0.
+  -->
+  <svg width="960" height="300" viewBox="0 0 960 300" aria-hidden="true">
+    <rect class="s3" x="864" y="0" width="96" height="300"/>
+    <rect class="s2" x="480" y="196" width="80" height="104"/>
+    <polygon class="up" points="560,0 688,0 688,176 664,200 560,200"/>
+    <polygon class="down" points="776,104 904,104 904,300 752,300 752,128"/>
+    <line class="rail" x1="528" y1="0" x2="528" y2="300"/>
+    <line class="rail" x1="544" y1="0" x2="544" y2="300"/>
+    <line class="rail" x1="720" y1="0" x2="720" y2="300"/>
+    <line class="rail" x1="736" y1="0" x2="736" y2="300"/>
+    <polygon class="cut" points="624,72 664,112 648,112 624,88 600,112 584,112"/>
+    <polygon class="cut" points="828,232 868,192 852,192 828,216 804,192 788,192"/>
+  </svg>
+  <div class="txt">
+    <h1 class="name">VTG</h1>
+    <p class="tag">The Vertical Transportation Group · London lift repair specialists</p>
+  </div>
+</div>
+</body>
+</html>

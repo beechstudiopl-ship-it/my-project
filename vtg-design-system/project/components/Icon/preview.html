@@ -1,0 +1,13 @@
+<!-- @dsCard group="Actions" height=90 subtitle="Zestaw ikon liniowych (dodany)" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>preview</title>
+<style>body{margin:0} #root{box-sizing:border-box;padding:24px;display:flex;gap:20px;color:var(--ink-muted);}</style></head>
+<body>
+<div id="root"></div>
+<script>
+var V = window.VTG, h = React.createElement;
+ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null, ['up','down','right','phone','mail','wrench','shield','clock','check','menu'].map(function(n){ return h('span', {key: n, style: n==='up'?{color:'var(--up)'}:n==='down'?{color:'var(--down)'}:null}, h(V.Icon, {name: n, size: 24, label: n})); })));
+</script>
+</body>
+</html>

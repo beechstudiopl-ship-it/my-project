@@ -1,0 +1,16 @@
+<!-- @dsCard group="Content" height=140 subtitle="Wskaźnik piętra — motyw góra/dół" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>preview</title>
+<style>body{margin:0} #root{box-sizing:border-box;padding:24px;display:flex;gap:24px;flex-wrap:wrap;}</style></head>
+<body>
+<div id="root"></div>
+<script>
+var V = window.VTG, h = React.createElement;
+ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null,
+  h(V.FloorIndicator, {value: '01', label: 'Group', direction: 'up'}),
+  h(V.FloorIndicator, {value: '03', label: 'Door systems', direction: 'down'}),
+  h(V.FloorIndicator, {value: '05', label: 'Modernisation'})));
+</script>
+</body>
+</html>
