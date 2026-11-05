@@ -1,0 +1,30 @@
+/* Version B: full-bleed landscape hero, photo tiles for the four specialisms */
+.heroB { position: relative; min-height: min(86vh, 860px); display: flex; align-items: center; overflow: hidden; background: var(--surface-000); }
+.heroB__bg { position: absolute; inset: 0; margin: 0; }
+.heroB__bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 55%; display: block; filter: saturate(.6) contrast(1.05); }
+.heroB__bg::before { content: ""; position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(90deg, rgba(7,8,10,.94) 0%, rgba(7,8,10,.78) 45%, rgba(7,8,10,.35) 100%), linear-gradient(0deg, rgba(7,8,10,.7) 0%, rgba(7,8,10,0) 35%); }
+.heroB__in { position: relative; z-index: 2; width: 100%; padding-top: var(--space-24); padding-bottom: var(--space-24); display: flex; flex-direction: column; gap: var(--space-6); }
+.heroB__in h1 { max-width: 15ch; }
+.heroB .vtg-lead { color: var(--ink); opacity: .86; }
+
+.tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-6); }
+.tile { display: flex; flex-direction: column; text-decoration: none; color: var(--ink); background: var(--surface-100);
+  transition: transform .18s cubic-bezier(.2,.7,.2,1), box-shadow .18s; }
+.tile:hover { transform: translateY(-4px); box-shadow: var(--shadow-card); }
+.tile__media { margin: 0; aspect-ratio: 3 / 4; overflow: hidden; }
+.tile__media img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(.75);
+  clip-path: polygon(0 0, calc(100% - var(--chamfer-lg)) 0, 100% var(--chamfer-lg), 100% 100%, 0 100%); }
+.tile__body { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-6); flex: 1; }
+.tile__num { color: var(--ink-faint); }
+.tile__sub { color: var(--ink-muted); }
+.tile__link { margin-top: auto; padding-top: var(--space-4); color: var(--up); font: 600 15px/24px var(--font-sans); }
+@media (max-width: 1080px) { .tiles { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 720px) {
+  .heroB { min-height: 620px; align-items: flex-end; }
+  .heroB__in { padding-top: var(--space-24); padding-bottom: var(--space-16); }
+  .heroB__bg img { object-position: 70% center; }
+  .heroB__bg::before { background: linear-gradient(0deg, rgba(7,8,10,.96) 0%, rgba(7,8,10,.75) 50%, rgba(7,8,10,.35) 100%); }
+  .tiles { grid-template-columns: 1fr; }
+  .tile__media { aspect-ratio: 4 / 3; }
+}
