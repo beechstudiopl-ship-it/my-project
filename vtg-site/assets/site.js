@@ -22,3 +22,24 @@
     img.addEventListener('error', miss);
   });
 })();
+
+// Collapsibles: always open on desktop, closed on mobile until tapped
+(function () {
+  var mq = window.matchMedia('(max-width: 720px)');
+  var items = document.querySelectorAll('details.mx');
+  function sync() {
+    items.forEach(function (d) {
+      if (!mq.matches) { d.open = true; }
+      else if (!d.dataset.touched) { d.open = false; }
+    });
+  }
+  items.forEach(function (d) {
+    var sum = d.querySelector('summary');
+    if (sum) sum.addEventListener('click', function (e) {
+      if (!mq.matches) { e.preventDefault(); return; }
+      d.dataset.touched = '1';
+    });
+  });
+  sync();
+  if (mq.addEventListener) mq.addEventListener('change', sync); else mq.addListener(sync);
+})();
