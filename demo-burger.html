@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<title>Papa ma Papu · burger kraftowy (makieta)</title>
+<meta name="description" content="Papa ma Papu — burgery kraftowe, 100% mięso wołowe. Menu, promocje, zamów i odbierz albo zamów na miejscu.">
+<style>
+  :root{
+    --ink:#1A1512;--ink-2:#5E554C;--ink-3:#9C9288;
+    --line:#E6D9C4;--paper:#F4EBDD;--card:#FFF9EF;--accent:#E8A317;--accent-d:#C8860A;
+    --hot:#C62A1F;--ok:#2E7D4F;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:system-ui,-apple-system,'Segoe UI',sans-serif;
+    background:#E4D8C5;color:var(--ink);
+  }
+  button{font-family:inherit}
+  .phone{
+    max-width:420px;margin:0 auto;min-height:100vh;background:var(--paper);
+    box-shadow:0 0 40px rgba(0,0,0,.12);position:relative;
+    padding-bottom:88px;
+  }
+
+  /* promo bar */
+  .promo{
+    background:var(--hot);color:#fff;text-align:center;font-size:13px;font-weight:600;
+    padding:10px 16px;
+  }
+  .promo a{color:#fff;text-decoration:underline}
+
+  /* header */
+  header{
+    padding:16px 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;
+    justify-content:space-between;gap:12px;background:var(--paper);
+    position:sticky;top:0;z-index:10;
+  }
+  .logo{font-size:22px;font-weight:900;letter-spacing:-.02em}
+  .logo span{color:var(--accent)}
+  .tagline{margin-top:2px;font-size:12.5px;color:var(--ink-2)}
+  .back-btn{
+    background:none;border:none;font-size:13px;font-weight:700;color:var(--ink-2);
+    cursor:pointer;padding:4px 0;flex:none;
+  }
+  .back-btn:hover{color:var(--hot)}
+
+  /* screens */
+  .screen{display:none}
+  .screen.active{display:block}
+
+  /* landing */
+  .landing{padding:12px 12px 8px;display:flex;flex-direction:column;gap:12px}
+  .hero{
+    background:var(--ink);color:#fff;border-radius:22px;padding:22px 22px 24px;
+    position:relative;overflow:hidden;
+  }
+  .hero::after{content:'🍔';position:absolute;right:-18px;top:44px;font-size:130px;opacity:.95;transform:rotate(-12deg)}
+  .hero-status{
+    display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;
+    background:rgba(255,255,255,.1);font-size:12.5px;font-weight:700;
+  }
+  .hero-status.open{color:#8FD9A8}
+  .hero-status.closed{color:#F2B8A8}
+  .hero h1{
+    position:relative;z-index:1;margin-top:70px;font-size:46px;line-height:.95;font-weight:900;
+    letter-spacing:-.04em;text-transform:uppercase;
+  }
+  .hero h1 em{font-style:normal;color:var(--accent)}
+  .hero p{position:relative;z-index:1;margin-top:14px;font-size:14px;color:#D8CFC4;line-height:1.55;max-width:300px}
+  .hero-cta{position:relative;z-index:1;margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .btn{
+    display:block;text-align:center;padding:14px 10px;border-radius:14px;border:none;cursor:pointer;
+    font-size:14.5px;font-weight:900;text-decoration:none;
+  }
+  .btn-accent{background:var(--accent);color:var(--ink)}
+  .btn-accent:active{background:var(--accent-d)}
+  .btn-ghost{background:rgba(255,255,255,.12);color:#fff}
+  .btn-dark{background:var(--ink);color:#fff}
+  .btn-light{background:var(--card);color:var(--ink);border:1.5px solid var(--line)}
+
+  .promos{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .promo-card{
+    border-radius:20px;padding:16px;cursor:pointer;border:none;text-align:left;
+    display:flex;flex-direction:column;min-height:170px;color:var(--ink);
+  }
+  .promo-card.red{background:var(--hot);color:#fff}
+  .promo-card.gold{background:var(--accent)}
+  .promo-kicker{font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;opacity:.85}
+  .promo-title{margin-top:6px;font-size:17px;font-weight:900;line-height:1.1;letter-spacing:-.01em}
+  .promo-desc{margin-top:6px;font-size:12px;line-height:1.4;opacity:.9}
+  .promo-price{margin-top:auto;padding-top:10px;font-size:26px;font-weight:900;letter-spacing:-.03em}
+
+  .sec{background:var(--card);border-radius:22px;padding:22px 18px}
+  .sec-h{font-size:30px;line-height:1;font-weight:900;letter-spacing:-.035em}
+  .sec-h em{font-style:normal;color:var(--hot)}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;margin-bottom:14px}
+  .sec-link{
+    flex:none;background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:9px 12px;
+    font-size:13px;font-weight:800;cursor:pointer;color:var(--hot);
+  }
+  .hits{display:flex;flex-direction:column}
+  .hit{
+    display:flex;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--line);
+    cursor:pointer;background:none;border-left:none;border-right:none;border-bottom:none;
+    text-align:left;width:100%;color:var(--ink);
+  }
+  .hit-img{flex:none;width:52px;height:52px;border-radius:14px;background:#F3E4C8;display:flex;align-items:center;justify-content:center;font-size:26px}
+  .hit-name{display:block;font-size:15px;font-weight:900;text-transform:uppercase;letter-spacing:-.01em}
+  .hit-desc{display:block;margin-top:2px;font-size:12px;color:var(--ink-2);line-height:1.35;
+    overflow:hidden;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical}
+  .hit-price{margin-left:auto;flex:none;font-size:14px;font-weight:900;white-space:nowrap}
+  .hit-price small{font-weight:600;color:var(--ink-3);font-size:11px}
+  .fries-note{
+    margin-top:12px;padding:12px 14px;border-radius:14px;background:#FBE3DF;color:var(--hot);
+    font-size:13px;font-weight:800;line-height:1.35;
+  }
+
+  .steps{display:flex;flex-direction:column;gap:10px}
+  .step{border-radius:18px;padding:16px;background:#fff;border:1.5px solid var(--line)}
+  .step:last-child{background:var(--hot);border-color:var(--hot);color:#fff}
+  .step-n{width:34px;height:34px;border-radius:10px;background:#F3E4C8;color:var(--hot);
+    display:flex;align-items:center;justify-content:center;font-weight:900}
+  .step:last-child .step-n{background:var(--accent);color:var(--ink)}
+  .step h3{margin-top:10px;font-size:18px;font-weight:900;letter-spacing:-.02em}
+  .step p{margin-top:4px;font-size:13px;color:var(--ink-2);line-height:1.45}
+  .step:last-child p{color:#FBE3DF}
+
+  .map{width:100%;height:220px;border:0;border-radius:16px;display:block;background:#E8DCC8}
+  .addr{margin-top:14px;font-size:14px;line-height:1.5}
+  .addr b{font-size:16px}
+  .hours{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:12px}
+  .hours td{padding:6px 0;border-bottom:1px solid var(--line)}
+  .hours td:last-child{text-align:right;font-weight:700;color:var(--ink)}
+  .hours tr.today td{color:var(--hot);font-weight:800}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+
+  .final{background:var(--ink);color:#fff;border-radius:22px;padding:24px 18px;text-align:center}
+  .final .sec-h{color:#fff}
+  .final .sec-h em{color:var(--accent)}
+  .final p{margin-top:8px;font-size:13px;color:#D8CFC4}
+  .final .two{margin-top:18px}
+  .final a.tel{display:inline-block;margin-top:14px;color:#fff;font-size:13px;font-weight:700}
+  footer{padding:18px 20px 10px;text-align:center;font-size:11.5px;color:var(--ink-3);line-height:1.6}
+
+
+  /* menu tabs */
+  .tabs{
+    display:flex;gap:8px;overflow-x:auto;padding:12px 20px;border-bottom:1px solid var(--line);
+    position:sticky;top:69px;background:var(--paper);z-index:9;scrollbar-width:none;
+  }
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{
+    flex:none;padding:7px 14px;border-radius:999px;border:1.5px solid var(--line);
+    background:#fff;font-size:13px;font-weight:700;cursor:pointer;color:var(--ink);
+  }
+  .tab.active{background:var(--ink);border-color:var(--ink);color:#fff}
+
+  /* menu */
+  #menuList{background:var(--card)}
+  .cat{
+    padding:18px 20px 4px;font-size:12px;font-weight:800;text-transform:uppercase;
+    letter-spacing:.05em;color:var(--ink-3);border-top:8px solid #F3ECE2;
+    scroll-margin-top:130px;
+  }
+  .cat:first-child{border-top:none}
+  .item{
+    display:flex;gap:12px;padding:14px 20px;border-bottom:1px solid #F3ECE2;
+  }
+  .item-img{
+    flex:none;width:56px;height:56px;border-radius:10px;background:#F6EBDA;
+    display:flex;align-items:center;justify-content:center;font-size:28px;
+  }
+  .item-info{flex:1;min-width:0}
+  .item-name{font-size:15px;font-weight:700}
+  .badge{
+    display:inline-block;margin-left:6px;padding:2px 6px;border-radius:4px;vertical-align:2px;
+    font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;
+    background:#FCE9C2;color:#8A5A00;
+  }
+  .badge.hot{background:#FAD9D2;color:var(--hot)}
+  .badge.veg{background:#D7EEDF;color:var(--ok)}
+  .item-desc{margin-top:3px;font-size:12.5px;color:var(--ink-2);line-height:1.4}
+  .item-price{margin-top:6px;font-size:14px;font-weight:800}
+  .item-add{
+    flex:none;align-self:center;width:34px;height:34px;border-radius:50%;
+    background:var(--accent);color:var(--ink);border:none;font-size:20px;font-weight:700;line-height:1;
+    cursor:pointer;display:flex;align-items:center;justify-content:center;
+  }
+  .item-add:active{background:var(--accent-d)}
+  .item-qty{flex:none;align-self:center;display:none;align-items:center;gap:8px}
+  .item.in-cart .item-qty{display:flex}
+  .item.in-cart .item-add{display:none}
+  .qty-btn{
+    width:28px;height:28px;border-radius:50%;border:1.5px solid var(--line);
+    background:#fff;font-size:15px;cursor:pointer;color:var(--ink);
+  }
+  .qty-n{min-width:16px;text-align:center;font-size:14px;font-weight:800}
+
+  .cat-note{padding:2px 20px 8px;font-size:12.5px;color:var(--ink-2);line-height:1.45}
+  .cat-note.live{color:var(--ok);font-weight:700}
+  .burger-head{display:flex;gap:12px;padding:16px 20px 6px}
+  .burger-head .item-name{font-size:16px}
+  .item.variant{padding:8px 20px 8px 88px;border-bottom:none}
+  .item.variant:last-child,.item.variant.last{border-bottom:1px solid #F3ECE2;padding-bottom:14px}
+  .item.variant .item-name{font-size:14px;font-weight:700}
+  .item.variant .item-desc{margin-top:1px;font-size:12px}
+  .item.variant .item-price{margin-top:0}
+  .variant-row{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+  .item.locked{opacity:.45}
+  .item.locked .item-add{background:#DDD;cursor:not-allowed}
+  .free-line{color:var(--ok);font-weight:700}
+
+  /* info */
+  .info-box{padding:18px 20px;border-top:8px solid #F3ECE2;font-size:13.5px;color:var(--ink-2);line-height:1.6}
+  .info-box:first-child{border-top:none}
+  .info-box h3{font-size:15px;color:var(--ink);margin-bottom:8px}
+  .info-box b{color:var(--ink)}
+  .info-actions{display:flex;gap:10px;margin-top:12px}
+  .info-actions a{
+    flex:1;text-align:center;padding:11px;border-radius:8px;font-size:13.5px;font-weight:800;
+    text-decoration:none;border:1.5px solid var(--line);color:var(--ink);background:#fff;
+  }
+  .info-actions a.primary{background:var(--ink);border-color:var(--ink);color:#fff}
+
+  /* sticky cart bar */
+  .cart-bar{
+    position:fixed;left:0;right:0;bottom:0;max-width:420px;margin:0 auto;z-index:20;
+    background:var(--ink);color:#fff;
+    padding:14px 20px;display:flex;align-items:center;justify-content:space-between;
+    cursor:pointer;transform:translateY(100%);transition:transform .2s ease;
+  }
+  .cart-bar.show{transform:translateY(0)}
+  .cart-bar-left{font-size:13px}
+  .cart-bar-left b{display:block;font-size:15px}
+  .cart-bar-btn{
+    background:var(--accent);color:var(--ink);border:none;padding:10px 18px;
+    font-size:14px;font-weight:800;border-radius:6px;cursor:pointer;
+  }
+
+  /* order sheet */
+  .sheet-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:30;display:none}
+  .sheet-overlay.open{display:block}
+  .sheet{
+    position:fixed;left:0;right:0;bottom:0;max-width:420px;margin:0 auto;
+    background:#fff;border-radius:16px 16px 0 0;z-index:31;
+    max-height:88vh;overflow-y:auto;
+    transform:translateY(100%);transition:transform .25s ease,visibility .25s;visibility:hidden;
+  }
+  .sheet.open{transform:translateY(0);visibility:visible}
+  .sheet-head{display:flex;align-items:center;justify-content:space-between;padding:18px 20px 10px}
+  .sheet-head h2{font-size:17px;font-weight:900}
+  .sheet-close{background:none;border:none;font-size:24px;color:var(--ink-3);cursor:pointer}
+  .sheet-list{padding:0 20px}
+  .sheet-item{
+    display:flex;justify-content:space-between;align-items:center;gap:10px;
+    padding:10px 0;border-bottom:1px solid #F3ECE2;font-size:14px;
+  }
+  .sheet-item-name{flex:1}
+  .sheet-item-sub{font-size:12px;color:var(--ink-2)}
+  .sheet-rows{padding:10px 20px 0;font-size:13.5px;color:var(--ink-2)}
+  .sheet-rows div{display:flex;justify-content:space-between;padding:3px 0}
+  .sheet-total{
+    display:flex;justify-content:space-between;padding:12px 20px 16px;
+    font-size:16px;font-weight:900;
+  }
+  .sheet-form{padding:0 20px 20px}
+  .mode{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px}
+  .mode button{
+    padding:11px;border-radius:8px;border:1.5px solid var(--line);background:#fff;
+    font-size:13.5px;font-weight:800;cursor:pointer;color:var(--ink);
+  }
+  .mode button small{display:block;font-weight:500;font-size:11.5px;color:var(--ink-2);margin-top:2px}
+  .mode button.active{border-color:var(--accent);background:#FFF4DC}
+  .sheet-form label{display:block;font-size:12px;font-weight:700;color:var(--ink-2);margin:12px 0 5px}
+  .sheet-form input,.sheet-form textarea,.sheet-form select{
+    width:100%;font-size:14px;padding:11px 12px;border:1.5px solid var(--line);border-radius:6px;
+    font-family:inherit;
+  }
+  .sheet-form input:focus,.sheet-form textarea:focus,.sheet-form select:focus{outline:none;border-color:var(--accent)}
+  .hint{margin-top:8px;font-size:12px;color:var(--hot);font-weight:700;display:none}
+  .hint.show{display:block}
+  .sheet-note{margin-top:10px;font-size:11.5px;color:var(--ink-3);line-height:1.5}
+  .sheet-submit{
+    width:100%;margin-top:16px;background:var(--accent);color:var(--ink);border:none;
+    padding:14px;border-radius:8px;font-size:15px;font-weight:900;cursor:pointer;
+  }
+  .sheet-submit:active{background:var(--accent-d)}
+  .sheet-submit:disabled{opacity:.5;cursor:not-allowed}
+  .sheet-empty{padding:30px 20px;text-align:center;color:var(--ink-3);font-size:14px}
+  .sheet-done{padding:30px 20px 36px;text-align:center;display:none}
+  .sheet-done.show{display:block}
+  .sheet-done h3{font-size:17px;font-weight:900}
+  .sheet-done p{margin-top:8px;font-size:13.5px;color:var(--ink-2);line-height:1.5}
+</style>
+</head>
+<body>
+
+<div class="phone">
+
+  <div class="promo">🔥 Wt–Czw 12:00–16:00 lunch taniej · <a href="#" data-goto="menu" data-cat="oferty">oferty →</a></div>
+
+  <header>
+    <div>
+      <div class="logo">Papa<span> ma </span>Papu</div>
+      <div class="tagline" id="headerTag">Burger kraftowy · 100% mięso wołowe</div>
+    </div>
+    <button class="back-btn" id="backBtn" style="display:none">← wróć</button>
+  </header>
+
+  <!-- SCREEN: LANDING -->
+  <div class="screen active" id="screenLanding">
+    <div class="landing">
+
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-status" id="heroStatus">…</div>
+        <h1>Burgery<br>kraftowe.<br><em>100% wołowiny.</em></h1>
+        <p>Siedem burgerów, trzy rozmiary, sosy do wyboru. Zamów i odbierz albo zjedz u nas na miejscu.</p>
+        <div class="hero-cta">
+          <button class="btn btn-accent" data-order="pickup">Zamów i odbierz</button>
+          <button class="btn btn-ghost" data-order="dinein">Zamów na miejscu</button>
+        </div>
+      </section>
+
+      <!-- PROMOCJE -->
+      <div class="promos">
+        <button class="promo-card red" data-goto="menu" data-cat="oferty">
+          <span class="promo-kicker">Wt · Śr · Czw · 12–16</span>
+          <span class="promo-title">Lunch taniej</span>
+          <span class="promo-desc">Klasyczny + frytki w cenie samego burgera</span>
+          <span class="promo-price">29 zł</span>
+        </button>
+        <button class="promo-card gold" data-goto="menu" data-cat="oferty">
+          <span class="promo-kicker">Kupon „DWA”</span>
+          <span class="promo-title">Dwa burgery taniej</span>
+          <span class="promo-desc">2 × Klasyczny 150 g, hasło przy zamówieniu</span>
+          <span class="promo-price">2 za 55</span>
+        </button>
+      </div>
+
+      <!-- MENU -->
+      <section class="sec">
+        <div class="sec-head">
+          <h2 class="sec-h">Krótka karta.<br><em>Same burgery.</em></h2>
+          <button class="sec-link" data-goto="menu">Całe menu →</button>
+        </div>
+        <div class="hits" id="hits"></div>
+        <div class="fries-note">🍟 Przy zamówieniu dużego burgera z napojem frytki cienkie gratis!</div>
+      </section>
+
+      <!-- PROCES ZAMÓWIENIA -->
+      <section class="sec">
+        <h2 class="sec-h" style="margin-bottom:14px">Zamówienie<br><em>w trzech krokach.</em></h2>
+        <div class="steps">
+          <div class="step"><div class="step-n">1</div><h3>Wybierz z menu</h3><p>Burger, rozmiar (mały, standard, duży), frytki i napój.</p></div>
+          <div class="step"><div class="step-n">2</div><h3>Odbierz albo zjedz u nas</h3><p>Na wynos podajesz godzinę odbioru, na miejscu — numer stolika.</p></div>
+          <div class="step"><div class="step-n">3</div><h3>Płacisz przy odbiorze</h3><p>Kartą albo gotówką, przy kasie.</p></div>
+        </div>
+      </section>
+
+      <!-- MAPA -->
+      <section class="sec" id="mapa">
+        <h2 class="sec-h" style="margin-bottom:14px">Wpadnij<br><em>do Papy.</em></h2>
+        <iframe class="map" loading="lazy" title="Mapa dojazdu"
+          src="https://maps.google.com/maps?q=ul.%20Przyk%C5%82adowa%207&z=15&output=embed"></iframe>
+        <div class="addr"><b>Papa ma Papu</b><br>ul. Przykładowa 7, 00-000 Twoje Miasto</div>
+        <table class="hours" id="hoursTable"></table>
+        <div class="two">
+          <a class="btn btn-dark" href="https://maps.google.com/?q=ul.+Przyk%C5%82adowa+7" target="_blank" rel="noopener">Prowadź →</a>
+          <a class="btn btn-light" href="tel:500000000">Zadzwoń</a>
+        </div>
+      </section>
+
+      <!-- ZAMÓW -->
+      <section class="final">
+        <h2 class="sec-h">Głodny?<br><em>Zamów u Papy.</em></h2>
+        <p>Płatność przy odbiorze · bez prowizji dla aplikacji</p>
+        <div class="two">
+          <button class="btn btn-accent" data-order="pickup">Zamów i odbierz</button>
+          <button class="btn btn-ghost" data-order="dinein">Zamów na miejscu</button>
+        </div>
+        <a class="tel" href="tel:500000000">Wolisz telefon? 500 000 000</a>
+      </section>
+
+      <footer>© Papa ma Papu · burger kraftowy · ul. Przykładowa 7 · tel. 500 000 000<br>Makieta — dane adresowe i godziny do uzupełnienia.</footer>
+    </div>
+  </div>
+
+  <!-- SCREEN: MENU -->
+  <div class="screen" id="screenMenu">
+    <nav class="tabs" id="tabs"></nav>
+    <div id="menuList"></div>
+    <div class="info-box">
+      <b>Alergeny:</b> zapytaj obsługę lub napisz w uwagach do zamówienia.<br>
+      <b>Bułka bezglutenowa:</b> +4 zł do każdego burgera — dopisz w uwagach.
+    </div>
+  </div>
+
+  <div class="cart-bar" id="cartBar">
+    <div class="cart-bar-left"><span id="cartCount">0 pozycji</span><b id="cartSum">0 zł</b></div>
+    <button class="cart-bar-btn" id="cartOpenBtn">Zamów</button>
+  </div>
+
+  <div class="sheet-overlay" id="overlay"></div>
+  <div class="sheet" id="sheet" role="dialog" aria-label="Twoje zamówienie">
+    <div class="sheet-head">
+      <h2>Twoje zamówienie</h2>
+      <button class="sheet-close" id="sheetClose" aria-label="Zamknij">×</button>
+    </div>
+    <div class="sheet-list" id="sheetList"></div>
+    <div id="sheetSummary" style="display:none">
+      <div class="sheet-total"><span>Do zapłaty</span><span id="sheetTotalVal">0 zł</span></div>
+    </div>
+    <div class="sheet-form" id="sheetForm" style="display:none">
+      <div class="mode" id="mode">
+        <button class="active" data-mode="pickup">🛍️ Zamów i odbierz<small>na wynos</small></button>
+        <button data-mode="dinein">🍽️ Na miejscu<small>przyniesiemy do stolika</small></button>
+      </div>
+      <label for="fName">Imię i telefon</label>
+      <input id="fName" type="text" placeholder="np. Kasia, 500 000 000" autocomplete="name">
+      <div id="pickupWrap">
+        <label for="fTime">Godzina odbioru</label>
+        <select id="fTime"></select>
+      </div>
+      <div id="tableWrap" style="display:none">
+        <label for="fTable">Numer stolika (jeśli już siedzisz)</label>
+        <input id="fTable" type="text" inputmode="numeric" placeholder="np. 4">
+      </div>
+      <label for="fNote">Uwagi do zamówienia</label>
+      <textarea id="fNote" rows="2" placeholder="np. bez cebuli, mięso dobrze wysmażone"></textarea>
+      <p class="hint" id="hint">Uzupełnij imię i telefon.</p>
+      <p class="sheet-note">Makieta — przycisk poniżej pokazuje tylko potwierdzenie, bez realnej wysyłki zamówienia.</p>
+      <button class="sheet-submit" id="sheetSubmit">Wyślij zamówienie</button>
+    </div>
+    <div class="sheet-done" id="sheetDone">
+      <h3>Dzięki! Zamówienie „wysłane” 🍔</h3>
+      <p id="doneText"></p>
+      <p>To makieta — w wersji docelowej zamówienie trafi do burgerowni SMS-em, mailem albo na WhatsApp, do ustalenia.</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // ====== DANE DO PODMIANY ======
+  // Burgery z karty „Papa ma Papu”. Pozycje z `sizes` mają warianty rozmiaru.
+  const MENU = [
+    { cat: 'Burgery', note: 'Burger kraftowy, 100% mięso wołowe. Do <b>dużego burgera z napojem frytki cienkie gratis!</b>', items: [
+      { name:'Klasyczny', img:'🍔', badge:'hit',
+        desc:'Mięso wołowe 150 g, cebula czerwona, ogórek kartuski, pomidor, sałata, sos do wyboru',
+        sizes:[ {label:'Mały', note:'100 g mięsa, mała bułka', price:26}, {label:'Standard', note:'150 g mięsa', price:32}, {label:'Duży', note:'200 g mięsa, duża bułka', price:38} ] },
+      { name:'Cheeseburger', img:'🧀',
+        desc:'Mięso wołowe 150 g, cebula czerwona, ogórek kartuski, pomidor, sałata, ser, sos do wyboru',
+        sizes:[ {label:'Mały', note:'100 g mięsa, mała bułka', price:28}, {label:'Standard', note:'150 g mięsa', price:36}, {label:'Duży', note:'200 g mięsa, duża bułka, podwójny ser', price:42} ] },
+      { name:'Poczciwy', img:'🥓', price:49,
+        desc:'Mięso wołowe 250 g, cebula czerwona, ogórek kartuski, pomidor, sałata, ser, jalapeño, grillowany boczek, chips serowy, sos do wyboru' },
+      { name:'Diablo', img:'🌶️', badge:'ostry',
+        desc:'Mięso wołowe 150 g, 3 rodzaje papryki: peperoni, jalapeño, habanero, pomidor, ser, grillowany boczek, sos ostry Carolina Reaper',
+        sizes:[ {label:'Standard', note:'150 g mięsa', price:40}, {label:'Duży', note:'200 g mięsa, duża bułka', price:48} ] },
+      { name:'Hawajski', img:'🍍',
+        desc:'Mięso wołowe 150 g, cebula czerwona, ogórek kartuski, sałata, ser, grillowany ananas, grillowany boczek, sos musztardowo-miodowy',
+        sizes:[ {label:'Standard', note:'150 g mięsa', price:40}, {label:'Duży', note:'200 g mięsa, duża bułka', price:48} ] },
+      { name:'Kura Burger', img:'🍗', price:32,
+        desc:'Filety z piersi kurczaka w panierce Papy, sałata lodowa, pomidor, sos do wyboru' },
+      { name:'Vege Burger', img:'🥬', badge:'wege', price:36,
+        desc:'Kotlet jaglany, cebula czerwona, ogórek kartuski, sałata, pomidor, sos do wyboru' },
+    ]},
+    { cat: 'Oferty', items: [
+      { name:'Lunch: Klasyczny + frytki', img:'⏰', price:29, when:'lunch', badge:'lunch',
+        desc:'Wt–Czw 12:00–16:00. Klasyczny 150 g z frytkami w cenie samego burgera' },
+      { name:'Lunch: Cheeseburger + frytki + napój', img:'⏰', price:35, when:'lunch', badge:'lunch',
+        desc:'Wt–Czw 12:00–16:00. Zestaw w cenie niższej niż sam burger' },
+      { name:'Zestaw Uczniowski', img:'🎒', price:25, badge:'szkoła',
+        desc:'Mały Klasyczny lub Mały Cheeseburger + frytki + napój. Pn–Pt, za okazaniem legitymacji' },
+      { name:'Zestaw Rodzinny', img:'👨‍👩‍👧‍👦', price:129, badge:'hit',
+        desc:'2 duże burgery + 2 małe burgery + 2 duże frytki + 4 napoje' },
+      { name:'Kupon 2 za 55 zł', img:'🎟️', price:55, badge:'kupon',
+        desc:'Dwa Klasyczne 150 g. Hasło „DWA” przy zamówieniu' },
+      { name:'Kupon 2 za 75 zł: Diablo + Hawajski', img:'🎟️', price:75, badge:'kupon',
+        desc:'Ostro i słodko — dwa burgery 150 g w duecie' },
+    ]},
+    { cat: 'Dodatki', items: [
+      { name:'Frytki cienkie', img:'🍟', price:10, desc:'Gratis do dużego burgera z napojem' },
+      { name:'Frytki duże', img:'🍟', price:14, desc:'Porcja do podziału' },
+      { name:'Dodatkowy sos', img:'🥫', price:4, desc:'Do wyboru przy odbiorze' },
+    ]},
+    { cat: 'Napoje', items: [
+      { name:'Napój 0,5 l', img:'🥤', price:8, desc:'Cola, cola zero, woda, sok', drink:true },
+      { name:'Lemoniada domowa', img:'🍋', price:12, desc:'0,5 l', drink:true },
+    ]},
+  ];
+  // Lunch taniej: dni (2 = wtorek, 3 = środa, 4 = czwartek) i godziny
+  const LUNCH = { days:[2,3,4], from:12, to:16 };
+  // 0 = niedziela ... 6 = sobota; [otwarcie, zamknięcie] w godzinach
+  const HOURS = { 1:[12,21], 2:[12,21], 3:[12,21], 4:[12,21], 5:[12,22], 6:[12,22], 0:[13,20] };
+  const DAY_NAMES = ['Niedziela','Poniedziałek','Wtorek','Środa','Czwartek','Piątek','Sobota'];
+  // ==============================
+
+  const cart = {};
+  let mode = 'pickup';
+  const $ = id => document.getElementById(id);
+  const screenTags = {
+    landing: 'Burger kraftowy · 100% mięso wołowe',
+    menu: 'Menu',
+  };
+  const badgeClass = { ostry:'hot', wege:'veg' };
+  const now = new Date();
+  const today = now.getDay();
+  const hourNow = now.getHours() + now.getMinutes()/60;
+  const lunchActive = LUNCH.days.includes(today) && hourNow >= LUNCH.from && hourNow < LUNCH.to;
+
+  // ---- render menu ----
+  const slug = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-');
+  const badge = b => b ? `<span class="badge ${badgeClass[b]||''}">${b}</span>` : '';
+  const qtyCtl = label => `
+        <button class="item-add" aria-label="Dodaj ${label}">+</button>
+        <div class="item-qty">
+          <button class="qty-btn qty-minus" aria-label="Mniej">−</button>
+          <span class="qty-n">1</span>
+          <button class="qty-btn qty-plus" aria-label="Więcej">+</button>
+        </div>`;
+
+  function renderItem(it){
+    if (it.sizes) {
+      return `
+      <div class="burger-head">
+        <div class="item-img">${it.img}</div>
+        <div class="item-info">
+          <div class="item-name">${it.name}${badge(it.badge)}</div>
+          <div class="item-desc">${it.desc}</div>
+        </div>
+      </div>
+      ${it.sizes.map((s,i) => {
+        const full = `${it.name} · ${s.label}`;
+        return `
+      <div class="item variant${i===it.sizes.length-1?' last':''}" data-name="${full}" data-price="${s.price}" data-size="${s.label}">
+        <div class="item-info">
+          <div class="variant-row"><span class="item-name">${s.label}</span><span class="item-price">${s.price} zł</span></div>
+          <div class="item-desc">${s.note}</div>
+        </div>
+        ${qtyCtl(full)}
+      </div>`;}).join('')}`;
+    }
+    const locked = it.when === 'lunch' && !lunchActive;
+    return `
+      <div class="item${locked?' locked':''}" data-name="${it.name}" data-price="${it.price}"${it.drink?' data-drink="1"':''}>
+        <div class="item-img">${it.img}</div>
+        <div class="item-info">
+          <div class="item-name">${it.name}${badge(it.badge)}</div>
+          <div class="item-desc">${it.desc}</div>
+          <div class="item-price">${it.price} zł</div>
+        </div>
+        ${qtyCtl(it.name)}
+      </div>`;
+  }
+
+  $('tabs').innerHTML = MENU.map((c,i)=>`<button class="tab${i?'':' active'}" data-cat="${slug(c.cat)}">${c.cat}</button>`).join('');
+  $('menuList').innerHTML = MENU.map(c => `
+    <div class="cat" id="cat-${slug(c.cat)}">${c.cat}</div>
+    ${c.note ? `<p class="cat-note">${c.note}</p>` : ''}
+    ${c.cat === 'Oferty' ? `<p class="cat-note${lunchActive?' live':''}">${lunchActive
+        ? '● Lunch trwa teraz — do 16:00 zamówisz taniej.'
+        : 'Oferty lunchowe dostępne wt–czw 12:00–16:00. Pozostałe oferty przez cały czas otwarcia.'}</p>` : ''}
+    ${c.items.map(renderItem).join('')}
+  `).join('');
+
+  function goToCat(cat){
+    document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active', x.dataset.cat===cat));
+    const el = $('cat-' + cat);
+    if (el) el.scrollIntoView({behavior:'smooth'});
+  }
+  document.querySelectorAll('.tab').forEach(t=> t.addEventListener('click', ()=> goToCat(t.dataset.cat)));
+
+  // hity na stronie głównej
+  const fromPrice = it => it.sizes ? Math.min(...it.sizes.map(s=>s.price)) : it.price;
+  $('hits').innerHTML = MENU[0].items.map(it => `
+    <button class="hit" data-goto="menu" data-cat="burgery">
+      <span class="hit-img">${it.img}</span>
+      <span><span class="hit-name">${it.name}</span><span class="hit-desc">${it.desc}</span></span>
+      <span class="hit-price">${it.sizes ? '<small>od </small>' : ''}${fromPrice(it)} zł</span>
+    </button>`).join('');
+
+  // ---- hours / open status ----
+  const order = [1,2,3,4,5,6,0];
+  $('hoursTable').innerHTML = order.map(d =>
+    `<tr class="${d===today?'today':''}"><td>${DAY_NAMES[d]}</td><td>${HOURS[d] ? HOURS[d][0]+':00–'+HOURS[d][1]+':00' : 'zamknięte'}</td></tr>`
+  ).join('');
+  (function(){
+    const h = hourNow;
+    const t = HOURS[today];
+    const el = $('heroStatus');
+    if (t && h >= t[0] && h < t[1]) {
+      el.textContent = '● Otwarte do ' + t[1] + ':00';
+      el.classList.add('open');
+    } else {
+      let d = today, next;
+      for (let i=0;i<7;i++){
+        const cand = HOURS[d];
+        if (cand && (i>0 || h < cand[0])) { next = {d, t:cand, i}; break; }
+        d = (d+1)%7;
+      }
+      el.textContent = '● Zamknięte' + (next ? ' · otwieramy ' + (next.i===0?'dziś':next.i===1?'jutro':DAY_NAMES[next.d].toLowerCase()) + ' o ' + next.t[0] + ':00' : '');
+      el.classList.add('closed');
+    }
+  })();
+
+  // ---- navigation ----
+  function showScreen(id){
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    $('screen' + id.charAt(0).toUpperCase() + id.slice(1)).classList.add('active');
+    $('headerTag').textContent = screenTags[id];
+    $('backBtn').style.display = id === 'landing' ? 'none' : 'block';
+    window.scrollTo(0,0);
+  }
+  document.querySelectorAll('[data-goto]').forEach(el=>{
+    el.addEventListener('click', e=>{ e.preventDefault(); showScreen(el.dataset.goto); if(el.dataset.cat) setTimeout(()=>goToCat(el.dataset.cat), 50); });
+  });
+  $('backBtn').addEventListener('click', ()=> showScreen('landing'));
+
+  // ---- cart ----
+  const freeFries = () => {
+    const v = Object.values(cart);
+    const big = v.filter(i=>i.size==='Duży').reduce((a,i)=>a+i.qty,0);
+    const drinks = v.filter(i=>i.drink).reduce((a,i)=>a+i.qty,0);
+    return Math.min(big, drinks);
+  };
+  const itemsTotal = () => Object.values(cart).reduce((a,i)=>a+i.qty*i.price,0);
+  const plural = n => n===1 ? ' pozycja' : (n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20)) ? ' pozycje' : ' pozycji';
+
+  function updateCartBar(){
+    const count = Object.values(cart).reduce((a,i)=>a+i.qty,0);
+    $('cartCount').textContent = count + plural(count);
+    $('cartSum').textContent = itemsTotal() + ' zł';
+    $('cartBar').classList.toggle('show', count > 0);
+  }
+
+  document.querySelectorAll('.item').forEach(el=>{
+    const name = el.dataset.name, price = parseFloat(el.dataset.price);
+    const qtyEl = el.querySelector('.qty-n');
+    el.querySelector('.item-add').addEventListener('click', ()=>{
+      if(el.classList.contains('locked')){ alert('Ta oferta działa wt–czw w godz. 12:00–16:00.'); return; }
+      cart[name] = {name, price, qty:1, size:el.dataset.size, drink:!!el.dataset.drink};
+      el.classList.add('in-cart'); qtyEl.textContent = 1; updateCartBar();
+    });
+    el.querySelector('.qty-plus').addEventListener('click', ()=>{
+      cart[name].qty++; qtyEl.textContent = cart[name].qty; updateCartBar();
+    });
+    el.querySelector('.qty-minus').addEventListener('click', ()=>{
+      if(--cart[name].qty <= 0){ delete cart[name]; el.classList.remove('in-cart'); qtyEl.textContent = 1; }
+      else qtyEl.textContent = cart[name].qty;
+      updateCartBar();
+    });
+  });
+
+  // ---- order sheet ----
+  function renderTotals(){
+    $('sheetTotalVal').textContent = itemsTotal() + ' zł';
+  }
+
+  function renderSheet(){
+    const items = Object.values(cart);
+    $('sheetDone').classList.remove('show');
+    $('sheetForm').style.display = items.length ? 'block' : 'none';
+    $('sheetSummary').style.display = items.length ? 'block' : 'none';
+    $('hint').classList.remove('show');
+    if(!items.length){
+      $('sheetList').innerHTML = '<div class="sheet-empty">Koszyk jest pusty. Wróć do menu i wybierz coś pysznego.</div>';
+      return;
+    }
+    $('sheetList').innerHTML = items.map(i => `
+      <div class="sheet-item">
+        <div class="sheet-item-name">${i.name}<div class="sheet-item-sub">${i.qty} × ${i.price} zł</div></div>
+        <div>${i.qty*i.price} zł</div>
+      </div>`).join('');
+    const free = freeFries();
+    if (free) $('sheetList').innerHTML += `
+      <div class="sheet-item free-line">
+        <div class="sheet-item-name">🍟 Frytki cienkie<div class="sheet-item-sub">${free} × do dużego burgera z napojem</div></div>
+        <div>gratis</div>
+      </div>`;
+    renderTotals();
+  }
+
+  function setMode(m){
+    mode = m;
+    document.querySelectorAll('#mode button').forEach(x=>x.classList.toggle('active', x.dataset.mode===m));
+    $('pickupWrap').style.display = m==='pickup' ? 'block' : 'none';
+    $('tableWrap').style.display = m==='dinein' ? 'block' : 'none';
+  }
+  document.querySelectorAll('#mode button').forEach(b=> b.addEventListener('click', ()=> setMode(b.dataset.mode)));
+
+  // godziny odbioru: najbliższe sloty co 15 min w godzinach otwarcia
+  (function(){
+    const opts = ['<option>Jak najszybciej (~20 min)</option>'];
+    const t = HOURS[today];
+    if (t) {
+      let m = Math.ceil((Math.max(hourNow, t[0])*60 + 30)/15)*15;
+      for (; m <= t[1]*60 - 15 && opts.length < 12; m += 15)
+        opts.push(`<option>${Math.floor(m/60)}:${String(m%60).padStart(2,'0')}</option>`);
+    }
+    $('fTime').innerHTML = opts.join('');
+  })();
+
+  // przyciski „Zamów i odbierz” / „Zamów na miejscu”
+  document.querySelectorAll('[data-order]').forEach(b=> b.addEventListener('click', ()=>{
+    setMode(b.dataset.order);
+    showScreen('menu');
+    $('headerTag').textContent = b.dataset.order==='pickup' ? 'Menu · zamów i odbierz' : 'Menu · zamów na miejscu';
+  }));
+
+  function openSheet(){ renderSheet(); $('overlay').classList.add('open'); $('sheet').classList.add('open'); }
+  function closeSheet(){ $('overlay').classList.remove('open'); $('sheet').classList.remove('open'); }
+  $('cartBar').addEventListener('click', openSheet);
+  $('overlay').addEventListener('click', closeSheet);
+  $('sheetClose').addEventListener('click', closeSheet);
+
+  $('sheetSubmit').addEventListener('click', ()=>{
+    if(!$('fName').value.trim()){ $('hint').classList.add('show'); return; }
+    const total = itemsTotal();
+    const tbl = $('fTable').value.trim();
+    $('doneText').textContent = mode==='dinein'
+      ? `Do zapłaty ${total} zł przy kasie. ${tbl ? 'Przyniesiemy do stolika nr ' + tbl + '.' : 'Zawołamy Cię, gdy będzie gotowe.'}`
+      : `Do zapłaty ${total} zł przy odbiorze. Odbiór: ${$('fTime').value.toLowerCase()}.`;
+    $('sheetList').innerHTML = '';
+    $('sheetForm').style.display = 'none';
+    $('sheetSummary').style.display = 'none';
+    $('sheetDone').classList.add('show');
+    Object.keys(cart).forEach(k=>delete cart[k]);
+    document.querySelectorAll('.item.in-cart').forEach(el=>el.classList.remove('in-cart'));
+    updateCartBar();
+  });
+</script>
+
+</body>
+</html>
