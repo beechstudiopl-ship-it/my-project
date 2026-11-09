@@ -197,3 +197,16 @@ details.mx > summary h3 { margin: 0; }
   /* Ghost button keeps link alignment */
   .vtg-btn--ghost { padding: 0; min-height: 0; justify-content: flex-start; }
 }
+
+/* ---- Owner quote + accreditation row ---- */
+@media (max-width: 720px) {
+  .owner { grid-template-columns: 96px 1fr; gap: var(--space-4) var(--space-4); align-items: start; }
+  .owner__photo { grid-row: 2; aspect-ratio: 1 / 1; }
+  .owner__photo img { clip-path: none; }
+  .owner__quote { display: contents; }
+  .owner__text { grid-column: 1 / -1; font-size: 19px; line-height: 28px; }
+  .owner__by { grid-column: 2; grid-row: 2; align-self: center; border-top: 0; padding-top: 0; }
+  .accr-s { padding: var(--space-8) 0; }
+  .accr-row { gap: var(--space-4); }
+  .accr--row { grid-template-columns: repeat(3, 1fr); }
+}
