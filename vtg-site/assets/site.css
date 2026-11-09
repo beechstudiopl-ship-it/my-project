@@ -317,3 +317,39 @@ a { color: var(--up); }
   .panel__person { grid-template-columns: 56px 1fr; gap: var(--space-3); padding-top: var(--space-4); }
   .panel__face { width: 56px; height: 56px; }
 }
+
+/* ---- Revision 9: bevelled arrow motif from the logo (up = blue, down = amber, never joined) ---- */
+.a3 { display: inline-block; flex: none; overflow: visible; }
+.a3--up { filter: drop-shadow(0 0 6px rgba(98,218,254,.55)) drop-shadow(0 6px 18px rgba(10,111,224,.45)); }
+.a3--down { filter: drop-shadow(0 0 6px rgba(251,211,102,.5)) drop-shadow(0 6px 18px rgba(224,160,39,.4)); }
+
+/* Hero: arrow glowing at the top of the shaft, light falling down the rails */
+.hero__arrow { position: absolute; z-index: 2; top: 9%; left: 62%; width: 84px; height: 109px; transform: translateX(-50%);
+  animation: a3-rise 3.2s cubic-bezier(.2,.7,.2,1) infinite alternate; }
+.hero__beam { position: absolute; z-index: 1; top: 0; bottom: 0; left: 62%; width: 220px; transform: translateX(-50%); pointer-events: none;
+  background: radial-gradient(ellipse 50% 38% at 50% 18%, rgba(98,218,254,.35) 0%, rgba(61,155,255,.12) 45%, rgba(61,155,255,0) 75%);
+  mix-blend-mode: screen; }
+@keyframes a3-rise { from { transform: translate(-50%, 10px); } to { transform: translate(-50%, -6px); } }
+@media (prefers-reduced-motion: reduce) { .hero__arrow { animation: none; } }
+
+/* Process: arrows next to the first and last step numbers */
+.step__num { display: flex; align-items: center; gap: var(--space-3); }
+.step__a3 { width: 22px; height: 29px; }
+
+/* Form: urgent choice and urgent line */
+.opt--urgent { padding-right: 56px; }
+.opt__a3 { position: absolute; right: var(--space-4); top: 50%; width: 22px; height: 29px; transform: translateY(-50%); }
+.opt--urgent:has(input:checked) { box-shadow: inset 0 0 0 2px var(--down-fill); }
+.opt--urgent:has(input:checked)::before { background: var(--down-fill); box-shadow: inset 0 0 0 5px var(--surface-000), 0 0 0 1.5px var(--down-fill); }
+.wiz__urgent { display: flex; align-items: center; gap: var(--space-2); }
+.wiz__a3 { width: 12px; height: 16px; }
+
+/* Hero arrow tuned: sits at the shaft's vanishing point, stronger glow and a falling light beam */
+.hero__arrow { left: 50%; top: 7%; width: 96px; height: 125px;
+  filter: drop-shadow(0 0 4px rgba(98,218,254,.9)) drop-shadow(0 0 22px rgba(61,155,255,.75)) drop-shadow(0 0 60px rgba(10,111,224,.6)); }
+.hero__beam { left: 50%; width: 260px;
+  background:
+    radial-gradient(ellipse 45% 22% at 50% 14%, rgba(98,218,254,.45) 0%, rgba(61,155,255,.18) 50%, rgba(61,155,255,0) 80%),
+    linear-gradient(180deg, rgba(61,155,255,.22) 0%, rgba(61,155,255,.08) 35%, rgba(61,155,255,0) 65%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 35%, #000 65%, transparent 100%);
+          mask-image: linear-gradient(90deg, transparent 0%, #000 35%, #000 65%, transparent 100%); }

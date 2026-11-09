@@ -216,3 +216,12 @@ details.mx > summary h3 { margin: 0; }
   .gal { height: 380px; gap: var(--space-2); grid-template-columns: 1fr 1.3fr; }
   .gal__cap { left: var(--space-3); bottom: var(--space-3); font-size: 13px; line-height: 18px; }
 }
+
+/* ---- Arrow motif ---- */
+@media (max-width: 720px) {
+  .hero__arrow { width: 52px; height: 68px; top: 5%; left: 55%; }
+  .hero__beam { left: 55%; width: 150px; }
+  .step__a3 { width: 16px; height: 21px; }
+  .opt--urgent { padding-right: 36px; }
+  .opt__a3 { right: var(--space-3); width: 16px; height: 21px; }
+}

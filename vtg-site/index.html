@@ -47,6 +47,21 @@
     <symbol id="i-clock" viewBox="0 0 24 24"><path d="M12 3.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17zM12 7.5V12l3 2"/></symbol>
     <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l5 5 9-10"/></symbol>
     <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <!-- Bevelled arrowheads: the logo's up (blue) and down (amber) arrows, used separately -->
+    <symbol id="a3-up" viewBox="0 0 100 130">
+      <polygon points="50,0 0,52 50,40" fill="#62dafe"/>
+      <polygon points="50,0 100,52 50,40" fill="#0a6fe0"/>
+      <polygon points="0,52 50,40 100,52" fill="#073f80"/>
+      <polygon points="36,52 50,40 50,130 36,130" fill="#3d9bff"/>
+      <polygon points="64,52 50,40 50,130 64,130" fill="#0a5bbb"/>
+    </symbol>
+    <symbol id="a3-down" viewBox="0 0 100 130">
+      <polygon points="36,0 50,0 50,90 36,78" fill="#fbd366"/>
+      <polygon points="64,0 50,0 50,90 64,78" fill="#b87a12"/>
+      <polygon points="0,78 50,90 100,78" fill="#7a4f08"/>
+      <polygon points="50,130 0,78 50,90" fill="#f0ac2e"/>
+      <polygon points="50,130 100,78 50,90" fill="#c98a16"/>
+    </symbol>
   </defs>
 </svg>
 
@@ -91,6 +106,8 @@
 <section class="hero" data-theme="dark">
   <div class="hero__bg ph" data-ph="images/szyb-prowadnice.webp">
     <img src="images/szyb-prowadnice.webp" alt="" width="841" height="1800" fetchpriority="high">
+    <div class="hero__beam" aria-hidden="true"></div>
+    <svg class="a3 a3--up hero__arrow" aria-hidden="true"><use href="#a3-up"/></svg>
   </div>
   <div class="vtg-container hero__in">
     <div class="hero__copy">
@@ -201,7 +218,7 @@
     </div>
     <ol class="steps">
       <li class="step">
-        <span class="floor step__num">01</span>
+        <span class="floor step__num">01<svg class="a3 a3--down step__a3" aria-hidden="true"><use href="#a3-down"/></svg></span>
         <h3 class="h3">Report the fault</h3>
         <p class="body">Call or send the form: building, lift, symptoms. We confirm who is coming and when.</p>
       </li>
@@ -216,7 +233,7 @@
         <p class="body">You receive the findings and a written price. Work starts when you approve it.</p>
       </li>
       <li class="step">
-        <span class="floor step__num">04</span>
+        <span class="floor step__num">04<svg class="a3 a3--up step__a3" aria-hidden="true"><use href="#a3-up"/></svg></span>
         <h3 class="h3">Repair, test, report</h3>
         <p class="body">We repair, test the lift and send a job report for your records.</p>
       </li>
@@ -284,7 +301,7 @@
         <fieldset class="wiz__panel" data-step="1">
           <legend class="h3 wiz__q">What do you need?</legend>
           <div class="opts">
-          <label class="opt"><input type="radio" name="type" value="out-of-service" required><span class="opt__t body-strong">Lift is out of service</span><span class="opt__s small">Stopped, stuck or unsafe</span></label>
+          <label class="opt opt--urgent"><input type="radio" name="type" value="out-of-service" required><svg class="a3 a3--down opt__a3" aria-hidden="true"><use href="#a3-down"/></svg><span class="opt__t body-strong">Lift is out of service</span><span class="opt__s small">Stopped, stuck or unsafe</span></label>
           <label class="opt"><input type="radio" name="type" value="fault"><span class="opt__t body-strong">Lift runs with a fault</span><span class="opt__s small">Noisy, levelling, doors, error codes</span></label>
           <label class="opt"><input type="radio" name="type" value="quote"><span class="opt__t body-strong">Quote for planned work</span><span class="opt__s small">Repair, upgrade or modernisation</span></label>
           <label class="opt"><input type="radio" name="type" value="trade"><span class="opt__t body-strong">Support for my lift company</span><span class="opt__s small">Specialist help under your contract</span></label>
@@ -340,7 +357,7 @@
           <button type="button" class="vtg-btn vtg-btn--primary wiz__next"><span>Next</span></button>
           <button type="submit" class="vtg-btn vtg-btn--amber wiz__send"><span>Send request</span></button>
         </div>
-        <p class="small faint wiz__urgent">Someone trapped in a lift? Call <a href="tel:[PHONE]">[PHONE]</a> now.</p>
+        <p class="small faint wiz__urgent"><svg class="a3 a3--down wiz__a3" aria-hidden="true"><use href="#a3-down"/></svg>Someone trapped in a lift? Call <a href="tel:[PHONE]">[PHONE]</a> now.</p>
       </form>
     </div>
     <aside class="panel" aria-label="Call us">
