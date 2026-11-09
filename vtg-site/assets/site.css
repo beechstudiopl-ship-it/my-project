@@ -247,3 +247,73 @@ a { color: var(--up); }
 
 /* ---- Revision 5: sharp corners on every button and form control ---- */
 .vtg-btn, .vtg-field__ctrl, select.vtg-field__ctrl, textarea.vtg-field__ctrl { border-radius: 0; }
+
+/* ---- Revision 6: step form ---- */
+.wiz { display: flex; flex-direction: column; gap: var(--space-6); }
+.wiz__steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--line); }
+.wiz__step { display: flex; align-items: baseline; gap: var(--space-2); padding: var(--space-3) 0; color: var(--ink-faint); border-bottom: 2px solid transparent; margin-bottom: -1px; }
+.wiz__step .data { color: var(--ink-faint); }
+.wiz__step.is-done { color: var(--ink-muted); }
+.wiz__step.is-current { color: var(--ink); border-bottom-color: var(--up); }
+.wiz__step.is-current .data { color: var(--up); }
+.wiz__panel { border: 0; margin: 0; padding: 0; min-width: 0; display: flex; flex-direction: column; gap: var(--space-4); }
+.wiz.is-js .wiz__panel[hidden] { display: none; }
+.wiz__q { padding: 0; margin: 0 0 var(--space-1); color: var(--ink); outline: none; }
+.opts { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+.opt { position: relative; display: flex; flex-direction: column; gap: 2px; padding: var(--space-4) var(--space-4) var(--space-4) 52px; cursor: pointer;
+  background: var(--surface-200); box-shadow: inset 0 0 0 1px var(--line); transition: box-shadow .15s, background-color .15s; }
+.opt:hover { background: var(--surface-300); }
+.opt input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.opt::before { content: ""; position: absolute; left: var(--space-4); top: var(--space-4); width: 20px; height: 20px; box-shadow: inset 0 0 0 1.5px var(--line-strong); background: var(--surface-000); }
+.opt:has(input:checked) { box-shadow: inset 0 0 0 2px var(--up-fill); background: var(--surface-300); }
+.opt:has(input:checked)::before { background: var(--up-fill); box-shadow: inset 0 0 0 5px var(--surface-000), 0 0 0 1.5px var(--up-fill); }
+.opt:has(input:focus-visible) { outline: 2px solid var(--focus); outline-offset: 2px; }
+.opt__t { color: var(--ink); }
+.opt__s { color: var(--ink-muted); }
+.wiz__row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+.wiz__row--1 { grid-template-columns: 1fr; }
+.wiz__sum:empty { display: none; }
+.wiz__sum { color: var(--up); }
+.wiz__err:not([hidden]) { color: var(--danger); }
+.wiz__nav { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+.wiz__nav [hidden] { display: none; }
+.wiz__urgent a { color: var(--down); }
+.wiz:not(.is-js) .wiz__next, .wiz:not(.is-js) .wiz__steps { display: none; }
+@media (max-width: 720px) {
+  .opts { gap: var(--space-2); }
+  .opt { padding: var(--space-3) var(--space-3) var(--space-3) 40px; }
+  .opt::before { left: var(--space-3); top: var(--space-3); width: 16px; height: 16px; }
+  .opt__t { font-size: 14px; line-height: 19px; }
+  .opt__s { font-size: 12px; line-height: 16px; }
+  .wiz { gap: var(--space-4); }
+  .wiz__row { grid-template-columns: 1fr; gap: var(--space-3); }
+  .wiz__nav { display: grid; grid-template-columns: 1fr 2fr; }
+  .wiz__nav .wiz__next:only-of-type, .wiz__back[hidden] + .wiz__next { grid-column: 1 / -1; }
+}
+
+/* ---- Revision 7: no top rules on cards, project gallery ---- */
+.vtg-service, .vtg-service:hover, .aud { border-top: 0; }
+
+.gal { display: grid; grid-template-columns: 1fr 2fr; grid-template-rows: 1fr 1fr; gap: var(--space-4); height: 720px; }
+.gal__item { position: relative; margin: 0; overflow: hidden; }
+.gal__item--tall { grid-row: 1 / span 2; }
+.gal__item img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(.75); transition: transform .4s cubic-bezier(.2,.7,.2,1); }
+.gal__item:hover img { transform: scale(1.03); }
+.gal__item::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(7,8,10,.75) 0%, rgba(7,8,10,0) 40%); pointer-events: none; }
+.gal__cap { position: absolute; left: var(--space-6); bottom: var(--space-5, 20px); z-index: 1; color: #eceef1; }
+@media (prefers-reduced-motion: reduce) { .gal__item img { transition: none; } .gal__item:hover img { transform: none; } }
+@media (max-width: 1080px) { .gal { height: 560px; } }
+
+/* ---- Revision 8: person and quote in the contact panel ---- */
+.panel__person { margin: var(--space-2) 0 0; padding-top: var(--space-6); border-top: 1px solid var(--line); display: grid; grid-template-columns: 72px 1fr; gap: var(--space-4); align-items: start; }
+.panel__face { width: 72px; height: 72px; overflow: hidden; }
+.panel__face img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.panel__face.is-missing::after { font-size: 11px; padding: var(--space-1); }
+.panel__quote { margin: 0; display: flex; flex-direction: column; gap: var(--space-3); }
+.panel__quote p { color: var(--ink); }
+.panel__quote figcaption { display: flex; flex-direction: column; }
+.panel__name { color: var(--ink); }
+@media (max-width: 720px) {
+  .panel__person { grid-template-columns: 56px 1fr; gap: var(--space-3); padding-top: var(--space-4); }
+  .panel__face { width: 56px; height: 56px; }
+}

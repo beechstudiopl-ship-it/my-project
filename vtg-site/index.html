@@ -224,29 +224,26 @@
   </div>
 </section>
 
-<!-- Projects: replace titles and locations with real jobs -->
+<!-- Recent projects: photo gallery, type of work only -->
 <section class="s" id="projects" aria-labelledby="projects-h" data-theme="dark">
   <div class="vtg-container">
-    <div class="s__head s__head--row">
-      <div class="vtg-heading">
-        <h2 id="projects-h" class="h2 vtg-steel">Recent projects</h2>
-        <p class="lead vtg-lead">Real jobs, photographed by our engineers on site.</p>
-      </div>
-      <a href="/projects/" class="vtg-btn vtg-btn--ghost"><span>See projects</span></a>
+    <div class="s__head vtg-heading">
+      <h2 id="projects-h" class="h2 vtg-steel">Recent projects</h2>
+      <p class="lead vtg-lead">Real jobs, photographed by our engineers on site.</p>
     </div>
-    <div class="projects">
-      <a href="/projects/[slug-1]/" class="vtg-project vtg-project--tall">
-        <div class="vtg-project__media ph" data-ph="images/szyb-dach-kabiny.webp"><img src="images/szyb-dach-kabiny.webp" alt="Lift car roof with balustrade, inspection box and suspension ropes" loading="lazy"></div>
-        <div class="vtg-project__meta"><h3 class="h3">[Project title]</h3><p class="small vtg-project__loc">Electrical · [Building type] · [Area], London</p></div>
-      </a>
-      <a href="/projects/[slug-2]/" class="vtg-project">
-        <div class="vtg-project__media ph" data-ph="images/hol-drzwi-przystankowe.webp"><img src="images/hol-drzwi-przystankowe.webp" alt="Lobby with brushed stainless steel landing doors" loading="lazy"></div>
-        <div class="vtg-project__meta"><h3 class="h3">[Project title]</h3><p class="small vtg-project__loc">Door systems · [Building type] · [Area], London</p></div>
-      </a>
-      <a href="/projects/[slug-3]/" class="vtg-project">
-        <div class="vtg-project__media ph" data-ph="images/podszybie-zderzaki.webp"><img src="images/podszybie-zderzaki.webp" alt="Refurbished lift pit with buffers" loading="lazy"></div>
-        <div class="vtg-project__meta"><h3 class="h3">[Project title]</h3><p class="small vtg-project__loc">Modernisation · [Building type] · [Area], London</p></div>
-      </a>
+    <div class="gal">
+      <figure class="gal__item gal__item--tall ph" data-ph="images/szyb-dach-kabiny.webp">
+        <img src="images/szyb-dach-kabiny.webp" alt="Lift car roof with balustrade, inspection box and suspension ropes" width="841" height="1800" loading="lazy">
+        <figcaption class="gal__cap body-strong">Electrical</figcaption>
+      </figure>
+      <figure class="gal__item ph" data-ph="images/hol-drzwi-przystankowe.webp">
+        <img src="images/hol-drzwi-przystankowe.webp" alt="Office lobby with brushed stainless steel landing doors" width="1800" height="841" loading="lazy">
+        <figcaption class="gal__cap body-strong">Door systems</figcaption>
+      </figure>
+      <figure class="gal__item ph" data-ph="images/podszybie-zderzaki.webp">
+        <img src="images/podszybie-zderzaki.webp" alt="Refurbished lift pit with buffers" width="1800" height="1013" loading="lazy">
+        <figcaption class="gal__cap body-strong">Modernisation</figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -277,47 +274,88 @@
         <h2 id="fault-h" class="h2 vtg-steel">Report a fault or request a quote</h2>
         <p class="lead vtg-lead">Tell us where the lift is and what it is doing. We reply with who is attending, or with a quote.</p>
       </div>
-      <form class="form" action="[FORM-ENDPOINT]" method="post">
-        <div class="vtg-field full">
-          <label for="f-type" class="body-strong vtg-field__label">I need</label>
-          <select id="f-type" name="type" class="vtg-field__ctrl">
-            <option>A repair: lift is faulty or out of service</option>
-            <option>A quote for planned work</option>
-            <option>Trade support for my lift company</option>
-          </select>
+      <form class="wiz" action="[FORM-ENDPOINT]" method="post" novalidate>
+        <ol class="wiz__steps" aria-label="Form progress">
+          <li class="wiz__step is-current" data-for="1"><span class="data">01</span><span class="small">Your need</span></li>
+          <li class="wiz__step" data-for="2"><span class="data">02</span><span class="small">The lift</span></li>
+          <li class="wiz__step" data-for="3"><span class="data">03</span><span class="small">Contact</span></li>
+        </ol>
+
+        <fieldset class="wiz__panel" data-step="1">
+          <legend class="h3 wiz__q">What do you need?</legend>
+          <div class="opts">
+          <label class="opt"><input type="radio" name="type" value="out-of-service" required><span class="opt__t body-strong">Lift is out of service</span><span class="opt__s small">Stopped, stuck or unsafe</span></label>
+          <label class="opt"><input type="radio" name="type" value="fault"><span class="opt__t body-strong">Lift runs with a fault</span><span class="opt__s small">Noisy, levelling, doors, error codes</span></label>
+          <label class="opt"><input type="radio" name="type" value="quote"><span class="opt__t body-strong">Quote for planned work</span><span class="opt__s small">Repair, upgrade or modernisation</span></label>
+          <label class="opt"><input type="radio" name="type" value="trade"><span class="opt__t body-strong">Support for my lift company</span><span class="opt__s small">Specialist help under your contract</span></label>
+          </div>
+          <p class="small faint wiz__err" hidden>Choose one option to continue.</p>
+        </fieldset>
+
+        <fieldset class="wiz__panel" data-step="2">
+          <legend class="h3 wiz__q">Which part of the lift?</legend>
+          <div class="opts">
+          <label class="opt"><input type="radio" name="area" value="doors" required><span class="opt__t body-strong">Doors</span><span class="opt__s small">Car or landing doors, locks, operator</span></label>
+          <label class="opt"><input type="radio" name="area" value="mechanical"><span class="opt__t body-strong">Machine and brakes</span><span class="opt__s small">Motor, gearbox, ropes, sheaves</span></label>
+          <label class="opt"><input type="radio" name="area" value="electrical"><span class="opt__t body-strong">Controller and electrics</span><span class="opt__s small">Drives, safety circuits, wiring</span></label>
+          <label class="opt"><input type="radio" name="area" value="unsure"><span class="opt__t body-strong">Not sure</span><span class="opt__s small">We will diagnose on site</span></label>
+          </div>
+          <div class="wiz__row">
+            <div class="vtg-field">
+              <label for="f-make" class="body-strong vtg-field__label">Lift make <span class="vtg-field__opt">(optional)</span></label>
+              <input id="f-make" name="make" class="vtg-field__ctrl" placeholder="e.g. Otis, KONE, Schindler">
+            </div>
+            <div class="vtg-field">
+              <label for="f-desc" class="body-strong vtg-field__label">What is it doing? <span class="vtg-field__opt">(optional)</span></label>
+              <input id="f-desc" name="description" class="vtg-field__ctrl" placeholder="Symptoms, error code">
+            </div>
+          </div>
+          <p class="small faint wiz__err" hidden>Choose one option to continue.</p>
+        </fieldset>
+
+        <fieldset class="wiz__panel" data-step="3">
+          <legend class="h3 wiz__q">Where is the lift and how do we reach you?</legend>
+          <p class="small muted wiz__sum" aria-live="polite"></p>
+          <div class="wiz__row wiz__row--1">
+            <div class="vtg-field">
+              <label for="f-addr" class="body-strong vtg-field__label">Building address</label>
+              <input id="f-addr" name="address" class="vtg-field__ctrl" placeholder="Street, postcode" autocomplete="street-address" required>
+            </div>
+          </div>
+          <div class="wiz__row">
+            <div class="vtg-field">
+              <label for="f-name" class="body-strong vtg-field__label">Name</label>
+              <input id="f-name" name="name" class="vtg-field__ctrl" autocomplete="name" required>
+            </div>
+            <div class="vtg-field">
+              <label for="f-contact" class="body-strong vtg-field__label">Phone or email</label>
+              <input id="f-contact" name="contact" class="vtg-field__ctrl" autocomplete="tel" required>
+            </div>
+          </div>
+          <p class="small faint wiz__err" hidden>Fill in the address, your name and a phone or email.</p>
+        </fieldset>
+
+        <div class="wiz__nav">
+          <button type="button" class="vtg-btn vtg-btn--secondary wiz__back" hidden><span>Back</span></button>
+          <button type="button" class="vtg-btn vtg-btn--primary wiz__next"><span>Next</span></button>
+          <button type="submit" class="vtg-btn vtg-btn--amber wiz__send"><span>Send request</span></button>
         </div>
-        <div class="vtg-field full">
-          <label for="f-addr" class="body-strong vtg-field__label">Building address</label>
-          <input id="f-addr" name="address" class="vtg-field__ctrl" placeholder="Street, postcode" autocomplete="street-address" required>
-        </div>
-        <div class="vtg-field">
-          <label for="f-name" class="body-strong vtg-field__label">Name</label>
-          <input id="f-name" name="name" class="vtg-field__ctrl" autocomplete="name" required>
-        </div>
-        <div class="vtg-field">
-          <label for="f-contact" class="body-strong vtg-field__label">Phone or email</label>
-          <input id="f-contact" name="contact" class="vtg-field__ctrl" autocomplete="email" required>
-        </div>
-        <div class="vtg-field full">
-          <label for="f-desc" class="body-strong vtg-field__label">Describe the fault <span class="vtg-field__opt">(optional)</span></label>
-          <textarea id="f-desc" name="description" class="vtg-field__ctrl" rows="4" aria-describedby="f-desc-hint"></textarea>
-          <p id="f-desc-hint" class="small vtg-field__hint">Lift make, symptoms, error codes if visible.</p>
-        </div>
-        <div class="form__foot full">
-          <button type="submit" class="vtg-btn vtg-btn--amber vtg-btn--lg"><span>Send report</span></button>
-          <p class="small faint">Someone trapped in a lift? Call [PHONE] now.</p>
-        </div>
+        <p class="small faint wiz__urgent">Someone trapped in a lift? Call <a href="tel:[PHONE]">[PHONE]</a> now.</p>
       </form>
     </div>
     <aside class="panel" aria-label="Call us">
       <p class="label faint">Lift out of service</p>
       <a href="tel:[PHONE]" class="panel__phone">[PHONE]</a>
       <p class="small muted">[Hours, e.g. 24 hours a day, 365 days a year.]</p>
-      <ul class="small">
-        <li>All makes, any maintainer</li>
-        <li>Quote before work starts</li>
-        <li>Job report after every visit</li>
-      </ul>
+      <figure class="panel__person">
+        <div class="panel__face ph" data-ph="[Photo]">
+          <img src="images/coordinator.webp" alt="[Name], [role] at VTG" width="160" height="160" loading="lazy">
+        </div>
+        <blockquote class="panel__quote">
+          <p class="body">“Tell me what the lift is doing. I’ll send the engineer who knows that part and call you back with a time.”</p>
+          <figcaption class="small muted"><span class="body-strong panel__name">[Name]</span>[Role, e.g. Service coordinator]</figcaption>
+        </blockquote>
+      </figure>
       <a href="mailto:[EMAIL]" class="vtg-link" style="padding-top:0">[EMAIL]</a>
     </aside>
   </div>

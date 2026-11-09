@@ -43,3 +43,52 @@
   sync();
   if (mq.addEventListener) mq.addEventListener('change', sync); else mq.addListener(sync);
 })();
+
+// Step form: one question at a time; without JS all steps show and the form posts as is
+(function () {
+  var form = document.querySelector('form.wiz');
+  if (!form) return;
+  form.classList.add('is-js');
+  var panels = form.querySelectorAll('.wiz__panel');
+  var steps = form.querySelectorAll('.wiz__step');
+  var back = form.querySelector('.wiz__back'), next = form.querySelector('.wiz__next'), send = form.querySelector('.wiz__send');
+  var sum = form.querySelector('.wiz__sum');
+  var cur = 1, last = panels.length;
+
+  function label(name) {
+    var c = form.querySelector('input[name="' + name + '"]:checked');
+    return c ? c.parentNode.querySelector('.opt__t').textContent : '';
+  }
+  function show(n) {
+    cur = n;
+    panels.forEach(function (p) { p.hidden = +p.dataset.step !== n; });
+    steps.forEach(function (s) {
+      var k = +s.dataset.for;
+      s.classList.toggle('is-current', k === n);
+      s.classList.toggle('is-done', k < n);
+      if (k === n) s.setAttribute('aria-current', 'step'); else s.removeAttribute('aria-current');
+    });
+    back.hidden = n === 1;
+    next.hidden = n === last;
+    send.hidden = n !== last;
+    if (n === last && sum) sum.textContent = [label('type'), label('area')].filter(Boolean).join(' · ');
+  }
+  function valid(n) {
+    var p = form.querySelector('.wiz__panel[data-step="' + n + '"]');
+    var ok = Array.prototype.every.call(p.querySelectorAll('[required]'), function (el) {
+      if (el.type === 'radio') return !!p.querySelector('input[name="' + el.name + '"]:checked');
+      return el.value.trim() !== '';
+    });
+    p.querySelector('.wiz__err').hidden = ok;
+    return ok;
+  }
+  next.addEventListener('click', function () { if (valid(cur)) { show(cur + 1); panels[cur - 1].querySelector('legend').focus(); } });
+  back.addEventListener('click', function () { show(cur - 1); });
+  form.addEventListener('submit', function (e) { if (!valid(cur)) e.preventDefault(); });
+  // A tile choice on a tiles-only step moves on by itself
+  form.querySelectorAll('.wiz__panel[data-step="1"] input[type=radio]').forEach(function (r) {
+    r.addEventListener('change', function () { setTimeout(function () { if (cur === 1) { valid(1); show(2); } }, 180); });
+  });
+  form.querySelectorAll('legend').forEach(function (l) { l.tabIndex = -1; });
+  show(1);
+})();
