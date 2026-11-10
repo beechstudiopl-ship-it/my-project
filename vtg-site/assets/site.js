@@ -92,3 +92,11 @@
   form.querySelectorAll('legend').forEach(function (l) { l.tabIndex = -1; });
   show(1);
 })();
+
+// Version D service cards: the hovered or focused card turns blue
+(function () {
+  var cards = document.querySelectorAll('.dcard');
+  if (!cards.length) return;
+  function on(c) { cards.forEach(function (x) { x.classList.toggle('is-on', x === c); }); }
+  cards.forEach(function (c) { c.addEventListener('mouseenter', function () { on(c); }); c.addEventListener('focus', function () { on(c); }); });
+})();
