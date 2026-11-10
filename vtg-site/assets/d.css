@@ -177,3 +177,37 @@ body { background: var(--surface-000); }
   .dh__reflect { top: 356px; }
   .dh__stage::after { top: 356px; }
 }
+
+/* Hero D, full screen: the photo fills the first screen, copy sits on its lower edge */
+.dh--full { position: relative; height: 100vh; height: 100svh; min-height: 620px; max-height: 1100px; padding: 0;
+  display: flex; align-items: flex-end; overflow: hidden; }
+.dh__bg { position: absolute; inset: 0; margin: 0; }
+.dh__bg img { width: 100%; height: 100%; object-fit: cover; object-position: 60% 50%; display: block; filter: saturate(.55) contrast(1.08) brightness(.9); }
+.dh__bg::after { content: ""; position: absolute; inset: 0;
+  background:
+    linear-gradient(180deg, rgba(7,8,10,.7) 0%, rgba(7,8,10,0) 22%),
+    linear-gradient(0deg, rgba(7,8,10,.95) 0%, rgba(7,8,10,.55) 32%, rgba(7,8,10,0) 60%),
+    linear-gradient(90deg, rgba(7,8,10,.45) 0%, rgba(7,8,10,0) 55%); }
+.dh--full .dh__foot { position: relative; z-index: 2; width: 100%; margin: 0; padding-bottom: var(--space-16); }
+.dh--full .dh__side .small { color: rgba(236,238,241,.85); }
+@media (max-width: 720px) {
+  .dh--full { min-height: 560px; }
+  .dh__bg img { object-position: 72% 50%; }
+  .dh--full .dh__foot { padding-bottom: var(--space-8); }
+}
+
+/* Full-screen hero, pass 2: aligned to the grid, cold blue grade, ghost wordmark */
+.dh--full .dh__foot { margin: 0 auto; }
+.dh__bg img { filter: grayscale(1) contrast(1.15) brightness(.8); }
+.dh__bg::before { content: ""; position: absolute; inset: 0; z-index: 1; background: var(--up-fill); mix-blend-mode: color; opacity: .55; }
+.dh__bg::after { z-index: 2;
+  background:
+    radial-gradient(ellipse 80% 70% at 65% 40%, rgba(7,8,10,0) 0%, rgba(7,8,10,.55) 100%),
+    linear-gradient(180deg, rgba(7,8,10,.75) 0%, rgba(7,8,10,0) 22%),
+    linear-gradient(0deg, rgba(7,8,10,.97) 0%, rgba(7,8,10,.6) 30%, rgba(7,8,10,0) 58%); }
+.dh__ghost--full { position: absolute; z-index: 1; left: 50%; top: 44%; transform: translate(-50%, -50%);
+  font-size: min(36vw, 560px); color: transparent; -webkit-text-stroke: 1.5px rgba(236,238,241,.22);
+  background: linear-gradient(180deg, rgba(236,238,241,.16) 0%, rgba(236,238,241,.02) 80%); -webkit-background-clip: text; background-clip: text; }
+@media (max-width: 720px) { .dh__ghost--full { font-size: 44vw; top: 38%; } }
+/* Logo render has a black ground: let it blend into the photo instead of showing a box */
+.dnav .vtg-sitemark__logo { mix-blend-mode: lighten; }
