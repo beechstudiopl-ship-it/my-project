@@ -91,3 +91,6 @@
   .vtg-service { padding: var(--space-4); }
   .svc__img { margin: 0 calc(-1 * var(--space-4)) var(--space-2); }
 }
+
+/* No grid pattern on the blue process band */
+.hw::before { content: none; }
