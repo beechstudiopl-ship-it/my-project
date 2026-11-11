@@ -304,3 +304,4 @@ details.mx > summary h3 { margin: 0; }
 }
 /* Menu sits over the hero on phones too: clear it */
 @media (max-width: 720px) { .hx--grid .hx__in { padding-top: calc(60px + var(--space-12)); } }
+@media (max-width: 720px) { .vtg-nav--over .vtg-sitemark { padding-left: 8px; } .vtg-nav--over .vtg-nav__actions { padding-right: 0; } }

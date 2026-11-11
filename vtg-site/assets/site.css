@@ -605,3 +605,7 @@ a { color: var(--up); }
   .hx--grid { min-height: 0; }
   .hx--grid .hx__in { padding-top: calc(60px + var(--space-12)); }
 }
+
+/* ---- Revision 21: 8px inset from the grid lines inside the menu band ---- */
+.vtg-nav--over .vtg-sitemark { padding-left: 8px; }
+.vtg-nav--over .vtg-nav__actions { padding-right: 8px; }
