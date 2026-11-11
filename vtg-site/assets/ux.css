@@ -410,3 +410,10 @@
   .bento { grid-template-rows: 200px 130px; }
   .bento__tile--blue, .bento > .bento__photo:last-child { display: none; }
 }
+/* Team strip: round faces, slightly overlapping */
+.tm__faces { border: 0; gap: 0; }
+.tm__face, .tm__face:last-of-type { border-radius: 50%; border: 3px solid var(--surface-100); margin-left: -12px; }
+.tm__face:first-child { margin-left: 0; }
+.pjh .tm__face, .pjh .tm__face:last-of-type { border-color: #0f1a2b; }
+/* No "Swipe" hints anywhere */
+.swipe-hint { display: none !important; }
