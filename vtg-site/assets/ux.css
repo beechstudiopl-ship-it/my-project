@@ -405,3 +405,8 @@
 /* Middle grid line runs in the gap between the hero text and the blue tile */
 .hgrid__v--b { right: calc(var(--space-8) + 300px + 32px); }
 @media (max-width: 1080px) { .hgrid__v--b { right: calc(var(--space-8) + 260px + 32px); } }
+/* Mobile: proof block without the blue engineers tile and the lobby photo */
+@media (max-width: 720px) {
+  .bento { grid-template-rows: 200px 130px; }
+  .bento__tile--blue, .bento > .bento__photo:last-child { display: none; }
+}
