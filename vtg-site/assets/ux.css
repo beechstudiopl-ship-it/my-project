@@ -507,3 +507,7 @@
 .mnav .mnav__sub a { font: 600 17px/1.3 var(--font-sans); padding: 10px 0; border-bottom: 0; }
 .vtg-nav__links ul.dd__panel { display: flex; flex-direction: column; gap: 2px; }
 .dd__item { padding: 10px 14px; }
+/* Menu: Services with dropdown sits on the same line as the other links */
+.vtg-nav__links ul { align-items: center; }
+.vtg-nav__links li { display: flex; align-items: center; }
+.vtg-nav__link { display: inline-flex; align-items: center; line-height: 24px; }
