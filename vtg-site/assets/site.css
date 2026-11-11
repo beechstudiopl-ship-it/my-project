@@ -942,3 +942,10 @@ main [id] { scroll-margin-top: calc(var(--header-height) + 16px); }
 @media (prefers-reduced-motion: reduce) { .pj--photo img { transition: none; } .pj--photo:hover img { transform: none; } }
 @media (max-width: 900px) { .pjs__grid--photos { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 720px) { .pjs__grid--photos { gap: var(--space-2); } .pj__cap { left: var(--space-3); bottom: var(--space-3); font-size: 13px; } }
+
+/* ---- Revision 47: team strip = 4 people, no plus tile ---- */
+.tm__face:last-of-type { border-right: 0; }
+.tm__txt { font-size: 20px; }
+.tm__sub { color: var(--ink-muted); }
+.pjh .tm__sub { color: rgba(236,238,241,.75); }
+@media (max-width: 720px) { .tm__txt { font-size: 15px; } }
