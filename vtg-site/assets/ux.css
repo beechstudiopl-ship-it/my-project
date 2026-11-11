@@ -448,3 +448,12 @@
   .hx__tile { position: relative; overflow: visible; }
   .hx__tile::before { content: ""; position: absolute; top: 0; left: -100vw; right: -100vw; height: 1px; background: rgba(236,238,241,.22); pointer-events: none; }
 }
+/* Desktop hero: description in two lines, tighter rhythm so the block fits between the lines */
+@media (min-width: 721px) {
+  .hx__row .hx__lead { max-width: 72ch; }
+  .hx--grid .hx__copy { gap: 16px; }
+  .hx__row { gap: 22px; }
+  .hx--grid .hx__copy h1 { font-size: clamp(52px, 5.6vw, 84px); line-height: 1; }
+  .hx__btns .vtg-btn--lg { min-height: 52px; padding-top: 0; padding-bottom: 0; }
+}
+@media (min-width: 721px) { .hx__br { display: block; } }
