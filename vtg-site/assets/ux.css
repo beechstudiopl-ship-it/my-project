@@ -785,3 +785,6 @@ html.tb-off { --tb: 0px; }
   .ww .bento__tile { padding: 14px; }
   .ww .bento__n { font-size: 34px; }
 }
+/* Facts row removed from the who-we-work-with section */
+.ww .bento { display: none !important; }
+.wwx { margin-bottom: 0; }
