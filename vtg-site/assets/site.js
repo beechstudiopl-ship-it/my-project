@@ -153,7 +153,8 @@
       var r = img.parentNode.getBoundingClientRect();
       if (r.bottom < 0 || r.top > vh) return;
       var p = (r.top + r.height / 2 - vh / 2) / (vh / 2 + r.height / 2); // -1 .. 1
-      img.style.transform = 'translate3d(0,' + (p * r.height * 0.22).toFixed(1) + 'px,0)';
+      var k = img.dataset.parallax === 'ride' ? -0.3 : 0.22; // 'ride': shaft walls slide down, as if riding up in the lift
+      img.style.transform = 'translate3d(0,' + (p * r.height * k).toFixed(1) + 'px,0)';
     });
     ticking = false;
   }

@@ -788,3 +788,7 @@ html.tb-off { --tb: 0px; }
 /* Facts row removed from the who-we-work-with section */
 .ww .bento { display: none !important; }
 .wwx { margin-bottom: 0; }
+/* Who-we-work-with photo: outlined icons, dark gradient, lift-ride parallax */
+.wc__ic { background: none; color: #f0ac2e; border: 1.5px solid #f0ac2e; }
+.wwx__photo img[data-parallax] { top: -32%; bottom: auto; height: 164%; will-change: transform; }
+.wwx__photo::after { background: linear-gradient(0deg, rgba(7,8,10,.94) 0%, rgba(7,8,10,.55) 42%, rgba(7,8,10,0) 70%); }
