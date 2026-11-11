@@ -178,3 +178,20 @@
 /* "All" tile: same fill as the 04 tile, no border */
 .ww .bento__tile--light { background: var(--surface-200); box-shadow: none; }
 .fx__bg img { object-position: center 45%; }
+
+/* Services tiles, pass 2: fixed structure so titles line up and nothing jumps */
+.sv__body { top: 0; bottom: 0; padding: var(--space-6); display: flex; flex-direction: column; justify-content: flex-end; gap: var(--space-2); }
+.sv__go { top: var(--space-6); right: var(--space-6); bottom: auto; width: 40px; height: 40px; }
+.sv__t { min-height: calc(2 * 1.2em); display: flex; align-items: flex-end; font-size: 22px; }
+.sv__s { min-height: calc(2 * 22px); }
+.sv__list { position: absolute; left: var(--space-6); right: var(--space-6); top: calc(var(--space-6) + 56px); max-height: none; margin: 0; opacity: 0; transform: translateY(8px); transition: opacity .25s, transform .3s cubic-bezier(.2,.7,.2,1); }
+.sv:hover .sv__list, .sv:focus-visible .sv__list { opacity: 1; transform: none; margin: 0; max-height: none; }
+.sv:hover .sv__go { transform: none; background: #f6be52; }
+.sv:hover::after, .sv:focus-visible::after { background: rgba(7,8,10,.82); }
+@media (max-width: 720px) {
+  .sv__body { padding: var(--space-3); }
+  .sv__t { font-size: 15px; }
+  .sv__s { min-height: calc(2 * 17px); }
+  .sv__list { display: none; }
+}
+.sv__t { align-items: flex-start; }
