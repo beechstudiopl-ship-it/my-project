@@ -170,3 +170,13 @@
   window.addEventListener('scroll', sync, { passive: true });
   window.addEventListener('resize', sync);
 })();
+
+// Footer groups: open on desktop, collapsed on mobile until tapped
+(function () {
+  var mq = window.matchMedia('(max-width: 720px)');
+  var items = document.querySelectorAll('details.fxa');
+  function sync() { items.forEach(function (d) { d.open = !mq.matches; }); }
+  items.forEach(function (d) { d.querySelector('summary').addEventListener('click', function (e) { if (!mq.matches) e.preventDefault(); }); });
+  sync();
+  if (mq.addEventListener) mq.addEventListener('change', sync); else mq.addListener(sync);
+})();
