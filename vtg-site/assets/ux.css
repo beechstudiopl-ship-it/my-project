@@ -390,3 +390,5 @@
   .hx__row { flex-direction: column-reverse; align-items: flex-start; gap: 28px; }
   .hx--grid .hx__copy { gap: 20px; }
 }
+/* Desktop hero: blue tile spans exactly between the two horizontal grid lines */
+@media (min-width: 721px) { .hx__tile { top: 52%; height: 41%; } }
