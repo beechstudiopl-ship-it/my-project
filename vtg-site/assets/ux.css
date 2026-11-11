@@ -397,3 +397,8 @@
   .hx--grid .hx__copy { top: 52%; height: 41%; padding-top: 0; padding-bottom: 0; display: flex; flex-direction: column; justify-content: center; gap: 20px; }
   .hx--grid .hx__copy h1 { font-size: clamp(56px, 6.2vw, 88px); }
 }
+
+/* Hero: grid lines and current pulses always above the blue tile */
+.hgrid { z-index: 6; }
+/* Blue tile: team faces in circles */
+.hx__faces img { border-radius: 50%; border: 2px solid var(--up-fill); }
