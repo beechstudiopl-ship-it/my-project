@@ -523,3 +523,23 @@
   .hx--grid .hx__copy { right: calc(var(--space-8) + 292px + 32px); }
 }
 .ww__title { max-width: 22ch; }
+
+/* Tile arrow: shaft extends on hover, head follows; no scaling */
+.sv__more svg { transform: none !important; }
+.sv__arr { position: relative; display: inline-flex; align-items: center; height: 18px; color: #f0ac2e; }
+.sv__line { display: block; width: 16px; height: 2px; border-radius: 2px; background: currentColor; transition: width .3s cubic-bezier(.2,.7,.2,1); }
+.sv__head { margin-left: -9px; flex: none; }
+.sv:hover .sv__line, .sv:focus-visible .sv__line { width: 44px; }
+@media (prefers-reduced-motion: reduce) { .sv__line { transition: none; } }
+
+/* Smooth photo zoom on tiles and gallery: slow ease, GPU layer, slight lift in tone */
+.sv img, .pj--photo img, .gal__item img {
+  transform: scale(1.001) translateZ(0); backface-visibility: hidden; will-change: transform;
+  transition: transform 1.2s cubic-bezier(.16,1,.3,1), filter .8s cubic-bezier(.16,1,.3,1);
+}
+.sv:hover img, .sv:focus-visible img { transform: scale(1.08) translateZ(0); filter: saturate(.9) brightness(1.06); }
+.pj--photo:hover img, .gal__item:hover img { transform: scale(1.06) translateZ(0); filter: saturate(.9) brightness(1.05); }
+@media (prefers-reduced-motion: reduce) {
+  .sv img, .pj--photo img, .gal__item img { transition: none; }
+  .sv:hover img, .pj--photo:hover img, .gal__item:hover img { transform: none; }
+}
