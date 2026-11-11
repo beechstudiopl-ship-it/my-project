@@ -386,3 +386,7 @@ a { color: var(--up); }
 .vtg-service--photo:hover .svc__img img { transform: scale(1.03); }
 @media (prefers-reduced-motion: reduce) { .vtg-service--photo:hover .svc__img img { transform: none; } }
 @media (max-width: 1080px) { .plate { grid-template-columns: 1fr 1fr; } .plate__cell:nth-child(3) { padding-left: 0; border-left: 0; } }
+
+/* ---- Revision 11: menu links in white ---- */
+.vtg-nav__link { color: var(--ink); }
+.vtg-nav__link:hover { color: #ffffff; border-bottom-color: var(--up); }
