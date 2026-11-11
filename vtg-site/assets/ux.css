@@ -616,3 +616,10 @@ main > section:not(.hx):not([hidden]) { padding-top: var(--sec); padding-bottom:
 .hx__tile { justify-content: flex-end !important; }
 .hx__tile-txt { padding: 28px; }
 @media (max-width: 720px) { .hx__tile-txt { padding: 18px 16px; } }
+
+/* Headings back to plain solid colour (no steel texture) */
+.hx--grid .hx__copy h1, .ww__title, .ct__title, .fx__title, .pjh .ct__title, #why-h, #projects-h, .fq__title, .mp__title, .vtg-steel {
+  background: none !important; -webkit-background-clip: border-box !important; background-clip: border-box !important;
+  -webkit-text-fill-color: currentColor !important; color: var(--ink) !important;
+}
+[data-theme="dark"] .vtg-steel, .hx--grid .hx__copy h1, .fx__title, .ct__title { color: #eceef1 !important; }
