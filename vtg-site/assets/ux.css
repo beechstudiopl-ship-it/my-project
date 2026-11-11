@@ -175,3 +175,5 @@
 .svs__head .h2 { max-width: 20ch; }
 .svs__lead { font-size: 18px; line-height: 28px; margin: 0; }
 @media (max-width: 720px) { .svs__lead { font-size: 16px; line-height: 25px; } }
+/* "All" tile: same fill as the 04 tile, no border */
+.ww .bento__tile--light { background: var(--surface-200); box-shadow: none; }
