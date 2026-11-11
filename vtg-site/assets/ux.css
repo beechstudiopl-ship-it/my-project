@@ -694,3 +694,5 @@ html.tb-off .topbar { transform: translateY(-100%); }
   @keyframes tile-run { 0% { transform: translateX(-140px); opacity: 0; } 10% { opacity: 1; } 55% { opacity: 1; } 70%,100% { transform: translateX(100vw); opacity: 0; } }
 }
 @media (max-width: 720px) and (prefers-reduced-motion: reduce) { .hx__tile::after { animation: none; display: none; } }
+/* Contact page: City of London skyline behind the form */
+.ct__bg img.ct__city { object-position: center 55%; }
