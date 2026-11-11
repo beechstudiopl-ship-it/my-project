@@ -729,3 +729,25 @@ a { color: var(--up); }
 }
 /* Sections reached from the sticky menu land below it */
 main [id] { scroll-margin-top: calc(var(--header-height) + 16px); }
+
+/* ---- Revision 35: hero grid lines and current repeated in the footer ---- */
+.hgrid--fx { z-index: 1; }
+.hgrid--fx .hgrid__v { top: 0; }
+.hgrid--fx .hgrid__v--mid { left: 50%; }
+.fx__cta { z-index: 2; }
+.fx__wrap { position: relative; z-index: 3; }
+.fx__card { position: relative; z-index: 1; }
+.fx__rule { position: absolute; left: calc(50% - 50vw); width: 100vw; right: auto; z-index: 0; }
+.fx__rule--top { top: 0; }
+.fx__rule--bot { bottom: 0; top: auto; }
+.fx__rule--bot::after { animation-delay: 2.6s; }
+.hgrid--fx .hgrid__v--mid::after { animation-delay: 1.4s; }
+.hgrid--fx .hgrid__v--c::after { animation-delay: 3s; }
+.fx__ghost { z-index: 2; }
+@media (max-width: 720px) { .hgrid--fx .hgrid__v--mid { display: none; } }
+
+/* ---- Revision 36: every CTA button is orange ---- */
+:root { --cta: #f2611d; --cta-hover: #ff7433; --on-cta: #07080a; --glow-cta: 0 0 0 1px rgba(255,140,80,.4), 0 8px 28px rgba(242,97,29,.45); }
+.vtg-btn--primary, .vtg-btn--amber, .ctf__send { background: var(--cta); color: var(--on-cta); }
+.vtg-btn--primary:hover, .vtg-btn--amber:hover, .ctf__send:hover { background: var(--cta-hover); box-shadow: var(--glow-cta); }
+.vtg-btn--primary:disabled, .vtg-btn--amber:disabled { box-shadow: none; }
