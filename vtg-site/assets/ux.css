@@ -737,3 +737,7 @@ html.tb-off { --tb: 0px; }
 .vtg-nav__links .dd__panel .dd__item { padding: 13px 20px !important; }
 /* 15+ years tile is real data now: show it on phones too */
 @media (max-width: 720px) { .bento { grid-template-rows: 200px 130px 130px; } .bento__tile--blue { display: flex; } }
+/* Footer call card: rounded pill, one face */
+.fx__person { border-radius: 999px; padding: 8px 24px 8px 8px; }
+.fx__faces img { width: 56px; height: 56px; margin-left: 0; }
+@media (max-width: 720px) { .fx__faces img { width: 46px; height: 46px; } .fx__person { padding: 6px 18px 6px 6px; } }
