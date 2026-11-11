@@ -241,3 +241,5 @@ details.mx > summary h3 { margin: 0; }
   .svc__img { margin: 0 calc(-1 * var(--space-4)) var(--space-1); aspect-ratio: 16 / 11; }
   .svc__img img { clip-path: none; }
 }
+@media (max-width: 1080px) { .why__media { position: relative; height: 260px; aspect-ratio: auto; } .why__media img { position: absolute; inset: 0; } }
+@media (max-width: 720px) { .why__media { height: 200px; } }

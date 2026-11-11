@@ -390,3 +390,20 @@ a { color: var(--up); }
 /* ---- Revision 11: menu links in white ---- */
 .vtg-nav__link { color: var(--ink); }
 .vtg-nav__link:hover { color: #ffffff; border-bottom-color: var(--up); }
+
+/* ---- Revision 12: why photo ends level with the list on the right ---- */
+@media (min-width: 1081px) {
+  .why { align-items: stretch; }
+  .why__intro { height: 100%; }
+  .why__media { position: relative; flex: 1 1 auto; aspect-ratio: auto; min-height: 220px; }
+  .why__media img { position: absolute; inset: 0; }
+}
+
+/* ---- Revision 13: why = heading across, then photo and list side by side at equal height ---- */
+@media (min-width: 1081px) {
+  .why { grid-template-columns: 1fr 1.1fr; grid-template-areas: "head head" "media list"; gap: var(--space-8) var(--space-16); align-items: stretch; }
+  .why__intro { display: contents; }
+  .why__intro > .vtg-heading { grid-area: head; max-width: 760px; }
+  .why__media { grid-area: media; height: auto; min-height: 0; }
+  .why__list { grid-area: list; }
+}
