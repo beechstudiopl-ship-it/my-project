@@ -1,0 +1,93 @@
+/* ==== UX/UI pass: one spacing rhythm, one heading scale, conversion elements ====
+   Desktop: section 104px, head-to-content 48px, H2 44/1.1/800, lead 18/28.
+   Phone:   section 56px,  head-to-content 28px, H2 28/1.15/800, lead 16/25. */
+:root { --sec: 104px; --head-gap: 48px; }
+@media (max-width: 720px) { :root { --sec: 56px; --head-gap: 28px; } }
+
+/* Section rhythm */
+.s, .ww, .ab, .fq, .mp, .pjs { padding-top: var(--sec); padding-bottom: var(--sec); }
+.s__head, .ww__head, .mp__head { margin-bottom: var(--head-gap); }
+.ab__top { margin-bottom: var(--head-gap); }
+
+/* One H2 scale for every section heading */
+#services-h, #why-h, #projects-h, #process-h, #ww-h, #fq-h, #mp-h, .ab__statement, .hw__title {
+  font: 800 44px/1.1 var(--font-display); font-stretch: 112%; letter-spacing: -0.015em; text-wrap: balance; margin: 0; }
+#services-h, #fq-h { color: var(--ink); }
+@media (max-width: 720px) {
+  #services-h, #why-h, #projects-h, #process-h, #ww-h, #fq-h, #mp-h, .ab__statement, .hw__title { font-size: 28px; line-height: 1.15; }
+}
+/* One lead style */
+.s__head .vtg-lead, .vtg-heading .vtg-lead, .ww__lead, .mp__lead, .hw .vtg-lead { font-size: 18px; line-height: 28px; margin: 0; }
+@media (max-width: 720px) { .s__head .vtg-lead, .vtg-heading .vtg-lead, .ww__lead, .mp__lead, .hw .vtg-lead { font-size: 16px; line-height: 25px; } }
+.vtg-heading { gap: var(--space-4); }
+.ww__lead, .mp__lead { max-width: 44ch; }
+
+/* Hero: two CTAs side by side, lead under them */
+.hx__row { flex-direction: column; align-items: flex-start; gap: var(--space-5, 20px); }
+.hx__btns { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+.hx__call { color: #fff; box-shadow: inset 0 0 0 1px rgba(236,238,241,.55); background: rgba(7,8,10,.35); }
+.hx__call .vtg-icon { color: #f0ac2e; }
+.hx__call:hover { background: rgba(7,8,10,.6); }
+.hx__row .hx__lead { font-size: 16px; line-height: 25px; max-width: 52ch; }
+
+/* Process band: CTA row */
+.hw__cta { display: flex; justify-content: space-between; align-items: center; gap: var(--space-6); flex-wrap: wrap; margin-top: var(--space-8); }
+.hw__cta-t { margin: 0; font: 700 20px/1.3 var(--font-display); font-stretch: 112%; color: #fff; }
+.hw__btns { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+.vtg-btn--hw-call { background: #07080a; color: #fff; }
+.vtg-btn--hw-call .vtg-icon { color: #f0ac2e; }
+.vtg-btn--hw-call:hover { background: #171a1f; }
+
+/* FAQ footer line */
+.fq__more { margin: var(--space-4) 0 0; font: 500 15px/1.5 var(--font-sans); color: var(--ink-muted); }
+.fq__more a { color: var(--ink); font-weight: 700; }
+
+/* Who we work with: equal cell rhythm */
+.ww__cell { padding: var(--space-8) var(--space-6); }
+
+/* Footer card: link columns never break mid-label */
+.fx__card { grid-template-columns: 1fr 1.4fr 1fr; padding: var(--space-12); gap: var(--space-8) var(--space-12); }
+.fx__links { grid-template-columns: 1fr 1.2fr; }
+.fx__links a { white-space: nowrap; }
+.fx__legal { padding-top: var(--space-6); }
+
+/* Contact and projects headers clear the fixed menu on phones */
+@media (max-width: 720px) {
+  .ct--page { padding-top: calc(60px + var(--space-8)); }
+  .pjh { padding-top: calc(60px + var(--space-8)); padding-bottom: var(--space-8); }
+  .hx--grid .hx__copy { padding: 0; }
+  .hgrid__v--a, .hgrid__v--c { display: none; }
+  .hx__btns { width: 100%; }
+  .hx__btns .vtg-btn { width: 100%; }
+  .hw__cta { flex-direction: column; align-items: stretch; }
+  .hw__btns .vtg-btn { width: 100%; }
+  .fx__card { grid-template-columns: 1fr; padding: var(--space-6) var(--space-4); }
+}
+
+/* Mobile call bar */
+.callbar { display: none; }
+@media (max-width: 720px) {
+  .callbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; display: grid; grid-template-columns: 1fr 1fr;
+    padding: var(--space-2) max(12px, env(safe-area-inset-right, 0px)) calc(var(--space-2) + env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px));
+    gap: var(--space-2); background: rgba(7,8,10,.96); box-shadow: 0 -1px 0 rgba(236,238,241,.12); }
+  .callbar a { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); text-decoration: none; font: 700 15px/1 var(--font-sans); }
+  .callbar__call { color: #fff; box-shadow: inset 0 0 0 1px rgba(236,238,241,.4); }
+  .callbar__call .vtg-icon { color: #f0ac2e; }
+  .callbar__cta { background: #f0ac2e; color: #07080a; }
+  body { padding-bottom: 64px; }
+}
+/* Projects: filters follow the header closely */
+.pjs { padding-top: var(--space-12); }
+@media (max-width: 720px) { .pjs { padding-top: var(--space-6); } }
+
+/* Card text: readable minimum, one card-title size */
+.ww__d, .vtg-service__sub, .vtg-service__items, .why__item p, .ab__str .body, .step p, .hw .step p { font-size: 15px; line-height: 23px; }
+.ww__t, .vtg-service .h3, .why__item h3, .ab__str-t, .hw .step h3, .step h3 { font: 700 20px/1.25 var(--font-display); font-stretch: 112%; }
+.vtg-service { padding: var(--space-6); gap: var(--space-3); }
+.svc__img { margin: 0 calc(-1 * var(--space-6)) var(--space-3); }
+@media (max-width: 720px) {
+  .ww__d, .vtg-service__sub, .vtg-service__items, .why__item p, .ab__str .body, .step p, .hw .step p { font-size: 14px; line-height: 21px; }
+  .ww__t, .vtg-service .h3, .why__item h3, .ab__str-t, .hw .step h3, .step h3 { font-size: 16px; }
+  .vtg-service { padding: var(--space-4); }
+  .svc__img { margin: 0 calc(-1 * var(--space-4)) var(--space-2); }
+}
