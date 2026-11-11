@@ -457,3 +457,6 @@
   .hx__btns .vtg-btn--lg { min-height: 52px; padding-top: 0; padding-bottom: 0; }
 }
 @media (min-width: 721px) { .hx__br { display: block; } }
+/* Footer without the ghost wordmark: card sits on the photo with bottom spacing */
+.fx { padding-bottom: var(--space-16); }
+@media (max-width: 720px) { .fx { padding-bottom: 32px; } }
