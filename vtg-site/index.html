@@ -180,42 +180,50 @@
   </div>
 </section>
 
-<!-- Four specialisms: the portfolio navigation -->
-<section class="s" id="services" aria-labelledby="services-h" data-theme="light">
+<!-- Four specialisms: photo tiles, details on hover -->
+<section class="s svs" id="services" aria-labelledby="services-h" data-theme="light">
   <div class="vtg-container">
-    <div class="s__head vtg-heading">
+    <div class="svs__head">
       <h2 id="services-h" class="h2">A team of lift engineers and installers</h2>
-      <p class="lead vtg-lead">Four specialist companies, each focused on one part of the lift. For modernisation our lift installers fit new controllers, door operators and replacement components. Work is shared across the team by skills and availability.</p>
+      <p class="vtg-lead svs__lead">Four specialist companies, each focused on one part of the lift. Our lift installers also fit new controllers, door operators and replacement parts.</p>
     </div>
-    <div class="grid-4">
-      <article class="vtg-service vtg-service--photo">
-        <figure class="svc__img"><img src="images/zespol-napedowy-mrl.webp" alt="Machine-room-less traction machine and controller in the shaft headroom" loading="lazy" style="object-position:center 40%"></figure>
-        <h3 class="h3">Mechanical lift repairs</h3>
-        <p class="small vtg-service__sub">Traction &amp; mechanical systems</p>
-        <details class="mx"><summary class="mx__sum small">Components</summary><ul class="small vtg-service__items"><li>Traction machines &amp; motors</li><li>Brakes, bearings, gearboxes</li><li>Ropes, sheaves, guide shoes</li><li>Mechanical adjustments</li></ul></details>
-        <a href="https://[SITE-02-DOMAIN]/" class="vtg-link">Mechanical repairs</a>
-      </article>
-      <article class="vtg-service vtg-service--photo">
-        <figure class="svc__img"><img src="images/hol-drzwi-przystankowe.webp" alt="Brushed stainless steel landing doors in an office lobby" loading="lazy" style="object-position:80% center"></figure>
-        <h3 class="h3">Lift door systems</h3>
-        <p class="small vtg-service__sub">Car &amp; landing door expertise</p>
-        <details class="mx"><summary class="mx__sum small">Components</summary><ul class="small vtg-service__items"><li>Operators &amp; door motors</li><li>Locks, rollers, tracks</li><li>Hangers &amp; door mechanisms</li><li>Door refurbishment</li></ul></details>
-        <a href="https://[SITE-03-DOMAIN]/" class="vtg-link">Door systems</a>
-      </article>
-      <article class="vtg-service vtg-service--photo">
-        <figure class="svc__img"><img src="images/szyb-dach-kabiny.webp" alt="Lift car roof with inspection box and suspension ropes" loading="lazy" style="object-position:center 45%"></figure>
-        <h3 class="h3">Electrical fault finding</h3>
-        <p class="small vtg-service__sub">Electrical systems &amp; diagnostics</p>
-        <details class="mx"><summary class="mx__sum small">Components</summary><ul class="small vtg-service__items"><li>Controllers, drives, inverters</li><li>Sensors &amp; safety circuits</li><li>Wiring &amp; communication</li><li>Electrical troubleshooting</li></ul></details>
-        <a href="https://[SITE-04-DOMAIN]/" class="vtg-link">Fault finding</a>
-      </article>
-      <article class="vtg-service vtg-service--photo">
-        <figure class="svc__img"><img src="images/podszybie-zderzaki.webp" alt="Refurbished lift pit with buffers" loading="lazy" style="object-position:center"></figure>
-        <h3 class="h3">Modernisation</h3>
-        <p class="small vtg-service__sub">Upgrade &amp; improvement projects</p>
-        <details class="mx"><summary class="mx__sum small">Components</summary><ul class="small vtg-service__items"><li>Partial modernisations</li><li>Control system upgrades</li><li>Obsolete component replacement</li><li>Car refurbishment</li></ul></details>
-        <a href="https://[SITE-05-DOMAIN]/" class="vtg-link">Modernisation</a>
-      </article>
+    <div class="svs__grid">
+      <a href="https://[SITE-02-DOMAIN]/" class="sv">
+        <img src="images/zespol-napedowy-mrl.webp" alt="Machine-room-less traction machine in the shaft headroom" loading="lazy" style="object-position:center 40%">
+        <div class="sv__body">
+          <h3 class="sv__t">Mechanical lift repairs</h3>
+          <p class="sv__s">Traction machines, motors and brakes.</p>
+          <ul class="sv__list"><li>Traction machines &amp; motors</li><li>Brakes, bearings, gearboxes</li><li>Ropes, sheaves, guide shoes</li></ul>
+          <span class="sv__go" aria-hidden="true"><svg class="lu" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        </div>
+      </a>
+      <a href="https://[SITE-03-DOMAIN]/" class="sv">
+        <img src="images/hol-drzwi-przystankowe.webp" alt="Brushed stainless steel landing doors" loading="lazy" style="object-position:80% center">
+        <div class="sv__body">
+          <h3 class="sv__t">Lift door systems</h3>
+          <p class="sv__s">Car and landing doors, operators and locks.</p>
+          <ul class="sv__list"><li>Operators &amp; door motors</li><li>Locks, rollers, tracks</li><li>Hangers &amp; door refurbishment</li></ul>
+          <span class="sv__go" aria-hidden="true"><svg class="lu" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        </div>
+      </a>
+      <a href="https://[SITE-04-DOMAIN]/" class="sv">
+        <img src="images/szyb-dach-kabiny.webp" alt="Lift car roof with inspection box and ropes" loading="lazy" style="object-position:center 45%">
+        <div class="sv__body">
+          <h3 class="sv__t">Electrical fault finding</h3>
+          <p class="sv__s">Controllers, drives and safety circuits.</p>
+          <ul class="sv__list"><li>Controllers, drives, inverters</li><li>Sensors &amp; safety circuits</li><li>Wiring &amp; communication</li></ul>
+          <span class="sv__go" aria-hidden="true"><svg class="lu" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        </div>
+      </a>
+      <a href="https://[SITE-05-DOMAIN]/" class="sv">
+        <img src="images/podszybie-zderzaki.webp" alt="Refurbished lift pit with buffers" loading="lazy" style="object-position:center">
+        <div class="sv__body">
+          <h3 class="sv__t">Modernisation</h3>
+          <p class="sv__s">Upgrades and obsolete part replacement.</p>
+          <ul class="sv__list"><li>Partial modernisations</li><li>Control system upgrades</li><li>Car refurbishment</li></ul>
+          <span class="sv__go" aria-hidden="true"><svg class="lu" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        </div>
+      </a>
     </div>
   </div>
 </section>
