@@ -305,3 +305,5 @@
   .hx--grid { padding-bottom: 28px; }
   .hx--grid .hx__bg::after { background: linear-gradient(180deg, rgba(7,8,10,.75) 0%, rgba(7,8,10,.25) 30%, rgba(7,8,10,.35) 60%, rgba(7,8,10,.92) 100%); }
 }
+/* Mobile: hero buttons hidden (the sticky bottom bar carries both actions) */
+@media (max-width: 720px) { .hx__btns { display: none; } }
