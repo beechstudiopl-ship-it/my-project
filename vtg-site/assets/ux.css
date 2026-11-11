@@ -463,3 +463,20 @@
 /* Every "Request a quote" CTA: same label + arrow, same spacing */
 .callbar__cta { gap: 8px; }
 .vtg-btn .vtg-icon, .callbar__cta .vtg-icon { width: 18px; height: 18px; flex: none; }
+
+/* Services tiles, pass 5: title then description, arrow lower; hover = bigger arrow + current around the edge */
+.sv__t { order: 0; }
+.sv__s { order: 1; }
+.sv__more { order: 2; margin-top: 22px; }
+.sv__more svg { transition: transform .25s cubic-bezier(.2,.7,.2,1); transform-origin: left center; }
+.sv:hover .sv__more svg, .sv:focus-visible .sv__more svg { transform: scale(1.45) translateX(2px); }
+.sv__edge { position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+.sv__edge rect { x: 1px; y: 1px; width: calc(100% - 2px); height: calc(100% - 2px); fill: none; stroke: #62dafe; stroke-width: 2;
+  stroke-dasharray: 18 82; stroke-dashoffset: 0; opacity: 0; filter: drop-shadow(0 0 4px rgba(98,218,254,.9)) drop-shadow(0 0 10px rgba(10,111,224,.7)); }
+.sv:hover .sv__edge rect, .sv:focus-visible .sv__edge rect { opacity: 1; animation: sv-current 1.6s linear infinite; }
+@keyframes sv-current { to { stroke-dashoffset: -100; } }
+@media (prefers-reduced-motion: reduce) {
+  .sv:hover .sv__edge rect { animation: none; stroke-dasharray: none; opacity: .8; }
+  .sv:hover .sv__more svg { transform: none; }
+}
+@media (max-width: 720px) { .sv__more { margin-top: 12px; } }
