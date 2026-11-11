@@ -334,3 +334,27 @@
   .mnav .mnav__foot .mnav__phone { font: 700 22px/1.2 var(--font-sans); color: #fff; }
   .mnav .mnav__foot .mnav__mail { font: 500 15px/1.4 var(--font-sans); color: var(--ink-muted); text-align: center; }
 }
+
+/* Mobile: client groups always visible, 2 columns (no swipe) */
+@media (max-width: 720px) {
+  .ww__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; overflow: visible; margin: 0; padding: 0; border: 1px solid rgba(236,238,241,.18); }
+  .ww__grid > * { flex: none; }
+  .ww__cell, .ww__cell:last-child, .ww__cell:nth-child(n) { border: 0; padding: 16px 14px; }
+  .ww__cell:nth-child(even) { border-left: 1px solid rgba(236,238,241,.18); }
+  .ww__cell:nth-child(n+3) { border-top: 1px solid rgba(236,238,241,.18); }
+  .ww__ic { margin-bottom: 10px; }
+  .ww__ic .lu { width: 24px; height: 24px; }
+  .ww__t { font-size: 15px; line-height: 1.25; margin-bottom: 6px; }
+  .ww__d { font-size: 13px; line-height: 19px; }
+}
+
+/* Mobile: services stacked, compact photo strips (no swipe) */
+@media (max-width: 720px) {
+  .svs__grid { display: flex; flex-direction: column; gap: 10px; overflow: visible; margin: 0; padding: 0; scroll-snap-type: none; }
+  .svs__grid > .sv { flex: none; width: 100%; aspect-ratio: auto; height: 150px; }
+  .sv__body { padding: 14px 16px; gap: 4px; }
+  .sv__s { font-size: 13px; line-height: 18px; }
+  .sv__t { font-size: 19px; }
+  .sv__more { margin-top: 4px; }
+  .sv::after, .sv:hover::after { background: linear-gradient(90deg, rgba(7,8,10,.88) 0%, rgba(7,8,10,.55) 60%, rgba(7,8,10,.2) 100%); }
+}
