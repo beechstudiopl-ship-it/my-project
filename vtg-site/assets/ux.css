@@ -522,3 +522,4 @@
   .hx__tile { width: calc(260px + 32px); }
   .hx--grid .hx__copy { right: calc(var(--space-8) + 292px + 32px); }
 }
+.ww__title { max-width: 22ch; }
