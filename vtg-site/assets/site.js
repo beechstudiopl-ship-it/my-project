@@ -180,3 +180,11 @@
   sync();
   if (mq.addEventListener) mq.addEventListener('change', sync); else mq.addListener(sync);
 })();
+
+// Top strip: shown at the top of the page, hidden once the page scrolls
+(function () {
+  var root = document.documentElement;
+  if (!document.querySelector('.topbar')) return;
+  function sync() { root.classList.toggle('tb-off', window.scrollY > 8); }
+  sync(); window.addEventListener('scroll', sync, { passive: true });
+})();
