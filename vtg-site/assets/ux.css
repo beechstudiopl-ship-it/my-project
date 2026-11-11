@@ -292,3 +292,16 @@
 
 /* Parallax, stronger travel */
 .bento__photo img[data-parallax] { top: -25%; height: 150%; object-fit: cover; }
+
+/* Mobile hero: full first screen, heading at top, buttons near the bottom edge, blue tile below */
+@media (max-width: 720px) {
+  .hx--grid .hx__in { padding: calc(60px + 28px) 16px 0; display: flex; flex-direction: column; }
+  .hx--grid .hx__copy { min-height: calc(100svh - 60px - 28px - 62px - 20px); display: flex; flex-direction: column; gap: 14px; }
+  .hx__row { flex: 1; display: flex; flex-direction: column-reverse; justify-content: space-between; gap: 18px; }
+  .hx__row .hx__lead { margin: 0; }
+  .hx__btns { gap: 10px; }
+  .hx__btns .vtg-btn { min-height: 48px; }
+  .hx__tile { margin: 28px 0 0; }
+  .hx--grid { padding-bottom: 28px; }
+  .hx--grid .hx__bg::after { background: linear-gradient(180deg, rgba(7,8,10,.75) 0%, rgba(7,8,10,.25) 30%, rgba(7,8,10,.35) 60%, rgba(7,8,10,.92) 100%); }
+}
