@@ -364,3 +364,17 @@
   .hx--grid .hx__copy { justify-content: flex-end; gap: 14px; }
   .hx__row { flex: none; justify-content: flex-start; gap: 0; }
 }
+
+/* Mobile first screen: photo, heading, description and blue tile together; bottom bar slides in after half a screen */
+@media (max-width: 720px) {
+  .hx--grid { min-height: 0; padding-bottom: 0; }
+  .hx--grid .hx__in { min-height: 100svh; padding: calc(60px + 24px) 16px 20px; justify-content: flex-end; }
+  .hx--grid .hx__copy { min-height: 0; flex: none; }
+  .hx__tile { margin-top: 20px; }
+  .callbar { transform: translateY(110%); transition: transform .3s cubic-bezier(.2,.7,.2,1); }
+  html.bar-on .callbar { transform: none; }
+  body { padding-bottom: 0; }
+  html.bar-on body { padding-bottom: 62px; }
+}
+@media (max-width: 720px) and (prefers-reduced-motion: reduce) { .callbar { transition: none; } }
+@media (max-width: 720px) { .svs__grid > .sv { height: 200px; } }

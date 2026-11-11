@@ -161,3 +161,12 @@
   window.addEventListener('resize', update);
   update();
 })();
+
+// Mobile bottom bar: appears after half a screen of scrolling
+(function () {
+  var root = document.documentElement;
+  function sync() { root.classList.toggle('bar-on', window.scrollY > window.innerHeight * 0.5); }
+  sync();
+  window.addEventListener('scroll', sync, { passive: true });
+  window.addEventListener('resize', sync);
+})();
