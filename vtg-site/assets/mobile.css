@@ -225,3 +225,19 @@ details.mx > summary h3 { margin: 0; }
   .opt--urgent { padding-right: 36px; }
   .opt__a3 { right: var(--space-3); width: 16px; height: 21px; }
 }
+
+/* ---- Full-screen hero + plate, photo cards ---- */
+@media (max-width: 720px) {
+  .hx { min-height: calc(100svh - 60px); }
+  .hx__bg img { object-position: 72% 50%; }
+  .hx__bg::after { background: linear-gradient(0deg, rgba(7,8,10,.97) 0%, rgba(7,8,10,.75) 45%, rgba(7,8,10,.2) 100%); }
+  .hx__in { gap: var(--space-6); padding-top: var(--space-16); padding-bottom: var(--space-4); }
+  .hx__copy { gap: var(--space-4); }
+  .plate { grid-template-columns: 1fr 1fr; }
+  .plate__cell, .plate__cell + .plate__cell { padding: var(--space-3) var(--space-3) var(--space-3) 0; border-left: 0; }
+  .plate__cell:nth-child(even) { padding-left: var(--space-3); border-left: 1px solid rgba(236,238,241,.22); }
+  .plate__cell:nth-child(n+3) { border-top: 1px solid rgba(236,238,241,.22); }
+  .plate dd { font-size: 15px; line-height: 20px; }
+  .svc__img { margin: 0 calc(-1 * var(--space-4)) var(--space-1); aspect-ratio: 16 / 11; }
+  .svc__img img { clip-path: none; }
+}
