@@ -664,3 +664,16 @@ a { color: var(--up); }
 
 /* ---- Revision 28: menu shows the VTG mark only ---- */
 .vtg-sitemark--stack .vtg-sitemark__mark { height: 48px; }
+
+/* ---- Revision 29: middle grid line stops under the menu (below the phone number) ---- */
+.hgrid__v--b { top: var(--header-height); }
+/* All vertical grid lines stop at the bottom edge of the menu */
+.hgrid__v { top: var(--header-height); }
+
+/* ---- Revision 30: grid lines fade out where they end ---- */
+.hgrid__v { -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 140px, #000 calc(100% - 140px), transparent 100%);
+            mask-image: linear-gradient(180deg, transparent 0, #000 140px, #000 calc(100% - 140px), transparent 100%); }
+.hgrid__h { -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 18%, #000 82%, transparent 100%);
+            mask-image: linear-gradient(90deg, transparent 0, #000 18%, #000 82%, transparent 100%); }
+/* Keep the current pulses' glow visible outside the 1px line under the fade mask */
+.hgrid__v, .hgrid__h { -webkit-mask-clip: no-clip; mask-clip: no-clip; }
