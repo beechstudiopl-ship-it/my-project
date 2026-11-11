@@ -402,3 +402,6 @@
 .hgrid { z-index: 6; }
 /* Blue tile: team faces in circles */
 .hx__faces img { border-radius: 50%; border: 2px solid var(--up-fill); }
+/* Middle grid line runs in the gap between the hero text and the blue tile */
+.hgrid__v--b { right: calc(var(--space-8) + 300px + 32px); }
+@media (max-width: 1080px) { .hgrid__v--b { right: calc(var(--space-8) + 260px + 32px); } }
