@@ -808,3 +808,5 @@ main [id] { scroll-margin-top: calc(var(--header-height) + 16px); }
 /* ---- Revision 40: CTA buttons flat gold, no gradient ---- */
 .vtg-btn--primary, .vtg-btn--amber, .ctf__send { background: #f0ac2e; color: #07080a; box-shadow: none; }
 .vtg-btn--primary:hover, .vtg-btn--amber:hover, .ctf__send:hover { background: #f6be52; box-shadow: none; }
+/* Keep the photo layers inside their own background */
+.ct__bg, .fx__bg { z-index: 0; isolation: isolate; }
