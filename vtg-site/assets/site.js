@@ -109,3 +109,17 @@
   sync();
   window.addEventListener('scroll', sync, { passive: true });
 })();
+
+// Contact page: area tabs and map zones
+(function () {
+  var tabs = document.querySelectorAll('.mp__tab');
+  if (!tabs.length) return;
+  function pick(r) {
+    tabs.forEach(function (t) { var on = t.dataset.region === r; t.classList.toggle('is-on', on); t.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+    document.querySelectorAll('.mp__zone').forEach(function (z) { z.classList.toggle('is-on', z.dataset.region === r); });
+    document.querySelectorAll('.mp__list').forEach(function (l) { l.hidden = l.dataset.region !== r; });
+  }
+  tabs.forEach(function (t) { t.addEventListener('click', function () { pick(t.dataset.region); }); });
+  document.querySelectorAll('.mp__zone').forEach(function (z) { z.addEventListener('click', function () { pick(z.dataset.region); }); });
+  pick('central');
+})();
