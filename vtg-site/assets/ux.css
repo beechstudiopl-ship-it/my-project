@@ -129,3 +129,11 @@
 }
 .ww__cell { align-items: flex-start; text-align: left; }
 .ww__ic, .ww__cell:hover .ww__ic { display: inline-flex; justify-content: flex-start; align-self: flex-start; }
+
+/* Merged section: audiences + proof */
+.ww .bento { margin-top: var(--space-6); }
+.ww .bento__tile--dark { background: var(--surface-200); }
+.ww .bento__tile--light { background: var(--surface-100); color: var(--ink); box-shadow: inset 0 0 0 1px rgba(236,238,241,.18); }
+.ww .bento__tile--light .bento__n, .ww .bento__tile--light .bento__t { color: var(--ink); }
+.ww__title { max-width: 18ch; }
+.ww__head { align-items: flex-end; }
