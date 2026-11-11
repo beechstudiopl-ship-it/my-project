@@ -795,3 +795,20 @@ html.tb-off { --tb: 0px; }
 .wc__ic { border: 0; width: auto; height: auto; }
 .wc__ic .lu { width: 32px; height: 32px; }
 @media (max-width: 720px) { .wc__ic { width: auto; height: auto; } .wc__ic .lu { width: 24px; height: 24px; } }
+/* Subpage headers: one photo band of the same height, title and lead only */
+.pgh { min-height: 480px; display: flex; align-items: flex-end; padding-bottom: var(--sec) !important; }
+.pgh .pjh__in { width: 100%; }
+.pgh .ct__bg::after { background: linear-gradient(0deg, rgba(7,8,10,.94) 0%, rgba(7,8,10,.55) 50%, rgba(7,8,10,.35) 100%); }
+.pgh--city .ct__bg img { object-position: center 55%; }
+.ct--form { padding-top: var(--sec) !important; padding-bottom: var(--sec); background: var(--surface-000, #07080a); }
+.ct--form .ct__copy { justify-content: flex-start; }
+@media (max-width: 720px) { .pgh { min-height: 340px; } }
+.pgh .ct__bg::before { display: none; }
+.pgh .ct__bg img { filter: grayscale(.2) brightness(.8) !important; }
+.pjs { padding-top: var(--sec) !important; background: #07080a; }
+.pjs .mp__tab { color: #eceef1; border-color: rgba(236,238,241,.25); background: transparent; }
+.pjs .mp__tab:hover { background: rgba(236,238,241,.06); }
+.pjs .mp__tab.is-on { background: #f0ac2e; border-color: #f0ac2e; color: #07080a; }
+.pgh .ct__lead { max-width: 62ch; }
+.ct--form .ct__in { align-items: start !important; }
+.ct--form .ct__copy { justify-content: flex-start !important; align-self: start !important; margin: 0 !important; padding: 0 !important; }
