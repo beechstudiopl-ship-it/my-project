@@ -511,3 +511,5 @@
 .vtg-nav__links ul { align-items: center; }
 .vtg-nav__links li { display: flex; align-items: center; }
 .vtg-nav__link { display: inline-flex; align-items: center; line-height: 24px; }
+/* Open mobile menu: no logo, only the close button */
+@media (max-width: 720px) { .vtg-nav--over.menu-on .vtg-sitemark { visibility: hidden; } }
