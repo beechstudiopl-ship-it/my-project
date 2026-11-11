@@ -949,3 +949,29 @@ main [id] { scroll-margin-top: calc(var(--header-height) + 16px); }
 .tm__sub { color: var(--ink-muted); }
 .pjh .tm__sub { color: rgba(236,238,241,.75); }
 @media (max-width: 720px) { .tm__txt { font-size: 15px; } }
+
+/* ---- Revision 48: How we work as a blue accent band ---- */
+.hw { position: relative; overflow: hidden; background: var(--up-fill); color: var(--on-up); border: 0; }
+.hw::before { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px) 0 0 / 48px 48px,
+              linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px) 0 0 / 48px 48px; }
+.hw .vtg-container { position: relative; }
+.hw .s__head { display: flex; justify-content: space-between; align-items: flex-end; gap: var(--space-8); max-width: none; flex-direction: row; }
+.hw__title { font: 800 44px/1.08 var(--font-display); font-stretch: 112%; letter-spacing: -0.015em; color: #fff; max-width: 14ch; }
+.hw .vtg-lead { color: rgba(255,255,255,.88); max-width: 46ch; }
+.hw .steps { gap: 0; border-top: 1px solid rgba(255,255,255,.35); border-bottom: 1px solid rgba(255,255,255,.35); }
+.hw .step { padding: var(--space-8) var(--space-6); border-left: 1px solid rgba(255,255,255,.35); gap: var(--space-3); }
+.hw .step:last-child { border-right: 1px solid rgba(255,255,255,.35); }
+.hw .step__num { font: 600 64px/1 var(--font-display); letter-spacing: -0.03em; color: #fff; border: 0; padding: 0 0 var(--space-6); }
+.hw .step h3 { color: #fff; }
+.hw .step p { color: rgba(255,255,255,.85); margin: 0; }
+@media (max-width: 1080px) {
+  .hw .s__head { flex-direction: column; align-items: flex-start; }
+  .hw .step:nth-child(2) { border-right: 1px solid rgba(255,255,255,.35); }
+  .hw .step:nth-child(n+3) { border-top: 1px solid rgba(255,255,255,.35); }
+}
+@media (max-width: 720px) {
+  .hw__title { font-size: 26px; }
+  .hw .step { padding: var(--space-4) var(--space-3); }
+  .hw .step__num { font-size: 36px; padding-bottom: var(--space-2); }
+}
