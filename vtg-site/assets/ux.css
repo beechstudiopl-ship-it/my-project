@@ -513,3 +513,12 @@
 .vtg-nav__link { display: inline-flex; align-items: center; line-height: 24px; }
 /* Open mobile menu: no logo, only the close button */
 @media (max-width: 720px) { .vtg-nav--over.menu-on .vtg-sitemark { visibility: hidden; } }
+/* Desktop hero: blue tile fills the column between the middle and right grid lines */
+@media (min-width: 721px) {
+  .hx__tile { width: calc(300px + 32px); }
+  .hx--grid .hx__copy { right: calc(var(--space-8) + 332px + 32px); }
+}
+@media (min-width: 721px) and (max-width: 1080px) {
+  .hx__tile { width: calc(260px + 32px); }
+  .hx--grid .hx__copy { right: calc(var(--space-8) + 292px + 32px); }
+}
