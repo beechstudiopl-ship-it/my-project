@@ -150,11 +150,11 @@
       var r = img.parentNode.getBoundingClientRect();
       if (r.bottom < 0 || r.top > vh) return;
       var p = (r.top + r.height / 2 - vh / 2) / (vh / 2 + r.height / 2); // -1 .. 1
-      img.style.transform = 'translate3d(0,' + (p * r.height * 0.1).toFixed(1) + 'px,0)';
+      img.style.transform = 'translate3d(0,' + (p * r.height * 0.22).toFixed(1) + 'px,0)';
     });
     ticking = false;
   }
-  window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  document.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true, capture: true });
   window.addEventListener('resize', update);
   update();
 })();

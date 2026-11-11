@@ -289,3 +289,6 @@
 .sv__t { order: 1; }
 .sv__more { order: 2; justify-content: flex-start; margin-top: 10px; padding-top: 0; border-top: 0; }
 .sv__more svg { width: 22px; height: 22px; }
+
+/* Parallax, stronger travel */
+.bento__photo img[data-parallax] { top: -25%; height: 150%; object-fit: cover; }
