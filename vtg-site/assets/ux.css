@@ -720,3 +720,15 @@ html.tb-off { --tb: 0px; }
 .dd__s { margin-top: 3px; }
 .vtg-nav__links ul.dd__panel { align-items: stretch !important; }
 .vtg-nav__links .dd__panel li { width: 100%; }
+
+/* Mobile: strip moves into the open menu (hidden above the bar on phones) */
+.mnav__strip { display: none; }
+@media (max-width: 720px) {
+  .topbar { display: none; }
+  :root, html.tb-off { --tb: 0px; }
+  .hgrid__v { top: 60px; }
+  .hx--grid .hx__in { padding-top: calc(60px + 24px); }
+  .mnav__strip { display: flex; align-items: center; gap: 8px; margin: 0 0 8px; padding-bottom: 14px; border-bottom: 1px solid rgba(236,238,241,.12);
+    font: 600 10px/1 var(--font-sans); letter-spacing: .2em; text-transform: uppercase; color: var(--ink-muted); }
+  .mnav__strip span { color: #f0ac2e; letter-spacing: 0; }
+}
