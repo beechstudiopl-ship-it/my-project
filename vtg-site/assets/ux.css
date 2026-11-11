@@ -792,3 +792,6 @@ html.tb-off { --tb: 0px; }
 .wc__ic { background: none; color: #f0ac2e; border: 1.5px solid #f0ac2e; }
 .wwx__photo img[data-parallax] { top: -32%; bottom: auto; height: 164%; will-change: transform; }
 .wwx__photo::after { background: linear-gradient(0deg, rgba(7,8,10,.94) 0%, rgba(7,8,10,.55) 42%, rgba(7,8,10,0) 70%); }
+.wc__ic { border: 0; width: auto; height: auto; }
+.wc__ic .lu { width: 32px; height: 32px; }
+@media (max-width: 720px) { .wc__ic { width: auto; height: auto; } .wc__ic .lu { width: 24px; height: 24px; } }
