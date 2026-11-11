@@ -902,3 +902,29 @@ main [id] { scroll-margin-top: calc(var(--header-height) + 16px); }
 }
 .pjh__in { max-width: var(--container-max); }
 .pjh__in > * { max-width: 860px; }
+
+/* ---- Revision 44: team strip (score, four team photos, plus tile, stars) ---- */
+.tm { display: inline-flex; align-items: center; gap: var(--space-6); flex-wrap: wrap; }
+.tm__score { font: 600 64px/1 var(--font-display); letter-spacing: -0.03em; color: var(--ink); }
+.tm__faces { display: flex; border: 1px solid var(--line-strong); }
+.tm__face { width: 72px; height: 72px; overflow: hidden; background: var(--surface-200); border-right: 1px solid var(--line-strong); }
+.tm__face img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.tm__face.is-missing::after { font-size: 10px; padding: 0; }
+.tm__plus { width: 72px; height: 72px; display: grid; place-items: center; background: #f0ac2e; color: #07080a; text-decoration: none; font: 400 36px/1 var(--font-sans); }
+.tm__plus:hover { background: #f6be52; }
+.tm__meta { display: flex; flex-direction: column; gap: var(--space-2); text-align: left; }
+.tm__stars { display: flex; gap: 3px; color: #f0ac2e; }
+.tm__txt { font: 500 18px/1.3 var(--font-sans); color: var(--ink); }
+.tm__txt strong { font-weight: 700; }
+.owner .tm { justify-content: center; margin-bottom: var(--space-6); }
+.pjh .tm { margin-top: var(--space-4); }
+.pjh .tm__faces { border-color: rgba(236,238,241,.4); }
+.pjh .tm__face { border-right-color: rgba(236,238,241,.4); background: rgba(236,238,241,.08); }
+@media (max-width: 720px) {
+  .tm { gap: var(--space-3); }
+  .tm__score { font-size: 40px; }
+  .tm__face, .tm__plus { width: 52px; height: 52px; }
+  .tm__plus { font-size: 28px; }
+  .tm__txt { font-size: 14px; }
+  .tm__stars svg { width: 14px; height: 14px; }
+}
