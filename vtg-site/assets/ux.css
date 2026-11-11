@@ -94,3 +94,22 @@
 
 /* No grid pattern on the blue process band */
 .hw::before { content: none; }
+
+/* Hero tile: team faces next to 04 */
+.hx__tile-top { display: flex; flex-direction: column; gap: var(--space-4); }
+.hx__faces { display: flex; }
+.hx__faces img { width: 44px; height: 44px; object-fit: cover; display: block; border: 2px solid var(--up-fill); margin-left: -8px; background: #1f2f45; }
+.hx__faces img:first-child { margin-left: 0; }
+@media (max-width: 720px) {
+  .hx__tile { height: auto; gap: var(--space-4); }
+  .hx__tile-top { flex-direction: row; align-items: center; justify-content: space-between; }
+  .hx__faces img { width: 36px; height: 36px; }
+}
+
+/* Icons in the CTA gold */
+:root { --icon-gold: #f0ac2e; }
+.ww__ic, .ct__ic, .mp__ic { background: var(--icon-gold); color: #07080a; }
+.ww__cell:hover .ww__ic { background: #07080a; color: var(--icon-gold); }
+.ab__str-t .vtg-icon, .vtg-nav__phone .vtg-icon, .hx__call .vtg-icon, .callbar__call .vtg-icon, .vtg-btn--hw-call .vtg-icon { color: var(--icon-gold); }
+.fq__item summary .vtg-icon, .fq__item[open] summary .vtg-icon { color: var(--icon-gold); }
+.fq .req, .ctf .req { color: var(--icon-gold); }
