@@ -661,3 +661,6 @@ a { color: var(--up); }
   .fq__photo { position: relative; flex: 1 1 auto; aspect-ratio: auto; min-height: 240px; transition: none; }
   .fq__photo img { position: absolute; inset: 0; }
 }
+
+/* ---- Revision 28: menu shows the VTG mark only ---- */
+.vtg-sitemark--stack .vtg-sitemark__mark { height: 48px; }

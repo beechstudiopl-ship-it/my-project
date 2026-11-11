@@ -312,3 +312,4 @@ details.mx > summary h3 { margin: 0; }
   .owner__quote { display: flex; flex-direction: column; align-items: center; }
   .owner__by { grid-column: auto; grid-row: auto; align-items: center; }
 }
+@media (max-width: 720px) { .vtg-sitemark--stack .vtg-sitemark__mark { height: 36px; } }
