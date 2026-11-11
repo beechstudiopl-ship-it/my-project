@@ -653,3 +653,11 @@ a { color: var(--up); }
 .owner__photo.is-missing::after { border-radius: 50%; font-size: 10px; }
 .owner__quote { align-items: center; max-width: 900px; gap: var(--space-6); }
 .owner__by { align-items: center; border-top: 0; padding-top: 0; }
+
+/* ---- Revision 27: FAQ photo follows the list height as items open and close ---- */
+@media (min-width: 1081px) {
+  .fq__in { align-items: stretch; }
+  .fq__head { height: 100%; }
+  .fq__photo { position: relative; flex: 1 1 auto; aspect-ratio: auto; min-height: 240px; transition: none; }
+  .fq__photo img { position: absolute; inset: 0; }
+}
