@@ -556,3 +556,42 @@
 .hx__proof:hover .hx__proof-go svg { transform: translateX(4px); }
 @media (min-width: 721px) { .hx__tile { justify-content: space-between; } }
 @media (max-width: 720px) { .hx__thumbs img { width: 34px; height: 34px; } }
+
+/* Brushed-steel headings, like the VTG logo letters (dark grounds only) */
+.hx--grid .hx__copy h1, .ww__title, .ct__title, .fx__title, .pjh .ct__title, #why-h, #projects-h, .fq__title, .mp__title {
+  color: #e9ebee;
+  background:
+    repeating-linear-gradient(180deg, rgba(255,255,255,0) 0 2px, rgba(255,255,255,.10) 2px 3px, rgba(0,0,0,.06) 3px 4px),
+    linear-gradient(180deg, #ffffff 0%, #d9dce1 28%, #9da3ab 48%, #eef0f3 62%, #b7bcc3 82%, #f4f5f7 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+[data-theme="light"] .fq__title, [data-theme="light"] #why-h { background: none; -webkit-text-fill-color: currentColor; color: var(--ink); }
+
+/* ==== One spacing rule for the whole site ====
+   section: 104 / 56 · heading→text: 20 / 12 · heading block→content: 48 / 28 */
+:root { --sec: 104px; --h2p: 20px; --head-gap: 48px; }
+@media (max-width: 720px) { :root { --sec: 56px; --h2p: 12px; --head-gap: 28px; } }
+
+main > section:not(.hx):not([hidden]) { padding-top: var(--sec); padding-bottom: var(--sec); }
+.ct--page, .pjh { padding-top: calc(var(--header-height) + var(--sec)) !important; padding-bottom: var(--sec) !important; }
+@media (max-width: 720px) { .ct--page, .pjh { padding-top: calc(60px + var(--sec)) !important; } }
+.pjs { padding-top: 0 !important; }
+
+/* heading → text */
+.vtg-heading, .s__head, .ww__head > div, .svs__head > div, .mp__head > div, .fq__head, .ct__copy, .pjh__in { gap: var(--h2p) !important; }
+.vtg-heading > p, .ct__copy > p, .pjh__in > p, .fq__head > p { margin: 0 !important; }
+@media (max-width: 720px) {
+  .ww__head, .svs__head, .mp__head { gap: var(--h2p) !important; }
+}
+
+/* heading block → content */
+.s__head, .ww__head, .svs__head, .mp__head, .why .vtg-heading, #projects .vtg-heading { margin-bottom: var(--head-gap) !important; }
+.why { row-gap: var(--head-gap) !important; }
+.why__intro > .vtg-heading { margin-bottom: 0 !important; }
+.fq__in { column-gap: var(--head-gap); }
+@media (max-width: 1080px) { .fq__in { row-gap: var(--head-gap) !important; } }
+.ct__rows { margin-top: calc(var(--head-gap) - var(--h2p)) !important; }
+.pjh .tm { margin-top: calc(var(--head-gap) - var(--h2p)) !important; }
+.pjs__filters { margin-bottom: var(--head-gap) !important; }
+.why__intro { gap: var(--head-gap) !important; }
+@media (max-width: 1080px) { .ct__in { row-gap: var(--head-gap) !important; } }
