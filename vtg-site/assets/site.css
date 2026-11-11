@@ -609,3 +609,47 @@ a { color: var(--up); }
 /* ---- Revision 21: 8px inset from the grid lines inside the menu band ---- */
 .vtg-nav--over .vtg-sitemark { padding-left: 8px; }
 .vtg-nav--over .vtg-nav__actions { padding-right: 8px; }
+
+/* ---- Revision 22: shaft photo, endless ride up (zoom into the vanishing point, two crossfading layers) ---- */
+.hx__bg--ride { overflow: hidden; }
+.hx__bg--ride .ride { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 54% 22%;
+  transform-origin: 54% 28%; filter: grayscale(1) contrast(1.15) brightness(.8); will-change: transform, opacity;
+  animation: ride-up 14s linear infinite; }
+.hx__bg--ride .ride--b { animation-delay: -7s; }
+@keyframes ride-up {
+  0%   { transform: scale(1);    opacity: 0; }
+  12%  { opacity: 1; }
+  88%  { opacity: 1; }
+  100% { transform: scale(1.45); opacity: 0; }
+}
+.hx__bg--ride .ride--a { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .hx__bg--ride .ride { animation: none; transform: none; }
+  .hx__bg--ride .ride--b { display: none; }
+}
+
+/* ---- Revision 23: about heading starts at the photo's left edge ---- */
+.ab__top { grid-template-columns: 1fr; }
+.ab__statement, .ab__strengths { grid-column: 1; }
+.ab__statement { max-width: 1040px; }
+.ab__strengths { max-width: 980px; }
+
+/* ---- Revision 24: no black band under the menu or the logo ---- */
+.vtg-nav--over .vtg-nav__in { background: none; }
+.vtg-nav--over .vtg-sitemark__logo { mix-blend-mode: lighten; }
+
+/* ---- Revision 25: logo = VTG mark with the group name set centred underneath ---- */
+.vtg-sitemark--stack { display: inline-flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; }
+.vtg-sitemark__mark { height: 40px; width: auto; display: block; mix-blend-mode: lighten; }
+.vtg-sitemark__group { display: flex; flex-direction: column; align-items: center; gap: 1px; color: var(--ink);
+  font: 600 8.5px/1.1 var(--font-sans); letter-spacing: .22em; text-transform: uppercase; white-space: nowrap; }
+.vtg-sitemark__group span:first-child { font-size: 10px; letter-spacing: .18em; }
+@media (max-width: 720px) { .vtg-sitemark__mark { height: 30px; } .vtg-sitemark__group { font-size: 7px; } .vtg-sitemark__group span:first-child { font-size: 8px; } }
+
+/* ---- Revision 26: owner quote centred, round portrait ---- */
+.owner { grid-template-columns: 1fr; justify-items: center; text-align: center; gap: var(--space-8); }
+.owner__photo { width: 112px; height: 112px; aspect-ratio: 1 / 1; border-radius: 50%; overflow: hidden; }
+.owner__photo img { clip-path: none; border-radius: 50%; }
+.owner__photo.is-missing::after { border-radius: 50%; font-size: 10px; }
+.owner__quote { align-items: center; max-width: 900px; gap: var(--space-6); }
+.owner__by { align-items: center; border-top: 0; padding-top: 0; }
