@@ -863,3 +863,12 @@ html.tb-off { --tb: 0px; }
 .svp--blue .mc__n { color: #fff; }
 @media (max-width: 720px) { .svp__photo { height: 240px; } }
 .svp--light { border: 0 !important; box-shadow: none !important; } .svp--light + .svp--light::before, .svp--light::before { display: none !important; }
+/* Service page cards: compact, title and text together */
+.svp__grid .wc { min-height: 0 !important; justify-content: flex-start; gap: 12px; padding: 28px; }
+.svp__grid .wc__top { align-items: baseline; }
+.svp__grid .wc__t { font-size: 20px; line-height: 1.2; }
+.svp__grid .wc__d { font-size: 15px; line-height: 1.55; }
+.svp__head { gap: var(--h2p) !important; }
+.svp__head .h2 { margin: 0 !important; }
+.svp__head .vtg-lead { margin: 0 !important; }
+@media (max-width: 720px) { .svp__grid .wc { padding: 20px; gap: 8px; } .svp__grid .wc__t { font-size: 18px; } }
