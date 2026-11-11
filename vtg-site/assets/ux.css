@@ -844,3 +844,25 @@ html.tb-off { --tb: 0px; }
 .svp__cta .vtg-btn--ghost svg { color: #f0ac2e; }
 .svp__cta .vtg-btn--ghost:hover { border-color: #eceef1; }
 .svp__cta .vtg-btn { min-height: 52px; padding-left: 24px; padding-right: 24px; }
+/* Service pages: lighter rhythm (light component sections, blue process band, photo) */
+.svp--light { background: #eceef1; color: #07080a; }
+.svp--light .h2, .svp--light .vtg-steel { color: #07080a !important; }
+.svp--light .vtg-lead { color: #3a3f47; }
+.svp--light .wc { background: #fff; }
+.svp--light .wc__t { color: #07080a; }
+.svp--light .wc__d { color: #4a5059; }
+.svp--light .mc__n { color: #0a6fe0; }
+.svp--tight { padding-top: 0 !important; }
+.svp__side { display: flex; flex-direction: column; gap: var(--head-gap); }
+.svp__photo { position: relative; margin: 0; overflow: hidden; height: 360px; }
+.svp__photo img { position: absolute; left: 0; width: 100%; top: -32%; height: 164%; object-fit: cover; }
+.svp__photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(7,8,10,.6) 0%, rgba(7,8,10,0) 50%); }
+.svp--blue { background: #0a6fe0; color: #fff; }
+.svp--blue .h2 { color: #fff !important; }
+.svp--blue .vtg-lead { color: rgba(255,255,255,.88); }
+.svp--blue .svp__steps li { background: rgba(7,8,10,.18); }
+.svp--blue .svp__steps .h3 { color: #fff; }
+.svp--blue .svp__steps p { color: rgba(255,255,255,.85) !important; }
+.svp--blue .mc__n { color: #fff; }
+@media (max-width: 720px) { .svp__photo { height: 240px; } }
+.svp--light { border: 0 !important; box-shadow: none !important; } .svp--light + .svp--light::before, .svp--light::before { display: none !important; }
