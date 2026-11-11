@@ -100,3 +100,12 @@
   function on(c) { cards.forEach(function (x) { x.classList.toggle('is-on', x === c); }); }
   cards.forEach(function (c) { c.addEventListener('mouseenter', function () { on(c); }); c.addEventListener('focus', function () { on(c); }); });
 })();
+
+// Sticky menu: black bar after the page leaves the top
+(function () {
+  var nav = document.querySelector('.vtg-nav--over');
+  if (!nav) return;
+  function sync() { nav.classList.toggle('is-scrolled', window.scrollY > 8); }
+  sync();
+  window.addEventListener('scroll', sync, { passive: true });
+})();

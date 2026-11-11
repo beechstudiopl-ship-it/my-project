@@ -680,3 +680,52 @@ a { color: var(--up); }
 
 /* ---- Revision 31: no line under the menu ---- */
 .vtg-nav--over { border-bottom: 0; }
+
+/* ---- Revision 32: vertical current fades out just before the menu ---- */
+.hgrid__v { -webkit-mask-repeat: repeat-x; mask-repeat: repeat-x; }
+.hgrid__h { -webkit-mask-repeat: repeat-y; mask-repeat: repeat-y; }
+.hgrid__v::after { transform: none; animation-name: hg-up-fade; }
+@keyframes hg-up-fade {
+  0%   { bottom: -220px; opacity: 0; }
+  8%   { opacity: 1; }
+  45%  { opacity: 1; }
+  68%  { bottom: calc(100% - 220px); opacity: 0; }
+  100% { bottom: calc(100% - 220px); opacity: 0; }
+}
+/* Current fades out well below the menu */
+@keyframes hg-up-fade {
+  0%   { bottom: -220px; opacity: 0; }
+  8%   { opacity: 1; }
+  32%  { opacity: 1; }
+  60%  { bottom: calc(100% - 480px); opacity: 0; }
+  100% { bottom: calc(100% - 480px); opacity: 0; }
+}
+.hgrid__v { -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 220px, #000 calc(100% - 140px), transparent 100%);
+            mask-image: linear-gradient(180deg, transparent 0, #000 220px, #000 calc(100% - 140px), transparent 100%); }
+
+/* ---- Revision 33: sticky menu, black bar once the page scrolls ---- */
+.vtg-nav--over { position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+  transition: background-color .25s cubic-bezier(.2,.7,.2,1), box-shadow .25s; }
+.vtg-nav--over.is-scrolled { background: rgba(7,8,10,.94); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  box-shadow: 0 1px 0 rgba(236,238,241,.08), 0 10px 30px rgba(0,0,0,.35); }
+@media (prefers-reduced-motion: reduce) { .vtg-nav--over { transition: none; } }
+
+/* ---- Revision 34: who we work with strip under the hero ---- */
+.ww { background: var(--surface-100); color: var(--ink); padding: var(--space-8) 0; border-bottom: 1px solid var(--line); }
+.ww__in { display: grid; grid-template-columns: 220px 1fr; gap: var(--space-8); align-items: center; }
+.ww__title { margin: 0; font: 700 18px/1.25 var(--font-display); font-stretch: 112%; color: var(--ink); }
+.ww__list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); }
+.ww__item { display: flex; flex-direction: column; gap: 2px; padding: 0 var(--space-6); border-left: 1px solid var(--line); }
+.ww__t { font: 700 16px/1.3 var(--font-sans); color: var(--ink); }
+@media (max-width: 1080px) {
+  .ww__in { grid-template-columns: 1fr; gap: var(--space-4); }
+  .ww__list { grid-template-columns: 1fr 1fr; row-gap: var(--space-4); }
+  .ww__item:nth-child(odd) { border-left: 0; padding-left: 0; }
+}
+@media (max-width: 720px) {
+  .ww { padding: var(--space-6) 0; }
+  .ww__item { padding: 0 var(--space-3); }
+  .ww__t { font-size: 14px; }
+}
+/* Sections reached from the sticky menu land below it */
+main [id] { scroll-margin-top: calc(var(--header-height) + 16px); }

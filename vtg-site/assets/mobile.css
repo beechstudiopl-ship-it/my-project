@@ -318,3 +318,6 @@ details.mx > summary h3 { margin: 0; }
   .hgrid__v { -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 80px, #000 calc(100% - 80px), transparent 100%); mask-image: linear-gradient(180deg, transparent 0, #000 80px, #000 calc(100% - 80px), transparent 100%); }
   .hgrid__h { -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 12%, #000 88%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 12%, #000 88%, transparent 100%); }
 }
+@media (max-width: 720px) {
+  @keyframes hg-up-fade { 0% { bottom: -220px; opacity: 0; } 8% { opacity: 1; } 32% { opacity: 1; } 60% { bottom: calc(100% - 340px); opacity: 0; } 100% { bottom: calc(100% - 340px); opacity: 0; } }
+}
