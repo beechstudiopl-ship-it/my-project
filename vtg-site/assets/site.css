@@ -900,3 +900,5 @@ main [id] { scroll-margin-top: calc(var(--header-height) + 16px); }
   .pj__t { font-size: 18px; }
   .pj__issues li { font-size: 13px; }
 }
+.pjh__in { max-width: var(--container-max); }
+.pjh__in > * { max-width: 860px; }
