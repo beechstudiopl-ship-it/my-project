@@ -384,3 +384,9 @@
   html.menu-open .callbar { display: grid; transform: none; z-index: 80; }
   .mnav > .vtg-container { justify-content: flex-start; padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)); }
 }
+
+/* Desktop hero: description directly under the heading, buttons below it */
+@media (min-width: 721px) {
+  .hx__row { flex-direction: column-reverse; align-items: flex-start; gap: 28px; }
+  .hx--grid .hx__copy { gap: 20px; }
+}
