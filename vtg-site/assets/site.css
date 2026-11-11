@@ -677,3 +677,6 @@ a { color: var(--up); }
             mask-image: linear-gradient(90deg, transparent 0, #000 18%, #000 82%, transparent 100%); }
 /* Keep the current pulses' glow visible outside the 1px line under the fade mask */
 .hgrid__v, .hgrid__h { -webkit-mask-clip: no-clip; mask-clip: no-clip; }
+
+/* ---- Revision 31: no line under the menu ---- */
+.vtg-nav--over { border-bottom: 0; }
