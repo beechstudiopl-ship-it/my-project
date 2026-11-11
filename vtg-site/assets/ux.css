@@ -460,3 +460,6 @@
 /* Footer without the ghost wordmark: card sits on the photo with bottom spacing */
 .fx { padding-bottom: var(--space-16); }
 @media (max-width: 720px) { .fx { padding-bottom: 32px; } }
+/* Every "Request a quote" CTA: same label + arrow, same spacing */
+.callbar__cta { gap: 8px; }
+.vtg-btn .vtg-icon, .callbar__cta .vtg-icon { width: 18px; height: 18px; flex: none; }
