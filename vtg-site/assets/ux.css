@@ -628,3 +628,17 @@ main > section:not(.hx):not([hidden]) { padding-top: var(--sec); padding-bottom:
   .fx__links { text-align: left; }
   .fxa ul { align-items: flex-start; text-align: left; }
 }
+
+/* Footer CTA: real people instead of a button */
+.fx__person { display: inline-flex; align-items: center; gap: 14px; margin-top: 8px; padding: 10px 18px 10px 10px; background: rgba(7,8,10,.55); box-shadow: inset 0 0 0 1px rgba(236,238,241,.18); }
+.fx__faces { display: flex; }
+.fx__faces img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid #0f1115; margin-left: -12px; }
+.fx__faces img:first-child { margin-left: 0; }
+.fx__person-t { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; text-align: left; }
+.fx__person-t strong { font: 700 15px/1.2 var(--font-sans); color: #fff; }
+.fx__person-t a { font: 700 18px/1.2 var(--font-sans); color: #f0ac2e; text-decoration: none; }
+.fx__person-t a:hover { text-decoration: underline; }
+@media (max-width: 720px) { .fx__faces img { width: 44px; height: 44px; } .fx__person-t a { font-size: 16px; } }
+/* Bigger hamburger / close icon */
+.vtg-nav__menu .vtg-icon { width: 30px; height: 30px; }
+.vtg-nav__menu { width: 48px; height: 48px; }
