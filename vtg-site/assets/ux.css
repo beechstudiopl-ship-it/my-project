@@ -378,3 +378,9 @@
 }
 @media (max-width: 720px) and (prefers-reduced-motion: reduce) { .callbar { transition: none; } }
 @media (max-width: 720px) { .svs__grid > .sv { height: 200px; } }
+
+/* Mobile menu reuses the bottom bar (Call now / Request a quote) */
+@media (max-width: 720px) {
+  html.menu-open .callbar { display: grid; transform: none; z-index: 80; }
+  .mnav > .vtg-container { justify-content: flex-start; padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)); }
+}
