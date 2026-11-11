@@ -137,3 +137,8 @@
 .ww .bento__tile--light .bento__n, .ww .bento__tile--light .bento__t { color: var(--ink); }
 .ww__title { max-width: 18ch; }
 .ww__head { align-items: flex-end; }
+
+/* Parallax photos: image taller than its frame, moved by scroll */
+.bento__photo { position: relative; }
+.bento__photo img[data-parallax] { position: absolute; left: 0; top: -12%; width: 100%; height: 124%; will-change: transform; }
+@media (prefers-reduced-motion: reduce) { .bento__photo img[data-parallax] { transform: none !important; } }

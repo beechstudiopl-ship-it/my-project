@@ -138,3 +138,23 @@
     });
   });
 })();
+
+// Parallax: photos drift up/down inside their frames while scrolling
+(function () {
+  var imgs = [].slice.call(document.querySelectorAll('img[data-parallax]'));
+  if (!imgs.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var ticking = false;
+  function update() {
+    var vh = window.innerHeight;
+    imgs.forEach(function (img) {
+      var r = img.parentNode.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > vh) return;
+      var p = (r.top + r.height / 2 - vh / 2) / (vh / 2 + r.height / 2); // -1 .. 1
+      img.style.transform = 'translate3d(0,' + (p * r.height * 0.1).toFixed(1) + 'px,0)';
+    });
+    ticking = false;
+  }
+  window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
