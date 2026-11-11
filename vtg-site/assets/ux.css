@@ -282,3 +282,10 @@
 @media (max-width: 1180px) { .sv__t { font-size: 19px; } }
 @media (max-width: 720px) { .sv__body { padding: 16px; } .sv__t { font-size: 18px; } .sv__s { min-height: 0; } }
 @media (prefers-reduced-motion: reduce) { .sv__more svg { transition: none; } }
+
+/* Services tiles, pass 4: description, then title, then arrow; all left */
+.sv__body { gap: 8px; }
+.sv__s { min-height: 0; order: 0; }
+.sv__t { order: 1; }
+.sv__more { order: 2; justify-content: flex-start; margin-top: 10px; padding-top: 0; border-top: 0; }
+.sv__more svg { width: 22px; height: 22px; }
