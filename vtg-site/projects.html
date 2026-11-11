@@ -48,6 +48,7 @@
     <symbol id="i-clock" viewBox="0 0 24 24"><path d="M12 3.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17zM12 7.5V12l3 2"/></symbol>
     <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l5 5 9-10"/></symbol>
     <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
     <!-- Bevelled arrowheads: the logo's up (blue) and down (amber) arrows, used separately -->
     <symbol id="a3-up" viewBox="0 0 100 130">
       <polygon points="50,0 0,52 50,40" fill="#62dafe"/>
@@ -94,7 +95,11 @@
         <li><a href="projects.html" aria-current="page">Projects</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
-      <a href="tel:+447851751556" class="vtg-nav__phone" style="display:inline-flex"><svg class="vtg-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" aria-hidden="true"><use href="#i-phone"/></svg><span class="data">+44 7851 751 556</span></a>
+      <div class="mnav__foot">
+        <a href="tel:+447851751556" class="mnav__phone">+44 7851 751 556</a>
+        <a href="contact.html" class="vtg-btn vtg-btn--primary vtg-btn--lg mnav__cta"><span>Request a quote</span></a>
+        <a href="mailto:office@vtg.com" class="mnav__mail">office@vtg.com</a>
+      </div>
     </div>
   </div>
 </header>

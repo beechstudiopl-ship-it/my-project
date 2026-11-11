@@ -9,9 +9,12 @@
       var open = menu.classList.toggle('is-open');
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
       btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      document.documentElement.classList.toggle('menu-open', open);
+      var hdr = menu.closest('.vtg-nav'); if (hdr) hdr.classList.toggle('menu-on', open);
+      var use = btn.querySelector('use'); if (use) use.setAttribute('href', open ? '#i-close' : '#i-menu');
     });
     menu.addEventListener('click', function (e) {
-      if (e.target.closest('a')) { menu.classList.remove('is-open'); btn.setAttribute('aria-expanded', 'false'); }
+      if (e.target.closest('a')) { menu.classList.remove('is-open'); btn.setAttribute('aria-expanded', 'false'); document.documentElement.classList.remove('menu-open'); var hdr = menu.closest('.vtg-nav'); if (hdr) hdr.classList.remove('menu-on'); var use = btn.querySelector('use'); if (use) use.setAttribute('href', '#i-menu'); }
     });
   }
 
