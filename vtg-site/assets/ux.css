@@ -113,3 +113,19 @@
 .ab__str-t .vtg-icon, .vtg-nav__phone .vtg-icon, .hx__call .vtg-icon, .callbar__call .vtg-icon, .vtg-btn--hw-call .vtg-icon { color: var(--icon-gold); }
 .fq__item summary .vtg-icon, .fq__item[open] summary .vtg-icon { color: var(--icon-gold); }
 .fq .req, .ctf .req { color: var(--icon-gold); }
+
+/* Who we work with: line icons (Lucide), no tile, tight even rhythm */
+.ww__cell { padding: var(--space-8); gap: 0; min-height: 0; }
+.ww__ic, .ww__cell:hover .ww__ic { width: auto; height: auto; background: none; color: #f0ac2e; display: block; margin: 0 0 var(--space-5, 20px); }
+.ww__ic .lu { display: block; }
+.ww__t { margin: 0 0 var(--space-2); }
+.ww__d { margin: 0; }
+.ww__cell:hover { background: var(--surface-100); }
+.ww__cell:hover .ww__d { color: var(--ink-muted); }
+@media (max-width: 720px) {
+  .ww__cell { padding: var(--space-5, 20px) var(--space-4); }
+  .ww__ic { margin-bottom: var(--space-3); }
+  .ww__ic .lu { width: 26px; height: 26px; }
+}
+.ww__cell { align-items: flex-start; text-align: left; }
+.ww__ic, .ww__cell:hover .ww__ic { display: inline-flex; justify-content: flex-start; align-self: flex-start; }
