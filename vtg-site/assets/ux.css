@@ -623,3 +623,8 @@ main > section:not(.hx):not([hidden]) { padding-top: var(--sec); padding-bottom:
   -webkit-text-fill-color: currentColor !important; color: var(--ink) !important;
 }
 [data-theme="dark"] .vtg-steel, .hx--grid .hx__copy h1, .fx__title, .ct__title { color: #eceef1 !important; }
+/* Mobile footer accordions: links inside aligned left */
+@media (max-width: 720px) {
+  .fx__links { text-align: left; }
+  .fxa ul { align-items: flex-start; text-align: left; }
+}
