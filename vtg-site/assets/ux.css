@@ -358,3 +358,9 @@
   .sv__more { margin-top: 4px; }
   .sv::after, .sv:hover::after { background: linear-gradient(90deg, rgba(7,8,10,.88) 0%, rgba(7,8,10,.55) 60%, rgba(7,8,10,.2) 100%); }
 }
+
+/* Mobile hero: heading sits right above the description at the bottom */
+@media (max-width: 720px) {
+  .hx--grid .hx__copy { justify-content: flex-end; gap: 14px; }
+  .hx__row { flex: none; justify-content: flex-start; gap: 0; }
+}
