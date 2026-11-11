@@ -741,3 +741,9 @@ html.tb-off { --tb: 0px; }
 .fx__person { border-radius: 999px; padding: 8px 24px 8px 8px; }
 .fx__faces img { width: 56px; height: 56px; margin-left: 0; }
 @media (max-width: 720px) { .fx__faces img { width: 46px; height: 46px; } .fx__person { padding: 6px 18px 6px 6px; } }
+
+/* Team strip: faces first, then 4; title close to subline */
+.tm__faces { order: 0; }
+.tm__score { order: 1; }
+.tm__meta { order: 2; gap: 2px !important; }
+.tm__meta .tm__txt, .tm__meta .tm__sub { margin: 0; line-height: 1.3; }
