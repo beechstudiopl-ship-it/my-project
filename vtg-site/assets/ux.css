@@ -708,3 +708,15 @@ html.tb-off .topbar { transform: translateY(-100%); }
   .hx--grid .hx__in { padding-top: calc(60px + 24px + 24px); }
 }
 html.tb-off { --tb: 0px; }
+
+/* Services dropdown: clean, flush list (reset inherited nav styles) */
+.vtg-nav__links .dd__panel { padding: 8px 0 !important; margin: 0 !important; gap: 0 !important; min-width: 300px; left: -16px; }
+.vtg-nav__links .dd__panel li { display: block !important; margin: 0 !important; padding: 0 !important; }
+.vtg-nav__links .dd__panel .dd__item { display: block !important; margin: 0 !important; padding: 12px 20px !important; border-left: 0 !important; border-bottom: 0 !important; text-align: left; }
+.vtg-nav__links .dd__panel li + li .dd__item { border-top: 1px solid rgba(236,238,241,.08) !important; }
+.vtg-nav__links .dd__panel .dd__item:hover, .vtg-nav__links .dd__panel .dd__item:focus-visible { background: #171a1f; }
+.vtg-nav__links .dd__panel .dd__item:hover .dd__t { color: #f0ac2e; }
+.dd__t, .dd__s { display: block; }
+.dd__s { margin-top: 3px; }
+.vtg-nav__links ul.dd__panel { align-items: stretch !important; }
+.vtg-nav__links .dd__panel li { width: 100%; }
