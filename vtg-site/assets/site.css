@@ -593,3 +593,15 @@ a { color: var(--up); }
 .hgrid__h::after { height: 2px; top: -0.5px; width: 260px;
   background: linear-gradient(90deg, rgba(98,218,254,0) 0%, rgba(98,218,254,.9) 70%, #ffffff 100%);
   box-shadow: 0 0 8px 2px rgba(98,218,254,.8), 0 0 24px 6px rgba(10,111,224,.55); }
+
+/* ---- Revision 20: menu over the hero, black band only between the grid lines ---- */
+.vtg-nav--over { position: absolute; top: 0; left: 0; right: 0; z-index: 20; background: transparent; border-bottom: 1px solid rgba(236,238,241,.18); }
+.vtg-nav--over .vtg-nav__in { background: linear-gradient(var(--surface-000), var(--surface-000)) content-box; }
+.vtg-nav--over .vtg-sitemark { padding-left: var(--space-4); }
+.vtg-nav--over .mnav { background: var(--surface-000); }
+.hx--grid { min-height: max(760px, 100svh); }
+@media (max-width: 720px) {
+  .vtg-nav--over .vtg-sitemark { padding-left: var(--space-3); }
+  .hx--grid { min-height: 0; }
+  .hx--grid .hx__in { padding-top: calc(60px + var(--space-12)); }
+}

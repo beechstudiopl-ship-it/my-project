@@ -302,3 +302,5 @@ details.mx > summary h3 { margin: 0; }
   .fq__item summary { padding: var(--space-4); font-size: 15px; min-height: 44px; }
   .fq__item p { padding: 0 var(--space-4) var(--space-4); }
 }
+/* Menu sits over the hero on phones too: clear it */
+@media (max-width: 720px) { .hx--grid .hx__in { padding-top: calc(60px + var(--space-12)); } }
