@@ -442,3 +442,9 @@
 }
 /* Footer grid stays behind the footer card */
 .hgrid.hgrid--fx { z-index: 1; }
+/* Mobile: the horizontal grid line follows the blue tile's top edge */
+@media (max-width: 720px) {
+  .hgrid__h--a { display: none; }
+  .hx__tile { position: relative; overflow: visible; }
+  .hx__tile::before { content: ""; position: absolute; top: 0; left: -100vw; right: -100vw; height: 1px; background: rgba(236,238,241,.22); pointer-events: none; }
+}
