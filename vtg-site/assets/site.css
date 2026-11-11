@@ -928,3 +928,11 @@ main [id] { scroll-margin-top: calc(var(--header-height) + 16px); }
   .tm__txt { font-size: 14px; }
   .tm__stars svg { width: 14px; height: 14px; }
 }
+
+/* ---- Revision 45: smaller team strip, four people, no plus tile ---- */
+.tm { gap: var(--space-4); }
+.tm__score { font-size: 44px; }
+.tm__face { width: 48px; height: 48px; }
+.tm__face:last-child { border-right: 0; }
+.tm__txt { font-size: 15px; }
+@media (max-width: 720px) { .tm__score { font-size: 34px; } .tm__face { width: 40px; height: 40px; } .tm__txt { font-size: 13px; } }
