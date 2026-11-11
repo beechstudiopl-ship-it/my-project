@@ -243,3 +243,62 @@ details.mx > summary h3 { margin: 0; }
 }
 @media (max-width: 1080px) { .why__media { position: relative; height: 260px; aspect-ratio: auto; } .why__media img { position: absolute; inset: 0; } }
 @media (max-width: 720px) { .why__media { height: 200px; } }
+
+/* ---- About bento ---- */
+@media (max-width: 720px) {
+  .ab { padding: var(--m-section) 0; }
+  .ab__top { gap: var(--space-6); margin-bottom: var(--space-8); }
+  .ab__statement { font-size: 26px; line-height: 1.15; }
+  .ab__strengths { grid-template-columns: 1fr; gap: var(--space-5, 20px); }
+  .ab__str-t { font-size: 16px; }
+  .ab__str-t .vtg-icon { width: 22px; height: 22px; }
+  .bento { grid-template-rows: 240px 150px 150px; gap: var(--space-2); }
+  .bento__tile { padding: var(--space-4); }
+  .bento__t { font-size: 13px; padding-bottom: var(--space-3); }
+  .bento__n { font-size: 40px; }
+}
+
+/* ---- Grid hero on phones: copy and tile stack, two hairlines ---- */
+@media (max-width: 720px) {
+  .hx--grid { display: block; min-height: 0; height: auto; }
+  .hx--grid .hx__bg { position: absolute; }
+  .hgrid__in { padding: 0 var(--space-4); }
+  .hgrid__v--a { left: var(--space-4); } .hgrid__v--c { right: var(--space-4); } .hgrid__v--b, .hgrid__h--b { display: none; }
+  .hgrid__h--a { top: auto; bottom: 164px; }
+  .hx--grid .hx__in { padding: var(--space-12) var(--space-4) 0; }
+  .hx--grid .hx__copy { position: static; padding: 0 var(--space-3); gap: var(--space-5, 20px); }
+  .hx__row { flex-direction: column; align-items: stretch; gap: var(--space-4); }
+  .hx__row .vtg-btn { width: 100%; }
+  .hx__tile { position: relative; right: auto; top: auto; width: auto; height: 164px; margin: var(--space-8) 0 0; padding: var(--space-4); }
+  .hx__tile-n { font-size: 40px; }
+}
+
+/* ---- Contact + footer on phones ---- */
+@media (max-width: 720px) {
+  .ct { padding: var(--m-section) 0; }
+  .ct__in { gap: var(--space-8); }
+  .ct__title { font-size: 30px; }
+  .ct__rows { margin-top: var(--space-2); gap: var(--space-3); }
+  .ct__rows li { font-size: 16px; gap: var(--space-3); }
+  .ct__ic { width: 40px; height: 40px; }
+  .ct__ic .vtg-icon { width: 20px; height: 20px; }
+  .ctf { grid-template-columns: 1fr; padding: var(--space-6) var(--space-4) var(--space-5, 20px); gap: var(--space-4); }
+  .fx { padding-top: var(--space-16); }
+  .fx__cta { padding-bottom: var(--space-12); }
+  .fx__title { font-size: 32px; }
+  .fx__card { grid-template-columns: 1fr; padding: var(--space-6) var(--space-4); gap: var(--space-6); }
+  .fx__links { grid-template-columns: 1fr 1fr; }
+  .fx__big { font-size: 20px; }
+  .fx__ghost { margin-top: calc(-1 * var(--space-4)); }
+}
+
+/* ---- FAQ on phones ---- */
+@media (max-width: 720px) {
+  .fq { padding: var(--m-section) 0; }
+  .fq__title { font-size: 26px; }
+  .fq__head { gap: var(--space-4); }
+  .fq__photo { aspect-ratio: 16 / 8; }
+  .fq__list { gap: var(--space-2); }
+  .fq__item summary { padding: var(--space-4); font-size: 15px; min-height: 44px; }
+  .fq__item p { padding: 0 var(--space-4) var(--space-4); }
+}

@@ -102,26 +102,63 @@
 
 <main id="main">
 
-<!-- Hero: full-screen photo in VTG blue, rating-plate strip of key facts -->
-<section class="hx" data-theme="dark">
+<!-- Hero: full-screen photo with a hairline grid, copy at the top, figure tile in a grid cell -->
+<section class="hx hx--grid" data-theme="dark">
   <div class="hx__bg">
     <img src="images/hol-drzwi-przystankowe.webp" alt="" width="1800" height="841" fetchpriority="high">
   </div>
+  <div class="hgrid" aria-hidden="true"><div class="hgrid__in"><span class="hgrid__v hgrid__v--a"></span><span class="hgrid__v hgrid__v--b"></span><span class="hgrid__v hgrid__v--c"></span></div><span class="hgrid__h hgrid__h--a"></span><span class="hgrid__h hgrid__h--b"></span></div>
   <div class="vtg-container hx__in">
     <div class="hx__copy">
       <h1 class="display-xl">Lift engineers for London</h1>
-      <p class="lead hx__lead">A team of lift engineers in four specialisms: mechanical repairs, door systems, electrical fault finding and modernisation. We find the fault and repair lifts of all makes.</p>
-      <div class="vtg-hero__actions">
-        <a href="#contact" class="vtg-btn vtg-btn--primary vtg-btn--lg"><span>Request a quote</span></a>
-        <a href="#services" class="vtg-btn vtg-btn--secondary vtg-btn--lg"><span>See services</span></a>
+      <div class="hx__row">
+        <a href="#contact" class="vtg-btn vtg-btn--primary vtg-btn--lg"><span>Request a quote</span><svg class="vtg-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" aria-hidden="true"><use href="#i-right"/></svg></a>
+        <p class="small hx__lead">A team of lift engineers in four specialisms: mechanical repairs, door systems, electrical fault finding and modernisation. Lifts of all makes.</p>
       </div>
     </div>
-    <dl class="plate" aria-label="Key facts">
-      <div class="plate__cell"><dt class="label">Specialist teams</dt><dd class="data plate__v">04</dd></div>
-      <div class="plate__cell"><dt class="label">Lift makes</dt><dd class="data plate__v">All makes</dd></div>
-      <div class="plate__cell"><dt class="label">Area</dt><dd class="data plate__v">London</dd></div>
-      <div class="plate__cell"><dt class="label">Fault line</dt><dd class="data plate__v"><a href="tel:+447851751556">+44 7851 751 556</a></dd></div>
-    </dl>
+    <div class="hx__tile">
+      <p class="hx__tile-n">04</p>
+      <div><p class="hx__tile-t">Specialist companies</p><p class="small hx__tile-s">Mechanical, doors, electrical and modernisation, under one group.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- About: statement, two strengths from the positioning document, bento of photos and figures -->
+<section class="ab" id="about-vtg" aria-labelledby="ab-h" data-theme="light">
+  <div class="vtg-container">
+    <div class="ab__top">
+      <h2 id="ab-h" class="ab__statement">One group of lift engineers, four specialist companies, every part of the lift covered.</h2>
+      <div class="ab__strengths">
+        <div class="ab__str">
+          <h3 class="ab__str-t"><svg class="vtg-icon" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" aria-hidden="true"><use href="#i-wrench"/></svg>Distinct specialisms</h3>
+          <p class="body muted">Mechanical repairs, door systems, electrical fault finding and modernisation, each run as its own specialist company.</p>
+        </div>
+        <div class="ab__str">
+          <h3 class="ab__str-t"><svg class="vtg-icon" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" aria-hidden="true"><use href="#i-shield"/></svg>One team behind them</h3>
+          <p class="body muted">Work is shared across the team by skills and availability, so the right engineer goes to the right fault.</p>
+        </div>
+      </div>
+    </div>
+    <div class="bento">
+      <figure class="bento__photo bento__photo--big">
+        <img src="images/zespol-napedowy-mrl.webp" alt="Machine-room-less traction machine and controller in the shaft headroom" width="1013" height="1800" loading="lazy">
+      </figure>
+      <div class="bento__tile bento__tile--dark" data-theme="dark">
+        <p class="bento__t">Specialist companies in the group</p>
+        <p class="bento__n">04</p>
+      </div>
+      <div class="bento__tile bento__tile--light">
+        <p class="bento__t">Lift makes we repair</p>
+        <p class="bento__n">All</p>
+      </div>
+      <div class="bento__tile bento__tile--blue" data-theme="dark">
+        <p class="bento__t">Lift engineers on the team</p>
+        <p class="bento__n">[XX]+</p>
+      </div>
+      <figure class="bento__photo">
+        <img src="images/podszybie-zderzaki.webp" alt="Refurbished lift pit with buffers" width="1800" height="1013" loading="lazy">
+      </figure>
+    </div>
   </div>
 </section>
 
@@ -279,142 +316,107 @@
   </div>
 </section>
 
-<!-- Report a fault / contact -->
-<section class="s s--alt" id="contact" aria-labelledby="fault-h" data-theme="dark">
-  <div class="vtg-container fault" id="report-a-fault">
-    <div>
-      <div class="vtg-heading s__head">
-        <h2 id="fault-h" class="h2 vtg-steel">Report a fault or request a quote</h2>
-        <p class="lead vtg-lead">Tell us where the lift is and what it is doing. We reply with who is attending, or with a quote.</p>
-      </div>
-      <form class="wiz" action="[FORM-ENDPOINT]" method="post" novalidate>
-        <ol class="wiz__steps" aria-label="Form progress">
-          <li class="wiz__step is-current" data-for="1"><span class="data">01</span><span class="small">Your need</span></li>
-          <li class="wiz__step" data-for="2"><span class="data">02</span><span class="small">The lift</span></li>
-          <li class="wiz__step" data-for="3"><span class="data">03</span><span class="small">Contact</span></li>
-        </ol>
-
-        <fieldset class="wiz__panel" data-step="1">
-          <legend class="h3 wiz__q">What do you need?</legend>
-          <div class="opts">
-          <label class="opt opt--urgent"><input type="radio" name="type" value="out-of-service" required><svg class="a3 a3--down opt__a3" aria-hidden="true"><use href="#a3-down"/></svg><span class="opt__t body-strong">Lift is out of service</span><span class="opt__s small">Stopped, stuck or unsafe</span></label>
-          <label class="opt"><input type="radio" name="type" value="fault"><span class="opt__t body-strong">Lift runs with a fault</span><span class="opt__s small">Noisy, levelling, doors, error codes</span></label>
-          <label class="opt"><input type="radio" name="type" value="quote"><span class="opt__t body-strong">Quote for planned work</span><span class="opt__s small">Repair, upgrade or modernisation</span></label>
-          <label class="opt"><input type="radio" name="type" value="trade"><span class="opt__t body-strong">Support for my lift company</span><span class="opt__s small">Specialist help under your contract</span></label>
-          </div>
-          <p class="small faint wiz__err" hidden>Choose one option to continue.</p>
-        </fieldset>
-
-        <fieldset class="wiz__panel" data-step="2">
-          <legend class="h3 wiz__q">Which part of the lift?</legend>
-          <div class="opts">
-          <label class="opt"><input type="radio" name="area" value="doors" required><span class="opt__t body-strong">Doors</span><span class="opt__s small">Car or landing doors, locks, operator</span></label>
-          <label class="opt"><input type="radio" name="area" value="mechanical"><span class="opt__t body-strong">Machine and brakes</span><span class="opt__s small">Motor, gearbox, ropes, sheaves</span></label>
-          <label class="opt"><input type="radio" name="area" value="electrical"><span class="opt__t body-strong">Controller and electrics</span><span class="opt__s small">Drives, safety circuits, wiring</span></label>
-          <label class="opt"><input type="radio" name="area" value="unsure"><span class="opt__t body-strong">Not sure</span><span class="opt__s small">We will diagnose on site</span></label>
-          </div>
-          <div class="wiz__row">
-            <div class="vtg-field">
-              <label for="f-make" class="body-strong vtg-field__label">Lift make <span class="vtg-field__opt">(optional)</span></label>
-              <input id="f-make" name="make" class="vtg-field__ctrl" placeholder="e.g. Otis, KONE, Schindler">
-            </div>
-            <div class="vtg-field">
-              <label for="f-desc" class="body-strong vtg-field__label">What is it doing? <span class="vtg-field__opt">(optional)</span></label>
-              <input id="f-desc" name="description" class="vtg-field__ctrl" placeholder="Symptoms, error code">
-            </div>
-          </div>
-          <p class="small faint wiz__err" hidden>Choose one option to continue.</p>
-        </fieldset>
-
-        <fieldset class="wiz__panel" data-step="3">
-          <legend class="h3 wiz__q">Where is the lift and how do we reach you?</legend>
-          <p class="small muted wiz__sum" aria-live="polite"></p>
-          <div class="wiz__row wiz__row--1">
-            <div class="vtg-field">
-              <label for="f-addr" class="body-strong vtg-field__label">Building address</label>
-              <input id="f-addr" name="address" class="vtg-field__ctrl" placeholder="Street, postcode" autocomplete="street-address" required>
-            </div>
-          </div>
-          <div class="wiz__row">
-            <div class="vtg-field">
-              <label for="f-name" class="body-strong vtg-field__label">Name</label>
-              <input id="f-name" name="name" class="vtg-field__ctrl" autocomplete="name" required>
-            </div>
-            <div class="vtg-field">
-              <label for="f-contact" class="body-strong vtg-field__label">Phone or email</label>
-              <input id="f-contact" name="contact" class="vtg-field__ctrl" autocomplete="tel" required>
-            </div>
-          </div>
-          <p class="small faint wiz__err" hidden>Fill in the address, your name and a phone or email.</p>
-        </fieldset>
-
-        <div class="wiz__nav">
-          <button type="button" class="vtg-btn vtg-btn--secondary wiz__back" hidden><span>Back</span></button>
-          <button type="button" class="vtg-btn vtg-btn--primary wiz__next"><span>Next</span></button>
-          <button type="submit" class="vtg-btn vtg-btn--amber wiz__send"><span>Send request</span></button>
-        </div>
-        <p class="small faint wiz__urgent"><svg class="a3 a3--down wiz__a3" aria-hidden="true"><use href="#a3-down"/></svg>Someone trapped in a lift? Call <a href="tel:+447851751556">+44 7851 751 556</a> now.</p>
-      </form>
+<!-- FAQ: heading and photo on the left, questions on the right -->
+<section class="fq" id="faq" aria-labelledby="fq-h" data-theme="light">
+  <div class="vtg-container fq__in">
+    <div class="fq__head">
+      <h2 id="fq-h" class="fq__title">Questions about our lift engineers</h2>
+      <figure class="fq__photo"><img src="images/szyb-dach-kabiny.webp" alt="Lift car roof with balustrade, inspection box and suspension ropes" width="841" height="1800" loading="lazy"></figure>
     </div>
-    <aside class="panel" aria-label="Call us">
-      <p class="label faint">Lift out of service</p>
-      <a href="tel:+447851751556" class="panel__phone">+44 7851 751 556</a>
-      <p class="small muted">[Hours, e.g. 24 hours a day, 365 days a year.]</p>
-      <figure class="panel__person">
-        <div class="panel__face ph" data-ph="[Photo]">
-          <img src="images/coordinator.webp" alt="[Name], [role] at VTG" width="160" height="160" loading="lazy">
-        </div>
-        <blockquote class="panel__quote">
-          <p class="body">“Tell me what the lift is doing. I’ll send the engineer who knows that part and call you back with a time.”</p>
-          <figcaption class="small muted"><span class="body-strong panel__name">[Name]</span>[Role, e.g. Service coordinator]</figcaption>
-        </blockquote>
-      </figure>
-      <a href="mailto:office@vtg.com" class="vtg-link" style="padding-top:0">office@vtg.com</a>
-    </aside>
+    <div class="fq__list">
+      <details class="fq__item">
+        <summary><span>What do your lift engineers repair?</span><svg class="vtg-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" aria-hidden="true"><use href="#i-down"/></svg></summary>
+        <p class="body muted">Every part of the lift, through four specialist companies: mechanical repairs (traction machines, brakes, gearboxes, ropes), lift door systems (car and landing doors, operators, locks), electrical fault finding (controllers, drives, safety circuits, wiring) and modernisation (control upgrades, obsolete parts, car refurbishment).</p>
+      </details>
+      <details class="fq__item">
+        <summary><span>Who do you work with?</span><svg class="vtg-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" aria-hidden="true"><use href="#i-down"/></svg></summary>
+        <p class="body muted">Lift service firms, facilities managers, managing agents and building owners across London.</p>
+      </details>
+      <details class="fq__item">
+        <summary><span>Do you work for other lift companies?</span><svg class="vtg-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" aria-hidden="true"><use href="#i-down"/></svg></summary>
+        <p class="body muted">Yes. Lift service firms are one of the groups we work for, when a fault needs a door, drive or controller specialist under their contract.</p>
+      </details>
+      <details class="fq__item">
+        <summary><span>How do you decide which engineer comes?</span><svg class="vtg-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" aria-hidden="true"><use href="#i-down"/></svg></summary>
+        <p class="body muted">Each company focuses on one part of the lift, and work is shared across the team by skills and availability. The fault goes to the team that works on that system every day.</p>
+      </details>
+      <details class="fq__item">
+        <summary><span>Is a LOLER thorough examination the same as maintenance?</span><svg class="vtg-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" aria-hidden="true"><use href="#i-down"/></svg></summary>
+        <p class="body muted">No. Passenger lifts need a thorough examination by a competent person at least every six months, in addition to regular maintenance. We carry out the repairs an examination report calls for.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- Contact: photo ground, contact rows on the left, form card on the right -->
+<section class="ct" id="contact" aria-labelledby="ct-h" data-theme="dark">
+  <div class="ct__bg"><img src="images/szyb-prowadnice.webp" alt="" width="841" height="1800" loading="lazy"></div>
+  <div class="vtg-container ct__in" id="report-a-fault">
+    <div class="ct__copy">
+      <h2 id="ct-h" class="ct__title">Report a fault or request a quote</h2>
+      <p class="lead ct__lead">Tell us where the lift is and what it is doing. A lift engineer from the right specialist team gets back to you.</p>
+      <ul class="ct__rows">
+        <li><span class="ct__ic"><svg class="vtg-icon" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" aria-hidden="true"><use href="#i-mail"/></svg></span><a href="mailto:office@vtg.com">office@vtg.com</a></li>
+        <li><span class="ct__ic"><svg class="vtg-icon" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" aria-hidden="true"><use href="#i-phone"/></svg></span><a href="tel:+447851751556">+44 7851 751 556</a></li>
+        <li><span class="ct__ic"><svg class="vtg-icon" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" aria-hidden="true"><use href="#i-shield"/></svg></span><span>London</span></li>
+      </ul>
+    </div>
+    <form class="ctf" action="[FORM-ENDPOINT]" method="post" data-theme="light">
+      <div class="vtg-field"><label for="c-name" class="body-strong vtg-field__label">Full name <span class="req" aria-hidden="true">*</span></label><input id="c-name" name="name" class="vtg-field__ctrl" autocomplete="name" placeholder="John Smith" required></div>
+      <div class="vtg-field"><label for="c-email" class="body-strong vtg-field__label">Email address <span class="req" aria-hidden="true">*</span></label><input id="c-email" name="email" type="email" class="vtg-field__ctrl" autocomplete="email" placeholder="name@company.co.uk" required></div>
+      <div class="vtg-field"><label for="c-phone" class="body-strong vtg-field__label">Phone number <span class="req" aria-hidden="true">*</span></label><input id="c-phone" name="phone" type="tel" class="vtg-field__ctrl" autocomplete="tel" placeholder="+44" required></div>
+      <div class="vtg-field"><label for="c-addr" class="body-strong vtg-field__label">Building address <span class="req" aria-hidden="true">*</span></label><input id="c-addr" name="address" class="vtg-field__ctrl" autocomplete="street-address" placeholder="Street, postcode" required></div>
+      <div class="vtg-field"><label for="c-type" class="body-strong vtg-field__label">What do you need? <span class="req" aria-hidden="true">*</span></label>
+        <select id="c-type" name="type" class="vtg-field__ctrl" required><option value="">Select</option><option>Lift is out of service</option><option>Lift runs with a fault</option><option>Quote for planned repair</option><option>Modernisation</option><option>Support for my lift company</option></select></div>
+      <div class="vtg-field"><label for="c-part" class="body-strong vtg-field__label">Part of the lift <span class="req" aria-hidden="true">*</span></label>
+        <select id="c-part" name="part" class="vtg-field__ctrl" required><option value="">Select</option><option>Doors</option><option>Machine and brakes</option><option>Controller and electrics</option><option>Not sure</option></select></div>
+      <div class="vtg-field ctf__full"><label for="c-msg" class="body-strong vtg-field__label">Message</label><textarea id="c-msg" name="message" class="vtg-field__ctrl" rows="4" placeholder="Lift make, symptoms, error codes if visible"></textarea></div>
+      <button type="submit" class="vtg-btn vtg-btn--primary vtg-btn--lg ctf__full ctf__send"><span>Send request</span></button>
+      <p class="small ctf__full ctf__urgent">Someone trapped in a lift? Call <a href="tel:+447851751556">+44 7851 751 556</a> now.</p>
+    </form>
   </div>
 </section>
 
 </main>
 
-<!-- Footer -->
-<footer class="vtg-footer" data-theme="dark">
-  <div class="vtg-container">
-    <div class="vtg-footer__top">
-      <div class="vtg-footer__brand">
-        <img src="images/vtg-logo-footer.webp" alt="The Vertical Transportation Group" class="vtg-footer__logo" width="200" height="130" loading="lazy">
-        <p class="small vtg-footer__tag">One group. Four specialist companies. Lift repair specialists in London.</p>
-      </div>
-      <div class="vtg-footer__col">
-        <p class="label vtg-footer__title">Group websites</p>
-        <ul>
-          <li><a href="/">The Vertical Transportation Group</a></li>
-          <li><a href="https://[SITE-02-DOMAIN]/">Mechanical lift repairs</a></li>
-          <li><a href="https://[SITE-03-DOMAIN]/">Lift door systems</a></li>
-          <li><a href="https://[SITE-04-DOMAIN]/">Electrical fault finding</a></li>
-          <li><a href="https://[SITE-05-DOMAIN]/">Modernisation &amp; refurbishment</a></li>
-        </ul>
-      </div>
-      <div class="vtg-footer__col">
-        <p class="label vtg-footer__title">Who we work with</p>
-        <ul>
-          <li><a href="/for-lift-companies/">Lift service firms</a></li>
-          <li><a href="#contact">Facilities managers</a></li>
-          <li><a href="#contact">Managing agents</a></li>
-          <li><a href="#contact">Building owners</a></li>
-        </ul>
-      </div>
-      <div class="vtg-footer__col">
-        <p class="label vtg-footer__title">Contact</p>
-        <ul>
-          <li><a href="#report-a-fault">Report a fault</a></li>
-          <li><a href="#contact">Request a quote</a></li>
-          <li><a href="tel:+447851751556">+44 7851 751 556</a></li>
-          <li><a href="/careers/">Careers</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="small vtg-footer__legal">© 2026 The Vertical Transportation Group · London · <a href="/privacy/" style="color:inherit">Privacy</a></div>
+<!-- Footer: closing call to action on a photo, footer card, ghost wordmark -->
+<footer class="fx" data-theme="dark">
+  <div class="fx__bg"><img src="images/zespol-napedowy-mrl.webp" alt="" width="1013" height="1800" loading="lazy"></div>
+  <div class="vtg-container fx__cta">
+    <h2 class="fx__title">Get your lift moving again</h2>
+    <p class="body fx__lead">Mechanical, door, electrical and modernisation work on lifts of all makes across London.</p>
+    <a href="#contact" class="vtg-btn vtg-btn--amber vtg-btn--lg"><span>Report a fault</span><svg class="vtg-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" aria-hidden="true"><use href="#i-right"/></svg></a>
   </div>
+  <div class="vtg-container fx__wrap">
+    <div class="fx__card">
+      <div class="fx__brand">
+        <img src="images/vtg-logo-footer.webp" alt="The Vertical Transportation Group" class="fx__logo" width="160" height="104" loading="lazy">
+        <p class="small muted">One group. Four specialist companies. Lift engineers in London.</p>
+      </div>
+      <nav class="fx__links" aria-label="Footer">
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">Why VTG</a></li>
+          <li><a href="#process">How we work</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <ul>
+          <li><a href="https://[SITE-02-DOMAIN]/">Mechanical repairs</a></li>
+          <li><a href="https://[SITE-03-DOMAIN]/">Door systems</a></li>
+          <li><a href="https://[SITE-04-DOMAIN]/">Electrical fault finding</a></li>
+          <li><a href="https://[SITE-05-DOMAIN]/">Modernisation</a></li>
+          <li><a href="/privacy/">Privacy</a></li>
+        </ul>
+      </nav>
+      <div class="fx__contact">
+        <a href="mailto:office@vtg.com" class="fx__big">office@vtg.com</a>
+        <a href="tel:+447851751556" class="fx__big">+44 7851 751 556</a>
+      </div>
+      <p class="small faint fx__legal">© 2026 The Vertical Transportation Group · London</p>
+    </div>
+  </div>
+  <span class="fx__ghost" aria-hidden="true">VTG</span>
 </footer>
 
 <script src="assets/site.js"></script>
