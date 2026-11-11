@@ -732,3 +732,6 @@ html.tb-off { --tb: 0px; }
     font: 600 10px/1 var(--font-sans); letter-spacing: .2em; text-transform: uppercase; color: var(--ink-muted); }
   .mnav__strip span { color: #f0ac2e; letter-spacing: 0; }
 }
+/* Dropdown: page names only */
+.vtg-nav__links .dd__panel { min-width: 230px; }
+.vtg-nav__links .dd__panel .dd__item { padding: 13px 20px !important; }
