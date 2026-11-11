@@ -747,3 +747,41 @@ html.tb-off { --tb: 0px; }
 .tm__score { order: 1; }
 .tm__meta { order: 2; gap: 2px !important; }
 .tm__meta .tm__txt, .tm__meta .tm__sub { margin: 0; line-height: 1.3; }
+
+/* Who we work with: photo + 2x2 cards with icon tiles */
+.wwx { display: grid; grid-template-columns: 1fr 2fr; gap: 12px; margin-bottom: 12px; }
+.wwx__photo { position: relative; margin: 0; overflow: hidden; min-height: 520px; }
+.wwx__photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(.75); }
+.wwx__photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(10,111,224,.85) 0%, rgba(10,111,224,.25) 40%, rgba(7,8,10,0) 65%); }
+.wwx__cap { position: absolute; left: 28px; right: 28px; bottom: 26px; z-index: 1; font: 800 34px/1.08 var(--font-display); font-stretch: 112%; color: #fff; }
+.wwx__grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.wc { display: flex; flex-direction: column; justify-content: space-between; gap: 40px; padding: 28px; background: var(--surface-200); }
+.wc__top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+.wc__t { margin: 0; font: 700 22px/1.2 var(--font-display); font-stretch: 112%; color: var(--ink); }
+.wc__ic { flex: none; width: 56px; height: 56px; display: grid; place-items: center; background: #f0ac2e; color: #07080a; }
+.wc__ic .lu { width: 28px; height: 28px; }
+.wc__d { margin: 0; font: 400 15px/23px var(--font-sans); color: var(--ink-muted); }
+@media (max-width: 1080px) { .wwx { grid-template-columns: 1fr; } .wwx__photo { min-height: 280px; } }
+@media (max-width: 720px) {
+  .wwx { gap: 8px; margin-bottom: 8px; }
+  .wwx__photo { min-height: 200px; }
+  .wwx__cap { font-size: 24px; left: 16px; bottom: 16px; }
+  .wwx__grid { gap: 8px; }
+  .wc { padding: 16px; gap: 20px; }
+  .wc__t { font-size: 15px; }
+  .wc__ic { width: 40px; height: 40px; }
+  .wc__ic .lu { width: 20px; height: 20px; }
+  .wc__d { font-size: 13px; line-height: 19px; }
+}
+
+/* Facts under the cards: one row (04 · All · 15+ · lobby photo), no second big photo */
+.ww .bento { grid-template-columns: repeat(4, 1fr) !important; grid-template-rows: 220px !important; gap: 12px !important; margin-top: 0 !important; }
+.ww .bento__photo--big { display: none !important; }
+.ww .bento__photo:not(.bento__photo--big) { display: block !important; grid-row: auto !important; grid-column: auto !important; }
+.ww .bento__tile { padding: 24px; }
+.ww .bento__n { font-size: 56px; }
+@media (max-width: 720px) {
+  .ww .bento { grid-template-columns: 1fr 1fr !important; grid-template-rows: 120px 120px !important; gap: 8px !important; }
+  .ww .bento__tile { padding: 14px; }
+  .ww .bento__n { font-size: 34px; }
+}
