@@ -123,3 +123,18 @@
   document.querySelectorAll('.mp__zone').forEach(function (z) { z.addEventListener('click', function () { pick(z.dataset.region); }); });
   pick('central');
 })();
+
+// Projects page: filter by type of work
+(function () {
+  var btns = document.querySelectorAll('.pjf');
+  if (!btns.length) return;
+  var items = document.querySelectorAll('.pj'), empty = document.querySelector('.pjs__empty');
+  btns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var f = b.dataset.filter, n = 0;
+      btns.forEach(function (x) { var on = x === b; x.classList.toggle('is-on', on); x.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+      items.forEach(function (it) { var show = f === 'all' || it.dataset.type === f; it.hidden = !show; if (show) n++; });
+      if (empty) empty.hidden = n > 0;
+    });
+  });
+})();
