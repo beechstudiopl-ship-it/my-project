@@ -753,9 +753,12 @@
   .fit:has(input:checked){background:#EEF2FF!important;border-color:var(--blue)!important}
   .qm-files-note{background:#EEF2FF!important}
   .up i{background:var(--blue)!important;color:#fff!important}
-  /* myśli klienta: zwykły krój, pikselowy tylko w logo */
-  .thought{font-family:var(--text)!important;font-weight:500;font-size:16px!important;transform:none!important;border-radius:2px!important;box-shadow:3px 3px 0 var(--blue)!important;border:1.5px solid var(--ink)!important}
-  .thoughts{gap:14px!important}
+  /* myśli klienta: bez kart, jedna linia powtarzanej wymówki, coraz bledsza */
+  .thoughts{display:flex!important;flex-wrap:wrap;justify-content:center;gap:4px 22px!important;max-width:760px!important;margin-bottom:36px!important}
+  .thought{background:none!important;border:0!important;box-shadow:none!important;padding:0!important;border-radius:0!important;transform:none!important;
+    font-family:var(--text)!important;font-weight:500!important;font-size:19px!important;font-style:italic;color:var(--ink)!important}
+  .thought:nth-child(2){opacity:.7}.thought:nth-child(3){opacity:.5}.thought:nth-child(4){opacity:.32}
+  @media (max-width:640px){.thought{font-size:17px!important}.thoughts{gap:2px 16px!important}}
 </style>
 </head>
 <body>
