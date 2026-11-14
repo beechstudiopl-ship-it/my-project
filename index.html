@@ -759,6 +759,14 @@
     font-family:var(--text)!important;font-weight:500!important;font-size:19px!important;font-style:italic;color:var(--ink)!important}
   .thought:nth-child(2){opacity:.7}.thought:nth-child(3){opacity:.5}.thought:nth-child(4){opacity:.32}
   @media (max-width:640px){.thought{font-size:17px!important}.thoughts{gap:2px 16px!important}}
+  /* hero: „strony www?” pisze się na żywo, kursor idzie za tekstem */
+  .hero-f h1 em{background:none!important}
+  .mk1{background:none}
+  .tw-rest{visibility:hidden}
+  .nw{white-space:nowrap}
+  @media (max-width:420px){.hero-f h1{font-size:38px!important}}
+  .h-cur.typing{animation:none}
+  @media (max-width:640px){.hb{display:none}}
 </style>
 </head>
 <body>
@@ -777,7 +785,7 @@
       <span class="thought">„Teraz nie mam głowy.”</span>
       <span class="thought">„Dokończę jutro.”</span>
     </div>
-    <h1>Brzmi znajomo? <em>To już kolejny rok bez strony www?</em><span class="h-cur" aria-hidden="true"></span></h1>
+    <h1 aria-label="Brzmi znajomo? To już kolejny rok bez strony www?"><span aria-hidden="true">Brzmi znajomo?<br><em><span class="mk1">To już kolejny rok</span><br class="hb"> </em><span class="nw">bez <span id="tw-done">strony www?</span><span class="h-cur"></span><span class="tw-rest" id="tw-rest"></span></span></span></h1>
     <p class="lead">Odhaczę to za Ciebie: zbiorę informacje, napiszę teksty i zrobię stronę. Ty poświęcisz na to 2 minuty, nie 2 weekendy.</p>
     <div class="actions"><a href="#" class="btn" data-cta>Działajmy, odhaczamy to <span aria-hidden="true"><svg class="px-arrow" width="24" height="22" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11" shape-rendering="crispEdges"><rect x="6" y="0" width="1" height="1" fill="currentColor"/><rect x="6" y="1" width="2" height="1" fill="currentColor"/><rect x="6" y="2" width="3" height="1" fill="currentColor"/><rect x="6" y="3" width="4" height="1" fill="currentColor"/><rect x="0" y="4" width="11" height="1" fill="currentColor"/><rect x="0" y="5" width="12" height="1" fill="currentColor"/><rect x="0" y="6" width="11" height="1" fill="currentColor"/><rect x="6" y="7" width="4" height="1" fill="currentColor"/><rect x="6" y="8" width="3" height="1" fill="currentColor"/><rect x="6" y="9" width="2" height="1" fill="currentColor"/><rect x="6" y="10" width="1" height="1" fill="currentColor"/></svg></span></a></div>
     <ul class="facts"><li>7–14 dni</li><li>płacisz po podglądzie</li><li>od 1 300 zł netto</li></ul>
@@ -1186,5 +1194,18 @@
 </script>
 
 
+<script>
+(function(){
+  var done=document.getElementById('tw-done'),rest=document.getElementById('tw-rest'),cur=document.querySelector('.h-cur');
+  if(!done||!rest||!cur)return;
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var full=done.textContent,i=0;
+  done.textContent='';rest.textContent=full;cur.classList.add('typing');
+  setTimeout(function step(){
+    i++;done.textContent=full.slice(0,i);rest.textContent=full.slice(i);
+    if(i<full.length){setTimeout(step,i===6?300:130)}else{cur.classList.remove('typing')}
+  },700);
+})();
+</script>
 </body>
 </html>
