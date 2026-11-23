@@ -24,7 +24,7 @@ Treści podstron też są w `build.py`, w sekcji `PAGES`. Jeśli edytujesz HTML 
 ## Co musisz uzupełnić
 Każde miejsce do uzupełnienia jest na stronie podświetlone na żółto (`[UZUPEŁNIJ: …]`). Wpisuj tylko prawdziwe dane.
 
-**1. Dane firmy (raz, w `build.py` → `FIRMA`):** domena (`DOMENA`), pełna nazwa, ulica i numer, kod pocztowy,
+**1. Dane firmy (raz, w `build.py` → `FIRMA`):** krótka nazwa marki w nagłówku (`logo`), domena (`DOMENA`), pełna nazwa, ulica i numer, kod pocztowy,
 telefon (wyświetlany i w formacie +48…), e-mail, NIP, godziny pn–pt i w soboty (tekst oraz format 24h do JSON-LD),
 obszar działania, link do wizytówki w Mapach Google, adres obsługi formularza, adres polityki prywatności.
 
@@ -45,7 +45,7 @@ obszar działania, link do wizytówki w Mapach Google, adres obsługi formularza
 - cennik: czas odpowiedzi na zapytanie, co jest wliczone w cenę,
 - kontakt: parking i dojazd, mapa Google (wklej kod iframe z `loading="lazy"`), czas odpowiedzi.
 
-**4. Zdjęcia:** podmień pliki w `img/` (szyld-1, szyld-2, litery-1, litery-2, led-1, led-2) na prawdziwe zdjęcia w formacie WebP, 800×600, i zachowaj te same nazwy.
+**4. Zdjęcia:** podmień przykładowe grafiki w `img/` (szyld-1, szyld-2, litery-1, litery-2, led-1, led-2 – mają napis „PRZYKŁAD”) na prawdziwe zdjęcia w formacie WebP, 800×600, i zachowaj te same nazwy.
 Teksty alt i podpisy zmienisz w `build.py` → `IMAGES`.
 
 **5. Formularz:** strona jest statyczna, więc formularz potrzebuje obsługi (np. Formspree, Getform albo skrypt PHP na Twoim hostingu).

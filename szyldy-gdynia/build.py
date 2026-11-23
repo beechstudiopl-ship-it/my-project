@@ -20,6 +20,7 @@ DATA_AKTUALIZACJI = "2026-11-23"
 
 FIRMA = {
     "nazwa": "[UZUPEŁNIJ: pełna nazwa firmy]",
+    "logo": "Szyldy Gdynia",  # [UZUPEŁNIJ] krótka nazwa marki w nagłówku
     "ulica": "[UZUPEŁNIJ: ulica i numer]",
     "kod": "[UZUPEŁNIJ: kod pocztowy]",
     "miasto": "Gdynia",
@@ -102,21 +103,60 @@ def inline(text):
     return text
 
 
+def item_parts(text):
+    m = re.match(r"\*\*(.+?)\*\*\s*[–:]?\s*(.*)", text)
+    if not m:
+        return ("", text)
+    d = m.group(2)
+    return (m.group(1).rstrip(":"), d[:1].upper() + d[1:] if not d.startswith("[") else d)
+
+
 def md(src):
-    """Mini-markdown: akapity, listy „- ”, listy numerowane „1. ”, dyrektywy {{…}}."""
+    """Mini-markdown: akapity, listy „- ”, „1. ”, warianty list „::cards”, „::price”, „::info”, dyrektywy {{…}}."""
     out = []
     for block in [b.strip() for b in src.strip().split("\n\n") if b.strip()]:
         lines = [l.strip() for l in block.split("\n")]
+        variant = None
+        if lines[0].startswith("::"):
+            variant, lines = lines[0][2:], lines[1:]
         if block.startswith("{{") and block.endswith("}}"):
             name, _, arg = block[2:-2].partition(":")
             out.append(DIRECTIVES[name](arg))
         elif all(l.startswith("- ") for l in lines):
-            out.append("<ul>" + "".join(f"<li>{inline(l[2:])}</li>" for l in lines) + "</ul>")
+            items = [l[2:] for l in lines]
+            if variant == "cards":
+                cells = []
+                for n, it in enumerate(items, 1):
+                    t, d = item_parts(it)
+                    cells.append(f'<li class="tile"><span class="tile-n">{n:02d}</span><h3>{inline(t)}</h3><p>{inline(d)}</p></li>')
+                out.append('<ul class="tiles">' + "".join(cells) + "</ul>")
+            elif variant == "services":
+                cells = []
+                for it in items:
+                    t, d = item_parts(it)
+                    key = "led" if "LED" in t else ("litery" if "Litery" in t else "szyld")
+                    cells.append(f'<li class="svc"><span class="svc-ico">{ICONS[key]}</span><h3>{inline(t)}</h3><p>{inline(d)}</p></li>')
+                out.append('<ul class="svcs">' + "".join(cells) + "</ul>")
+            elif variant in ("price", "info"):
+                rows = []
+                for it in items:
+                    t, d = item_parts(it)
+                    rows.append(f'<li><span class="k">{inline(t)}</span><span class="v">{inline(d)}</span></li>' if t else f'<li><span class="v">{inline(d)}</span></li>')
+                out.append(f'<ul class="{variant}-list">' + "".join(rows) + "</ul>")
+            else:
+                out.append("<ul>" + "".join(f"<li>{inline(i)}</li>" for i in items) + "</ul>")
         elif all(re.match(r"\d+\. ", l) for l in lines):
-            out.append("<ol>" + "".join(f"<li>{inline(re.sub(r'^\d+\. ', '', l))}</li>" for l in lines) + "</ol>")
+            out.append('<ol class="steps">' + "".join(f"<li><div>{inline(re.sub(r'^\d+\. ', '', l))}</div></li>" for l in lines) + "</ol>")
         else:
             out.append(f"<p>{inline(' '.join(lines))}</p>")
     return "\n".join(out)
+
+
+ICONS = {
+    "szyld": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="10" rx="1.5"/><path d="M7 11h10M8 16v3M16 16v3"/></svg>',
+    "litery": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19 9 5l5 14M6 14h6"/><path d="M11 5l2-1.5 5 14-2 1.5"/></svg>',
+    "led": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg>',
+}
 
 
 # --- obrazy (placeholdery WebP – podmień na prawdziwe zdjęcia, zachowując nazwy) ---
@@ -220,6 +260,7 @@ PAGES = []
 # ============================ INDEX =========================================
 PAGES.append(dict(
     slug="index",
+    mock="led",
     title="Szyldy reklamowe Gdynia – litery przestrzenne i LED",
     desc="Szyldy reklamowe Gdynia – projektujemy i wykonujemy szyldy, litery przestrzenne i reklamę LED dla firm i lokali. Zapytaj o wycenę projektu.",
     h1="Szyldy reklamowe w Gdyni",
@@ -242,6 +283,7 @@ Najczęściej zgłaszają się do nas:
         ("Nasze usługi: szyldy, litery przestrzenne i reklama LED", f"""
 Dobieramy rodzaj reklamy do budynku, budżetu i tego, jak daleko szyld ma być widoczny. Główne usługi:
 
+::services
 - **Szyldy reklamowe** – płaskie tablice, kasetony i szyldy na elewację, np. z dibondu, PCV lub plexi, z nadrukiem lub oklejeniem folią. Szczegóły znajdziesz na stronie [szyldy reklamowe Gdynia]({L_SZ}).
 - **Litery przestrzenne** – logo i napisy 3D, bez podświetlenia lub podświetlane, montowane bezpośrednio na ścianie albo na dystansach. Więcej na stronie [litery przestrzenne Gdynia]({L_LI}).
 - **Reklama LED** – kasetony i litery podświetlane diodami LED, dzięki którym firma jest widoczna także wieczorem i zimą. Zobacz [reklama LED Gdynia]({L_LED}).
@@ -281,6 +323,7 @@ Najlepiej ocenić naszą pracę po efektach. W galerii [realizacje]({L_RE}) poka
         ("Szyldy reklamowe w Gdyni i okolicy – obszar działania i kontakt", f"""
 Działamy w Gdyni we wszystkich dzielnicach, od Śródmieścia, przez Redłowo i Orłowo, po Chylonię i Obłuże. [UZUPEŁNIJ: czy obsługujecie też Sopot, Gdańsk, Rumię, Redę, Wejherowo i resztę Pomorza].
 
+::info
 - **Telefon:** {{TEL_LINK}}
 - **E-mail:** {{EMAIL_LINK}}
 - **Adres:** {{ADRES}}
@@ -304,6 +347,7 @@ Najszybciej przygotujemy wycenę, jeśli przez formularz na stronie [kontakt]({L
 # ============================ SZYLDY =========================================
 PAGES.append(dict(
     slug="szyldy-reklamowe-gdynia",
+    mock="panel",
     title="Szyldy reklamowe Gdynia – projekt, wykonanie, montaż",
     desc="Szyldy reklamowe Gdynia – projekt, wykonanie i montaż szyldów na elewację, nad wejście i do lokalu. Podświetlane LED lub klasyczne. Zapytaj o wycenę.",
     h1="Szyldy reklamowe Gdynia",
@@ -314,6 +358,7 @@ PAGES.append(dict(
         ("Jakie szyldy reklamowe wykonujemy w Gdyni", f"""
 Każdy szyld dobieramy do budynku, branży i tego, skąd klienci mają go zobaczyć: z chodnika, z jadącego samochodu czy z drugiej strony ulicy. Najczęściej wykonujemy:
 
+::cards
 - **Szyldy płaskie na elewację** – panel z dibondu, PCV lub plexi z nadrukiem albo oklejeniem folią, montowany nad wejściem lub na fasadzie.
 - **Kasetony reklamowe** – skrzynki świetlne z podświetleniem od środka, dobrze widoczne także wieczorem.
 - **Semafory (szyldy dwustronne)** – montowane prostopadle do ściany, widoczne dla osób idących wzdłuż ulicy.
@@ -394,6 +439,7 @@ Zanim szyld zawiśnie na budynku, warto sprawdzić kilka spraw. To ogólne wskaz
 # ============================ LITERY =========================================
 PAGES.append(dict(
     slug="litery-przestrzenne-gdynia",
+    mock="3d",
     title="Litery przestrzenne Gdynia – litery 3D na fasadę i do wnętrz",
     desc="Litery przestrzenne Gdynia – litery 3D na fasadę, recepcję i do biura, z podświetleniem LED lub bez. Projekt, produkcja i montaż. Poproś o wycenę.",
     h1="Litery przestrzenne Gdynia",
@@ -409,6 +455,7 @@ Z liter przestrzennych można ułożyć nazwę firmy, logo, hasło albo pojedync
         ("Rodzaje liter przestrzennych – podświetlane i niepodświetlane", f"""
 Rodzaj liter dobieramy do miejsca montażu, budżetu i tego, czy napis ma być widoczny po zmroku. Najczęściej wybierane warianty to:
 
+::cards
 - **Litery niepodświetlane** – prostsze i tańsze, dobre do wnętrz, na recepcję lub na dobrze oświetloną elewację.
 - **Litery podświetlane od frontu** – świeci lico litery, napis jest czytelny wieczorem i z dużej odległości.
 - **Litery z podświetleniem tylnym (efekt halo)** – światło pada na ścianę za literą, dając dyskretną, elegancką poświatę.
@@ -419,6 +466,7 @@ W zależności od projektu stosujemy m.in. plexi, PCV spienione, dibond, alumini
         ("Gdzie sprawdzają się litery przestrzenne w Gdyni: fasada, recepcja, biuro", """
 Litery 3D pasują zarówno do lokalu przy głównej ulicy, jak i do biura w biurowcu. Typowe zastosowania to:
 
+::cards
 - **Fasada i elewacja** – nazwa sklepu, restauracji, salonu czy gabinetu nad wejściem lub na ścianie budynku.
 - **Witryna i nadproże** – napis nad drzwiami albo na pasie nad oknem wystawowym.
 - **Recepcja** – logo za ladą, które klient widzi od razu po wejściu.
@@ -474,6 +522,7 @@ Litery przestrzenne wykonujemy przede wszystkim dla firm z Gdyni, a także z Sop
 # ============================ LED ============================================
 PAGES.append(dict(
     slug="reklama-led-gdynia",
+    mock="led",
     title="Reklama LED Gdynia – podświetlane szyldy i kasetony",
     desc="Reklama LED Gdynia – podświetlane szyldy, kasetony i litery LED dla firm. Widoczne także po zmroku. Sprawdź, od czego zależy cena i zapytaj o wycenę.",
     h1="Reklama LED w Gdyni",
@@ -486,6 +535,7 @@ Hasło „reklama LED” bywa rozumiane różnie – czasem chodzi o ekrany wyś
 
 W naszej ofercie znajdziesz:
 
+::cards
 - **Kasetony podświetlane** – skrzynki z grafiką na froncie, podświetlone od środka [UZUPEŁNIJ: jednostronne / dwustronne, kasetony semaforowe].
 - **Litery przestrzenne LED** – pojedyncze litery i logo podświetlane od frontu, od tyłu (efekt halo) lub z boków [UZUPEŁNIJ: jakie warianty podświetlenia wykonujecie].
 - **Szyldy podświetlane** – tablice z logo i nazwą firmy z podświetleniem LED [UZUPEŁNIJ: rodzaje, np. dibond z literami, plexi].
@@ -507,6 +557,7 @@ Podświetlenie można sterować zegarem lub czujnikiem zmierzchu, żeby reklama 
         ("Kaseton, litery LED czy szyld podświetlany – co wybrać?", f"""
 Każde z rozwiązań sprawdza się w innej sytuacji. Krótkie porównanie:
 
+::cards
 - **Kaseton podświetlany** – dużo miejsca na grafikę i tekst, dobra widoczność z daleka, rozsądny koszt przy większym formacie. Dobry wybór dla sklepów, punktów usługowych i lokali przy ruchliwych ulicach.
 - **Litery przestrzenne LED** – najbardziej prestiżowy efekt, logo „wychodzi” z elewacji. Polecane dla marek, które chcą wyglądać nowocześnie: salony, restauracje, biura, kliniki. Zwykle droższe od kasetonu o podobnej szerokości.
 - **Szyld podświetlany** – kompromis między ceną a wyglądem, np. tablica z podświetlanym logo. Sprawdza się przy mniejszych wejściach i w lokalach w kamienicach.
@@ -563,6 +614,7 @@ PAGES.append(dict(
         ("Szyldy reklamowe – realizacje w Gdyni według kategorii", f"""
 Galerię podzieliliśmy na kategorie, żeby łatwo było znaleźć przykłady podobne do tego, czego potrzebujesz. Każde zdjęcie przedstawia rzeczywistą realizację – bez wizualizacji i zdjęć ze stocków.
 
+::cards
 - **Szyldy reklamowe** – płaskie szyldy na elewację, kasetony, tablice przy wejściu, oznakowanie witryn. Więcej o tej usłudze: [szyldy reklamowe Gdynia]({L_SZ}).
 - **Litery przestrzenne** – logo i napisy 3D, nieoświetlone i podświetlane, montowane na elewacji, ścianie w lokalu lub na konstrukcji. Szczegóły: [litery przestrzenne Gdynia]({L_LI}).
 - **Reklama LED** – podświetlane kasetony, litery z diodami LED, neony LED i oznakowanie widoczne po zmroku. Zobacz: [reklama LED Gdynia]({L_LED}).
@@ -582,6 +634,7 @@ Samo zdjęcie nie mówi wszystkiego. Dlatego pod każdą realizacją podajemy kr
 
 Przykładowy opis realizacji:
 
+::info
 - **Klient / branża:** [UZUPEŁNIJ: np. kawiarnia, salon fryzjerski]
 - **Lokalizacja:** [UZUPEŁNIJ: dzielnica lub ulica – za zgodą klienta]
 - **Wykonanie:** [UZUPEŁNIJ: np. litery przestrzenne podświetlane LED, wymiary]
@@ -654,6 +707,7 @@ Warto też pamiętać o formalnościach: przed montażem dobrze jest sprawdzić 
         ("Przykładowe widełki cen szyldów reklamowych w Gdyni", """
 Poniższe kwoty mają charakter orientacyjny i pomagają ocenić budżet przed zapytaniem. Dokładną cenę podajemy po obejrzeniu zdjęcia elewacji i projektu.
 
+::price
 - **Szyld płaski z płyty kompozytowej z nadrukiem lub folią** – [UZUPEŁNIJ: cena od–do, np. za m² lub za sztukę]
 - **Kaseton podświetlany LED** – [UZUPEŁNIJ: cena od–do]
 - **Litery przestrzenne bez podświetlenia** – [UZUPEŁNIJ: cena od–do, np. za literę o określonej wysokości]
@@ -720,6 +774,7 @@ PAGES.append(dict(
         ("Dane kontaktowe – szyldy reklamowe Gdynia", """
 Poniżej znajdziesz wszystkie dane potrzebne do kontaktu. Są takie same jak w naszym Profilu Firmy w Google, więc łatwo nas znaleźć także w Mapach Google.
 
+::info
 - **Nazwa firmy:** {NAZWA}
 - **Adres:** {ADRES}
 - **Telefon:** {TEL_LINK}
@@ -731,6 +786,7 @@ Jeśli wolisz rozmowę na miejscu, zadzwoń wcześniej i umów się – wtedy b�
         ("Godziny pracy i dojazd", """
 Odbieramy telefony i odpowiadamy na wiadomości w godzinach pracy. Zapytania wysłane przez formularz poza tymi godzinami obsługujemy w kolejnym dniu roboczym.
 
+::info
 - **Poniedziałek – piątek:** {GODZ_PNPT}
 - **Sobota:** {GODZ_SOB}
 - **Niedziela:** nieczynne
@@ -904,12 +960,11 @@ def header(active):
     return f'''<a class="skip" href="#tresc">Przejdź do treści</a>
 <header class="site-header">
   <div class="wrap header-inner">
-    <a class="logo" href="./"><span class="logo-mark" aria-hidden="true"></span><span>{fill(FIRMA["nazwa"])}<small>Szyldy reklamowe · Gdynia</small></span></a>
+    <a class="logo" href="./" aria-label="{html.escape(FIRMA["logo"])} – strona główna"><span class="logo-mark" aria-hidden="true"></span><span class="logo-txt">{html.escape(FIRMA["logo"])}</span></a>
     <nav class="main-nav" aria-label="Menu główne"><ul>{items}</ul></nav>
-    <a class="btn btn-primary header-call" href="tel:{FIRMA["telefon_href"]}">Zadzwoń</a>
+    <a class="btn btn-primary header-call" href="tel:{FIRMA["telefon_href"]}"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Zadzwoń</a>
   </div>
 </header>'''
-
 
 def footer():
     nav = "".join(f'<li><a href="{href(s)}">{n}</a></li>' for s, n in NAV)
@@ -938,6 +993,22 @@ def footer():
 <div class="mobile-bar"><a class="btn btn-dark" href="tel:{FIRMA["telefon_href"]}">Zadzwoń</a><a class="btn btn-primary" href="kontakt.html#formularz">Wyślij zdjęcie</a></div>'''
 
 
+MOCK_TXT = {"index": "TWOJA FIRMA", "szyldy-reklamowe-gdynia": "TWOJA FIRMA",
+            "litery-przestrzenne-gdynia": "LOGO 3D", "reklama-led-gdynia": "OTWARTE"}
+TRUST = ["Wycena na podstawie zdjęcia", "Wizualizacja przed produkcją", "Szyldy, litery 3D i LED", "Gdynia i okolice"]
+
+
+def mock(p):
+    v = p.get("mock")
+    if not v:
+        return ""
+    t = MOCK_TXT.get(p["slug"], "TWOJA FIRMA")
+    return f'''<div class="mock mock--{v}" aria-hidden="true">
+  <div class="mock-sign"><span>{t}</span></div>
+  <div class="mock-shop"><i></i><i class="door"></i><i></i></div>
+</div>'''
+
+
 def page_html(p):
     slug = p["slug"]
     title, desc = p["title"], p["desc"]
@@ -945,15 +1016,21 @@ def page_html(p):
     cta_href = p.get("cta_href", "kontakt.html#formularz")
     crumb = ""
     if p["crumb"]:
-        crumb = f'<nav class="crumbs" aria-label="Okruszki"><a href="./">Strona główna</a> <span aria-hidden="true">›</span> <span>{p["crumb"]}</span></nav>'
+        crumb = f'<nav class="crumbs" aria-label="Okruszki"><a href="./">Strona główna</a> <span aria-hidden="true">/</span> <span>{p["crumb"]}</span></nav>'
     secs = []
     for i, (h2, body) in enumerate(p["sections"]):
-        cls = ' class="alt"' if i % 2 else ""
-        secs.append(f'<section{cls}><div class="wrap text">\n<h2>{h2}</h2>\n{md(body)}\n</div></section>')
-    faq = "".join(f'<div class="qa"><h3>{inline(q)}</h3><p>{inline(a)}</p></div>' for q, a in p["faq"])
+        cls = "sec alt" if i % 2 else "sec"
+        secs.append(f'<section class="{cls}"><div class="wrap sec-grid">\n<div class="sec-head"><span class="eyebrow">{i + 1:02d}</span><h2>{h2}</h2></div>\n<div class="sec-body">{md(body)}</div>\n</div></section>')
+    faq = "".join(
+        f'<details class="qa"{" open" if n == 0 else ""}><summary><h3>{inline(q)}</h3></summary><p>{inline(a)}</p></details>'
+        for n, (q, a) in enumerate(p["faq"]))
     cards = "".join(
-        f'<a class="card" href="{href(s)}"><strong>{CARDS[s][0]}</strong><span>{CARDS[s][1]}</span></a>'
+        f'<a class="card" href="{href(s)}"><strong>{CARDS[s][0]}</strong><span>{CARDS[s][1]}</span><b aria-hidden="true">→</b></a>'
         for s in p["links"])
+    trust = ""
+    if slug == "index":
+        trust = '<ul class="trust wrap">' + "".join(f"<li>{t}</li>" for t in TRUST) + "</ul>"
+    hero_cls = "hero has-mock" if p.get("mock") else "hero"
     return f'''<!doctype html>
 <html lang="pl">
 <head>
@@ -963,7 +1040,7 @@ def page_html(p):
 <meta name="description" content="{html.escape(desc)}">
 <link rel="canonical" href="{canon}">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<meta name="theme-color" content="#16191f">
+<meta name="theme-color" content="#0d0f13">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pl_PL">
 <meta property="og:site_name" content="{html.escape(plain(FIRMA['nazwa']))}">
@@ -976,27 +1053,35 @@ def page_html(p):
 <meta property="og:image:alt" content="Szyldy reklamowe, litery przestrzenne i reklama LED – Gdynia">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;112,800&amp;display=swap">
 <link rel="stylesheet" href="style.css">
 {ld_blocks(p)}
 </head>
 <body>
 {header(slug)}
 <main id="tresc">
-<section class="hero"><div class="wrap text">
+<section class="{hero_cls}"><div class="wrap hero-grid">
+<div class="hero-txt">
 {crumb}
 <h1>{p["h1"]}</h1>
 <p class="lead">{inline(p["lead"])}</p>
-<div class="actions"><a class="btn btn-primary" href="{cta_href}">Wyślij zdjęcie i wymiary</a><a class="btn btn-ghost" href="tel:{FIRMA["telefon_href"]}">Zadzwoń: {fill(FIRMA["telefon"])}</a></div>
-</div></section>
+<div class="actions"><a class="btn btn-primary btn-lg" href="{cta_href}">Wyślij zdjęcie i wymiary</a><a class="btn btn-outline btn-lg" href="tel:{FIRMA["telefon_href"]}">Zadzwoń</a></div>
+</div>
+{mock(p)}
+</div>
+{trust}
+</section>
 {chr(10).join(secs)}
-<section class="faq"><div class="wrap text">
-<h2>Pytania i odpowiedzi</h2>
-{faq}
+<section class="sec faq"><div class="wrap sec-grid">
+<div class="sec-head"><span class="eyebrow">FAQ</span><h2>Pytania i odpowiedzi</h2></div>
+<div class="sec-body">{faq}</div>
 </div></section>
-<section class="cta"><div class="wrap text">
-<h2>Zapytaj o wycenę</h2>
-<p>{inline(p["cta"])}</p>
-<div class="actions"><a class="btn btn-primary" href="{cta_href}">Wyślij zdjęcie elewacji</a><a class="btn btn-light" href="tel:{FIRMA["telefon_href"]}">Zadzwoń</a></div>
+<section class="cta"><div class="wrap cta-box">
+<div><h2>Zapytaj o wycenę</h2>
+<p>{inline(p["cta"])}</p></div>
+<div class="actions"><a class="btn btn-primary btn-lg" href="{cta_href}">Wyślij zdjęcie elewacji</a><a class="btn btn-outline btn-lg" href="tel:{FIRMA["telefon_href"]}">Zadzwoń</a></div>
 </div></section>
 <section class="more"><div class="wrap">
 <h2>Zobacz też</h2>
@@ -1007,7 +1092,6 @@ def page_html(p):
 </body>
 </html>
 '''
-
 
 # ---------------------------------------------------------------------------
 # 7. Pliki dodatkowe
@@ -1067,38 +1151,112 @@ FAVICON = '''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect w
 
 
 def images():
-    from PIL import Image, ImageDraw, ImageFont
+    """Rysuje przykładowe grafiki (do podmiany na prawdziwe zdjęcia realizacji)."""
+    from PIL import Image, ImageDraw, ImageFilter, ImageFont
     img_dir = OUT / "img"
     img_dir.mkdir(parents=True, exist_ok=True)
+    W, H = 800, 600
 
     def font(size, bold=True):
-        for f in ["/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf" if bold else
-                  "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"]:
-            try:
-                return ImageFont.truetype(f, size)
-            except OSError:
-                pass
-        return ImageFont.load_default()
+        try:
+            return ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf" if bold
+                                      else "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", size)
+        except OSError:
+            return ImageFont.load_default()
 
-    for key, (alt, _) in IMAGES.items():
-        path = img_dir / f"{key}.webp"
-        if path.exists():  # nie nadpisuj prawdziwych zdjęć
-            continue
-        im = Image.new("RGB", (800, 600), "#e9ebef")
+    def grad(top, bottom):
+        im = Image.new("RGB", (W, H), top)
         d = ImageDraw.Draw(im)
-        d.rectangle([40, 40, 760, 560], outline="#c3c7cf", width=4)
-        d.text((400, 270), "ZDJĘCIE REALIZACJI", font=font(40), fill="#5b6270", anchor="mm")
-        d.text((400, 330), f"podmień plik img/{key}.webp", font=font(24, False), fill="#5b6270", anchor="mm")
-        im.save(path, "WEBP", quality=70)
+        for y in range(H):
+            t = y / H
+            d.line([(0, y), (W, y)], fill=tuple(int(top[i] + (bottom[i] - top[i]) * t) for i in range(3)))
+        return im
+
+    def facade(im, wall, night):
+        d = ImageDraw.Draw(im)
+        d.rectangle([0, 0, W, 470], fill=wall)
+        for x in range(0, W, 200):  # podziały elewacji
+            d.line([(x, 0), (x, 470)], fill=tuple(max(0, c - 12) for c in wall), width=2)
+        d.rectangle([0, 470, W, H], fill=(40, 42, 48) if night else (150, 150, 146))
+        glass = (30, 44, 60) if night else (120, 150, 170)
+        for x0 in (60, 470):
+            d.rectangle([x0, 290, x0 + 270, 470], fill=glass, outline=(25, 25, 28), width=8)
+        d.rectangle([350, 300, 450, 470], fill=(25, 27, 32), outline=(25, 25, 28), width=8)
+        if night:  # ciepłe światło z witryn
+            glow = Image.new("RGB", (W, H), (0, 0, 0))
+            gd = ImageDraw.Draw(glow)
+            for x0 in (60, 470):
+                gd.rectangle([x0 + 10, 300, x0 + 260, 460], fill=(120, 90, 40))
+            im.paste(Image.blend(im, glow.filter(ImageFilter.GaussianBlur(4)), 0.35))
+
+    def text_c(d, xy, txt, f, fill):
+        d.text(xy, txt, font=f, fill=fill, anchor="mm")
+
+    def neon(im, xy, txt, size, color):
+        from PIL import ImageChops
+        layer = Image.new("RGB", (W, H))
+        ImageDraw.Draw(layer).text(xy, txt, font=font(size), fill=color, anchor="mm")
+        for r in (34, 14, 5):
+            im.paste(ImageChops.screen(im, layer.filter(ImageFilter.GaussianBlur(r))))
+        ImageDraw.Draw(im).text(xy, txt, font=font(size), fill=(255, 248, 225), anchor="mm")
+
+    def badge(im):
+        d = ImageDraw.Draw(im)
+        d.rounded_rectangle([16, 16, 300, 50], radius=6, fill=(0, 0, 0))
+        d.text((28, 33), "PRZYKŁAD – podmień na zdjęcie", font=font(15, False), fill=(255, 255, 255), anchor="lm")
+
+    scenes = {}
+
+    im = grad((215, 220, 226), (200, 205, 210)); facade(im, (232, 228, 220), False)
+    d = ImageDraw.Draw(im); d.rectangle([150, 150, 650, 250], fill=(22, 26, 32)); d.rectangle([150, 244, 650, 250], fill=(245, 180, 0))
+    text_c(d, (400, 197), "KAWIARNIA", font(56), (255, 255, 255)); scenes["szyld-1"] = im
+
+    im = grad((40, 50, 80), (90, 80, 100)); facade(im, (70, 72, 80), True)
+    d = ImageDraw.Draw(im); d.rectangle([140, 140, 660, 250], fill=(255, 246, 220))
+    glow = Image.new("RGB", (W, H)); ImageDraw.Draw(glow).rectangle([140, 140, 660, 250], fill=(255, 220, 140))
+    im.paste(Image.blend(im, glow.filter(ImageFilter.GaussianBlur(30)), .35)); d = ImageDraw.Draw(im)
+    d.rectangle([140, 140, 660, 250], fill=(255, 248, 228), outline=(30, 30, 34), width=6)
+    text_c(d, (400, 195), "PIEKARNIA", font(58), (180, 40, 30)); scenes["szyld-2"] = im
+
+    im = grad((200, 215, 230), (225, 228, 232)); facade(im, (205, 203, 198), False)
+    d = ImageDraw.Draw(im)
+    for off in range(9, 0, -1):
+        text_c(d, (400 + off, 200 + off), "STUDIO", font(110), (60, 62, 68))
+    text_c(d, (400, 200), "STUDIO", font(110), (20, 22, 26)); scenes["litery-1"] = im
+
+    im = Image.new("RGB", (W, H), (236, 233, 228)); d = ImageDraw.Draw(im)
+    d.rectangle([0, 0, W, 430], fill=(70, 58, 48))
+    for x in range(0, W, 40): d.line([(x, 0), (x, 430)], fill=(62, 51, 42), width=2)
+    d.rectangle([140, 430, 660, 560], fill=(245, 243, 238)); d.rectangle([140, 430, 660, 446], fill=(210, 206, 198))
+    halo = Image.new("RGB", (W, H)); ImageDraw.Draw(halo).text((400, 215), "BIURO", font=font(120), fill=(255, 210, 120), anchor="mm")
+    im.paste(Image.blend(im, halo.filter(ImageFilter.GaussianBlur(18)), .55)); d = ImageDraw.Draw(im)
+    text_c(d, (400, 215), "BIURO", font(120), (240, 236, 228)); scenes["litery-2"] = im
+
+    im = grad((12, 16, 30), (40, 34, 60)); facade(im, (34, 36, 44), True)
+    neon(im, (400, 190), "BISTRO", 112, (255, 190, 40)); scenes["led-1"] = im
+
+    im = grad((16, 20, 34), (36, 30, 52)); facade(im, (40, 42, 50), True)
+    d = ImageDraw.Draw(im)
+    glow = Image.new("RGB", (W, H)); ImageDraw.Draw(glow).rectangle([200, 120, 600, 230], fill=(255, 255, 255))
+    im.paste(Image.blend(im, glow.filter(ImageFilter.GaussianBlur(26)), .3)); d = ImageDraw.Draw(im)
+    d.rounded_rectangle([200, 120, 600, 230], radius=14, fill=(250, 250, 255), outline=(20, 20, 24), width=6)
+    text_c(d, (400, 175), "SALON", font(70), (20, 70, 200)); scenes["led-2"] = im
+
+    for key, im in scenes.items():
+        path = img_dir / f"{key}.webp"
+        if path.exists() and path.stat().st_size > 6000:  # nie nadpisuj prawdziwych zdjęć
+            continue
+        badge(im)
+        im.save(path, "WEBP", quality=78)
 
     og = img_dir / "og-image.jpg"
-    if not og.exists():
-        im = Image.new("RGB", (1200, 630), "#16191f")
-        d = ImageDraw.Draw(im)
-        d.rectangle([80, 230, 200, 300], fill="#f5b400")
-        d.text((80, 340), "Szyldy reklamowe Gdynia", font=font(68), fill="#ffffff")
-        d.text((80, 440), "Litery przestrzenne · Reklama LED · Projekt i montaż", font=font(34, False), fill="#c9ced8")
-        im.save(og, "JPEG", quality=85)
+    im = grad((12, 16, 30), (34, 30, 52))
+    neon(im, (W // 2, 170), "SZYLDY", 120, (255, 190, 40))
+    im = im.resize((1200, 900)).crop((0, 0, 1200, 630))
+    d = ImageDraw.Draw(im)
+    d.text((600, 430), "Szyldy reklamowe Gdynia", font=font(64), fill=(255, 255, 255), anchor="mm")
+    d.text((600, 510), "Litery przestrzenne · Reklama LED · Projekt i montaż", font=font(32, False), fill=(200, 205, 215), anchor="mm")
+    im.save(og, "JPEG", quality=85)
 
 
 def main():
