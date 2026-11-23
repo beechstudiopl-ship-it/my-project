@@ -1,0 +1,1118 @@
+#!/usr/bin/env python3
+"""Generator strony „Szyldy reklamowe Gdynia”.
+
+Dane firmy wpisujesz RAZ w sekcji FIRMA poniżej, a potem uruchamiasz:
+    python3 build.py
+Skrypt nadpisze pliki w folderze ./strona (to ten folder wgrywasz na serwer).
+Dzięki temu nazwa, adres, telefon i e-mail są identyczne na każdej podstronie,
+w danych strukturalnych (JSON-LD) i w llms.txt – tak jak w Profilu Firmy w Google.
+"""
+import html
+import json
+import re
+from pathlib import Path
+
+# ---------------------------------------------------------------------------
+# 1. DANE FIRMY – wpisz tu prawdziwe dane (te same co w Profilu Firmy w Google)
+# ---------------------------------------------------------------------------
+DOMENA = "https://www.TWOJA-DOMENA.pl"  # [UZUPEŁNIJ] bez ukośnika na końcu
+DATA_AKTUALIZACJI = "2026-11-23"
+
+FIRMA = {
+    "nazwa": "[UZUPEŁNIJ: pełna nazwa firmy]",
+    "ulica": "[UZUPEŁNIJ: ulica i numer]",
+    "kod": "[UZUPEŁNIJ: kod pocztowy]",
+    "miasto": "Gdynia",
+    "telefon": "[UZUPEŁNIJ: numer telefonu]",
+    "telefon_href": "+48000000000",  # [UZUPEŁNIJ] numer w formacie +48XXXXXXXXX
+    "email": "[UZUPEŁNIJ: adres e-mail]",
+    "nip": "[UZUPEŁNIJ: NIP, opcjonalnie]",
+    "godziny_pn_pt": "[UZUPEŁNIJ: godziny]",
+    "godziny_sob": "[UZUPEŁNIJ: godziny lub „nieczynne”]",
+    # do JSON-LD (format 24h, np. "08:00"):
+    "otwarcie_pn_pt": "[UZUPEŁNIJ: np. 08:00]",
+    "zamkniecie_pn_pt": "[UZUPEŁNIJ: np. 16:00]",
+    "obszar": ["Gdynia", "[UZUPEŁNIJ: inne miejscowości, np. Sopot, Gdańsk, Rumia, Reda]"],
+    "mapa_link": "[UZUPEŁNIJ: link do wizytówki w Mapach Google]",
+    # adres obsługi formularza (np. Formspree, Getform, własny skrypt PHP):
+    "formularz_action": "https://formspree.io/f/UZUPELNIJ",
+    "polityka_prywatnosci": "[UZUPEŁNIJ: adres polityki prywatności]",
+}
+ADRES = f"{FIRMA['ulica']}, {FIRMA['kod']} {FIRMA['miasto']}"
+GODZINY = f"pn–pt: {FIRMA['godziny_pn_pt']}, sobota: {FIRMA['godziny_sob']}, niedziela: nieczynne"
+
+OUT = Path(__file__).parent / "strona"
+
+# ---------------------------------------------------------------------------
+# 2. Pomocnicze
+# ---------------------------------------------------------------------------
+FILL_RE = re.compile(r"\[UZUPEŁNIJ[^\]]*\]")
+
+
+def fill(text):
+    """Zaznacza miejsca [UZUPEŁNIJ…] na żółto, żeby właściciel je widział."""
+    return FILL_RE.sub(lambda m: f'<mark class="fill">{m.group(0)}</mark>', text)
+
+
+def plain(text):
+    """Tekst bez znaczników – do meta, JSON-LD."""
+    text = re.sub(r"\[([^\[\]]+)\]\(([^)]+)\)", r"\1", text)
+    text = text.replace("**", "")
+    for k, v in TOKENS_PLAIN.items():
+        text = text.replace(k, v)
+    return re.sub(r"\s+", " ", text).strip()
+
+
+TOKENS_PLAIN = {
+    "{NAZWA}": FIRMA["nazwa"],
+    "{ADRES}": ADRES,
+    "{TEL}": FIRMA["telefon"],
+    "{TEL_LINK}": FIRMA["telefon"],
+    "{EMAIL}": FIRMA["email"],
+    "{EMAIL_LINK}": FIRMA["email"],
+    "{NIP}": FIRMA["nip"],
+    "{GODZINY}": GODZINY,
+    "{GODZ_PNPT}": FIRMA["godziny_pn_pt"],
+    "{GODZ_SOB}": FIRMA["godziny_sob"],
+}
+
+
+def tokens_html():
+    return {
+        "{NAZWA}": fill(html.escape(FIRMA["nazwa"], quote=False)),
+        "{ADRES}": fill(html.escape(ADRES, quote=False)),
+        "{TEL_LINK}": f'<a href="tel:{FIRMA["telefon_href"]}">{fill(FIRMA["telefon"])}</a>',
+        "{TEL}": fill(FIRMA["telefon"]),
+        "{EMAIL_LINK}": f'<a href="mailto:{html.escape(FIRMA["email"])}">{fill(FIRMA["email"])}</a>',
+        "{EMAIL}": fill(FIRMA["email"]),
+        "{NIP}": fill(FIRMA["nip"]),
+        "{GODZINY}": fill(html.escape(GODZINY, quote=False)),
+        "{GODZ_PNPT}": fill(FIRMA["godziny_pn_pt"]),
+        "{GODZ_SOB}": fill(html.escape(FIRMA["godziny_sob"], quote=False)),
+    }
+
+
+def inline(text):
+    text = html.escape(text, quote=False)
+    text = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", text)
+    text = re.sub(r"\[([^\[\]]+)\]\(([^)\s]+)\)", r'<a href="\2">\1</a>', text)
+    text = fill(text)
+    for k, v in tokens_html().items():
+        text = text.replace(k, v)
+    return text
+
+
+def md(src):
+    """Mini-markdown: akapity, listy „- ”, listy numerowane „1. ”, dyrektywy {{…}}."""
+    out = []
+    for block in [b.strip() for b in src.strip().split("\n\n") if b.strip()]:
+        lines = [l.strip() for l in block.split("\n")]
+        if block.startswith("{{") and block.endswith("}}"):
+            name, _, arg = block[2:-2].partition(":")
+            out.append(DIRECTIVES[name](arg))
+        elif all(l.startswith("- ") for l in lines):
+            out.append("<ul>" + "".join(f"<li>{inline(l[2:])}</li>" for l in lines) + "</ul>")
+        elif all(re.match(r"\d+\. ", l) for l in lines):
+            out.append("<ol>" + "".join(f"<li>{inline(re.sub(r'^\d+\. ', '', l))}</li>" for l in lines) + "</ol>")
+        else:
+            out.append(f"<p>{inline(' '.join(lines))}</p>")
+    return "\n".join(out)
+
+
+# --- obrazy (placeholdery WebP – podmień na prawdziwe zdjęcia, zachowując nazwy) ---
+IMAGES = {
+    "szyld-1": ("Szyld reklamowy na elewacji lokalu usługowego w Gdyni", "Szyld płaski na elewację – [UZUPEŁNIJ: branża klienta, materiał, dzielnica]"),
+    "szyld-2": ("Podświetlany kaseton reklamowy nad wejściem do sklepu w Gdyni", "Kaseton nad wejściem – [UZUPEŁNIJ: branża klienta, materiał, dzielnica]"),
+    "litery-1": ("Litery przestrzenne 3D na fasadzie budynku w Gdyni", "Litery przestrzenne na fasadzie – [UZUPEŁNIJ: branża, materiał, rodzaj podświetlenia]"),
+    "litery-2": ("Logo z liter przestrzennych na ścianie recepcji biura w Gdyni", "Logo 3D na recepcji – [UZUPEŁNIJ: branża, materiał, rodzaj podświetlenia]"),
+    "led-1": ("Reklama LED – litery podświetlane po zmroku na elewacji w Gdyni", "Litery LED widoczne po zmroku – [UZUPEŁNIJ: branża, rodzaj podświetlenia, dzielnica]"),
+    "led-2": ("Podświetlany kaseton LED na witrynie lokalu w Gdyni", "Kaseton LED – [UZUPEŁNIJ: branża, wymiary, dzielnica]"),
+}
+
+
+def figure(key, eager=False):
+    alt, cap = IMAGES[key]
+    loading = 'fetchpriority="high"' if eager else 'loading="lazy"'
+    return (f'<figure><img src="img/{key}.webp" width="800" height="600" {loading} decoding="async" '
+            f'alt="{html.escape(alt)}"><figcaption>{inline(cap)}</figcaption></figure>')
+
+
+def gallery(arg):
+    return '<div class="gallery">' + "".join(figure(k.strip()) for k in arg.split(",")) + "</div>"
+
+
+RODZAJE = ["Szyld płaski", "Kaseton podświetlany", "Litery przestrzenne", "Litery przestrzenne LED",
+           "Semafor (szyld dwustronny)", "Oznakowanie wnętrza", "Nie wiem – proszę o doradztwo"]
+
+
+def form(arg):
+    fid = "formularz"
+    opts = "".join(f"<option>{o}</option>" for o in RODZAJE)
+    return f'''<form class="form" id="{fid}" action="{html.escape(FIRMA['formularz_action'])}" method="post" enctype="multipart/form-data">
+  <input type="hidden" name="strona" value="{arg}">
+  <div class="form-row">
+    <label>Imię i nazwisko lub nazwa firmy<input type="text" name="imie" autocomplete="name" required></label>
+    <label>E-mail<input type="email" name="email" autocomplete="email" required></label>
+  </div>
+  <div class="form-row">
+    <label>Telefon<input type="tel" name="telefon" autocomplete="tel"></label>
+    <label>Adres lokalu / miejsca montażu<input type="text" name="adres" autocomplete="street-address" placeholder="np. ul. Świętojańska, Gdynia"></label>
+  </div>
+  <div class="form-row">
+    <label>Rodzaj reklamy<select name="rodzaj">{opts}</select></label>
+    <label>Przybliżone wymiary<input type="text" name="wymiary" placeholder="np. 300 × 60 cm"></label>
+  </div>
+  <label>Zdjęcie elewacji, logo (JPG, PNG, PDF, AI, SVG)<input type="file" name="zalaczniki" multiple accept="image/*,.pdf,.ai,.eps,.svg"></label>
+  <label>Wiadomość<textarea name="wiadomosc" rows="4" placeholder="Czy reklama ma być podświetlana? Jaki masz termin i budżet?"></textarea></label>
+  <label class="check"><input type="checkbox" name="zgoda" required><span>Zgadzam się na przetwarzanie danych w celu przygotowania wyceny. <a href="{html.escape(FIRMA['polityka_prywatnosci'])}">Polityka prywatności</a></span></label>
+  <button class="btn btn-primary" type="submit">Wyślij zapytanie o wycenę</button>
+</form>'''
+
+
+def mapa(_):
+    return (f'<div class="map"><p>{fill("[UZUPEŁNIJ: mapa Google – wklej tu kod iframe z Map Google i dodaj loading=&quot;lazy&quot;]")}</p>'
+            f'<p><a href="{html.escape(FIRMA["mapa_link"])}" rel="noopener">Otwórz w Mapach Google</a></p></div>')
+
+
+DIRECTIVES = {"gallery": gallery, "form": form, "map": mapa}
+
+# ---------------------------------------------------------------------------
+# 3. Nawigacja i linki „Zobacz też”
+# ---------------------------------------------------------------------------
+NAV = [
+    ("szyldy-reklamowe-gdynia", "Szyldy reklamowe"),
+    ("litery-przestrzenne-gdynia", "Litery przestrzenne"),
+    ("reklama-led-gdynia", "Reklama LED"),
+    ("realizacje", "Realizacje"),
+    ("cennik", "Cennik"),
+    ("kontakt", "Kontakt"),
+]
+CARDS = {
+    "szyldy-reklamowe-gdynia": ("Szyldy reklamowe Gdynia", "Szyldy na elewację, kasetony, semafory i tablice."),
+    "litery-przestrzenne-gdynia": ("Litery przestrzenne Gdynia", "Litery 3D na fasadę, recepcję i do biura."),
+    "reklama-led-gdynia": ("Reklama LED Gdynia", "Podświetlane kasetony, szyldy i litery LED."),
+    "realizacje": ("Realizacje", "Zdjęcia wykonanych szyldów z opisem materiałów."),
+    "cennik": ("Cennik", "Od czego zależy cena i orientacyjne widełki."),
+    "kontakt": ("Kontakt i wycena", "Wyślij zdjęcie elewacji i wymiary."),
+}
+
+
+def url(slug):
+    return f"{DOMENA}/" if slug == "index" else f"{DOMENA}/{slug}.html"
+
+
+def href(slug):
+    return "./" if slug == "index" else f"{slug}.html"
+
+
+# ---------------------------------------------------------------------------
+# 4. TREŚCI PODSTRON
+# ---------------------------------------------------------------------------
+L_SZ = "szyldy-reklamowe-gdynia.html"
+L_LI = "litery-przestrzenne-gdynia.html"
+L_LED = "reklama-led-gdynia.html"
+L_RE = "realizacje.html"
+L_CE = "cennik.html"
+L_KO = "kontakt.html"
+
+PAGES = []
+
+# ============================ INDEX =========================================
+PAGES.append(dict(
+    slug="index",
+    title="Szyldy reklamowe Gdynia – litery przestrzenne i LED",
+    desc="Szyldy reklamowe Gdynia – projektujemy i wykonujemy szyldy, litery przestrzenne i reklamę LED dla firm i lokali. Zapytaj o wycenę projektu.",
+    h1="Szyldy reklamowe w Gdyni",
+    lead="Szyldy reklamowe w Gdyni wykonujemy dla sklepów, lokali usługowych, gabinetów, restauracji i biur, które chcą być lepiej widoczne z ulicy. Robimy klasyczne szyldy, litery przestrzenne i reklamę podświetlaną LED, od projektu po wykonanie. Wystarczy przesłać zdjęcie elewacji i wymiary, a przygotujemy propozycję i wycenę.",
+    crumb=None,
+    schema="home",
+    sections=[
+        ("Szyldy reklamowe Gdynia – co robimy i dla kogo", f"""
+Jesteśmy agencją reklamy zewnętrznej z Gdyni. Zajmujemy się przede wszystkim szyldami reklamowymi, czyli oznakowaniem, po którym klient z daleka rozpozna Twoją firmę. Pracujemy z małymi i średnimi firmami, które potrzebują jednego szyldu nad wejściem, a także z tymi, które oznakowują kilka lokali.
+
+Najczęściej zgłaszają się do nas:
+
+- sklepy i punkty usługowe, które otwierają nowy lokal lub zmieniają wizerunek,
+- restauracje, kawiarnie i bary, którym zależy na widoczności także po zmroku,
+- gabinety, salony i biura, którym potrzebny jest estetyczny, czytelny szyld lub tablica,
+- firmy w biurowcach i pawilonach, które muszą dopasować reklamę do zasad wspólnoty lub zarządcy budynku.
+
+**Doświadczenie:** [UZUPEŁNIJ: od kiedy działacie / ile szyldów wykonaliście – tylko prawdziwe dane].
+"""),
+        ("Nasze usługi: szyldy, litery przestrzenne i reklama LED", f"""
+Dobieramy rodzaj reklamy do budynku, budżetu i tego, jak daleko szyld ma być widoczny. Główne usługi:
+
+- **Szyldy reklamowe** – płaskie tablice, kasetony i szyldy na elewację, np. z dibondu, PCV lub plexi, z nadrukiem lub oklejeniem folią. Szczegóły znajdziesz na stronie [szyldy reklamowe Gdynia]({L_SZ}).
+- **Litery przestrzenne** – logo i napisy 3D, bez podświetlenia lub podświetlane, montowane bezpośrednio na ścianie albo na dystansach. Więcej na stronie [litery przestrzenne Gdynia]({L_LI}).
+- **Reklama LED** – kasetony i litery podświetlane diodami LED, dzięki którym firma jest widoczna także wieczorem i zimą. Zobacz [reklama LED Gdynia]({L_LED}).
+
+**Stosowane materiały:** [UZUPEŁNIJ: lista materiałów, z którymi faktycznie pracujecie]. **Montaż:** [UZUPEŁNIJ: czy montujecie sami, czy przez partnera, i czy pomagacie przy zgodach od zarządcy budynku].
+"""),
+        ("Jak wygląda współpraca krok po kroku", """
+1. **Zapytanie** – wysyłasz zdjęcie elewacji lub miejsca na szyld, przybliżone wymiary i logo (jeśli je masz).
+2. **Konsultacja i propozycja** – doradzamy rodzaj szyldu, materiał i podświetlenie, a potem przygotowujemy wycenę.
+3. **Projekt i wizualizacja** – pokazujemy, jak szyld będzie wyglądał na Twoim budynku. Poprawki wprowadzamy przed produkcją.
+4. **Produkcja** – po akceptacji projektu wykonujemy szyld. Czas realizacji: [UZUPEŁNIJ: typowy czas wykonania].
+5. **Montaż i odbiór** – [UZUPEŁNIJ: jak wygląda montaż i odbiór u Was].
+
+Jeśli nie masz jeszcze logo ani pomysłu na wygląd szyldu, napisz o tym w zapytaniu. [UZUPEŁNIJ: czy oferujecie projekt graficzny od zera].
+"""),
+        ("Od czego zależy cena szyldu reklamowego", f"""
+Każdy szyld wyceniamy indywidualnie, bo dwa podobne napisy mogą się bardzo różnić kosztem. Na cenę wpływają przede wszystkim:
+
+- wymiary szyldu lub wysokość liter,
+- rodzaj i grubość materiału, np. dibond, plexi, PCV, stal,
+- podświetlenie LED – czy jest potrzebne i jakiego typu,
+- stopień skomplikowania logo i liczba elementów,
+- montaż – wysokość, rodzaj elewacji, potrzeba podnośnika lub rusztowania,
+- projekt graficzny – czy masz gotowe pliki, czy trzeba je przygotować.
+
+Orientacyjne ceny znajdziesz w [cenniku]({L_CE}): [UZUPEŁNIJ: przykładowe widełki cenowe]. Dokładną kwotę podamy po otrzymaniu zdjęcia i wymiarów.
+"""),
+        ("Realizacje i opinie klientów", f"""
+Najlepiej ocenić naszą pracę po efektach. W galerii [realizacje]({L_RE}) pokazujemy szyldy, litery przestrzenne i reklamy LED wykonane dla firm z Gdyni i okolic.
+
+{{{{gallery:szyld-1,litery-1,led-1}}}}
+
+[UZUPEŁNIJ: 3–6 zdjęć realizacji z podpisami, np. rodzaj reklamy, materiał, branża klienta, dzielnica].
+
+**Opinie klientów:** [UZUPEŁNIJ: prawdziwe opinie, np. z wizytówki Google, z imieniem lub nazwą firmy za zgodą klienta].
+"""),
+        ("Szyldy reklamowe w Gdyni i okolicy – obszar działania i kontakt", f"""
+Działamy w Gdyni we wszystkich dzielnicach, od Śródmieścia, przez Redłowo i Orłowo, po Chylonię i Obłuże. [UZUPEŁNIJ: czy obsługujecie też Sopot, Gdańsk, Rumię, Redę, Wejherowo i resztę Pomorza].
+
+- **Telefon:** {{TEL_LINK}}
+- **E-mail:** {{EMAIL_LINK}}
+- **Adres:** {{ADRES}}
+- **Godziny pracy:** {{GODZINY}}
+
+Najszybciej przygotujemy wycenę, jeśli przez formularz na stronie [kontakt]({L_KO}#formularz) prześlesz zdjęcie miejsca montażu i przybliżone wymiary.
+"""),
+    ],
+    faq=[
+        ("Ile kosztuje szyld reklamowy w Gdyni?", "Cena zależy od wymiarów, materiału, podświetlenia i sposobu montażu, dlatego każdy szyld wyceniamy indywidualnie. Orientacyjnie: [UZUPEŁNIJ: przykładowe widełki cenowe]. Dokładną wycenę przygotujemy po otrzymaniu zdjęcia elewacji i wymiarów."),
+        ("Jak długo trwa wykonanie szyldu?", "Czas realizacji zależy od rodzaju reklamy i obłożenia produkcji. Prosty szyld zwykle powstaje szybciej niż litery przestrzenne z podświetleniem LED. U nas typowy czas to [UZUPEŁNIJ: liczba dni roboczych od akceptacji projektu]."),
+        ("Czy zajmujecie się też montażem szyldu?", "[UZUPEŁNIJ: czy montaż wykonujecie sami, czy przez partnera, i na jakim obszarze]. Przed montażem warto sprawdzić, czy wspólnota, zarządca budynku lub urząd nie wymagają zgody na umieszczenie reklamy. Gdynia ma też uchwałę krajobrazową, która może określać zasady dla szyldów."),
+        ("Z jakich materiałów robicie szyldy?", "Dobieramy materiał do miejsca i budżetu. Najczęściej stosuje się dibond, PCV, plexi oraz litery przestrzenne z tworzywa lub metalu, z podświetleniem LED lub bez. U nas: [UZUPEŁNIJ: materiały, z którymi faktycznie pracujecie]."),
+        ("Czy dajecie gwarancję na szyldy i podświetlenie LED?", "[UZUPEŁNIJ: okres i zakres gwarancji na szyldy oraz osobno na elementy LED i zasilacze]. W razie usterki wystarczy się z nami skontaktować, a ustalimy termin naprawy."),
+        ("Nie mam logo ani projektu – czy możecie pomóc?", "Tak, wystarczy, że opiszesz swoją firmę i pokażesz zdjęcie miejsca na szyld. [UZUPEŁNIJ: czy przygotowujecie projekt graficzny od zera i czy jest wliczony w cenę]. Przed produkcją zawsze dostaniesz wizualizację do akceptacji."),
+    ],
+    cta="Wyślij nam zdjęcie elewacji i przybliżone wymiary, a przygotujemy propozycję i wycenę szyldu dla Twojej firmy w Gdyni.",
+    links=["szyldy-reklamowe-gdynia", "litery-przestrzenne-gdynia", "reklama-led-gdynia", "cennik"],
+))
+
+# ============================ SZYLDY =========================================
+PAGES.append(dict(
+    slug="szyldy-reklamowe-gdynia",
+    title="Szyldy reklamowe Gdynia – projekt, wykonanie, montaż",
+    desc="Szyldy reklamowe Gdynia – projekt, wykonanie i montaż szyldów na elewację, nad wejście i do lokalu. Podświetlane LED lub klasyczne. Zapytaj o wycenę.",
+    h1="Szyldy reklamowe Gdynia",
+    lead="Szyldy reklamowe w Gdyni projektujemy i wykonujemy dla sklepów, lokali usługowych, gabinetów, restauracji i biur, które chcą być lepiej widoczne z ulicy. Robimy szyldy na elewację, nad wejście, semafory oraz oznakowanie wewnątrz lokalu, z podświetleniem LED lub bez. Wycenę przygotowujemy na podstawie wymiarów, materiału i miejsca montażu.",
+    crumb="Szyldy reklamowe Gdynia",
+    schema=("service", "Szyldy reklamowe", "Projekt, wykonanie i montaż szyldów reklamowych w Gdyni: szyldy na elewację, kasetony, semafory, tablice i oznakowanie wnętrz, z podświetleniem LED lub bez."),
+    sections=[
+        ("Jakie szyldy reklamowe wykonujemy w Gdyni", f"""
+Każdy szyld dobieramy do budynku, branży i tego, skąd klienci mają go zobaczyć: z chodnika, z jadącego samochodu czy z drugiej strony ulicy. Najczęściej wykonujemy:
+
+- **Szyldy płaskie na elewację** – panel z dibondu, PCV lub plexi z nadrukiem albo oklejeniem folią, montowany nad wejściem lub na fasadzie.
+- **Kasetony reklamowe** – skrzynki świetlne z podświetleniem od środka, dobrze widoczne także wieczorem.
+- **Semafory (szyldy dwustronne)** – montowane prostopadle do ściany, widoczne dla osób idących wzdłuż ulicy.
+- **Litery przestrzenne** – pojedyncze litery i logo 3D, podświetlane lub nie; szczegóły opisujemy na stronie o [literach przestrzennych]({L_LI}).
+- **Tablice i szyldy informacyjne** – przy wejściu do biura, gabinetu czy kancelarii, często z plexi na dystansach.
+- **Oznakowanie wewnątrz lokalu** – logo na ścianie za ladą, napisy na szybach, tabliczki.
+
+Jeśli nie wiesz, który rodzaj będzie najlepszy, wystarczy zdjęcie elewacji i przybliżone wymiary – zaproponujemy rozwiązanie i pokażemy wizualizację.
+"""),
+        ("Materiały i wykończenia szyldów", """
+Od materiału zależy wygląd, trwałość i cena szyldu. Na zewnątrz stosujemy materiały odporne na wilgoć, słońce i nadmorski wiatr, który w Gdyni potrafi dać się we znaki.
+
+- **Dibond (kompozyt aluminiowy)** – sztywny, lekki, odporny na warunki atmosferyczne; dobry wybór na szyldy płaskie.
+- **Plexi (pleksa)** – mleczna, przezroczysta lub kolorowa; sprawdza się w szyldach podświetlanych i eleganckich tablicach.
+- **PCV spienione** – ekonomiczne rozwiązanie, szczególnie do wnętrz i szyldów tymczasowych.
+- **Stal nierdzewna i aluminium** – do liter i elementów o bardziej prestiżowym wyglądzie.
+- **Folie i nadruki** – folie wylewane i nadruk UV, które dłużej zachowują kolor.
+
+Wykończenie dobieramy do identyfikacji wizualnej firmy: kolory z księgi znaku, mat lub połysk, frezowane logo, elementy wypukłe. [UZUPEŁNIJ: czy macie własny park maszynowy – ploter, frezarka CNC, drukarka UV]
+"""),
+        ("Szyld z podświetleniem czy bez – jak wybrać", f"""
+**Szyld podświetlany** warto wybrać, jeśli lokal działa po zmroku, stoi przy ruchliwej ulicy albo konkuruje z innymi reklamami w okolicy. Stosujemy energooszczędne moduły LED, które zużywają niewiele prądu i świecą równomiernie. Więcej o tym rozwiązaniu piszemy w zakładce o [reklamie LED]({L_LED}).
+
+**Szyld bez podświetlenia** wystarczy, gdy firma działa głównie w dzień, budynek jest dobrze oświetlony lub zależy Ci na niższym koszcie. Możliwe jest też rozwiązanie pośrednie – oświetlenie szyldu z zewnątrz reflektorami.
+
+Przy wyborze pomogą trzy pytania: w jakich godzinach przychodzą klienci, z jakiej odległości szyld ma być czytelny i czy w miejscu montażu jest dostęp do zasilania.
+"""),
+        ("Realizacje szyldów reklamowych w Gdyni", f"""
+Wykonaliśmy szyldy dla [UZUPEŁNIJ: branże klientów, np. gastronomia, usługi, handel] w Gdyni [UZUPEŁNIJ: dzielnice lub miejscowości, np. Śródmieście, Orłowo, Rumia]. Zdjęcia przed i po montażu znajdziesz w zakładce [Realizacje]({L_RE}).
+
+{{{{gallery:szyld-1,szyld-2}}}}
+
+Jak wygląda współpraca:
+
+1. Kontakt i przesłanie zdjęć elewacji lub wnętrza z wymiarami.
+2. Projekt i wizualizacja szyldu na zdjęciu Twojego budynku.
+3. Wycena i akceptacja projektu.
+4. Produkcja szyldu – [UZUPEŁNIJ: orientacyjny czas realizacji].
+5. Montaż na miejscu – [UZUPEŁNIJ: czy montaż wykonuje własna ekipa, czy dysponujecie podnośnikiem].
+
+**Obszar działania:** Gdynia oraz [UZUPEŁNIJ: czy także Sopot, Gdańsk, Rumia, Reda, Wejherowo].
+"""),
+        ("Od czego zależy cena szyldu", f"""
+Cena szyldu reklamowego zależy od kilku czynników, dlatego każdą realizację wyceniamy indywidualnie:
+
+- wymiary szyldu i liczba elementów,
+- materiał – PCV, dibond, plexi, stal,
+- podświetlenie LED i doprowadzenie zasilania,
+- stopień skomplikowania – frezowanie, litery 3D, nietypowe kształty,
+- projekt graficzny – czy masz gotowe logo, czy trzeba je przygotować,
+- montaż – wysokość, rodzaj ściany, potrzeba podnośnika lub rusztowania.
+
+Orientacyjne ceny znajdziesz w [cenniku]({L_CE}): [UZUPEŁNIJ: przykładowe widełki cenowe lub ceny „od”]. Dokładną wycenę przygotujemy po otrzymaniu zdjęcia i wymiarów.
+"""),
+        ("Formalności przed montażem szyldu reklamowego w Gdyni", """
+Zanim szyld zawiśnie na budynku, warto sprawdzić kilka spraw. To ogólne wskazówki, nie porada prawna – szczegóły najlepiej potwierdzić w urzędzie lub u zarządcy budynku.
+
+- **Zgoda właściciela lub wspólnoty** – przy montażu na elewacji zwykle potrzebna jest zgoda zarządcy nieruchomości.
+- **Uchwała krajobrazowa** – warto sprawdzić, czy w gminie obowiązują przepisy określające wielkość, wygląd i miejsce szyldów.
+- **Ochrona konserwatorska** – w zabytkowych częściach miasta, np. w modernistycznym śródmieściu Gdyni, mogą obowiązywać dodatkowe wymagania.
+- **Zgłoszenia i opłaty** – w zależności od wielkości i sposobu montażu może być potrzebne zgłoszenie lub opłata.
+
+[UZUPEŁNIJ: czy pomagacie w przygotowaniu dokumentacji, np. wizualizacji do zgłoszenia]
+"""),
+    ],
+    faq=[
+        ("Ile kosztuje szyld reklamowy w Gdyni?", "Cena zależy od wymiarów, materiału, podświetlenia i sposobu montażu. Prosty szyld płaski kosztuje zwykle znacznie mniej niż kaseton czy litery przestrzenne z LED. Orientacyjnie: [UZUPEŁNIJ: ceny od]. Dokładną wycenę przygotujemy po otrzymaniu zdjęcia elewacji i wymiarów."),
+        ("Jak długo trwa wykonanie szyldu?", "Czas realizacji zależy od rodzaju szyldu i akceptacji projektu. Standardowo jest to [UZUPEŁNIJ: liczba dni roboczych] od zatwierdzenia wizualizacji. Przy pilnych zleceniach zapytaj o możliwość szybszego terminu."),
+        ("Czy zajmujecie się także montażem szyldu?", "[UZUPEŁNIJ: czy montaż jest w ofercie i na jakim obszarze]. Przed montażem oceniamy rodzaj ściany, wysokość i dostęp do zasilania, żeby dobrać właściwe mocowanie."),
+        ("Jaka jest gwarancja na szyldy reklamowe?", "Na wykonane szyldy udzielamy gwarancji [UZUPEŁNIJ: okres i zakres gwarancji, osobno dla konstrukcji i modułów LED]. Szczegóły zapisujemy w ofercie."),
+        ("Z jakiego materiału najlepiej zrobić szyld na zewnątrz?", "Na zewnątrz najczęściej polecamy dibond lub plexi, bo dobrze znoszą deszcz, słońce i wiatr. Do szyldów podświetlanych świetnie sprawdza się mleczna plexi z modułami LED. PCV lepiej zostawić do wnętrz lub reklam krótkoterminowych."),
+        ("Czy możecie zaprojektować szyld, jeśli nie mam logo?", "[UZUPEŁNIJ: czy oferujecie projekt logo]. Jeśli masz gotowe logo, prześlij je najlepiej w formie wektorowej (PDF, AI, SVG) – przygotujemy na jego podstawie wizualizację szyldu na Twoim budynku."),
+    ],
+    cta="Wyślij nam zdjęcie elewacji i przybliżone wymiary – przygotujemy wizualizację i wycenę szyldu reklamowego dla Twojej firmy w Gdyni.",
+    links=["litery-przestrzenne-gdynia", "reklama-led-gdynia", "realizacje", "cennik"],
+))
+
+# ============================ LITERY =========================================
+PAGES.append(dict(
+    slug="litery-przestrzenne-gdynia",
+    title="Litery przestrzenne Gdynia – litery 3D na fasadę i do wnętrz",
+    desc="Litery przestrzenne Gdynia – litery 3D na fasadę, recepcję i do biura, z podświetleniem LED lub bez. Projekt, produkcja i montaż. Poproś o wycenę.",
+    h1="Litery przestrzenne Gdynia",
+    lead="Litery przestrzenne w Gdyni wykonujemy dla sklepów, lokali usługowych, biur i firm, które chcą wyraźnie oznaczyć fasadę, witrynę lub recepcję. Robimy litery 3D z podświetleniem LED lub bez, na zewnątrz i do wnętrz, od projektu po montaż na miejscu. Działamy w Gdyni i okolicach Trójmiasta [UZUPEŁNIJ: dokładny obszar działania].",
+    crumb="Litery przestrzenne Gdynia",
+    schema=("service", "Litery przestrzenne", "Projekt, produkcja i montaż liter przestrzennych 3D w Gdyni – na fasadę, witrynę, recepcję i do biura, z podświetleniem LED lub bez."),
+    sections=[
+        ("Czym są litery przestrzenne", f"""
+Litery przestrzenne (nazywane też literami 3D) to pojedyncze, wycinane znaki z widoczną grubością, montowane bezpośrednio na ścianie, elewacji, panelu lub konstrukcji. W przeciwieństwie do płaskiej tablicy czy naklejki tworzą trójwymiarowy napis, który dobrze wygląda z bliska i z daleka, także pod kątem.
+
+Z liter przestrzennych można ułożyć nazwę firmy, logo, hasło albo pojedynczy znak graficzny. To jedna z najczęściej wybieranych form oznakowania przy szyldach na fasadę, bo wygląda elegancko, a jednocześnie nie zasłania architektury budynku. Więcej o innych formach oznakowania przeczytasz na stronie [szyldy reklamowe Gdynia]({L_SZ}).
+"""),
+        ("Rodzaje liter przestrzennych – podświetlane i niepodświetlane", f"""
+Rodzaj liter dobieramy do miejsca montażu, budżetu i tego, czy napis ma być widoczny po zmroku. Najczęściej wybierane warianty to:
+
+- **Litery niepodświetlane** – prostsze i tańsze, dobre do wnętrz, na recepcję lub na dobrze oświetloną elewację.
+- **Litery podświetlane od frontu** – świeci lico litery, napis jest czytelny wieczorem i z dużej odległości.
+- **Litery z podświetleniem tylnym (efekt halo)** – światło pada na ścianę za literą, dając dyskretną, elegancką poświatę.
+- **Litery z podświetleniem frontu i boków** – maksymalna widoczność, np. przy ruchliwej ulicy.
+
+W zależności od projektu stosujemy m.in. plexi, PCV spienione, dibond, aluminium lub stal nierdzewną [UZUPEŁNIJ: potwierdź materiały, z których wykonujecie litery]. Do podświetlenia używamy modułów LED – szczegóły znajdziesz na stronie [reklama LED Gdynia]({L_LED}).
+"""),
+        ("Gdzie sprawdzają się litery przestrzenne w Gdyni: fasada, recepcja, biuro", """
+Litery 3D pasują zarówno do lokalu przy głównej ulicy, jak i do biura w biurowcu. Typowe zastosowania to:
+
+- **Fasada i elewacja** – nazwa sklepu, restauracji, salonu czy gabinetu nad wejściem lub na ścianie budynku.
+- **Witryna i nadproże** – napis nad drzwiami albo na pasie nad oknem wystawowym.
+- **Recepcja** – logo za ladą, które klient widzi od razu po wejściu.
+- **Biuro i sala konferencyjna** – logo lub hasło firmy na ścianie, często bez podświetlenia albo z efektem halo.
+- **Hale, salony i obiekty usługowe** – duże napisy widoczne z parkingu lub drogi.
+
+Przy montażu na zewnątrz warto wcześniej sprawdzić, czy potrzebna jest zgoda wspólnoty, zarządcy budynku lub urzędu – podpowiemy, o co zapytać.
+"""),
+        ("Realizacje liter przestrzennych w Gdyni", f"""
+Najlepiej ocenić efekt, oglądając gotowe projekty. W naszej galerii pokazujemy litery na fasadach, w witrynach i we wnętrzach, z różnymi rodzajami podświetlenia.
+
+{{{{gallery:litery-1,litery-2}}}}
+
+[UZUPEŁNIJ: 2–4 krótkie opisy realizacji – branża klienta, miejsce montażu, materiał, rodzaj podświetlenia, zdjęcie]
+
+Pełną listę projektów znajdziesz w zakładce [realizacje]({L_RE}).
+"""),
+        ("Od czego zależy cena liter przestrzennych", f"""
+Każdy napis wyceniamy indywidualnie, bo na koszt wpływa kilka czynników:
+
+- **Wielkość i liczba znaków** – wysokość liter i długość napisu.
+- **Materiał** – PCV czy plexi są tańsze niż aluminium lub stal nierdzewna.
+- **Podświetlenie** – litery z LED kosztują więcej niż niepodświetlane; znaczenie ma też rodzaj świecenia (front, halo, boki).
+- **Kształt i szczegóły** – skomplikowane logo i drobne elementy wymagają więcej pracy.
+- **Montaż** – wysokość, rodzaj podłoża, konieczność użycia podnośnika i doprowadzenia zasilania.
+- **Projekt** – czy masz gotowe logo w wersji wektorowej, czy trzeba je przygotować.
+
+Orientacyjne ceny: [UZUPEŁNIJ: przedziały cenowe lub cena od]. Więcej informacji znajdziesz w [cenniku]({L_CE}).
+"""),
+        ("Jak wygląda współpraca i gdzie działamy", """
+Proces jest prosty i przejrzysty:
+
+1. **Zapytanie** – przesyłasz logo, wymiary ściany lub zdjęcie miejsca montażu.
+2. **Wycena i wizualizacja** – proponujemy materiał, wielkość i rodzaj podświetlenia, pokazujemy, jak napis będzie wyglądał na budynku.
+3. **Produkcja** – po akceptacji wykonujemy litery [UZUPEŁNIJ: czy we własnej pracowni].
+4. **Montaż** – instalujemy litery na miejscu i podłączamy podświetlenie.
+
+Litery przestrzenne wykonujemy przede wszystkim dla firm z Gdyni, a także z Sopotu, Gdańska i okolic [UZUPEŁNIJ: potwierdź obszar działania i ewentualną wysyłkę liter na terenie Polski].
+"""),
+    ],
+    faq=[
+        ("Ile kosztują litery przestrzenne w Gdyni?", "Cena zależy od wielkości i liczby liter, materiału, rodzaju podświetlenia oraz warunków montażu. Orientacyjnie: [UZUPEŁNIJ: cena od / przedziały cenowe]. Dokładną wycenę przygotujemy po otrzymaniu logo i wymiarów miejsca montażu."),
+        ("Ile trwa wykonanie liter przestrzennych?", "Standardowy czas realizacji to [UZUPEŁNIJ: liczba dni roboczych] od akceptacji projektu. Termin może się wydłużyć przy dużych napisach, nietypowych materiałach lub konieczności uzyskania zgód na montaż na elewacji."),
+        ("Czy zajmujecie się montażem liter na fasadzie?", "Tak, montujemy litery na elewacji, w witrynie i we wnętrzach, łącznie z podłączeniem podświetlenia LED [UZUPEŁNIJ: potwierdź zakres montażu i ewentualne prace na wysokości]. Przed montażem na zewnątrz warto mieć zgodę wspólnoty lub zarządcy budynku."),
+        ("Z jakiego materiału najlepiej zrobić litery na zewnątrz?", "Na zewnątrz sprawdzają się materiały odporne na wilgoć, mróz i słońce, np. aluminium, stal nierdzewna, dibond lub odpowiednio zabezpieczone plexi. Do wnętrz można zastosować lżejsze i tańsze materiały, np. PCV spienione. Dobierzemy materiał do miejsca i budżetu."),
+        ("Jaką gwarancję dajecie na litery przestrzenne i podświetlenie LED?", "Na litery przestrzenne udzielamy gwarancji [UZUPEŁNIJ: okres gwarancji na wykonanie], a na elementy podświetlenia LED [UZUPEŁNIJ: okres gwarancji na LED i zasilacze]. Szczegółowe warunki przekazujemy razem z ofertą."),
+        ("Czy muszę mieć gotowy projekt lub logo?", "Nie, ale najlepiej, jeśli masz logo w wersji wektorowej (np. PDF, AI, SVG). Jeśli go nie masz, pomożemy przygotować plik do produkcji [UZUPEŁNIJ: czy i na jakich zasadach przygotowujecie projekt]."),
+    ],
+    cta="Wyślij nam logo i zdjęcie miejsca montażu, a przygotujemy wycenę liter przestrzennych dla Twojej firmy w Gdyni.",
+    links=["szyldy-reklamowe-gdynia", "reklama-led-gdynia", "realizacje", "cennik"],
+))
+
+# ============================ LED ============================================
+PAGES.append(dict(
+    slug="reklama-led-gdynia",
+    title="Reklama LED Gdynia – podświetlane szyldy i kasetony",
+    desc="Reklama LED Gdynia – podświetlane szyldy, kasetony i litery LED dla firm. Widoczne także po zmroku. Sprawdź, od czego zależy cena i zapytaj o wycenę.",
+    h1="Reklama LED w Gdyni",
+    lead="Reklama LED w Gdyni to podświetlane szyldy, kasetony i litery przestrzenne, które wykonujemy dla sklepów, lokali usługowych, gabinetów i biur. Projektujemy, produkujemy i montujemy oznakowanie widoczne w dzień i po zmroku, na terenie Gdyni i Trójmiasta. Nie zajmujemy się ekranami LED – nasza specjalność to podświetlana reklama zewnętrzna na elewację i witrynę [UZUPEŁNIJ: potwierdź zakres, np. czy wykonujecie ekrany LED].",
+    crumb="Reklama LED Gdynia",
+    schema=("service", "Reklama LED", "Podświetlane szyldy, kasetony i litery przestrzenne LED w Gdyni – projekt, produkcja i montaż oznakowania widocznego w dzień i po zmroku."),
+    sections=[
+        ("Reklama LED w Gdyni – co wykonujemy", f"""
+Hasło „reklama LED” bywa rozumiane różnie – czasem chodzi o ekrany wyświetlające filmy, czasem o podświetlane oznakowanie firmy. My zajmujemy się tym drugim: szyldami i literami podświetlanymi diodami LED, które montujemy na elewacjach, nad wejściem i w witrynach.
+
+W naszej ofercie znajdziesz:
+
+- **Kasetony podświetlane** – skrzynki z grafiką na froncie, podświetlone od środka [UZUPEŁNIJ: jednostronne / dwustronne, kasetony semaforowe].
+- **Litery przestrzenne LED** – pojedyncze litery i logo podświetlane od frontu, od tyłu (efekt halo) lub z boków [UZUPEŁNIJ: jakie warianty podświetlenia wykonujecie].
+- **Szyldy podświetlane** – tablice z logo i nazwą firmy z podświetleniem LED [UZUPEŁNIJ: rodzaje, np. dibond z literami, plexi].
+- **Modernizację starych reklam** – wymianę świetlówek na moduły LED w istniejących kasetonach [UZUPEŁNIJ: czy wykonujecie].
+
+Jeśli szukasz oznakowania bez podświetlenia, zajrzyj na stronę o [szyldach reklamowych w Gdyni]({L_SZ}).
+"""),
+        ("Zalety podświetlenia LED w reklamie zewnętrznej", """
+Podświetlenie LED zastąpiło dawne świetlówki i neony gazowe w większości reklam zewnętrznych. Powody są praktyczne:
+
+- **Widoczność po zmroku** – w sezonie jesienno-zimowym robi się ciemno już po południu, a podświetlony szyld nadal pracuje na Twoją firmę.
+- **Niższe zużycie prądu** – diody LED pobierają wyraźnie mniej energii niż świetlówki o podobnej jasności.
+- **Długa żywotność** – moduły LED rzadziej wymagają wymiany, więc reklama mniej kosztuje w utrzymaniu.
+- **Równomierne światło** – dobrze zaprojektowany kaseton świeci jednolicie, bez ciemnych plam i prześwitów.
+- **Swoboda projektu** – LED-y mieszczą się w płytkich obudowach i małych literach, dzięki czemu reklama może być smukła i elegancka.
+
+Podświetlenie można sterować zegarem lub czujnikiem zmierzchu, żeby reklama włączała się tylko wtedy, gdy jest potrzebna [UZUPEŁNIJ: czy montujecie sterowniki].
+"""),
+        ("Kaseton, litery LED czy szyld podświetlany – co wybrać?", f"""
+Każde z rozwiązań sprawdza się w innej sytuacji. Krótkie porównanie:
+
+- **Kaseton podświetlany** – dużo miejsca na grafikę i tekst, dobra widoczność z daleka, rozsądny koszt przy większym formacie. Dobry wybór dla sklepów, punktów usługowych i lokali przy ruchliwych ulicach.
+- **Litery przestrzenne LED** – najbardziej prestiżowy efekt, logo „wychodzi” z elewacji. Polecane dla marek, które chcą wyglądać nowocześnie: salony, restauracje, biura, kliniki. Zwykle droższe od kasetonu o podobnej szerokości.
+- **Szyld podświetlany** – kompromis między ceną a wyglądem, np. tablica z podświetlanym logo. Sprawdza się przy mniejszych wejściach i w lokalach w kamienicach.
+
+Przy wyborze warto wziąć pod uwagę także wymagania wspólnoty lub zarządcy budynku oraz ewentualne zasady miejskiego planu reklamowego. Pomożemy dobrać rozwiązanie do miejsca, budżetu i charakteru firmy. Więcej o samych literach przeczytasz na stronie o [literach przestrzennych w Gdyni]({L_LI}).
+"""),
+        ("Jak wygląda współpraca i nasze realizacje", f"""
+Proces jest prosty i zwykle przebiega w kilku krokach:
+
+1. **Kontakt i zdjęcie elewacji** – wysyłasz nam zdjęcie miejsca, wymiary i logo.
+2. **Wizualizacja i wycena** – przygotowujemy projekt reklamy na zdjęciu Twojego budynku [UZUPEŁNIJ: czy wizualizacja jest bezpłatna].
+3. **Produkcja** – wykonujemy reklamę [UZUPEŁNIJ: we własnej pracowni / u podwykonawcy, z jakich materiałów, np. plexi, dibond, profile aluminiowe].
+4. **Montaż i podłączenie** – montujemy reklamę na miejscu i uruchamiamy podświetlenie [UZUPEŁNIJ: kto wykonuje podłączenie elektryczne].
+
+Działamy w Gdyni oraz [UZUPEŁNIJ: obszar, np. Sopot, Gdańsk, Rumia, Reda, Wejherowo]. Przykłady wykonanych reklam podświetlanych znajdziesz w zakładce z [realizacjami]({L_RE}) [UZUPEŁNIJ: 2–3 przykładowe realizacje LED ze zdjęciami].
+
+{{{{gallery:led-1,led-2}}}}
+"""),
+        ("Reklama LED Gdynia – koszty i od czego zależą", f"""
+Cena podświetlanej reklamy jest zawsze liczona indywidualnie, bo każda elewacja i każde logo są inne. Na koszt wpływają przede wszystkim:
+
+- **Rozmiar** – szerokość i wysokość kasetonu lub liter.
+- **Rodzaj reklamy** – litery przestrzenne są zwykle bardziej pracochłonne niż kaseton.
+- **Sposób podświetlenia** – front, halo, boki, podświetlenie jedno- lub dwustronne.
+- **Materiały** – rodzaj plexi, lica, obudowy i folii.
+- **Skomplikowanie logo** – drobne detale i nietypowe kształty wydłużają produkcję.
+- **Montaż** – wysokość, rodzaj elewacji, konieczność użycia podnośnika.
+
+Orientacyjne ceny: [UZUPEŁNIJ: np. kaseton od … zł, litery LED od … zł za literę/mb]. Szczegóły znajdziesz w [cenniku]({L_CE}), a dokładną wycenę przygotujemy po otrzymaniu zdjęcia i wymiarów.
+"""),
+    ],
+    faq=[
+        ("Ile kosztuje reklama LED w Gdyni?", "Cena zależy od rozmiaru, rodzaju reklamy, sposobu podświetlenia i montażu. Orientacyjnie: [UZUPEŁNIJ: widełki cenowe]. Dokładną wycenę przygotujemy po otrzymaniu zdjęcia elewacji i wymiarów."),
+        ("Jak długo trwa wykonanie podświetlanego szyldu lub kasetonu?", "Czas realizacji zależy od wielkości i stopnia skomplikowania projektu. Standardowo wynosi [UZUPEŁNIJ: liczba dni roboczych] od akceptacji projektu. Termin montażu ustalamy z Tobą indywidualnie."),
+        ("Czy zajmujecie się montażem i podłączeniem do prądu?", "Tak, montujemy reklamy na terenie Gdyni i okolic [UZUPEŁNIJ: potwierdź]. [UZUPEŁNIJ: kto wykonuje podłączenie elektryczne – Wasz elektryk czy elektryk klienta]. Przed montażem sprawdzamy rodzaj elewacji i dostęp do zasilania."),
+        ("Jaką gwarancję dajecie na reklamę LED?", "Na wykonane reklamy udzielamy gwarancji [UZUPEŁNIJ: okres gwarancji na konstrukcję i na podświetlenie LED]. W razie awarii modułów LED lub zasilacza zapewniamy serwis [UZUPEŁNIJ: warunki serwisu]."),
+        ("Czy robicie ekrany LED?", "Nasza specjalność to podświetlane szyldy, kasetony i litery przestrzenne LED, a nie ekrany wyświetlające obraz [UZUPEŁNIJ: potwierdź]. Jeśli nie wiesz, które rozwiązanie będzie lepsze dla Twojej firmy, chętnie doradzimy."),
+        ("Czy potrzebuję zgody na montaż reklamy na budynku?", "Często tak – zgody może wymagać wspólnota, zarządca budynku lub urząd, zwłaszcza w strefach objętych zasadami lokalizacji reklam. Warto to sprawdzić przed zamówieniem. Na życzenie przygotujemy wizualizację, którą możesz dołączyć do wniosku [UZUPEŁNIJ: czy pomagacie w formalnościach]."),
+    ],
+    cta="Wyślij nam zdjęcie elewacji i logo – przygotujemy propozycję podświetlanej reklamy LED dla Twojej firmy w Gdyni wraz z wyceną.",
+    links=["szyldy-reklamowe-gdynia", "litery-przestrzenne-gdynia", "realizacje", "cennik"],
+))
+
+# ============================ REALIZACJE =====================================
+PAGES.append(dict(
+    slug="realizacje",
+    title="Szyldy reklamowe realizacje Gdynia – zdjęcia i opisy prac",
+    desc="Szyldy reklamowe realizacje Gdynia: zobacz zdjęcia szyldów, liter przestrzennych i reklam LED z opisem materiałów. Wybierz rozwiązanie dla firmy.",
+    h1="Szyldy reklamowe – realizacje w Gdyni",
+    lead="Na tej stronie pokazujemy nasze szyldy reklamowe – realizacje z Gdyni i okolic, czyli zdjęcia wykonanych i zamontowanych szyldów, liter przestrzennych oraz reklam LED. Przy każdej realizacji opisujemy, co zrobiliśmy, z jakich materiałów i w jakiej części miasta. To dobry punkt wyjścia dla właścicieli sklepów, lokali usługowych, gabinetów i biur, którzy chcą zobaczyć gotowe efekty, zanim zamówią oznakowanie.",
+    crumb="Realizacje",
+    schema=None,
+    sections=[
+        ("Szyldy reklamowe – realizacje w Gdyni według kategorii", f"""
+Galerię podzieliliśmy na kategorie, żeby łatwo było znaleźć przykłady podobne do tego, czego potrzebujesz. Każde zdjęcie przedstawia rzeczywistą realizację – bez wizualizacji i zdjęć ze stocków.
+
+- **Szyldy reklamowe** – płaskie szyldy na elewację, kasetony, tablice przy wejściu, oznakowanie witryn. Więcej o tej usłudze: [szyldy reklamowe Gdynia]({L_SZ}).
+- **Litery przestrzenne** – logo i napisy 3D, nieoświetlone i podświetlane, montowane na elewacji, ścianie w lokalu lub na konstrukcji. Szczegóły: [litery przestrzenne Gdynia]({L_LI}).
+- **Reklama LED** – podświetlane kasetony, litery z diodami LED, neony LED i oznakowanie widoczne po zmroku. Zobacz: [reklama LED Gdynia]({L_LED}).
+
+[UZUPEŁNIJ: liczba realizacji w każdej kategorii lub informacja, jak często dodajecie nowe zdjęcia]
+"""),
+        ("Galeria: szyldy reklamowe", "{{gallery:szyld-1,szyld-2}}"),
+        ("Galeria: litery przestrzenne", "{{gallery:litery-1,litery-2}}"),
+        ("Galeria: reklama LED", "{{gallery:led-1,led-2}}"),
+        ("Co znajdziesz w opisie każdej realizacji", """
+Samo zdjęcie nie mówi wszystkiego. Dlatego pod każdą realizacją podajemy krótki, konkretny opis, który pomaga ocenić, czy podobne rozwiązanie sprawdzi się u Ciebie:
+
+- **Co wykonaliśmy** – rodzaj oznakowania, wymiary, liczba elementów.
+- **Gdzie** – dzielnica Gdyni lub ulica (podajemy ją tylko za zgodą klienta), np. Śródmieście, Redłowo, Orłowo, Chylonia.
+- **Z czego** – użyte materiały, rodzaj podświetlenia, sposób montażu.
+- **Zakres prac** – projekt, produkcja, montaż, demontaż starego szyldu, ewentualna pomoc przy formalnościach.
+
+Przykładowy opis realizacji:
+
+- **Klient / branża:** [UZUPEŁNIJ: np. kawiarnia, salon fryzjerski]
+- **Lokalizacja:** [UZUPEŁNIJ: dzielnica lub ulica – za zgodą klienta]
+- **Wykonanie:** [UZUPEŁNIJ: np. litery przestrzenne podświetlane LED, wymiary]
+- **Materiały:** [UZUPEŁNIJ: np. plexi, dibond, profil aluminiowy]
+- **Czas realizacji:** [UZUPEŁNIJ: od akceptacji projektu do montażu]
+"""),
+        ("Z jakich materiałów wykonujemy szyldy i reklamy", """
+Dobór materiału zależy od miejsca montażu, ekspozycji na słońce i wiatr oraz od tego, czy reklama ma być widoczna również wieczorem. W nadmorskim klimacie Gdyni szczególnie ważna jest odporność na wilgoć i sól w powietrzu.
+
+- **Dibond (płyta kompozytowa)** – sztywny, lekki, odporny na warunki atmosferyczne, dobry na szyldy płaskie.
+- **Plexi (PMMA)** – do liter przestrzennych i elementów podświetlanych, dobrze rozprasza światło.
+- **PCV spienione** – ekonomiczna opcja, głównie do wnętrz i oznakowania wewnętrznego.
+- **Profile aluminiowe i stal** – do kasetonów, konstrukcji i liter o podwyższonej trwałości.
+- **Moduły i taśmy LED** – energooszczędne podświetlenie liter i kasetonów.
+
+[UZUPEŁNIJ: potwierdź listę materiałów, z którymi faktycznie pracujecie, i dopisz ewentualne folie, producentów LED itp.]
+"""),
+        ("Jak wygląda współpraca i od czego zależy cena", f"""
+Każda realizacja z galerii przeszła podobną drogę:
+
+1. **Kontakt i wycena wstępna** – przesyłasz zdjęcie elewacji lub miejsca montażu, wymiary i logo.
+2. **Projekt** – przygotowujemy wizualizację na zdjęciu Twojego budynku lub lokalu.
+3. **Akceptacja i produkcja** – po zatwierdzeniu projektu wykonujemy oznakowanie.
+4. **Montaż** – instalujemy szyld na miejscu, podłączamy podświetlenie, w razie potrzeby demontujemy stary.
+
+Na cenę wpływają przede wszystkim: wielkość i liczba elementów, rodzaj materiału, podświetlenie LED lub jego brak, wysokość i trudność montażu (np. konieczność użycia podnośnika) oraz stopień skomplikowania projektu. Orientacyjne stawki znajdziesz w [cenniku]({L_CE}). [UZUPEŁNIJ: czy wycena i projekt są bezpłatne]
+"""),
+        ("Realizacje szyldów reklamowych w Gdyni i okolicy", f"""
+Większość prezentowanych prac powstała w Gdyni – w różnych dzielnicach, od ścisłego centrum po osiedla mieszkaniowe. Wykonujemy też oznakowanie dla firm z pozostałej części Trójmiasta i powiatu.
+
+**Obszar działania:** [UZUPEŁNIJ: np. Gdynia, Sopot, Gdańsk, Rumia, Reda, Wejherowo – potwierdź zasięg montażu]
+
+Jeśli zobaczysz w galerii rozwiązanie, które Ci się podoba, napisz, o którą realizację chodzi – przygotujemy podobny projekt dopasowany do Twojej elewacji, kolorów i budżetu. Dane kontaktowe znajdziesz na stronie [kontakt]({L_KO}).
+"""),
+    ],
+    faq=[
+        ("Ile kosztuje szyld reklamowy podobny do tych z galerii?", "Cena zależy od wymiarów, materiału, podświetlenia i warunków montażu, dlatego dwa podobnie wyglądające szyldy mogą różnić się kosztem. Orientacyjne ceny są w cenniku, a dokładną wycenę przygotujemy po otrzymaniu zdjęcia miejsca montażu i wymiarów. [UZUPEŁNIJ: cena od / przykładowy przedział]"),
+        ("Ile trwa wykonanie i montaż szyldu?", "Czas zależy od rodzaju oznakowania i aktualnego obłożenia pracowni. Prosty szyld płaski powstaje szybciej niż litery przestrzenne z podświetleniem LED. [UZUPEŁNIJ: typowy czas realizacji od akceptacji projektu]"),
+        ("Czy zajmujecie się montażem na elewacji?", "Tak, montaż jest częścią naszych realizacji – instalujemy szyldy, litery i kasetony na miejscu oraz podłączamy podświetlenie. Przy montażu na wysokości dobieramy odpowiedni sprzęt. [UZUPEŁNIJ: czy montaż na wysokości / podnośnik jest w cenie]"),
+        ("Jaką gwarancję dajecie na szyldy i podświetlenie LED?", "Gwarancja obejmuje wykonanie oraz zastosowane elementy, w tym podświetlenie. Szczegółowe warunki ustalamy przy zamówieniu. [UZUPEŁNIJ: okres gwarancji na wykonanie i na LED]"),
+        ("Czy na szyld potrzebna jest zgoda?", "Często tak – zgody może wymagać zarządca lub wspólnota budynku, a w niektórych lokalizacjach także przepisy miejskie lub konserwator zabytków. Warto to sprawdzić przed zamówieniem. [UZUPEŁNIJ: czy pomagacie w formalnościach i przygotowaniu projektu do zgłoszenia]"),
+        ("Czy mogę zobaczyć realizację na żywo?", "Przy części realizacji podajemy dzielnicę lub ulicę – robimy to wyłącznie za zgodą klienta, więc takie szyldy można obejrzeć osobiście. Jeśli interesuje Cię konkretny typ oznakowania, zapytaj, gdzie w Gdyni możesz zobaczyć podobny przykład."),
+    ],
+    cta="Spodobała Ci się któraś realizacja? Wyślij nam zdjęcie swojej elewacji, a przygotujemy projekt i wycenę szyldu dla Twojej firmy w Gdyni.",
+    links=["szyldy-reklamowe-gdynia", "litery-przestrzenne-gdynia", "reklama-led-gdynia", "kontakt"],
+))
+
+# ============================ CENNIK =========================================
+PAGES.append(dict(
+    slug="cennik",
+    title="Szyldy reklamowe cena Gdynia – cennik i wycena szyldu",
+    desc="Szyldy reklamowe cena Gdynia: sprawdź, od czego zależy koszt szyldu, liter przestrzennych i reklamy LED. Wyślij zdjęcie elewacji – przygotujemy wycenę.",
+    h1="Cennik szyldów reklamowych w Gdyni – od czego zależy cena",
+    lead="Szyldy reklamowe w Gdyni mają cenę zależną głównie od wymiarów, materiału, podświetlenia i sposobu montażu, dlatego każdą realizację wyceniamy indywidualnie. Orientacyjnie prosty szyld płaski kosztuje [UZUPEŁNIJ: widełki cen szyldu płaskiego], a szyld z literami przestrzennymi lub podświetleniem LED [UZUPEŁNIJ: widełki cen szyldu podświetlanego]. Wycenę dla firm z Gdyni i okolic przygotujemy na podstawie zdjęcia elewacji, wymiarów i logo.",
+    crumb="Cennik",
+    schema=None,
+    cta_href="#formularz",
+    sections=[
+        ("Szyldy reklamowe – cena w Gdyni zależy od kilku czynników", """
+Nie ma jednej stawki za szyld, bo dwa szyldy o tej samej szerokości mogą różnić się kosztem kilkukrotnie. Na cenę wpływają przede wszystkim:
+
+- **Wymiary** – im większa powierzchnia szyldu lub wyższe litery, tym więcej materiału i pracy. Duże formaty mogą też wymagać mocniejszej konstrukcji nośnej.
+- **Materiał** – inaczej kosztuje szyld z płyty kompozytowej z nadrukiem lub folią, inaczej z plexi, PCV czy z liter przestrzennych frezowanych lub giętych.
+- **Podświetlenie** – szyld bez oświetlenia jest najtańszy. Podświetlenie LED (od frontu, od tyłu w formie poświaty lub kaseton świetlny) podnosi koszt, ale sprawia, że reklama działa także po zmroku.
+- **Liczba elementów i stopień skomplikowania** – rozbudowane logo, wiele kolorów, drobne detale czy nietypowe kształty wymagają więcej pracy przy produkcji.
+- **Montaż** – znaczenie ma wysokość, rodzaj elewacji (tynk, docieplenie, cegła, blacha), dostęp do miejsca montażu oraz to, czy potrzebny jest podnośnik lub doprowadzenie zasilania.
+
+Warto też pamiętać o formalnościach: przed montażem dobrze jest sprawdzić zgodę zarządcy budynku lub wspólnoty oraz lokalne przepisy dotyczące reklam na danym obszarze Gdyni. [UZUPEŁNIJ: czy firma pomaga w formalnościach i zgodach]
+"""),
+        ("Przykładowe widełki cen szyldów reklamowych w Gdyni", """
+Poniższe kwoty mają charakter orientacyjny i pomagają ocenić budżet przed zapytaniem. Dokładną cenę podajemy po obejrzeniu zdjęcia elewacji i projektu.
+
+- **Szyld płaski z płyty kompozytowej z nadrukiem lub folią** – [UZUPEŁNIJ: cena od–do, np. za m² lub za sztukę]
+- **Kaseton podświetlany LED** – [UZUPEŁNIJ: cena od–do]
+- **Litery przestrzenne bez podświetlenia** – [UZUPEŁNIJ: cena od–do, np. za literę o określonej wysokości]
+- **Litery przestrzenne podświetlane LED** – [UZUPEŁNIJ: cena od–do]
+- **Montaż** – [UZUPEŁNIJ: czy wliczony w cenę, czy liczony osobno i od czego zależy]
+
+Ceny podane są [UZUPEŁNIJ: netto/brutto]. Jeśli masz określony budżet, napisz o nim w zapytaniu – zaproponujemy rozwiązanie, które się w nim zmieści, np. tańszy materiał lub podświetlenie tylko części napisu.
+"""),
+        ("Co jest wliczone w cenę szyldu", """
+Żeby uniknąć niespodzianek, w wycenie zawsze wypisujemy, co obejmuje oferta. Standardowo może to być:
+
+- Projekt lub dopasowanie logo do formatu szyldu – [UZUPEŁNIJ: czy wliczone, czy płatne osobno]
+- Wizualizacja na zdjęciu Twojej elewacji – [UZUPEŁNIJ: czy firma ją przygotowuje]
+- Produkcja szyldu z wybranych materiałów
+- Elementy montażowe – konstrukcja, dystanse, kotwy
+- Transport i montaż na terenie Gdyni [UZUPEŁNIJ: oraz Sopotu, Gdańska, Rumi, Redy – jeśli dotyczy]
+- Podłączenie podświetlenia – [UZUPEŁNIJ: zakres prac elektrycznych, np. do istniejącego punktu zasilania]
+- Gwarancja – [UZUPEŁNIJ: okres gwarancji na szyld i podświetlenie LED]
+
+Jeśli coś jest płatne dodatkowo (np. demontaż starej reklamy, wynajem podnośnika), wpisujemy to w wycenie osobną pozycją.
+"""),
+        ("Jak przygotować zapytanie o cenę szyldu reklamowego", """
+Im więcej informacji dostaniemy na początku, tym szybciej i dokładniej wycenimy szyld. Najlepiej przygotuj:
+
+- **Zdjęcie elewacji** – zrobione na wprost, z widocznym miejscem, gdzie ma zawisnąć szyld. Dobrze, jeśli na zdjęciu widać też okna lub drzwi dla skali.
+- **Wymiary** – szerokość i wysokość dostępnego miejsca oraz wysokość montażu nad ziemią. Wystarczą przybliżone pomiary, dokładne zrobimy przed produkcją.
+- **Logo** – najlepiej w formie wektorowej (PDF, AI, EPS, SVG). Jeśli masz tylko plik graficzny lub zdjęcie, też go prześlij – ocenimy, czy trzeba go odtworzyć.
+- **Twoje preferencje** – czy szyld ma być podświetlany, czy interesują Cię litery przestrzenne, jaki masz budżet i termin.
+- **Adres lokalu** – żeby ocenić warunki montażu i dojazd.
+
+Nie wiesz, co wybrać? Opisz, jaki efekt chcesz osiągnąć, a my zaproponujemy 1–2 warianty w różnych cenach.
+"""),
+        ("Formularz wyceny – szyldy reklamowe w Gdyni", """
+Wypełnij formularz i dołącz zdjęcie elewacji, wymiary oraz logo. Odpowiadamy z wyceną [UZUPEŁNIJ: w jakim czasie, np. w ciągu 1–2 dni roboczych].
+
+{{form:cennik}}
+
+Wolisz porozmawiać? Zadzwoń pod numer {TEL_LINK} lub napisz na {EMAIL_LINK}. Działamy w Gdyni [UZUPEŁNIJ: i okolicach – wymień miejscowości].
+"""),
+    ],
+    faq=[
+        ("Ile kosztuje szyld reklamowy w Gdyni?", "Cena zależy od wymiarów, materiału, podświetlenia i warunków montażu. Prosty szyld płaski to orientacyjnie [UZUPEŁNIJ: widełki], a szyld z literami przestrzennymi lub LED [UZUPEŁNIJ: widełki]. Dokładną kwotę podajemy po otrzymaniu zdjęcia elewacji i wymiarów."),
+        ("Czy montaż szyldu jest wliczony w cenę?", "[UZUPEŁNIJ: czy montaż jest wliczony, czy liczony osobno]. Koszt montażu zależy od wysokości, rodzaju elewacji i tego, czy potrzebny jest podnośnik. Wszystkie dodatkowe pozycje zaznaczamy w wycenie."),
+        ("Ile trwa wykonanie szyldu reklamowego?", "Standardowo od akceptacji projektu do montażu mija [UZUPEŁNIJ: czas realizacji]. Szyldy z podświetleniem LED i litery przestrzenne wymagają zwykle więcej czasu niż proste szyldy płaskie. Jeśli zależy Ci na terminie, np. otwarciu lokalu, napisz o tym w zapytaniu."),
+        ("Czy szyld podświetlany LED dużo zużywa prądu?", "Podświetlenie LED jest energooszczędne w porównaniu ze starszymi źródłami światła, a zużycie zależy od wielkości szyldu i liczby modułów. Można też zastosować zegar lub czujnik zmierzchu, żeby szyld świecił tylko wtedy, gdy jest potrzebny. [UZUPEŁNIJ: czy firma montuje sterowniki czasowe]"),
+        ("Jaką gwarancję dajecie na szyldy?", "Na szyldy udzielamy [UZUPEŁNIJ: okres gwarancji], a na podświetlenie LED [UZUPEŁNIJ: okres gwarancji]. Szczegóły gwarancji wpisujemy w ofercie."),
+        ("Czy potrzebuję zgody na powieszenie szyldu?", "Zwykle potrzebna jest zgoda właściciela lub zarządcy budynku, a w niektórych miejscach trzeba też spełnić lokalne przepisy dotyczące reklam. Warto to sprawdzić przed zamówieniem. [UZUPEŁNIJ: czy firma pomaga w przygotowaniu dokumentów]"),
+    ],
+    cta="Wyślij nam zdjęcie elewacji, wymiary i logo – przygotujemy wycenę szyldu reklamowego dla Twojej firmy w Gdyni.",
+    links=["szyldy-reklamowe-gdynia", "litery-przestrzenne-gdynia", "reklama-led-gdynia", "kontakt"],
+))
+
+# ============================ KONTAKT ========================================
+PAGES.append(dict(
+    slug="kontakt",
+    title="Szyldy reklamowe Gdynia kontakt – wycena szyldu i liter",
+    desc="Szyldy reklamowe Gdynia – kontakt. Wyślij zdjęcie elewacji i wymiary, a przygotujemy wycenę szyldu, liter przestrzennych lub reklamy LED.",
+    h1="Szyldy reklamowe Gdynia – kontakt i wycena",
+    lead="Szyldy reklamowe Gdynia – kontakt z nami jest najprostszy przez telefon, e-mail lub formularz, do którego możesz dołączyć zdjęcie elewacji i wymiary miejsca na reklamę. Wykonujemy szyldy, litery przestrzenne i reklamy LED dla sklepów, lokali usługowych, biur i firm z Gdyni i okolic. Na podstawie przesłanych informacji przygotujemy wycenę i zaproponujemy rozwiązanie dopasowane do budynku.",
+    crumb="Kontakt",
+    schema="contact",
+    cta_href="#formularz",
+    sections=[
+        ("Dane kontaktowe – szyldy reklamowe Gdynia", """
+Poniżej znajdziesz wszystkie dane potrzebne do kontaktu. Są takie same jak w naszym Profilu Firmy w Google, więc łatwo nas znaleźć także w Mapach Google.
+
+- **Nazwa firmy:** {NAZWA}
+- **Adres:** {ADRES}
+- **Telefon:** {TEL_LINK}
+- **E-mail:** {EMAIL_LINK}
+- **NIP:** {NIP}
+
+Jeśli wolisz rozmowę na miejscu, zadzwoń wcześniej i umów się – wtedy będziemy mieć czas, żeby pokazać próbki materiałów i omówić projekt.
+"""),
+        ("Godziny pracy i dojazd", """
+Odbieramy telefony i odpowiadamy na wiadomości w godzinach pracy. Zapytania wysłane przez formularz poza tymi godzinami obsługujemy w kolejnym dniu roboczym.
+
+- **Poniedziałek – piątek:** {GODZ_PNPT}
+- **Sobota:** {GODZ_SOB}
+- **Niedziela:** nieczynne
+
+Na mapie poniżej zaznaczyliśmy naszą siedzibę w Gdyni. [UZUPEŁNIJ: informacja o parkingu lub dojeździe, np. najbliższy przystanek]
+
+{{map}}
+"""),
+        ("Jak wysłać zapytanie o szyld reklamowy – formularz ze zdjęciem", """
+Najszybciej przygotujemy wycenę, gdy od razu dostaniemy kilka podstawowych informacji. W formularzu możesz dodać zdjęcia, dlatego warto je zrobić przed wysłaniem wiadomości.
+
+- **Zdjęcie elewacji** – najlepiej z daleka, tak żeby było widać cały front budynku i miejsce na reklamę.
+- **Wymiary** – szerokość i wysokość miejsca, w którym ma się pojawić szyld lub litery (wystarczą orientacyjne).
+- **Logo lub nazwa firmy** – plik graficzny, a jeśli go nie masz, sam napis.
+- **Rodzaj reklamy** – szyld płaski, kaseton, litery przestrzenne, reklama LED, a jeśli nie wiesz, co wybrać, napisz po prostu, czego oczekujesz.
+- **Podświetlenie** – czy reklama ma być widoczna po zmroku.
+- **Adres montażu** – miejscowość i ulica.
+
+Jeśli nie masz wszystkich danych, wyślij to, co masz. Resztę ustalimy telefonicznie lub podczas pomiaru.
+
+{{form:kontakt}}
+"""),
+        ("Od czego zależy cena szyldu", f"""
+Każdy szyld wyceniamy indywidualnie, bo dwa podobne napisy mogą mieć zupełnie inny koszt. Na cenę wpływają przede wszystkim:
+
+- **Rozmiar** – wielkość szyldu lub wysokość liter.
+- **Rodzaj i materiał** – np. dibond, plexi, PCV, stal, aluminium.
+- **Podświetlenie** – reklama z LED-ami kosztuje więcej niż wersja bez światła.
+- **Projekt** – czy dostarczasz gotowy plik, czy potrzebujesz projektu od podstaw.
+- **Montaż** – wysokość, rodzaj ściany, potrzeba podnośnika lub rusztowania, doprowadzenie prądu.
+
+Orientacyjne ceny znajdziesz w zakładce [cennik]({L_CE}), a dokładną kwotę podamy po otrzymaniu zdjęć i wymiarów.
+"""),
+        ("Co dzieje się po kontakcie", f"""
+Współpraca przebiega w kilku prostych krokach:
+
+1. **Zapytanie** – wysyłasz formularz, e-mail lub dzwonisz.
+2. **Wstępna wycena** – na podstawie zdjęć i wymiarów podajemy orientacyjny koszt w ciągu [UZUPEŁNIJ: czas odpowiedzi].
+3. **Pomiar i projekt** – w razie potrzeby przyjeżdżamy na miejsce i przygotowujemy wizualizację szyldu na Twojej elewacji.
+4. **Akceptacja i produkcja** – po zatwierdzeniu projektu wykonujemy reklamę.
+5. **Montaż** – montujemy szyld lub litery w umówionym terminie.
+
+Przykłady wykonanych szyldów i liter przestrzennych możesz zobaczyć w zakładce [realizacje]({L_RE}).
+"""),
+        ("Obszar działania", """
+Szyldy reklamowe wykonujemy i montujemy przede wszystkim w Gdyni. [UZUPEŁNIJ: inne miejscowości, w których faktycznie realizujecie montaż, np. Sopot, Gdańsk, Rumia, Reda – wpisz tylko te prawdziwe]
+
+Jeśli Twoja firma znajduje się poza tym obszarem, napisz do nas – sprawdzimy, czy możemy zrealizować zlecenie, i podamy koszt dojazdu.
+"""),
+    ],
+    faq=[
+        ("Ile kosztuje szyld reklamowy w Gdyni?", "Cena zależy od rozmiaru, materiału, podświetlenia i warunków montażu. Orientacyjne kwoty znajdziesz w cenniku, a dokładną wycenę przygotujemy po otrzymaniu zdjęcia elewacji i wymiarów. [UZUPEŁNIJ: ewentualna cena „od”]"),
+        ("Jak długo czeka się na wykonanie szyldu?", "Czas realizacji zależy od rodzaju reklamy i obłożenia produkcji. Prosty szyld zwykle powstaje szybciej niż podświetlane litery przestrzenne. [UZUPEŁNIJ: typowy czas realizacji]"),
+        ("Czy zajmujecie się też montażem?", "Tak, montujemy wykonane przez nas szyldy, kasetony i litery przestrzenne. Przed montażem oceniamy rodzaj ściany i sposób mocowania, a przy reklamach podświetlanych ustalamy podłączenie zasilania. [UZUPEŁNIJ: czy podłączenie elektryczne wykonujecie sami]"),
+        ("Czy mogę wysłać zdjęcie zamiast umawiać pomiar?", "Tak, do wstępnej wyceny w zupełności wystarczy zdjęcie elewacji i orientacyjne wymiary. Pomiar na miejscu robimy zwykle przed produkcją, żeby szyld idealnie pasował do budynku."),
+        ("Z jakich materiałów wykonujecie szyldy?", "Dobieramy materiał do miejsca i budżetu, najczęściej są to dibond, plexi, PCV oraz elementy ze stali lub aluminium. Podczas rozmowy podpowiemy, co sprawdzi się na Twojej elewacji. [UZUPEŁNIJ: potwierdź listę materiałów]"),
+        ("Czy dajecie gwarancję na szyldy i podświetlenie?", "[UZUPEŁNIJ: okres i zakres gwarancji na szyld, podświetlenie LED i montaż]. Szczegóły gwarancji podajemy w ofercie przed rozpoczęciem realizacji."),
+    ],
+    cta="Wyślij nam zdjęcie elewacji i wymiary przez formularz lub zadzwoń – przygotujemy wycenę Twojego szyldu reklamowego w Gdyni.",
+    links=["szyldy-reklamowe-gdynia", "litery-przestrzenne-gdynia", "cennik", "realizacje"],
+))
+
+# ---------------------------------------------------------------------------
+# 5. JSON-LD
+# ---------------------------------------------------------------------------
+BIZ_ID = f"{DOMENA}/#firma"
+
+
+def local_business():
+    return {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "@id": BIZ_ID,
+        "name": FIRMA["nazwa"],
+        "description": "Agencja reklamy zewnętrznej z Gdyni: szyldy reklamowe, litery przestrzenne i reklama LED – projekt, wykonanie i montaż.",
+        "url": f"{DOMENA}/",
+        "image": f"{DOMENA}/img/og-image.jpg",
+        "logo": f"{DOMENA}/favicon.svg",
+        "telephone": FIRMA["telefon_href"],
+        "email": FIRMA["email"],
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": FIRMA["ulica"],
+            "postalCode": FIRMA["kod"],
+            "addressLocality": FIRMA["miasto"],
+            "addressRegion": "pomorskie",
+            "addressCountry": "PL",
+        },
+        "areaServed": [{"@type": "City", "name": n} for n in FIRMA["obszar"]],
+        "openingHoursSpecification": [{
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": FIRMA["otwarcie_pn_pt"],
+            "closes": FIRMA["zamkniecie_pn_pt"],
+        }],
+        "hasMap": FIRMA["mapa_link"],
+        "knowsAbout": ["szyldy reklamowe", "litery przestrzenne", "reklama LED", "kasetony reklamowe"],
+        "makesOffer": [
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": n, "url": url(s)}}
+            for s, n in [("szyldy-reklamowe-gdynia", "Szyldy reklamowe"),
+                         ("litery-przestrzenne-gdynia", "Litery przestrzenne"),
+                         ("reklama-led-gdynia", "Reklama LED")]
+        ],
+    }
+
+
+def service(p, name, desc):
+    return {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": f"{name} Gdynia",
+        "serviceType": name,
+        "description": desc,
+        "url": url(p["slug"]),
+        "areaServed": [{"@type": "City", "name": n} for n in FIRMA["obszar"]],
+        "provider": {
+            "@type": "LocalBusiness",
+            "@id": BIZ_ID,
+            "name": FIRMA["nazwa"],
+            "telephone": FIRMA["telefon_href"],
+            "address": {"@type": "PostalAddress", "streetAddress": FIRMA["ulica"], "postalCode": FIRMA["kod"],
+                        "addressLocality": FIRMA["miasto"], "addressCountry": "PL"},
+        },
+    }
+
+
+def faq_ld(p):
+    return {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": plain(a)}}
+            for q, a in p["faq"]
+        ],
+    }
+
+
+def crumbs_ld(p):
+    return {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Strona główna", "item": url("index")},
+            {"@type": "ListItem", "position": 2, "name": p["crumb"], "item": url(p["slug"])},
+        ],
+    }
+
+
+def ld_blocks(p):
+    blocks = []
+    s = p["schema"]
+    if s in ("home", "contact"):
+        blocks.append(local_business())
+    elif isinstance(s, tuple):
+        blocks.append(service(p, s[1], s[2]))
+    if p["faq"]:
+        blocks.append(faq_ld(p))
+    if p["crumb"]:
+        blocks.append(crumbs_ld(p))
+    return "\n".join(
+        '<script type="application/ld+json">\n' + json.dumps(b, ensure_ascii=False, indent=1) + "\n</script>"
+        for b in blocks)
+
+
+# ---------------------------------------------------------------------------
+# 6. Szablon strony
+# ---------------------------------------------------------------------------
+def header(active):
+    items = "".join(
+        f'<li><a href="{href(s)}"{" aria-current=\"page\"" if s == active else ""}>{n}</a></li>' for s, n in NAV)
+    return f'''<a class="skip" href="#tresc">Przejdź do treści</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="./"><span class="logo-mark" aria-hidden="true"></span><span>{fill(FIRMA["nazwa"])}<small>Szyldy reklamowe · Gdynia</small></span></a>
+    <nav class="main-nav" aria-label="Menu główne"><ul>{items}</ul></nav>
+    <a class="btn btn-primary header-call" href="tel:{FIRMA["telefon_href"]}">Zadzwoń</a>
+  </div>
+</header>'''
+
+
+def footer():
+    nav = "".join(f'<li><a href="{href(s)}">{n}</a></li>' for s, n in NAV)
+    return f'''<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div itemscope itemtype="https://schema.org/LocalBusiness">
+      <p class="footer-name" itemprop="name">{fill(FIRMA["nazwa"])}</p>
+      <p>Szyldy reklamowe, litery przestrzenne i reklama LED w Gdyni.</p>
+      <p itemprop="address">{fill(html.escape(ADRES, quote=False))}</p>
+      <p>Tel.: <a itemprop="telephone" href="tel:{FIRMA["telefon_href"]}">{fill(FIRMA["telefon"])}</a><br>
+      E-mail: <a itemprop="email" href="mailto:{html.escape(FIRMA["email"])}">{fill(FIRMA["email"])}</a></p>
+    </div>
+    <div>
+      <p class="footer-h">Godziny pracy</p>
+      <p>Pn–pt: {fill(FIRMA["godziny_pn_pt"])}<br>Sobota: {fill(html.escape(FIRMA["godziny_sob"], quote=False))}<br>Niedziela: nieczynne</p>
+      <p class="footer-h">Obszar działania</p>
+      <p>{fill(", ".join(FIRMA["obszar"]))}</p>
+    </div>
+    <div>
+      <p class="footer-h">Oferta</p>
+      <ul class="footer-nav"><li><a href="./">Strona główna</a></li>{nav}</ul>
+    </div>
+  </div>
+  <p class="wrap copy">© 2026 {fill(FIRMA["nazwa"])} · <a href="{html.escape(FIRMA["polityka_prywatnosci"])}">Polityka prywatności</a></p>
+</footer>
+<div class="mobile-bar"><a class="btn btn-dark" href="tel:{FIRMA["telefon_href"]}">Zadzwoń</a><a class="btn btn-primary" href="kontakt.html#formularz">Wyślij zdjęcie</a></div>'''
+
+
+def page_html(p):
+    slug = p["slug"]
+    title, desc = p["title"], p["desc"]
+    canon = url(slug)
+    cta_href = p.get("cta_href", "kontakt.html#formularz")
+    crumb = ""
+    if p["crumb"]:
+        crumb = f'<nav class="crumbs" aria-label="Okruszki"><a href="./">Strona główna</a> <span aria-hidden="true">›</span> <span>{p["crumb"]}</span></nav>'
+    secs = []
+    for i, (h2, body) in enumerate(p["sections"]):
+        cls = ' class="alt"' if i % 2 else ""
+        secs.append(f'<section{cls}><div class="wrap text">\n<h2>{h2}</h2>\n{md(body)}\n</div></section>')
+    faq = "".join(f'<div class="qa"><h3>{inline(q)}</h3><p>{inline(a)}</p></div>' for q, a in p["faq"])
+    cards = "".join(
+        f'<a class="card" href="{href(s)}"><strong>{CARDS[s][0]}</strong><span>{CARDS[s][1]}</span></a>'
+        for s in p["links"])
+    return f'''<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{html.escape(title)}</title>
+<meta name="description" content="{html.escape(desc)}">
+<link rel="canonical" href="{canon}">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#16191f">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:site_name" content="{html.escape(plain(FIRMA['nazwa']))}">
+<meta property="og:title" content="{html.escape(title)}">
+<meta property="og:description" content="{html.escape(desc)}">
+<meta property="og:url" content="{canon}">
+<meta property="og:image" content="{DOMENA}/img/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Szyldy reklamowe, litery przestrzenne i reklama LED – Gdynia">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+{ld_blocks(p)}
+</head>
+<body>
+{header(slug)}
+<main id="tresc">
+<section class="hero"><div class="wrap text">
+{crumb}
+<h1>{p["h1"]}</h1>
+<p class="lead">{inline(p["lead"])}</p>
+<div class="actions"><a class="btn btn-primary" href="{cta_href}">Wyślij zdjęcie i wymiary</a><a class="btn btn-ghost" href="tel:{FIRMA["telefon_href"]}">Zadzwoń: {fill(FIRMA["telefon"])}</a></div>
+</div></section>
+{chr(10).join(secs)}
+<section class="faq"><div class="wrap text">
+<h2>Pytania i odpowiedzi</h2>
+{faq}
+</div></section>
+<section class="cta"><div class="wrap text">
+<h2>Zapytaj o wycenę</h2>
+<p>{inline(p["cta"])}</p>
+<div class="actions"><a class="btn btn-primary" href="{cta_href}">Wyślij zdjęcie elewacji</a><a class="btn btn-light" href="tel:{FIRMA["telefon_href"]}">Zadzwoń</a></div>
+</div></section>
+<section class="more"><div class="wrap">
+<h2>Zobacz też</h2>
+<div class="cards">{cards}</div>
+</div></section>
+</main>
+{footer()}
+</body>
+</html>
+'''
+
+
+# ---------------------------------------------------------------------------
+# 7. Pliki dodatkowe
+# ---------------------------------------------------------------------------
+def sitemap():
+    prio = {"index": "1.0", "kontakt": "0.8", "cennik": "0.8", "realizacje": "0.7"}
+    rows = "".join(
+        f"  <url><loc>{url(p['slug'])}</loc><lastmod>{DATA_AKTUALIZACJI}</lastmod><priority>{prio.get(p['slug'], '0.9')}</priority></url>\n"
+        for p in PAGES)
+    return f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{rows}</urlset>\n'
+
+
+def robots():
+    return f"""User-agent: *
+Allow: /
+
+# Boty wyszukiwarek i czatów AI – mają pełny dostęp
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: Google-Extended
+User-agent: ClaudeBot
+User-agent: PerplexityBot
+Allow: /
+
+Sitemap: {DOMENA}/sitemap.xml
+"""
+
+
+def llms():
+    lines = "\n".join(f"- [{p['h1']}]({url(p['slug'])}): {p['desc']}" for p in PAGES)
+    return f"""# {plain(FIRMA['nazwa'])} – szyldy reklamowe Gdynia
+
+> Agencja reklamy zewnętrznej z Gdyni. Projektujemy, wykonujemy i montujemy szyldy reklamowe, litery przestrzenne (3D) i reklamę podświetlaną LED (kasetony, litery LED, szyldy podświetlane) dla sklepów, lokali usługowych, gabinetów, restauracji i biur. Nie wykonujemy ekranów LED [UZUPEŁNIJ: potwierdź]. Wycena na podstawie zdjęcia elewacji, wymiarów i logo.
+
+## Dane firmy
+- Nazwa: {plain(FIRMA['nazwa'])}
+- Adres: {plain(ADRES)}
+- Telefon: {FIRMA['telefon']}
+- E-mail: {FIRMA['email']}
+- Godziny pracy: {plain(GODZINY)}
+- Obszar działania: {", ".join(FIRMA['obszar'])}
+- Mapy Google: {FIRMA['mapa_link']}
+
+## Podstrony
+{lines}
+
+## Jak zamówić
+Wyślij przez formularz na stronie {url('kontakt')} zdjęcie elewacji (miejsca montażu), przybliżone wymiary i logo. Przygotujemy wizualizację i wycenę.
+"""
+
+
+FAVICON = '''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="#16191f"/><rect x="12" y="20" width="40" height="24" rx="3" fill="#f5b400"/><rect x="18" y="29" width="28" height="6" rx="1" fill="#16191f"/></svg>
+'''
+
+
+def images():
+    from PIL import Image, ImageDraw, ImageFont
+    img_dir = OUT / "img"
+    img_dir.mkdir(parents=True, exist_ok=True)
+
+    def font(size, bold=True):
+        for f in ["/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf" if bold else
+                  "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"]:
+            try:
+                return ImageFont.truetype(f, size)
+            except OSError:
+                pass
+        return ImageFont.load_default()
+
+    for key, (alt, _) in IMAGES.items():
+        path = img_dir / f"{key}.webp"
+        if path.exists():  # nie nadpisuj prawdziwych zdjęć
+            continue
+        im = Image.new("RGB", (800, 600), "#e9ebef")
+        d = ImageDraw.Draw(im)
+        d.rectangle([40, 40, 760, 560], outline="#c3c7cf", width=4)
+        d.text((400, 270), "ZDJĘCIE REALIZACJI", font=font(40), fill="#5b6270", anchor="mm")
+        d.text((400, 330), f"podmień plik img/{key}.webp", font=font(24, False), fill="#5b6270", anchor="mm")
+        im.save(path, "WEBP", quality=70)
+
+    og = img_dir / "og-image.jpg"
+    if not og.exists():
+        im = Image.new("RGB", (1200, 630), "#16191f")
+        d = ImageDraw.Draw(im)
+        d.rectangle([80, 230, 200, 300], fill="#f5b400")
+        d.text((80, 340), "Szyldy reklamowe Gdynia", font=font(68), fill="#ffffff")
+        d.text((80, 440), "Litery przestrzenne · Reklama LED · Projekt i montaż", font=font(34, False), fill="#c9ced8")
+        im.save(og, "JPEG", quality=85)
+
+
+def main():
+    OUT.mkdir(exist_ok=True)
+    for p in PAGES:
+        name = "index.html" if p["slug"] == "index" else f"{p['slug']}.html"
+        (OUT / name).write_text(page_html(p), encoding="utf-8")
+    (OUT / "sitemap.xml").write_text(sitemap(), encoding="utf-8")
+    (OUT / "robots.txt").write_text(robots(), encoding="utf-8")
+    (OUT / "llms.txt").write_text(llms(), encoding="utf-8")
+    (OUT / "favicon.svg").write_text(FAVICON, encoding="utf-8")
+    images()
+    print("Gotowe:", ", ".join(sorted(x.name for x in OUT.iterdir())))
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,149 @@
+/* Szyldy reklamowe Gdynia – wspólny arkusz stylów (bez frameworków) */
+:root {
+  --ink: #16191f;
+  --text: #2b303a;
+  --muted: #5b6270;
+  --line: #e2e5ea;
+  --bg: #ffffff;
+  --bg-alt: #f5f6f8;
+  --accent: #f5b400;
+  --accent-dark: #d99e00;
+  --link: #0b57d0;
+  --radius: 10px;
+  --wrap: 1120px;
+  --text-w: 760px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--text);
+  background: var(--bg);
+  padding-bottom: 72px; /* miejsce na pasek mobilny */
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--link); text-underline-offset: 2px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+h1, h2, h3 { color: var(--ink); line-height: 1.25; margin: 0 0 .6em; }
+h1 { font-size: clamp(1.9rem, 5vw, 2.8rem); letter-spacing: -.01em; }
+h2 { font-size: clamp(1.4rem, 3.4vw, 1.85rem); }
+h3 { font-size: 1.1rem; }
+p, ul, ol { margin: 0 0 1em; }
+ul, ol { padding-left: 1.3em; }
+li { margin-bottom: .45em; }
+li::marker { color: var(--accent-dark); font-weight: 700; }
+
+.wrap { width: 100%; max-width: var(--wrap); margin: 0 auto; padding: 0 16px; }
+.text { max-width: calc(var(--text-w) + 32px); }
+
+/* miejsca do uzupełnienia */
+mark.fill { background: #fff1b8; color: #6b4d00; border-radius: 3px; padding: 0 .2em; outline: 1px dashed #d9a400; }
+
+.skip { position: absolute; left: -9999px; }
+.skip:focus { left: 16px; top: 8px; z-index: 100; background: #fff; padding: 8px 12px; }
+
+/* nagłówek */
+.site-header { background: var(--ink); color: #fff; }
+[id] { scroll-margin-top: 90px; }
+.header-inner { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; padding-top: 12px; padding-bottom: 4px; }
+.logo { flex: 1; min-width: 0; display: flex; align-items: center; gap: 10px; color: #fff; text-decoration: none; font-weight: 700; line-height: 1.2; }
+.logo small { display: block; font-weight: 400; font-size: .8rem; color: #b8bec9; }
+.logo-mark { width: 34px; height: 22px; border-radius: 3px; background: var(--accent); flex: none; box-shadow: inset 0 0 0 6px var(--accent), inset 0 0 0 9px var(--ink); }
+.header-call { padding: 8px 14px; min-height: 40px; }
+.main-nav { order: 3; flex-basis: 100%; min-width: 0; }
+.main-nav ul { list-style: none; margin: 0; padding: 0 0 8px; display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+.main-nav ul::-webkit-scrollbar { display: none; }
+.main-nav li { margin: 0; flex: none; }
+.main-nav a { display: block; color: #dfe3ea; text-decoration: none; padding: 8px 10px; border-radius: 6px; font-size: .95rem; white-space: nowrap; }
+.main-nav a:hover { background: #262b35; color: #fff; }
+.main-nav a[aria-current="page"] { color: var(--ink); background: var(--accent); }
+
+/* przyciski */
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 20px; border-radius: var(--radius); font-weight: 700; text-decoration: none; border: 2px solid transparent; cursor: pointer; font-size: 1rem; font-family: inherit; text-align: center; }
+.btn-primary { background: var(--accent); color: var(--ink); }
+.btn-primary:hover { background: var(--accent-dark); }
+.btn-ghost { border-color: var(--ink); color: var(--ink); background: transparent; }
+.btn-ghost:hover { background: var(--ink); color: #fff; }
+.btn-light { background: #fff; color: var(--ink); }
+.btn-dark { background: var(--ink); color: #fff; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 1.4em; }
+
+/* sekcje */
+section { padding: 48px 0; }
+section.alt { background: var(--bg-alt); }
+.hero { padding: 40px 0 44px; border-bottom: 1px solid var(--line); background: linear-gradient(180deg, #fffaf0 0%, #fff 100%); }
+.lead { font-size: 1.15rem; color: var(--ink); max-width: 70ch; }
+.crumbs { font-size: .9rem; color: var(--muted); margin-bottom: 16px; }
+.crumbs a { color: var(--muted); }
+
+/* galeria */
+.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; margin: 1.2em 0 1.4em; }
+figure { margin: 0; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+figcaption { padding: 10px 12px; font-size: .92rem; color: var(--muted); }
+
+/* FAQ */
+.faq { background: var(--bg-alt); }
+.qa { border-top: 1px solid var(--line); padding: 18px 0 4px; }
+.qa:first-of-type { border-top: 0; }
+.qa p { margin-bottom: .8em; }
+
+/* CTA */
+.cta { background: var(--ink); color: #e6e9ef; }
+.cta h2 { color: #fff; }
+.cta a:not(.btn) { color: #fff; }
+
+/* karty */
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
+.card { display: block; padding: 18px; border: 1px solid var(--line); border-radius: var(--radius); text-decoration: none; color: var(--text); background: #fff; }
+.card strong { display: block; color: var(--ink); margin-bottom: 4px; }
+.card span { font-size: .95rem; color: var(--muted); }
+.card:hover { border-color: var(--accent); box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+
+/* formularz */
+.form { display: grid; gap: 14px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; margin: 1.4em 0; }
+.form-row { display: grid; gap: 14px; }
+.form label { display: grid; gap: 6px; font-weight: 600; color: var(--ink); font-size: .95rem; }
+.form input, .form select, .form textarea { width: 100%; font: inherit; font-weight: 400; padding: 11px 12px; border: 1px solid #c3c7cf; border-radius: 8px; background: #fff; color: var(--text); min-height: 46px; }
+.form input[type="file"] { padding: 9px; }
+.form label.check { display: flex; align-items: flex-start; gap: 10px; font-weight: 400; }
+.form label.check input { width: 20px; min-height: 20px; margin-top: 4px; flex: none; }
+.form .btn { justify-self: start; }
+
+.map { border: 1px dashed #c3c7cf; border-radius: var(--radius); padding: 20px; background: #fff; }
+
+/* stopka */
+.site-footer { background: #0f1115; color: #c9ced8; padding: 40px 0 20px; font-size: .95rem; }
+.site-footer a { color: #fff; }
+.footer-grid { display: grid; gap: 24px; }
+.footer-name { color: #fff; font-weight: 700; font-size: 1.1rem; }
+.footer-h { color: #fff; font-weight: 700; margin-bottom: .3em; }
+.footer-nav { list-style: none; padding: 0; }
+.footer-nav li { margin-bottom: .3em; }
+.copy { border-top: 1px solid #262b35; padding-top: 16px; margin-top: 16px; font-size: .85rem; color: #8b93a1; }
+
+/* pasek mobilny */
+.mobile-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 8px 12px calc(8px + env(safe-area-inset-bottom)); background: rgba(255,255,255,.97); border-top: 1px solid var(--line); }
+.mobile-bar .btn { min-height: 46px; padding: 10px; }
+
+@media (min-width: 720px) {
+  .form-row { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1.3fr 1fr 1fr; }
+  section { padding: 64px 0; }
+  .hero { padding: 56px 0 60px; }
+}
+@media (min-width: 960px) {
+  body { padding-bottom: 0; }
+  .mobile-bar { display: none; }
+  .site-header { position: sticky; top: 0; z-index: 50; }
+  .header-inner { flex-wrap: nowrap; padding-bottom: 12px; }
+  .logo { flex: 0 1 260px; }
+  .main-nav { order: 0; flex: 1 1 auto; flex-basis: auto; }
+  .main-nav ul { padding: 0; flex-wrap: wrap; justify-content: flex-end; overflow: visible; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Boty wyszukiwarek i czatów AI – mają pełny dostęp
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: Google-Extended
+User-agent: ClaudeBot
+User-agent: PerplexityBot
+Allow: /
+
+Sitemap: https://www.TWOJA-DOMENA.pl/sitemap.xml
