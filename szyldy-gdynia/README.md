@@ -52,7 +52,7 @@ obszar działania, link do wizytówki w Mapach Google, adres obsługi formularza
 **4. Zdjęcia:** podmień przykładowe grafiki w `img/` (szyld-1, szyld-2, litery-1, litery-2, led-1, led-2 – mają napis „PRZYKŁAD”) na prawdziwe zdjęcia w formacie WebP, 800×600, i zachowaj te same nazwy.
 Teksty alt i podpisy zmienisz w `build.py` → `IMAGES`.
 
-**Kalkulator wymiarów (w formularzu na stronach kontakt i cennik, plik `kalkulator.js`):** klient wpisuje szerokość i wysokość szyldu, a pole w m² liczy się od razu. Może też dodać zdjęcie elewacji, zaznaczyć na nim element o znanej szerokości (np. drzwi) i miejsce na szyld, a skrypt przeliczy wymiary i wpisze je do formularza. Działa w przeglądarce, bez serwera. Do zapytania trafiają pola `szerokosc_cm`, `wysokosc_cm`, `pole_m2` i zdjęcie `zdjecie_elewacji`.
+**Szybka wycena (plik `wycena.js`):** na każdej stronie na dole jest pasek: Zadzwoń, WhatsApp, Wyślij zdjęcie. „Wyślij zdjęcie” otwiera krótki formularz: zdjęcie, telefon lub e-mail, wyślij. Wymiary (z polem w m²), pomiar szyldu na zdjęciu, rodzaj reklamy, adres i wiadomość są zwinięte jako opcjonalne. Zdjęcia większe niż 1,5 MB są zmniejszane w przeglądarce przed wysłaniem. Do uzupełnienia w `FIRMA`: `whatsapp` i `czas_odpowiedzi`.
 
 **5. Formularz:** strona jest statyczna, więc formularz potrzebuje obsługi (np. Formspree, Getform albo skrypt PHP na Twoim hostingu).
 Wpisz jej adres w `FIRMA["formularz_action"]`. Obsługa musi przyjmować załączniki.

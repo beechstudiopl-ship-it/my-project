@@ -26,6 +26,8 @@ FIRMA = {
     "miasto": "Gdynia",
     "telefon": "[UZUPEŁNIJ: numer telefonu]",
     "telefon_href": "+48000000000",  # [UZUPEŁNIJ] numer w formacie +48XXXXXXXXX
+    "whatsapp": "48000000000",  # [UZUPEŁNIJ] numer do WhatsApp: 48 + 9 cyfr, bez plusa i spacji
+    "czas_odpowiedzi": "[UZUPEŁNIJ: czas odpowiedzi, np. 1 dnia roboczego]",
     "email": "[UZUPEŁNIJ: adres e-mail]",
     "nip": "[UZUPEŁNIJ: NIP, opcjonalnie]",
     "godziny_pn_pt": "[UZUPEŁNIJ: godziny]",
@@ -185,58 +187,63 @@ def gallery(arg):
     return '<div class="gallery">' + "".join(figure(k.strip()) for k in arg.split(",")) + "</div>"
 
 
-RODZAJE = ["Szyld płaski", "Kaseton podświetlany", "Litery przestrzenne", "Litery przestrzenne LED",
-           "Semafor (szyld dwustronny)", "Oznakowanie wnętrza", "Nie wiem – proszę o doradztwo"]
+RODZAJE = ["Nie wiem – doradźcie", "Szyld płaski", "Kaseton podświetlany", "Litery przestrzenne",
+           "Litery przestrzenne LED", "Semafor (szyld dwustronny)", "Oznakowanie wnętrza"]
 
 
 def form(arg):
-    fid = "formularz"
+    """Krótki formularz wyceny: zdjęcie + telefon/e-mail + wyślij. Reszta opcjonalnie, zwinięta."""
+    fid = "szybka" if arg == "okno" else "formularz"
     opts = "".join(f"<option>{o}</option>" for o in RODZAJE)
-    return f'''<form class="form" id="{fid}" action="{html.escape(FIRMA['formularz_action'])}" method="post" enctype="multipart/form-data">
+    return f'''<form class="form qform" id="{fid}" action="{html.escape(FIRMA['formularz_action'])}" method="post" enctype="multipart/form-data" data-quote>
   <input type="hidden" name="strona" value="{arg}">
-  <div class="form-row">
-    <label>Imię i nazwisko lub nazwa firmy<input type="text" name="imie" autocomplete="name" required></label>
-    <label>E-mail<input type="email" name="email" autocomplete="email" required></label>
-  </div>
-  <div class="form-row">
-    <label>Telefon<input type="tel" name="telefon" autocomplete="tel"></label>
-    <label>Adres lokalu / miejsca montażu<input type="text" name="adres" autocomplete="street-address" placeholder="np. ul. Świętojańska, Gdynia"></label>
-  </div>
-  <label>Rodzaj reklamy<select name="rodzaj">{opts}</select></label>
-  <fieldset class="dims" data-dims>
-    <legend>Wymiary szyldu</legend>
-    <p class="measure-help">Znasz wymiary? Wpisz je. Nie znasz – zmierz je na zdjęciu poniżej.</p>
-    <div class="form-row">
-      <label>Szerokość (cm)<input type="number" class="d-w" id="{fid}-w" name="szerokosc_cm" min="1" step="any" inputmode="decimal" placeholder="np. 300"></label>
-      <label>Wysokość (cm)<input type="number" class="d-h" id="{fid}-h" name="wysokosc_cm" min="1" step="any" inputmode="decimal" placeholder="np. 60"></label>
+  <input type="file" class="q-photos" id="{fid}-foto" name="zdjecia" multiple accept="image/*,.pdf,.ai,.eps,.svg">
+  <label class="photo-pick" for="{fid}-foto"><span class="photo-pick-ico" aria-hidden="true">+</span><span><strong>Dodaj zdjęcie elewacji</strong><small>Z aparatu lub galerii. Możesz dodać kilka zdjęć i logo.</small></span></label>
+  <ul class="thumbs" aria-live="polite"></ul>
+  <label for="{fid}-kontakt">Telefon lub e-mail</label>
+  <input type="text" id="{fid}-kontakt" name="kontakt" required minlength="6" autocomplete="tel" placeholder="np. 600 100 200">
+  <details class="q-more">
+    <summary>Dodaj wymiary i szczegóły <span>(opcjonalnie)</span></summary>
+    <div class="q-more-body">
+      <fieldset class="dims" data-dims>
+        <legend>Wymiary szyldu</legend>
+        <div class="form-row">
+          <label>Szerokość (cm)<input type="number" class="d-w" id="{fid}-w" name="szerokosc_cm" min="1" step="any" inputmode="decimal" placeholder="np. 300"></label>
+          <label>Wysokość (cm)<input type="number" class="d-h" id="{fid}-h" name="wysokosc_cm" min="1" step="any" inputmode="decimal" placeholder="np. 60"></label>
+        </div>
+        <p class="dims-area" aria-live="polite">Pole szyldu: wpisz szerokość i wysokość.</p>
+        <input type="hidden" name="pole_m2">
+      </fieldset>
+      <fieldset class="measure" data-measure>
+        <legend>Nie znasz wymiarów? Zmierz na zdjęciu</legend>
+        <p class="measure-empty">Najpierw dodaj zdjęcie elewacji (na wprost) – zaznaczysz na nim drzwi i miejsce na szyld, a my policzymy wymiary.</p>
+        <div class="measure-stage" hidden>
+          <div class="measure-tools" role="group" aria-label="Co zaznaczasz">
+            <button type="button" class="btn" data-mode="line" aria-pressed="true">1. Drzwi</button>
+            <button type="button" class="btn" data-mode="rect" aria-pressed="false">2. Miejsce na szyld</button>
+            <button type="button" class="btn btn-link" data-clear>Wyczyść</button>
+          </div>
+          <canvas class="measure-canvas" aria-label="Zdjęcie elewacji – przeciągnij, aby zaznaczyć"></canvas>
+          <p class="measure-label">Szerokość zaznaczonego elementu</p>
+          <div class="measure-tools" role="group" aria-label="Szerokość elementu">
+            <button type="button" class="btn" data-ref="90" aria-pressed="false">Drzwi ok. 90 cm</button>
+            <button type="button" class="btn" data-ref="150" aria-pressed="false">Dwuskrzydłowe ok. 150 cm</button>
+          </div>
+          <label>albo wpisz (cm)<input type="number" class="m-ref" id="{fid}-ref" name="szerokosc_odniesienia_cm" min="1" step="any" inputmode="decimal" placeholder="np. 90"></label>
+          <p class="measure-result" aria-live="polite"></p>
+          <p class="measure-note">Wynik jest orientacyjny – drzwi i szyld muszą być na tej samej ścianie. Dokładnie zmierzymy przed produkcją.</p>
+        </div>
+      </fieldset>
+      <label>Rodzaj reklamy<select name="rodzaj">{opts}</select></label>
+      <label>Adres montażu<input type="text" name="adres" autocomplete="street-address" placeholder="np. ul. Świętojańska, Gdynia"></label>
+      <label>Imię lub nazwa firmy<input type="text" name="imie" autocomplete="name"></label>
+      <label>Wiadomość<textarea name="wiadomosc" rows="3" placeholder="Podświetlany czy nie? Termin, budżet…"></textarea></label>
     </div>
-    <p class="dims-area" aria-live="polite">Pole szyldu: wpisz szerokość i wysokość.</p>
-    <input type="hidden" name="pole_m2">
-  </fieldset>
-  <fieldset class="measure" data-measure>
-    <legend>Zdjęcie elewacji – zmierz miejsce na szyld</legend>
-    <p class="measure-help">Dodaj zdjęcie zrobione na wprost. Zaznacz na nim element, którego szerokość znasz (np. drzwi), i miejsce na szyld – policzymy wymiary i pole szyldu.</p>
-    <label for="{fid}-foto">Zdjęcie elewacji</label>
-    <input type="file" class="m-foto" id="{fid}-foto" name="zdjecie_elewacji" accept="image/*">
-    <div class="measure-stage" hidden>
-      <div class="measure-tools" role="group" aria-label="Co zaznaczasz">
-        <button type="button" class="btn" data-mode="line" aria-pressed="true">1. Element o znanej szerokości</button>
-        <button type="button" class="btn" data-mode="rect" aria-pressed="false">2. Miejsce na szyld</button>
-        <button type="button" class="btn btn-link" data-clear>Wyczyść</button>
-      </div>
-      <canvas class="measure-canvas" aria-label="Zdjęcie elewacji – przeciągnij, aby zaznaczyć"></canvas>
-      <label for="{fid}-ref">Szerokość zaznaczonego elementu (cm)</label>
-      <input type="number" class="m-ref" id="{fid}-ref" name="szerokosc_odniesienia_cm" min="1" step="any" inputmode="decimal" placeholder="np. 90 (typowe drzwi)">
-      <p class="measure-result" aria-live="polite"></p>
-      <p class="measure-note">Wynik jest orientacyjny: zaznaczony element i szyld muszą być na tej samej ścianie. Dokładne wymiary sprawdzimy przed produkcją.</p>
-    </div>
-  </fieldset>
-  <label>Logo i inne pliki (JPG, PNG, PDF, AI, SVG)<input type="file" name="zalaczniki" multiple accept="image/*,.pdf,.ai,.eps,.svg"></label>
-  <label>Wiadomość<textarea name="wiadomosc" rows="4" placeholder="Czy reklama ma być podświetlana? Jaki masz termin i budżet?"></textarea></label>
-  <label class="check"><input type="checkbox" name="zgoda" required><span>Zgadzam się na przetwarzanie danych w celu przygotowania wyceny. <a href="{html.escape(FIRMA['polityka_prywatnosci'])}">Polityka prywatności</a></span></label>
-  <button class="btn btn-primary" type="submit">Wyślij zapytanie o wycenę</button>
-</form>
-<script src="kalkulator.js" defer></script>'''
+  </details>
+  <button class="btn btn-primary btn-send" type="submit">Wyślij do wyceny</button>
+  <p class="form-note">Odpowiemy z wyceną w ciągu {fill(FIRMA["czas_odpowiedzi"])}. Dane wykorzystamy tylko do przygotowania wyceny – <a href="{html.escape(FIRMA['polityka_prywatnosci'])}">polityka prywatności</a>.</p>
+  <p class="form-status" role="status" hidden></p>
+</form>'''
 
 
 def mapa(_):
@@ -1020,7 +1027,16 @@ def footer():
   </div>
   <p class="wrap copy">© 2026 {fill(FIRMA["nazwa"])} · <a href="{html.escape(FIRMA["polityka_prywatnosci"])}">Polityka prywatności</a></p>
 </footer>
-<div class="mobile-bar"><a class="btn btn-dark" href="tel:{FIRMA["telefon_href"]}">Zadzwoń</a><a class="btn btn-primary" href="kontakt.html#formularz">Wyślij zdjęcie</a></div>'''
+<nav class="mobile-bar" aria-label="Szybki kontakt">
+  <a class="btn btn-dark" href="tel:{FIRMA["telefon_href"]}">Zadzwoń</a>
+  <a class="btn btn-dark" href="https://wa.me/{FIRMA["whatsapp"]}" rel="noopener">WhatsApp</a>
+  <a class="btn btn-primary" href="kontakt.html#formularz" data-quote-open>Wyślij zdjęcie</a>
+</nav>
+<dialog class="sheet" id="wycena" aria-labelledby="wycena-tytul">
+  <div class="sheet-head"><p class="sheet-title" id="wycena-tytul">Wyślij zdjęcie do wyceny</p><button type="button" class="sheet-close" aria-label="Zamknij">×</button></div>
+  {form("okno")}
+</dialog>
+<script src="wycena.js" defer></script>'''
 
 
 MOCK_TXT = {"index": "TWOJA FIRMA", "szyldy-reklamowe-gdynia": "TWOJA FIRMA",
@@ -1323,7 +1339,7 @@ def main():
     (OUT / "robots.txt").write_text(robots(), encoding="utf-8")
     (OUT / "llms.txt").write_text(llms(), encoding="utf-8")
     (OUT / "favicon.svg").write_text(FAVICON, encoding="utf-8")
-    (OUT / "kalkulator.js").write_text((Path(__file__).parent / "kalkulator.js").read_text(encoding="utf-8"), encoding="utf-8")
+    (OUT / "wycena.js").write_text((Path(__file__).parent / "wycena.js").read_text(encoding="utf-8"), encoding="utf-8")
     images_makieta() if MAKIETA else images()
     print("Gotowe:", ", ".join(sorted(x.name for x in OUT.iterdir())))
 

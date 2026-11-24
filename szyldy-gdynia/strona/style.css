@@ -275,3 +275,48 @@ figcaption { padding: 12px 14px; font-size: .9rem; line-height: 1.5; color: var(
 .dims legend { font-weight: 700; padding: 0 4px; color: var(--ink); }
 .dims-area { margin: 0; }
 .dims-area strong { color: var(--ink); font-size: 1.1rem; }
+
+/* ===== szybka wycena: pasek na dole, okno, krótki formularz ===== */
+body { padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)); }
+.mobile-bar { display: grid !important; grid-template-columns: 1fr 1fr 1.4fr; gap: 8px; z-index: 60; }
+.mobile-bar .btn { min-height: 48px; padding: 10px 8px; font-size: .95rem; }
+@media (min-width: 960px) {
+  .mobile-bar { left: 50%; right: auto; bottom: 16px; transform: translateX(-50%); width: 560px; border-radius: 999px; border: 1px solid var(--line-bar, #ccc); box-shadow: 0 12px 40px -12px rgba(0,0,0,.45); padding: 8px; }
+}
+.sheet { border: 0; padding: 0; width: 100%; max-width: 560px; max-height: 92vh; margin: auto auto 0; border-radius: 18px 18px 0 0; background: var(--bg, #fff); color: var(--text, #222); overflow: auto; }
+.sheet::backdrop { background: rgba(10, 12, 16, .6); }
+@media (min-width: 720px) { .sheet { margin: auto; border-radius: 18px; } }
+.sheet-head { position: sticky; top: 0; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 16px; background: var(--bg, #fff); border-bottom: 1px solid var(--line, #ddd); }
+.sheet-title { margin: 0; font-weight: 800; font-size: 1.15rem; color: var(--ink, #111); }
+.sheet-close { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line, #ccc); background: var(--bg-alt, #f2f2f2); font-size: 1.4rem; line-height: 1; cursor: pointer; color: var(--ink, #111); }
+.sheet .qform { margin: 0; border: 0; border-radius: 0; box-shadow: none; }
+
+.qform { display: grid; gap: 12px; }
+.q-photos { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; }
+.photo-pick { display: flex !important; align-items: center; gap: 14px; padding: 18px; border: 2px dashed var(--accent-dark, #555); border-radius: 14px; background: var(--bg-alt, #f4f4f4); cursor: pointer; font-weight: 400 !important; }
+.photo-pick strong { display: block; font-size: 1.1rem; color: var(--ink, #111); }
+.photo-pick small { display: block; color: var(--muted, #666); font-size: .9rem; line-height: 1.4; }
+.photo-pick-ico { flex: none; width: 52px; height: 52px; display: grid; place-items: center; border-radius: 50%; background: var(--accent, #222); color: var(--night, #fff); font-size: 2rem; font-weight: 700; line-height: 1; }
+.q-photos:focus-visible + .photo-pick { outline: 3px solid var(--accent, #222); outline-offset: 2px; }
+.has-photos .photo-pick { border-style: solid; }
+.thumbs { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 0; }
+.thumbs:empty { display: none; }
+.thumbs li { padding: 0; margin: 0; }
+.thumbs li::before { display: none; }
+.thumbs img { width: 64px; height: 64px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line, #ccc); }
+.thumbs li.file { padding: 6px 10px; border: 1px solid var(--line, #ccc); border-radius: 8px; font-size: .85rem; }
+.qform > label[for$="-kontakt"] { font-weight: 700; color: var(--ink, #111); margin-bottom: -6px; }
+.qform input[name="kontakt"] { font-size: 1.1rem; }
+.q-more { border: 1px solid var(--line, #ccc); border-radius: 12px; }
+.q-more summary { cursor: pointer; padding: 12px 14px; font-weight: 600; color: var(--ink, #111); }
+.q-more summary span { font-weight: 400; color: var(--muted, #666); }
+.q-more-body { display: grid; gap: 12px; padding: 0 14px 14px; }
+.btn-send { width: 100%; min-height: 56px; font-size: 1.1rem; justify-self: stretch !important; }
+.form-note { margin: 0; font-size: .88rem; color: var(--muted, #666); }
+.form-status { margin: 0; font-weight: 600; }
+.form-done { padding: 8px 0; }
+.form-done-title { font-size: 1.3rem; font-weight: 800; color: var(--ink, #111); margin: 0 0 .3em; }
+.measure-empty, .measure-label { margin: 0; font-size: .92rem; }
+.measure-label { font-weight: 600; }
+.measure-tools .btn[data-ref][aria-pressed="true"] { background: var(--night, #222); color: var(--accent, #fff); border-color: var(--night, #222); }
+.mobile-bar { background: rgba(13,15,19,.94); }

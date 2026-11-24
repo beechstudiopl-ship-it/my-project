@@ -224,6 +224,63 @@
   </div>
   <p class="wrap copy">© 2026 <mark class="fill">[UZUPEŁNIJ: pełna nazwa firmy]</mark> · <a href="[UZUPEŁNIJ: adres polityki prywatności]">Polityka prywatności</a></p>
 </footer>
-<div class="mobile-bar"><a class="btn btn-dark" href="tel:+48000000000">Zadzwoń</a><a class="btn btn-primary" href="kontakt.html#formularz">Wyślij zdjęcie</a></div>
+<nav class="mobile-bar" aria-label="Szybki kontakt">
+  <a class="btn btn-dark" href="tel:+48000000000">Zadzwoń</a>
+  <a class="btn btn-dark" href="https://wa.me/48000000000" rel="noopener">WhatsApp</a>
+  <a class="btn btn-primary" href="kontakt.html#formularz" data-quote-open>Wyślij zdjęcie</a>
+</nav>
+<dialog class="sheet" id="wycena" aria-labelledby="wycena-tytul">
+  <div class="sheet-head"><p class="sheet-title" id="wycena-tytul">Wyślij zdjęcie do wyceny</p><button type="button" class="sheet-close" aria-label="Zamknij">×</button></div>
+  <form class="form qform" id="szybka" action="https://formspree.io/f/UZUPELNIJ" method="post" enctype="multipart/form-data" data-quote>
+  <input type="hidden" name="strona" value="okno">
+  <input type="file" class="q-photos" id="szybka-foto" name="zdjecia" multiple accept="image/*,.pdf,.ai,.eps,.svg">
+  <label class="photo-pick" for="szybka-foto"><span class="photo-pick-ico" aria-hidden="true">+</span><span><strong>Dodaj zdjęcie elewacji</strong><small>Z aparatu lub galerii. Możesz dodać kilka zdjęć i logo.</small></span></label>
+  <ul class="thumbs" aria-live="polite"></ul>
+  <label for="szybka-kontakt">Telefon lub e-mail</label>
+  <input type="text" id="szybka-kontakt" name="kontakt" required minlength="6" autocomplete="tel" placeholder="np. 600 100 200">
+  <details class="q-more">
+    <summary>Dodaj wymiary i szczegóły <span>(opcjonalnie)</span></summary>
+    <div class="q-more-body">
+      <fieldset class="dims" data-dims>
+        <legend>Wymiary szyldu</legend>
+        <div class="form-row">
+          <label>Szerokość (cm)<input type="number" class="d-w" id="szybka-w" name="szerokosc_cm" min="1" step="any" inputmode="decimal" placeholder="np. 300"></label>
+          <label>Wysokość (cm)<input type="number" class="d-h" id="szybka-h" name="wysokosc_cm" min="1" step="any" inputmode="decimal" placeholder="np. 60"></label>
+        </div>
+        <p class="dims-area" aria-live="polite">Pole szyldu: wpisz szerokość i wysokość.</p>
+        <input type="hidden" name="pole_m2">
+      </fieldset>
+      <fieldset class="measure" data-measure>
+        <legend>Nie znasz wymiarów? Zmierz na zdjęciu</legend>
+        <p class="measure-empty">Najpierw dodaj zdjęcie elewacji (na wprost) – zaznaczysz na nim drzwi i miejsce na szyld, a my policzymy wymiary.</p>
+        <div class="measure-stage" hidden>
+          <div class="measure-tools" role="group" aria-label="Co zaznaczasz">
+            <button type="button" class="btn" data-mode="line" aria-pressed="true">1. Drzwi</button>
+            <button type="button" class="btn" data-mode="rect" aria-pressed="false">2. Miejsce na szyld</button>
+            <button type="button" class="btn btn-link" data-clear>Wyczyść</button>
+          </div>
+          <canvas class="measure-canvas" aria-label="Zdjęcie elewacji – przeciągnij, aby zaznaczyć"></canvas>
+          <p class="measure-label">Szerokość zaznaczonego elementu</p>
+          <div class="measure-tools" role="group" aria-label="Szerokość elementu">
+            <button type="button" class="btn" data-ref="90" aria-pressed="false">Drzwi ok. 90 cm</button>
+            <button type="button" class="btn" data-ref="150" aria-pressed="false">Dwuskrzydłowe ok. 150 cm</button>
+          </div>
+          <label>albo wpisz (cm)<input type="number" class="m-ref" id="szybka-ref" name="szerokosc_odniesienia_cm" min="1" step="any" inputmode="decimal" placeholder="np. 90"></label>
+          <p class="measure-result" aria-live="polite"></p>
+          <p class="measure-note">Wynik jest orientacyjny – drzwi i szyld muszą być na tej samej ścianie. Dokładnie zmierzymy przed produkcją.</p>
+        </div>
+      </fieldset>
+      <label>Rodzaj reklamy<select name="rodzaj"><option>Nie wiem – doradźcie</option><option>Szyld płaski</option><option>Kaseton podświetlany</option><option>Litery przestrzenne</option><option>Litery przestrzenne LED</option><option>Semafor (szyld dwustronny)</option><option>Oznakowanie wnętrza</option></select></label>
+      <label>Adres montażu<input type="text" name="adres" autocomplete="street-address" placeholder="np. ul. Świętojańska, Gdynia"></label>
+      <label>Imię lub nazwa firmy<input type="text" name="imie" autocomplete="name"></label>
+      <label>Wiadomość<textarea name="wiadomosc" rows="3" placeholder="Podświetlany czy nie? Termin, budżet…"></textarea></label>
+    </div>
+  </details>
+  <button class="btn btn-primary btn-send" type="submit">Wyślij do wyceny</button>
+  <p class="form-note">Odpowiemy z wyceną w ciągu <mark class="fill">[UZUPEŁNIJ: czas odpowiedzi, np. 1 dnia roboczego]</mark>. Dane wykorzystamy tylko do przygotowania wyceny – <a href="[UZUPEŁNIJ: adres polityki prywatności]">polityka prywatności</a>.</p>
+  <p class="form-status" role="status" hidden></p>
+</form>
+</dialog>
+<script src="wycena.js" defer></script>
 </body>
 </html>
