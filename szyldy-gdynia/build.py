@@ -202,15 +202,41 @@ def form(arg):
     <label>Telefon<input type="tel" name="telefon" autocomplete="tel"></label>
     <label>Adres lokalu / miejsca montażu<input type="text" name="adres" autocomplete="street-address" placeholder="np. ul. Świętojańska, Gdynia"></label>
   </div>
-  <div class="form-row">
-    <label>Rodzaj reklamy<select name="rodzaj">{opts}</select></label>
-    <label>Przybliżone wymiary<input type="text" name="wymiary" placeholder="np. 300 × 60 cm"></label>
-  </div>
-  <label>Zdjęcie elewacji, logo (JPG, PNG, PDF, AI, SVG)<input type="file" name="zalaczniki" multiple accept="image/*,.pdf,.ai,.eps,.svg"></label>
+  <label>Rodzaj reklamy<select name="rodzaj">{opts}</select></label>
+  <fieldset class="dims" data-dims>
+    <legend>Wymiary szyldu</legend>
+    <p class="measure-help">Znasz wymiary? Wpisz je. Nie znasz – zmierz je na zdjęciu poniżej.</p>
+    <div class="form-row">
+      <label>Szerokość (cm)<input type="number" class="d-w" id="{fid}-w" name="szerokosc_cm" min="1" step="any" inputmode="decimal" placeholder="np. 300"></label>
+      <label>Wysokość (cm)<input type="number" class="d-h" id="{fid}-h" name="wysokosc_cm" min="1" step="any" inputmode="decimal" placeholder="np. 60"></label>
+    </div>
+    <p class="dims-area" aria-live="polite">Pole szyldu: wpisz szerokość i wysokość.</p>
+    <input type="hidden" name="pole_m2">
+  </fieldset>
+  <fieldset class="measure" data-measure>
+    <legend>Zdjęcie elewacji – zmierz miejsce na szyld</legend>
+    <p class="measure-help">Dodaj zdjęcie zrobione na wprost. Zaznacz na nim element, którego szerokość znasz (np. drzwi), i miejsce na szyld – policzymy wymiary i pole szyldu.</p>
+    <label for="{fid}-foto">Zdjęcie elewacji</label>
+    <input type="file" class="m-foto" id="{fid}-foto" name="zdjecie_elewacji" accept="image/*">
+    <div class="measure-stage" hidden>
+      <div class="measure-tools" role="group" aria-label="Co zaznaczasz">
+        <button type="button" class="btn" data-mode="line" aria-pressed="true">1. Element o znanej szerokości</button>
+        <button type="button" class="btn" data-mode="rect" aria-pressed="false">2. Miejsce na szyld</button>
+        <button type="button" class="btn btn-link" data-clear>Wyczyść</button>
+      </div>
+      <canvas class="measure-canvas" aria-label="Zdjęcie elewacji – przeciągnij, aby zaznaczyć"></canvas>
+      <label for="{fid}-ref">Szerokość zaznaczonego elementu (cm)</label>
+      <input type="number" class="m-ref" id="{fid}-ref" name="szerokosc_odniesienia_cm" min="1" step="any" inputmode="decimal" placeholder="np. 90 (typowe drzwi)">
+      <p class="measure-result" aria-live="polite"></p>
+      <p class="measure-note">Wynik jest orientacyjny: zaznaczony element i szyld muszą być na tej samej ścianie. Dokładne wymiary sprawdzimy przed produkcją.</p>
+    </div>
+  </fieldset>
+  <label>Logo i inne pliki (JPG, PNG, PDF, AI, SVG)<input type="file" name="zalaczniki" multiple accept="image/*,.pdf,.ai,.eps,.svg"></label>
   <label>Wiadomość<textarea name="wiadomosc" rows="4" placeholder="Czy reklama ma być podświetlana? Jaki masz termin i budżet?"></textarea></label>
   <label class="check"><input type="checkbox" name="zgoda" required><span>Zgadzam się na przetwarzanie danych w celu przygotowania wyceny. <a href="{html.escape(FIRMA['polityka_prywatnosci'])}">Polityka prywatności</a></span></label>
   <button class="btn btn-primary" type="submit">Wyślij zapytanie o wycenę</button>
-</form>'''
+</form>
+<script src="kalkulator.js" defer></script>'''
 
 
 def mapa(_):
@@ -1297,6 +1323,7 @@ def main():
     (OUT / "robots.txt").write_text(robots(), encoding="utf-8")
     (OUT / "llms.txt").write_text(llms(), encoding="utf-8")
     (OUT / "favicon.svg").write_text(FAVICON, encoding="utf-8")
+    (OUT / "kalkulator.js").write_text((Path(__file__).parent / "kalkulator.js").read_text(encoding="utf-8"), encoding="utf-8")
     images_makieta() if MAKIETA else images()
     print("Gotowe:", ", ".join(sorted(x.name for x in OUT.iterdir())))
 

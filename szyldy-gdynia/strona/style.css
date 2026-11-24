@@ -255,3 +255,23 @@ figcaption { padding: 12px 14px; font-size: .9rem; line-height: 1.5; color: var(
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* kalkulator wymiarów szyldu ze zdjęcia */
+.measure { border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-alt); padding: 14px; margin: 0; min-width: 0; display: grid; gap: 8px; }
+.measure legend { font-weight: 700; padding: 0 4px; }
+.measure-help, .measure-note { margin: 0; font-size: .92rem; }
+.measure-note { color: #666; }
+.measure-stage { display: grid; gap: 8px; }
+.measure-stage[hidden] { display: none; }
+.measure-tools { display: flex; flex-wrap: wrap; gap: 6px; }
+.measure-tools .btn { padding: 6px 10px; font-size: .9rem; min-height: 0; }
+.measure-tools .btn[aria-pressed="true"] { background: var(--night); color: var(--accent); border-color: var(--night); }
+.measure-tools .btn-link { border-color: transparent; background: none; text-decoration: underline; }
+.measure-canvas { width: 100%; height: auto; max-width: 100%; display: block; touch-action: none; cursor: crosshair; background: #ddd; border-radius: 10px; }
+.measure-result { margin: 0; font-size: 1rem; }
+.measure-tools .btn:not([aria-pressed="true"]):not(.btn-link) { border-color: #cfd3da; background: #fff; color: var(--ink); }
+.measure-result strong { color: var(--ink); }
+.dims { border: 1px solid var(--line); border-radius: var(--radius); padding: 14px; margin: 0; min-width: 0; display: grid; gap: 8px; }
+.dims legend { font-weight: 700; padding: 0 4px; color: var(--ink); }
+.dims-area { margin: 0; }
+.dims-area strong { color: var(--ink); font-size: 1.1rem; }
