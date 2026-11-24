@@ -42,7 +42,11 @@ FIRMA = {
 ADRES = f"{FIRMA['ulica']}, {FIRMA['kod']} {FIRMA['miasto']}"
 GODZINY = f"pn–pt: {FIRMA['godziny_pn_pt']}, sobota: {FIRMA['godziny_sob']}, niedziela: nieczynne"
 
-OUT = Path(__file__).parent / "strona"
+import sys
+# python3 build.py            -> pełna wersja w ./strona
+# python3 build.py --makieta  -> makieta bez stylu (szkielet) w ./makieta
+MAKIETA = "--makieta" in sys.argv
+OUT = Path(__file__).parent / ("makieta" if MAKIETA else "strona")
 
 # ---------------------------------------------------------------------------
 # 2. Pomocnicze
@@ -1009,6 +1013,12 @@ def mock(p):
 </div>'''
 
 
+FONTS = """<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;112,800&amp;display=swap">
+"""
+
+
 def page_html(p):
     slug = p["slug"]
     title, desc = p["title"], p["desc"]
@@ -1053,10 +1063,7 @@ def page_html(p):
 <meta property="og:image:alt" content="Szyldy reklamowe, litery przestrzenne i reklama LED – Gdynia">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;112,800&amp;display=swap">
-<link rel="stylesheet" href="style.css">
+{"" if MAKIETA else FONTS}<link rel="stylesheet" href="style.css">
 {ld_blocks(p)}
 </head>
 <body>
@@ -1069,7 +1076,7 @@ def page_html(p):
 <p class="lead">{inline(p["lead"])}</p>
 <div class="actions"><a class="btn btn-primary btn-lg" href="{cta_href}">Wyślij zdjęcie i wymiary</a><a class="btn btn-outline btn-lg" href="tel:{FIRMA["telefon_href"]}">Zadzwoń</a></div>
 </div>
-{mock(p)}
+{"" if MAKIETA else mock(p)}
 </div>
 {trust}
 </section>
@@ -1259,6 +1266,28 @@ def images():
     im.save(og, "JPEG", quality=85)
 
 
+def images_makieta():
+    """Szare prostokąty w miejscu zdjęć – do makiety."""
+    from PIL import Image, ImageDraw, ImageFont
+    img_dir = OUT / "img"
+    img_dir.mkdir(parents=True, exist_ok=True)
+    try:
+        f = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 26)
+    except OSError:
+        f = ImageFont.load_default()
+    for key in IMAGES:
+        im = Image.new("RGB", (800, 600), (221, 221, 221))
+        d = ImageDraw.Draw(im)
+        d.line([(0, 0), (800, 600)], fill=(190, 190, 190), width=2)
+        d.line([(0, 600), (800, 0)], fill=(190, 190, 190), width=2)
+        d.rectangle([300, 278, 500, 322], fill=(221, 221, 221))
+        d.text((400, 300), f"ZDJĘCIE: {key}", font=f, fill=(110, 110, 110), anchor="mm")
+        im.save(img_dir / f"{key}.webp", "WEBP", quality=60)
+    im = Image.new("RGB", (1200, 630), (221, 221, 221))
+    ImageDraw.Draw(im).text((600, 315), "og-image 1200×630", font=f, fill=(110, 110, 110), anchor="mm")
+    im.save(img_dir / "og-image.jpg", "JPEG", quality=70)
+
+
 def main():
     OUT.mkdir(exist_ok=True)
     for p in PAGES:
@@ -1268,7 +1297,7 @@ def main():
     (OUT / "robots.txt").write_text(robots(), encoding="utf-8")
     (OUT / "llms.txt").write_text(llms(), encoding="utf-8")
     (OUT / "favicon.svg").write_text(FAVICON, encoding="utf-8")
-    images()
+    images_makieta() if MAKIETA else images()
     print("Gotowe:", ", ".join(sorted(x.name for x in OUT.iterdir())))
 
 

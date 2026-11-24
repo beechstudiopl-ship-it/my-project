@@ -1,0 +1,93 @@
+/* MAKIETA – szkielet bez stylu: tylko układ, odcienie szarości, font systemowy */
+* { box-sizing: border-box; }
+body { margin: 0; font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; color: #222; background: #fff; padding-bottom: 64px; }
+img { max-width: 100%; height: auto; display: block; }
+a { color: #222; }
+h1, h2, h3 { line-height: 1.25; margin: 0 0 .5em; }
+h1 { font-size: 1.9rem; }
+h2 { font-size: 1.4rem; }
+h3 { font-size: 1.05rem; }
+p, ul, ol { margin: 0 0 1em; }
+ul, ol { padding-left: 1.3em; }
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+mark.fill { background: #eee; color: #555; border: 1px dashed #999; padding: 0 .2em; }
+.skip { position: absolute; left: -9999px; }
+
+/* nagłówek */
+.site-header { border-bottom: 1px solid #ccc; }
+.header-inner { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; padding-top: 10px; padding-bottom: 10px; }
+.logo { flex: 1; display: flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 700; }
+.logo-mark { width: 24px; height: 24px; border: 2px solid #222; }
+.header-call svg { display: none; }
+.main-nav { order: 3; flex-basis: 100%; }
+.main-nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 14px; }
+.main-nav a[aria-current="page"] { font-weight: 700; text-decoration: none; }
+
+/* przyciski */
+.btn { display: inline-block; padding: 10px 16px; border: 2px solid #222; text-decoration: none; font-weight: 700; background: #fff; color: #222; font: inherit; cursor: pointer; }
+.btn-primary { background: #222; color: #fff; }
+.actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1em; }
+
+/* sekcje */
+section { padding: 32px 0; border-bottom: 1px solid #e5e5e5; }
+.hero { background: #f2f2f2; }
+.crumbs { font-size: .9rem; margin-bottom: 10px; }
+.lead { font-size: 1.1rem; max-width: 70ch; }
+.trust { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; padding: 0 16px; margin-top: 20px; }
+.trust li { border: 1px solid #bbb; padding: 4px 10px; font-size: .9rem; }
+.sec-body { max-width: 760px; }
+.eyebrow { font-size: .8rem; color: #777; }
+
+/* listy-bloki */
+.tiles, .svcs, .gallery, .cards { list-style: none; padding: 0; display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); margin: 1em 0; }
+.tiles > li, .svcs > li, .card, figure { border: 1px solid #bbb; padding: 14px; margin: 0; }
+.tile-n { font-size: .8rem; color: #777; }
+.svc-ico { display: inline-block; width: 28px; height: 28px; color: #555; }
+.tiles p, .svcs p { margin: 0; }
+.steps li { margin-bottom: .5em; }
+.price-list, .info-list { list-style: none; padding: 0; border: 1px solid #bbb; }
+.price-list li, .info-list li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; padding: 8px 12px; border-top: 1px solid #ddd; }
+.price-list li:first-child, .info-list li:first-child { border-top: 0; }
+.price-list .k, .info-list .k { font-weight: 700; }
+figure { padding: 0; }
+figcaption { padding: 8px 10px; font-size: .9rem; }
+.card { display: block; text-decoration: none; }
+.card strong, .card span { display: block; }
+.card b { display: none; }
+
+/* FAQ */
+.qa { border-top: 1px solid #ddd; padding: 6px 0; }
+.qa summary { cursor: pointer; }
+.qa summary h3 { display: inline; }
+
+/* CTA, formularz, mapa */
+.cta-box { border: 2px solid #222; padding: 20px; }
+.form { display: grid; gap: 12px; border: 1px solid #bbb; padding: 16px; margin: 1em 0; }
+.form-row { display: grid; gap: 12px; }
+.form label { display: grid; gap: 4px; font-weight: 600; }
+.form input, .form select, .form textarea { font: inherit; padding: 8px; border: 1px solid #999; width: 100%; }
+.form label.check { display: flex; gap: 8px; font-weight: 400; }
+.form label.check input { width: auto; }
+.map { border: 1px dashed #999; padding: 16px; background: #f2f2f2; }
+
+/* stopka */
+.site-footer { border-top: 2px solid #222; padding: 24px 0; font-size: .95rem; }
+.footer-grid { display: grid; gap: 16px; }
+.footer-name, .footer-h { font-weight: 700; margin-bottom: .3em; }
+.footer-nav { list-style: none; padding: 0; }
+.copy { font-size: .85rem; color: #666; }
+
+/* pasek mobilny */
+.mobile-bar { position: fixed; left: 0; right: 0; bottom: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 8px; background: #fff; border-top: 1px solid #ccc; }
+.mobile-bar .btn { text-align: center; }
+
+@media (min-width: 720px) {
+  .form-row { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (min-width: 960px) {
+  body { padding-bottom: 0; }
+  .mobile-bar { display: none; }
+  .main-nav { order: 0; flex: 1; flex-basis: auto; }
+  .logo { flex: none; }
+}

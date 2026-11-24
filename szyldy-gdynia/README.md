@@ -1,6 +1,10 @@
 # Szyldy reklamowe Gdynia – strona gotowa do wgrania
 
-Na serwer wgrywasz **zawartość folderu `strona/`** (do głównego katalogu domeny).
+Są dwie wersje z tą samą treścią i SEO:
+- `strona/` – pełna wersja z wyglądem (`python3 build.py`),
+- `makieta/` – makieta bez stylu: szkielet w odcieniach szarości, font systemowy, szare prostokąty zamiast zdjęć (`python3 build.py --makieta`).
+
+Na serwer wgrywasz **zawartość jednego z tych folderów** (do głównego katalogu domeny).
 `build.py` to generator. Dane firmy wpisujesz w nim raz, w sekcji `FIRMA`, i uruchamiasz `python3 build.py`.
 Wtedy nazwa, adres, telefon i e-mail są identyczne na każdej podstronie, w JSON-LD i w llms.txt.
 Treści podstron też są w `build.py`, w sekcji `PAGES`. Jeśli edytujesz HTML ręcznie, nie uruchamiaj potem `build.py`, bo nadpisze Twoje zmiany.
