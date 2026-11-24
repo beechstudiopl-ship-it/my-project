@@ -44,7 +44,7 @@ obszar działania, link do wizytówki w Mapach Google, adres obsługi formularza
 - czy wykonujecie ekrany LED, sterowniki czasowe i modernizację kasetonów.
 
 **3. Do uzupełnienia na konkretnych podstronach:**
-- index: doświadczenie (od kiedy działacie, ile realizacji), opinie klientów, podpisy zdjęć,
+- index: doświadczenie (od kiedy działacie, ile realizacji), opinie klientów; galeria to 6 zdjęć w różnych rozmiarach (bez podpisów, opisy w tekście alt),
 - realizacje: opisy realizacji (branża, lokalizacja, wykonanie, materiały, czas), liczba realizacji w kategoriach,
 - cennik: czas odpowiedzi na zapytanie, co jest wliczone w cenę,
 - kontakt: parking i dojazd, mapa Google (wklej kod iframe z `loading="lazy"`), czas odpowiedzi.

@@ -251,7 +251,18 @@ def mapa(_):
             f'<p><a href="{html.escape(FIRMA["mapa_link"])}" rel="noopener">Otwórz w Mapach Google</a></p></div>')
 
 
-DIRECTIVES = {"gallery": gallery, "form": form, "map": mapa}
+def mosaic(arg):
+    """Galeria bez podpisów, zdjęcia różnej wielkości (big = 2×2, wide = 2×1, tall = 1×2)."""
+    cells = []
+    for item in arg.split(","):
+        key, _, size = item.strip().partition(":")
+        alt = IMAGES[key][0]
+        cls = f' class="m-{size}"' if size else ""
+        cells.append(f'<figure{cls}><img src="img/{key}.webp" width="800" height="600" loading="lazy" decoding="async" alt="{html.escape(alt)}"></figure>')
+    return '<div class="mosaic">' + "".join(cells) + "</div>"
+
+
+DIRECTIVES = {"mosaic": mosaic, "gallery": gallery, "form": form, "map": mapa}
 
 # ---------------------------------------------------------------------------
 # 3. Nawigacja i linki „Zobacz też”
@@ -351,9 +362,7 @@ Orientacyjne ceny znajdziesz w [cenniku]({L_CE}): [UZUPEŁNIJ: przykładowe wide
         ("Realizacje i opinie klientów", f"""
 Najlepiej ocenić naszą pracę po efektach. W galerii [realizacje]({L_RE}) pokazujemy szyldy, litery przestrzenne i reklamy LED wykonane dla firm z Gdyni i okolic.
 
-{{{{gallery:szyld-1,litery-1,led-1}}}}
-
-[UZUPEŁNIJ: 3–6 zdjęć realizacji z podpisami, np. rodzaj reklamy, materiał, branża klienta, dzielnica].
+{{{{mosaic:szyld-1:big,litery-1:tall,led-1,szyld-2:wide,litery-2,led-2:wide}}}}
 
 **Opinie klientów:** [UZUPEŁNIJ: prawdziwe opinie, np. z wizytówki Google, z imieniem lub nazwą firmy za zgodą klienta].
 """),

@@ -152,3 +152,12 @@ body { padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)); }
 .measure-empty, .measure-label { margin: 0; font-size: .92rem; }
 .measure-label { font-weight: 600; }
 .measure-tools .btn[data-ref][aria-pressed="true"] { background: var(--night, #222); color: var(--accent, #fff); border-color: var(--night, #222); }
+
+/* galeria-mozaika: zdjęcia różnej wielkości */
+.mosaic { display: grid; grid-template-columns: repeat(2, 1fr); grid-auto-rows: 140px; grid-auto-flow: dense; gap: 8px; margin: 1.4em 0 1.6em; }
+.mosaic figure { margin: 0; padding: 0; border: 0; border-radius: 10px; overflow: hidden; background: #ddd; }
+.mosaic img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: auto; }
+.mosaic .m-big { grid-column: span 2; grid-row: span 2; }
+.mosaic .m-wide { grid-column: span 2; }
+.mosaic .m-tall { grid-row: span 2; }
+@media (min-width: 720px) { .mosaic { grid-template-columns: repeat(4, 1fr); grid-auto-rows: 170px; gap: 10px; } }
