@@ -135,7 +135,7 @@ def md(src):
                 for n, it in enumerate(items, 1):
                     t, d = item_parts(it)
                     cells.append(f'<li class="tile"><span class="tile-n">{n:02d}</span><h3>{inline(t)}</h3><p>{inline(d)}</p></li>')
-                out.append('<ul class="tiles">' + "".join(cells) + "</ul>")
+                out.append(f'<ul class="tiles tiles-{len(cells)}">' + "".join(cells) + "</ul>")
             elif variant == "services":
                 cells = []
                 for it in items:
@@ -1008,33 +1008,31 @@ def header(active):
   <div class="wrap header-inner">
     <a class="logo" href="./" aria-label="{html.escape(FIRMA["logo"])} – strona główna"><span class="logo-mark" aria-hidden="true"></span><span class="logo-txt">{html.escape(FIRMA["logo"])}</span></a>
     <nav class="main-nav" aria-label="Menu główne"><ul>{items}</ul></nav>
-    <a class="btn btn-primary header-call" href="tel:{FIRMA["telefon_href"]}"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Zadzwoń</a>
+    <div class="header-actions">
+      <a class="btn btn-outline btn-sm header-call" href="tel:{FIRMA["telefon_href"]}">Zadzwoń</a>
+      <a class="btn btn-primary btn-sm" href="kontakt.html#formularz" data-quote-open>Wyślij zdjęcie</a>
+    </div>
   </div>
 </header>'''
 
+
 def footer():
-    nav = "".join(f'<li><a href="{href(s)}">{n}</a></li>' for s, n in NAV)
+    oferta = "".join(f'<li><a href="{href(s)}">{n}</a></li>' for s, n in NAV[:3])
+    firma = "".join(f'<li><a href="{href(s)}">{n}</a></li>' for s, n in NAV[3:])
     return f'''<footer class="site-footer">
   <div class="wrap footer-grid">
-    <div itemscope itemtype="https://schema.org/LocalBusiness">
-      <p class="footer-name" itemprop="name">{fill(FIRMA["nazwa"])}</p>
-      <p>Szyldy reklamowe, litery przestrzenne i reklama LED w Gdyni.</p>
-      <p itemprop="address">{fill(html.escape(ADRES, quote=False))}</p>
-      <p>Tel.: <a itemprop="telephone" href="tel:{FIRMA["telefon_href"]}">{fill(FIRMA["telefon"])}</a><br>
-      E-mail: <a itemprop="email" href="mailto:{html.escape(FIRMA["email"])}">{fill(FIRMA["email"])}</a></p>
+    <div class="footer-brand" itemscope itemtype="https://schema.org/LocalBusiness">
+      <a class="logo" href="./"><span class="logo-mark" aria-hidden="true"></span><span class="logo-txt">{html.escape(FIRMA["logo"])}</span></a>
+      <p class="footer-tag">Szyldy reklamowe, litery przestrzenne i reklama LED w Gdyni.</p>
+      <p><span itemprop="name">{fill(FIRMA["nazwa"])}</span><br><span itemprop="address">{fill(html.escape(ADRES, quote=False))}</span></p>
+      <p>Tel.: <a itemprop="telephone" href="tel:{FIRMA["telefon_href"]}">{fill(FIRMA["telefon"])}</a><br>E-mail: <a itemprop="email" href="mailto:{html.escape(FIRMA["email"])}">{fill(FIRMA["email"])}</a></p>
     </div>
-    <div>
-      <p class="footer-h">Godziny pracy</p>
-      <p>Pn–pt: {fill(FIRMA["godziny_pn_pt"])}<br>Sobota: {fill(html.escape(FIRMA["godziny_sob"], quote=False))}<br>Niedziela: nieczynne</p>
-      <p class="footer-h">Obszar działania</p>
-      <p>{fill(", ".join(FIRMA["obszar"]))}</p>
-    </div>
-    <div>
-      <p class="footer-h">Oferta</p>
-      <ul class="footer-nav"><li><a href="./">Strona główna</a></li>{nav}</ul>
-    </div>
+    <div><p class="footer-h">Oferta</p><ul class="footer-nav">{oferta}</ul></div>
+    <div><p class="footer-h">Firma</p><ul class="footer-nav"><li><a href="./">Strona główna</a></li>{firma}</ul></div>
+    <div><p class="footer-h">Godziny pracy</p><p>Pn–pt: {fill(FIRMA["godziny_pn_pt"])}<br>Sobota: {fill(html.escape(FIRMA["godziny_sob"], quote=False))}<br>Niedziela: nieczynne</p>
+      <p class="footer-h">Obszar działania</p><p>{fill(", ".join(FIRMA["obszar"]))}</p></div>
   </div>
-  <p class="wrap copy">© 2026 {fill(FIRMA["nazwa"])} · <a href="{html.escape(FIRMA["polityka_prywatnosci"])}">Polityka prywatności</a></p>
+  <div class="wrap copy"><span>© 2026 {fill(FIRMA["nazwa"])} · Gdynia</span><a href="{html.escape(FIRMA["polityka_prywatnosci"])}">Polityka prywatności</a></div>
 </footer>
 <nav class="mobile-bar" aria-label="Szybki kontakt">
   <a class="btn btn-dark" href="tel:{FIRMA["telefon_href"]}">Zadzwoń</a>
@@ -1066,8 +1064,39 @@ def mock(p):
 
 FONTS = """<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;112,800&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,500;125,600;125,700&amp;display=swap">
 """
+
+
+HERO_IMG = {"index": "hero-index", "szyldy-reklamowe-gdynia": "hero-szyldy",
+            "litery-przestrzenne-gdynia": "hero-litery", "reklama-led-gdynia": "hero-led"}
+HERO_EYEBROW = {"index": "Reklama zewnętrzna · Gdynia", "szyldy-reklamowe-gdynia": "Szyldy · kasetony · semafory",
+                "litery-przestrzenne-gdynia": "Litery 3D · fasada · recepcja", "reklama-led-gdynia": "Kasetony i litery LED",
+                "realizacje": "Realizacje", "cennik": "Cennik i wycena", "kontakt": "Kontakt i wycena"}
+EYEBROWS = {
+    "Szyldy reklamowe Gdynia – co robimy i dla kogo": "Dla kogo",
+    "Nasze usługi: szyldy, litery przestrzenne i reklama LED": "Co robimy",
+    "Jak wygląda współpraca krok po kroku": "Jak działamy",
+    "Od czego zależy cena szyldu reklamowego": "Cena",
+    "Realizacje i opinie klientów": "Realizacje",
+    "Szyldy reklamowe w Gdyni i okolicy – obszar działania i kontakt": "Gdzie działamy",
+}
+STATS = [("[UZUPEŁNIJ]", "lat", "doświadczenia"), ("[UZUPEŁNIJ]", "+", "wykonanych szyldów"),
+         ("3", "", "szyldy · litery 3D · LED"), ("1", "zdjęcie", "wystarczy do wyceny")]
+
+
+def h1_html(t):
+    m = re.search(r"(w Gdyni|Gdynia)(.*)$", t)
+    if m and m.start() > 0:
+        return f'{t[:m.start()]}<span class="h1-accent">{t[m.start():]}</span>'
+    return t
+
+
+def split_intro(body_html):
+    if body_html.startswith("<p>"):
+        i = body_html.index("</p>") + 4
+        return body_html[:i].replace("<p>", '<p class="sec-intro">', 1), body_html[i:]
+    return "", body_html
 
 
 def page_html(p):
@@ -1081,17 +1110,24 @@ def page_html(p):
     secs = []
     for i, (h2, body) in enumerate(p["sections"]):
         cls = "sec alt" if i % 2 else "sec"
-        secs.append(f'<section class="{cls}"><div class="wrap sec-grid">\n<div class="sec-head"><span class="eyebrow">{i + 1:02d}</span><h2>{h2}</h2></div>\n<div class="sec-body">{md(body)}</div>\n</div></section>')
+        intro, rest = split_intro(md(body))
+        eb = EYEBROWS.get(h2)
+        eb = f'<p class="eyebrow">{eb}</p>' if eb else ""
+        secs.append(f'<section class="{cls}"><div class="wrap">\n<div class="sec-head"><div>{eb}<h2>{h2}</h2></div>{intro}</div>\n<div class="sec-body">{rest}</div>\n</div></section>')
     faq = "".join(
         f'<details class="qa"{" open" if n == 0 else ""}><summary><h3>{inline(q)}</h3></summary><p>{inline(a)}</p></details>'
         for n, (q, a) in enumerate(p["faq"]))
     cards = "".join(
         f'<a class="card" href="{href(s)}"><strong>{CARDS[s][0]}</strong><span>{CARDS[s][1]}</span><b aria-hidden="true">→</b></a>'
         for s in p["links"])
-    trust = ""
+    stats = ""
     if slug == "index":
-        trust = '<ul class="trust wrap">' + "".join(f"<li>{t}</li>" for t in TRUST) + "</ul>"
-    hero_cls = "hero has-mock" if p.get("mock") else "hero"
+        stats = '<ul class="stats">' + "".join(
+            f'<li><span class="stat-n">{fill(n)}<small>{u}</small></span><span class="stat-l">{l}</span></li>' for n, u, l in STATS) + "</ul>"
+    img = HERO_IMG.get(slug)
+    hero_cls = "hero has-img" if img else "hero"
+    hero_style = f' style="--hero-img: url(img/{img}.webp)"' if img else ""
+    preload = f'<link rel="preload" as="image" href="img/{img}.webp">\n' if img and not MAKIETA else ""
     return f'''<!doctype html>
 <html lang="pl">
 <head>
@@ -1101,7 +1137,7 @@ def page_html(p):
 <meta name="description" content="{html.escape(desc)}">
 <link rel="canonical" href="{canon}">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<meta name="theme-color" content="#0d0f13">
+<meta name="theme-color" content="#0f1d27">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pl_PL">
 <meta property="og:site_name" content="{html.escape(plain(FIRMA['nazwa']))}">
@@ -1114,32 +1150,29 @@ def page_html(p):
 <meta property="og:image:alt" content="Szyldy reklamowe, litery przestrzenne i reklama LED – Gdynia">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-{"" if MAKIETA else FONTS}<link rel="stylesheet" href="style.css">
+{"" if MAKIETA else FONTS}{preload}<link rel="stylesheet" href="style.css">
 {ld_blocks(p)}
 </head>
 <body>
 {header(slug)}
 <main id="tresc">
-<section class="{hero_cls}"><div class="wrap hero-grid">
-<div class="hero-txt">
+<section class="{hero_cls}"{hero_style}><div class="wrap hero-inner">
 {crumb}
-<h1>{p["h1"]}</h1>
+<p class="hero-eyebrow">{HERO_EYEBROW.get(slug, "")}</p>
+<h1>{h1_html(p["h1"])}</h1>
 <p class="lead">{inline(p["lead"])}</p>
-<div class="actions"><a class="btn btn-primary btn-lg" href="{cta_href}">Wyślij zdjęcie i wymiary</a><a class="btn btn-outline btn-lg" href="tel:{FIRMA["telefon_href"]}">Zadzwoń</a></div>
-</div>
-{"" if MAKIETA else mock(p)}
-</div>
-{trust}
-</section>
-{chr(10).join(secs)}
-<section class="sec faq"><div class="wrap sec-grid">
-<div class="sec-head"><span class="eyebrow">FAQ</span><h2>Pytania i odpowiedzi</h2></div>
-<div class="sec-body">{faq}</div>
+<div class="actions"><a class="btn btn-light btn-lg" href="{cta_href}" data-quote-open>Wyślij zdjęcie do wyceny</a><a class="btn btn-outline btn-lg" href="tel:{FIRMA["telefon_href"]}">Zadzwoń</a></div>
+{stats}
 </div></section>
-<section class="cta"><div class="wrap cta-box">
-<div><h2>Zapytaj o wycenę</h2>
+{chr(10).join(secs)}
+<section class="sec faq"><div class="wrap">
+<div class="sec-head"><div><p class="eyebrow">FAQ</p><h2>Pytania i odpowiedzi</h2></div></div>
+<div class="sec-body faq-list">{faq}</div>
+</div></section>
+<section class="cta"><div class="wrap cta-inner">
+<div><p class="eyebrow">Wyślij zdjęcie – albo zadzwoń</p><h2>Zapytaj o wycenę</h2>
 <p>{inline(p["cta"])}</p></div>
-<div class="actions"><a class="btn btn-primary btn-lg" href="{cta_href}">Wyślij zdjęcie elewacji</a><a class="btn btn-outline btn-lg" href="tel:{FIRMA["telefon_href"]}">Zadzwoń</a></div>
+<div class="actions"><a class="btn btn-light btn-lg" href="{cta_href}" data-quote-open>Wyślij zdjęcie elewacji</a><a class="btn btn-outline btn-lg" href="tel:{FIRMA["telefon_href"]}">Zadzwoń</a></div>
 </div></section>
 <section class="more"><div class="wrap">
 <h2>Zobacz też</h2>
@@ -1300,6 +1333,27 @@ def images():
     d.rounded_rectangle([200, 120, 600, 230], radius=14, fill=(250, 250, 255), outline=(20, 20, 24), width=6)
     text_c(d, (400, 175), "SALON", font(70), (20, 70, 200)); scenes["led-2"] = im
 
+    # tła górnej części stron: zdjęcie po prawej, płynnie przechodzące w granat po lewej
+    navy = (15, 29, 39)
+    for key, name in [("led-1", "hero-index"), ("szyld-2", "hero-szyldy"), ("litery-1", "hero-litery"), ("led-2", "hero-led")]:
+        path = img_dir / f"{name}.webp"
+        if path.exists() and path.stat().st_size > 40000:
+            continue
+        hw, hh = 1920, 1000
+        hero = Image.new("RGB", (hw, hh), navy)
+        sc = scenes[key].resize((960, 720))
+        hero.paste(sc, (hw - 960, hh - 720))
+        mask = Image.new("L", (hw, hh), 0)
+        md_ = ImageDraw.Draw(mask)
+        for x in range(hw):
+            t = (x - 960) / 420
+            md_.line([(x, 0), (x, hh)], fill=int(255 * max(0, min(1, t))))
+        hero = Image.composite(hero, Image.new("RGB", (hw, hh), navy), mask)
+        d = ImageDraw.Draw(hero)
+        d.rounded_rectangle([hw - 330, hh - 54, hw - 20, hh - 18], radius=6, fill=(0, 0, 0))
+        d.text((hw - 318, hh - 36), "PRZYKŁAD – podmień na zdjęcie", font=font(16, False), fill=(255, 255, 255), anchor="lm")
+        hero.save(path, "WEBP", quality=72)
+
     for key, im in scenes.items():
         path = img_dir / f"{key}.webp"
         if path.exists() and path.stat().st_size > 6000:  # nie nadpisuj prawdziwych zdjęć
@@ -1334,6 +1388,10 @@ def images_makieta():
         d.rectangle([300, 278, 500, 322], fill=(221, 221, 221))
         d.text((400, 300), f"ZDJĘCIE: {key}", font=f, fill=(110, 110, 110), anchor="mm")
         im.save(img_dir / f"{key}.webp", "WEBP", quality=60)
+    for name in ["hero-index", "hero-szyldy", "hero-litery", "hero-led"]:
+        im = Image.new("RGB", (1920, 1000), (200, 200, 200))
+        ImageDraw.Draw(im).text((1300, 500), f"ZDJĘCIE W TLE: {name}", font=f, fill=(110, 110, 110), anchor="mm")
+        im.save(img_dir / f"{name}.webp", "WEBP", quality=50)
     im = Image.new("RGB", (1200, 630), (221, 221, 221))
     ImageDraw.Draw(im).text((600, 315), "og-image 1200×630", font=f, fill=(110, 110, 110), anchor="mm")
     im.save(img_dir / "og-image.jpg", "JPEG", quality=70)
