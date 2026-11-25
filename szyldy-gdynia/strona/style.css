@@ -331,3 +331,22 @@ figcaption { padding: 12px 14px; font-size: .9rem; line-height: 1.5; color: var(
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* kto się zgłasza – siatka z ikonami */
+.who { display: grid; gap: 1px; background: var(--line); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin: 8px 0 32px; padding: 0; }
+.who > li { margin: 0; padding: 0; background: var(--sec-bg); }
+.who > li::before { display: none; }
+.who a { display: grid; grid-template-columns: 64px 1fr 24px; gap: 20px; align-items: center; padding: 26px 8px 26px 0; text-decoration: none; color: var(--text); height: 100%; }
+.who-ico { width: 64px; height: 64px; display: grid; place-items: center; background: var(--bg-alt); color: var(--ink); }
+.sec.alt .who-ico { background: #fff; }
+.who-ico svg { width: 30px; height: 30px; }
+.who-txt strong { display: block; font-size: 1.15rem; color: var(--ink); margin-bottom: 2px; }
+.who-txt span { color: var(--muted); font-size: .98rem; line-height: 1.5; }
+.who b { font-weight: 400; color: var(--muted); font-size: 1.3rem; transition: transform .15s, color .15s; }
+.who a:hover b { color: var(--ink); transform: translateX(4px); }
+.who a:hover .who-ico { background: var(--accent); }
+@media (min-width: 720px) {
+  .who { grid-template-columns: 1fr 1fr; }
+  .who a { padding: 32px 28px 32px 0; }
+  .who > li:nth-child(2n) a { padding-left: 28px; }
+}

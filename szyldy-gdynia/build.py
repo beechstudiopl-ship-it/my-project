@@ -262,7 +262,30 @@ def mosaic(arg):
     return '<div class="mosaic">' + "".join(cells) + "</div>"
 
 
-DIRECTIVES = {"mosaic": mosaic, "gallery": gallery, "form": form, "map": mapa}
+WHO_ICONS = {
+    "shop": '<path d="M4 10v10h16V10"/><path d="M3 10l2-6h14l2 6"/><path d="M3 10c0 1.7 1.3 3 3 3s3-1.3 3-3c0 1.7 1.3 3 3 3s3-1.3 3-3c0 1.7 1.3 3 3 3s3-1.3 3-3"/><path d="M10 20v-5h4v5"/>',
+    "food": '<path d="M5 3v8a2 2 0 0 0 2 2v8M9 3v8a2 2 0 0 1-2 2M7 3v6"/><path d="M16 21V3c2.5 1.5 3.5 4 3.5 7.5 0 2-1.5 3.5-3.5 3.5"/>',
+    "office": '<rect x="3" y="7" width="18" height="13" rx="1"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M3 12h18M11 12v2h2v-2"/>',
+    "tower": '<path d="M5 21V4h9v17M14 9h5v12M3 21h18"/><path d="M8 7h3M8 10h3M8 13h3M8 16h3M16.5 12h0M16.5 15h0M16.5 18h0"/>',
+}
+WHO = [
+    ("shop", "Sklepy i punkty usługowe", "Otwierają nowy lokal lub zmieniają wizerunek.", "szyldy-reklamowe-gdynia"),
+    ("food", "Restauracje, kawiarnie i bary", "Zależy im na widoczności także po zmroku.", "reklama-led-gdynia"),
+    ("office", "Gabinety, salony i biura", "Potrzebują estetycznego, czytelnego szyldu lub tablicy.", "litery-przestrzenne-gdynia"),
+    ("tower", "Firmy w biurowcach i pawilonach", "Muszą dopasować reklamę do zasad wspólnoty lub zarządcy budynku.", "szyldy-reklamowe-gdynia"),
+]
+
+
+def who(_):
+    """Kto się zgłasza – siatka: ikona, grupa klientów, opis, strzałka (cały kafel to link)."""
+    cells = "".join(
+        f'<li><a href="{href(link)}"><span class="who-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">{WHO_ICONS[ico]}</svg></span>'
+        f'<span class="who-txt"><strong>{t}</strong><span>{d}</span></span><b aria-hidden="true">→</b></a></li>'
+        for ico, t, d, link in WHO)
+    return f'<ul class="who">{cells}</ul>'
+
+
+DIRECTIVES = {"who": who, "mosaic": mosaic, "gallery": gallery, "form": form, "map": mapa}
 
 # ---------------------------------------------------------------------------
 # 3. Nawigacja i linki „Zobacz też”
@@ -321,10 +344,7 @@ Jesteśmy agencją reklamy zewnętrznej z Gdyni. Zajmujemy się przede wszystkim
 
 Najczęściej zgłaszają się do nas:
 
-- sklepy i punkty usługowe, które otwierają nowy lokal lub zmieniają wizerunek,
-- restauracje, kawiarnie i bary, którym zależy na widoczności także po zmroku,
-- gabinety, salony i biura, którym potrzebny jest estetyczny, czytelny szyld lub tablica,
-- firmy w biurowcach i pawilonach, które muszą dopasować reklamę do zasad wspólnoty lub zarządcy budynku.
+{{{{who}}}}
 
 **Doświadczenie:** [UZUPEŁNIJ: od kiedy działacie / ile szyldów wykonaliście – tylko prawdziwe dane].
 """),
