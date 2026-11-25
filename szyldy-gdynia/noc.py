@@ -7,6 +7,7 @@ import numpy as np
 from PIL import Image, ImageFilter
 
 src, out_hero, out_full = sys.argv[1], sys.argv[2], sys.argv[3]
+UNLIT = len(sys.argv) > 4 and sys.argv[4] == '--bez-swiatla'
 im = Image.open(src).convert("RGB")
 W, H = im.size
 a = np.asarray(im).astype(np.float32)
@@ -40,15 +41,15 @@ for rad, w in ((60, .55), (26, .8), (10, .9)):
     gl = np.asarray(let.filter(ImageFilter.MaxFilter(5)).filter(ImageFilter.GaussianBlur(rad))).astype(np.float32) / 255
     glow += gl * w
 glow = np.clip(glow, 0, 1.4) * (1 - sky_m)
-lit = night + glow[..., None] * amber[None, None, :] * .85
+lit = night + glow[..., None] * amber[None, None, :] * (0 if UNLIT else .85)
 # ściana tuż przy literach najjaśniejsza, ciepła
 near = np.asarray(let.filter(ImageFilter.MaxFilter(9)).filter(ImageFilter.GaussianBlur(4))).astype(np.float32) / 255
-lit = lit + (near * (1 - let_m))[..., None] * np.array([255, 214, 150], np.float32) * .55
+lit = lit + (near * (1 - let_m))[..., None] * np.array([255, 214, 150], np.float32) * (0 if UNLIT else .55)
 
 # lico liter: ciemny metal z delikatną ciepłą krawędzią
 face = np.stack([L * .28 + 10, L * .28 + 12, L * .30 + 16], -1)
 rim = np.clip(let_m - np.asarray(let.filter(ImageFilter.MinFilter(3))).astype(np.float32) / 255, 0, 1)
-face = face + rim[..., None] * np.array([120, 85, 35], np.float32)
+face = face + rim[..., None] * np.array([120, 85, 35], np.float32) * (0 if UNLIT else 1)
 res = lit * (1 - let_m[..., None]) + face * let_m[..., None]
 res = np.clip(res, 0, 255).astype(np.uint8)
 full = Image.fromarray(res)

@@ -402,3 +402,24 @@ figcaption { padding: 12px 14px; font-size: .9rem; line-height: 1.5; color: var(
 .hero-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(15, 29, 39, .72) 0%, rgba(15, 29, 39, .5) 55%, rgba(15, 29, 39, .62) 100%); pointer-events: none; }
 @keyframes photoReveal { from { clip-path: inset(0 0 0 100%); } to { clip-path: inset(0 0 0 0); } }
 @keyframes photoZoom { from { transform: scale(1); } to { transform: scale(1.09) translateX(-1.5%); } }
+.hero-photo video { display: block; width: 100%; height: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.hero-video::after { display: none; }
+@media (prefers-reduced-motion: reduce) { .hero-video video { display: none; } .hero-video { background: var(--navy-2) center / cover no-repeat url(img/hero-index.webp); aspect-ratio: 4 / 3; } }
+
+/* efekt „wow”: dzień → zmierzch → litery zapalają się */
+.hero-switch img { position: relative; }
+.hero-switch .hs-dusk, .hero-switch .hs-night { position: absolute; inset: 0; opacity: 0; }
+.hero-switch img { animation: photoZoom 22s ease-in-out 1.4s infinite alternate; }
+.hero-switch .hs-dusk { animation: photoZoom 22s ease-in-out 1.4s infinite alternate, hsDusk 14s linear 1.6s infinite; }
+.hero-switch .hs-night { animation: photoZoom 22s ease-in-out 1.4s infinite alternate, hsNight 14s linear 1.6s infinite; }
+.hero-switch::after { background: linear-gradient(135deg, rgba(15, 29, 39, .45) 0%, rgba(15, 29, 39, .15) 55%, rgba(15, 29, 39, .3) 100%); z-index: 1; }
+.hs-chip { position: absolute; left: 16px; bottom: 16px; z-index: 2; margin: 0; padding: 8px 14px; border-radius: 999px; background: rgba(15, 29, 39, .82); color: #fff; font-size: .85rem; font-weight: 600; backdrop-filter: blur(6px); border: 1px solid rgba(255, 255, 255, .18); display: grid; }
+.hs-chip span { grid-area: 1 / 1; }
+.hs-chip::before { content: ""; display: inline-block; }
+.hs-day-txt { animation: hsDayTxt 14s linear 1.6s infinite; }
+.hs-night-txt { opacity: 0; color: var(--accent); animation: hsNightTxt 14s linear 1.6s infinite; }
+@keyframes hsDusk { 0%, 16% { opacity: 0; } 30%, 88% { opacity: 1; } 96%, 100% { opacity: 0; } }
+@keyframes hsNight { 0%, 33% { opacity: 0; } 34% { opacity: .75; } 35% { opacity: .08; } 37% { opacity: .9; } 38% { opacity: .3; } 41%, 86% { opacity: 1; } 92%, 100% { opacity: 0; } }
+@keyframes hsDayTxt { 0%, 30% { opacity: 1; } 34%, 90% { opacity: 0; } 95%, 100% { opacity: 1; } }
+@keyframes hsNightTxt { 0%, 38% { opacity: 0; } 42%, 86% { opacity: 1; } 90%, 100% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .hero-switch .hs-night { opacity: 1; } .hs-day-txt { opacity: 0; } .hs-night-txt { opacity: 1; } }

@@ -58,6 +58,10 @@ Teksty alt i podpisy zmienisz w `build.py` → `IMAGES`.
 
 **Litery przestrzenne – rodzaje liter:** trzy karty z rysunkiem (plexi + taśma aluminiowa, światło w przód; metal ze światłem na elewację; metal bez podświetlenia). Rysunki są w kodzie (SVG); dane kart zmienisz w `build.py` → `LETTERS`.
 
+**Efekt dzień → noc w górnej części strony głównej:** pliki `hero-index.webp` (dzień), `hero-index-zmierzch.webp` i `hero-index-noc.webp` (litery podświetlone). Zrobisz je z innego zdjęcia narzędziem `noc.py` (wersja bez światła: dopisz `--bez-swiatla`), kadr 4:3 jak dzienne zdjęcie.
+
+**Animacja wideo zamiast zdjęcia (opcjonalnie):** wrzuć do `strona/img/` plik `hero-index.webm` i/lub `hero-index.mp4` (proporcje 4:3, np. 1400×1050, bez dźwięku, najlepiej do 3 MB, zapętlony) i uruchom `python3 build.py`. Animacja zastąpi zdjęcie; `hero-index.webp` zostaje jako klatka zastępcza i dla osób z wyłączonymi animacjami.
+
 **5. Formularz:** strona jest statyczna, więc formularz potrzebuje obsługi (np. Formspree, Getform albo skrypt PHP na Twoim hostingu).
 Wpisz jej adres w `FIRMA["formularz_action"]`. Obsługa musi przyjmować załączniki.
 

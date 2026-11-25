@@ -1223,8 +1223,21 @@ def page_html(p):
     hero_photo = ""
     if slug in HERO_PHOTO:  # zwykłe zdjęcie obok tekstu zamiast tła
         hero_cls, hero_style = "hero hero-split", ""
-        hero_photo = (f'<figure class="hero-photo"><img src="img/{img}.webp" width="1400" height="1050" '
-                      f'fetchpriority="high" decoding="async" alt="{html.escape(HERO_PHOTO[slug])}"></figure>')
+        vids = [(ext, typ) for ext, typ in (("webm", "video/webm"), ("mp4", "video/mp4")) if (OUT / "img" / f"{img}.{ext}").exists()]
+        if vids:  # animacja (np. świecące litery) – zdjęcie zostaje jako klatka zastępcza
+            sources = "".join(f'<source src="img/{img}.{ext}" type="{typ}">' for ext, typ in vids)
+            hero_photo = (f'<figure class="hero-photo hero-video"><video autoplay muted loop playsinline preload="metadata" '
+                          f'poster="img/{img}.webp" aria-label="{html.escape(HERO_PHOTO[slug])}">{sources}</video></figure>')
+        elif (OUT / "img" / f"{img}-noc.webp").exists() and (OUT / "img" / f"{img}-zmierzch.webp").exists():
+            # animacja dzień → zmierzch → litery zapalają się (halo) – same zdjęcia + CSS
+            hero_photo = (f'<figure class="hero-photo hero-switch"><img src="img/{img}.webp" width="1400" height="1050" '
+                          f'fetchpriority="high" decoding="async" alt="{html.escape(HERO_PHOTO[slug])} – w dzień i nocą z podświetleniem LED">'
+                          f'<img class="hs-dusk" src="img/{img}-zmierzch.webp" width="1400" height="1050" decoding="async" alt="" aria-hidden="true">'
+                          f'<img class="hs-night" src="img/{img}-noc.webp" width="1400" height="1050" decoding="async" alt="" aria-hidden="true">'
+                          f'<figcaption class="hs-chip"><span class="hs-day-txt">W dzień: litery 3D</span><span class="hs-night-txt">Po zmroku: podświetlenie LED na elewację</span></figcaption></figure>')
+        else:
+            hero_photo = (f'<figure class="hero-photo"><img src="img/{img}.webp" width="1400" height="1050" '
+                          f'fetchpriority="high" decoding="async" alt="{html.escape(HERO_PHOTO[slug])}"></figure>')
     preload = f'<link rel="preload" as="image" href="img/{img}.webp">\n' if img and not MAKIETA else ""
     return f'''<!doctype html>
 <html lang="pl">
