@@ -1,6 +1,6 @@
 # [UZUPEŁNIJ: pełna nazwa firmy] – szyldy reklamowe Gdynia
 
-> Agencja reklamy zewnętrznej z Gdyni. Projektujemy, wykonujemy i montujemy szyldy reklamowe, litery przestrzenne (3D) i reklamę podświetlaną LED (kasetony, litery LED, szyldy podświetlane) dla sklepów, lokali usługowych, gabinetów, restauracji i biur. Nie wykonujemy ekranów LED [UZUPEŁNIJ: potwierdź]. Wycena na podstawie zdjęcia elewacji, wymiarów i logo.
+> Agencja reklamy zewnętrznej z Gdyni. Wykonujemy i montujemy szyldy z kasetonów, litery przestrzenne na elewację i litery do wnętrz – podświetlane LED lub bez podświetlenia. W katalogu: litery metalowe, litery do środka i neony LED. Dla sklepów, lokali usługowych, gabinetów, restauracji i biur. Wycena na podstawie zdjęcia elewacji, wymiarów i logo.
 
 ## Dane firmy
 - Nazwa: [UZUPEŁNIJ: pełna nazwa firmy]
@@ -11,14 +11,13 @@
 - Obszar działania: Gdynia, [UZUPEŁNIJ: inne miejscowości, np. Sopot, Gdańsk, Rumia, Reda]
 - Mapy Google: [UZUPEŁNIJ: link do wizytówki w Mapach Google]
 
-## Podstrony
-- [Szyldy reklamowe w Gdyni](https://www.TWOJA-DOMENA.pl/): Szyldy reklamowe Gdynia – projektujemy i wykonujemy szyldy, litery przestrzenne i reklamę LED dla firm i lokali. Zapytaj o wycenę projektu.
-- [Szyldy reklamowe Gdynia](https://www.TWOJA-DOMENA.pl/szyldy-reklamowe-gdynia.html): Szyldy reklamowe Gdynia – projekt, wykonanie i montaż szyldów na elewację, nad wejście i do lokalu. Podświetlane LED lub klasyczne. Zapytaj o wycenę.
-- [Litery przestrzenne Gdynia](https://www.TWOJA-DOMENA.pl/litery-przestrzenne-gdynia.html): Litery przestrzenne Gdynia – litery 3D na fasadę, recepcję i do biura, z podświetleniem LED lub bez. Projekt, produkcja i montaż. Poproś o wycenę.
-- [Reklama LED w Gdyni](https://www.TWOJA-DOMENA.pl/reklama-led-gdynia.html): Reklama LED Gdynia – podświetlane szyldy, kasetony i litery LED dla firm. Widoczne także po zmroku. Sprawdź, od czego zależy cena i zapytaj o wycenę.
-- [Szyldy reklamowe – realizacje w Gdyni](https://www.TWOJA-DOMENA.pl/realizacje.html): Szyldy reklamowe realizacje Gdynia: zobacz zdjęcia szyldów, liter przestrzennych i reklam LED z opisem materiałów. Wybierz rozwiązanie dla firmy.
-- [Cennik szyldów reklamowych w Gdyni – od czego zależy cena](https://www.TWOJA-DOMENA.pl/cennik.html): Szyldy reklamowe cena Gdynia: sprawdź, od czego zależy koszt szyldu, liter przestrzennych i reklamy LED. Wyślij zdjęcie elewacji – przygotujemy wycenę.
-- [Szyldy reklamowe Gdynia – kontakt i wycena](https://www.TWOJA-DOMENA.pl/kontakt.html): Szyldy reklamowe Gdynia – kontakt. Wyślij zdjęcie elewacji i wymiary, a przygotujemy wycenę szyldu, liter przestrzennych lub reklamy LED.
+## Na stronie
+- [Oferta](https://www.TWOJA-DOMENA.pl/#oferta)
+- [Katalog](https://www.TWOJA-DOMENA.pl/#katalog)
+- [Realizacje](https://www.TWOJA-DOMENA.pl/#realizacje)
+- [Wycena](https://www.TWOJA-DOMENA.pl/#wycena)
+- [Obszar działania](https://www.TWOJA-DOMENA.pl/#obszar)
+- [FAQ](https://www.TWOJA-DOMENA.pl/#faq)
 
 ## Jak zamówić
-Wyślij przez formularz na stronie https://www.TWOJA-DOMENA.pl/kontakt.html zdjęcie elewacji (miejsca montażu), przybliżone wymiary i logo. Przygotujemy wizualizację i wycenę.
+Wyślij przez formularz wyceny (https://www.TWOJA-DOMENA.pl/#wycena) zdjęcie elewacji (miejsca montażu), przybliżone wymiary i logo. Przygotujemy wizualizację i wycenę.

@@ -187,8 +187,8 @@ def gallery(arg):
     return '<div class="gallery">' + "".join(figure(k.strip()) for k in arg.split(",")) + "</div>"
 
 
-RODZAJE = ["Nie wiem – doradźcie", "Szyld płaski", "Kaseton podświetlany", "Litery przestrzenne",
-           "Litery przestrzenne LED", "Semafor (szyld dwustronny)", "Oznakowanie wnętrza"]
+RODZAJE = ["Nie wiem – doradźcie", "Szyld z kasetonu", "Litery przestrzenne na elewację", "Litery do wnętrz",
+           "Litery metalowe", "Neon LED"]
 
 
 def form(arg):
@@ -234,7 +234,10 @@ def form(arg):
           <p class="measure-note">Wynik jest orientacyjny – drzwi i szyld muszą być na tej samej ścianie. Dokładnie zmierzymy przed produkcją.</p>
         </div>
       </fieldset>
-      <label>Rodzaj reklamy<select name="rodzaj">{opts}</select></label>
+      <div class="form-row">
+        <label>Rodzaj<select name="rodzaj" class="q-rodzaj">{opts}</select></label>
+        <label>Podświetlenie<select name="podswietlenie"><option>Nie wiem – doradźcie</option><option>Podświetlane LED</option><option>Bez podświetlenia</option></select></label>
+      </div>
       <label>Adres montażu<input type="text" name="adres" autocomplete="street-address" placeholder="np. ul. Świętojańska, Gdynia"></label>
       <label>Imię lub nazwa firmy<input type="text" name="imie" autocomplete="name"></label>
       <label>Wiadomość<textarea name="wiadomosc" rows="3" placeholder="Podświetlany czy nie? Termin, budżet…"></textarea></label>
@@ -279,7 +282,7 @@ WHO = [
 def who(_):
     """Kto się zgłasza – siatka: ikona, grupa klientów, opis, strzałka (cały kafel to link)."""
     cells = "".join(
-        f'<li><a href="{href(link)}"><span class="who-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">{WHO_ICONS[ico]}</svg></span>'
+        f'<li><a href="{"#wycena" if LANDING_ONLY else href(link)}"><span class="who-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">{WHO_ICONS[ico]}</svg></span>'
         f'<span class="who-txt"><strong>{t}</strong><span>{d}</span></span><b aria-hidden="true">→</b></a></li>'
         for ico, t, d, link in WHO)
     return f'<ul class="who">{cells}</ul>'
@@ -325,6 +328,73 @@ def letter_svg(kind):
                 '<linearGradient id="m-metal" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f1f2f3"/><stop offset=".5" stop-color="#b9bec4"/><stop offset="1" stop-color="#e2e4e6"/></linearGradient>')
         body = wall + shadow + side + face
     return f'<svg viewBox="0 0 320 200" role="img" aria-hidden="true"><defs>{defs}</defs>{body}</svg>'
+
+
+def scene_svg(kind):
+    """Rysunki do oferty i katalogu: kaseton, litery do wnętrz, neon LED (inline SVG)."""
+    if kind == "kaseton":
+        return ('<svg viewBox="0 0 320 200" role="img" aria-hidden="true"><defs>'
+                '<filter id="g-kas" x="-30%" y="-60%" width="160%" height="220%"><feGaussianBlur stdDeviation="12"/></filter></defs>'
+                '<rect width="320" height="200" fill="#16232d"/>'
+                '<rect x="56" y="58" width="208" height="84" fill="#fff4cc" filter="url(#g-kas)" opacity=".75"/>'
+                '<rect x="62" y="66" width="200" height="80" fill="#3c4650"/>'
+                '<rect x="56" y="58" width="200" height="80" fill="#fffdf6" stroke="#4d5964" stroke-width="5"/>'
+                '<rect x="76" y="80" width="40" height="36" rx="6" fill="#ffb800"/>'
+                '<text x="128" y="110" font-family="Archivo, Arial, sans-serif" font-weight="700" font-size="30" fill="#0f1d27">LOGO</text></svg>')
+    if kind == "wnetrze":
+        return ('<svg viewBox="0 0 320 200" role="img" aria-hidden="true"><defs>'
+                '<filter id="g-wn" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="3"/></filter></defs>'
+                '<rect width="320" height="200" fill="#ece8e1"/><rect y="150" width="320" height="50" fill="#b8875a"/>'
+                '<rect y="146" width="320" height="6" fill="#9c7048"/>'
+                '<text x="164" y="104" text-anchor="middle" font-family="Archivo, Arial, sans-serif" font-weight="700" font-size="54" fill="#000" opacity=".22" filter="url(#g-wn)">STUDIO</text>'
+                '<text x="160" y="98" text-anchor="middle" font-family="Archivo, Arial, sans-serif" font-weight="700" font-size="54" fill="#0f1d27">STUDIO</text>'
+                '<rect x="128" y="112" width="64" height="4" fill="#ffb800"/></svg>')
+    # neon LED
+    return ('<svg viewBox="0 0 320 200" role="img" aria-hidden="true"><defs>'
+            '<filter id="g-neon" x="-30%" y="-60%" width="160%" height="220%"><feGaussianBlur stdDeviation="7"/></filter></defs>'
+            '<rect width="320" height="200" fill="#1a1d24"/>'
+            '<g font-family="Pacifico, Brush Script MT, Segoe Script, cursive" font-size="76" text-anchor="middle">'
+            '<text x="160" y="124" fill="#ff4fa3" filter="url(#g-neon)">open</text>'
+            '<text x="160" y="124" fill="none" stroke="#ff8cc4" stroke-width="5">open</text>'
+            '<text x="160" y="124" fill="none" stroke="#ffe3f0" stroke-width="1.6">open</text></g></svg>')
+
+
+def cards_grid(items):
+    cells = []
+    for pic, title, spec, when, rodzaj in items:
+        rows = "".join(f'<li><span class="k">{k}</span><span class="v">{v}</span></li>' for k, v in spec)
+        cells.append(f'<li class="ltype"><div class="ltype-pic">{pic}</div><h3>{title}</h3>'
+                     f'<ul class="ltype-spec">{rows}</ul><p>{when}</p>'
+                     f'<a class="btn btn-sm lt-btn" href="#wycena" data-rodzaj="{html.escape(rodzaj)}">Wyceń – {title}</a></li>')
+    return '<ul class="ltypes">' + "".join(cells) + "</ul>"
+
+
+def offer(_):
+    return cards_grid([
+        (scene_svg("kaseton"), "Szyldy z kasetonów",
+         [("Co to", "skrzynka z grafiką na froncie, na elewację lub nad wejście"), ("Podświetlane", "LED w środku – równe światło po zmroku"), ("Bez podświetlenia", "lico z grafiką, widoczne w dzień")],
+         "Dużo miejsca na logo i nazwę, dobra widoczność z daleka – sklepy, punkty usługowe, lokale przy ulicy.", "Szyld z kasetonu"),
+        (letter_svg("plexi"), "Litery przestrzenne",
+         [("Co to", "litery i logo 3D na fasadę, nad wejście lub nad witrynę"), ("Podświetlane", "światło w przód, na elewację (halo) lub z boków"), ("Bez podświetlenia", "aluminium, stal lub plexi na dystansach")],
+         "Elegancki napis, który nie zasłania architektury – restauracje, salony, gabinety, biura.", "Litery przestrzenne na elewację"),
+        (scene_svg("wnetrze"), "Litery do wnętrz",
+         [("Co to", "logo za ladą, na recepcji, w biurze i sali konferencyjnej"), ("Podświetlane", "subtelna poświata na ścianę (halo)"), ("Bez podświetlenia", "plexi, PCV lub metal, montaż na ścianie")],
+         "Pierwsze, co klient widzi po wejściu – recepcje, gabinety, biura, salony.", "Litery do wnętrz"),
+    ])
+
+
+def katalog(_):
+    return cards_grid([
+        (letter_svg("halo"), "Litery metalowe",
+         [("Materiał", "aluminium lub stal nierdzewna"), ("Wersje", "bez podświetlenia lub ze światłem na elewację")],
+         "Prestiżowy, trwały napis na fasadę – dobrze znosi nadmorską pogodę.", "Litery metalowe"),
+        (scene_svg("wnetrze"), "Litery do środka",
+         [("Materiał", "plexi, PCV spienione, dibond lub metal"), ("Wersje", "z podświetleniem halo lub bez")],
+         "Logo na recepcję, do biura i lokalu – lżejsze i tańsze niż litery na elewację.", "Litery do wnętrz"),
+        (scene_svg("neon"), "Neony LED",
+         [("Materiał", "elastyczny neon LED na plexi"), ("Zastosowanie", "napisy, logo i hasła w lokalu i witrynie")],
+         "Efekt klasycznego neonu przy niskim zużyciu prądu – kawiarnie, bary, salony.", "Neon LED"),
+    ])
 
 
 def letters(_):
@@ -375,11 +445,23 @@ def mapa(_):
             f'<ul class="map-chips">{chips}</ul><p class="map-pick" aria-live="polite">Wybierz dzielnicę, żeby zobaczyć ją na mapie.</p></div></div>')
 
 
-DIRECTIVES = {"mapa": mapa, "letters": letters, "who": who, "mosaic": mosaic, "gallery": gallery, "form": form, "map": mapa}
+DIRECTIVES = {"offer": offer, "katalog": katalog, "mapa": mapa, "letters": letters, "who": who, "mosaic": mosaic, "gallery": gallery, "form": form, "map": mapa}
 
 # ---------------------------------------------------------------------------
 # 3. Nawigacja i linki „Zobacz też”
 # ---------------------------------------------------------------------------
+LANDING_ONLY = True  # na razie budujemy tylko landing (stronę główną); False = wszystkie podstrony
+LANDING_NAV = [("#oferta", "Oferta"), ("#katalog", "Katalog"), ("#realizacje", "Realizacje"),
+               ("#wycena", "Wycena"), ("#obszar", "Obszar działania"), ("#faq", "FAQ")]
+SECTION_IDS = {
+    "Szyldy reklamowe Gdynia – co robimy i dla kogo": "dla-kogo",
+    "Kasetony, litery przestrzenne i litery do wnętrz": "oferta",
+    "Katalog: litery metalowe, litery do środka i neony LED": "katalog",
+    "Realizacje i opinie klientów": "realizacje",
+    "Jak wygląda współpraca krok po kroku": "wycena",
+    "Od czego zależy cena szyldu reklamowego": "cena",
+    "Szyldy reklamowe w Gdyni i okolicy – obszar działania i kontakt": "obszar",
+}
 NAV = [
     ("szyldy-reklamowe-gdynia", "Szyldy reklamowe"),
     ("litery-przestrzenne-gdynia", "Litery przestrzenne"),
@@ -418,40 +500,43 @@ L_KO = "kontakt.html"
 
 PAGES = []
 
-# ============================ INDEX =========================================
+# ============================ INDEX (LANDING) ===============================
 PAGES.append(dict(
     slug="index",
-    mock="led",
-    title="Szyldy reklamowe Gdynia – litery przestrzenne i LED",
-    desc="Szyldy reklamowe Gdynia – projektujemy i wykonujemy szyldy, litery przestrzenne i reklamę LED dla firm i lokali. Zapytaj o wycenę projektu.",
+    title="Szyldy reklamowe Gdynia – kasetony i litery przestrzenne",
+    desc="Szyldy reklamowe Gdynia: kasetony, litery przestrzenne i litery do wnętrz – podświetlane LED lub bez. Wyślij zdjęcie elewacji, przygotujemy wycenę.",
     h1="Szyldy reklamowe w Gdyni",
-    lead="Szyldy reklamowe w Gdyni wykonujemy dla sklepów, lokali usługowych, gabinetów, restauracji i biur, które chcą być lepiej widoczne z ulicy. Robimy klasyczne szyldy, litery przestrzenne i reklamę podświetlaną LED, od projektu po wykonanie. Wystarczy przesłać zdjęcie elewacji i wymiary, a przygotujemy propozycję i wycenę.",
+    lead="Szyldy reklamowe w Gdyni wykonujemy dla sklepów, lokali usługowych, gabinetów, restauracji i biur, które chcą być lepiej widoczne z ulicy. Robimy szyldy z kasetonów, litery przestrzenne na elewację i litery do wnętrz – podświetlane LED albo bez podświetlenia, od projektu po montaż. Wystarczy przesłać zdjęcie elewacji, a przygotujemy propozycję i wycenę.",
     crumb=None,
     schema="home",
     sections=[
-        ("Szyldy reklamowe Gdynia – co robimy i dla kogo", f"""
-Jesteśmy agencją reklamy zewnętrznej z Gdyni. Zajmujemy się przede wszystkim szyldami reklamowymi, czyli oznakowaniem, po którym klient z daleka rozpozna Twoją firmę. Pracujemy z małymi i średnimi firmami, które potrzebują jednego szyldu nad wejściem, a także z tymi, które oznakowują kilka lokali.
+        ("Szyldy reklamowe Gdynia – co robimy i dla kogo", """
+Jesteśmy agencją reklamy zewnętrznej z Gdyni. Skupiamy się na trzech rzeczach: szyldach z kasetonów, literach przestrzennych na elewację i literach do wnętrz. Pracujemy z małymi i średnimi firmami, które potrzebują jednego szyldu nad wejściem, a także z tymi, które oznakowują kilka lokali.
 
 Najczęściej zgłaszają się do nas:
 
-{{{{who}}}}
+{{who}}
 
 **Doświadczenie:** [UZUPEŁNIJ: od kiedy działacie / ile szyldów wykonaliście – tylko prawdziwe dane].
 """),
-        ("Nasze usługi: szyldy, litery przestrzenne i reklama LED", f"""
-Dobieramy rodzaj reklamy do budynku, budżetu i tego, jak daleko szyld ma być widoczny. Główne usługi:
+        ("Kasetony, litery przestrzenne i litery do wnętrz", """
+Każdy z trzech rodzajów oznakowania wykonujemy w dwóch wersjach: podświetlanej LED – gdy firma ma być widoczna po zmroku – albo bez podświetlenia, gdy działa głównie w dzień lub budynek jest dobrze oświetlony.
 
-::services
-- **Szyldy reklamowe** – płaskie tablice, kasetony i szyldy na elewację, np. z dibondu, PCV lub plexi, z nadrukiem lub oklejeniem folią. Szczegóły znajdziesz na stronie [szyldy reklamowe Gdynia]({L_SZ}).
-- **Litery przestrzenne** – logo i napisy 3D, bez podświetlenia lub podświetlane, montowane bezpośrednio na ścianie albo na dystansach. Więcej na stronie [litery przestrzenne Gdynia]({L_LI}).
-- **Reklama LED** – kasetony i litery podświetlane diodami LED, dzięki którym firma jest widoczna także wieczorem i zimą. Zobacz [reklama LED Gdynia]({L_LED}).
+{{offer}}
 
-**Stosowane materiały:** [UZUPEŁNIJ: lista materiałów, z którymi faktycznie pracujecie]. **Montaż:** [UZUPEŁNIJ: czy montujecie sami, czy przez partnera, i czy pomagacie przy zgodach od zarządcy budynku].
+**Montaż:** [UZUPEŁNIJ: czy montujecie sami, czy przez partnera, i czy pomagacie przy zgodach od zarządcy budynku].
 """),
-        ("Realizacje i opinie klientów", f"""
-Najlepiej ocenić naszą pracę po efektach. W galerii [realizacje]({L_RE}) pokazujemy szyldy, litery przestrzenne i reklamy LED wykonane dla firm z Gdyni i okolic.
+        ("Katalog: litery metalowe, litery do środka i neony LED", """
+Nie wiesz, od czego zacząć? Wybierz kierunek z katalogu – dopasujemy wielkość, kolor i podświetlenie do Twojego logo i miejsca montażu.
 
-{{{{mosaic:szyld-1:big,litery-1:tall,led-1,szyld-2:wide,litery-2,led-2:wide}}}}
+{{katalog}}
+
+[UZUPEŁNIJ: zdjęcia wzorów z katalogu – po kilka przykładów w każdej kategorii]
+"""),
+        ("Realizacje i opinie klientów", """
+Najlepiej ocenić naszą pracę po efektach. Poniżej pokazujemy kasetony, litery przestrzenne i litery do wnętrz wykonane dla firm z Gdyni i okolic.
+
+{{mosaic:szyld-1:big,litery-1:tall,led-1,szyld-2:wide,litery-2,led-2:wide}}
 
 **Opinie klientów:** [UZUPEŁNIJ: prawdziwe opinie, np. z wizytówki Google, z imieniem lub nazwą firmy za zgodą klienta].
 """),
@@ -459,7 +544,7 @@ Najlepiej ocenić naszą pracę po efektach. W galerii [realizacje]({L_RE}) poka
 Wyślij zdjęcie elewacji przez formularz obok – resztę bierzemy na siebie. Tak wygląda droga od zdjęcia do gotowego szyldu.
 
 1. **Zapytanie** – wysyłasz zdjęcie elewacji lub miejsca na szyld, przybliżone wymiary i logo (jeśli je masz).
-2. **Konsultacja i propozycja** – doradzamy rodzaj szyldu, materiał i podświetlenie, a potem przygotowujemy wycenę.
+2. **Konsultacja i propozycja** – doradzamy: kaseton czy litery, jaki materiał, z podświetleniem czy bez – a potem przygotowujemy wycenę.
 3. **Projekt i wizualizacja** – pokazujemy, jak szyld będzie wyglądał na Twoim budynku. Poprawki wprowadzamy przed produkcją.
 4. **Produkcja** – po akceptacji projektu wykonujemy szyld. Czas realizacji: [UZUPEŁNIJ: typowy czas wykonania].
 5. **Montaż i odbiór** – [UZUPEŁNIJ: jak wygląda montaż i odbiór u Was].
@@ -473,48 +558,54 @@ Wyślij zdjęcie elewacji przez formularz obok – resztę bierzemy na siebie. T
 **Co dostajesz:**
 
 - wycenę, w której wypisujemy, co obejmuje oferta – dodatkowe pozycje zaznaczamy osobno,
-- propozycję 1–2 wariantów w różnych cenach, jeśli nie wiesz, co wybrać,
+- propozycję 1–2 wariantów w różnych cenach, np. z podświetleniem i bez,
 - wizualizację szyldu na zdjęciu Twojego budynku przed produkcją [UZUPEŁNIJ: czy wizualizacja jest bezpłatna],
 - odpowiedź w ciągu [UZUPEŁNIJ: czas odpowiedzi, np. 1 dnia roboczego].
 
 Jeśli nie masz jeszcze logo ani pomysłu na wygląd szyldu, napisz o tym w zapytaniu. [UZUPEŁNIJ: czy oferujecie projekt graficzny od zera].
 """),
-        ("Od czego zależy cena szyldu reklamowego", f"""
+        ("Od czego zależy cena szyldu reklamowego", """
 Każdy szyld wyceniamy indywidualnie, bo dwa podobne napisy mogą się bardzo różnić kosztem. Na cenę wpływają przede wszystkim:
 
-- wymiary szyldu lub wysokość liter,
-- rodzaj i grubość materiału, np. dibond, plexi, PCV, stal,
+- rodzaj – kaseton, litery przestrzenne, litery do wnętrz czy neon LED,
+- wymiary kasetonu lub wysokość liter,
+- materiał, np. plexi, aluminium, stal, PCV,
 - podświetlenie LED – czy jest potrzebne i jakiego typu,
 - stopień skomplikowania logo i liczba elementów,
-- montaż – wysokość, rodzaj elewacji, potrzeba podnośnika lub rusztowania,
-- projekt graficzny – czy masz gotowe pliki, czy trzeba je przygotować.
+- montaż – wysokość, rodzaj elewacji, potrzeba podnośnika lub rusztowania.
 
-Orientacyjne ceny znajdziesz w [cenniku]({L_CE}): [UZUPEŁNIJ: przykładowe widełki cenowe]. Dokładną kwotę podamy po otrzymaniu zdjęcia i wymiarów.
+::price
+- **Szyld z kasetonu** – [UZUPEŁNIJ: cena od–do, z podświetleniem i bez]
+- **Litery przestrzenne na elewację** – [UZUPEŁNIJ: cena od–do, np. za literę o określonej wysokości]
+- **Litery do wnętrz** – [UZUPEŁNIJ: cena od–do]
+- **Neon LED** – [UZUPEŁNIJ: cena od–do]
+
+Ceny są orientacyjne [UZUPEŁNIJ: netto/brutto]. Dokładną kwotę podamy po otrzymaniu zdjęcia i wymiarów.
 """),
-        ("Szyldy reklamowe w Gdyni i okolicy – obszar działania i kontakt", f"""
+        ("Szyldy reklamowe w Gdyni i okolicy – obszar działania i kontakt", """
 Działamy w Gdyni we wszystkich dzielnicach, od Śródmieścia, przez Redłowo i Orłowo, po Chylonię i Obłuże. [UZUPEŁNIJ: czy obsługujecie też Sopot, Gdańsk, Rumię, Redę, Wejherowo i resztę Pomorza].
 
-{{{{mapa}}}}
+{{mapa}}
 
 ::info
-- **Telefon:** {{TEL_LINK}}
-- **E-mail:** {{EMAIL_LINK}}
-- **Adres:** {{ADRES}}
-- **Godziny pracy:** {{GODZINY}}
+- **Telefon:** {TEL_LINK}
+- **E-mail:** {EMAIL_LINK}
+- **Adres:** {ADRES}
+- **Godziny pracy:** {GODZINY}
 
-Najszybciej przygotujemy wycenę, jeśli przez formularz na stronie [kontakt]({L_KO}#formularz) prześlesz zdjęcie miejsca montażu i przybliżone wymiary.
+Najszybciej przygotujemy wycenę, jeśli przez [formularz wyceny](#wycena) prześlesz zdjęcie miejsca montażu i przybliżone wymiary.
 """),
     ],
     faq=[
-        ("Ile kosztuje szyld reklamowy w Gdyni?", "Cena zależy od wymiarów, materiału, podświetlenia i sposobu montażu, dlatego każdy szyld wyceniamy indywidualnie. Orientacyjnie: [UZUPEŁNIJ: przykładowe widełki cenowe]. Dokładną wycenę przygotujemy po otrzymaniu zdjęcia elewacji i wymiarów."),
-        ("Jak długo trwa wykonanie szyldu?", "Czas realizacji zależy od rodzaju reklamy i obłożenia produkcji. Prosty szyld zwykle powstaje szybciej niż litery przestrzenne z podświetleniem LED. U nas typowy czas to [UZUPEŁNIJ: liczba dni roboczych od akceptacji projektu]."),
+        ("Ile kosztuje szyld reklamowy w Gdyni?", "Cena zależy od rodzaju (kaseton, litery przestrzenne, litery do wnętrz), wymiarów, materiału, podświetlenia i sposobu montażu, dlatego każdy szyld wyceniamy indywidualnie. Orientacyjnie: [UZUPEŁNIJ: przykładowe widełki cenowe]. Dokładną wycenę przygotujemy po otrzymaniu zdjęcia elewacji i wymiarów."),
+        ("Jak długo trwa wykonanie szyldu?", "Czas realizacji zależy od rodzaju reklamy i obłożenia produkcji. Szyld bez podświetlenia zwykle powstaje szybciej niż kaseton czy litery przestrzenne z podświetleniem LED. U nas typowy czas to [UZUPEŁNIJ: liczba dni roboczych od akceptacji projektu]."),
         ("Czy zajmujecie się też montażem szyldu?", "[UZUPEŁNIJ: czy montaż wykonujecie sami, czy przez partnera, i na jakim obszarze]. Przed montażem warto sprawdzić, czy wspólnota, zarządca budynku lub urząd nie wymagają zgody na umieszczenie reklamy. Gdynia ma też uchwałę krajobrazową, która może określać zasady dla szyldów."),
-        ("Z jakich materiałów robicie szyldy?", "Dobieramy materiał do miejsca i budżetu. Najczęściej stosuje się dibond, PCV, plexi oraz litery przestrzenne z tworzywa lub metalu, z podświetleniem LED lub bez. U nas: [UZUPEŁNIJ: materiały, z którymi faktycznie pracujecie]."),
+        ("Podświetlany czy bez podświetlenia – co wybrać?", "Podświetlenie LED warto wybrać, jeśli lokal działa po zmroku, stoi przy ruchliwej ulicy albo konkuruje z innymi reklamami. Wersja bez podświetlenia wystarczy, gdy firma działa głównie w dzień lub budynek jest dobrze oświetlony – jest też tańsza. W wycenie możemy pokazać oba warianty."),
         ("Czy dajecie gwarancję na szyldy i podświetlenie LED?", "[UZUPEŁNIJ: okres i zakres gwarancji na szyldy oraz osobno na elementy LED i zasilacze]. W razie usterki wystarczy się z nami skontaktować, a ustalimy termin naprawy."),
         ("Nie mam logo ani projektu – czy możecie pomóc?", "Tak, wystarczy, że opiszesz swoją firmę i pokażesz zdjęcie miejsca na szyld. [UZUPEŁNIJ: czy przygotowujecie projekt graficzny od zera i czy jest wliczony w cenę]. Przed produkcją zawsze dostaniesz wizualizację do akceptacji."),
     ],
     cta="Wyślij nam zdjęcie elewacji i przybliżone wymiary, a przygotujemy propozycję i wycenę szyldu dla Twojej firmy w Gdyni.",
-    links=["szyldy-reklamowe-gdynia", "litery-przestrzenne-gdynia", "reklama-led-gdynia", "cennik"],
+    links=[],
 ))
 
 # ============================ SZYLDY =========================================
@@ -1058,12 +1149,11 @@ def local_business():
             "closes": FIRMA["zamkniecie_pn_pt"],
         }],
         "hasMap": FIRMA["mapa_link"],
-        "knowsAbout": ["szyldy reklamowe", "litery przestrzenne", "reklama LED", "kasetony reklamowe"],
+        "knowsAbout": ["szyldy reklamowe", "kasetony reklamowe", "litery przestrzenne", "litery do wnętrz", "litery metalowe", "neony LED"],
         "makesOffer": [
-            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": n, "url": url(s)}}
-            for s, n in [("szyldy-reklamowe-gdynia", "Szyldy reklamowe"),
-                         ("litery-przestrzenne-gdynia", "Litery przestrzenne"),
-                         ("reklama-led-gdynia", "Reklama LED")]
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": n, "url": f"{DOMENA}/#oferta"}}
+            for n in ["Szyldy z kasetonów (podświetlane i bez podświetlenia)", "Litery przestrzenne na elewację",
+                      "Litery do wnętrz", "Litery metalowe", "Neony LED"]
         ],
     }
 
@@ -1130,8 +1220,11 @@ def ld_blocks(p):
 # 6. Szablon strony
 # ---------------------------------------------------------------------------
 def header(active):
-    items = "".join(
-        f'<li><a href="{href(s)}"{" aria-current=\"page\"" if s == active else ""}>{n}</a></li>' for s, n in NAV)
+    if LANDING_ONLY:
+        items = "".join(f'<li><a href="{h}">{n}</a></li>' for h, n in LANDING_NAV)
+    else:
+        items = "".join(
+            f'<li><a href="{href(s)}"{" aria-current=\"page\"" if s == active else ""}>{n}</a></li>' for s, n in NAV)
     return f'''<a class="skip" href="#tresc">Przejdź do treści</a>
 <header class="site-header">
   <div class="wrap header-inner">
@@ -1139,15 +1232,19 @@ def header(active):
     <nav class="main-nav" aria-label="Menu główne"><ul>{items}</ul></nav>
     <div class="header-actions">
       <a class="btn btn-outline btn-sm header-call" href="tel:{FIRMA["telefon_href"]}">Zadzwoń</a>
-      <a class="btn btn-primary btn-sm" href="kontakt.html#formularz" data-quote-open>Wyślij zdjęcie</a>
+      <a class="btn btn-primary btn-sm" href="{"#wycena" if LANDING_ONLY else "kontakt.html#formularz"}" data-quote-open>Wyślij zdjęcie</a>
     </div>
   </div>
 </header>'''
 
 
 def footer():
-    oferta = "".join(f'<li><a href="{href(s)}">{n}</a></li>' for s, n in NAV[:3])
-    firma = "".join(f'<li><a href="{href(s)}">{n}</a></li>' for s, n in NAV[3:])
+    if LANDING_ONLY:
+        oferta = "".join(f'<li><a href="#oferta">{n}</a></li>' for n in ["Szyldy z kasetonów", "Litery przestrzenne", "Litery do wnętrz"])
+        firma = "".join(f'<li><a href="{h}">{n}</a></li>' for h, n in LANDING_NAV[1:])
+    else:
+        oferta = "".join(f'<li><a href="{href(s)}">{n}</a></li>' for s, n in NAV[:3])
+        firma = "".join(f'<li><a href="{href(s)}">{n}</a></li>' for s, n in NAV[3:])
     return f'''<footer class="site-footer">
   <div class="wrap footer-grid">
     <div class="footer-brand" itemscope itemtype="https://schema.org/LocalBusiness">
@@ -1157,7 +1254,7 @@ def footer():
       <p>Tel.: <a itemprop="telephone" href="tel:{FIRMA["telefon_href"]}">{fill(FIRMA["telefon"])}</a><br>E-mail: <a itemprop="email" href="mailto:{html.escape(FIRMA["email"])}">{fill(FIRMA["email"])}</a></p>
     </div>
     <div><p class="footer-h">Oferta</p><ul class="footer-nav">{oferta}</ul></div>
-    <div><p class="footer-h">Firma</p><ul class="footer-nav"><li><a href="./">Strona główna</a></li>{firma}</ul></div>
+    <div><p class="footer-h">{"Na stronie" if LANDING_ONLY else "Firma"}</p><ul class="footer-nav">{"" if LANDING_ONLY else '<li><a href="./">Strona główna</a></li>'}{firma}</ul></div>
     <div><p class="footer-h">Godziny pracy</p><p>Pn–pt: {fill(FIRMA["godziny_pn_pt"])}<br>Sobota: {fill(html.escape(FIRMA["godziny_sob"], quote=False))}<br>Niedziela: nieczynne</p>
       <p class="footer-h">Obszar działania</p><p>{fill(", ".join(FIRMA["obszar"]))}</p></div>
   </div>
@@ -1166,9 +1263,9 @@ def footer():
 <nav class="mobile-bar" aria-label="Szybki kontakt">
   <a class="btn btn-dark" href="tel:{FIRMA["telefon_href"]}">Zadzwoń</a>
   <a class="btn btn-dark" href="https://wa.me/{FIRMA["whatsapp"]}" rel="noopener">WhatsApp</a>
-  <a class="btn btn-primary" href="kontakt.html#formularz" data-quote-open>Wyślij zdjęcie</a>
+  <a class="btn btn-primary" href="{"#wycena" if LANDING_ONLY else "kontakt.html#formularz"}" data-quote-open>Wyślij zdjęcie</a>
 </nav>
-<dialog class="sheet" id="wycena" aria-labelledby="wycena-tytul">
+<dialog class="sheet" id="okno-wyceny" aria-labelledby="wycena-tytul">
   <div class="sheet-head"><p class="sheet-title" id="wycena-tytul">Wyślij zdjęcie do wyceny</p><button type="button" class="sheet-close" aria-label="Zamknij">×</button></div>
   {form("okno")}
 </dialog>
@@ -1193,7 +1290,7 @@ def mock(p):
 
 FONTS = """<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,500;125,600;125,700&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,500;125,600;125,700&amp;family=Pacifico&amp;display=swap">
 """
 
 
@@ -1205,14 +1302,15 @@ HERO_EYEBROW = {"index": "Reklama zewnętrzna · Gdynia", "szyldy-reklamowe-gdyn
                 "realizacje": "Realizacje", "cennik": "Cennik i wycena", "kontakt": "Kontakt i wycena"}
 EYEBROWS = {
     "Szyldy reklamowe Gdynia – co robimy i dla kogo": "Dla kogo",
-    "Nasze usługi: szyldy, litery przestrzenne i reklama LED": "Co robimy",
+    "Kasetony, litery przestrzenne i litery do wnętrz": "Oferta",
+    "Katalog: litery metalowe, litery do środka i neony LED": "Katalog",
     "Jak wygląda współpraca krok po kroku": "Wycena ze zdjęcia",
     "Od czego zależy cena szyldu reklamowego": "Cena",
     "Realizacje i opinie klientów": "Realizacje",
     "Szyldy reklamowe w Gdyni i okolicy – obszar działania i kontakt": "Gdzie działamy",
 }
 STATS = [("[UZUPEŁNIJ]", "lat", "doświadczenia"), ("[UZUPEŁNIJ]", "+", "wykonanych szyldów"),
-         ("3", "", "szyldy · litery 3D · LED"), ("1", "zdjęcie", "wystarczy do wyceny")]
+         ("3", "", "kasetony · litery 3D · do wnętrz"), ("1", "zdjęcie", "wystarczy do wyceny")]
 
 
 def h1_html(t):
@@ -1233,7 +1331,7 @@ def page_html(p):
     slug = p["slug"]
     title, desc = p["title"], p["desc"]
     canon = url(slug)
-    cta_href = p.get("cta_href", "kontakt.html#formularz")
+    cta_href = p.get("cta_href", "#wycena" if slug == "index" else "kontakt.html#formularz")
     crumb = ""
     if p["crumb"]:
         crumb = f'<nav class="crumbs" aria-label="Okruszki"><a href="./">Strona główna</a> <span aria-hidden="true">/</span> <span>{p["crumb"]}</span></nav>'
@@ -1247,7 +1345,9 @@ def page_html(p):
             rest = (f'<div class="quote-grid"><div class="quote-info">{rest}</div>'
                     f'<div class="quote-form"><p class="quote-form-title">Wyślij zdjęcie do wyceny</p>{form("index")}</div></div>')
             cls += " sec-quote"
-        secs.append(f'<section class="{cls}"><div class="wrap">\n<div class="sec-head"><div>{eb}<h2>{h2}</h2></div>{intro}</div>\n<div class="sec-body">{rest}</div>\n</div></section>')
+        sid = SECTION_IDS.get(h2) if slug == "index" else None
+        sid = f' id="{sid}"' if sid else ""
+        secs.append(f'<section class="{cls}"{sid}><div class="wrap">\n<div class="sec-head"><div>{eb}<h2>{h2}</h2></div>{intro}</div>\n<div class="sec-body">{rest}</div>\n</div></section>')
     faq = "".join(
         f'<details class="qa"{" open" if n == 0 else ""}><summary><h3>{inline(q)}</h3></summary><p>{inline(a)}</p></details>'
         for n, (q, a) in enumerate(p["faq"]))
@@ -1320,7 +1420,7 @@ def page_html(p):
 {stats}
 </div></section>
 {chr(10).join(secs)}
-<section class="sec faq"><div class="wrap">
+<section class="sec faq" id="faq"><div class="wrap">
 <div class="sec-head"><div><p class="eyebrow">FAQ</p><h2>Pytania i odpowiedzi</h2></div></div>
 <div class="sec-body faq-list">{faq}</div>
 </div></section>
@@ -1329,10 +1429,7 @@ def page_html(p):
 <p>{inline(p["cta"])}</p></div>
 <div class="actions"><a class="btn btn-light btn-lg" href="{cta_href}" data-quote-open>Wyślij zdjęcie elewacji</a><a class="btn btn-outline btn-lg" href="tel:{FIRMA["telefon_href"]}">Zadzwoń</a></div>
 </div></section>
-<section class="more"><div class="wrap">
-<h2>Zobacz też</h2>
-<div class="cards">{cards}</div>
-</div></section>
+{f'<section class="more"><div class="wrap"><h2>Zobacz też</h2><div class="cards">{cards}</div></div></section>' if cards else ""}
 </main>
 {footer()}
 </body>
@@ -1346,7 +1443,7 @@ def sitemap():
     prio = {"index": "1.0", "kontakt": "0.8", "cennik": "0.8", "realizacje": "0.7"}
     rows = "".join(
         f"  <url><loc>{url(p['slug'])}</loc><lastmod>{DATA_AKTUALIZACJI}</lastmod><priority>{prio.get(p['slug'], '0.9')}</priority></url>\n"
-        for p in PAGES)
+        for p in PAGES if not LANDING_ONLY or p["slug"] == "index")
     return f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{rows}</urlset>\n'
 
 
@@ -1370,10 +1467,13 @@ Sitemap: {DOMENA}/sitemap.xml
 
 
 def llms():
-    lines = "\n".join(f"- [{p['h1']}]({url(p['slug'])}): {p['desc']}" for p in PAGES)
+    if LANDING_ONLY:
+        lines = "\n".join(f"- [{n}]({DOMENA}/{h})" for h, n in LANDING_NAV)
+    else:
+        lines = "\n".join(f"- [{p['h1']}]({url(p['slug'])}): {p['desc']}" for p in PAGES)
     return f"""# {plain(FIRMA['nazwa'])} – szyldy reklamowe Gdynia
 
-> Agencja reklamy zewnętrznej z Gdyni. Projektujemy, wykonujemy i montujemy szyldy reklamowe, litery przestrzenne (3D) i reklamę podświetlaną LED (kasetony, litery LED, szyldy podświetlane) dla sklepów, lokali usługowych, gabinetów, restauracji i biur. Nie wykonujemy ekranów LED [UZUPEŁNIJ: potwierdź]. Wycena na podstawie zdjęcia elewacji, wymiarów i logo.
+> Agencja reklamy zewnętrznej z Gdyni. Wykonujemy i montujemy szyldy z kasetonów, litery przestrzenne na elewację i litery do wnętrz – podświetlane LED lub bez podświetlenia. W katalogu: litery metalowe, litery do środka i neony LED. Dla sklepów, lokali usługowych, gabinetów, restauracji i biur. Wycena na podstawie zdjęcia elewacji, wymiarów i logo.
 
 ## Dane firmy
 - Nazwa: {plain(FIRMA['nazwa'])}
@@ -1384,11 +1484,11 @@ def llms():
 - Obszar działania: {", ".join(FIRMA['obszar'])}
 - Mapy Google: {FIRMA['mapa_link']}
 
-## Podstrony
+## Na stronie
 {lines}
 
 ## Jak zamówić
-Wyślij przez formularz na stronie {url('kontakt')} zdjęcie elewacji (miejsca montażu), przybliżone wymiary i logo. Przygotujemy wizualizację i wycenę.
+Wyślij przez formularz wyceny ({DOMENA}/#wycena) zdjęcie elewacji (miejsca montażu), przybliżone wymiary i logo. Przygotujemy wizualizację i wycenę.
 """
 
 
@@ -1554,7 +1654,12 @@ def images_makieta():
 
 def main():
     OUT.mkdir(exist_ok=True)
-    for p in PAGES:
+    pages = [p for p in PAGES if p["slug"] == "index"] if LANDING_ONLY else PAGES
+    for p in PAGES:  # usuń stare podstrony z folderu do wgrania, gdy budujemy tylko landing
+        f = OUT / f"{p['slug']}.html"
+        if LANDING_ONLY and p["slug"] != "index" and f.exists():
+            f.unlink()
+    for p in pages:
         name = "index.html" if p["slug"] == "index" else f"{p['slug']}.html"
         (OUT / name).write_text(page_html(p), encoding="utf-8")
     (OUT / "sitemap.xml").write_text(sitemap(), encoding="utf-8")

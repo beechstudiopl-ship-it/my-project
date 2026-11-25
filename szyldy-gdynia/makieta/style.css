@@ -200,3 +200,5 @@ body { padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)); }
 .lg-dot, .lg-nb { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #222; margin-right: 6px; } .lg-nb { background: none; border: 1px dashed #777; }
 .m-chip { font: inherit; padding: 4px 10px; border: 1px solid #999; background: #fff; cursor: pointer; } .m-chip.on { background: #222; color: #fff; }
 @media (min-width: 960px) { .map-wrap { grid-template-columns: 1.2fr 1fr; } .gmap { min-width: 0; } }
+.ltype { display: flex; flex-direction: column; } .lt-btn { align-self: flex-start; margin-top: 8px; }
+.quote-form { scroll-margin-top: 16px; }

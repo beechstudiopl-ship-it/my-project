@@ -1,5 +1,7 @@
 # Szyldy reklamowe Gdynia – strona gotowa do wgrania
 
+**Na teraz: tylko landing.** W `build.py` jest `LANDING_ONLY = True`, więc build tworzy jedną stronę – `index.html` – z menu przewijającym do sekcji: Oferta (szyldy z kasetonów, litery przestrzenne, litery do wnętrz – podświetlane lub nie), Katalog (litery metalowe, litery do środka, neony LED), Realizacje, Wycena, Obszar działania (mapa Gdyni), FAQ. Treści podstron zostały w `build.py`; `LANDING_ONLY = False` wygeneruje je z powrotem.
+
 Są dwie wersje z tą samą treścią i SEO:
 - `strona/` – pełna wersja z wyglądem (`python3 build.py`),
 - `makieta/` – makieta bez stylu: szkielet w odcieniach szarości, font systemowy, szare prostokąty zamiast zdjęć (`python3 build.py --makieta`).

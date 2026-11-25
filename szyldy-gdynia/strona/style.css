@@ -454,3 +454,12 @@ figcaption { padding: 12px 14px; font-size: .9rem; line-height: 1.5; color: var(
 .m-chip:hover, .m-chip.on { background: var(--navy); color: var(--accent); border-color: var(--navy); }
 .map-pick { min-height: 3em; color: var(--muted); }
 @media (min-width: 960px) { .map-wrap { grid-template-columns: 1.25fr 1fr; gap: 48px; align-items: start; } .gmap { min-width: 0; } }
+
+/* oferta i katalog – przyciski na kartach */
+.ltype { display: flex; flex-direction: column; }
+.ltype p { flex: 1; margin-bottom: 18px !important; }
+.lt-btn { align-self: flex-start; border-color: var(--ink); }
+.lt-btn:hover { background: var(--accent); border-color: var(--accent); }
+.quote-form { scroll-margin-top: 100px; }
+.ltype-spec > li { grid-template-columns: 132px 1fr; }
+.ltype-spec .k { font-size: .72rem; letter-spacing: .08em; }

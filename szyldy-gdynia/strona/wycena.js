@@ -6,13 +6,19 @@
   var isImg = function (f) { return /^image\/(jpeg|png|webp|heic|heif)/.test(f.type); };
 
   /* ---------- okno szybkiej wyceny ---------- */
-  var sheet = document.getElementById("wycena");
+  var sheet = document.getElementById("okno-wyceny");
   if (sheet && typeof sheet.showModal === "function") {
     document.addEventListener("click", function (e) {
-      var a = e.target.closest("[data-quote-open], a[href$='#formularz']");
+      var a = e.target.closest("[data-quote-open], [data-rodzaj], a[href$='#formularz'], a[href='#wycena']");
       if (!a) return;
+      var rodzaj = a.getAttribute("data-rodzaj");
+      if (rodzaj) {
+        document.querySelectorAll(".q-rodzaj").forEach(function (sel) { sel.value = rodzaj; });
+        document.querySelectorAll(".q-more").forEach(function (d) { d.open = true; });
+      }
       e.preventDefault();
       var inline = document.querySelector("form#formularz");
+      if (inline && inline.closest(".quote-form")) inline = inline.closest(".quote-form");
       if (inline) {
         inline.scrollIntoView({ behavior: "smooth", block: "start" });
         var pick = inline.querySelector(".q-photos");
