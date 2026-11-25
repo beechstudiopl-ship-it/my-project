@@ -1158,6 +1158,7 @@ FONTS = """<link rel="preconnect" href="https://fonts.googleapis.com">
 
 HERO_IMG = {"index": "hero-index", "szyldy-reklamowe-gdynia": "hero-szyldy",
             "litery-przestrzenne-gdynia": "hero-litery", "reklama-led-gdynia": "hero-led"}
+HERO_PHOTO = {"index": "Litery przestrzenne 3D na białej elewacji budynku"}  # alt zdjęcia w górnej części strony
 HERO_EYEBROW = {"index": "Reklama zewnętrzna · Gdynia", "szyldy-reklamowe-gdynia": "Szyldy · kasetony · semafory",
                 "litery-przestrzenne-gdynia": "Litery 3D · fasada · recepcja", "reklama-led-gdynia": "Kasetony i litery LED",
                 "realizacje": "Realizacje", "cennik": "Cennik i wycena", "kontakt": "Kontakt i wycena"}
@@ -1219,6 +1220,11 @@ def page_html(p):
     img = HERO_IMG.get(slug)
     hero_cls = "hero has-img" if img else "hero"
     hero_style = f' style="--hero-img: url(img/{img}.webp)"' if img else ""
+    hero_photo = ""
+    if slug in HERO_PHOTO:  # zwykłe zdjęcie obok tekstu zamiast tła
+        hero_cls, hero_style = "hero hero-split", ""
+        hero_photo = (f'<figure class="hero-photo"><img src="img/{img}.webp" width="1400" height="1050" '
+                      f'fetchpriority="high" decoding="async" alt="{html.escape(HERO_PHOTO[slug])}"></figure>')
     preload = f'<link rel="preload" as="image" href="img/{img}.webp">\n' if img and not MAKIETA else ""
     return f'''<!doctype html>
 <html lang="pl">
@@ -1249,11 +1255,14 @@ def page_html(p):
 {header(slug)}
 <main id="tresc">
 <section class="{hero_cls}"{hero_style}><div class="wrap hero-inner">
+<div class="hero-copy">
 {crumb}
 <p class="hero-eyebrow">{HERO_EYEBROW.get(slug, "")}</p>
 <h1>{h1_html(p["h1"])}</h1>
 <p class="lead">{inline(p["lead"])}</p>
 <div class="actions"><a class="btn btn-light btn-lg" href="{cta_href}" data-quote-open>Wyślij zdjęcie do wyceny</a><a class="btn btn-outline btn-lg" href="tel:{FIRMA["telefon_href"]}">Zadzwoń</a></div>
+</div>
+{hero_photo}
 {stats}
 </div></section>
 {chr(10).join(secs)}

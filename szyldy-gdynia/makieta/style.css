@@ -183,3 +183,8 @@ body { padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)); }
 .quote-form-title { margin: 0; padding: 12px 16px 0; font-weight: 700; font-size: 1.2rem; }
 .quote-form .form { border: 0; margin: 0; }
 @media (min-width: 960px) { .quote-grid { grid-template-columns: 1fr 420px; align-items: start; } .quote-form { position: sticky; top: 16px; } }
+
+.hero-split .hero-inner { display: grid; gap: 16px; }
+.hero-photo { margin: 0; }
+.hero-photo img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+@media (min-width: 960px) { .hero-split .hero-inner { grid-template-columns: 1fr 1fr; align-items: center; } .hero-split .stats { grid-column: 1 / -1; } }
