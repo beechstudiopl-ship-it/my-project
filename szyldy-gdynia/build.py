@@ -285,7 +285,58 @@ def who(_):
     return f'<ul class="who">{cells}</ul>'
 
 
-DIRECTIVES = {"who": who, "mosaic": mosaic, "gallery": gallery, "form": form, "map": mapa}
+LETTERS = [
+    ("plexi", "Litera z plexi – światło w przód",
+     [("Lico", "mleczna plexi"), ("Boki", "taśma aluminiowa"), ("Światło", "LED świeci przez lico, do przodu")],
+     "Najlepsza czytelność po zmroku i z daleka – sklepy, gastronomia, ruchliwe ulice."),
+    ("halo", "Litera metalowa – światło na elewację",
+     [("Lico i boki", "metal, np. aluminium lub stal"), ("Światło", "LED świeci do tyłu, na ścianę – efekt halo")],
+     "Dyskretna, elegancka poświata – salony, kliniki, biura, restauracje."),
+    ("metal", "Litera metalowa bez podświetlenia",
+     [("Lico i boki", "aluminium lub stal nierdzewna"), ("Światło", "brak – dystanse od ściany dają cień i głębię")],
+     "Prostsza i tańsza – do wnętrz, na recepcję lub na dobrze oświetloną elewację."),
+]
+
+
+def letter_svg(kind):
+    """Rysunek litery „A” w danej konstrukcji (inline SVG, bez obrazków)."""
+    t = 'x="160" y="168" text-anchor="middle" font-family="Archivo, Arial, sans-serif" font-weight="700" font-size="150"'
+    if kind == "plexi":
+        wall = '<rect width="320" height="200" fill="#16232d"/>'
+        side = "".join(f'<text {t} transform="translate({i * .9:.1f} {i * .9:.1f})" fill="#{"8f99a3" if i % 2 else "a7b0b8"}">A</text>' for i in range(9, 0, -1))
+        glow = f'<text {t} fill="#fff4cc" filter="url(#g-plexi)" opacity=".95">A</text>'
+        face = f'<text {t} fill="#fffdf4">A</text>'
+        defs = '<filter id="g-plexi" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="9"/></filter>'
+        body = wall + side + glow + face
+    elif kind == "halo":
+        wall = '<rect width="320" height="200" fill="#1b2630"/>'
+        halo = f'<text {t} fill="#ffc04d" filter="url(#g-halo)">A</text>'
+        side = "".join(f'<text {t} transform="translate({i * .9:.1f} {i * .9:.1f})" fill="#23272d">A</text>' for i in range(7, 0, -1))
+        face = f'<text {t} fill="url(#m-halo)">A</text>'
+        defs = ('<filter id="g-halo" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="11"/></filter>'
+                '<linearGradient id="m-halo" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5d646d"/><stop offset="1" stop-color="#2e333a"/></linearGradient>')
+        body = wall + halo + halo + side + face
+    else:
+        wall = '<rect width="320" height="200" fill="#dcd8d0"/>'
+        shadow = f'<text {t} transform="translate(10 12)" fill="#000" opacity=".28" filter="url(#g-metal)">A</text>'
+        side = "".join(f'<text {t} transform="translate({i * .9:.1f} {i * .9:.1f})" fill="#7f858c">A</text>' for i in range(7, 0, -1))
+        face = f'<text {t} fill="url(#m-metal)">A</text>'
+        defs = ('<filter id="g-metal" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4"/></filter>'
+                '<linearGradient id="m-metal" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f1f2f3"/><stop offset=".5" stop-color="#b9bec4"/><stop offset="1" stop-color="#e2e4e6"/></linearGradient>')
+        body = wall + shadow + side + face
+    return f'<svg viewBox="0 0 320 200" role="img" aria-hidden="true"><defs>{defs}</defs>{body}</svg>'
+
+
+def letters(_):
+    cells = []
+    for kind, title, spec, when in LETTERS:
+        rows = "".join(f'<li><span class="k">{k}</span><span class="v">{v}</span></li>' for k, v in spec)
+        cells.append(f'<li class="ltype"><div class="ltype-pic">{letter_svg(kind)}</div><h3>{title}</h3>'
+                     f'<ul class="ltype-spec">{rows}</ul><p>{when}</p></li>')
+    return '<ul class="ltypes">' + "".join(cells) + "</ul>"
+
+
+DIRECTIVES = {"letters": letters, "who": who, "mosaic": mosaic, "gallery": gallery, "form": form, "map": mapa}
 
 # ---------------------------------------------------------------------------
 # 3. Nawigacja i linki „Zobacz też”
@@ -358,12 +409,34 @@ Dobieramy rodzaj reklamy do budynku, budżetu i tego, jak daleko szyld ma być w
 
 **Stosowane materiały:** [UZUPEŁNIJ: lista materiałów, z którymi faktycznie pracujecie]. **Montaż:** [UZUPEŁNIJ: czy montujecie sami, czy przez partnera, i czy pomagacie przy zgodach od zarządcy budynku].
 """),
+        ("Realizacje i opinie klientów", f"""
+Najlepiej ocenić naszą pracę po efektach. W galerii [realizacje]({L_RE}) pokazujemy szyldy, litery przestrzenne i reklamy LED wykonane dla firm z Gdyni i okolic.
+
+{{{{mosaic:szyld-1:big,litery-1:tall,led-1,szyld-2:wide,litery-2,led-2:wide}}}}
+
+**Opinie klientów:** [UZUPEŁNIJ: prawdziwe opinie, np. z wizytówki Google, z imieniem lub nazwą firmy za zgodą klienta].
+"""),
         ("Jak wygląda współpraca krok po kroku", """
+Wyślij zdjęcie elewacji przez formularz obok – resztę bierzemy na siebie. Tak wygląda droga od zdjęcia do gotowego szyldu.
+
 1. **Zapytanie** – wysyłasz zdjęcie elewacji lub miejsca na szyld, przybliżone wymiary i logo (jeśli je masz).
 2. **Konsultacja i propozycja** – doradzamy rodzaj szyldu, materiał i podświetlenie, a potem przygotowujemy wycenę.
 3. **Projekt i wizualizacja** – pokazujemy, jak szyld będzie wyglądał na Twoim budynku. Poprawki wprowadzamy przed produkcją.
 4. **Produkcja** – po akceptacji projektu wykonujemy szyld. Czas realizacji: [UZUPEŁNIJ: typowy czas wykonania].
 5. **Montaż i odbiór** – [UZUPEŁNIJ: jak wygląda montaż i odbiór u Was].
+
+**Co przesyłasz:**
+
+- zdjęcie elewacji zrobione na wprost – wystarczy z telefonu,
+- telefon lub e-mail, żebyśmy mogli odpowiedzieć,
+- opcjonalnie: przybliżone wymiary (jeśli ich nie znasz, zmierzysz je na zdjęciu w formularzu) i logo.
+
+**Co dostajesz:**
+
+- wycenę, w której wypisujemy, co obejmuje oferta – dodatkowe pozycje zaznaczamy osobno,
+- propozycję 1–2 wariantów w różnych cenach, jeśli nie wiesz, co wybrać,
+- wizualizację szyldu na zdjęciu Twojego budynku przed produkcją [UZUPEŁNIJ: czy wizualizacja jest bezpłatna],
+- odpowiedź w ciągu [UZUPEŁNIJ: czas odpowiedzi, np. 1 dnia roboczego].
 
 Jeśli nie masz jeszcze logo ani pomysłu na wygląd szyldu, napisz o tym w zapytaniu. [UZUPEŁNIJ: czy oferujecie projekt graficzny od zera].
 """),
@@ -378,13 +451,6 @@ Każdy szyld wyceniamy indywidualnie, bo dwa podobne napisy mogą się bardzo r�
 - projekt graficzny – czy masz gotowe pliki, czy trzeba je przygotować.
 
 Orientacyjne ceny znajdziesz w [cenniku]({L_CE}): [UZUPEŁNIJ: przykładowe widełki cenowe]. Dokładną kwotę podamy po otrzymaniu zdjęcia i wymiarów.
-"""),
-        ("Realizacje i opinie klientów", f"""
-Najlepiej ocenić naszą pracę po efektach. W galerii [realizacje]({L_RE}) pokazujemy szyldy, litery przestrzenne i reklamy LED wykonane dla firm z Gdyni i okolic.
-
-{{{{mosaic:szyld-1:big,litery-1:tall,led-1,szyld-2:wide,litery-2,led-2:wide}}}}
-
-**Opinie klientów:** [UZUPEŁNIJ: prawdziwe opinie, np. z wizytówki Google, z imieniem lub nazwą firmy za zgodą klienta].
 """),
         ("Szyldy reklamowe w Gdyni i okolicy – obszar działania i kontakt", f"""
 Działamy w Gdyni we wszystkich dzielnicach, od Śródmieścia, przez Redłowo i Orłowo, po Chylonię i Obłuże. [UZUPEŁNIJ: czy obsługujecie też Sopot, Gdańsk, Rumię, Redę, Wejherowo i resztę Pomorza].
@@ -520,6 +586,8 @@ Z liter przestrzennych można ułożyć nazwę firmy, logo, hasło albo pojedync
 """),
         ("Rodzaje liter przestrzennych – podświetlane i niepodświetlane", f"""
 Rodzaj liter dobieramy do miejsca montażu, budżetu i tego, czy napis ma być widoczny po zmroku. Najczęściej wybierane warianty to:
+
+{{{{letters}}}}
 
 ::cards
 - **Litery niepodświetlane** – prostsze i tańsze, dobre do wnętrz, na recepcję lub na dobrze oświetloną elewację.
@@ -1096,7 +1164,7 @@ HERO_EYEBROW = {"index": "Reklama zewnętrzna · Gdynia", "szyldy-reklamowe-gdyn
 EYEBROWS = {
     "Szyldy reklamowe Gdynia – co robimy i dla kogo": "Dla kogo",
     "Nasze usługi: szyldy, litery przestrzenne i reklama LED": "Co robimy",
-    "Jak wygląda współpraca krok po kroku": "Jak działamy",
+    "Jak wygląda współpraca krok po kroku": "Wycena ze zdjęcia",
     "Od czego zależy cena szyldu reklamowego": "Cena",
     "Realizacje i opinie klientów": "Realizacje",
     "Szyldy reklamowe w Gdyni i okolicy – obszar działania i kontakt": "Gdzie działamy",
@@ -1133,6 +1201,10 @@ def page_html(p):
         intro, rest = split_intro(md(body))
         eb = EYEBROWS.get(h2)
         eb = f'<p class="eyebrow">{eb}</p>' if eb else ""
+        if slug == "index" and h2 == "Jak wygląda współpraca krok po kroku":
+            rest = (f'<div class="quote-grid"><div class="quote-info">{rest}</div>'
+                    f'<div class="quote-form"><p class="quote-form-title">Wyślij zdjęcie do wyceny</p>{form("index")}</div></div>')
+            cls += " sec-quote"
         secs.append(f'<section class="{cls}"><div class="wrap">\n<div class="sec-head"><div>{eb}<h2>{h2}</h2></div>{intro}</div>\n<div class="sec-body">{rest}</div>\n</div></section>')
     faq = "".join(
         f'<details class="qa"{" open" if n == 0 else ""}><summary><h3>{inline(q)}</h3></summary><p>{inline(a)}</p></details>'

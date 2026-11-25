@@ -124,8 +124,8 @@ body { padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)); }
 .sheet-close { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line, #ccc); background: var(--bg-alt, #f2f2f2); font-size: 1.4rem; line-height: 1; cursor: pointer; color: var(--ink, #111); }
 .sheet .qform { margin: 0; border: 0; border-radius: 0; box-shadow: none; }
 
-.qform { display: grid; gap: 12px; }
-.q-photos { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; }
+.qform { display: grid; gap: 12px; position: relative; }
+.form .q-photos, .q-photos { position: absolute; left: 0; top: 0; width: 1px !important; height: 1px; min-height: 0; padding: 0; border: 0; opacity: 0; overflow: hidden; }
 .photo-pick { display: flex !important; align-items: center; gap: 14px; padding: 18px; border: 2px dashed var(--accent-dark, #555); border-radius: 14px; background: var(--bg-alt, #f4f4f4); cursor: pointer; font-weight: 400 !important; }
 .photo-pick strong { display: block; font-size: 1.1rem; color: var(--ink, #111); }
 .photo-pick small { display: block; color: var(--muted, #666); font-size: .9rem; line-height: 1.4; }
@@ -169,3 +169,17 @@ body { padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)); }
 .who-ico svg { width: 26px; height: 26px; }
 .who-txt strong, .who-txt span { display: block; }
 @media (min-width: 720px) { .who { grid-template-columns: 1fr 1fr; } }
+
+/* rodzaje liter */
+.ltypes { list-style: none; padding: 0; display: grid; gap: 10px; margin: 1em 0; }
+.ltypes > li { border: 1px solid #bbb; padding: 12px; }
+.ltype-pic svg { width: 100%; height: auto; filter: grayscale(1); }
+.ltype-spec { list-style: none; padding: 0; }
+.ltype-spec .k { font-weight: 700; margin-right: 6px; }
+@media (min-width: 900px) { .ltypes { grid-template-columns: repeat(3, 1fr); } }
+/* wycena w treści */
+.quote-grid { display: grid; gap: 20px; }
+.quote-form { border: 2px solid #222; }
+.quote-form-title { margin: 0; padding: 12px 16px 0; font-weight: 700; font-size: 1.2rem; }
+.quote-form .form { border: 0; margin: 0; }
+@media (min-width: 960px) { .quote-grid { grid-template-columns: 1fr 420px; align-items: start; } .quote-form { position: sticky; top: 16px; } }

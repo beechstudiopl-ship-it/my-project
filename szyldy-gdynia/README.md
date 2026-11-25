@@ -54,6 +54,10 @@ Teksty alt i podpisy zmienisz w `build.py` → `IMAGES`.
 
 **Szybka wycena (plik `wycena.js`):** na każdej stronie na dole jest pasek: Zadzwoń, WhatsApp, Wyślij zdjęcie. „Wyślij zdjęcie” otwiera krótki formularz: zdjęcie, telefon lub e-mail, wyślij. Wymiary (z polem w m²), pomiar szyldu na zdjęciu, rodzaj reklamy, adres i wiadomość są zwinięte jako opcjonalne. Zdjęcia większe niż 1,5 MB są zmniejszane w przeglądarce przed wysłaniem. Do uzupełnienia w `FIRMA`: `whatsapp` i `czas_odpowiedzi`.
 
+**Strona główna – kolejność:** górna część strony, „Dla kogo”, usługi, realizacje (galeria), wycena (opis procesu + formularz w treści strony), cena, obszar działania, FAQ. Na stronie z formularzem w treści przyciski „Wyślij zdjęcie” przewijają do niego, na pozostałych otwierają okno.
+
+**Litery przestrzenne – rodzaje liter:** trzy karty z rysunkiem (plexi + taśma aluminiowa, światło w przód; metal ze światłem na elewację; metal bez podświetlenia). Rysunki są w kodzie (SVG); dane kart zmienisz w `build.py` → `LETTERS`.
+
 **5. Formularz:** strona jest statyczna, więc formularz potrzebuje obsługi (np. Formspree, Getform albo skrypt PHP na Twoim hostingu).
 Wpisz jej adres w `FIRMA["formularz_action"]`. Obsługa musi przyjmować załączniki.
 

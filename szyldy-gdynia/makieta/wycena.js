@@ -12,7 +12,14 @@
       var a = e.target.closest("[data-quote-open], a[href$='#formularz']");
       if (!a) return;
       e.preventDefault();
-      sheet.showModal();
+      var inline = document.querySelector("form#formularz");
+      if (inline) {
+        inline.scrollIntoView({ behavior: "smooth", block: "start" });
+        var pick = inline.querySelector(".q-photos");
+        if (pick) pick.focus({ preventScroll: true });
+      } else {
+        sheet.showModal();
+      }
     });
     sheet.querySelector(".sheet-close").addEventListener("click", function () { sheet.close(); });
     sheet.addEventListener("click", function (e) { if (e.target === sheet) sheet.close(); });
