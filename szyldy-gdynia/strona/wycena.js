@@ -100,6 +100,23 @@
     });
   });
 
+  /* ---------- mapa dzielnic ---------- */
+  document.querySelectorAll(".map-wrap").forEach(function (wrap) {
+    var pick = wrap.querySelector(".map-pick");
+    function sel(name) {
+      wrap.querySelectorAll("[data-d]").forEach(function (el) { el.classList.toggle("on", el.getAttribute("data-d") === name); });
+      pick.innerHTML = "<strong>" + name + "</strong> – działamy tutaj. Wyślij zdjęcie elewacji, a przygotujemy wycenę.";
+    }
+    wrap.addEventListener("click", function (e) {
+      var el = e.target.closest("[data-d]");
+      if (el) sel(el.getAttribute("data-d"));
+    });
+    wrap.addEventListener("mouseover", function (e) {
+      var el = e.target.closest(".m-chip");
+      if (el) sel(el.getAttribute("data-d"));
+    });
+  });
+
   /* ---------- pole szyldu z wpisanych wymiarów ---------- */
   function initDims(form) {
     var box = form.querySelector("[data-dims]");

@@ -336,7 +336,46 @@ def letters(_):
     return '<ul class="ltypes">' + "".join(cells) + "</ul>"
 
 
-DIRECTIVES = {"letters": letters, "who": who, "mosaic": mosaic, "gallery": gallery, "form": form, "map": mapa}
+# schematyczna mapa Gdyni: (nazwa, x, y, kotwica etykiety) – położenia przybliżone
+DZIELNICE = [
+    ("Babie Doły", 452, 52, "end"), ("Oksywie", 424, 104, "end"), ("Obłuże", 362, 118, "end"), ("Pogórze", 300, 80, "middle"),
+    ("Pustki Cisowskie-Demptowo", 182, 104, "middle"), ("Cisowa", 150, 168, "end"), ("Chylonia", 236, 168, "middle"),
+    ("Leszczynki", 288, 200, "end"), ("Grabówek", 318, 236, "end"), ("Działki Leśne", 350, 262, "end"),
+    ("Śródmieście", 400, 276, "start"), ("Kamienna Góra", 422, 312, "start"), ("Wzgórze Św. Maksymiliana", 360, 330, "end"),
+    ("Witomino", 270, 292, "end"), ("Chwarzno-Wiczlino", 120, 296, "middle"), ("Dąbrowa", 178, 358, "middle"),
+    ("Karwiny", 218, 410, "middle"), ("Wielki Kack", 286, 424, "middle"), ("Mały Kack", 352, 404, "start"),
+    ("Redłowo", 418, 368, "start"), ("Orłowo", 432, 428, "start"),
+]
+SASIEDZI = [("Kosakowo", 352, 26), ("Rumia", 40, 204), ("Reda, Wejherowo ←", 14, 140), ("Sopot", 452, 488), ("Gdańsk ↓", 470, 532)]
+
+
+def mapa(_):
+    land = ("M470,30 L300,38 L210,60 L140,92 L92,170 L64,240 L60,320 L96,392 L150,440 L240,470 L330,462 L446,452 "
+            "L436,400 L424,340 L412,300 L404,262 L372,236 L360,196 L384,168 L430,150 L448,110 L462,70 Z")
+    dots, labels = [], []
+    for n, x, y, a in DZIELNICE:
+        dx = {"start": 9, "end": -9, "middle": 0}[a]
+        dy = 4 if a != "middle" else -10
+        dots.append(f'<circle class="m-dot" data-d="{html.escape(n)}" cx="{x}" cy="{y}" r="5"><title>{n}</title></circle>')
+        labels.append(f'<text class="m-lab" x="{x + dx}" y="{y + dy}" text-anchor="{a}">{n}</text>')
+    nb = "".join(f'<circle class="m-nb" cx="{x}" cy="{y}" r="4"/><text class="m-nbl" x="{x + 8}" y="{y + 4}">{n}</text>' for n, x, y in SASIEDZI)
+    svg = (f'<svg class="gmap" viewBox="0 0 600 560" role="img" aria-label="Schematyczna mapa Gdyni z dzielnicami, w których działamy">'
+           f'<rect width="600" height="560" class="m-sea"/>'
+           f'<path class="m-land-out" d="M0,0 H470 L462,70 L448,110 L430,150 L384,168 L360,196 L372,236 L404,262 L412,300 L424,340 L436,400 L446,452 L460,560 H0 Z"/>'
+           f'<path class="m-land" d="{land}"/>'
+           f'<text class="m-sea-l" x="540" y="250" transform="rotate(90 540 250)">ZATOKA GDAŃSKA</text>'
+           f'<text class="m-port" x="398" y="206">PORT</text>'
+           f'{nb}{"".join(dots)}{"".join(labels)}</svg>')
+    chips = "".join(f'<li><button type="button" class="m-chip" data-d="{html.escape(n)}">{n}</button></li>' for n, *_ in sorted(DZIELNICE, key=lambda d: d[0]))
+    return (f'<div class="map-wrap"><div class="map-card"><div class="map-scroll">{svg}</div>'
+            f'<ul class="map-legend"><li><span class="lg-dot"></span>Gdynia – wszystkie dzielnice</li>'
+            f'<li><span class="lg-nb"></span>Okolice – {fill("[UZUPEŁNIJ: potwierdź, gdzie montujecie]")}</li></ul>'
+            f'<p class="map-note">Mapa poglądowa – położenie dzielnic przybliżone.</p></div>'
+            f'<div class="map-side"><p class="map-side-t">Dzielnice Gdyni, w których działamy</p>'
+            f'<ul class="map-chips">{chips}</ul><p class="map-pick" aria-live="polite">Wybierz dzielnicę, żeby zobaczyć ją na mapie.</p></div></div>')
+
+
+DIRECTIVES = {"mapa": mapa, "letters": letters, "who": who, "mosaic": mosaic, "gallery": gallery, "form": form, "map": mapa}
 
 # ---------------------------------------------------------------------------
 # 3. Nawigacja i linki „Zobacz też”
@@ -454,6 +493,8 @@ Orientacyjne ceny znajdziesz w [cenniku]({L_CE}): [UZUPEŁNIJ: przykładowe wide
 """),
         ("Szyldy reklamowe w Gdyni i okolicy – obszar działania i kontakt", f"""
 Działamy w Gdyni we wszystkich dzielnicach, od Śródmieścia, przez Redłowo i Orłowo, po Chylonię i Obłuże. [UZUPEŁNIJ: czy obsługujecie też Sopot, Gdańsk, Rumię, Redę, Wejherowo i resztę Pomorza].
+
+{{{{mapa}}}}
 
 ::info
 - **Telefon:** {{TEL_LINK}}

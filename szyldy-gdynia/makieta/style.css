@@ -189,3 +189,14 @@ body { padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)); }
 .hero-photo img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
 @media (min-width: 960px) { .hero-split .hero-inner { grid-template-columns: 1fr 1fr; align-items: center; } .hero-split .stats { grid-column: 1 / -1; } }
 .hero-photo video { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+
+.map-wrap { display: grid; gap: 16px; margin: 1em 0; }
+.map-scroll { overflow-x: auto; border: 1px solid #bbb; }
+.gmap { display: block; width: 100%; min-width: 520px; font-family: system-ui, sans-serif; }
+.m-sea { fill: #eee; } .m-land-out { fill: #f6f6f6; } .m-land { fill: #ddd; stroke: #222; stroke-dasharray: 4 4; }
+.m-sea-l, .m-port { fill: #999; font-size: 12px; } .m-dot { fill: #222; cursor: pointer; } .m-dot.on { r: 9; }
+.m-lab { font-size: 11px; fill: #222; } .m-nb { fill: none; stroke: #777; stroke-dasharray: 2 2; } .m-nbl { font-size: 11px; fill: #777; }
+.map-legend, .map-chips { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 14px; }
+.lg-dot, .lg-nb { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #222; margin-right: 6px; } .lg-nb { background: none; border: 1px dashed #777; }
+.m-chip { font: inherit; padding: 4px 10px; border: 1px solid #999; background: #fff; cursor: pointer; } .m-chip.on { background: #222; color: #fff; }
+@media (min-width: 960px) { .map-wrap { grid-template-columns: 1.2fr 1fr; } .gmap { min-width: 0; } }
