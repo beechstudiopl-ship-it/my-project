@@ -1429,7 +1429,7 @@ def images():
     navy = (15, 29, 39)
     for key, name in [("led-1", "hero-index"), ("szyld-2", "hero-szyldy"), ("litery-1", "hero-litery"), ("led-2", "hero-led")]:
         path = img_dir / f"{name}.webp"
-        if path.exists() and path.stat().st_size > 40000:
+        if path.exists():  # nigdy nie nadpisuj – usuń plik, żeby wygenerować przykład od nowa
             continue
         hw, hh = 1920, 1000
         hero = Image.new("RGB", (hw, hh), navy)
@@ -1448,7 +1448,7 @@ def images():
 
     for key, im in scenes.items():
         path = img_dir / f"{key}.webp"
-        if path.exists() and path.stat().st_size > 6000:  # nie nadpisuj prawdziwych zdjęć
+        if path.exists():  # nigdy nie nadpisuj – usuń plik, żeby wygenerować przykład od nowa
             continue
         badge(im)
         im.save(path, "WEBP", quality=78)

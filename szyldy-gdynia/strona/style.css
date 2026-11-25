@@ -305,7 +305,7 @@ figcaption { padding: 12px 14px; font-size: .9rem; line-height: 1.5; color: var(
   .main-nav ul { padding: 0; overflow: visible; }
   .header-actions { display: flex; }
   .hero { padding-top: 96px; }
-  .hero.has-img { background-image: linear-gradient(90deg, rgba(15, 29, 39, .97) 0%, rgba(15, 29, 39, .88) 38%, rgba(15, 29, 39, .25) 75%, rgba(15, 29, 39, .1) 100%), var(--hero-img); background-position: right center; }
+  .hero.has-img { background-image: linear-gradient(90deg, rgba(15, 29, 39, .96) 0%, rgba(15, 29, 39, .8) 36%, rgba(15, 29, 39, 0) 62%), var(--hero-img); background-position: right center; }
   .hero-inner { padding-bottom: 64px; }
   .stats { margin-top: 80px; }
   .sec { padding: 104px 0; }
