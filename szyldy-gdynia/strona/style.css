@@ -506,3 +506,8 @@ html, body { overflow-x: clip; }
 .btn-send:hover, .form .btn-primary:hover { background: var(--navy-2); border-color: var(--navy-2); color: #fff; }
 .lt-btn:hover { background: var(--navy); border-color: var(--navy); color: #fff; }
 .ltype-pic img { display: block; width: 100%; height: auto; aspect-ratio: 8 / 5; object-fit: cover; }
+
+/* górna część strony: zdjęcie na całość, jednolita maska (70% przezroczystości), bez gradientu */
+.hero.has-img { --hero-mask: rgba(15, 29, 39, .3); background-image: linear-gradient(var(--hero-mask), var(--hero-mask)), var(--hero-img) !important; background-size: cover; background-position: 70% 60%; }
+.hero.has-img h1, .hero.has-img .lead, .hero.has-img .hero-eyebrow, .hero.has-img .stats { text-shadow: 0 2px 14px rgba(0, 0, 0, .55); }
+.hero.has-img .stats { border-top-color: rgba(255, 255, 255, .35); }

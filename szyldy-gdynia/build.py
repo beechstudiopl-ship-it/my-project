@@ -1297,7 +1297,7 @@ FONTS = """<link rel="preconnect" href="https://fonts.googleapis.com">
 
 HERO_IMG = {"index": "hero-index", "szyldy-reklamowe-gdynia": "hero-szyldy",
             "litery-przestrzenne-gdynia": "hero-litery", "reklama-led-gdynia": "hero-led"}
-HERO_PHOTO = {"index": "Litery przestrzenne 3D na białej elewacji budynku"}  # alt zdjęcia w górnej części strony
+HERO_PHOTO = {}  # {"index": "alt"} = zdjęcie jako panel obok tekstu; puste = zdjęcie jako tło całej górnej części strony  # alt zdjęcia w górnej części strony
 HERO_EYEBROW = {"index": "Reklama zewnętrzna · Gdynia", "szyldy-reklamowe-gdynia": "Szyldy · kasetony · semafory",
                 "litery-przestrzenne-gdynia": "Litery 3D · fasada · recepcja", "reklama-led-gdynia": "Kasetony i litery LED",
                 "realizacje": "Realizacje", "cennik": "Cennik i wycena", "kontakt": "Kontakt i wycena"}
