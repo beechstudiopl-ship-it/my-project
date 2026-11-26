@@ -375,7 +375,7 @@ def offer(_):
          [("Wykończenie", "frezowanie wklęsłe lub wypukłe"), ("Podświetlenie", "LED w środku – równe światło po zmroku"), ("Przykładowa cena", "250 × 50 cm, frezowanie wklęsłe – 4500 zł [UZUPEŁNIJ: netto/brutto]"), ("Montaż", "od 1000 zł – zależnie od miejsca montażu")],
          "Dużo miejsca na logo i nazwę, dobra widoczność z daleka – sklepy, punkty usługowe, lokale przy ulicy.", "Kaseton reklamowy"),
         (letter_svg("plexi"), "Litery przestrzenne 3D",
-         [("Co to", "litery i logo 3D na fasadę, nad wejście lub nad witrynę"), ("Podświetlane", "światło w przód, na elewację (halo) lub z boków"), ("Bez podświetlenia", "aluminium, stal lub plexi na dystansach")],
+         [("Co to", "litery i logo 3D na fasadę, nad wejście lub nad witrynę"), ("Podświetlane", "światło w przód, na elewację (halo) lub z boków"), ("Bez podświetlenia", "aluminium, stal lub plexi na dystansach"), ("Przykładowa cena", "napis 250 × 30 cm, 6 liter – od 6800 zł [UZUPEŁNIJ: netto/brutto]"), ("Montaż", "od 1000 zł – zależnie od miejsca montażu")],
          "Elegancki napis, który nie zasłania architektury – restauracje, salony, gabinety, biura.", "Litery przestrzenne 3D"),
         (scene_svg("wnetrze"), "Logo do środka",
          [("Co to", "logo za ladą, na recepcji, w biurze i sali konferencyjnej"), ("Podświetlane", "subtelna poświata na ścianę (halo)"), ("Bez podświetlenia", "plexi, PCV lub metal, montaż na ścianie")],
@@ -597,7 +597,7 @@ Najszybciej przygotujemy wycenę, jeśli przez [formularz wyceny](#wycena) prze�
 """),
     ],
     faq=[
-        ("Ile kosztuje szyld reklamowy w Gdyni?", "Cena zależy od rodzaju (kaseton, litery przestrzenne, litery do wnętrz), wymiarów, materiału, podświetlenia i sposobu montażu, dlatego każdy szyld wyceniamy indywidualnie. Przykładowo kaseton reklamowy 250 × 50 cm z frezowaniem wklęsłym kosztuje 4500 zł [UZUPEŁNIJ: netto/brutto], a montaż od 1000 zł – zależnie od miejsca montażu. Dokładną wycenę przygotujemy po otrzymaniu zdjęcia elewacji i wymiarów."),
+        ("Ile kosztuje szyld reklamowy w Gdyni?", "Cena zależy od rodzaju (kaseton, litery przestrzenne, litery do wnętrz), wymiarów, materiału, podświetlenia i sposobu montażu, dlatego każdy szyld wyceniamy indywidualnie. Przykładowo kaseton reklamowy 250 × 50 cm z frezowaniem wklęsłym kosztuje 4500 zł [UZUPEŁNIJ: netto/brutto], a napis z liter przestrzennych 250 × 30 cm (6 liter) od 6800 zł. Montaż kosztuje od 1000 zł – zależnie od miejsca montażu. Dokładną wycenę przygotujemy po otrzymaniu zdjęcia elewacji i wymiarów."),
         ("Jak długo trwa wykonanie szyldu?", "Czas realizacji zależy od rodzaju reklamy i obłożenia produkcji. Szyld bez podświetlenia zwykle powstaje szybciej niż kaseton czy litery przestrzenne z podświetleniem LED. U nas typowy czas to [UZUPEŁNIJ: liczba dni roboczych od akceptacji projektu]."),
         ("Czy zajmujecie się też montażem szyldu?", "[UZUPEŁNIJ: czy montaż wykonujecie sami, czy przez partnera, i na jakim obszarze]. Przed montażem warto sprawdzić, czy wspólnota, zarządca budynku lub urząd nie wymagają zgody na umieszczenie reklamy. Gdynia ma też uchwałę krajobrazową, która może określać zasady dla szyldów."),
         ("Podświetlany czy bez podświetlenia – co wybrać?", "Podświetlenie LED warto wybrać, jeśli lokal działa po zmroku, stoi przy ruchliwej ulicy albo konkuruje z innymi reklamami. Wersja bez podświetlenia wystarczy, gdy firma działa głównie w dzień lub budynek jest dobrze oświetlony – jest też tańsza. W wycenie możemy pokazać oba warianty."),
