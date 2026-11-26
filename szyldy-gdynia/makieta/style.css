@@ -223,3 +223,4 @@ html, body { overflow-x: clip; }
   .faq-grid { grid-template-columns: 1.3fr 1fr; gap: 56px; align-items: start; }
   .faq-video { position: sticky; top: 110px; }
 }
+.ltype-pic img { display: block; width: 100%; height: auto; aspect-ratio: 8 / 5; object-fit: cover; }

@@ -385,7 +385,8 @@ def offer(_):
 
 def katalog(_):
     return cards_grid([
-        (letter_svg("halo"), "Litery metalowe",
+        ('<img src="img/katalog-litery-metalowe.webp" width="1200" height="750" loading="lazy" decoding="async" '
+         'alt="Litery metalowe na białej elewacji budynku – napis Orłowska 44">', "Litery metalowe",
          [("Materiał", "aluminium lub stal nierdzewna"), ("Wersje", "bez podświetlenia lub ze światłem na elewację")],
          "Prestiżowy, trwały napis na fasadę – dobrze znosi nadmorską pogodę.", "Litery metalowe"),
         (scene_svg("wnetrze"), "Litery do środka",

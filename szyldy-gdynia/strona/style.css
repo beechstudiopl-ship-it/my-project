@@ -505,3 +505,4 @@ html, body { overflow-x: clip; }
 .btn-send, .form .btn-primary, .sheet .btn-primary { background: var(--navy); border-color: var(--navy); color: #fff; }
 .btn-send:hover, .form .btn-primary:hover { background: var(--navy-2); border-color: var(--navy-2); color: #fff; }
 .lt-btn:hover { background: var(--navy); border-color: var(--navy); color: #fff; }
+.ltype-pic img { display: block; width: 100%; height: auto; aspect-ratio: 8 / 5; object-fit: cover; }
