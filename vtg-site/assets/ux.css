@@ -915,9 +915,15 @@ html.lb-open { overflow: hidden; }
   .rzs__grid { grid-template-columns: 1fr; gap: 12px; }
   .rz__body { padding: 18px 20px 20px; }
   .rz__t { font-size: 19px; }
-    .gl__grid { gap: 6px; }
+  .gl__grid { gap: 6px; }
   .lb__prev, .lb__next { top: auto; bottom: 8px; transform: none; }
   .lb__prev { left: 8px; } .lb__next { right: 8px; }
 }
-/* Project tiles: compact actions in one row: quote button + phone as a text link */
-@media (max-width: 720px) { 
+/* Projects: category tabs right under the header, filtering projects and gallery */
+.rzs .pjs__filters { margin-bottom: var(--head-gap) !important; }
+.rz[hidden], .rzs [hidden], .pjs [hidden] { display: none !important; }
+.rzs .mp__tab.is-on, .pjs .mp__tab.is-on { background: #0a6fe0; border-color: #0a6fe0; color: #fff; }
+.rzs .mp__tab { color: var(--ink); border-color: var(--line-strong); background: transparent; }
+.rzs .mp__tab:hover { background: var(--surface-200); }
+.rzs .mp__tab { border: 1px solid rgba(7,8,10,.25); }
+.rzs .mp__tab.is-on, .rzs .mp__tab.is-on:hover { background: #0a6fe0; border-color: #0a6fe0; color: #fff; }

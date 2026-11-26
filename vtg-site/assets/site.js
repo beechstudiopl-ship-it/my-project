@@ -131,13 +131,18 @@
 (function () {
   var btns = document.querySelectorAll('.pjf');
   if (!btns.length) return;
-  var items = document.querySelectorAll('.pj'), empty = document.querySelector('.pjs__empty');
+  var items = document.querySelectorAll('.pj, .rz'), empty = document.querySelector('.pjs__empty');
   btns.forEach(function (b) {
     b.addEventListener('click', function () {
       var f = b.dataset.filter, n = 0;
       btns.forEach(function (x) { var on = x === b; x.classList.toggle('is-on', on); x.setAttribute('aria-pressed', on ? 'true' : 'false'); });
       items.forEach(function (it) { var show = f === 'all' || it.dataset.type === f; it.hidden = !show; if (show) n++; });
       if (empty) empty.hidden = n > 0;
+      // Hide a block (projects or gallery) when the filter leaves it empty
+      document.querySelectorAll('.rzs, .pjs').forEach(function (sec) {
+        var any = [].some.call(sec.querySelectorAll('.pj, .rz'), function (x) { return !x.hidden; });
+        sec.querySelectorAll('.svp__head, .rzs__grid, .pjs__grid').forEach(function (el) { el.hidden = !any; });
+      });
     });
   });
 })();

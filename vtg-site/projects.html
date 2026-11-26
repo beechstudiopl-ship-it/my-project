@@ -116,11 +116,12 @@
      To add one: copy an <article class="rz"> block and create project-<slug>.html from an existing project page. -->
 <section class="rzs" aria-labelledby="rz-h" data-theme="light">
   <div class="vtg-container">
-    <div class="vtg-heading svp__head">
+    <div class="pjs__filters" role="group" aria-label="Filter by type of work"><button type="button" class="mp__tab pjf is-on" data-filter="all" aria-pressed="true">All</button><button type="button" class="mp__tab pjf" data-filter="mechanical" aria-pressed="false">Mechanical</button><button type="button" class="mp__tab pjf" data-filter="doors" aria-pressed="false">Door systems</button><button type="button" class="mp__tab pjf" data-filter="electrical" aria-pressed="false">Electrical</button><button type="button" class="mp__tab pjf" data-filter="modernisation" aria-pressed="false">Modernisation</button></div>
+    <div class="vtg-heading svp__head rz__head">
       <h2 id="rz-h" class="h2">Projects</h2>
     </div>
     <div class="rzs__grid">
-      <article class="rz">
+      <article class="rz" data-type="modernisation">
         <a class="rz__img" href="project-lift-installation.html" tabindex="-1" aria-hidden="true"><img src="images/projects/lift-installation/01-t.webp" alt="" width="507" height="900" loading="lazy"></a>
         <div class="rz__body">
           <p class="rz__cat">Modernisation</p>
@@ -128,7 +129,7 @@
           <p class="rz__loc"><svg class="lu" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.99-5.54 10.19-7.4 11.8a1 1 0 0 1-1.2 0C9.54 20.19 4 14.99 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg><span>London</span></p>
         </div>
       </article>
-      <article class="rz">
+      <article class="rz" data-type="electrical">
         <a class="rz__img" href="project-mrl-lift-electrical.html" tabindex="-1" aria-hidden="true"><img src="images/projects/mrl-lift-electrical/01-t.webp" alt="" width="675" height="900" loading="lazy"></a>
         <div class="rz__body">
           <p class="rz__cat">Electrical</p>
@@ -136,7 +137,7 @@
           <p class="rz__loc"><svg class="lu" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.99-5.54 10.19-7.4 11.8a1 1 0 0 1-1.2 0C9.54 20.19 4 14.99 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg><span>London</span></p>
         </div>
       </article>
-      <article class="rz">
+      <article class="rz" data-type="doors">
         <a class="rz__img" href="project-lift-doors-lobbies.html" tabindex="-1" aria-hidden="true"><img src="images/projects/lift-doors-lobbies/01-t.webp" alt="" width="900" height="420" loading="lazy"></a>
         <div class="rz__body">
           <p class="rz__cat">Door systems</p>
@@ -154,7 +155,6 @@
     <div class="vtg-heading svp__head">
       <h2 id="gal-h" class="h2">Project gallery</h2>
     </div>
-    <div class="pjs__filters" role="group" aria-label="Filter by type of work"><button type="button" class="mp__tab pjf is-on" data-filter="all" aria-pressed="true">All projects</button><button type="button" class="mp__tab pjf" data-filter="mechanical" aria-pressed="false">Mechanical</button><button type="button" class="mp__tab pjf" data-filter="doors" aria-pressed="false">Door systems</button><button type="button" class="mp__tab pjf" data-filter="electrical" aria-pressed="false">Electrical</button><button type="button" class="mp__tab pjf" data-filter="modernisation" aria-pressed="false">Modernisation</button></div>
     <div class="pjs__grid pjs__grid--photos">
       <!-- PHOTO: copy this block to add a photo. data-type: mechanical | doors | electrical | modernisation -->
       <figure class="pj pj--photo" data-type="doors">
