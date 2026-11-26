@@ -880,17 +880,12 @@ html.tb-off { --tb: 0px; }
 .rz__img { position: relative; display: block; aspect-ratio: 16 / 10; overflow: hidden; background: var(--surface-200); }
 .rz__img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s cubic-bezier(.2,.7,.2,1); }
 .rz:hover .rz__img img { transform: scale(1.04); }
-.rz__count { position: absolute; right: 12px; bottom: 12px; padding: 6px 10px; background: rgba(7,8,10,.72); color: #fff; font: 500 12px/1 var(--font-mono, monospace); letter-spacing: .04em; }
 .rz__body { display: flex; flex-direction: column; gap: 8px; padding: 24px 28px 28px; }
 .rz__cat { margin: 0; font: 500 12px/1 var(--font-mono, monospace); letter-spacing: .08em; text-transform: uppercase; color: #0a6fe0; }
 .rz__t { margin: 0; font: 700 22px/1.2 var(--font-display); font-stretch: 112%; }
 .rz__t a { color: var(--ink); text-decoration: none; }
 .rz__t a:hover { color: #0a6fe0; }
 .rz__loc { display: flex; align-items: center; gap: 6px; margin: 0; font: 400 15px/1.4 var(--font-sans); color: var(--ink-muted); }
-.rz__cta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-.rz__cta .vtg-btn { min-height: 46px; }
-.rz__cta .vtg-btn--ghost { background: transparent; color: var(--ink); border: 1px solid var(--line-strong, rgba(7,8,10,.3)); }
-.rz__cta .vtg-btn--ghost svg { color: #0a6fe0; }
 /* Project page */
 .pr__crumb { margin: 0; font: 500 13px/1 var(--font-mono, monospace); letter-spacing: .06em; text-transform: uppercase; color: rgba(236,238,241,.75); }
 .pr__crumb a { color: #f0ac2e; text-decoration: none; }
@@ -920,8 +915,9 @@ html.lb-open { overflow: hidden; }
   .rzs__grid { grid-template-columns: 1fr; gap: 12px; }
   .rz__body { padding: 18px 20px 20px; }
   .rz__t { font-size: 19px; }
-  .rz__cta .vtg-btn { flex: 1 1 100%; justify-content: center; }
-  .gl__grid { gap: 6px; }
+    .gl__grid { gap: 6px; }
   .lb__prev, .lb__next { top: auto; bottom: 8px; transform: none; }
   .lb__prev { left: 8px; } .lb__next { right: 8px; }
 }
+/* Project tiles: compact actions in one row: quote button + phone as a text link */
+@media (max-width: 720px) { 
