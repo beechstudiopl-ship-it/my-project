@@ -390,7 +390,7 @@ def katalog(_):
          [("Materiał", "aluminium lub stal nierdzewna"), ("Wersje", "bez podświetlenia lub ze światłem na elewację")],
          "Prestiżowy, trwały napis na fasadę – dobrze znosi nadmorską pogodę.", "Litery metalowe"),
         (scene_svg("wnetrze"), "Litery do środka",
-         [("Materiał", "MDF, stal nierdzewna"), ("Wersje", "z podświetleniem halo lub bez")],
+         [("Materiał", "MDF, stal nierdzewna"), ("Wersje", "z podświetleniem: halo, po rancie litery lub w przód")],
          "Logo na recepcję, do biura i lokalu – lżejsze i tańsze niż litery na elewację.", "Logo do środka"),
         (scene_svg("neon"), "Neony LED",
          [("Materiał", "elastyczny neon LED na plexi"), ("Zastosowanie", "napisy, logo i hasła w lokalu i witrynie")],
