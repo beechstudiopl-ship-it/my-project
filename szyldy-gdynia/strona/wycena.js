@@ -106,6 +106,11 @@
     });
   });
 
+  /* ---------- filmy: bez ruchu dla osób z wyłączonymi animacjami ---------- */
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.querySelectorAll("video[autoplay]").forEach(function (v) { v.removeAttribute("autoplay"); v.pause(); });
+  }
+
   /* ---------- mapa dzielnic ---------- */
   document.querySelectorAll(".map-wrap").forEach(function (wrap) {
     var pick = wrap.querySelector(".map-pick");

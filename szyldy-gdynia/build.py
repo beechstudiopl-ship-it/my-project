@@ -372,7 +372,7 @@ def cards_grid(items):
 def offer(_):
     return cards_grid([
         (scene_svg("kaseton"), "Kaseton reklamowy",
-         [("Co to", "skrzynka z grafiką na froncie, na elewację lub nad wejście"), ("Wykończenie", "frezowanie wklęsłe lub wypukłe"), ("Podświetlane", "LED w środku – równe światło po zmroku"), ("Bez podświetlenia", "lico z grafiką, widoczne w dzień")],
+         [("Wykończenie", "frezowanie wklęsłe lub wypukłe"), ("Podświetlenie", "LED w środku – równe światło po zmroku")],
          "Dużo miejsca na logo i nazwę, dobra widoczność z daleka – sklepy, punkty usługowe, lokale przy ulicy.", "Kaseton reklamowy"),
         (letter_svg("plexi"), "Litery przestrzenne 3D",
          [("Co to", "litery i logo 3D na fasadę, nad wejście lub nad witrynę"), ("Podświetlane", "światło w przód, na elewację (halo) lub z boków"), ("Bez podświetlenia", "aluminium, stal lub plexi na dystansach")],
@@ -445,7 +445,14 @@ def mapa(_):
             f'<ul class="map-chips">{chips}</ul><p class="map-pick" aria-live="polite">Wybierz dzielnicę, żeby zobaczyć ją na mapie.</p></div></div>')
 
 
-DIRECTIVES = {"offer": offer, "katalog": katalog, "mapa": mapa, "letters": letters, "who": who, "mosaic": mosaic, "gallery": gallery, "form": form, "map": mapa}
+def bleed(arg):
+    """Zdjęcie na całą szerokość ekranu z podpisem."""
+    key, alt, cap = (x.strip() for x in arg.split("|"))
+    return (f'<figure class="bleed"><img src="img/{key}.webp" width="1920" height="816" loading="lazy" decoding="async" '
+            f'alt="{html.escape(alt)}"><figcaption>{inline(cap)}</figcaption></figure>')
+
+
+DIRECTIVES = {"bleed": bleed, "offer": offer, "katalog": katalog, "mapa": mapa, "letters": letters, "who": who, "mosaic": mosaic, "gallery": gallery, "form": form, "map": mapa}
 
 # ---------------------------------------------------------------------------
 # 3. Nawigacja i linki „Zobacz też”
@@ -461,6 +468,7 @@ SECTION_IDS = {
     "Jak wygląda współpraca krok po kroku": "wycena",
     "Od czego zależy cena szyldu reklamowego": "cena",
     "Szyldy reklamowe w Gdyni i okolicy – obszar działania i kontakt": "obszar",
+    "Uchwała krajobrazowa Gdyni – co sprawdzić przed montażem szyldu": "uchwala",
 }
 NAV = [
     ("szyldy-reklamowe-gdynia", "Szyldy reklamowe"),
@@ -520,7 +528,7 @@ Najczęściej zgłaszają się do nas:
 **Doświadczenie:** [UZUPEŁNIJ: od kiedy działacie / ile szyldów wykonaliście – tylko prawdziwe dane].
 """),
         ("Kasetony, litery przestrzenne i litery do wnętrz", """
-Każdy z trzech rodzajów oznakowania wykonujemy w dwóch wersjach: podświetlanej LED – gdy firma ma być widoczna po zmroku – albo bez podświetlenia, gdy działa głównie w dzień lub budynek jest dobrze oświetlony.
+Kasetony reklamowe wykonujemy z podświetleniem LED. Litery przestrzenne 3D i logo do środka – w wersji podświetlanej, gdy firma ma być widoczna po zmroku, albo bez podświetlenia, gdy działa głównie w dzień lub budynek jest dobrze oświetlony.
 
 {{offer}}
 
@@ -564,8 +572,20 @@ Wyślij zdjęcie elewacji przez formularz obok – resztę bierzemy na siebie. T
 
 Jeśli nie masz jeszcze logo ani pomysłu na wygląd szyldu, napisz o tym w zapytaniu. [UZUPEŁNIJ: czy oferujecie projekt graficzny od zera].
 """),
+        ("Uchwała krajobrazowa Gdyni – co sprawdzić przed montażem szyldu", """
+W Gdyni obowiązuje uchwała krajobrazowa – uchwała nr LV/1678/23 Rady Miasta Gdyni, opublikowana w Dzienniku Urzędowym Województwa Pomorskiego z 27 września 2023 r., poz. 4324. Określa zasady umieszczania tablic i urządzeń reklamowych, w tym szyldów: ich wymiary, miejsce na budynku, materiały i standardy jakości.
+
+- **Wymiary i miejsce** – szyld, kaseton czy litery przestrzenne trzeba dopasować do zasad uchwały, zanim trafią do produkcji.
+- **Liczba szyldów** – ustawa krajobrazowa pozwala gminie określić także, ile szyldów może wisieć na jednym budynku.
+- **Zgoda zarządcy** – niezależnie od uchwały na montaż na elewacji zwykle potrzebna jest zgoda właściciela, wspólnoty lub zarządcy budynku.
+- **Aktualny tekst** – część zapisów uchwały była zaskarżana w sądzie, dlatego przed zamówieniem warto sprawdzić jej obecne brzmienie w Urzędzie Miasta Gdyni.
+
+To ogólne wskazówki, nie porada prawna. [UZUPEŁNIJ: czy pomagacie dopasować projekt do uchwały i przygotować wizualizację do urzędu lub wspólnoty].
+"""),
         ("Szyldy reklamowe w Gdyni i okolicy – obszar działania i kontakt", """
 Działamy w Gdyni we wszystkich dzielnicach, od Śródmieścia, przez Redłowo i Orłowo, po Chylonię i Obłuże. [UZUPEŁNIJ: czy obsługujecie też Sopot, Gdańsk, Rumię, Redę, Wejherowo i resztę Pomorza].
+
+{{bleed:gdynia-realizacja|Litery przestrzenne na elewacji budynku w Gdyni|Realizacja w Gdyni – [UZUPEŁNIJ: co wykonaliście, dzielnica]}}
 
 ::info
 - **Telefon:** {TEL_LINK}
@@ -1132,7 +1152,7 @@ def local_business():
         "knowsAbout": ["szyldy reklamowe", "kasetony reklamowe", "litery przestrzenne", "litery do wnętrz", "litery metalowe", "neony LED"],
         "makesOffer": [
             {"@type": "Offer", "itemOffered": {"@type": "Service", "name": n, "url": f"{DOMENA}/#oferta"}}
-            for n in ["Kasetony reklamowe (frezowanie wklęsłe lub wypukłe, podświetlane i bez podświetlenia)", "Litery przestrzenne 3D",
+            for n in ["Kasetony reklamowe podświetlane LED (frezowanie wklęsłe lub wypukłe)", "Litery przestrzenne 3D",
                       "Logo do środka", "Litery metalowe", "Neony LED"]
         ],
     }
@@ -1288,6 +1308,7 @@ EYEBROWS = {
     "Od czego zależy cena szyldu reklamowego": "Cena",
     "Realizacje i opinie klientów": "Realizacje",
     "Szyldy reklamowe w Gdyni i okolicy – obszar działania i kontakt": "Gdzie działamy",
+    "Uchwała krajobrazowa Gdyni – co sprawdzić przed montażem szyldu": "Przepisy",
 }
 STATS = [("[UZUPEŁNIJ]", "lat", "doświadczenia"), ("[UZUPEŁNIJ]", "+", "wykonanych szyldów"),
          ("3", "", "kasetony · litery 3D · do wnętrz"), ("1", "zdjęcie", "wystarczy do wyceny")]
@@ -1342,6 +1363,11 @@ def page_html(p):
     hero_cls = "hero has-img" if img else "hero"
     hero_style = f' style="--hero-img: url(img/{img}.webp)"' if img else ""
     hero_photo = ""
+    faq_media = ""
+    if (OUT / "img" / "faq.mp4").exists():
+        faq_media = ('<figure class="faq-video"><video autoplay muted loop playsinline preload="metadata" poster="img/faq-poster.webp" '
+                     'aria-label="Litery przestrzenne na elewacji zapalają się po zmroku"><source src="img/faq.mp4" type="video/mp4"></video>'
+                     f'<figcaption>{fill("[UZUPEŁNIJ: film z Waszej realizacji – np. montaż liter albo zapalanie podświetlenia]")}</figcaption></figure>')
     if slug in HERO_PHOTO:  # zwykłe zdjęcie obok tekstu zamiast tła
         hero_cls, hero_style = "hero hero-split", ""
         vids = [(ext, typ) for ext, typ in (("webm", "video/webm"), ("mp4", "video/mp4")) if (OUT / "img" / f"{img}.{ext}").exists()]
@@ -1402,7 +1428,7 @@ def page_html(p):
 {chr(10).join(secs)}
 <section class="sec faq" id="faq"><div class="wrap">
 <div class="sec-head"><div><p class="eyebrow">FAQ</p><h2>Pytania i odpowiedzi</h2></div></div>
-<div class="sec-body faq-list">{faq}</div>
+<div class="sec-body faq-grid"><div class="faq-list">{faq}</div>{faq_media}</div>
 </div></section>
 <section class="cta"><div class="wrap cta-inner">
 <div><p class="eyebrow">Wyślij zdjęcie – albo zadzwoń</p><h2>Zapytaj o wycenę</h2>

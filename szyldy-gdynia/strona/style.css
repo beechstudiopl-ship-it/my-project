@@ -478,3 +478,30 @@ figcaption { padding: 12px 14px; font-size: .9rem; line-height: 1.5; color: var(
   .ltypes > li { grid-row: span 5; grid-template-rows: subgrid; row-gap: 0; }
   .ltypes > li, .ltypes > li:first-child, .ltypes > li:last-child { padding: 32px 28px; }
 }
+
+/* zdjęcie na całą szerokość ekranu */
+html, body { overflow-x: clip; }
+.bleed { position: relative; width: 100vw; margin: 8px 0 40px calc(50% - 50vw); border: 0; background: var(--navy, #222); }
+.bleed img { width: 100%; height: clamp(280px, 48vw, 640px); object-fit: cover; aspect-ratio: auto; display: block; }
+.bleed figcaption { position: absolute; left: max(16px, calc(50vw - 590px)); bottom: 20px; padding: 8px 14px; border-radius: 999px; background: rgba(15, 29, 39, .85); color: #fff; font-size: .88rem; font-weight: 600; max-width: calc(100vw - 32px); }
+.bleed figcaption mark.fill { color: #fff; }
+
+/* FAQ z filmem obok */
+.faq-grid { display: grid; gap: 32px; }
+.faq-grid .faq-list { max-width: none; }
+.faq-video { margin: 0; border: 0; background: var(--navy, #222); }
+.faq-video video { display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
+.faq-video figcaption { padding: 10px 14px; font-size: .85rem; color: #c9d4db; background: var(--navy, #222); }
+.faq-video figcaption mark.fill { color: #fff; }
+@media (min-width: 960px) {
+  .faq-grid { grid-template-columns: 1.3fr 1fr; gap: 56px; align-items: start; }
+  .faq-video { position: sticky; top: 110px; }
+}
+
+/* przyciski wezwania bez żółtego: biały na ciemnym tle, granatowy na jasnym */
+.btn-primary { background: #fff; border-color: #fff; color: var(--navy); box-shadow: none; }
+.btn-primary:hover { background: #dfe7ec; border-color: #dfe7ec; color: var(--navy); }
+.btn-light:hover { background: #dfe7ec; border-color: #dfe7ec; color: var(--navy); }
+.btn-send, .form .btn-primary, .sheet .btn-primary { background: var(--navy); border-color: var(--navy); color: #fff; }
+.btn-send:hover, .form .btn-primary:hover { background: var(--navy-2); border-color: var(--navy-2); color: #fff; }
+.lt-btn:hover { background: var(--navy); border-color: var(--navy); color: #fff; }
