@@ -872,3 +872,56 @@ html.tb-off { --tb: 0px; }
 .svp__head .h2 { margin: 0 !important; }
 .svp__head .vtg-lead { margin: 0 !important; }
 @media (max-width: 720px) { .svp__grid .wc { padding: 20px; gap: 8px; } .svp__grid .wc__t { font-size: 18px; } }
+/* Projects: tiles, two per row */
+.rzs { background: var(--surface-000, #fff); color: var(--ink); padding: var(--sec) 0; }
+.rzs + .pjs { border-top: 1px solid var(--line, rgba(7,8,10,.1)); }
+.rzs__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.rz { display: flex; flex-direction: column; background: var(--surface-100, #f3f4f6); }
+.rz__img { position: relative; display: block; aspect-ratio: 16 / 10; overflow: hidden; background: var(--surface-200); }
+.rz__img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+.rz:hover .rz__img img { transform: scale(1.04); }
+.rz__count { position: absolute; right: 12px; bottom: 12px; padding: 6px 10px; background: rgba(7,8,10,.72); color: #fff; font: 500 12px/1 var(--font-mono, monospace); letter-spacing: .04em; }
+.rz__body { display: flex; flex-direction: column; gap: 8px; padding: 24px 28px 28px; }
+.rz__cat { margin: 0; font: 500 12px/1 var(--font-mono, monospace); letter-spacing: .08em; text-transform: uppercase; color: #0a6fe0; }
+.rz__t { margin: 0; font: 700 22px/1.2 var(--font-display); font-stretch: 112%; }
+.rz__t a { color: var(--ink); text-decoration: none; }
+.rz__t a:hover { color: #0a6fe0; }
+.rz__loc { display: flex; align-items: center; gap: 6px; margin: 0; font: 400 15px/1.4 var(--font-sans); color: var(--ink-muted); }
+.rz__cta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.rz__cta .vtg-btn { min-height: 46px; }
+.rz__cta .vtg-btn--ghost { background: transparent; color: var(--ink); border: 1px solid var(--line-strong, rgba(7,8,10,.3)); }
+.rz__cta .vtg-btn--ghost svg { color: #0a6fe0; }
+/* Project page */
+.pr__crumb { margin: 0; font: 500 13px/1 var(--font-mono, monospace); letter-spacing: .06em; text-transform: uppercase; color: rgba(236,238,241,.75); }
+.pr__crumb a { color: #f0ac2e; text-decoration: none; }
+.pr__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin: 0; font: 400 17px/1.4 var(--font-sans); color: #eceef1; }
+.pr__cat { padding: 6px 10px; background: #0a6fe0; color: #fff; font: 500 12px/1 var(--font-mono, monospace); letter-spacing: .08em; text-transform: uppercase; }
+.pr__loc { display: inline-flex; align-items: center; gap: 6px; }
+.gl { background: var(--surface-000, #fff); }
+.gl__grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.gl__a { display: block; aspect-ratio: 4 / 5; overflow: hidden; background: var(--surface-200); cursor: zoom-in; }
+.gl__a img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+.gl__a:hover img { transform: scale(1.04); }
+.rzs--more { padding-top: 0 !important; }
+/* Lightbox */
+.lb { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; background: rgba(7,8,10,.94); }
+.lb[hidden] { display: none; }
+.lb__img { max-width: calc(100vw - 32px); max-height: calc(100vh - 120px); object-fit: contain; }
+.lb__btn { position: absolute; width: 52px; height: 52px; display: grid; place-items: center; background: rgba(236,238,241,.1); color: #fff; border: 0; cursor: pointer; font: 400 28px/1 var(--font-sans); }
+.lb__btn:hover, .lb__btn:focus-visible { background: #f0ac2e; color: #07080a; }
+.lb__close { top: 16px; right: 16px; }
+.lb__prev { left: 16px; top: 50%; transform: translateY(-50%); }
+.lb__next { right: 16px; top: 50%; transform: translateY(-50%); }
+.lb__n { position: absolute; bottom: 20px; left: 0; right: 0; text-align: center; color: rgba(236,238,241,.75); font: 500 13px/1 var(--font-mono, monospace); }
+html.lb-open { overflow: hidden; }
+@media (prefers-reduced-motion: reduce) { .rz__img img, .gl__a img { transition: none; } }
+@media (max-width: 900px) { .gl__grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 720px) {
+  .rzs__grid { grid-template-columns: 1fr; gap: 12px; }
+  .rz__body { padding: 18px 20px 20px; }
+  .rz__t { font-size: 19px; }
+  .rz__cta .vtg-btn { flex: 1 1 100%; justify-content: center; }
+  .gl__grid { gap: 6px; }
+  .lb__prev, .lb__next { top: auto; bottom: 8px; transform: none; }
+  .lb__prev { left: 8px; } .lb__next { right: 8px; }
+}

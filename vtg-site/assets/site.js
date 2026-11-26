@@ -189,3 +189,38 @@
   function sync() { root.classList.toggle('tb-off', window.scrollY > 8); }
   sync(); window.addEventListener('scroll', sync, { passive: true });
 })();
+
+// Lightbox: links with data-lb open the full-size photo; arrows, swipe and Esc
+(function () {
+  var links = [].slice.call(document.querySelectorAll('a[data-lb]'));
+  if (!links.length) return;
+  var box = document.createElement('div');
+  box.className = 'lb'; box.hidden = true;
+  box.setAttribute('role', 'dialog'); box.setAttribute('aria-modal', 'true'); box.setAttribute('aria-label', 'Photo viewer');
+  box.innerHTML = '<img class="lb__img" alt=""><button type="button" class="lb__btn lb__close" aria-label="Close">&times;</button><button type="button" class="lb__btn lb__prev" aria-label="Previous photo">&#8592;</button><button type="button" class="lb__btn lb__next" aria-label="Next photo">&#8594;</button><p class="lb__n"></p>';
+  document.body.appendChild(box);
+  var img = box.querySelector('.lb__img'), n = box.querySelector('.lb__n'), cur = 0, last = null;
+  function show(i) {
+    cur = (i + links.length) % links.length;
+    var a = links[cur], t = a.querySelector('img');
+    img.src = a.getAttribute('href'); img.alt = t ? t.alt : '';
+    n.textContent = (cur + 1) + ' / ' + links.length;
+  }
+  function open(i) { last = document.activeElement; show(i); box.hidden = false; document.documentElement.classList.add('lb-open'); box.querySelector('.lb__close').focus(); }
+  function close() { box.hidden = true; img.removeAttribute('src'); document.documentElement.classList.remove('lb-open'); if (last) last.focus(); }
+  links.forEach(function (a, i) { a.addEventListener('click', function (e) { e.preventDefault(); open(i); }); });
+  box.querySelector('.lb__close').addEventListener('click', close);
+  box.querySelector('.lb__prev').addEventListener('click', function () { show(cur - 1); });
+  box.querySelector('.lb__next').addEventListener('click', function () { show(cur + 1); });
+  box.addEventListener('click', function (e) { if (e.target === box) close(); });
+  document.addEventListener('keydown', function (e) {
+    if (box.hidden) return;
+    if (e.key === 'Escape') close();
+    else if (e.key === 'ArrowLeft') show(cur - 1);
+    else if (e.key === 'ArrowRight') show(cur + 1);
+    else if (e.key === 'Tab') { var f = [].slice.call(box.querySelectorAll('button')), k = f.indexOf(document.activeElement); e.preventDefault(); f[(k + (e.shiftKey ? f.length - 1 : 1)) % f.length].focus(); }
+  });
+  var x0 = null;
+  box.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+  box.addEventListener('touchend', function (e) { if (x0 === null) return; var dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 40) show(cur + (dx < 0 ? 1 : -1)); x0 = null; });
+})();
