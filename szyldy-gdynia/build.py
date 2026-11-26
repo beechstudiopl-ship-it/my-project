@@ -584,8 +584,6 @@ Ceny są orientacyjne [UZUPEŁNIJ: netto/brutto]. Dokładną kwotę podamy po ot
         ("Szyldy reklamowe w Gdyni i okolicy – obszar działania i kontakt", """
 Działamy w Gdyni we wszystkich dzielnicach, od Śródmieścia, przez Redłowo i Orłowo, po Chylonię i Obłuże. [UZUPEŁNIJ: czy obsługujecie też Sopot, Gdańsk, Rumię, Redę, Wejherowo i resztę Pomorza].
 
-{{mapa}}
-
 ::info
 - **Telefon:** {TEL_LINK}
 - **E-mail:** {EMAIL_LINK}
