@@ -202,3 +202,5 @@ body { padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)); }
 @media (min-width: 960px) { .map-wrap { grid-template-columns: 1.2fr 1fr; } .gmap { min-width: 0; } }
 .ltype { display: flex; flex-direction: column; } .lt-btn { align-self: flex-start; margin-top: 8px; }
 .quote-form { scroll-margin-top: 16px; }
+.ltype { display: grid; grid-template-rows: auto auto auto 1fr auto; }
+@media (min-width: 900px) { .ltypes > li { grid-row: span 5; grid-template-rows: subgrid; row-gap: 0; } }

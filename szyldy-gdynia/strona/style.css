@@ -463,3 +463,18 @@ figcaption { padding: 12px 14px; font-size: .9rem; line-height: 1.5; color: var(
 .quote-form { scroll-margin-top: 100px; }
 .ltype-spec > li { grid-template-columns: 132px 1fr; }
 .ltype-spec .k { font-size: .72rem; letter-spacing: .08em; }
+
+/* karty oferty i katalogu: równe odstępy i wspólne wiersze (obrazek, tytuł, tabela, opis, przycisk) */
+.ltypes > li, .ltypes > li:first-child, .ltypes > li:last-child { padding: 28px 24px; }
+.ltype { display: grid; grid-template-rows: auto auto auto 1fr auto; align-content: start; }
+.ltype .ltype-pic { margin: 0; }
+.ltype-pic svg { width: 100%; aspect-ratio: 8 / 5; }
+.ltype h3 { margin: 22px 0 14px; }
+.ltype-spec { margin: 0 0 16px; }
+.ltype p { margin: 0 0 22px !important; }
+.lt-btn { justify-self: start; }
+@media (min-width: 900px) {
+  .ltypes { grid-template-columns: repeat(3, 1fr); grid-auto-rows: auto; }
+  .ltypes > li { grid-row: span 5; grid-template-rows: subgrid; row-gap: 0; }
+  .ltypes > li, .ltypes > li:first-child, .ltypes > li:last-child { padding: 32px 28px; }
+}

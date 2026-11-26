@@ -564,23 +564,6 @@ Wyślij zdjęcie elewacji przez formularz obok – resztę bierzemy na siebie. T
 
 Jeśli nie masz jeszcze logo ani pomysłu na wygląd szyldu, napisz o tym w zapytaniu. [UZUPEŁNIJ: czy oferujecie projekt graficzny od zera].
 """),
-        ("Od czego zależy cena szyldu reklamowego", """
-Każdy szyld wyceniamy indywidualnie, bo dwa podobne napisy mogą się bardzo różnić kosztem. Na cenę wpływają przede wszystkim:
-
-- rodzaj – kaseton, litery przestrzenne, litery do wnętrz czy neon LED,
-- wymiary kasetonu lub wysokość liter,
-- podświetlenie LED – czy jest potrzebne i jakiego typu,
-- stopień skomplikowania logo i liczba elementów,
-- montaż – wysokość, rodzaj elewacji, potrzeba podnośnika lub rusztowania.
-
-::price
-- **Szyld z kasetonu** – [UZUPEŁNIJ: cena od–do, z podświetleniem i bez]
-- **Litery przestrzenne na elewację** – [UZUPEŁNIJ: cena od–do, np. za literę o określonej wysokości]
-- **Litery do wnętrz** – [UZUPEŁNIJ: cena od–do]
-- **Neon LED** – [UZUPEŁNIJ: cena od–do]
-
-Ceny są orientacyjne [UZUPEŁNIJ: netto/brutto]. Dokładną kwotę podamy po otrzymaniu zdjęcia i wymiarów.
-"""),
         ("Szyldy reklamowe w Gdyni i okolicy – obszar działania i kontakt", """
 Działamy w Gdyni we wszystkich dzielnicach, od Śródmieścia, przez Redłowo i Orłowo, po Chylonię i Obłuże. [UZUPEŁNIJ: czy obsługujecie też Sopot, Gdańsk, Rumię, Redę, Wejherowo i resztę Pomorza].
 
