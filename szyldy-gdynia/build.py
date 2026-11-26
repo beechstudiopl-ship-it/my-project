@@ -569,7 +569,6 @@ Każdy szyld wyceniamy indywidualnie, bo dwa podobne napisy mogą się bardzo r�
 
 - rodzaj – kaseton, litery przestrzenne, litery do wnętrz czy neon LED,
 - wymiary kasetonu lub wysokość liter,
-- materiał, np. plexi, aluminium, stal, PCV,
 - podświetlenie LED – czy jest potrzebne i jakiego typu,
 - stopień skomplikowania logo i liczba elementów,
 - montaż – wysokość, rodzaj elewacji, potrzeba podnośnika lub rusztowania.
