@@ -187,7 +187,7 @@ def gallery(arg):
     return '<div class="gallery">' + "".join(figure(k.strip()) for k in arg.split(",")) + "</div>"
 
 
-RODZAJE = ["Nie wiem – doradźcie", "Szyld z kasetonu", "Litery przestrzenne na elewację", "Litery do wnętrz",
+RODZAJE = ["Nie wiem – doradźcie", "Kaseton reklamowy", "Litery przestrzenne 3D", "Logo do środka",
            "Litery metalowe", "Neon LED"]
 
 
@@ -371,15 +371,15 @@ def cards_grid(items):
 
 def offer(_):
     return cards_grid([
-        (scene_svg("kaseton"), "Szyldy z kasetonów",
-         [("Co to", "skrzynka z grafiką na froncie, na elewację lub nad wejście"), ("Podświetlane", "LED w środku – równe światło po zmroku"), ("Bez podświetlenia", "lico z grafiką, widoczne w dzień")],
-         "Dużo miejsca na logo i nazwę, dobra widoczność z daleka – sklepy, punkty usługowe, lokale przy ulicy.", "Szyld z kasetonu"),
-        (letter_svg("plexi"), "Litery przestrzenne",
+        (scene_svg("kaseton"), "Kaseton reklamowy",
+         [("Co to", "skrzynka z grafiką na froncie, na elewację lub nad wejście"), ("Wykończenie", "frezowanie wklęsłe lub wypukłe"), ("Podświetlane", "LED w środku – równe światło po zmroku"), ("Bez podświetlenia", "lico z grafiką, widoczne w dzień")],
+         "Dużo miejsca na logo i nazwę, dobra widoczność z daleka – sklepy, punkty usługowe, lokale przy ulicy.", "Kaseton reklamowy"),
+        (letter_svg("plexi"), "Litery przestrzenne 3D",
          [("Co to", "litery i logo 3D na fasadę, nad wejście lub nad witrynę"), ("Podświetlane", "światło w przód, na elewację (halo) lub z boków"), ("Bez podświetlenia", "aluminium, stal lub plexi na dystansach")],
-         "Elegancki napis, który nie zasłania architektury – restauracje, salony, gabinety, biura.", "Litery przestrzenne na elewację"),
-        (scene_svg("wnetrze"), "Litery do wnętrz",
+         "Elegancki napis, który nie zasłania architektury – restauracje, salony, gabinety, biura.", "Litery przestrzenne 3D"),
+        (scene_svg("wnetrze"), "Logo do środka",
          [("Co to", "logo za ladą, na recepcji, w biurze i sali konferencyjnej"), ("Podświetlane", "subtelna poświata na ścianę (halo)"), ("Bez podświetlenia", "plexi, PCV lub metal, montaż na ścianie")],
-         "Pierwsze, co klient widzi po wejściu – recepcje, gabinety, biura, salony.", "Litery do wnętrz"),
+         "Pierwsze, co klient widzi po wejściu – recepcje, gabinety, biura, salony.", "Logo do środka"),
     ])
 
 
@@ -390,7 +390,7 @@ def katalog(_):
          "Prestiżowy, trwały napis na fasadę – dobrze znosi nadmorską pogodę.", "Litery metalowe"),
         (scene_svg("wnetrze"), "Litery do środka",
          [("Materiał", "plexi, PCV spienione, dibond lub metal"), ("Wersje", "z podświetleniem halo lub bez")],
-         "Logo na recepcję, do biura i lokalu – lżejsze i tańsze niż litery na elewację.", "Litery do wnętrz"),
+         "Logo na recepcję, do biura i lokalu – lżejsze i tańsze niż litery na elewację.", "Logo do środka"),
         (scene_svg("neon"), "Neony LED",
          [("Materiał", "elastyczny neon LED na plexi"), ("Zastosowanie", "napisy, logo i hasła w lokalu i witrynie")],
          "Efekt klasycznego neonu przy niskim zużyciu prądu – kawiarnie, bary, salony.", "Neon LED"),
@@ -1152,8 +1152,8 @@ def local_business():
         "knowsAbout": ["szyldy reklamowe", "kasetony reklamowe", "litery przestrzenne", "litery do wnętrz", "litery metalowe", "neony LED"],
         "makesOffer": [
             {"@type": "Offer", "itemOffered": {"@type": "Service", "name": n, "url": f"{DOMENA}/#oferta"}}
-            for n in ["Szyldy z kasetonów (podświetlane i bez podświetlenia)", "Litery przestrzenne na elewację",
-                      "Litery do wnętrz", "Litery metalowe", "Neony LED"]
+            for n in ["Kasetony reklamowe (frezowanie wklęsłe lub wypukłe, podświetlane i bez podświetlenia)", "Litery przestrzenne 3D",
+                      "Logo do środka", "Litery metalowe", "Neony LED"]
         ],
     }
 
@@ -1240,7 +1240,7 @@ def header(active):
 
 def footer():
     if LANDING_ONLY:
-        oferta = "".join(f'<li><a href="#oferta">{n}</a></li>' for n in ["Szyldy z kasetonów", "Litery przestrzenne", "Litery do wnętrz"])
+        oferta = "".join(f'<li><a href="#oferta">{n}</a></li>' for n in ["Kaseton reklamowy", "Litery przestrzenne 3D", "Logo do środka"])
         firma = "".join(f'<li><a href="{h}">{n}</a></li>' for h, n in LANDING_NAV[1:])
     else:
         oferta = "".join(f'<li><a href="{href(s)}">{n}</a></li>' for s, n in NAV[:3])
